@@ -92,7 +92,7 @@ export default function CourseDetail() {
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
       
       {/* 0. ANNOUNCEMENT BAR */}
-      <div className="fixed top-0 left-0 right-0 h-10 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
+      <div className="fixed top-0 left-0 right-0 h-12 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
         <span className="text-[#008060] shrink-0">{earlyPromo.ribbon}</span>
         <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
           {earlyPromo.line}
@@ -108,7 +108,7 @@ export default function CourseDetail() {
 
       {/* 1. HERO SECTION */}
       <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col">
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
+        <div className="max-w-[941px] mx-auto px-4 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
           <div className="py-12 lg:py-16 relative z-10">
             <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2 flex-wrap">
               <span className="bg-[#1D3BB9]/10 px-2 py-0.5 rounded text-[10px]">
@@ -165,7 +165,7 @@ export default function CourseDetail() {
 
       {/* 2. LA FIGURA CENTRALE SECTION */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
           <div className="relative">
              <div className="rounded-[3rem] overflow-hidden shadow-2xl overflow-hidden">
                 <img src={`https://picsum.photos/seed/${id}central/800/600`} className="w-full h-full object-cover aspect-video lg:aspect-square" alt="Core Role" />
@@ -188,7 +188,7 @@ export default function CourseDetail() {
 
       {/* 3. PROGRAMMA DEL MASTER TABS */}
       <section id="programma" className="py-32 bg-white">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <h2 className="text-4xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-6 italic">Programma del Master</h2>
             <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 leading-relaxed">
               {programIntro}
@@ -264,7 +264,7 @@ export default function CourseDetail() {
 
       {/* 4. SCEGLI TU QUANDO INIZIARE SECTION */}
       <section className="py-24 bg-white">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[3rem] p-12 lg:p-24 text-white text-center relative overflow-hidden">
                <h2 className="text-4xl lg:text-7xl font-display font-black uppercase mb-10 tracking-tighter italic">Scegli tu quando iniziare</h2>
                <p className="text-lg text-white/70 max-w-2xl mx-auto mb-16 font-medium leading-relaxed italic">
@@ -296,7 +296,7 @@ export default function CourseDetail() {
 
       {/* 5. COME FUNZIONA IL CORSO? SECTION */}
       <section id="metodo" className="py-32 bg-white">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <h2 className="text-4xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-8 italic leading-none">Come funziona il corso?</h2>
             <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 leading-relaxed">
               Il Master in {course.subtitle} è pensato per professionisti già impegnati: il carico settimanale è sostenibile, le sessioni sono organizzate in formula part-time e con recuperi quando serve. Ti consigliamo di partecipare live, ma puoi sempre rivedere le registrazioni in piattaforma.
@@ -387,7 +387,7 @@ export default function CourseDetail() {
 
       {/* 6. LA MIGLIORE FORMAZIONE TECH SECTION (Pricing) */}
       <section id="prezzo" className="py-32 bg-[#E6EFFF]/50">
-         <div className="max-w-7xl mx-auto px-6 text-center">
+         <div className="max-w-[941px] mx-auto px-4 text-center">
             <h2 className="text-4xl lg:text-8xl font-display font-black mb-10 tracking-tighter uppercase leading-[0.85] italic">
                La migliore formazione professionale,<br/><span className="text-brand-accent">accessibile</span>
             </h2>
@@ -492,7 +492,7 @@ export default function CourseDetail() {
 
       {/* 8. CAREER CENTER SECTION */}
       <section id="career" className="py-32 bg-white">
-         <div className="max-w-7xl mx-auto px-6 text-center">
+         <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-24">
                <h2 className="text-4xl lg:text-9xl font-display font-black leading-[0.85] mb-10 text-brand-navy tracking-tighter uppercase relative z-10 italic">
                   Career Center Asterys:<br/><span className="bg-brand-accent text-white px-8 py-2 inline-block -rotate-1">la tua carriera al centro</span>
@@ -518,7 +518,7 @@ export default function CourseDetail() {
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       <section className="py-40 bg-white">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <h2 className="text-5xl lg:text-8xl font-display font-black uppercase tracking-tighter mb-10 italic leading-[0.85]">Un percorso formativo <span className="text-brand-accent underline decoration-8 underline-offset-8">completo</span></h2>
             <p className="text-xl text-brand-navy/40 font-medium max-w-4xl mb-24 italic leading-relaxed">
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.
@@ -567,7 +567,7 @@ export default function CourseDetail() {
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-24 bg-white">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#1D3BB9] rounded-[4rem] p-16 lg:p-32 text-center text-white relative overflow-hidden shadow-4xl group">
                <div className="relative z-10">
                   <h2 className="text-5xl lg:text-[140px] font-display font-black uppercase mb-12 tracking-[calc(-0.02em)] leading-[0.85] italic">Accelera la tua<br />carriera: <span className="text-brand-accent">parti da qui</span></h2>

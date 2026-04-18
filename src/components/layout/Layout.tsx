@@ -40,9 +40,9 @@ export const Header = () => {
   return (
     <header
       id="site-header"
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-20 flex items-center ${isCourseDetailPage ? 'top-10' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 w-full flex items-center justify-between">
+      <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-3 group shrink-0">
             <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
@@ -211,7 +211,11 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col">
       <Header />
-      <main className={`flex-grow ${isCourseDetailPage ? 'pt-[7.5rem]' : 'pt-20'}`}>
+      <main
+        className={`flex-grow ${
+          isCourseDetailPage ? 'pt-[120px] max-[939px]:pt-[134px]' : 'pt-[72px] max-[939px]:pt-[74px]'
+        }`}
+      >
         {children}
       </main>
       <Footer />
