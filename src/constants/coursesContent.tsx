@@ -25,6 +25,8 @@ export interface CourseData {
   subtitle: string;
   tagline: string;
   type: string;
+  /** Prima pill in hero (es. "PER PROFESSIONISTI") — reference Boolean */
+  heroKicker?: string;
   heroBenefits: string[];
   summaryBox: {
     nextEdition: string;
@@ -52,7 +54,19 @@ export interface CourseData {
     softSkills: string[];
   };
   structure: {
-    modules: { title: string; desc: string }[];
+    modules: { title: string; desc: string; tags?: string[] }[];
+  };
+  programIntro?: string;
+  admissionBox?: { title: string; body: string };
+  earlyBirdPromo?: {
+    ribbon: string;
+    line: string;
+    deadline: string;
+    ctaHref: string;
+    /** Es. "30 APRILE" per la pill pricing (Boolean-style) */
+    pillDeadlineLabel?: string;
+    /** Es. "800€" — il layout aggiunge "di sconto" come nel reference Boolean */
+    discountAmount?: string;
   };
   teachers: {
     name: string;
@@ -106,6 +120,7 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Professione Coach",
     tagline: "Il Master d'eccellenza per diventare un coach professionista accreditato ICF con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
+    heroKicker: "PER PROFESSIONISTI",
     heroBenefits: [
       "Trasforma la tua esperienza professionale in una nuova carriera da coach",
       "Ottieni le ore formative necessarie per le credenziali ICF Level 1 e Level 2",
@@ -143,14 +158,48 @@ export const coursesContent: Record<string, CourseData> = {
       ],
       softSkills: ["Presenza", "Centratura", "Leadership relazionale", "Empatia"]
     },
+    programIntro:
+      "Imparerai a progettare e condurre percorsi di coaching professionale: dalle fondamenta alle competenze ICF, dall’intelligenza emotiva alla pratica supervisionata, fino al business del coaching e alla certificazione.",
+    admissionBox: {
+      title: "Requisiti di ammissione al Master",
+      body: "Questo Master richiede maturità professionale e motivazione forte. Il livello è impegnativo e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole intraprendere una carriera da coach strutturata e riconosciuta, non per chi cerca un percorso superficiale o senza pratica.",
+    },
+    earlyBirdPromo: {
+      ribbon: "SCONTO EARLY BIRD",
+      line: "Ottieni 800€ di sconto sul Master APCM | Iscriviti entro il 30/04/2026",
+      deadline: "30/04/2026",
+      ctaHref: "#prezzo",
+      pillDeadlineLabel: "30 APRILE",
+      discountAmount: "800€",
+    },
     structure: {
       modules: [
-        { title: "Fondamenti", desc: "Le basi del metodo e il codice etico." },
-        { title: "Intelligenza Emotiva", desc: "Allenare l'IE per l'efficacia relazionale." },
-        { title: "Approccio Sistemico", desc: "Navigare la complessità dei sistemi." },
-        { title: "Pratica Supervisionata", desc: "Sessioni con feedback da Mentor MCC." },
-        { title: "Prosperous Coach", desc: "Costruisci il tuo business di coaching." }
-      ]
+        {
+          title: "Fondamenti",
+          desc: "Partirai dalle basi del coaching professionale: accordo, presenza, ascolto e codice etico ICF. Imparerai a strutturare sessioni chiare, sicure e orientate al cliente.",
+          tags: ["Core competence ICF", "Etica", "Alleanza", "Contratto & setting"],
+        },
+        {
+          title: "Intelligenza Emotiva",
+          desc: "Lavorerai su consapevolezza emotiva, regolazione e relazione, con strumenti misurabili e pratiche quotidiane applicabili subito in contesti professionali.",
+          tags: ["SEI / KCG", "Autocoscienza", "Empatia", "Feedback & pratica"],
+        },
+        {
+          title: "Approccio Sistemico",
+          desc: "Imparerai a leggere le dinamiche complesse e a facilitare il cambiamento tenendo conto del contesto, delle relazioni e dei vincoli reali.",
+          tags: ["Sistemi", "Domande sistemiche", "Contratti relazionali", "Visione d’insieme"],
+        },
+        {
+          title: "Pratica Supervisionata",
+          desc: "Metterai in pratica le competenze con sessioni reali, feedback da Mentor MCC e supervisione per accelerare la qualità del tuo coaching.",
+          tags: ["Sessioni registrate", "Mentor MCC", "Supervisione", "Portfolio"],
+        },
+        {
+          title: "Prosperous Coach",
+          desc: "Costruirai il tuo percorso professionale: posizionamento, offerta, acquisizione clienti ed etica del business, con strumenti concreti per partire.",
+          tags: ["Posizionamento", "Pricing", "Marketing etico", "Piano d’azione"],
+        },
+      ],
     },
     teachers: [
       { name: "Giovanna Giuffredi", creds: "MCC", role: "Fondatrice", bio: "25+ anni esperienza, già Presidente ICF Italia.", img: "https://picsum.photos/seed/giovanna/300/300" },

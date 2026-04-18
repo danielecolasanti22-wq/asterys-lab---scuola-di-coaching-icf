@@ -21,6 +21,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -37,7 +38,10 @@ export const Header = () => {
   const isHome = location.pathname === '/';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 h-20 flex items-center ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}>
+    <header
+      id="site-header"
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-20 flex items-center ${isCourseDetailPage ? 'top-10' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
+    >
       <div className="max-w-[1400px] mx-auto px-6 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-3 group shrink-0">
@@ -201,10 +205,13 @@ export const Footer = () => {
 };
 
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
+  const location = useLocation();
+  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
+
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className={`flex-grow ${isCourseDetailPage ? 'pt-[7.5rem]' : 'pt-20'}`}>
         {children}
       </main>
       <Footer />

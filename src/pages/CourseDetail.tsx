@@ -1,39 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Users, 
-  Star, 
-  ChevronDown, 
-  ShieldCheck, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Users,
+  Star,
+  ChevronDown,
   Clock,
   Video,
-  Monitor,
   UserCheck,
-  Award,
-  BookOpen,
   Briefcase,
   Play,
-  MessageCircle,
-  Plus,
-  Minus,
   Zap,
-  Target,
-  Brain,
   TrendingUp,
-  Search,
-  ExternalLink,
-  Info
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { coursesContent, CourseData } from '../constants/coursesContent';
-
-const NavLink = ({ href, label }: { href: string, label: string }) => (
-  <a href={href} className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/60 hover:text-brand-accent transition-colors whitespace-nowrap">
-    {label}
-  </a>
-);
 
 const Accordion = ({ title, content, isOpen, onClick }: { title: string, content: string, isOpen: boolean, onClick: () => void }) => (
   <div className="border-b border-gray-100">
@@ -86,18 +68,46 @@ export default function CourseDetail() {
     );
   }
 
+  const programIntro =
+    course.programIntro ??
+    'Imparerai un percorso strutturato e professionale: teoria, pratica supervisionata e strumenti concreti per portare valore alle persone e alle organizzazioni.';
+
+  const admissionBox = course.admissionBox ?? {
+    title: 'Requisiti di ammissione al Master',
+    body: 'Questo Master richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
+  };
+
+  const earlyPromo = course.earlyBirdPromo ?? {
+    ribbon: 'PROMO',
+    line: `Scopri condizioni dedicate al Master in ${course.subtitle} | Contattaci per i dettagli`,
+    deadline: '',
+    ctaHref: '#prezzo',
+  };
+
+  const activeModuleData = course.structure.modules[activeModule];
+  const moduleTags =
+    activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
+
   return (
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
       
       {/* 0. ANNOUNCEMENT BAR */}
-      <div className="fixed top-0 left-0 right-0 h-10 bg-[#001D4B] text-white flex items-center justify-center text-[10px] font-black uppercase tracking-[0.15em] z-[60] px-4 whitespace-nowrap overflow-hidden">
-        <span className="text-[#008060] mr-2">SCONTO EARLY BIRD</span> 
-        Ottieni 800€ di sconto sul nuovo Master in {course.subtitle} | Iscriviti entro il 30/04/2026
-        <a href="#prezzo" className="ml-4 border-b border-white hover:text-brand-accent transition-colors">Blocca lo sconto →</a>
+      <div className="fixed top-0 left-0 right-0 h-10 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
+        <span className="text-[#008060] shrink-0">{earlyPromo.ribbon}</span>
+        <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
+          {earlyPromo.line}
+        </span>
+        <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">Dettagli e date sul Master</span>
+        <a
+          href={earlyPromo.ctaHref}
+          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#E2FF3B] transition-colors whitespace-nowrap"
+        >
+          Blocca il tuo sconto →
+        </a>
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col pt-10 mt-20">
+      <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col">
         <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
           <div className="py-12 lg:py-16 relative z-10">
             <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2">
@@ -178,8 +188,8 @@ export default function CourseDetail() {
       <section id="programma" className="py-32 bg-white">
          <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-6 italic">Programma del Master</h2>
-            <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 italic">
-              Imparerai a progettare e portare in produzione soluzioni evolutive: dalle fondamenta alla pratica supervisionata, fino al business del coaching.
+            <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 leading-relaxed">
+              {programIntro}
             </p>
             
             <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 flex flex-col lg:flex-row shadow-sm min-h-[600px]">
@@ -215,12 +225,18 @@ export default function CourseDetail() {
                           {course.structure.modules[activeModule].desc}
                        </p>
                        
-                       <div className="mt-auto pt-10 border-t border-gray-50 flex flex-wrap gap-4">
-                          {course.learning.softSkills.map((skill, i) => (
-                             <div key={i} className="bg-brand-blue-soft/50 px-4 py-2 rounded-lg text-brand-accent text-[10px] font-black uppercase tracking-widest border border-brand-accent/5">
-                                {skill}
-                             </div>
-                          ))}
+                       <div className="mt-auto pt-10 border-t border-gray-100">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/35 mb-4">In sintesi</p>
+                          <div className="flex flex-wrap gap-2">
+                            {moduleTags.map((tag, i) => (
+                              <span
+                                key={`${activeModule}-${i}`}
+                                className="inline-flex items-center rounded-md border border-brand-navy/10 bg-[#F9FAFB] px-3 py-2 text-[11px] font-bold text-brand-navy/80"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
                        </div>
                     </motion.div>
                   </AnimatePresence>
@@ -280,37 +296,52 @@ export default function CourseDetail() {
       <section id="metodo" className="py-32 bg-white">
          <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-8 italic leading-none">Come funziona il corso?</h2>
-            <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 italic">
-              Il Master in {course.subtitle} è pensato per te che già lavori: il carico settimanale è sostenibile, le lezioni sono part-time e facoltative, per adattarsi ai tuoi ritmi lavorativi. Ti consigliamo di seguirle live, ma puoi sempre recuperarle quando vuoi.
+            <p className="text-lg text-brand-navy/60 font-medium max-w-4xl mb-16 leading-relaxed">
+              Il Master in {course.subtitle} è pensato per professionisti già impegnati: il carico settimanale è sostenibile, le sessioni sono organizzate in formula part-time e con recuperi quando serve. Ti consigliamo di partecipare live, ma puoi sempre rivedere le registrazioni in piattaforma.
             </p>
             
-            <div className="grid lg:grid-cols-2 gap-8 mb-24">
-               <div className="bg-[#F9FAFB] rounded-[2.5rem] p-12 flex gap-10 items-start border border-gray-100">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-24">
+               <div className="bg-[#F9FAFB] rounded-[2.5rem] p-10 lg:p-12 flex gap-8 items-start border border-gray-100">
                   <div className="w-14 h-14 bg-brand-navy text-white rounded-full flex items-center justify-center shrink-0">
-                     <Video size={28} />
+                     <Video size={26} strokeWidth={1.75} />
                   </div>
                   <div>
-                     <h3 className="text-2xl font-black uppercase tracking-tight mb-4 italic">Lezioni in diretta</h3>
-                     <p className="text-brand-navy/60 font-medium leading-relaxed italic">Segui le lezioni live in Aula Virtuale, interagendo con il Teacher e i compagni.</p>
+                     <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight mb-3 italic leading-tight">Lezioni in diretta</h3>
+                     <p className="text-brand-navy/60 font-medium leading-relaxed">
+                       Segui le lezioni live in aula virtuale, interagendo con i trainer e i compagni di corso.
+                     </p>
                   </div>
                </div>
-               <div className="bg-[#F9FAFB] rounded-[2.5rem] p-12 flex items-center justify-between border border-gray-100">
-                  <div className="flex items-center gap-6">
-                     <Clock size={32} className="text-brand-navy/30" />
-                     <div>
-                        {(course.sessionSchedule || [{ days: course.summaryBox.format, time: '' }]).map((s, i) => (
-                          <p key={i} className={i === 0 ? "text-lg font-black uppercase tracking-tight italic" : "text-[10px] font-black uppercase tracking-widest text-brand-navy/30 italic"}>
+               <div className="bg-[#F9FAFB] rounded-[2.5rem] p-10 lg:p-12 border border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+                  <div className="flex items-start gap-5 min-w-0">
+                     <Clock size={30} className="text-brand-navy/25 shrink-0 mt-1" strokeWidth={1.75} />
+                     <div className="space-y-3 min-w-0">
+                        {(course.sessionSchedule?.length
+                          ? course.sessionSchedule
+                          : [
+                              { days: course.summaryBox.format, time: '' },
+                            ]
+                        ).map((s, i) => (
+                          <p
+                            key={i}
+                            className={`${i === 0 ? 'text-base lg:text-lg' : 'text-sm lg:text-base'} font-black uppercase tracking-tight text-brand-navy`}
+                          >
                             {s.days}
                           </p>
                         ))}
                      </div>
                   </div>
-                  <div className="text-right">
-                     {(course.sessionSchedule || []).filter(s => s.time).map((s, i) => (
-                       <p key={i} className={i === 0 ? "text-lg font-black uppercase tracking-tight italic" : "text-[10px] font-black uppercase tracking-widest text-brand-navy/30 italic"}>
-                         {s.time}
-                       </p>
-                     ))}
+                  <div className="sm:text-right border-t sm:border-t-0 border-gray-200/80 pt-6 sm:pt-0 sm:pl-6 shrink-0">
+                     {(course.sessionSchedule?.length ? course.sessionSchedule : [])
+                       .filter((s) => s.time)
+                       .map((s, i) => (
+                         <p
+                           key={i}
+                           className={`${i === 0 ? 'text-base lg:text-lg' : 'text-sm lg:text-base'} font-black uppercase tracking-tight text-brand-navy`}
+                         >
+                           {s.time}
+                         </p>
+                       ))}
                   </div>
                </div>
             </div>
@@ -340,10 +371,12 @@ export default function CourseDetail() {
                      </li>
                   </ul>
                </div>
-               <div className="bg-[#E6F7F5] rounded-[3rem] p-10 space-y-8 flex flex-col h-full border border-[#D1EBE7]">
-                  <h3 className="text-xl font-black text-brand-navy uppercase italic tracking-tight italic">Requisiti di ammissione al Master</h3>
-                  <p className="text-[#008060] text-sm leading-relaxed font-bold italic">
-                    Questo Master richiede basi solide di programmazione e gestione persone. Il livello è avanzato e il percorso è pensato per chi ha già esperienza concreta nello sviluppo e vuole applicare l’AI a sistemi reali, strutturati e complessi, non adatti per chi parte da zero.
+               <div className="bg-[#E6F7F5] rounded-[3rem] p-10 space-y-6 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-xl font-black text-brand-navy uppercase italic tracking-tight leading-snug">
+                    {admissionBox.title}
+                  </h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">
+                    {admissionBox.body}
                   </p>
                </div>
             </div>
@@ -354,25 +387,36 @@ export default function CourseDetail() {
       <section id="prezzo" className="py-32 bg-[#E6EFFF]/50">
          <div className="max-w-7xl mx-auto px-6 text-center">
             <h2 className="text-4xl lg:text-8xl font-display font-black mb-10 tracking-tighter uppercase leading-[0.85] italic">
-               La migliore formazione tech,<br/><span className="text-brand-accent">accessibile</span>
+               La migliore formazione professionale,<br/><span className="text-brand-accent">accessibile</span>
             </h2>
             <p className="text-[10px] font-black text-brand-navy/40 uppercase tracking-[0.3em] mb-20 italic">Scegli il metodo di pagamento per il tuo Master in {course.subtitle}</p>
             
-            {/* Early Bird Toggle/Banner Layout */}
-            <div className="max-w-3xl mx-auto mb-20">
-               <div className="grid grid-cols-2 bg-white rounded-full p-2 shadow-xl border border-gray-100 overflow-hidden">
-                  <div className="bg-[#008060] text-white rounded-full py-10 px-8 flex flex-col items-center justify-center relative">
-                     <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">EARLY BIRD</div>
-                     <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">ENTRO IL 30 APRILE</p>
-                     <p className="text-5xl font-black italic tracking-tighter leading-none">800€ <span className="text-xl">di sconto</span></p>
+            {/* Early Bird Toggle/Banner (Boolean-style; solo se configurato sul corso) */}
+            {course.earlyBirdPromo ? (
+              <div className="max-w-3xl mx-auto mb-20">
+                <div className="grid grid-cols-2 bg-white rounded-full p-2 shadow-xl border border-gray-100 overflow-hidden">
+                  <div className="bg-[#008060] text-white rounded-full py-10 px-6 sm:px-8 flex flex-col items-center justify-center relative text-center">
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">
+                      EARLY BIRD
+                    </div>
+                    <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">
+                      ENTRO IL {course.earlyBirdPromo.pillDeadlineLabel ?? 'TERMINE PROMO'}
+                    </p>
+                    <p className="text-4xl sm:text-5xl font-black italic tracking-tighter leading-none">
+                      {course.earlyBirdPromo.discountAmount ?? '800€'}{' '}
+                      <span className="text-lg sm:text-xl">di sconto</span>
+                    </p>
                   </div>
-                  <div className="flex flex-col items-center justify-center py-10">
-                     <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DAL 1 MAGGIO</p>
-                     <p className="text-5xl font-black text-brand-navy/20 italic tracking-tighter leading-none">Prezzo pieno</p>
+                  <div className="flex flex-col items-center justify-center py-10 text-center px-4">
+                    <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DOPO LA SCADENZA</p>
+                    <p className="text-4xl sm:text-5xl font-black text-brand-navy/20 italic tracking-tighter leading-none">Prezzo pieno</p>
                   </div>
-               </div>
-               <p className="mt-8 text-[9px] font-black text-brand-navy/30 uppercase tracking-[0.3em] inline-block border-t border-brand-navy/5 pt-4">Sconti validi per contratti di iscrizione firmati entro le date indicate.</p>
-            </div>
+                </div>
+                <p className="mt-8 text-[9px] font-black text-brand-navy/30 uppercase tracking-[0.3em] inline-block border-t border-brand-navy/5 pt-4">
+                  Sconti validi per contratti di iscrizione firmati entro le date indicate.
+                </p>
+              </div>
+            ) : null}
 
             {/* Payment Tabs Table-like layout */}
             <div className="max-w-5xl mx-auto bg-white rounded-[4rem] shadow-4xl overflow-hidden border border-gray-100">
@@ -398,13 +442,19 @@ export default function CourseDetail() {
                        </p>
                        <div className="mb-20">
                           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-navy/20 mb-8 italic">
-                            {fee.type === ‘installment’ || fee.type === ‘zero-rate’ ? ‘a partire da’ : ‘prezzo’}
+                            {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after'
+                              ? 'a partire da'
+                              : 'prezzo'}
                           </p>
                           <div className="relative inline-block">
                              <p className="text-5xl lg:text-8xl font-display font-black text-[#008060] italic tracking-tighter leading-none mb-10">
                                {fee.price}{fee.priceLabel && <span className="text-3xl lg:text-4xl">{fee.priceLabel}</span>}
                              </p>
-                             <div className="absolute -top-10 -right-24 bg-[#008060] text-white px-4 py-2 rounded-xl text-[10px] font-black whitespace-nowrap rotate-6 shadow-xl uppercase tracking-widest">EARLY BIRD</div>
+                             {course.earlyBirdPromo ? (
+                               <div className="absolute -top-10 -right-24 bg-[#008060] text-white px-4 py-2 rounded-xl text-[10px] font-black whitespace-nowrap rotate-6 shadow-xl uppercase tracking-widest">
+                                 EARLY BIRD
+                               </div>
+                             ) : null}
                           </div>
                           {fee.footnote && <p className="text-brand-navy/40 text-[10px] font-black uppercase tracking-[0.2em] mt-8">{fee.footnote}</p>}
                        </div>
@@ -485,8 +535,10 @@ export default function CourseDetail() {
                   </div>
                   <div className="bg-[#F2F7FF] rounded-[3.5rem] p-16 lg:flex items-center gap-16 group overflow-hidden border border-gray-100">
                      <div className="lg:w-1/2">
-                        <h3 className="text-3xl font-display font-black mb-8 uppercase tracking-tighter italic leading-none">Supervisione e Mentor Coaching MCC</h3>
-                        <p className="text-brand-navy/60 text-base font-medium leading-relaxed italic">Hai perso una sessione? Nessun problema: trovi tutte le registrazioni e le dispense sempre disponibili. La supervisione con coach MCC è inclusa per accelerare la tua crescita.</p>
+                        <h3 className="text-3xl font-display font-black mb-8 uppercase tracking-tighter italic leading-none">Piattaforma, registrazioni e supervisione</h3>
+                        <p className="text-brand-navy/60 text-base font-medium leading-relaxed italic">
+                          Hai perso una sessione? Nessun problema: in piattaforma trovi registrazioni, materiali e percorsi strutturati per recuperare con ordine. La supervisione con coach MCC è parte del metodo, per trasformare la pratica in competenza misurabile.
+                        </p>
                      </div>
                      <div className="lg:w-1/2 mt-12 lg:mt-0">
                         <img src={`https://picsum.photos/seed/${id}plat/800/600`} className="rounded-3xl shadow-4xl w-full" alt="Platform" />
