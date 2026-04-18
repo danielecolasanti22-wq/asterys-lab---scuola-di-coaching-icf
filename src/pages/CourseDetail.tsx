@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment, type ReactNode } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   CheckCircle2,
@@ -14,10 +14,57 @@ import {
   Play,
   Zap,
   TrendingUp,
+  Calendar,
+  Monitor,
+  Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { coursesContent, defaultCourseMedia } from '../constants/coursesContent';
+import {
+  coursesContent,
+  defaultCourseMedia,
+  CourseData,
+  CourseScheduleBand,
+} from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
+
+function richText(text: string): ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\*\*([^*]+)\*\*$/);
+    if (m) {
+      return (
+        <strong key={i} className="font-bold text-brand-navy">
+          {m[1]}
+        </strong>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+}
+
+function scheduleBandsFromCourse(course: CourseData): CourseScheduleBand[] {
+  if (course.scheduleBands?.length) return course.scheduleBands;
+  const sched = course.sessionSchedule?.filter(Boolean) ?? [];
+  if (sched.length === 0) {
+    return [
+      {
+        title: 'Lezioni in diretta',
+        body: 'Segui le sessioni live e interagisci con i trainer e i compagni di corso.',
+        dayLines: [course.summaryBox.format],
+        timeLines: [],
+      },
+    ];
+  }
+  return sched.map((s, idx) => ({
+    title: idx === 0 ? 'Lezioni in diretta' : 'Sessioni complementari',
+    body:
+      idx === 0
+        ? 'Segui le sessioni live e interagisci con i trainer e i compagni di corso.'
+        : 'Slot aggiuntivi o laboratori: organizzati per integrare il calendario principale.',
+    dayLines: [s.days],
+    timeLines: s.time ? [s.time] : [],
+  }));
+}
 
 const Accordion = ({ title, content, isOpen, onClick }: { title: string, content: string, isOpen: boolean, onClick: () => void }) => (
   <div className="border-b border-gray-100 last:border-b-0">
@@ -97,6 +144,62 @@ export default function CourseDetail() {
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
 
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
+
+  const isMasterLike =
+    /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
+
+  const howDefaults = {
+    title: isMasterLike ? 'Come funziona il Master' : 'Come funziona il corso',
+    intro: `Il percorso è pensato per professionisti già impegnati: alterni **sessioni live**, pratica guidata e studio individuale. Ti consigliamo di partecipare in diretta, ma puoi sempre recuperare con le **registrazioni** in piattaforma.`,
+    formazioneTitle: 'Formazione',
+    formazioneIntro: `La formazione combina **lezioni in diretta**, esercitazioni e feedback: un metodo strutturato per trasformare le competenze in pratica professionale.`,
+  };
+
+  const howPartial = course.howItWorks;
+  const how = {
+    ...howDefaults,
+    ...howPartial,
+    intro: howPartial?.intro?.trim() ? howPartial.intro : howDefaults.intro,
+    formazioneIntro: howPartial?.formazioneIntro?.trim()
+      ? howPartial.formazioneIntro
+      : howDefaults.formazioneIntro,
+  };
+
+  const scheduleBands = scheduleBandsFromCourse(course);
+
+  const studyMode =
+    course.studyModeBox ?? {
+      title: 'Modalità di studio ',
+      highlight: 'flessibile',
+      body: `Un formato pensato per adattarsi ai tuoi ritmi: segui le sessioni live e integra con studio individuale, materiali e registrazioni quando ti è più comodo.`,
+      linkText: 'Vai al programma',
+      linkHref: '#programma',
+    };
+
+  const orientation =
+    course.orientationBanner ??
+    (isMasterLike
+      ? {
+          title: 'Fase di orientamento',
+          body: 'Prima del via, allineiamo obiettivi, aspettative e piano di percorso con il team Asterys, così entri in classe con chiarezza.',
+        }
+      : null);
+
+  const specDefaults = {
+    eyebrow: 'Percorso',
+    title: 'Cosa approfondirai',
+    intro: `Un insieme equilibrato di moduli pratici per costruire competenze **concrete** e subito applicabili nel tuo contesto professionale.`,
+  };
+
+  const spec =
+    course.specializationsSection ??
+    (course.learning.cols.length
+      ? {
+          eyebrow: isMasterLike ? 'Specializzazioni' : 'Moduli',
+          title: isMasterLike ? 'Le competenze che ti distinguono' : 'I pilastri del percorso',
+          intro: specDefaults.intro,
+        }
+      : null);
 
   /** Tipografia compatta (reference: PDF Asterys) — migliora leggibilità sotto la piega */
   const tSection = 'text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter text-brand-navy';
@@ -269,26 +372,6 @@ export default function CourseDetail() {
                   </AnimatePresence>
                </div>
             </div>
-            
-            {/* CTA Program Brochure */}
-            <div className="mt-10 bg-[#0047FF] rounded-[1.75rem] p-8 sm:p-10 lg:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group overflow-hidden relative">
-               <div className="relative z-10 max-w-xl">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-white uppercase tracking-tight leading-[1.05] mb-4">
-                    Vuoi scoprire il programma<br className="hidden sm:block" /> settimana per settimana?
-                  </h3>
-                  <button className="bg-[#E2FF3B] text-brand-navy px-8 py-3.5 rounded-md font-black text-[11px] uppercase tracking-[0.2em] shadow-lg hover:brightness-95 active:scale-[0.98] transition-all">
-                     SCARICA BROCHURE
-                  </button>
-               </div>
-               <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden lg:block">
-                  <CourseImage
-                    src={media.brochureDecor}
-                    fallbackSrc={defaultCourseMedia(id ?? 'corso').brochureDecor}
-                    className="w-full h-full object-cover"
-                    alt=""
-                  />
-               </div>
-            </div>
          </div>
       </section>
 
@@ -324,184 +407,316 @@ export default function CourseDetail() {
          </div>
       </section>
 
-      {/* 5. COME FUNZIONA IL CORSO? SECTION */}
-      <section id="metodo" className="py-16 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
-            <h2 className={`${tSection} mb-4`}>Come funziona il corso?</h2>
-            <p className={`${tLead} mb-10 lg:mb-12 max-w-2xl`}>
-              Il Master in {course.subtitle} è pensato per professionisti già impegnati: il carico settimanale è sostenibile, le sessioni sono organizzate in formula part-time e con recuperi quando serve. Ti consigliamo di partecipare live, ma puoi sempre rivedere le registrazioni in piattaforma.
-            </p>
-            
-            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 mb-14 lg:mb-16">
-               <div className="bg-[#F9FAFB] rounded-[1.75rem] p-6 sm:p-8 flex gap-5 items-start border border-gray-100">
-                  <div className="w-12 h-12 bg-brand-navy text-white rounded-full flex items-center justify-center shrink-0">
-                     <Video size={22} strokeWidth={2} />
+      {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
+      <section id="metodo" className="py-16 lg:py-24 bg-white">
+        <div className="max-w-[941px] mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start mb-14 lg:mb-16">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.1] mb-6">
+                {how.title}
+              </h2>
+              <p className={`${tBody} max-w-xl`}>{richText(how.intro)}</p>
+            </div>
+            <div className="w-full">
+              <CourseImage
+                src={media.howItWorks}
+                fallbackSrc={defaultCourseMedia(id ?? 'corso').howItWorks}
+                className="w-full rounded-2xl object-cover aspect-[4/3] shadow-[0_22px_60px_-38px_rgba(0,21,51,0.28)]"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent tracking-tight">
+              {how.formazioneTitle}
+            </h3>
+            {how.formazioneBadge ? (
+              <span className="inline-flex items-center rounded-full bg-[#E6EFFF] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-brand-navy ring-1 ring-brand-accent/15">
+                {how.formazioneBadge}
+              </span>
+            ) : null}
+          </div>
+          <p className={`${tBody} max-w-3xl mb-10`}>{richText(how.formazioneIntro)}</p>
+
+          <div className="divide-y divide-gray-200 border-t border-gray-200">
+            {scheduleBands.map((band, rowIdx) => (
+              <div
+                key={rowIdx}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 py-10 first:pt-8"
+              >
+                <div className="flex gap-4">
+                  <div className="mt-0.5 text-brand-navy">
+                    {rowIdx === 0 ? <Monitor size={22} strokeWidth={1.75} /> : <Video size={22} strokeWidth={1.75} />}
                   </div>
                   <div>
-                     <h3 className="text-base sm:text-lg font-black uppercase tracking-tight mb-2 leading-snug">Lezioni in diretta</h3>
-                     <p className={`${tBody}`}>
-                       Segui le lezioni live in aula virtuale, interagendo con i trainer e i compagni di corso.
-                     </p>
-                  </div>
-               </div>
-               <div className="bg-[#F9FAFB] rounded-[1.75rem] p-6 sm:p-8 border border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                  <div className="flex items-start gap-5 min-w-0">
-                     <span className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-brand-navy shadow-sm ring-1 ring-black/5">
-                       <Clock size={22} strokeWidth={2} />
-                     </span>
-                     <div className="space-y-3 min-w-0">
-                        {(course.sessionSchedule?.length
-                          ? course.sessionSchedule
-                          : [
-                              { days: course.summaryBox.format, time: '' },
-                            ]
-                        ).map((s, i) => (
-                          <p
-                            key={i}
-                            className={`${i === 0 ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'} font-black uppercase tracking-tight text-brand-navy leading-snug`}
-                          >
-                            {s.days}
-                          </p>
-                        ))}
-                     </div>
-                  </div>
-                  <div className="sm:text-right border-t sm:border-t-0 border-gray-200/80 pt-6 sm:pt-0 sm:pl-6 shrink-0">
-                     {(course.sessionSchedule?.length ? course.sessionSchedule : [])
-                       .filter((s) => s.time)
-                       .map((s, i) => (
-                         <p
-                           key={i}
-                           className={`${i === 0 ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'} font-black uppercase tracking-tight text-brand-navy`}
-                         >
-                           {s.time}
-                         </p>
-                       ))}
-                  </div>
-               </div>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-               <div className="space-y-4">
-                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
-                  <p className={tBody}>La modalità part-time è pensata per adattarsi ai tuoi ritmi, dandoti la libertà di seguire le lezioni online in diretta oppure di recuperarle con le registrazioni quando ti è più comodo.</p>
-                  <ul className="space-y-3 pt-2">
-                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                        <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Nessun obbligo di presenza
-                     </li>
-                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                        <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercizi settimanali facoltativi
-                     </li>
-                  </ul>
-               </div>
-               <div className="space-y-4">
-                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Impegno</h3>
-                  <p className={tBody}>Ti mettiamo a disposizione strumenti, supporto e contenuti per aiutarti a raggiungere i tuoi obiettivi. Per ottenere il massimo dal percorso, però, serviranno costanza, motivazione e una buona dose di impegno settimanale.</p>
-                  <ul className="space-y-3 pt-2">
-                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0"></div> Progetto individuale
-                     </li>
-                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0"></div> Esame finale
-                     </li>
-                  </ul>
-               </div>
-               <div className="bg-[#E6F7F5] rounded-[1.75rem] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
-                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">
-                    {admissionBox.title}
-                  </h3>
-                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">
-                    {admissionBox.body}
-                  </p>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      {/* 6. LA MIGLIORE FORMAZIONE TECH SECTION (Pricing) */}
-      <section id="prezzo" className="py-16 lg:py-20 bg-[#E6EFFF]/50">
-         <div className="max-w-[941px] mx-auto px-4 text-center">
-            <h2 className={`${tSection} mb-3`}>
-               La migliore formazione professionale, <span className="text-brand-accent">accessibile</span>
-            </h2>
-            <p className="text-[10px] font-black text-brand-navy/45 uppercase tracking-[0.28em] mb-10 sm:mb-12">Scegli il metodo di pagamento per il tuo Master in {course.subtitle}</p>
-            
-            {/* Early Bird Toggle/Banner (Boolean-style; solo se configurato sul corso) */}
-            {course.earlyBirdPromo ? (
-              <div className="max-w-xl mx-auto mb-12">
-                <div className="grid grid-cols-2 bg-white rounded-full p-1.5 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.2)] border border-gray-100 overflow-hidden">
-                  <div className="bg-[#008060] text-white rounded-full py-7 px-4 sm:px-6 flex flex-col items-center justify-center relative text-center">
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">
-                      EARLY BIRD
-                    </div>
-                    <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">
-                      ENTRO IL {course.earlyBirdPromo.pillDeadlineLabel ?? 'TERMINE PROMO'}
-                    </p>
-                    <p className="text-3xl sm:text-4xl font-black italic tracking-tighter leading-none">
-                      {course.earlyBirdPromo.discountAmount ?? '800€'}{' '}
-                      <span className="text-base sm:text-lg">di sconto</span>
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center py-7 text-center px-3">
-                    <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DOPO LA SCADENZA</p>
-                    <p className="text-2xl sm:text-3xl font-black text-brand-navy/25 italic tracking-tighter leading-none">Prezzo pieno</p>
+                    <p className="text-sm sm:text-base font-black text-brand-navy mb-2">{band.title}</p>
+                    <p className={`${tBody}`}>{band.body}</p>
                   </div>
                 </div>
-                <p className="mt-6 text-[9px] font-black text-brand-navy/35 uppercase tracking-[0.28em] inline-block border-t border-brand-navy/5 pt-3">
-                  Sconti validi per contratti di iscrizione firmati entro le date indicate.
-                </p>
-              </div>
-            ) : null}
-
-            {/* Payment Tabs Table-like layout */}
-            <div className="max-w-[941px] mx-auto bg-white rounded-[1.75rem] shadow-[0_22px_60px_-34px_rgba(0,21,51,0.2)] overflow-hidden border border-gray-100">
-               <div className="flex overflow-x-auto border-b border-gray-100">
-                  {course.fees.map((fee, idx) => (
-                    <button 
-                      key={idx}
-                      onClick={() => setPaymentTab(fee.title.toLowerCase())}
-                      className={`min-w-[140px] flex-1 py-6 px-3 font-black text-[9px] uppercase tracking-[0.28em] transition-all relative whitespace-nowrap ${paymentTab === fee.title.toLowerCase() ? 'text-brand-navy' : 'text-brand-navy/20 hover:text-brand-navy'}`}
-                    >
-                      {fee.title}
-                      {paymentTab === fee.title.toLowerCase() && <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-brand-accent"></div>}
-                    </button>
-                  ))}
-               </div>
-               
-               <div className="p-8 sm:p-10 lg:p-12 text-center">
-                  {course.fees.map((fee, idx) => paymentTab === fee.title.toLowerCase() && (
-                    <div key={idx} className="animate-in fade-in duration-500 max-w-xl mx-auto">
-                       <h3 className="text-lg sm:text-xl font-black uppercase mb-6 tracking-tight">{fee.heading}</h3>
-                       <p className={`${tBody} mb-10 text-center mx-auto`}>
-                          {fee.desc}
-                       </p>
-                       <div className="mb-12">
-                          <p className="text-[10px] font-black uppercase tracking-[0.35em] text-brand-navy/25 mb-4">
-                            {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after'
-                              ? 'a partire da'
-                              : 'prezzo'}
-                          </p>
-                          <div className="relative inline-block">
-                             <p className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-[#008060] italic tracking-tighter leading-none mb-6">
-                               {fee.price}{fee.priceLabel && <span className="text-xl sm:text-2xl lg:text-3xl">{fee.priceLabel}</span>}
-                             </p>
-                             {course.earlyBirdPromo ? (
-                               <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-[#008060] text-white px-3 py-1.5 rounded-lg text-[9px] font-black whitespace-nowrap rotate-3 shadow-lg uppercase tracking-widest">
-                                 EARLY BIRD
-                               </div>
-                             ) : null}
-                          </div>
-                          {fee.footnote && <p className="text-brand-navy/40 text-[10px] font-black uppercase tracking-[0.2em] mt-8">{fee.footnote}</p>}
-                       </div>
-                    </div>
-                  ))}
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="bg-brand-navy text-white px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-brand-accent transition-all active:scale-[0.98]">ISCRIVITI ORA</button>
-                    <button className="border-2 border-brand-navy/10 text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] hover:bg-gray-50 transition-all active:scale-[0.98]">PARLA CON NOI</button>
+                <div className="flex gap-4 md:justify-center">
+                  <Calendar className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
+                  <div className="space-y-2">
+                    {band.dayLines.map((line, i) => (
+                      <p key={i} className="text-sm sm:text-base font-black text-brand-navy leading-snug">
+                        {line}
+                      </p>
+                    ))}
                   </div>
-               </div>
+                </div>
+                <div className="flex gap-4 md:justify-end">
+                  <Clock className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
+                  <div className="space-y-2 text-left md:text-right">
+                    {band.timeLines.length ? (
+                      band.timeLines.map((line, i) => (
+                        <p key={i} className="text-sm sm:text-base font-black text-brand-navy">
+                          {line}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-sm font-bold text-brand-navy/35">—</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 rounded-2xl bg-[#EBF2FF] px-6 py-8 sm:px-10 sm:py-10">
+            <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy mb-4 tracking-tight">
+              {studyMode.title}
+              {studyMode.highlight ? (
+                <span className="text-brand-accent">
+                  {/\s$/.test(studyMode.title) ? '' : ' '}
+                  {studyMode.highlight}
+                </span>
+              ) : null}
+            </h3>
+            <p className={`${tBody} max-w-3xl`}>{richText(studyMode.body)}</p>
+            {studyMode.linkText && studyMode.linkHref ? (
+              <a
+                href={studyMode.linkHref}
+                className="mt-4 inline-block text-sm font-black text-brand-accent underline underline-offset-4 hover:text-brand-navy"
+              >
+                {studyMode.linkText}
+              </a>
+            ) : null}
+          </div>
+
+          {orientation ? (
+            <div className="mt-10 rounded-2xl bg-[#F0FAF5] px-6 py-8 sm:px-10 sm:py-9 ring-1 ring-[#D1EBE7]">
+              <h3 className="text-base sm:text-lg font-display font-black text-brand-navy mb-3 tracking-tight">
+                {orientation.title}
+              </h3>
+              {orientation.body ? <p className={tBody}>{orientation.body}</p> : null}
             </div>
-         </div>
+          ) : null}
+
+          <div className="mt-14 grid md:grid-cols-3 gap-8 lg:gap-10">
+            <div className="space-y-4">
+              <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
+              <p className={tBody}>
+                Segui le sessioni live oppure recupera con le registrazioni: un ritmo pensato per chi ha già un lavoro o uno studio impegnativo.
+              </p>
+              <ul className="space-y-3 pt-2">
+                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Nessun obbligo di presenza assoluta
+                </li>
+                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e compiti guidati
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Impegno</h3>
+              <p className={tBody}>
+                Ti diamo strumenti e supporto, ma il risultato dipende dalla costanza: pratica settimanale, feedback e supervisione ti aiutano a
+                consolidare il metodo.
+              </p>
+              <ul className="space-y-3 pt-2">
+                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica supervisionata
+                </li>
+                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Esame / assessment finale
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+              <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+              <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5b. SPECIALIZZAZIONI + CTA programma (reference Boolean) */}
+      {spec && course.learning.cols.length ? (
+        <section className="pb-16 lg:pb-20 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <p className="text-lg font-display font-black text-brand-accent mb-3">{spec.eyebrow}</p>
+            <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight mb-6 max-w-2xl">
+              {spec.title}
+            </h2>
+            <p className={`${tBody} max-w-3xl mb-12`}>{richText(spec.intro)}</p>
+
+            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+              {course.learning.cols.map((col, idx) => (
+                <div key={idx} className="flex gap-4">
+                  <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
+                    <Sparkles size={18} strokeWidth={2} />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-black text-brand-navy mb-3">{col.title}</h3>
+                    <p className={`${tBody}`}>
+                      {col.items.slice(0, 4).join(' · ')}
+                      {col.items.length > 4 ? '…' : ''}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
+              <div className="text-white">
+                <p className="text-lg sm:text-xl font-display font-black">Leggi il programma completo</p>
+                <p className="mt-2 text-sm text-white/85 font-medium">Scarica il dettaglio delle unità e degli obiettivi formativi.</p>
+              </div>
+              <a
+                href="#programma"
+                className="inline-flex items-center justify-center rounded-full bg-[#E2FF3B] px-8 py-3.5 text-center text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy shadow-lg hover:brightness-95"
+              >
+                Scarica programma
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
+      <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#eef5ff_0%,_#dbeaff_45%,_#cfe2ff_100%)]" />
+        <div className="relative max-w-[941px] mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-brand-navy tracking-tight mb-4 normal-case">
+            La migliore formazione professionale, <span className="text-brand-accent">accessibile</span>
+          </h2>
+          <p className="text-sm sm:text-base text-brand-navy/70 font-medium mb-10 sm:mb-12">
+            {isMasterLike
+              ? `Scegli il metodo di pagamento per il tuo Master in ${course.subtitle}`
+              : `Scegli il metodo di pagamento per ${course.title}`}
+          </p>
+
+          {course.earlyBirdPromo ? (
+            <div className="max-w-xl mx-auto mb-12">
+              <div className="grid grid-cols-2 bg-white rounded-full p-1.5 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.2)] border border-gray-100 overflow-hidden">
+                <div className="bg-[#008060] text-white rounded-full py-7 px-4 sm:px-6 flex flex-col items-center justify-center relative text-center">
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">
+                    EARLY BIRD
+                  </div>
+                  <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">
+                    ENTRO IL {course.earlyBirdPromo.pillDeadlineLabel ?? 'TERMINE PROMO'}
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-black italic tracking-tighter leading-none">
+                    {course.earlyBirdPromo.discountAmount ?? '800€'}{' '}
+                    <span className="text-base sm:text-lg">di sconto</span>
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center py-7 text-center px-3">
+                  <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DOPO LA SCADENZA</p>
+                  <p className="text-2xl sm:text-3xl font-black text-brand-navy/25 italic tracking-tighter leading-none">Prezzo pieno</p>
+                </div>
+              </div>
+              <p className="mt-6 text-[9px] font-black text-brand-navy/35 uppercase tracking-[0.28em] inline-block border-t border-brand-navy/5 pt-3">
+                Sconti validi per contratti di iscrizione firmati entro le date indicate.
+              </p>
+            </div>
+          ) : null}
+
+          <div className="mx-auto max-w-[840px] rounded-full bg-[#bcd6ff]/90 p-1.5 shadow-inner ring-1 ring-white/60">
+            <div className="flex overflow-x-auto">
+              {course.fees.map((fee, idx) => {
+                const key = fee.title.toLowerCase();
+                const active = paymentTab === key;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setPaymentTab(key)}
+                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-3 py-3 text-[9px] font-black uppercase tracking-[0.26em] transition-all ${
+                      active ? 'bg-white text-brand-navy shadow-md' : 'text-brand-navy/55 hover:text-brand-navy'
+                    }`}
+                  >
+                    {fee.title}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-12 shadow-[0_26px_70px_-40px_rgba(0,21,51,0.35)] ring-1 ring-black/5">
+            {course.fees.map(
+              (fee, idx) =>
+                paymentTab === fee.title.toLowerCase() && (
+                  <div key={idx} className="mx-auto max-w-xl text-center">
+                    <h3 className="text-lg sm:text-xl font-black text-brand-navy mb-4 normal-case">{fee.heading}</h3>
+                    <p className={`${tBody} mb-10`}>{richText(fee.desc)}</p>
+
+                    <p className="text-[11px] font-black uppercase tracking-[0.35em] text-brand-navy/35 mb-3">
+                      {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? 'a partire da' : 'prezzo'}
+                    </p>
+
+                    {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? (
+                      <div className="mx-auto mb-8 inline-flex flex-col items-center gap-2">
+                        <div className="rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-lg">
+                          <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
+                            {fee.price}
+                            {fee.priceLabel ? (
+                              <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
+                            ) : null}
+                          </p>
+                        </div>
+                        {course.earlyBirdPromo ? (
+                          <span className="rounded-full bg-[#008060] px-3 py-1 text-[9px] font-black uppercase tracking-widest text-white">
+                            Early bird
+                          </span>
+                        ) : null}
+                      </div>
+                    ) : (
+                      <div className="relative mx-auto mb-8 inline-block">
+                        <p className="text-4xl sm:text-5xl font-display font-black italic tracking-tighter text-[#008060]">
+                          {fee.price}
+                          {fee.priceLabel ? (
+                            <span className="text-xl sm:text-2xl not-italic font-black">{fee.priceLabel}</span>
+                          ) : null}
+                        </p>
+                      </div>
+                    )}
+
+                    {fee.footnote ? (
+                      <p className="text-brand-navy/45 text-[11px] font-bold leading-relaxed mb-10">{fee.footnote}</p>
+                    ) : (
+                      <div className="mb-10" />
+                    )}
+
+                    <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                      <button
+                        type="button"
+                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
+                      >
+                        Iscriviti ora
+                      </button>
+                      <button
+                        type="button"
+                        className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                      >
+                        Parla con noi
+                      </button>
+                    </div>
+                  </div>
+                ),
+            )}
+          </div>
+        </div>
       </section>
 
       {/* 7. TROVIAMO INSIEME SECTION */}

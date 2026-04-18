@@ -20,6 +20,14 @@ export interface CourseFee {
   type: 'installment' | 'lump' | 'after' | 'zero-rate';
 }
 
+/** Fascia oraria / riga “calendar + clock” (layout Boolean) */
+export interface CourseScheduleBand {
+  title: string;
+  body: string;
+  dayLines: string[];
+  timeLines: string[];
+}
+
 export interface CourseData {
   title: string;
   subtitle: string;
@@ -91,6 +99,32 @@ export interface CourseData {
   };
   classDates?: { date: string; badge?: string; note?: string }[];
   sessionSchedule?: { days: string; time: string }[];
+  /** Se assente, viene derivato da `sessionSchedule` in pagina */
+  scheduleBands?: CourseScheduleBand[];
+  /** Testi con **grassetto** inline */
+  howItWorks?: {
+    title?: string;
+    intro?: string;
+    formazioneTitle?: string;
+    formazioneBadge?: string;
+    formazioneIntro?: string;
+  };
+  studyModeBox?: {
+    title: string;
+    highlight: string;
+    body: string;
+    linkText?: string;
+    linkHref?: string;
+  };
+  orientationBanner?: {
+    title: string;
+    body?: string;
+  };
+  specializationsSection?: {
+    eyebrow?: string;
+    title: string;
+    intro: string;
+  };
 }
 
 export interface CourseMedia {
@@ -100,6 +134,7 @@ export interface CourseMedia {
   advisor: string;
   completePractical: string;
   completePlatform: string;
+  howItWorks: string;
 }
 
 export function defaultCourseMedia(slug: string): CourseMedia {
@@ -110,6 +145,7 @@ export function defaultCourseMedia(slug: string): CourseMedia {
     advisor: `https://picsum.photos/seed/${slug}-advisor/400/400`,
     completePractical: `https://picsum.photos/seed/${slug}-practical/900/700`,
     completePlatform: `https://picsum.photos/seed/${slug}-platform/900/700`,
+    howItWorks: `https://picsum.photos/seed/${slug}-how/900/700`,
   };
 }
 
@@ -150,6 +186,41 @@ export const coursesContent: Record<string, CourseData> = {
       advisor: "/course-media/apcm/advisor.webp",
       completePractical: "/course-media/apcm/practical.webp",
       completePlatform: "/course-media/apcm/platform.webp",
+      howItWorks: "/course-media/apcm/how-it-works.webp",
+    },
+    howItWorks: {
+      title: "Come funziona il Master",
+      intro:
+        "Un percorso strutturato in **modalità part-time**, pensato per chi lavora: alterni **lezioni live**, pratica supervisionata e momenti di studio individuale. Ti guidiamo passo passo fino alle competenze ICF e alla **certificazione**, con un metodo collaudato da Asterys Lab.",
+      formazioneTitle: "Formazione",
+      formazioneBadge: "Ibrido · 150 ore",
+      formazioneIntro:
+        "La prima parte del Master è dedicata alle **lezioni in diretta** (in aula o in videoconferenza), con esercitazioni guidate e feedback dai trainer.",
+    },
+    scheduleBands: [
+      {
+        title: "Lezioni in diretta",
+        body: "Segui le lezioni live in aula virtuale o in presenza, interagendo con i trainer e i compagni di corso.",
+        dayLines: ["VENERDÌ SERA E SABATO", "SABATO MATTINA"],
+        timeLines: ["18:30 - 21:30", "9:00 - 13:00"],
+      },
+    ],
+    studyModeBox: {
+      title: "Modalità di studio ",
+      highlight: "part-time",
+      body: "Un formato che cerca di adattarsi a chi, come te, ha impegni diurni: puoi seguire le sessioni live e integrare con studio individuale, materiali e registrazioni quando ti è più comodo.",
+      linkText: "Scopri il calendario completo",
+      linkHref: "#programma",
+    },
+    orientationBanner: {
+      title: "Fase di orientamento",
+      body: "Prima del via, chiarisci obiettivi, aspettative e piano di studio insieme al team Asterys: entri nel percorso con una roadmap chiara.",
+    },
+    specializationsSection: {
+      eyebrow: "Specializzazioni",
+      title: "Le competenze che ti distinguono",
+      intro:
+        "Costruisci un **mix equilibrato** tra metodo, relazione e visione d’insieme: ciò che serve per essere **competitivo** come coach professionista oggi.",
     },
     heroBenefits: [
       "Trasforma la tua esperienza professionale in una nuova carriera da coach",
