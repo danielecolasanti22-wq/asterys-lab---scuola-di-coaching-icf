@@ -5,7 +5,8 @@ import {
   ArrowRight,
   Users,
   Star,
-  ChevronDown,
+  Plus,
+  Minus,
   Clock,
   Video,
   UserCheck,
@@ -15,18 +16,25 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { coursesContent, CourseData } from '../constants/coursesContent';
+import { coursesContent, defaultCourseMedia } from '../constants/coursesContent';
+import { CourseImage } from '../components/CourseImage';
 
 const Accordion = ({ title, content, isOpen, onClick }: { title: string, content: string, isOpen: boolean, onClick: () => void }) => (
-  <div className="border-b border-gray-100">
+  <div className="border-b border-gray-100 last:border-b-0">
     <button 
       onClick={onClick}
-      className="w-full py-6 text-left flex items-center justify-between group"
+      className="w-full py-6 text-left flex items-center justify-between group gap-6"
     >
-      <span className="text-lg font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight uppercase italic">{title}</span>
-      <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-        <ChevronDown size={20} className={isOpen ? 'text-brand-accent' : 'text-gray-300'} />
-      </div>
+      <span className="text-[15px] sm:text-base font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight">
+        {title}
+      </span>
+      <span
+        className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
+          isOpen ? 'bg-brand-navy text-white border-brand-navy' : ''
+        }`}
+      >
+        {isOpen ? <Minus size={18} strokeWidth={2.25} /> : <Plus size={18} strokeWidth={2.25} />}
+      </span>
     </button>
     <AnimatePresence>
       {isOpen && (
@@ -88,6 +96,8 @@ export default function CourseDetail() {
   const moduleTags =
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
 
+  const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
+
   return (
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
       
@@ -108,6 +118,8 @@ export default function CourseDetail() {
 
       {/* 1. HERO SECTION */}
       <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col">
+        <div className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-[#1D3BB9]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-[#0047FF]/10 blur-3xl" />
         <div className="max-w-[941px] mx-auto px-4 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
           <div className="py-12 lg:py-16 relative z-10">
             <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2 flex-wrap">
@@ -153,10 +165,11 @@ export default function CourseDetail() {
           
           <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
              <div className="w-full lg:w-[105%] h-auto relative overflow-visible flex items-end">
-                <img 
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1000" 
-                  className="w-full h-auto object-contain scale-100 lg:origin-bottom-right" 
-                  alt={course.title} 
+                <CourseImage
+                  src={media.hero}
+                  fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
+                  className="w-full h-auto object-contain scale-100 lg:origin-bottom-right drop-shadow-[0_30px_80px_rgba(0,21,51,0.18)]"
+                  alt={course.title}
                 />
              </div>
           </div>
@@ -168,7 +181,12 @@ export default function CourseDetail() {
         <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
           <div className="relative">
              <div className="rounded-[3rem] overflow-hidden shadow-2xl overflow-hidden">
-                <img src={`https://picsum.photos/seed/${id}central/800/600`} className="w-full h-full object-cover aspect-video lg:aspect-square" alt="Core Role" />
+                <CourseImage
+                  src={media.overview}
+                  fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
+                  className="w-full h-full object-cover aspect-video lg:aspect-square"
+                  alt={course.overview.title}
+                />
              </div>
           </div>
           <div>
@@ -256,7 +274,12 @@ export default function CourseDetail() {
                   </button>
                </div>
                <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden lg:block">
-                  <img src="https://picsum.photos/seed/brochure/800/400" className="w-full h-full object-cover" alt="Brochure" />
+                  <CourseImage
+                    src={media.brochureDecor}
+                    fallbackSrc={defaultCourseMedia(id ?? 'corso').brochureDecor}
+                    className="w-full h-full object-cover"
+                    alt=""
+                  />
                </div>
             </div>
          </div>
@@ -316,7 +339,9 @@ export default function CourseDetail() {
                </div>
                <div className="bg-[#F9FAFB] rounded-[2.5rem] p-10 lg:p-12 border border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
                   <div className="flex items-start gap-5 min-w-0">
-                     <Clock size={30} className="text-brand-navy/25 shrink-0 mt-1" strokeWidth={1.75} />
+                     <span className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-brand-navy shadow-sm ring-1 ring-black/5">
+                       <Clock size={22} strokeWidth={2} />
+                     </span>
                      <div className="space-y-3 min-w-0">
                         {(course.sessionSchedule?.length
                           ? course.sessionSchedule
@@ -421,13 +446,13 @@ export default function CourseDetail() {
             ) : null}
 
             {/* Payment Tabs Table-like layout */}
-            <div className="max-w-5xl mx-auto bg-white rounded-[4rem] shadow-4xl overflow-hidden border border-gray-100">
-               <div className="flex border-b border-gray-100">
+            <div className="max-w-5xl mx-auto bg-white rounded-[4rem] shadow-[0_30px_80px_-35px_rgba(0,21,51,0.25)] overflow-hidden border border-gray-100">
+               <div className="flex overflow-x-auto border-b border-gray-100">
                   {course.fees.map((fee, idx) => (
                     <button 
                       key={idx}
                       onClick={() => setPaymentTab(fee.title.toLowerCase())}
-                      className={`flex-1 py-10 px-4 font-black text-[10px] uppercase tracking-[0.3em] transition-all relative ${paymentTab === fee.title.toLowerCase() ? 'text-brand-navy' : 'text-brand-navy/20 hover:text-brand-navy'}`}
+                      className={`min-w-[160px] flex-1 py-10 px-4 font-black text-[10px] uppercase tracking-[0.3em] transition-all relative whitespace-nowrap ${paymentTab === fee.title.toLowerCase() ? 'text-brand-navy' : 'text-brand-navy/20 hover:text-brand-navy'}`}
                     >
                       {fee.title}
                       {paymentTab === fee.title.toLowerCase() && <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-brand-accent"></div>}
@@ -474,11 +499,16 @@ export default function CourseDetail() {
 
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-32 bg-white">
-         <div className="max-w-5xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#E6EFFF] rounded-[4rem] p-12 lg:px-24 lg:py-16 flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-accent/5">
                 <div className="flex items-center gap-12">
                    <div className="w-28 h-28 rounded-full overflow-hidden shrink-0 border-8 border-white shadow-2xl">
-                      <img src="https://picsum.photos/seed/advisor/400/400" className="w-full h-full object-cover" alt="Advisor" />
+                      <CourseImage
+                        src={media.advisor}
+                        fallbackSrc={defaultCourseMedia(id ?? 'corso').advisor}
+                        className="w-full h-full object-cover"
+                        alt="Advisor"
+                      />
                    </div>
                    <div className="text-left">
                       <h3 className="text-3xl font-display font-black text-brand-navy uppercase tracking-tighter italic mb-3 leading-tight">Troviamo insieme la soluzione giusta per te</h3>
@@ -504,9 +534,9 @@ export default function CourseDetail() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                {course.career.points.map((p, i) => (
-                 <div key={i} className="flex flex-col items-start p-12 bg-white rounded-[2rem] shadow-soft border border-gray-50 h-full group hover:shadow-2xl transition-all text-left">
-                    <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-brand-accent mb-10 group-hover:bg-brand-navy group-hover:text-white transition-all transform group-hover:rotate-6">
-                       {i === 0 ? <UserCheck size={28} /> : i === 1 ? <Briefcase size={28} /> : i === 2 ? <TrendingUp size={28} /> : <Users size={28} />}
+                 <div key={i} className="flex flex-col items-start p-12 bg-white rounded-[2rem] shadow-[0_18px_50px_-28px_rgba(0,21,51,0.18)] border border-gray-100 h-full group hover:shadow-[0_26px_70px_-30px_rgba(0,21,51,0.22)] transition-all text-left">
+                    <div className="w-14 h-14 bg-[#F9FAFB] rounded-full flex items-center justify-center text-brand-accent mb-10 ring-1 ring-black/5 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                       {i === 0 ? <UserCheck size={26} strokeWidth={2} /> : i === 1 ? <Briefcase size={26} strokeWidth={2} /> : i === 2 ? <TrendingUp size={26} strokeWidth={2} /> : <Users size={26} strokeWidth={2} />}
                     </div>
                     <h3 className="text-xl font-black uppercase tracking-tight mb-6 italic leading-tight">{p.title}</h3>
                     <p className="text-brand-navy/40 text-xs font-medium leading-relaxed italic">{p.desc}</p>
@@ -532,7 +562,12 @@ export default function CourseDetail() {
                         <p className="text-brand-navy/60 text-base font-medium leading-relaxed italic">Competenze di coaching, intelligenza emotiva, approccio sistemico e sviluppo del business: un programma accreditato per trasformare le conoscenze in pratica professionale concreta.</p>
                      </div>
                      <div className="lg:w-1/2 mt-12 lg:mt-0 relative group-hover:scale-105 transition-transform duration-700">
-                        <img src={`https://picsum.photos/seed/${id}prac/800/600`} className="rounded-3xl shadow-4xl w-full" alt="Practical" />
+                        <CourseImage
+                          src={media.completePractical}
+                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
+                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
+                          alt="Practical"
+                        />
                      </div>
                   </div>
                   <div className="bg-[#F2F7FF] rounded-[3.5rem] p-16 lg:flex items-center gap-16 group overflow-hidden border border-gray-100">
@@ -543,7 +578,12 @@ export default function CourseDetail() {
                         </p>
                      </div>
                      <div className="lg:w-1/2 mt-12 lg:mt-0">
-                        <img src={`https://picsum.photos/seed/${id}plat/800/600`} className="rounded-3xl shadow-4xl w-full" alt="Platform" />
+                        <CourseImage
+                          src={media.completePlatform}
+                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePlatform}
+                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
+                          alt="Platform"
+                        />
                      </div>
                   </div>
                </div>
@@ -582,11 +622,11 @@ export default function CourseDetail() {
 
       {/* 11. FAQs SECTION */}
       <section className="py-40 bg-[#F9FAFB]/80">
-         <div className="max-w-4xl mx-auto px-6">
+         <div className="max-w-[941px] mx-auto px-4">
             <h2 className="text-6xl font-display font-black uppercase text-brand-navy mb-20 italic tracking-tighter">FAQs</h2>
             <div className="space-y-4">
                {course.faqs.map((faq, i) => (
-                 <div key={i} className="bg-white rounded-3xl px-10 border border-gray-100 shadow-sm">
+                 <div key={i} className="bg-white rounded-3xl px-6 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">
                     <Accordion 
                      title={faq.q}
                      content={faq.a}

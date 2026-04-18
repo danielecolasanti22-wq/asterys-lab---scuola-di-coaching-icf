@@ -27,6 +27,8 @@ export interface CourseData {
   type: string;
   /** Prima pill in hero (es. "PER PROFESSIONISTI") — reference Boolean */
   heroKicker?: string;
+  /** Immagini: metti file in `public/` e punta a `/course-media/...` (vedi valori APCM) */
+  media?: Partial<CourseMedia>;
   heroBenefits: string[];
   summaryBox: {
     nextEdition: string;
@@ -91,6 +93,26 @@ export interface CourseData {
   sessionSchedule?: { days: string; time: string }[];
 }
 
+export interface CourseMedia {
+  hero: string;
+  overview: string;
+  brochureDecor: string;
+  advisor: string;
+  completePractical: string;
+  completePlatform: string;
+}
+
+export function defaultCourseMedia(slug: string): CourseMedia {
+  return {
+    hero: `https://picsum.photos/seed/${slug}-hero/1100/1200`,
+    overview: `https://picsum.photos/seed/${slug}-overview/900/900`,
+    brochureDecor: `https://picsum.photos/seed/${slug}-brochure/900/600`,
+    advisor: `https://picsum.photos/seed/${slug}-advisor/400/400`,
+    completePractical: `https://picsum.photos/seed/${slug}-practical/900/700`,
+    completePlatform: `https://picsum.photos/seed/${slug}-platform/900/700`,
+  };
+}
+
 const commonFaqs = [
   {
     q: "Chi può frequentare il corso?",
@@ -121,6 +143,14 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Il Master d'eccellenza per diventare un coach professionista accreditato ICF con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "PER PROFESSIONISTI",
+    media: {
+      hero: "/course-media/apcm/hero.webp",
+      overview: "/course-media/apcm/overview.webp",
+      brochureDecor: "/course-media/apcm/brochure.webp",
+      advisor: "/course-media/apcm/advisor.webp",
+      completePractical: "/course-media/apcm/practical.webp",
+      completePlatform: "/course-media/apcm/platform.webp",
+    },
     heroBenefits: [
       "Trasforma la tua esperienza professionale in una nuova carriera da coach",
       "Ottieni le ore formative necessarie per le credenziali ICF Level 1 e Level 2",
