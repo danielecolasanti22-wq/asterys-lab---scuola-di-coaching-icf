@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/**)",
+      "Read(//Users/daniele/.nvm/versions/**)",
+      "Bash(command -v node)",
+      "mcp__Claude_Preview__preview_start",
+      "Read(//Users/daniele/**)",
+      "Read(//usr/**)",
+      "Read(//opt/**)",
+      "Read(//usr/bin/**)",
+      "Bash(mdfind \"kMDItemCFBundleIdentifier == 'org.nodejs.node'\")",
+      "Read(//private/var/**)",
+      "Bash(/Users/daniele/Library/Caches/com.todesktop.230313mzl4w4u92.ShipIt/update.Fa8QDIa/Cursor.app/Contents/Resources/app/resources/helpers/node --version)",
+      "Bash(/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node -e 'require\\('\\\\''child_process'\\\\''\\).execSync\\('\\\\''which npm'\\\\'', {stdio:'\\\\''inherit'\\\\''}\\)')",
+      "Bash(/bin/zsh -l -c \"which npm\")",
+      "Bash(/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node --version)",
+      "Bash(/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node -e ':*)",
+      "Bash(/bin/zsh -l -c \"which node && node --version && which npm && npm --version\")",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)",
+      "Bash(tar xzf:*)",
+      "Bash(/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node /tmp/package/bin/npm-cli.js --version)",
+      "Bash(/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node /tmp/package/bin/npm-cli.js install)"
+    ]
+  }
+}
