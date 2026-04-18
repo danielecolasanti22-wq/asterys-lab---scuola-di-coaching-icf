@@ -110,8 +110,10 @@ export default function CourseDetail() {
       <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col">
         <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
           <div className="py-12 lg:py-16 relative z-10">
-            <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2">
-              <span className="bg-[#1D3BB9]/10 px-2 py-0.5 rounded text-[10px]">{course.type.toUpperCase()}</span>
+            <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2 flex-wrap">
+              <span className="bg-[#1D3BB9]/10 px-2 py-0.5 rounded text-[10px]">
+                {(course.heroKicker ?? course.type).toUpperCase()}
+              </span>
               <span className="text-gray-300">|</span>
               <span>{course.summaryBox.duration.toUpperCase()}</span>
               <span className="text-gray-300">|</span>
@@ -199,7 +201,7 @@ export default function CourseDetail() {
                     <button 
                       key={i}
                       onClick={() => setActiveModule(i)}
-                      className={`w-full text-left px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-tight transition-all flex items-center justify-between group ${activeModule === i ? 'bg-brand-navy text-white shadow-xl translate-x-4' : 'text-brand-navy/40 hover:bg-gray-100 hover:text-brand-navy'}`}
+                      className={`w-full text-left px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-tight transition-all flex items-center justify-between group ${activeModule === i ? 'bg-brand-navy text-white shadow-xl lg:translate-x-1' : 'text-brand-navy/40 hover:bg-gray-100 hover:text-brand-navy'}`}
                     >
                       <span>{m.title}</span>
                       <ArrowRight size={18} className={`transition-transform ${activeModule === i ? 'translate-x-1' : 'opacity-0 group-hover:opacity-100'}`} />
