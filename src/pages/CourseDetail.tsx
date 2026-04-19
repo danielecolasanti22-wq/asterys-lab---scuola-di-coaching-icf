@@ -12,7 +12,6 @@ import {
   UserCheck,
   Briefcase,
   Play,
-  Zap,
   TrendingUp,
   Calendar,
   Monitor,
@@ -1568,58 +1567,85 @@ export default function CourseDetail() {
       <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
-              Un percorso formativo <span className="text-brand-accent underline decoration-4 underline-offset-4">completo</span>
+              Un percorso formativo{' '}
+              <span className="relative inline-block">
+                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#E2FF3B] -z-10 rounded-sm" aria-hidden="true" />
+                <span className="relative">completo</span>
+              </span>
             </h2>
             <p className={`${tLead} mb-12 lg:mb-14 max-w-2xl`}>
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.
             </p>
-            
-            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-               <div className="lg:col-span-2 space-y-6 lg:space-y-8">
-                  <div className="bg-[#E6EFFF] rounded-[1.75rem] p-8 lg:p-10 lg:flex items-center gap-10 group overflow-hidden border border-brand-accent/5">
-                     <div className="lg:w-1/2">
-                        <h3 className="text-lg sm:text-xl font-display font-black mb-4 uppercase tracking-tight leading-snug">Formazione pratica e certificata ICF</h3>
-                        <p className={tBody}>Competenze di coaching, intelligenza emotiva, approccio sistemico e sviluppo del business: un programma accreditato per trasformare le conoscenze in pratica professionale concreta.</p>
-                     </div>
-                     <div className="lg:w-1/2 mt-8 lg:mt-0 relative group-hover:scale-[1.02] transition-transform duration-700">
-                        <CourseImage
-                          src={media.completePractical}
-                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
-                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
-                          alt="Practical"
-                        />
-                     </div>
+
+            <div className="space-y-4 lg:space-y-6">
+               {/* Card 1 — full width, periwinkle, icon + text */}
+               <div className="bg-[#D5DCFB] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 border border-white/40">
+                  <div className="shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
+                     <Sparkles size={30} strokeWidth={2} className="text-brand-navy" />
                   </div>
-                  <div className="bg-[#F2F7FF] rounded-[1.75rem] p-8 lg:p-10 lg:flex items-center gap-10 group overflow-hidden border border-gray-100">
-                     <div className="lg:w-1/2">
-                        <h3 className="text-lg sm:text-xl font-display font-black mb-4 uppercase tracking-tight leading-snug">Piattaforma, registrazioni e supervisione</h3>
-                        <p className={tBody}>
-                          Hai perso una sessione? Nessun problema: in piattaforma trovi registrazioni, materiali e percorsi strutturati per recuperare con ordine. La supervisione con coach MCC è parte del metodo, per trasformare la pratica in competenza misurabile.
-                        </p>
-                     </div>
-                     <div className="lg:w-1/2 mt-8 lg:mt-0">
-                        <CourseImage
-                          src={media.completePlatform}
-                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePlatform}
-                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
-                          alt="Platform"
-                        />
-                     </div>
+                  <div className="flex-1 min-w-0">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Mindset ICF e presenza del coach
+                     </h3>
+                     <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl">
+                       Il coaching parte da chi sei. Alleni presenza, ascolto e capacità di generare consapevolezza prima degli strumenti — un metodo ICF integrato con intelligenza emotiva e approccio sistemico.
+                     </p>
                   </div>
                </div>
-               
-               <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 text-white relative overflow-hidden flex flex-col items-center text-center justify-between group min-h-[420px] lg:min-h-0">
-                  <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:scale-150 transition-transform duration-700">
-                     <Zap size={150} />
-                  </div>
-                  <div className="relative z-10 w-full mt-10">
-                     <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-10 mx-auto border border-white/10 shadow-xl">
-                        <Play size={36} fill="currentColor" />
+
+               {/* Row 2 — two cards side by side */}
+               <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
+                  {/* Card 2 — cyan/blue gradient, text top, image bottom */}
+                  <div className="lg:col-span-3 bg-gradient-to-br from-[#DFF3FB] to-[#E8EEFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Piattaforma didattica con registrazioni
+                     </h3>
+                     <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md">
+                       Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.
+                     </p>
+                     <div className="mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4">
+                       <CourseImage
+                         src={media.completePlatform}
+                         fallbackSrc={defaultCourseMedia(id ?? 'corso').completePlatform}
+                         className="w-full rounded-xl lg:rounded-2xl shadow-[0_24px_60px_-28px_rgba(0,21,51,0.3)] rotate-[-1deg]"
+                         alt="Piattaforma didattica"
+                       />
                      </div>
-                     <h3 className="text-xl sm:text-2xl font-display font-black uppercase mb-6 tracking-tight leading-snug">Il coaching nella vita reale</h3>
-                     <p className="text-white/55 text-sm sm:text-base font-medium leading-relaxed">Il coaching non resta in aula: lo applicherai sin dalla prima sessione, confrontandoti con situazioni reali, feedback diretti da coach MCC e casi d’uso che stanno cambiando il modo di lavorare con le persone.</p>
                   </div>
-                  <div className="h-20"></div>
+
+                  {/* Card 3 — lime yellow, image top, text bottom */}
+                  <div className="lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden flex flex-col border border-[#CBE430]/40">
+                     <div className="mb-6">
+                       <CourseImage
+                         src={media.completePractical}
+                         fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
+                         className="w-full rounded-xl lg:rounded-2xl shadow-[0_20px_50px_-26px_rgba(0,21,51,0.4)]"
+                         alt="Supervisione 1:1"
+                       />
+                     </div>
+                     <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Supervisione 1:1 con Mentor MCC
+                     </h3>
+                     <p className="text-sm text-brand-navy/75 font-medium leading-relaxed">
+                       Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.
+                     </p>
+                  </div>
+               </div>
+
+               {/* Card 4 — full width, brand-accent blue, icon + text */}
+               <div className="bg-brand-accent rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 text-white relative overflow-hidden">
+                  <div className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+                  <div className="relative shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/15 flex items-center justify-center ring-1 ring-white/25">
+                     <Briefcase size={30} strokeWidth={2} />
+                  </div>
+                  <div className="relative flex-1 min-w-0">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-3 tracking-tight">
+                       Community Alumni e opportunità continue
+                     </h3>
+                     <p className="text-sm sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
+                       Alla fine del percorso entri nel network degli alumni Asterys: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con <span className="text-white font-black">oltre 3.000 professionisti</span> in Italia e all'estero.
+                     </p>
+                  </div>
                </div>
             </div>
          </div>
