@@ -134,6 +134,12 @@ export interface CourseData {
     careerPaths: CourseCareerPath[];
     stats?: { value: string; label: string }[];
   };
+  editions?: CourseEdition[];
+  editionsSection?: {
+    eyebrow?: string;
+    title?: string;
+    intro?: string;
+  };
 }
 
 export interface CourseTestimonial {
@@ -154,6 +160,38 @@ export interface CourseCareerPath {
   title: string;
   desc: string;
   contexts?: string[];
+}
+
+export type CourseEditionEventType =
+  | 'deadline-early'
+  | 'deadline-final'
+  | 'live-class'
+  | 'live-lab'
+  | 'corso'
+  | 'orientamento'
+  | 'milestone'
+  | 'individual';
+
+export interface CourseEditionEvent {
+  label: string;
+  date: string;
+  type?: CourseEditionEventType;
+  note?: string;
+}
+
+export interface CourseEdition {
+  city: string;
+  citySlug: string;
+  level: string;
+  levelSlug: string;
+  editionLabel: string;
+  editionSlug: string;
+  subtitle?: string;
+  badge?: string;
+  earlyBird?: { label: string; date: string };
+  enrollmentEnd?: { label: string; date: string };
+  events: CourseEditionEvent[];
+  ctaLabel?: string;
 }
 
 export interface CourseMedia {
@@ -514,7 +552,151 @@ export const coursesContent: Record<string, CourseData> = {
           contexts: ["Società di consulenza", "Studi professionali", "Progetti in autonomia"]
         }
       ]
-    }
+    },
+    editionsSection: {
+      eyebrow: "Calendario edizioni",
+      title: "Scegli sede, livello ed edizione",
+      intro:
+        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutte le Live Class, i Live Lab, i Corsi intensivi e le scadenze di iscrizione."
+    },
+    editions: [
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 1",
+        editionSlug: "ed1-2026",
+        subtitle: "Febbraio – Maggio 2026",
+        badge: "Iscrizioni chiuse",
+        earlyBird: { label: "Early Bird", date: "12 dicembre 2025" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "29 gennaio 2026" },
+        events: [
+          { label: "Early Bird", date: "12 dicembre 2025", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "29 gennaio 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "12 febbraio 2026", type: "live-class" },
+          { label: "Live Lab", date: "19, 20, 21 febbraio 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "25 febbraio 2026", type: "live-class" },
+          { label: "Live Class 3", date: "3 marzo 2026", type: "live-class" },
+          { label: "Live Class 4", date: "9 marzo 2026", type: "live-class" },
+          { label: "Corso II", date: "19, 20, 21 marzo 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "25 marzo 2026", type: "live-class" },
+          { label: "Live Class 6", date: "31 marzo 2026", type: "live-class" },
+          { label: "Orientamento", date: "6 maggio 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Maggio 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 2",
+        editionSlug: "ed2-2026",
+        subtitle: "Maggio – Dicembre 2026",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "12 marzo 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "28 aprile 2026" },
+        events: [
+          { label: "Early Bird", date: "12 marzo 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "28 aprile 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "12 maggio 2026", type: "live-class" },
+          { label: "Live Lab", date: "21, 22, 23 maggio 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "28 maggio 2026", type: "live-class" },
+          { label: "Live Class 3", date: "3 giugno 2026", type: "live-class" },
+          { label: "Live Class 4", date: "23 settembre 2026", type: "live-class" },
+          { label: "Corso II", date: "1, 2, 3 ottobre 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "13 ottobre 2026", type: "live-class" },
+          { label: "Live Class 6", date: "21 ottobre 2026", type: "live-class" },
+          { label: "Orientamento", date: "2 dicembre 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Dicembre 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 3",
+        editionSlug: "ed3-2026",
+        subtitle: "Ottobre 2026 – Marzo 2027",
+        badge: "Early Bird attivo",
+        earlyBird: { label: "Early Bird", date: "27 agosto 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "13 ottobre 2026" },
+        events: [
+          { label: "Early Bird", date: "27 agosto 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "13 ottobre 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "27 ottobre 2026", type: "live-class" },
+          { label: "Live Lab", date: "5, 6, 7 novembre 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "12 novembre 2026", type: "live-class" },
+          { label: "Live Class 3", date: "18 novembre 2026", type: "live-class" },
+          { label: "Live Class 4", date: "13 gennaio 2027", type: "live-class" },
+          { label: "Corso II", date: "21, 22, 23 gennaio 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "4 febbraio 2027", type: "live-class" },
+          { label: "Live Class 6", date: "10 febbraio 2027", type: "live-class" },
+          { label: "Orientamento", date: "2 marzo 2027", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Marzo 2027", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2026",
+        editionSlug: "ed-2026",
+        subtitle: "Aprile – Giugno 2026",
+        badge: "In corso",
+        earlyBird: { label: "Early Bird", date: "21 febbraio 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "7 aprile 2026" },
+        events: [
+          { label: "Early Bird", date: "21 febbraio 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "7 aprile 2026", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "21 aprile 2026", type: "live-class" },
+          { label: "Live Class 8", date: "29 aprile 2026", type: "live-class" },
+          { label: "Live Class 9 EI", date: "6 maggio 2026", type: "live-class" },
+          { label: "Corso III", date: "14, 15, 16 maggio 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 10 EI", date: "19 maggio 2026", type: "live-class" },
+          { label: "Live Class 11", date: "26 maggio 2026", type: "live-class" },
+          { label: "Live Class 12", date: "4 giugno 2026", type: "live-class" },
+          { label: "Live Class 13 EI", date: "10 giugno 2026", type: "live-class" },
+          { label: "Corso IV", date: "18, 19, 20 giugno 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 14", date: "24 giugno 2026", type: "live-class" },
+          { label: "Live Class 15", date: "30 giugno 2026", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Giugno 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2027",
+        editionSlug: "ed-2027",
+        subtitle: "Marzo – Giugno 2027",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "10 gennaio 2027" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "24 febbraio 2027" },
+        events: [
+          { label: "Early Bird", date: "10 gennaio 2027", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "24 febbraio 2027", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "10 marzo 2027", type: "live-class" },
+          { label: "Live Class 8", date: "17 marzo 2027", type: "live-class" },
+          { label: "Live Class 9 EI", date: "24 marzo 2027", type: "live-class" },
+          { label: "Corso III", date: "1, 2, 3 aprile 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 10", date: "14 aprile 2027", type: "live-class" },
+          { label: "Live Class 11 EI", date: "21 aprile 2027", type: "live-class" },
+          { label: "Live Class 12", date: "28 aprile 2027", type: "live-class" },
+          { label: "Live Class 13 EI", date: "5 maggio 2027", type: "live-class" },
+          { label: "Corso IV", date: "13, 14, 15 maggio 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 14", date: "26 maggio 2027", type: "live-class" },
+          { label: "Live Class 15", date: "8 giugno 2027", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
+        ]
+      }
+    ]
   },
   'systemic-team-coaching': {
     title: "Systemic Team Coaching Master",

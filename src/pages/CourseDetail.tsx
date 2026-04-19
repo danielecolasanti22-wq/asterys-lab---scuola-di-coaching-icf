@@ -20,6 +20,11 @@ import {
   Quote,
   Compass,
   Target as TargetIcon,
+  MapPin,
+  GraduationCap,
+  Flag,
+  CalendarCheck,
+  Hourglass,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -30,6 +35,8 @@ import {
   CourseScheduleBand,
   CourseCompetency,
   CourseCareerPath,
+  CourseEdition,
+  CourseEditionEventType,
 } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 
@@ -106,17 +113,72 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
   </div>
 );
 
+const EDITION_EVENT_STYLES: Record<
+  CourseEditionEventType,
+  { dot: string; label: string; ring: string }
+> = {
+  'deadline-early': {
+    dot: 'bg-[#008060]',
+    label: 'text-[#008060]',
+    ring: 'ring-[#008060]/25',
+  },
+  'deadline-final': {
+    dot: 'bg-[#DC2626]',
+    label: 'text-[#DC2626]',
+    ring: 'ring-[#DC2626]/25',
+  },
+  'live-class': {
+    dot: 'bg-brand-accent',
+    label: 'text-brand-accent',
+    ring: 'ring-brand-accent/20',
+  },
+  'live-lab': {
+    dot: 'bg-[#1D3BB9]',
+    label: 'text-[#1D3BB9]',
+    ring: 'ring-[#1D3BB9]/25',
+  },
+  corso: {
+    dot: 'bg-[#7C3AED]',
+    label: 'text-[#7C3AED]',
+    ring: 'ring-[#7C3AED]/25',
+  },
+  orientamento: {
+    dot: 'bg-[#F59E0B]',
+    label: 'text-[#F59E0B]',
+    ring: 'ring-[#F59E0B]/25',
+  },
+  milestone: {
+    dot: 'bg-brand-navy/40',
+    label: 'text-brand-navy/45',
+    ring: 'ring-brand-navy/15',
+  },
+  individual: {
+    dot: 'bg-brand-navy',
+    label: 'text-brand-navy',
+    ring: 'ring-brand-navy/20',
+  },
+};
+
 export default function CourseDetail() {
   const { id } = useParams<{ id: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeModule, setActiveModule] = useState(0);
   const course: CourseData | undefined = id ? coursesContent[id] : undefined;
   const [paymentTab, setPaymentTab] = useState('');
+  const [activeCitySlug, setActiveCitySlug] = useState<string>('');
+  const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
+  const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (course) {
       setPaymentTab(course.fees[0]?.title.toLowerCase() || '');
+      const first = course.editions?.[0];
+      if (first) {
+        setActiveCitySlug(first.citySlug);
+        setActiveLevelSlug(first.levelSlug);
+        setActiveEditionSlug(first.editionSlug);
+      }
     }
   }, [id, course]);
 
@@ -201,6 +263,37 @@ export default function CourseDetail() {
     intro: `Un mix equilibrato di **competenze tecniche e trasversali**, pensato per renderti operativo in contesti professionali diversi fin da subito.`,
     competencies: derivedCompetencies,
     careerPaths: derivedCareerPaths,
+  };
+
+  const editions = course.editions ?? [];
+  const editionCities = Array.from(
+    new Map(editions.map((e) => [e.citySlug, { slug: e.citySlug, name: e.city }])).values(),
+  );
+  const effectiveCitySlug =
+    editionCities.find((c) => c.slug === activeCitySlug)?.slug ?? editionCities[0]?.slug ?? '';
+  const editionLevelsForCity = Array.from(
+    new Map(
+      editions
+        .filter((e) => e.citySlug === effectiveCitySlug)
+        .map((e) => [e.levelSlug, { slug: e.levelSlug, name: e.level }]),
+    ).values(),
+  );
+  const effectiveLevelSlug =
+    editionLevelsForCity.find((l) => l.slug === activeLevelSlug)?.slug ??
+    editionLevelsForCity[0]?.slug ??
+    '';
+  const editionsForCityLevel = editions.filter(
+    (e) => e.citySlug === effectiveCitySlug && e.levelSlug === effectiveLevelSlug,
+  );
+  const activeEdition: CourseEdition | undefined =
+    editionsForCityLevel.find((e) => e.editionSlug === activeEditionSlug) ??
+    editionsForCityLevel[0];
+
+  const editionsSection = course.editionsSection ?? {
+    eyebrow: 'Calendario edizioni',
+    title: 'Scegli sede, livello ed edizione',
+    intro:
+      'Seleziona la **città**, il **livello** e l\'**edizione** per vedere il calendario completo delle sessioni e le scadenze di iscrizione.',
   };
 
   const studyMode =
@@ -442,6 +535,282 @@ export default function CourseDetail() {
             </div>
          </div>
       </section>
+
+      {/* 4b. CALENDARIO EDIZIONI */}
+      {editions.length > 0 && activeEdition ? (
+        <section id="calendario-edizioni" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
+          <div className="max-w-[941px] mx-auto px-4">
+            {editionsSection.eyebrow ? (
+              <p className="text-lg font-display font-black text-brand-accent mb-3">
+                {editionsSection.eyebrow}
+              </p>
+            ) : null}
+            <h2 className={`${tSection} mb-4`}>
+              {editionsSection.title ?? 'Scegli sede, livello ed edizione'}
+            </h2>
+            {editionsSection.intro ? (
+              <p className={`${tLead} mb-10`}>{richText(editionsSection.intro)}</p>
+            ) : null}
+
+            {/* City tabs */}
+            <div className="mb-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                <MapPin size={12} strokeWidth={2.5} /> Sede
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {editionCities.map((c) => {
+                  const active = c.slug === effectiveCitySlug;
+                  return (
+                    <button
+                      key={c.slug}
+                      type="button"
+                      onClick={() => {
+                        setActiveCitySlug(c.slug);
+                        const firstOfCity = editions.find((e) => e.citySlug === c.slug);
+                        if (firstOfCity) {
+                          setActiveLevelSlug(firstOfCity.levelSlug);
+                          setActiveEditionSlug(firstOfCity.editionSlug);
+                        }
+                      }}
+                      className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                        active
+                          ? 'bg-brand-navy text-white ring-brand-navy shadow-md'
+                          : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                      }`}
+                    >
+                      {c.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Level tabs */}
+            {editionLevelsForCity.length > 1 ? (
+              <div className="mb-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                  <GraduationCap size={12} strokeWidth={2.5} /> Livello
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {editionLevelsForCity.map((l) => {
+                    const active = l.slug === effectiveLevelSlug;
+                    return (
+                      <button
+                        key={l.slug}
+                        type="button"
+                        onClick={() => {
+                          setActiveLevelSlug(l.slug);
+                          const firstOfLevel = editions.find(
+                            (e) => e.citySlug === effectiveCitySlug && e.levelSlug === l.slug,
+                          );
+                          if (firstOfLevel) setActiveEditionSlug(firstOfLevel.editionSlug);
+                        }}
+                        className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                          active
+                            ? 'bg-brand-accent text-white ring-brand-accent shadow-md'
+                            : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                        }`}
+                      >
+                        {l.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+
+            {/* Edition pills */}
+            {editionsForCityLevel.length > 1 ? (
+              <div className="mb-8">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                  <Flag size={12} strokeWidth={2.5} /> Edizione
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {editionsForCityLevel.map((e) => {
+                    const active = e.editionSlug === activeEdition.editionSlug;
+                    return (
+                      <button
+                        key={e.editionSlug}
+                        type="button"
+                        onClick={() => setActiveEditionSlug(e.editionSlug)}
+                        className={`text-left rounded-2xl px-4 py-3 transition-all ring-1 ${
+                          active
+                            ? 'bg-white ring-brand-accent shadow-[0_18px_40px_-28px_rgba(29,59,185,0.5)]'
+                            : 'bg-white/60 ring-brand-navy/10 hover:bg-white hover:ring-brand-navy/25'
+                        }`}
+                      >
+                        <p
+                          className={`text-[11px] font-black uppercase tracking-[0.18em] ${
+                            active ? 'text-brand-accent' : 'text-brand-navy/55'
+                          }`}
+                        >
+                          {e.editionLabel}
+                        </p>
+                        {e.subtitle ? (
+                          <p
+                            className={`mt-1 text-[11px] font-semibold ${
+                              active ? 'text-brand-navy' : 'text-brand-navy/45'
+                            }`}
+                          >
+                            {e.subtitle}
+                          </p>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="mb-4" />
+            )}
+
+            {/* Edition detail card */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${effectiveCitySlug}-${effectiveLevelSlug}-${activeEdition.editionSlug}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
+              >
+                {/* Header */}
+                <div className="p-7 sm:p-9 bg-[#001D4B] text-white relative overflow-hidden">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/25 blur-3xl" />
+                  <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55 mb-2 flex items-center gap-2">
+                        <MapPin size={12} strokeWidth={2.5} />
+                        {activeEdition.city} · {activeEdition.level}
+                      </p>
+                      <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight leading-tight">
+                        {activeEdition.editionLabel}
+                      </h3>
+                      {activeEdition.subtitle ? (
+                        <p className="mt-1 text-sm text-white/65 font-medium">
+                          {activeEdition.subtitle}
+                        </p>
+                      ) : null}
+                    </div>
+                    {activeEdition.badge ? (
+                      <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
+                        {activeEdition.badge}
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
+
+                {/* Deadlines */}
+                {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
+                  <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 border-b border-gray-100">
+                    {activeEdition.earlyBird ? (
+                      <div className="p-6 sm:p-7 flex items-start gap-4">
+                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E6F7F1] text-[#008060]">
+                          <Hourglass size={18} strokeWidth={2} />
+                        </span>
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-1">
+                            {activeEdition.earlyBird.label}
+                          </p>
+                          <p className="text-base sm:text-lg font-black text-brand-navy leading-tight">
+                            {activeEdition.earlyBird.date}
+                          </p>
+                        </div>
+                      </div>
+                    ) : null}
+                    {activeEdition.enrollmentEnd ? (
+                      <div className="p-6 sm:p-7 flex items-start gap-4">
+                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FEECEC] text-[#DC2626]">
+                          <CalendarCheck size={18} strokeWidth={2} />
+                        </span>
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-1">
+                            {activeEdition.enrollmentEnd.label}
+                          </p>
+                          <p className="text-base sm:text-lg font-black text-brand-navy leading-tight">
+                            {activeEdition.enrollmentEnd.date}
+                          </p>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                )}
+
+                {/* Timeline */}
+                <div className="p-7 sm:p-9">
+                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-6">
+                    Calendario completo
+                  </p>
+                  <ol className="relative">
+                    {activeEdition.events.map((ev, i) => {
+                      const style =
+                        EDITION_EVENT_STYLES[ev.type ?? 'live-class'] ??
+                        EDITION_EVENT_STYLES['live-class'];
+                      const isLast = i === activeEdition.events.length - 1;
+                      return (
+                        <li key={i} className="relative flex gap-4 pb-5 last:pb-0">
+                          <div className="flex flex-col items-center shrink-0">
+                            <span
+                              className={`h-3 w-3 rounded-full ring-4 ${style.dot} ${style.ring} mt-1.5`}
+                            />
+                            {!isLast ? (
+                              <span className="mt-1 w-px flex-1 bg-gray-200" />
+                            ) : null}
+                          </div>
+                          <div className="flex-1 pb-1">
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                              <p
+                                className={`text-sm sm:text-base font-black leading-snug ${
+                                  ev.type === 'milestone'
+                                    ? 'text-brand-navy/55'
+                                    : 'text-brand-navy'
+                                }`}
+                              >
+                                {ev.label}
+                              </p>
+                              <p className="text-[11px] sm:text-xs font-black uppercase tracking-wide text-brand-navy/55">
+                                {ev.date}
+                              </p>
+                            </div>
+                            {ev.note ? (
+                              <p
+                                className={`mt-1 text-[11px] font-black uppercase tracking-wide ${style.label}`}
+                              >
+                                {ev.note}
+                              </p>
+                            ) : null}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+
+                {/* CTA */}
+                <div className="px-7 pb-7 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-6">
+                  <p className="text-xs sm:text-sm text-brand-navy/55 font-semibold">
+                    Vuoi approfondire questa edizione? Prenota una call con un Advisor.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="#prezzo"
+                      className="rounded-full bg-brand-navy px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-white shadow-lg hover:bg-brand-accent transition-colors text-center"
+                    >
+                      {activeEdition.ctaLabel ?? 'Iscriviti a questa edizione'}
+                    </a>
+                    <a
+                      href="#"
+                      className="rounded-full border-2 border-brand-navy/20 px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy hover:bg-gray-50 transition-colors text-center"
+                    >
+                      Parla con un Advisor
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </section>
+      ) : null}
 
       {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
       <section id="metodo" className="py-16 lg:py-24 bg-white">
