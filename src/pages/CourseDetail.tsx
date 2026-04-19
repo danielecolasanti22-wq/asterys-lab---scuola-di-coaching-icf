@@ -443,7 +443,6 @@ export default function CourseDetail() {
                   src={media.hero}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
                   className="w-full h-auto object-contain lg:origin-bottom-right"
-                  style={{ mixBlendMode: 'lighten' }}
                   alt={course.title}
                 />
              </div>
