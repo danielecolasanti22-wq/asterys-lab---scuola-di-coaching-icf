@@ -149,6 +149,11 @@ export interface CourseTestimonial {
   quote: string;
   rating?: number;
   cohort?: string;
+  video?: {
+    poster: string;
+    src?: string;
+    duration?: string;
+  };
 }
 
 export interface CourseCompetency {
@@ -227,6 +232,19 @@ export const commonTestimonials: CourseTestimonial[] = [
     cohort: "Alumna APCM"
   },
   {
+    name: "Giulia Moretti",
+    role: "Leadership Coach · Alumna APCM",
+    img: "https://picsum.photos/seed/testimonial-giulia/400/400",
+    cohort: "Ed. 2023 · Milano",
+    quote:
+      "In video ti racconto come è stato tornare a lavorare con i team dopo il Master.",
+    video: {
+      poster: "https://picsum.photos/seed/video-giulia/900/1100",
+      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      duration: "1:42"
+    }
+  },
+  {
     name: "Marco Ferrari",
     role: "Team Coach & Consulente",
     img: "https://picsum.photos/seed/testimonial-marco/400/400",
@@ -234,6 +252,19 @@ export const commonTestimonials: CourseTestimonial[] = [
       "Qualità dei docenti, supervisione seria e una rete di alumni concreta. Ho iniziato a prendere i primi clienti durante il Master e oggi lavoro come coach full-time.",
     rating: 5,
     cohort: "Alumno APCM"
+  },
+  {
+    name: "Andrea Conti",
+    role: "Business Coach · Founder Studio Evolve",
+    img: "https://picsum.photos/seed/testimonial-andrea/400/400",
+    cohort: "Ed. 2022 · Roma",
+    quote:
+      "La mia storia: dalla consulenza al coaching, dopo Asterys Lab.",
+    video: {
+      poster: "https://picsum.photos/seed/video-andrea/900/1100",
+      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      duration: "2:05"
+    }
   },
   {
     name: "Silvia Rossi",
