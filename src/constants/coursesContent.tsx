@@ -308,7 +308,7 @@ export const coursesContent: Record<string, CourseData> = {
     type: "ICF LEVEL 1 & 2",
     heroKicker: "PER PROFESSIONISTI",
     media: {
-      hero: "/course-media/apcm/hero.webp",
+      hero: "/course-media/apcm/hero.png",
       overview: "/course-media/apcm/overview.webp",
       brochureDecor: "/course-media/apcm/brochure.webp",
       advisor: "/course-media/apcm/advisor.webp",
