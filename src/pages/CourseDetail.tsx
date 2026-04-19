@@ -438,7 +438,7 @@ export default function CourseDetail() {
           </div>
           
           <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
-             <div className="w-full lg:w-[110%] lg:-mr-[5%] h-auto relative overflow-visible flex items-end">
+             <div className="w-full lg:w-[140%] lg:-mr-[20%] lg:-ml-[10%] h-auto relative overflow-visible flex items-end">
                 <CourseImage
                   src={media.hero}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
