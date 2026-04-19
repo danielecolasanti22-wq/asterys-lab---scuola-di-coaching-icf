@@ -438,11 +438,12 @@ export default function CourseDetail() {
           </div>
           
           <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
-             <div className="w-full lg:w-[105%] h-auto relative overflow-visible flex items-end">
+             <div className="w-full lg:w-[110%] lg:-mr-[5%] h-auto relative overflow-visible flex items-end">
                 <CourseImage
                   src={media.hero}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
-                  className="w-full h-auto object-contain scale-100 lg:origin-bottom-right drop-shadow-[0_30px_80px_rgba(0,21,51,0.18)]"
+                  className="w-full h-auto object-contain lg:origin-bottom-right"
+                  style={{ mixBlendMode: 'lighten' }}
                   alt={course.title}
                 />
              </div>
