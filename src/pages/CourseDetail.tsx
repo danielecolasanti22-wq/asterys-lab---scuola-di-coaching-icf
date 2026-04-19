@@ -708,66 +708,58 @@ export default function CourseDetail() {
                 className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
               >
                 {/* Header */}
-                <div className="p-5 sm:p-9 bg-[#001D4B] text-white relative overflow-hidden">
+                <div className="p-5 sm:p-7 bg-[#001D4B] text-white relative overflow-hidden">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/25 blur-3xl" />
-                  <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55 mb-2 flex items-center gap-2">
-                        <MapPin size={12} strokeWidth={2.5} />
-                        {activeEdition.city} · {activeEdition.level}
-                      </p>
-                      <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight leading-tight">
-                        {activeEdition.editionLabel}
-                      </h3>
-                      {activeEdition.subtitle ? (
-                        <p className="mt-1 text-sm text-white/65 font-medium">
-                          {activeEdition.subtitle}
+                  <div className="relative z-10">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55 mb-2 flex items-center gap-2">
+                          <MapPin size={12} strokeWidth={2.5} />
+                          {activeEdition.city} · {activeEdition.level}
                         </p>
+                        <h3 className="text-xl sm:text-2xl font-display font-black tracking-tight leading-tight">
+                          {activeEdition.editionLabel}
+                        </h3>
+                        {activeEdition.subtitle ? (
+                          <p className="mt-1 text-sm text-white/65 font-medium">
+                            {activeEdition.subtitle}
+                          </p>
+                        ) : null}
+                      </div>
+                      {activeEdition.badge ? (
+                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
+                          {activeEdition.badge}
+                        </span>
                       ) : null}
                     </div>
-                    {activeEdition.badge ? (
-                      <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
-                        {activeEdition.badge}
-                      </span>
-                    ) : null}
+                    {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
+                      <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                        {activeEdition.earlyBird ? (
+                          <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
+                            <Hourglass size={12} strokeWidth={2.5} className="text-[#6EE7B7]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
+                              {activeEdition.earlyBird.label}
+                            </span>
+                            <span className="text-[11px] font-black text-white">
+                              {activeEdition.earlyBird.date}
+                            </span>
+                          </span>
+                        ) : null}
+                        {activeEdition.enrollmentEnd ? (
+                          <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
+                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#FCA5A5]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
+                              {activeEdition.enrollmentEnd.label}
+                            </span>
+                            <span className="text-[11px] font-black text-white">
+                              {activeEdition.enrollmentEnd.date}
+                            </span>
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {/* Deadlines */}
-                {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
-                  <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 border-b border-gray-100">
-                    {activeEdition.earlyBird ? (
-                      <div className="p-5 sm:p-7 flex items-start gap-4">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E6F7F1] text-[#008060]">
-                          <Hourglass size={18} strokeWidth={2} />
-                        </span>
-                        <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-1">
-                            {activeEdition.earlyBird.label}
-                          </p>
-                          <p className="text-base sm:text-lg font-black text-brand-navy leading-tight">
-                            {activeEdition.earlyBird.date}
-                          </p>
-                        </div>
-                      </div>
-                    ) : null}
-                    {activeEdition.enrollmentEnd ? (
-                      <div className="p-5 sm:p-7 flex items-start gap-4">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FEECEC] text-[#DC2626]">
-                          <CalendarCheck size={18} strokeWidth={2} />
-                        </span>
-                        <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-1">
-                            {activeEdition.enrollmentEnd.label}
-                          </p>
-                          <p className="text-base sm:text-lg font-black text-brand-navy leading-tight">
-                            {activeEdition.enrollmentEnd.date}
-                          </p>
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                )}
 
                 {/* Summary stats (mobile + desktop) */}
                 {editionStats ? (
@@ -799,7 +791,7 @@ export default function CourseDetail() {
                   <button
                     type="button"
                     onClick={() => setTimelineOpenMobile((v) => !v)}
-                    className="md:hidden w-full flex items-center justify-between gap-3 rounded-2xl bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-4 py-3 text-left mb-4"
+                    className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-4 py-3 text-left hover:ring-brand-navy/25 transition-colors"
                     aria-expanded={timelineOpenMobile}
                     aria-controls="edition-timeline"
                   >
@@ -810,12 +802,9 @@ export default function CourseDetail() {
                       {activeEdition.events.length} date {timelineOpenMobile ? '▲' : '▼'}
                     </span>
                   </button>
-                  <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-6">
-                    Calendario completo
-                  </p>
                   <div
                     id="edition-timeline"
-                    className={`${timelineOpenMobile ? 'block' : 'hidden'} md:block`}
+                    className={`${timelineOpenMobile ? 'block mt-6' : 'hidden'}`}
                   >
                   <ol className="relative">
                     {activeEdition.events.map((ev, i) => {
