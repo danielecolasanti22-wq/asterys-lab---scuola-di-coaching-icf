@@ -453,26 +453,26 @@ export default function CourseDetail() {
       {/* 2. LA FIGURA CENTRALE SECTION */}
       <section className="py-24 bg-white">
         <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
-          <div className="relative">
-             <div className="rounded-[3rem] overflow-hidden shadow-2xl overflow-hidden">
+          <div className="order-2 lg:order-1">
+             <h2 className={`${tSection} mb-8 leading-tight`}>
+                {course.overview.title}
+             </h2>
+             <div className="space-y-6">
+               {course.overview.content.map((p, i) => (
+                 <p key={i} className={tBody}>
+                    {p}
+                 </p>
+               ))}
+             </div>
+          </div>
+          <div className="relative order-1 lg:order-2">
+             <div className="rounded-[3rem] overflow-hidden shadow-2xl">
                 <CourseImage
                   src={media.overview}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
                   className="w-full h-full object-cover aspect-video lg:aspect-square"
                   alt={course.overview.title}
                 />
-             </div>
-          </div>
-          <div>
-             <h2 className="text-4xl lg:text-7xl font-display font-black leading-[0.9] mb-10 text-brand-navy uppercase tracking-tighter">
-                {course.overview.title}
-             </h2>
-             <div className="space-y-8">
-               {course.overview.content.map((p, i) => (
-                 <p key={i} className="text-lg text-brand-navy/70 leading-relaxed font-medium">
-                    {p}
-                 </p>
-               ))}
              </div>
           </div>
         </div>
