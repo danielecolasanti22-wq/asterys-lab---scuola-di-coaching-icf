@@ -1068,45 +1068,19 @@ export default function CourseDetail() {
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
       <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#eef5ff_0%,_#dbeaff_45%,_#cfe2ff_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#C6D3FF_0%,#B8C8FF_55%,#AEBEFF_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-brand-navy tracking-tight mb-4 normal-case">
-            La migliore formazione professionale, <span className="text-brand-accent">accessibile</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-4 normal-case max-w-3xl mx-auto">
+            La migliore formazione professionale, accessibile
           </h2>
-          <p className="text-sm sm:text-base text-brand-navy/70 font-medium mb-10 sm:mb-12">
+          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-10 sm:mb-12">
             {isMasterLike
               ? `Scegli il metodo di pagamento per il tuo Master in ${course.subtitle}`
               : `Scegli il metodo di pagamento per ${course.title}`}
           </p>
 
-          {course.earlyBirdPromo ? (
-            <div className="max-w-xl mx-auto mb-12">
-              <div className="grid grid-cols-2 bg-white rounded-full p-1.5 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.2)] border border-gray-100 overflow-hidden">
-                <div className="bg-[#008060] text-white rounded-full py-7 px-4 sm:px-6 flex flex-col items-center justify-center relative text-center">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">
-                    EARLY BIRD
-                  </div>
-                  <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">
-                    ENTRO IL {course.earlyBirdPromo.pillDeadlineLabel ?? 'TERMINE PROMO'}
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-black italic tracking-tighter leading-none">
-                    {course.earlyBirdPromo.discountAmount ?? '800€'}{' '}
-                    <span className="text-base sm:text-lg">di sconto</span>
-                  </p>
-                </div>
-                <div className="flex flex-col items-center justify-center py-7 text-center px-3">
-                  <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DOPO LA SCADENZA</p>
-                  <p className="text-2xl sm:text-3xl font-black text-brand-navy/25 italic tracking-tighter leading-none">Prezzo pieno</p>
-                </div>
-              </div>
-              <p className="mt-6 text-[9px] font-black text-brand-navy/35 uppercase tracking-[0.28em] inline-block border-t border-brand-navy/5 pt-3">
-                Sconti validi per contratti di iscrizione firmati entro le date indicate.
-              </p>
-            </div>
-          ) : null}
-
-          <div className="mx-auto max-w-[840px] rounded-full bg-[#bcd6ff]/90 p-1.5 shadow-inner ring-1 ring-white/60">
-            <div className="flex overflow-x-auto">
+          <div className="mx-auto max-w-[840px] rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
+            <div className="flex overflow-x-auto gap-1">
               {course.fees.map((fee, idx) => {
                 const key = fee.title.toLowerCase();
                 const active = paymentTab === key;
@@ -1115,8 +1089,10 @@ export default function CourseDetail() {
                     key={idx}
                     type="button"
                     onClick={() => setPaymentTab(key)}
-                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-3 py-3 text-[9px] font-black uppercase tracking-[0.26em] transition-all ${
-                      active ? 'bg-white text-brand-navy shadow-md' : 'text-brand-navy/55 hover:text-brand-navy'
+                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-display font-black uppercase tracking-wide transition-all ${
+                      active
+                        ? 'bg-white text-brand-navy shadow-[0_10px_24px_-14px_rgba(0,21,51,0.35)]'
+                        : 'text-brand-navy/75 hover:text-brand-navy'
                     }`}
                   >
                     {fee.title}
@@ -1126,68 +1102,58 @@ export default function CourseDetail() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-12 shadow-[0_26px_70px_-40px_rgba(0,21,51,0.35)] ring-1 ring-black/5">
-            {course.fees.map(
-              (fee, idx) =>
-                paymentTab === fee.title.toLowerCase() && (
-                  <div key={idx} className="mx-auto max-w-xl text-center">
-                    <h3 className="text-lg sm:text-xl font-black text-brand-navy mb-4 normal-case">{fee.heading}</h3>
-                    <p className={`${tBody} mb-10`}>{richText(fee.desc)}</p>
+          <div className="mt-5 sm:mt-6 rounded-[1.5rem] sm:rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
+            {course.fees.map((fee, idx) => {
+              if (paymentTab !== fee.title.toLowerCase()) return null;
+              const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
+              const priceLabel = isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
+              return (
+                <div key={idx} className="mx-auto max-w-xl text-center">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-navy mb-5 normal-case tracking-tight leading-tight">
+                    {fee.heading}
+                  </h3>
+                  <p className="text-sm sm:text-base text-brand-navy/80 font-medium leading-relaxed mb-10">
+                    {richText(fee.desc)}
+                  </p>
 
-                    <p className="text-[11px] font-black uppercase tracking-[0.35em] text-brand-navy/35 mb-3">
-                      {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? 'a partire da' : 'prezzo'}
+                  <p className="text-sm sm:text-base font-semibold text-brand-navy/75 mb-4 normal-case tracking-normal">
+                    {priceLabel}
+                  </p>
+
+                  <div className="mx-auto mb-8 inline-block rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
+                    <p className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight leading-none">
+                      {fee.price}
+                      {fee.priceLabel ? (
+                        <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
+                      ) : null}
                     </p>
-
-                    {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? (
-                      <div className="mx-auto mb-8 inline-flex flex-col items-center gap-2">
-                        <div className="rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-lg">
-                          <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-                            {fee.price}
-                            {fee.priceLabel ? (
-                              <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
-                            ) : null}
-                          </p>
-                        </div>
-                        {course.earlyBirdPromo ? (
-                          <span className="rounded-full bg-[#008060] px-3 py-1 text-[9px] font-black uppercase tracking-widest text-white">
-                            Early bird
-                          </span>
-                        ) : null}
-                      </div>
-                    ) : (
-                      <div className="relative mx-auto mb-8 inline-block">
-                        <p className="text-4xl sm:text-5xl font-display font-black italic tracking-tighter text-[#008060]">
-                          {fee.price}
-                          {fee.priceLabel ? (
-                            <span className="text-xl sm:text-2xl not-italic font-black">{fee.priceLabel}</span>
-                          ) : null}
-                        </p>
-                      </div>
-                    )}
-
-                    {fee.footnote ? (
-                      <p className="text-brand-navy/45 text-[11px] font-bold leading-relaxed mb-10">{fee.footnote}</p>
-                    ) : (
-                      <div className="mb-10" />
-                    )}
-
-                    <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-                      <button
-                        type="button"
-                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
-                      >
-                        Iscriviti ora
-                      </button>
-                      <button
-                        type="button"
-                        className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
-                      >
-                        Parla con noi
-                      </button>
-                    </div>
                   </div>
-                ),
-            )}
+
+                  {fee.footnote ? (
+                    <p className="text-brand-navy/55 text-xs sm:text-sm font-medium leading-relaxed mb-10">
+                      {fee.footnote}
+                    </p>
+                  ) : (
+                    <div className="mb-10" />
+                  )}
+
+                  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                    <button
+                      type="button"
+                      className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
+                    >
+                      Iscriviti ora
+                    </button>
+                    <button
+                      type="button"
+                      className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                    >
+                      Parla con noi
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
