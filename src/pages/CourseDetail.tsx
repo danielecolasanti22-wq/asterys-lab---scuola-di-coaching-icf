@@ -1405,12 +1405,12 @@ export default function CourseDetail() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:auto-rows-[210px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:auto-rows-[225px]">
               {testimonials.map((t, i) => {
                 const isBig = i === 0;
                 const layout = isBig
-                  ? 'sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2'
-                  : 'lg:col-span-1 lg:row-span-1';
+                  ? 'sm:col-span-2 sm:row-span-2 lg:col-span-1 lg:row-span-2'
+                  : 'lg:col-span-2 lg:row-span-1';
 
                 if (t.video) {
                   return (
