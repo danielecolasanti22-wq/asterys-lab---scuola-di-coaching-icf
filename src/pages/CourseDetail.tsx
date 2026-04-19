@@ -169,7 +169,7 @@ export default function CourseDetail() {
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
-  const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('competencies');
+  const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
 
   useEffect(() => {
     window.scrollTo(0, 0);
