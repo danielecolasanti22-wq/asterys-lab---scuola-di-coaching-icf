@@ -168,6 +168,7 @@ export default function CourseDetail() {
   const [activeCitySlug, setActiveCitySlug] = useState<string>('');
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
+  const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -181,6 +182,10 @@ export default function CourseDetail() {
       }
     }
   }, [id, course]);
+
+  useEffect(() => {
+    setTimelineOpenMobile(false);
+  }, [activeCitySlug, activeLevelSlug, activeEditionSlug]);
 
   if (!course) {
     return (
@@ -288,6 +293,34 @@ export default function CourseDetail() {
   const activeEdition: CourseEdition | undefined =
     editionsForCityLevel.find((e) => e.editionSlug === activeEditionSlug) ??
     editionsForCityLevel[0];
+
+  const editionStats = activeEdition
+    ? activeEdition.events.reduce<Record<CourseEditionEventType, number>>(
+        (acc, ev) => {
+          const key = ev.type ?? 'live-class';
+          acc[key] = (acc[key] ?? 0) + 1;
+          return acc;
+        },
+        {
+          'deadline-early': 0,
+          'deadline-final': 0,
+          'live-class': 0,
+          'live-lab': 0,
+          corso: 0,
+          orientamento: 0,
+          milestone: 0,
+          individual: 0,
+        },
+      )
+    : null;
+
+  const editionStatBadges: { type: CourseEditionEventType; label: string }[] = [
+    { type: 'live-class', label: 'Live Class' },
+    { type: 'live-lab', label: 'Live Lab' },
+    { type: 'corso', label: 'Corsi intensivi' },
+    { type: 'orientamento', label: 'Orientamento' },
+    { type: 'individual', label: 'Sessioni 1:1' },
+  ];
 
   const editionsSection = course.editionsSection ?? {
     eyebrow: 'Calendario edizioni',
@@ -675,7 +708,7 @@ export default function CourseDetail() {
                 className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
               >
                 {/* Header */}
-                <div className="p-7 sm:p-9 bg-[#001D4B] text-white relative overflow-hidden">
+                <div className="p-5 sm:p-9 bg-[#001D4B] text-white relative overflow-hidden">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/25 blur-3xl" />
                   <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
@@ -704,7 +737,7 @@ export default function CourseDetail() {
                 {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
                   <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 border-b border-gray-100">
                     {activeEdition.earlyBird ? (
-                      <div className="p-6 sm:p-7 flex items-start gap-4">
+                      <div className="p-5 sm:p-7 flex items-start gap-4">
                         <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E6F7F1] text-[#008060]">
                           <Hourglass size={18} strokeWidth={2} />
                         </span>
@@ -719,7 +752,7 @@ export default function CourseDetail() {
                       </div>
                     ) : null}
                     {activeEdition.enrollmentEnd ? (
-                      <div className="p-6 sm:p-7 flex items-start gap-4">
+                      <div className="p-5 sm:p-7 flex items-start gap-4">
                         <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FEECEC] text-[#DC2626]">
                           <CalendarCheck size={18} strokeWidth={2} />
                         </span>
@@ -736,11 +769,54 @@ export default function CourseDetail() {
                   </div>
                 )}
 
+                {/* Summary stats (mobile + desktop) */}
+                {editionStats ? (
+                  <div className="px-5 sm:px-9 pt-5 sm:pt-7">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3">
+                      Cosa include il percorso
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {editionStatBadges
+                        .filter(({ type }) => (editionStats[type] ?? 0) > 0)
+                        .map(({ type, label }) => {
+                          const style = EDITION_EVENT_STYLES[type];
+                          return (
+                            <span
+                              key={type}
+                              className="inline-flex items-center gap-1.5 rounded-full bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-2.5 py-1 text-[11px] font-black text-brand-navy"
+                            >
+                              <span className={`h-2 w-2 rounded-full ${style.dot}`} />
+                              {editionStats[type]} {label}
+                            </span>
+                          );
+                        })}
+                    </div>
+                  </div>
+                ) : null}
+
                 {/* Timeline */}
-                <div className="p-7 sm:p-9">
-                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-6">
+                <div className="px-5 pt-5 pb-5 sm:px-9 sm:pt-7 sm:pb-9">
+                  <button
+                    type="button"
+                    onClick={() => setTimelineOpenMobile((v) => !v)}
+                    className="md:hidden w-full flex items-center justify-between gap-3 rounded-2xl bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-4 py-3 text-left mb-4"
+                    aria-expanded={timelineOpenMobile}
+                    aria-controls="edition-timeline"
+                  >
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy">
+                      {timelineOpenMobile ? 'Nascondi calendario' : 'Vedi calendario completo'}
+                    </span>
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/55">
+                      {activeEdition.events.length} date {timelineOpenMobile ? '▲' : '▼'}
+                    </span>
+                  </button>
+                  <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-6">
                     Calendario completo
                   </p>
+                  <div
+                    id="edition-timeline"
+                    className={`${timelineOpenMobile ? 'block' : 'hidden'} md:block`}
+                  >
                   <ol className="relative">
                     {activeEdition.events.map((ev, i) => {
                       const style =
@@ -748,17 +824,17 @@ export default function CourseDetail() {
                         EDITION_EVENT_STYLES['live-class'];
                       const isLast = i === activeEdition.events.length - 1;
                       return (
-                        <li key={i} className="relative flex gap-4 pb-5 last:pb-0">
+                        <li key={i} className="relative flex gap-3 sm:gap-4 pb-3.5 sm:pb-5 last:pb-0">
                           <div className="flex flex-col items-center shrink-0">
                             <span
-                              className={`h-3 w-3 rounded-full ring-4 ${style.dot} ${style.ring} mt-1.5`}
+                              className={`h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full ring-[3px] sm:ring-4 ${style.dot} ${style.ring} mt-1.5`}
                             />
                             {!isLast ? (
                               <span className="mt-1 w-px flex-1 bg-gray-200" />
                             ) : null}
                           </div>
-                          <div className="flex-1 pb-1">
-                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <div className="flex-1 pb-1 min-w-0">
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
                               <p
                                 className={`text-sm sm:text-base font-black leading-snug ${
                                   ev.type === 'milestone'
@@ -768,13 +844,13 @@ export default function CourseDetail() {
                               >
                                 {ev.label}
                               </p>
-                              <p className="text-[11px] sm:text-xs font-black uppercase tracking-wide text-brand-navy/55">
+                              <p className="text-[10px] sm:text-xs font-black uppercase tracking-wide text-brand-navy/55">
                                 {ev.date}
                               </p>
                             </div>
                             {ev.note ? (
                               <p
-                                className={`mt-1 text-[11px] font-black uppercase tracking-wide ${style.label}`}
+                                className={`mt-0.5 text-[10px] sm:text-[11px] font-black uppercase tracking-wide ${style.label}`}
                               >
                                 {ev.note}
                               </p>
@@ -784,10 +860,11 @@ export default function CourseDetail() {
                       );
                     })}
                   </ol>
+                  </div>
                 </div>
 
                 {/* CTA */}
-                <div className="px-7 pb-7 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-6">
+                <div className="px-5 pb-5 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-5 sm:pt-6">
                   <p className="text-xs sm:text-sm text-brand-navy/55 font-semibold">
                     Vuoi approfondire questa edizione? Prenota una call con un Advisor.
                   </p>
