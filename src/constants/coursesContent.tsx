@@ -223,15 +223,6 @@ export function defaultCourseMedia(slug: string): CourseMedia {
 
 export const commonTestimonials: CourseTestimonial[] = [
   {
-    name: "Laura Bianchi",
-    role: "Executive Coach · ex HR Director",
-    img: "https://picsum.photos/seed/testimonial-laura/400/400",
-    quote:
-      "Il percorso con Asterys Lab ha trasformato il mio modo di lavorare con le persone. Ho trovato metodo, comunità e una credibilità professionale che prima non avevo.",
-    rating: 5,
-    cohort: "Alumna APCM"
-  },
-  {
     name: "Giulia Moretti",
     role: "Leadership Coach · Alumna APCM",
     img: "https://picsum.photos/seed/testimonial-giulia/400/400",
@@ -243,6 +234,15 @@ export const commonTestimonials: CourseTestimonial[] = [
       src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       duration: "1:42"
     }
+  },
+  {
+    name: "Laura Bianchi",
+    role: "Executive Coach · ex HR Director",
+    img: "https://picsum.photos/seed/testimonial-laura/400/400",
+    quote:
+      "Il percorso con Asterys Lab ha trasformato il mio modo di lavorare con le persone. Ho trovato metodo, comunità e una credibilità professionale che prima non avevo.",
+    rating: 5,
+    cohort: "Alumna APCM"
   },
   {
     name: "Marco Ferrari",
@@ -261,7 +261,7 @@ export const commonTestimonials: CourseTestimonial[] = [
     quote:
       "La mia storia: dalla consulenza al coaching, dopo Asterys Lab.",
     video: {
-      poster: "https://picsum.photos/seed/video-andrea/900/1100",
+      poster: "https://picsum.photos/seed/video-andrea/1200/900",
       src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       duration: "2:05"
     }

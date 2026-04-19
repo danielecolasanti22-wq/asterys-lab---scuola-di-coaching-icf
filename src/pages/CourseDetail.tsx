@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Fragment, type ReactNode } from 'react';
+import { useState, useEffect, Fragment, type ReactNode } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   CheckCircle2,
@@ -25,8 +25,6 @@ import {
   Flag,
   CalendarCheck,
   Hourglass,
-  ChevronLeft,
-  ChevronRight,
   X,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -173,7 +171,6 @@ export default function CourseDetail() {
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
   const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
-  const testimonialScrollRef = useRef<HTMLDivElement | null>(null);
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
 
   useEffect(() => {
@@ -1396,136 +1393,114 @@ export default function CourseDetail() {
       </section>
 
       {/* 8c. TESTIMONIANZE */}
-      <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F6FB] to-white overflow-hidden">
+      <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F6FB] to-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-10 lg:mb-12">
-              <div className="max-w-2xl">
-                <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
-                <h2 className={`${tSection} mb-4`}>
-                  Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
-                </h2>
-                <p className={tLead}>
-                  Professionisti che hanno trasformato la loro carriera con il nostro metodo. Video e racconti dalla nostra community.
-                </p>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 shrink-0">
-                <button
-                  type="button"
-                  aria-label="Testimonianza precedente"
-                  onClick={() => testimonialScrollRef.current?.scrollBy({ left: -340, behavior: 'smooth' })}
-                  className="h-11 w-11 rounded-full bg-white border border-brand-navy/10 text-brand-navy hover:bg-brand-navy hover:text-white transition-colors flex items-center justify-center shadow-[0_10px_30px_-18px_rgba(0,21,51,0.35)]"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Testimonianza successiva"
-                  onClick={() => testimonialScrollRef.current?.scrollBy({ left: 340, behavior: 'smooth' })}
-                  className="h-11 w-11 rounded-full bg-brand-navy text-white hover:bg-brand-accent transition-colors flex items-center justify-center shadow-[0_10px_30px_-12px_rgba(0,21,51,0.45)]"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
+            <div className="max-w-2xl mb-10 lg:mb-12">
+              <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
+              <h2 className={`${tSection} mb-4`}>
+                Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
+              </h2>
+              <p className={tLead}>
+                Professionisti che hanno trasformato la loro carriera con il nostro metodo. Video e racconti dalla nostra community.
+              </p>
             </div>
 
-            <div className="relative -mx-4">
-              <div className="pointer-events-none hidden lg:block absolute left-0 top-0 bottom-6 w-10 bg-gradient-to-r from-white to-transparent z-10" />
-              <div className="pointer-events-none hidden lg:block absolute right-0 top-0 bottom-6 w-10 bg-gradient-to-l from-white to-transparent z-10" />
-              <div
-                ref={testimonialScrollRef}
-                className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              >
-                {testimonials.map((t, i) => {
-                  const isVideo = Boolean(t.video);
-                  if (isVideo && t.video) {
-                    return (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setActiveVideoTestimonial(i)}
-                        className="group relative snap-start shrink-0 w-[78%] sm:w-[56%] md:w-[46%] lg:w-[42%] aspect-[4/5] rounded-[1.75rem] overflow-hidden text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.5)]"
-                      >
-                        <img
-                          src={t.video.poster}
-                          alt={t.name}
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/35 to-transparent" />
-                        <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
-                          <Video size={11} strokeWidth={2.75} />
-                          Video
-                        </div>
-                        {t.video.duration ? (
-                          <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
-                            {t.video.duration}
-                          </div>
-                        ) : null}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
-                            <Play size={24} strokeWidth={2.5} className="ml-1" fill="currentColor" />
-                          </span>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                          <p className="text-sm sm:text-base font-display font-black leading-tight mb-1">{t.name}</p>
-                          <p className="text-[11px] font-semibold text-white/75 leading-tight">{t.role}</p>
-                          {t.cohort ? (
-                            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
-                              {t.cohort}
-                            </p>
-                          ) : null}
-                        </div>
-                      </button>
-                    );
-                  }
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-4 lg:auto-rows-[210px] lg:grid-flow-dense">
+              {testimonials.map((t, i) => {
+                const layout = [
+                  'sm:row-span-2 lg:col-span-3 lg:row-span-2', // 0: big video
+                  'lg:col-span-3 lg:row-span-1',               // 1: wide text
+                  'lg:col-span-3 lg:row-span-1',               // 2: wide text
+                  'sm:col-span-2 lg:col-span-4 lg:row-span-2', // 3: wide video
+                  'lg:col-span-2 lg:row-span-2',               // 4: tall text
+                ][i] ?? 'lg:col-span-2 lg:row-span-1';
+
+                if (t.video) {
                   return (
-                    <div
+                    <button
                       key={i}
-                      className="relative snap-start shrink-0 w-[78%] sm:w-[52%] md:w-[40%] lg:w-[34%] flex flex-col bg-white rounded-[1.75rem] p-6 sm:p-7 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)]"
+                      type="button"
+                      onClick={() => setActiveVideoTestimonial(i)}
+                      className={`group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[320px] sm:min-h-0 ${layout}`}
                     >
-                      <Quote size={32} className="text-brand-accent/25 mb-3 shrink-0" strokeWidth={2.25} />
-                      {t.rating ? (
-                        <div className="flex text-[#008060] gap-0.5 mb-3">
-                          {Array.from({ length: t.rating }).map((_, s) => (
-                            <Star key={s} size={13} fill="currentColor" />
-                          ))}
+                      <img
+                        src={t.video.poster}
+                        alt={t.name}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
+                        <Video size={11} strokeWidth={2.75} />
+                        Video
+                      </div>
+                      {t.video.duration ? (
+                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
+                          {t.video.duration}
                         </div>
                       ) : null}
-                      <p className="text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-medium mb-6 flex-1">
-                        “{t.quote}”
-                      </p>
-                      <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
-                        {t.img ? (
-                          <img
-                            src={t.img}
-                            alt={t.name}
-                            className="h-11 w-11 rounded-full object-cover border-2 border-white shadow"
-                          />
-                        ) : (
-                          <div className="h-11 w-11 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black">
-                            {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <p className="text-sm font-black text-brand-navy leading-tight truncate">{t.name}</p>
-                          <p className="text-[11px] font-semibold text-brand-navy/55 leading-tight mt-0.5 truncate">
-                            {t.role}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex h-14 w-14 lg:h-16 lg:w-16 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
+                          <Play size={22} strokeWidth={2.5} className="ml-1" fill="currentColor" />
+                        </span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5 text-white">
+                        <p className="text-sm lg:text-base font-display font-black leading-tight mb-0.5">{t.name}</p>
+                        <p className="text-[11px] font-semibold text-white/75 leading-tight">{t.role}</p>
+                        {t.cohort ? (
+                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-1.5">
+                            {t.cohort}
                           </p>
-                          {t.cohort ? (
-                            <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent mt-1 truncate">
-                              {t.cohort}
-                            </p>
-                          ) : null}
+                        ) : null}
+                      </div>
+                    </button>
+                  );
+                }
+
+                const isTall = i === 4;
+                return (
+                  <div
+                    key={i}
+                    className={`relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] ${layout}`}
+                  >
+                    <Quote size={isTall ? 32 : 24} className="text-brand-accent/25 mb-2 shrink-0" strokeWidth={2.25} />
+                    {t.rating ? (
+                      <div className="flex text-[#008060] gap-0.5 mb-2">
+                        {Array.from({ length: t.rating }).map((_, s) => (
+                          <Star key={s} size={12} fill="currentColor" />
+                        ))}
+                      </div>
+                    ) : null}
+                    <p className={`text-brand-navy/75 leading-relaxed font-medium flex-1 ${isTall ? 'text-sm lg:text-[15px]' : 'text-[13px] lg:text-sm'} mb-4 line-clamp-6`}>
+                      “{t.quote}”
+                    </p>
+                    <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+                      {t.img ? (
+                        <img
+                          src={t.img}
+                          alt={t.name}
+                          className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
+                        />
+                      ) : (
+                        <div className="h-10 w-10 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
+                          {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                         </div>
+                      )}
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-brand-navy leading-tight truncate">{t.name}</p>
+                        <p className="text-[11px] font-semibold text-brand-navy/55 leading-tight mt-0.5 truncate">
+                          {t.role}
+                        </p>
+                        {t.cohort ? (
+                          <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent mt-0.5 truncate">
+                            {t.cohort}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
-
-            <p className="sm:hidden text-[11px] font-semibold uppercase tracking-wider text-brand-navy/45 text-center mt-2">
-              Scorri per vedere tutte le storie →
-            </p>
          </div>
 
          <AnimatePresence>
