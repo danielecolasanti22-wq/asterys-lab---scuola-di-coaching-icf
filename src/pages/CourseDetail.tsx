@@ -169,8 +169,7 @@ export default function CourseDetail() {
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
-  const [openCompetency, setOpenCompetency] = useState<number | null>(null);
-  const [openCareerPath, setOpenCareerPath] = useState<number | null>(null);
+  const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('competencies');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1282,140 +1281,110 @@ export default function CourseDetail() {
               ) : null}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-4 lg:gap-6">
-               {/* Competenze */}
-               <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
-                  <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
-                      <TargetIcon size={16} strokeWidth={2.25} />
+            <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
+               {/* Tab switcher */}
+               <div className="grid grid-cols-2 gap-2 p-2 bg-[#F4F6FB] border-b border-gray-100">
+                  <button
+                    type="button"
+                    onClick={() => setCareerTab('competencies')}
+                    aria-pressed={careerTab === 'competencies'}
+                    className={`flex items-center justify-center gap-2 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-display font-black uppercase tracking-tight transition-all ${
+                      careerTab === 'competencies'
+                        ? 'bg-white text-brand-navy shadow-[0_8px_24px_-12px_rgba(0,21,51,0.25)] ring-1 ring-brand-navy/5'
+                        : 'text-brand-navy/55 hover:text-brand-navy'
+                    }`}
+                  >
+                    <TargetIcon size={16} strokeWidth={2.25} className={careerTab === 'competencies' ? 'text-brand-accent' : ''} />
+                    <span>Competenze</span>
+                    <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
+                      careerTab === 'competencies' ? 'bg-[#E6EFFF] text-brand-accent' : 'bg-brand-navy/5 text-brand-navy/50'
+                    }`}>
+                      {competenciesAndCareers.competencies.length}
                     </span>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm sm:text-base font-display font-black uppercase tracking-tight text-brand-navy leading-tight">
-                        Competenze che acquisirai
-                      </h3>
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-navy/45 mt-0.5">
-                        {competenciesAndCareers.competencies.length} aree · tocca per aprire
-                      </p>
-                    </div>
-                  </div>
-                  <ul>
-                    {competenciesAndCareers.competencies.map((c, i) => {
-                      const open = openCompetency === i;
-                      return (
-                        <li key={i} className="border-b border-gray-100 last:border-b-0">
-                          <button
-                            type="button"
-                            onClick={() => setOpenCompetency(open ? null : i)}
-                            className="w-full flex items-center gap-3 px-5 py-3.5 text-left group"
-                            aria-expanded={open}
-                          >
-                            <CheckCircle2 size={16} className="shrink-0 text-[#008060]" />
-                            <span className="flex-1 text-sm font-black text-brand-navy leading-snug group-hover:text-brand-accent transition-colors">
-                              {c.title}
-                            </span>
-                            <span
-                              className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy/60 transition-all ${
-                                open ? 'bg-brand-navy text-white border-brand-navy rotate-180' : ''
-                              }`}
-                            >
-                              {open ? <Minus size={12} strokeWidth={2.5} /> : <Plus size={12} strokeWidth={2.5} />}
-                            </span>
-                          </button>
-                          <AnimatePresence initial={false}>
-                            {open && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="overflow-hidden"
-                              >
-                                <p className="px-5 pb-4 pl-[52px] text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed">
-                                  {c.desc}
-                                </p>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCareerTab('careers')}
+                    aria-pressed={careerTab === 'careers'}
+                    className={`flex items-center justify-center gap-2 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-display font-black uppercase tracking-tight transition-all ${
+                      careerTab === 'careers'
+                        ? 'bg-brand-navy text-white shadow-[0_8px_24px_-12px_rgba(0,21,51,0.45)]'
+                        : 'text-brand-navy/55 hover:text-brand-navy'
+                    }`}
+                  >
+                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#E2FF3B]' : ''} />
+                    <span>Sbocchi professionali</span>
+                    <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
+                      careerTab === 'careers' ? 'bg-[#E2FF3B] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
+                    }`}>
+                      {competenciesAndCareers.careerPaths.length}
+                    </span>
+                  </button>
                </div>
 
-               {/* Sbocchi */}
-               <div className="rounded-[1.5rem] bg-[#001D4B] text-white overflow-hidden relative">
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/20 blur-3xl" />
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#E2FF3B] ring-1 ring-white/10">
-                        <Compass size={16} strokeWidth={2.25} />
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm sm:text-base font-display font-black uppercase tracking-tight leading-tight">
-                          Sbocchi professionali
-                        </h3>
-                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/45 mt-0.5">
-                          {competenciesAndCareers.careerPaths.length} percorsi · tocca per aprire
-                        </p>
-                      </div>
-                    </div>
-                    <ul>
-                      {competenciesAndCareers.careerPaths.map((p, i) => {
-                        const open = openCareerPath === i;
-                        return (
-                          <li key={i} className="border-b border-white/10 last:border-b-0">
-                            <button
-                              type="button"
-                              onClick={() => setOpenCareerPath(open ? null : i)}
-                              className="w-full flex items-center gap-3 px-5 py-3.5 text-left group"
-                              aria-expanded={open}
-                            >
-                              <span className="h-2 w-2 rounded-full bg-[#E2FF3B] shrink-0" />
-                              <span className="flex-1 text-sm font-black leading-snug group-hover:text-[#E2FF3B] transition-colors">
-                                {p.title}
-                              </span>
-                              <span
-                                className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all ${
-                                  open ? 'bg-[#E2FF3B] text-brand-navy border-[#E2FF3B]' : ''
-                                }`}
-                              >
-                                {open ? <Minus size={12} strokeWidth={2.5} /> : <Plus size={12} strokeWidth={2.5} />}
-                              </span>
-                            </button>
-                            <AnimatePresence initial={false}>
-                              {open && (
-                                <motion.div
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: 'auto', opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="overflow-hidden"
-                                >
-                                  <div className="px-5 pb-4 pl-[44px]">
-                                    <p className="text-xs sm:text-[13px] text-white/70 font-medium leading-relaxed mb-2.5">
-                                      {p.desc}
-                                    </p>
-                                    {p.contexts?.length ? (
-                                      <div className="flex flex-wrap gap-1.5">
-                                        {p.contexts.map((ctx, ci) => (
-                                          <span
-                                            key={ci}
-                                            className="inline-flex items-center rounded-md bg-white/5 border border-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white/75"
-                                          >
-                                            {ctx}
-                                          </span>
-                                        ))}
-                                      </div>
-                                    ) : null}
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+               {/* List area */}
+               <div className="relative">
+                  <AnimatePresence mode="wait" initial={false}>
+                    {careerTab === 'competencies' ? (
+                      <motion.ul
+                        key="competencies"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="divide-y divide-gray-100"
+                      >
+                        {competenciesAndCareers.competencies.map((c, i) => (
+                          <li key={i} className="flex gap-3 px-5 py-4 sm:py-4.5">
+                            <CheckCircle2 size={18} className="shrink-0 text-[#008060] mt-0.5" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-black text-brand-navy leading-snug mb-1">
+                                {c.title}
+                              </p>
+                              <p className="text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed">
+                                {c.desc}
+                              </p>
+                            </div>
                           </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                        ))}
+                      </motion.ul>
+                    ) : (
+                      <motion.ul
+                        key="careers"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="divide-y divide-gray-100"
+                      >
+                        {competenciesAndCareers.careerPaths.map((p, i) => (
+                          <li key={i} className="flex gap-3 px-5 py-4 sm:py-4.5">
+                            <span className="h-2 w-2 rounded-full bg-brand-accent shrink-0 mt-2" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-black text-brand-navy leading-snug mb-1">
+                                {p.title}
+                              </p>
+                              <p className="text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed mb-2">
+                                {p.desc}
+                              </p>
+                              {p.contexts?.length ? (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {p.contexts.map((ctx, ci) => (
+                                    <span
+                                      key={ci}
+                                      className="inline-flex items-center rounded-md bg-brand-navy/5 border border-brand-navy/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-navy/70"
+                                    >
+                                      {ctx}
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : null}
+                            </div>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
                </div>
             </div>
          </div>
