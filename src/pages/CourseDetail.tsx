@@ -169,6 +169,8 @@ export default function CourseDetail() {
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
+  const [openCompetency, setOpenCompetency] = useState<number | null>(null);
+  const [openCareerPath, setOpenCareerPath] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1243,95 +1245,175 @@ export default function CourseDetail() {
       </section>
 
       {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
-      <section id="competenze-sbocchi" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
+      <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
          <div className="max-w-[941px] mx-auto px-4">
-            {competenciesAndCareers.eyebrow ? (
-              <p className="text-lg font-display font-black text-brand-accent mb-3">
-                {competenciesAndCareers.eyebrow}
-              </p>
-            ) : null}
-            <h2 className={`${tSection} mb-4`}>
-              {competenciesAndCareers.title ?? 'Cosa saprai fare e dove potrai lavorare'}
-            </h2>
-            {competenciesAndCareers.intro ? (
-              <p className={`${tLead} mb-10 lg:mb-12`}>{richText(competenciesAndCareers.intro)}</p>
-            ) : null}
-
-            {competenciesAndCareers.stats?.length ? (
-              <div className="mb-10 lg:mb-14 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {competenciesAndCareers.stats.map((s, i) => (
-                  <div
-                    key={i}
-                    className="rounded-2xl bg-white border border-gray-100 px-6 py-5 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.18)]"
-                  >
-                    <p className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
-                      {s.value}
-                    </p>
-                    <p className="mt-1 text-[11px] sm:text-xs font-black uppercase tracking-[0.18em] text-brand-navy/55">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-8 lg:mb-10">
+              <div className="max-w-2xl">
+                {competenciesAndCareers.eyebrow ? (
+                  <p className="text-base font-display font-black text-brand-accent mb-2">
+                    {competenciesAndCareers.eyebrow}
+                  </p>
+                ) : null}
+                <h2 className={`${tSection} mb-3`}>
+                  {competenciesAndCareers.title ?? 'Cosa saprai fare e dove potrai lavorare'}
+                </h2>
+                {competenciesAndCareers.intro ? (
+                  <p className={`${tBody} max-w-xl`}>
+                    {richText(competenciesAndCareers.intro)}
+                  </p>
+                ) : null}
               </div>
-            ) : null}
-
-            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-               {/* Competenze card */}
-               <div className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_18px_50px_-38px_rgba(0,21,51,0.18)] p-7 sm:p-9">
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
-                      <TargetIcon size={20} strokeWidth={2} />
+              {competenciesAndCareers.stats?.length ? (
+                <div className="flex flex-wrap gap-2 lg:justify-end lg:flex-col lg:items-end lg:gap-1.5">
+                  {competenciesAndCareers.stats.map((s, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-baseline gap-1.5 rounded-full bg-white ring-1 ring-brand-navy/10 px-3 py-1.5"
+                    >
+                      <span className="text-sm font-display font-black tracking-tight text-brand-navy">
+                        {s.value}
+                      </span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-navy/55">
+                        {s.label}
+                      </span>
                     </span>
-                    <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-tight text-brand-navy">
-                      Competenze che acquisirai
-                    </h3>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-6">
+               {/* Competenze */}
+               <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
+                  <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
+                      <TargetIcon size={16} strokeWidth={2.25} />
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm sm:text-base font-display font-black uppercase tracking-tight text-brand-navy leading-tight">
+                        Competenze che acquisirai
+                      </h3>
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-navy/45 mt-0.5">
+                        {competenciesAndCareers.competencies.length} aree · tocca per aprire
+                      </p>
+                    </div>
                   </div>
-                  <ul className="space-y-5">
-                    {competenciesAndCareers.competencies.map((c, i) => (
-                      <li key={i} className="flex gap-3">
-                        <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#008060]" />
-                        <div>
-                          <p className="text-sm sm:text-base font-black text-brand-navy leading-snug mb-1">
-                            {c.title}
-                          </p>
-                          <p className={tBody}>{c.desc}</p>
-                        </div>
-                      </li>
-                    ))}
+                  <ul>
+                    {competenciesAndCareers.competencies.map((c, i) => {
+                      const open = openCompetency === i;
+                      return (
+                        <li key={i} className="border-b border-gray-100 last:border-b-0">
+                          <button
+                            type="button"
+                            onClick={() => setOpenCompetency(open ? null : i)}
+                            className="w-full flex items-center gap-3 px-5 py-3.5 text-left group"
+                            aria-expanded={open}
+                          >
+                            <CheckCircle2 size={16} className="shrink-0 text-[#008060]" />
+                            <span className="flex-1 text-sm font-black text-brand-navy leading-snug group-hover:text-brand-accent transition-colors">
+                              {c.title}
+                            </span>
+                            <span
+                              className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy/60 transition-all ${
+                                open ? 'bg-brand-navy text-white border-brand-navy rotate-180' : ''
+                              }`}
+                            >
+                              {open ? <Minus size={12} strokeWidth={2.5} /> : <Plus size={12} strokeWidth={2.5} />}
+                            </span>
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {open && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden"
+                              >
+                                <p className="px-5 pb-4 pl-[52px] text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed">
+                                  {c.desc}
+                                </p>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </li>
+                      );
+                    })}
                   </ul>
                </div>
 
-               {/* Sbocchi card */}
-               <div className="rounded-[1.75rem] bg-[#001D4B] text-white p-7 sm:p-9 relative overflow-hidden">
+               {/* Sbocchi */}
+               <div className="rounded-[1.5rem] bg-[#001D4B] text-white overflow-hidden relative">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/20 blur-3xl" />
                   <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[#E2FF3B] ring-1 ring-white/10">
-                        <Compass size={20} strokeWidth={2} />
+                    <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#E2FF3B] ring-1 ring-white/10">
+                        <Compass size={16} strokeWidth={2.25} />
                       </span>
-                      <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-tight">
-                        Sbocchi professionali
-                      </h3>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm sm:text-base font-display font-black uppercase tracking-tight leading-tight">
+                          Sbocchi professionali
+                        </h3>
+                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/45 mt-0.5">
+                          {competenciesAndCareers.careerPaths.length} percorsi · tocca per aprire
+                        </p>
+                      </div>
                     </div>
-                    <ul className="space-y-5">
-                      {competenciesAndCareers.careerPaths.map((p, i) => (
-                        <li key={i} className="pb-5 border-b border-white/10 last:border-b-0 last:pb-0">
-                          <p className="text-sm sm:text-base font-black leading-snug mb-1.5">{p.title}</p>
-                          <p className="text-white/65 text-sm font-medium leading-relaxed mb-3">{p.desc}</p>
-                          {p.contexts?.length ? (
-                            <div className="flex flex-wrap gap-1.5">
-                              {p.contexts.map((ctx, ci) => (
-                                <span
-                                  key={ci}
-                                  className="inline-flex items-center rounded-md bg-white/5 border border-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white/80"
+                    <ul>
+                      {competenciesAndCareers.careerPaths.map((p, i) => {
+                        const open = openCareerPath === i;
+                        return (
+                          <li key={i} className="border-b border-white/10 last:border-b-0">
+                            <button
+                              type="button"
+                              onClick={() => setOpenCareerPath(open ? null : i)}
+                              className="w-full flex items-center gap-3 px-5 py-3.5 text-left group"
+                              aria-expanded={open}
+                            >
+                              <span className="h-2 w-2 rounded-full bg-[#E2FF3B] shrink-0" />
+                              <span className="flex-1 text-sm font-black leading-snug group-hover:text-[#E2FF3B] transition-colors">
+                                {p.title}
+                              </span>
+                              <span
+                                className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all ${
+                                  open ? 'bg-[#E2FF3B] text-brand-navy border-[#E2FF3B]' : ''
+                                }`}
+                              >
+                                {open ? <Minus size={12} strokeWidth={2.5} /> : <Plus size={12} strokeWidth={2.5} />}
+                              </span>
+                            </button>
+                            <AnimatePresence initial={false}>
+                              {open && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
                                 >
-                                  {ctx}
-                                </span>
-                              ))}
-                            </div>
-                          ) : null}
-                        </li>
-                      ))}
+                                  <div className="px-5 pb-4 pl-[44px]">
+                                    <p className="text-xs sm:text-[13px] text-white/70 font-medium leading-relaxed mb-2.5">
+                                      {p.desc}
+                                    </p>
+                                    {p.contexts?.length ? (
+                                      <div className="flex flex-wrap gap-1.5">
+                                        {p.contexts.map((ctx, ci) => (
+                                          <span
+                                            key={ci}
+                                            className="inline-flex items-center rounded-md bg-white/5 border border-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white/75"
+                                          >
+                                            {ctx}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                </div>
