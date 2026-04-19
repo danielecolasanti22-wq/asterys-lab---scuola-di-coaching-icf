@@ -125,6 +125,35 @@ export interface CourseData {
     title: string;
     intro: string;
   };
+  testimonials?: CourseTestimonial[];
+  competenciesAndCareers?: {
+    eyebrow?: string;
+    title?: string;
+    intro?: string;
+    competencies: CourseCompetency[];
+    careerPaths: CourseCareerPath[];
+    stats?: { value: string; label: string }[];
+  };
+}
+
+export interface CourseTestimonial {
+  name: string;
+  role: string;
+  img?: string;
+  quote: string;
+  rating?: number;
+  cohort?: string;
+}
+
+export interface CourseCompetency {
+  title: string;
+  desc: string;
+}
+
+export interface CourseCareerPath {
+  title: string;
+  desc: string;
+  contexts?: string[];
 }
 
 export interface CourseMedia {
@@ -148,6 +177,36 @@ export function defaultCourseMedia(slug: string): CourseMedia {
     howItWorks: `https://picsum.photos/seed/${slug}-how/900/700`,
   };
 }
+
+export const commonTestimonials: CourseTestimonial[] = [
+  {
+    name: "Laura Bianchi",
+    role: "Executive Coach · ex HR Director",
+    img: "https://picsum.photos/seed/testimonial-laura/400/400",
+    quote:
+      "Il percorso con Asterys Lab ha trasformato il mio modo di lavorare con le persone. Ho trovato metodo, comunità e una credibilità professionale che prima non avevo.",
+    rating: 5,
+    cohort: "Alumna APCM"
+  },
+  {
+    name: "Marco Ferrari",
+    role: "Team Coach & Consulente",
+    img: "https://picsum.photos/seed/testimonial-marco/400/400",
+    quote:
+      "Qualità dei docenti, supervisione seria e una rete di alumni concreta. Ho iniziato a prendere i primi clienti durante il Master e oggi lavoro come coach full-time.",
+    rating: 5,
+    cohort: "Alumno APCM"
+  },
+  {
+    name: "Silvia Rossi",
+    role: "People Manager · Coach PCC",
+    img: "https://picsum.photos/seed/testimonial-silvia/400/400",
+    quote:
+      "Non è solo una certificazione: è un percorso di crescita personale. L'intelligenza emotiva e l'approccio sistemico mi hanno cambiato anche nella vita quotidiana.",
+    rating: 5,
+    cohort: "Alumna APCM"
+  }
+];
 
 const commonFaqs = [
   {
@@ -357,7 +416,105 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ],
     faqs: commonFaqs,
-    placementStats: { rate: "98%", partners: "150+", opportunities: "500+" }
+    placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
+    testimonials: [
+      {
+        name: "Chiara De Luca",
+        role: "Executive Coach · ex Senior HR Manager",
+        img: "https://picsum.photos/seed/apcm-chiara/400/400",
+        quote:
+          "Sono entrata con 15 anni di HR alle spalle e sono uscita con un metodo chiaro, le credenziali ICF e una nuova professione. I feedback dei Mentor MCC sono stati il vero salto di qualità.",
+        rating: 5,
+        cohort: "APCM 2023 · Certificata PCC"
+      },
+      {
+        name: "Andrea Moretti",
+        role: "Team Coach & Facilitator",
+        img: "https://picsum.photos/seed/apcm-andrea/400/400",
+        quote:
+          "Il modulo Prosperous Coach mi ha dato gli strumenti pratici per costruire la mia offerta. A sei mesi dalla fine del Master seguivo già i primi progetti corporate.",
+        rating: 5,
+        cohort: "APCM 2022 · Alumno"
+      },
+      {
+        name: "Martina Colombo",
+        role: "Leadership Coach · Psicologa del lavoro",
+        img: "https://picsum.photos/seed/apcm-martina/400/400",
+        quote:
+          "L'approccio sistemico e l'intelligenza emotiva misurabile hanno portato la mia pratica a un altro livello. La community degli alumni è un supporto quotidiano.",
+        rating: 5,
+        cohort: "APCM 2024 · In certificazione ACC"
+      }
+    ],
+    competenciesAndCareers: {
+      eyebrow: "Competenze & Professione",
+      title: "Cosa saprai fare e dove potrai lavorare",
+      intro:
+        "Al termine del Master padroneggi **competenze ICF certificabili**, strumenti di **intelligenza emotiva misurabile** e un **approccio sistemico**. Potrai operare come coach professionista in diversi contesti — libera professione, aziende, enti pubblici e terzo settore.",
+      stats: [
+        { value: "98%", label: "Tasso di certificazione ICF" },
+        { value: "3.000+", label: "Alumni Asterys nel mondo" },
+        { value: "20+ anni", label: "Di metodo e ricerca sul coaching" }
+      ],
+      competencies: [
+        {
+          title: "Condurre sessioni ICF Level 1 & 2",
+          desc: "Progetti e guidi percorsi di coaching strutturati rispettando le 8 core competence ICF e il codice etico internazionale."
+        },
+        {
+          title: "Leggere e allenare l'intelligenza emotiva",
+          desc: "Utilizzi il modello KCG / Six Seconds per mappare, allenare e misurare competenze emotive nei clienti e nei team."
+        },
+        {
+          title: "Facilitare sistemi complessi",
+          desc: "Applichi un approccio sistemico alle dinamiche organizzative, leggendo relazioni, stakeholder e vincoli oltre il singolo individuo."
+        },
+        {
+          title: "Costruire il tuo business di coaching",
+          desc: "Definisci posizionamento, offerta e pricing. Acquisisci clienti in modo etico e costruisci un portfolio sostenibile nel tempo."
+        },
+        {
+          title: "Supervisionare la tua pratica",
+          desc: "Integri pratica supervisionata, feedback da Mentor MCC e auto-riflessione come parte del metodo professionale continuativo."
+        },
+        {
+          title: "Operare in contesti internazionali",
+          desc: "Padroneggi un linguaggio e uno standard riconosciuti a livello internazionale, con credenziali ICF spendibili ovunque."
+        }
+      ],
+      careerPaths: [
+        {
+          title: "Coach Libero Professionista",
+          desc: "Avvii la tua pratica 1-to-1 come Life, Career o Executive Coach, lavorando con clienti privati e manager.",
+          contexts: ["Studio privato", "Percorsi individuali", "Online & in presenza"]
+        },
+        {
+          title: "Executive & Leadership Coach",
+          desc: "Affianchi manager e C-level in percorsi di sviluppo della leadership, transizioni di ruolo e gestione della complessità.",
+          contexts: ["Aziende", "Scale-up", "Board & C-level"]
+        },
+        {
+          title: "Team & Business Coach",
+          desc: "Accompagni team e reparti ad alta performance, gestendo conflitti, allineamento e obiettivi in una logica sistemica.",
+          contexts: ["Team aziendali", "Start-up", "Progetti trasformativi"]
+        },
+        {
+          title: "HR & People Development",
+          desc: "Porti cultura coaching dentro l'organizzazione come HR Business Partner, People Manager o responsabile L&D.",
+          contexts: ["HR & L&D interni", "Talent development", "Change management"]
+        },
+        {
+          title: "Trainer & Formatore",
+          desc: "Progetti e conduci percorsi formativi d'aula, workshop e programmi di sviluppo competenze per aziende e scuole.",
+          contexts: ["Aziende", "Scuole & università", "Corporate academy"]
+        },
+        {
+          title: "Consulente di sviluppo organizzativo",
+          desc: "Integri coaching, IE e approccio sistemico in interventi di OD, cultura aziendale e trasformazione delle persone.",
+          contexts: ["Società di consulenza", "Studi professionali", "Progetti in autonomia"]
+        }
+      ]
+    }
   },
   'systemic-team-coaching': {
     title: "Systemic Team Coaching Master",

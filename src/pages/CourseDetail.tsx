@@ -17,13 +17,19 @@ import {
   Calendar,
   Monitor,
   Sparkles,
+  Quote,
+  Compass,
+  Target as TargetIcon,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   coursesContent,
+  commonTestimonials,
   defaultCourseMedia,
   CourseData,
   CourseScheduleBand,
+  CourseCompetency,
+  CourseCareerPath,
 } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 
@@ -166,6 +172,36 @@ export default function CourseDetail() {
   };
 
   const scheduleBands = scheduleBandsFromCourse(course);
+
+  const testimonials = course.testimonials?.length ? course.testimonials : commonTestimonials;
+
+  const derivedCompetencies: CourseCompetency[] = course.learning.cols.flatMap((col) =>
+    col.items.slice(0, 2).map((item) => ({
+      title: item,
+      desc: `Approfondisci ${item.toLowerCase()} all'interno del modulo "${col.title}", con pratica guidata e feedback dai trainer.`,
+    })),
+  );
+
+  const derivedCareerPaths: CourseCareerPath[] = course.career.points.length
+    ? course.career.points.map((p) => ({ title: p.title, desc: p.desc }))
+    : [
+        {
+          title: 'Libera professione',
+          desc: 'Applichi le competenze del percorso in contesti professionali autonomi e come consulente.',
+        },
+        {
+          title: 'Ruoli aziendali',
+          desc: 'Porti il metodo dentro organizzazioni che cercano competenze trasversali e people skill.',
+        },
+      ];
+
+  const competenciesAndCareers = course.competenciesAndCareers ?? {
+    eyebrow: 'Competenze & Professione',
+    title: 'Cosa saprai fare e dove potrai lavorare',
+    intro: `Un mix equilibrato di **competenze tecniche e trasversali**, pensato per renderti operativo in contesti professionali diversi fin da subito.`,
+    competencies: derivedCompetencies,
+    careerPaths: derivedCareerPaths,
+  };
 
   const studyMode =
     course.studyModeBox ?? {
@@ -765,6 +801,161 @@ export default function CourseDetail() {
                     </div>
                     <h3 className="text-sm sm:text-base font-black uppercase tracking-tight mb-3 leading-snug">{p.title}</h3>
                     <p className="text-brand-navy/50 text-xs font-medium leading-relaxed">{p.desc}</p>
+                 </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
+      <section id="competenze-sbocchi" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
+         <div className="max-w-[941px] mx-auto px-4">
+            {competenciesAndCareers.eyebrow ? (
+              <p className="text-lg font-display font-black text-brand-accent mb-3">
+                {competenciesAndCareers.eyebrow}
+              </p>
+            ) : null}
+            <h2 className={`${tSection} mb-4`}>
+              {competenciesAndCareers.title ?? 'Cosa saprai fare e dove potrai lavorare'}
+            </h2>
+            {competenciesAndCareers.intro ? (
+              <p className={`${tLead} mb-10 lg:mb-12`}>{richText(competenciesAndCareers.intro)}</p>
+            ) : null}
+
+            {competenciesAndCareers.stats?.length ? (
+              <div className="mb-10 lg:mb-14 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {competenciesAndCareers.stats.map((s, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl bg-white border border-gray-100 px-6 py-5 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.18)]"
+                  >
+                    <p className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
+                      {s.value}
+                    </p>
+                    <p className="mt-1 text-[11px] sm:text-xs font-black uppercase tracking-[0.18em] text-brand-navy/55">
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+               {/* Competenze card */}
+               <div className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_18px_50px_-38px_rgba(0,21,51,0.18)] p-7 sm:p-9">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
+                      <TargetIcon size={20} strokeWidth={2} />
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-tight text-brand-navy">
+                      Competenze che acquisirai
+                    </h3>
+                  </div>
+                  <ul className="space-y-5">
+                    {competenciesAndCareers.competencies.map((c, i) => (
+                      <li key={i} className="flex gap-3">
+                        <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#008060]" />
+                        <div>
+                          <p className="text-sm sm:text-base font-black text-brand-navy leading-snug mb-1">
+                            {c.title}
+                          </p>
+                          <p className={tBody}>{c.desc}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+               </div>
+
+               {/* Sbocchi card */}
+               <div className="rounded-[1.75rem] bg-[#001D4B] text-white p-7 sm:p-9 relative overflow-hidden">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/20 blur-3xl" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[#E2FF3B] ring-1 ring-white/10">
+                        <Compass size={20} strokeWidth={2} />
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-tight">
+                        Sbocchi professionali
+                      </h3>
+                    </div>
+                    <ul className="space-y-5">
+                      {competenciesAndCareers.careerPaths.map((p, i) => (
+                        <li key={i} className="pb-5 border-b border-white/10 last:border-b-0 last:pb-0">
+                          <p className="text-sm sm:text-base font-black leading-snug mb-1.5">{p.title}</p>
+                          <p className="text-white/65 text-sm font-medium leading-relaxed mb-3">{p.desc}</p>
+                          {p.contexts?.length ? (
+                            <div className="flex flex-wrap gap-1.5">
+                              {p.contexts.map((ctx, ci) => (
+                                <span
+                                  key={ci}
+                                  className="inline-flex items-center rounded-md bg-white/5 border border-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white/80"
+                                >
+                                  {ctx}
+                                </span>
+                              ))}
+                            </div>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* 8c. TESTIMONIANZE */}
+      <section id="testimonianze" className="py-16 lg:py-24 bg-white">
+         <div className="max-w-[941px] mx-auto px-4">
+            <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
+            <h2 className={`${tSection} mb-4`}>
+              Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
+            </h2>
+            <p className={`${tLead} mb-12`}>
+              Professionisti che hanno trasformato la loro carriera con il nostro metodo. Ecco cosa raccontano.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-7">
+               {testimonials.map((t, i) => (
+                 <div
+                   key={i}
+                   className="relative flex flex-col bg-white rounded-[1.5rem] p-6 sm:p-7 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.18)] h-full"
+                 >
+                   <Quote size={32} className="text-brand-accent/25 mb-4 shrink-0" strokeWidth={2.25} />
+                   {t.rating ? (
+                     <div className="flex text-[#008060] gap-0.5 mb-4">
+                       {Array.from({ length: t.rating }).map((_, s) => (
+                         <Star key={s} size={13} fill="currentColor" />
+                       ))}
+                     </div>
+                   ) : null}
+                   <p className="text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-medium mb-6 flex-1">
+                     “{t.quote}”
+                   </p>
+                   <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
+                     {t.img ? (
+                       <img
+                         src={t.img}
+                         alt={t.name}
+                         className="h-11 w-11 rounded-full object-cover border-2 border-white shadow"
+                       />
+                     ) : (
+                       <div className="h-11 w-11 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black">
+                         {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                       </div>
+                     )}
+                     <div>
+                       <p className="text-sm font-black text-brand-navy leading-tight">{t.name}</p>
+                       <p className="text-[11px] font-semibold text-brand-navy/55 leading-tight mt-0.5">
+                         {t.role}
+                       </p>
+                       {t.cohort ? (
+                         <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent mt-1">
+                           {t.cohort}
+                         </p>
+                       ) : null}
+                     </div>
+                   </div>
                  </div>
                ))}
             </div>
