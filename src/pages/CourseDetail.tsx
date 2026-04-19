@@ -1405,15 +1405,12 @@ export default function CourseDetail() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-4 lg:auto-rows-[210px] lg:grid-flow-dense">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:auto-rows-[210px]">
               {testimonials.map((t, i) => {
-                const layout = [
-                  'sm:row-span-2 lg:col-span-3 lg:row-span-2', // 0: big video
-                  'lg:col-span-3 lg:row-span-1',               // 1: wide text
-                  'lg:col-span-3 lg:row-span-1',               // 2: wide text
-                  'sm:col-span-2 lg:col-span-4 lg:row-span-2', // 3: wide video
-                  'lg:col-span-2 lg:row-span-2',               // 4: tall text
-                ][i] ?? 'lg:col-span-2 lg:row-span-1';
+                const isBig = i === 0;
+                const layout = isBig
+                  ? 'sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2'
+                  : 'lg:col-span-1 lg:row-span-1';
 
                 if (t.video) {
                   return (
@@ -1421,7 +1418,7 @@ export default function CourseDetail() {
                       key={i}
                       type="button"
                       onClick={() => setActiveVideoTestimonial(i)}
-                      className={`group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[320px] sm:min-h-0 ${layout}`}
+                      className={`group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[380px] lg:min-h-0 ${layout}`}
                     >
                       <img
                         src={t.video.poster}
@@ -1429,25 +1426,25 @@ export default function CourseDetail() {
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
+                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
                         <Video size={11} strokeWidth={2.75} />
                         Video
                       </div>
                       {t.video.duration ? (
-                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
+                        <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
                           {t.video.duration}
                         </div>
                       ) : null}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="inline-flex h-14 w-14 lg:h-16 lg:w-16 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
-                          <Play size={22} strokeWidth={2.5} className="ml-1" fill="currentColor" />
+                        <span className="inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
+                          <Play size={isBig ? 28 : 22} strokeWidth={2.5} className="ml-1" fill="currentColor" />
                         </span>
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5 text-white">
-                        <p className="text-sm lg:text-base font-display font-black leading-tight mb-0.5">{t.name}</p>
-                        <p className="text-[11px] font-semibold text-white/75 leading-tight">{t.role}</p>
+                      <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
+                        <p className={`font-display font-black leading-tight mb-0.5 ${isBig ? 'text-lg lg:text-xl' : 'text-sm lg:text-base'}`}>{t.name}</p>
+                        <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{t.role}</p>
                         {t.cohort ? (
-                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-1.5">
+                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
                             {t.cohort}
                           </p>
                         ) : null}
@@ -1456,24 +1453,25 @@ export default function CourseDetail() {
                   );
                 }
 
-                const isTall = i === 4;
                 return (
                   <div
                     key={i}
-                    className={`relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] ${layout}`}
+                    className={`relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden ${layout}`}
                   >
-                    <Quote size={isTall ? 32 : 24} className="text-brand-accent/25 mb-2 shrink-0" strokeWidth={2.25} />
-                    {t.rating ? (
-                      <div className="flex text-[#008060] gap-0.5 mb-2">
-                        {Array.from({ length: t.rating }).map((_, s) => (
-                          <Star key={s} size={12} fill="currentColor" />
-                        ))}
-                      </div>
-                    ) : null}
-                    <p className={`text-brand-navy/75 leading-relaxed font-medium flex-1 ${isTall ? 'text-sm lg:text-[15px]' : 'text-[13px] lg:text-sm'} mb-4 line-clamp-6`}>
+                    <div className="flex items-center justify-between mb-2 shrink-0">
+                      <Quote size={22} className="text-brand-accent/25" strokeWidth={2.25} />
+                      {t.rating ? (
+                        <div className="flex text-[#008060] gap-0.5">
+                          {Array.from({ length: t.rating }).map((_, s) => (
+                            <Star key={s} size={11} fill="currentColor" />
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                    <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-3 line-clamp-4 min-h-0">
                       “{t.quote}”
                     </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+                    <div className="flex items-center gap-3 pt-3 border-t border-gray-100 shrink-0">
                       {t.img ? (
                         <img
                           src={t.img}

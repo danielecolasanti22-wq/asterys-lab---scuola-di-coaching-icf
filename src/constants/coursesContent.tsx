@@ -492,9 +492,14 @@ export const coursesContent: Record<string, CourseData> = {
         role: "Executive Coach · ex Senior HR Manager",
         img: "https://picsum.photos/seed/apcm-chiara/400/400",
         quote:
-          "Sono entrata con 15 anni di HR alle spalle e sono uscita con un metodo chiaro, le credenziali ICF e una nuova professione. I feedback dei Mentor MCC sono stati il vero salto di qualità.",
+          "La mia storia in video: dai 15 anni di HR al mio studio di coaching certificato ICF.",
         rating: 5,
-        cohort: "APCM 2023 · Certificata PCC"
+        cohort: "APCM 2023 · Certificata PCC",
+        video: {
+          poster: "https://picsum.photos/seed/apcm-chiara-video/1200/1400",
+          src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          duration: "1:48"
+        }
       },
       {
         name: "Andrea Moretti",
