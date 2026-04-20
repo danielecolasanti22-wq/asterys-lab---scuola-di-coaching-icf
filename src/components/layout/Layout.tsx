@@ -1,25 +1,83 @@
-import { useState, useEffect, ReactNode } from 'react';
-import { 
-  Menu, 
-  X, 
-  Download, 
-  Zap, 
-  Globe, 
-  PhoneCall, 
-  MessageCircle, 
+import { useState, useEffect, useRef, ReactNode } from 'react';
+import {
+  Menu,
+  X,
+  Download,
+  Zap,
+  Globe,
+  PhoneCall,
+  MessageCircle,
   ArrowRight,
+  ArrowUpRight,
   Star,
   Play,
   Video,
   Monitor,
-  ChevronDown
+  ChevronDown,
+  GraduationCap,
+  Sparkles,
+  Clock,
+  Calendar
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 
+type MegaCourseItem = {
+  id: string;
+  title: string;
+  kicker: string;
+  meta: string;
+};
+
+type MegaColumn = {
+  label: string;
+  caption: string;
+  icon: 'master' | 'specialization' | 'short';
+  items: MegaCourseItem[];
+};
+
+const megaColumns: MegaColumn[] = [
+  {
+    label: 'Master',
+    caption: 'Percorsi completi per diventare coach ICF',
+    icon: 'master',
+    items: [
+      { id: 'apcm', title: 'Professione Coach', kicker: 'APCM · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
+      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Master Avanzato', meta: '60 ore · Live Online' },
+      { id: 'mentor-coaching', title: 'Mentor Coaching ICF', kicker: 'Verso ACC e PCC', meta: '10 ore · Online' },
+    ],
+  },
+  {
+    label: 'Specializzazioni',
+    caption: 'Approfondisci ambiti chiave del coaching',
+    icon: 'specialization',
+    items: [
+      { id: 'prosperous-coach', title: 'Prosperous Coach', kicker: 'Business del Coaching', meta: '3 mesi · Masterclass + 1:1' },
+      { id: 'hr-manager-coaching', title: 'Manager come Coach', kicker: 'Leadership & HR', meta: '32 ore · Ibrido' },
+    ],
+  },
+  {
+    label: 'Corsi brevi',
+    caption: 'Skill pratiche, tempi ridotti',
+    icon: 'short',
+    items: [
+      { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'EIW · Six Seconds', meta: '24 ore · Live Online' },
+      { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '16 ore · Live Online' },
+    ],
+  },
+];
+
+const megaIconFor = (icon: MegaColumn['icon']) => {
+  if (icon === 'master') return <GraduationCap size={16} />;
+  if (icon === 'specialization') return <Sparkles size={16} />;
+  return <Clock size={16} />;
+};
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
 
@@ -28,6 +86,23 @@ export const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsMegaOpen(false);
+  }, [location.pathname]);
+
+  const openMega = () => {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setIsMegaOpen(true);
+  };
+
+  const scheduleCloseMega = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setIsMegaOpen(false), 120);
+  };
 
   const navLinks = [
     { name: 'Corsi', href: '/corsi', hasDropdown: true },
@@ -53,19 +128,46 @@ export const Header = () => {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.href} 
-                className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${location.pathname === link.href ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
-              >
-                {link.name}
-                {link.hasDropdown && <ChevronDown size={14} className="mt-0.5 opacity-60" />}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.hasDropdown ? (
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={openMega}
+                  onMouseLeave={scheduleCloseMega}
+                  onFocus={openMega}
+                  onBlur={scheduleCloseMega}
+                >
+                  <Link
+                    to={link.href}
+                    className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                      location.pathname.startsWith('/corsi') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
+                    }`}
+                    aria-haspopup="true"
+                    aria-expanded={isMegaOpen}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      size={14}
+                      className={`mt-0.5 opacity-60 transition-transform ${isMegaOpen ? 'rotate-180' : ''}`}
+                    />
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                    location.pathname === link.href ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
             <div className="h-4 w-px bg-gray-200"></div>
-            <Link 
-              to="/aziende" 
+            <Link
+              to="/aziende"
               className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
             >
               Per le aziende
@@ -87,6 +189,92 @@ export const Header = () => {
         </button>
       </div>
 
+      {/* Desktop Mega Menu */}
+      <AnimatePresence>
+        {isMegaOpen && (
+          <motion.div
+            key="mega-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            className="hidden lg:block absolute top-full left-0 right-0 pt-3"
+            onMouseEnter={openMega}
+            onMouseLeave={scheduleCloseMega}
+          >
+            <div className="max-w-[920px] mx-auto px-4">
+              <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
+                <div className="grid grid-cols-3 gap-0 p-6">
+                  {megaColumns.map((col, idx) => (
+                    <div
+                      key={col.label}
+                      className={`flex flex-col gap-3 px-4 ${idx < megaColumns.length - 1 ? 'border-r border-gray-100' : ''}`}
+                    >
+                      <div className="flex items-center gap-2 text-brand-accent">
+                        <span className="w-7 h-7 rounded-lg bg-brand-blue-soft/60 text-brand-accent flex items-center justify-center">
+                          {megaIconFor(col.icon)}
+                        </span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.22em]">{col.label}</span>
+                      </div>
+                      <p className="text-xs text-brand-navy/60 font-medium leading-snug -mt-1">{col.caption}</p>
+                      <div className="flex flex-col gap-1 mt-1">
+                        {col.items.map((item) => (
+                          <Link
+                            key={item.id}
+                            to={`/corsi/${item.id}`}
+                            className="group/item flex flex-col gap-0.5 rounded-lg px-3 py-2.5 -mx-1 hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/item:text-brand-accent transition-colors">
+                                {item.title}
+                              </span>
+                              <ArrowUpRight
+                                size={14}
+                                className="text-brand-navy/20 group-hover/item:text-brand-accent group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 transition-all"
+                              />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
+                              {item.kicker}
+                            </span>
+                            <span className="text-[11px] text-brand-navy/55 font-medium">{item.meta}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between gap-4 px-8 py-4 bg-gray-50 border-t border-gray-100">
+                  <Link
+                    to="/corsi"
+                    className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-brand-navy hover:text-brand-accent transition-colors"
+                  >
+                    Vedi tutti i corsi
+                    <ArrowRight size={14} />
+                  </Link>
+                  <div className="flex items-center gap-5">
+                    <Link
+                      to="/eventi"
+                      className="flex items-center gap-1.5 text-[11px] font-bold text-brand-navy/70 hover:text-brand-accent transition-colors"
+                    >
+                      <Calendar size={13} />
+                      Prossimi eventi
+                    </Link>
+                    <a
+                      href="#advisor"
+                      className="flex items-center gap-1.5 text-[11px] font-bold text-brand-navy hover:text-[#25D366] transition-colors"
+                    >
+                      <MessageCircle size={13} />
+                      Parla con un advisor
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -94,18 +282,52 @@ export const Header = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t lg:hidden flex flex-col p-6 gap-4"
+            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t lg:hidden flex flex-col p-6 gap-4 max-h-[85vh] overflow-y-auto"
           >
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.href} 
-                className={`text-lg font-black uppercase tracking-widest ${location.pathname === link.href ? 'text-brand-accent' : 'text-brand-navy'}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
+            {megaColumns.map((col) => (
+              <div key={col.label} className="flex flex-col gap-2">
+                <div className="flex items-center gap-2 text-brand-accent">
+                  <span className="w-7 h-7 rounded-lg bg-brand-blue-soft/60 flex items-center justify-center">
+                    {megaIconFor(col.icon)}
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em]">{col.label}</span>
+                </div>
+                <div className="flex flex-col pl-9">
+                  {col.items.map((item) => (
+                    <Link
+                      key={item.id}
+                      to={`/corsi/${item.id}`}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="py-2 text-sm font-black text-brand-navy hover:text-brand-accent tracking-tight"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
+            <Link
+              to="/corsi"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-xs font-black uppercase tracking-[0.2em] text-brand-accent flex items-center gap-2"
+            >
+              Vedi tutti i corsi <ArrowRight size={14} />
+            </Link>
+            <hr className="my-1 border-brand-blue-soft" />
+            <Link
+              to="/eventi"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/eventi' ? 'text-brand-accent' : 'text-brand-navy'}`}
+            >
+              Eventi
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
+            >
+              Blog
+            </Link>
             <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per le aziende</Link>
             <hr className="my-2 border-brand-blue-soft" />
             <button className="bg-[#1D3BB9] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center">Iscriviti</button>
