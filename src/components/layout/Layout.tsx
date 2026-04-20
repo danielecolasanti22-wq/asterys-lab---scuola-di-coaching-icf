@@ -2,22 +2,25 @@ import { useState, useEffect, useRef, ReactNode } from 'react';
 import {
   Menu,
   X,
-  Download,
-  Zap,
-  Globe,
-  PhoneCall,
   MessageCircle,
   ArrowRight,
   ArrowUpRight,
   Star,
-  Play,
-  Video,
-  Monitor,
   ChevronDown,
   GraduationCap,
   Sparkles,
   Clock,
-  Calendar
+  Calendar,
+  Send,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Facebook,
+  MapPin,
+  Phone,
+  Mail,
+  ShieldCheck,
+  Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
@@ -428,87 +431,367 @@ export const Header = () => {
   );
 };
 
+const socialChannels = [
+  {
+    name: 'Instagram',
+    handle: '@asteryslab',
+    href: 'https://instagram.com/',
+    icon: <Instagram size={18} />,
+    gradient: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
+  },
+  {
+    name: 'LinkedIn',
+    handle: 'Asterys Lab',
+    href: 'https://linkedin.com/',
+    icon: <Linkedin size={18} />,
+    gradient: 'from-[#0A66C2] to-[#1D3BB9]',
+  },
+  {
+    name: 'YouTube',
+    handle: '@asteryslab',
+    href: 'https://youtube.com/',
+    icon: <Youtube size={18} />,
+    gradient: 'from-[#FF0000] to-[#CC0000]',
+  },
+  {
+    name: 'Facebook',
+    handle: 'asteryslab',
+    href: 'https://facebook.com/',
+    icon: <Facebook size={18} />,
+    gradient: 'from-[#1877F2] to-[#0E5FCB]',
+  },
+];
+
+const certifications = [
+  { label: 'ICF Level 1', sub: 'Accredited Coaching Education · 63 ore', badge: 'L1' },
+  { label: 'ICF Level 2', sub: 'Accredited Coaching Education · 130.5 ore', badge: 'L2' },
+  { label: 'ICF AATC', sub: 'Advanced Accreditation Team Coaching', badge: 'AATC' },
+  { label: 'ISO 9001:2015', sub: 'Cert. n. 655Q · Formazione & Coaching', badge: 'ISO' },
+];
+
 export const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-100 pt-24 pb-12">
-      <div className="max-w-7xl mx-auto px-6 overflow-hidden">
-        <div className="flex flex-col lg:flex-row justify-between gap-20 mb-20">
-          <div className="lg:w-1/3">
-            <div className="flex items-center gap-2 mb-10">
-              <div className="w-11 h-11 bg-brand-navy rounded-sm flex items-center justify-center">
-                <span className="text-white font-display font-black text-2xl italic leading-none">A</span>
+    <footer className="bg-brand-navy text-white relative overflow-hidden">
+      {/* soft decorative glow */}
+      <div className="pointer-events-none absolute -top-40 -left-20 w-[500px] h-[500px] rounded-full bg-brand-accent/20 blur-[120px]" />
+      <div className="pointer-events-none absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-[#E2FF3B]/10 blur-[120px]" />
+
+      {/* BAND 1 — NEWSLETTER + SOCIAL (highlighted) */}
+      <section className="relative border-b border-white/10">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20 grid lg:grid-cols-[1.15fr_1fr] gap-8">
+          {/* Newsletter */}
+          <div className="bg-white/[0.04] border border-white/10 rounded-3xl p-8 lg:p-10 backdrop-blur-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#E2FF3B] text-brand-navy flex items-center justify-center">
+                <Send size={18} />
               </div>
-              <span className="font-display font-black text-4xl tracking-tighter text-brand-navy uppercase italic leading-none">Asterys Lab</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+                Newsletter
+              </span>
             </div>
-            <p className="text-brand-navy text-2xl font-black uppercase tracking-tight mb-10 italic leading-tight">La 1° Coaching School ICF Accreditata in Italia</p>
-            
-            <div className="flex items-center gap-8 mb-12 grayscale opacity-40 py-6 border-y border-gray-50">
-               <p className="text-[10px] font-black uppercase tracking-widest">+8.000 professionisti formati</p>
-               <div className="flex text-brand-accent gap-1"><Star size={12} fill="currentColor" /><Star size={12} fill="currentColor" /><Star size={12} fill="currentColor" /><Star size={12} fill="currentColor" /><Star size={12} fill="currentColor" /></div>
-               <p className="text-[10px] font-black uppercase tracking-widest">Trustpilot 4.7 Eccellente</p>
-            </div>
-            
-            <div className="space-y-12">
-               <div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-navy/20 mb-6 italic">Vuoi più informazioni?</h4>
-                  <button className="flex items-center gap-6 group">
-                     <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-brand-navy group-hover:bg-[#25D366] group-hover:text-white transition-all shadow-sm">
-                        <MessageCircle size={28} />
-                     </div>
-                     <div className="text-left">
-                        <p className="text-lg font-black uppercase tracking-tight italic group-hover:text-[#25D366] transition-colors leading-none">Contattaci su WhatsApp</p>
-                     </div>
-                  </button>
-               </div>
-               <div className="space-y-2">
-                  <p className="text-xs font-bold text-brand-navy/60 italic leading-none">Chiama +39 02 1234 5678</p>
-                  <p className="text-xs font-bold text-brand-navy/60 italic leading-none">Scrivici info@asteryslab.com</p>
-               </div>
-            </div>
+            <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
+              Entra in{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10">Asterys Letters</span>
+                <span className="absolute inset-x-[-0.08em] bottom-[0.08em] h-[0.3em] bg-[#E2FF3B] -z-0 rounded-sm" />
+              </span>
+              .
+            </h3>
+            <p className="mt-3 text-sm text-white/70 font-medium max-w-[440px] leading-relaxed">
+              Ogni mese, approfondimenti su coaching, intelligenza emotiva e leadership.
+              Storie di alumni, strumenti pratici, eventi. Senza spam.
+            </p>
+
+            <form
+              className="mt-6 flex flex-col sm:flex-row gap-3"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="text"
+                placeholder="Il tuo nome"
+                className="sm:w-1/3 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-[#E2FF3B] transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="la-tua@email.com"
+                className="flex-1 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-[#E2FF3B] transition-colors"
+              />
+              <button
+                type="submit"
+                className="bg-[#E2FF3B] text-brand-navy px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.2em] hover:bg-white transition-colors whitespace-nowrap"
+              >
+                Iscriviti
+              </button>
+            </form>
+            <p className="mt-3 text-[10px] text-white/40 font-medium">
+              Iscrivendoti accetti l'
+              <a href="#" className="underline decoration-white/30 hover:text-white">
+                informativa privacy
+              </a>
+              .
+            </p>
           </div>
-          
-          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-16 text-left">
-            <div>
-               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-navy/20 mb-12 italic">Percorsi</h4>
-               <ul className="space-y-6 text-sm font-bold text-brand-navy/80 uppercase tracking-tight italic">
-                  <li><Link to="/corsi/apcm" className="hover:text-brand-accent transition-colors">Master APCM</Link></li>
-                  <li><Link to="/corsi/systemic-team-coaching" className="hover:text-brand-accent transition-colors">Team Coaching Sistemico</Link></li>
-                  <li><Link to="/corsi/eiw" className="hover:text-brand-accent transition-colors">Intelligenza Emotiva</Link></li>
-                  <li><Link to="/corsi/prosperous-coach" className="hover:text-brand-accent transition-colors">Prosperous Coach</Link></li>
-                  <li><Link to="/corsi" className="hover:text-brand-accent transition-colors">Tutti i corsi</Link></li>
-               </ul>
+
+          {/* Social */}
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                <Sparkles size={18} />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+                Social
+              </span>
             </div>
-            <div>
-               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-navy/20 mb-12 italic">Prova Gratis</h4>
-               <ul className="space-y-6 text-sm font-bold text-brand-navy/80 uppercase tracking-tight italic">
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Web Development</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Data Analytics</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">UX/UI Design</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Growth Marketing</li>
-               </ul>
-            </div>
-            <div className="col-span-2 md:col-span-1 border-t md:border-t-0 md:border-l border-gray-100 pt-16 md:pt-0 md:pl-16">
-               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-navy/20 mb-12 italic">Links</p>
-               <ul className="space-y-6 text-sm font-bold text-brand-navy/80 uppercase tracking-tight italic">
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Per le Aziende</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Events</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Blog</li>
-                  <li className="hover:text-brand-accent cursor-pointer transition-colors">Finanzia il tuo corso</li>
-               </ul>
+            <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
+              Vieni a conoscerci.
+            </h3>
+            <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed">
+              Backstage delle aule, live con i docenti, storie di alumni.
+            </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {socialChannels.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-2xl p-3.5 transition-colors"
+                >
+                  <div
+                    className={`w-11 h-11 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shrink-0 text-white`}
+                  >
+                    {s.icon}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-black tracking-tight truncate">{s.name}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45 truncate">
+                      {s.handle}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={14}
+                    className="ml-auto text-white/30 group-hover:text-[#E2FF3B] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
+                  />
+                </a>
+              ))}
             </div>
           </div>
         </div>
-        
-        <div className="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/10">
-           <div className="flex gap-12">
-              <span className="hover:text-brand-navy cursor-pointer transition-colors">Terms & Privacy</span>
-           </div>
-           <p className="text-center">Asterys Lab S.r.l. — Scuola di Coaching ICF Accreditata — Milano</p>
-           <div className="flex gap-6 opacity-20">
-              <Play size={16} fill="currentColor" />
-              <Video size={16} fill="currentColor" />
-              <Monitor size={16} fill="currentColor" />
-           </div>
+      </section>
+
+      {/* BAND 2 — CONTACTS (logo, sedi, orari, telefono) */}
+      <section className="border-b border-white/10">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 grid lg:grid-cols-[1.1fr_1fr_1fr] gap-10">
+          {/* Logo + sedi */}
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="relative w-9 h-9 rotate-45 flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#E2FF3B] rounded-sm transform scale-90" />
+                <div className="absolute inset-0 bg-brand-navy rounded-sm transform scale-50 -translate-x-1 -translate-y-1" />
+              </div>
+              <span className="font-sans font-black text-2xl tracking-tighter text-white lowercase">
+                asteryslab
+              </span>
+            </div>
+            <p className="mt-5 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
+              Transforming people, expanding results. La 1° Coaching School ICF accreditata in Italia.
+            </p>
+
+            <div className="mt-7">
+              <div className="flex items-center gap-2 mb-3">
+                <MapPin size={14} className="text-[#E2FF3B]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
+                  Sedi
+                </span>
+              </div>
+              <p className="text-sm text-white/80 font-medium leading-relaxed">
+                <span className="font-black text-white">Milano</span> · via Conservatorio, 22 — 20122
+                <br />
+                <span className="font-black text-white">Roma</span> · via del Porto Fluviale, 35 — 00154
+              </p>
+            </div>
+          </div>
+
+          {/* Orari + Telefono */}
+          <div className="space-y-7">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Clock size={14} className="text-[#E2FF3B]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
+                  Segreteria
+                </span>
+              </div>
+              <p className="text-sm text-white/80 font-medium leading-relaxed">
+                <span className="font-black text-white">Lunedì – Venerdì</span>
+                <br />
+                9:00 – 13:00 · 15:00 – 17:00
+              </p>
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Phone size={14} className="text-[#E2FF3B]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
+                  Telefono
+                </span>
+              </div>
+              <a
+                href="tel:+390280016434"
+                className="block text-sm font-black text-white hover:text-[#E2FF3B] transition-colors"
+              >
+                +39 02 8001 6434
+              </a>
+              <a
+                href="tel:+390687165254"
+                className="block text-sm font-black text-white hover:text-[#E2FF3B] transition-colors mt-1"
+              >
+                +39 06 8716 5254
+              </a>
+            </div>
+          </div>
+
+          {/* Email + WhatsApp + Mappa links */}
+          <div className="space-y-7">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Mail size={14} className="text-[#E2FF3B]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
+                  Scrivici
+                </span>
+              </div>
+              <a
+                href="mailto:info@asteryslab.com"
+                className="text-sm font-black text-white hover:text-[#E2FF3B] transition-colors"
+              >
+                info@asteryslab.com
+              </a>
+            </div>
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
+                <MessageCircle size={18} fill="currentColor" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
+                  Chat diretta
+                </p>
+                <p className="text-sm font-black text-white">Parla con un advisor</p>
+              </div>
+              <ArrowUpRight
+                size={14}
+                className="ml-auto text-white/40 group-hover:text-[#E2FF3B] transition-colors"
+              />
+            </a>
+
+            <div className="flex items-center gap-3 pt-1">
+              <div className="flex text-[#E2FF3B] gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={11} fill="currentColor" />
+                ))}
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">
+                Trustpilot 4.7 · +3.000 alumni
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BAND 3 — NAV LINKS */}
+      <section className="border-b border-white/10">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
+              The Campus
+            </h4>
+            <ul className="space-y-3 text-sm font-bold text-white/80">
+              <li><Link to="/corsi/apcm" className="hover:text-[#E2FF3B] transition-colors">Master APCM</Link></li>
+              <li><Link to="/corsi/systemic-team-coaching" className="hover:text-[#E2FF3B] transition-colors">Team Coaching</Link></li>
+              <li><Link to="/corsi/eiw" className="hover:text-[#E2FF3B] transition-colors">Intelligenza Emotiva</Link></li>
+              <li><Link to="/corsi/prosperous-coach" className="hover:text-[#E2FF3B] transition-colors">Prosperous Coach</Link></li>
+              <li><Link to="/corsi" className="hover:text-[#E2FF3B] transition-colors">Tutti i corsi</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
+              Scopri
+            </h4>
+            <ul className="space-y-3 text-sm font-bold text-white/80">
+              <li><Link to="/eventi" className="hover:text-[#E2FF3B] transition-colors">Eventi</Link></li>
+              <li><Link to="/blog" className="hover:text-[#E2FF3B] transition-colors">Blog</Link></li>
+              <li><Link to="/about#filosofia" className="hover:text-[#E2FF3B] transition-colors">Filosofia</Link></li>
+              <li><Link to="/about#press" className="hover:text-[#E2FF3B] transition-colors">Press</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
+              Per le aziende
+            </h4>
+            <ul className="space-y-3 text-sm font-bold text-white/80">
+              <li><Link to="/aziende" className="hover:text-[#E2FF3B] transition-colors">Corporate</Link></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Team Coaching</a></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Leadership programs</a></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Finanzia il corso</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
+              Candidati
+            </h4>
+            <ul className="space-y-3 text-sm font-bold text-white/80">
+              <li><Link to="/iscriviti" className="hover:text-[#E2FF3B] transition-colors">Iscriviti</Link></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Parla con advisor</a></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Scarica brochure</a></li>
+              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Calendario edizioni</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* BAND 4 — CERTIFICATIONS */}
+      <section className="border-b border-white/10 bg-black/20">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10">
+          <div className="flex items-center gap-2 justify-center mb-7">
+            <Award size={14} className="text-[#E2FF3B]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+              Accreditamenti & Certificazioni
+            </span>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {certifications.map((c) => (
+              <div
+                key={c.label}
+                className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 flex items-center gap-3"
+              >
+                <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-[11px] font-black text-[#E2FF3B] tracking-tight shrink-0">
+                  {c.badge}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-black text-white tracking-tight">{c.label}</p>
+                  <p className="text-[10px] text-white/50 font-medium leading-tight mt-0.5">
+                    {c.sub}
+                  </p>
+                </div>
+                <ShieldCheck size={14} className="ml-auto text-white/30" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BAND 5 — COPYRIGHT */}
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-white/45">
+        <p className="text-center md:text-left">
+          © {new Date().getFullYear()} Asterys Lab S.r.l. — Scuola di Coaching ICF Accreditata · Milano · Roma
+        </p>
+        <div className="flex items-center gap-6">
+          <a href="#" className="hover:text-white transition-colors">Privacy</a>
+          <a href="#" className="hover:text-white transition-colors">Cookie</a>
+          <a href="#" className="hover:text-white transition-colors">Termini</a>
         </div>
       </div>
     </footer>
