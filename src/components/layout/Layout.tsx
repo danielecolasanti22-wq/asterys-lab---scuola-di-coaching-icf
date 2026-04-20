@@ -65,6 +65,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'short',
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'EIW · Six Seconds', meta: '24 ore · Live Online' },
+      { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Live Class mensili', meta: 'Annuale · Zoom 18:30–20:00' },
       { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '16 ore · Live Online' },
     ],
   },

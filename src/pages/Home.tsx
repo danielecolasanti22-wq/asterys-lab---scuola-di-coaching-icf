@@ -246,6 +246,15 @@ const MasterGrid = () => {
       seed: 'voice-dialogue'
     },
     {
+      id: 'continuous-learning',
+      title: 'Continuous Learning',
+      duration: '1 live class/mese',
+      desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
+      start: '14 gennaio 2026',
+      lastSeats: false,
+      seed: 'continuous-learning'
+    },
+    {
       id: 'mentor-coaching',
       title: 'Mentor Coaching',
       duration: '1 mese',
