@@ -14,7 +14,6 @@ import {
   Send,
   Instagram,
   Linkedin,
-  Youtube,
   Facebook,
   MapPin,
   Phone,
@@ -437,28 +436,18 @@ const socialChannels = [
     handle: '@asteryslab',
     href: 'https://instagram.com/',
     icon: <Instagram size={18} />,
-    gradient: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
   },
   {
     name: 'LinkedIn',
     handle: 'Asterys Lab',
     href: 'https://linkedin.com/',
     icon: <Linkedin size={18} />,
-    gradient: 'from-[#0A66C2] to-[#1D3BB9]',
-  },
-  {
-    name: 'YouTube',
-    handle: '@asteryslab',
-    href: 'https://youtube.com/',
-    icon: <Youtube size={18} />,
-    gradient: 'from-[#FF0000] to-[#CC0000]',
   },
   {
     name: 'Facebook',
     handle: 'asteryslab',
     href: 'https://facebook.com/',
     icon: <Facebook size={18} />,
-    gradient: 'from-[#1877F2] to-[#0E5FCB]',
   },
 ];
 
@@ -473,8 +462,8 @@ export const Footer = () => {
   return (
     <footer className="bg-brand-navy text-white relative overflow-hidden">
       {/* soft decorative glow */}
-      <div className="pointer-events-none absolute -top-40 -left-20 w-[500px] h-[500px] rounded-full bg-brand-accent/20 blur-[120px]" />
-      <div className="pointer-events-none absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-[#E2FF3B]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 -left-20 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px]" />
+      <div className="pointer-events-none absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-white/[0.04] blur-[120px]" />
 
       {/* BAND 1 — NEWSLETTER + SOCIAL (highlighted) */}
       <section className="relative border-b border-white/10">
@@ -482,7 +471,7 @@ export const Footer = () => {
           {/* Newsletter */}
           <div className="bg-white/[0.04] border border-white/10 rounded-3xl p-8 lg:p-10 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#E2FF3B] text-brand-navy flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-white text-brand-navy flex items-center justify-center">
                 <Send size={18} />
               </div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
@@ -492,8 +481,8 @@ export const Footer = () => {
             <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
               Entra in{' '}
               <span className="relative inline-block">
-                <span className="relative z-10">Asterys Letters</span>
-                <span className="absolute inset-x-[-0.08em] bottom-[0.08em] h-[0.3em] bg-[#E2FF3B] -z-0 rounded-sm" />
+                <span className="relative z-10 text-brand-navy">Asterys Letters</span>
+                <span className="absolute inset-x-[-0.08em] bottom-[-0.04em] top-[-0.02em] bg-white -z-0 rounded-sm" />
               </span>
               .
             </h3>
@@ -507,18 +496,13 @@ export const Footer = () => {
               onSubmit={(e) => e.preventDefault()}
             >
               <input
-                type="text"
-                placeholder="Il tuo nome"
-                className="sm:w-1/3 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-[#E2FF3B] transition-colors"
-              />
-              <input
                 type="email"
                 placeholder="la-tua@email.com"
-                className="flex-1 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-[#E2FF3B] transition-colors"
+                className="flex-1 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
               />
               <button
                 type="submit"
-                className="bg-[#E2FF3B] text-brand-navy px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.2em] hover:bg-white transition-colors whitespace-nowrap"
+                className="bg-white text-brand-navy px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.2em] hover:bg-brand-blue-soft transition-colors whitespace-nowrap"
               >
                 Iscriviti
               </button>
@@ -534,22 +518,17 @@ export const Footer = () => {
 
           {/* Social */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                <Sparkles size={18} />
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-                Social
-              </span>
-            </div>
-            <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+              Social
+            </span>
+            <h3 className="mt-4 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
               Vieni a conoscerci.
             </h3>
             <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed">
               Backstage delle aule, live con i docenti, storie di alumni.
             </p>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6 flex flex-col gap-3">
               {socialChannels.map((s) => (
                 <a
                   key={s.name}
@@ -558,9 +537,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-2xl p-3.5 transition-colors"
                 >
-                  <div
-                    className={`w-11 h-11 rounded-xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shrink-0 text-white`}
-                  >
+                  <div className="w-11 h-11 rounded-xl bg-white text-brand-navy flex items-center justify-center shrink-0">
                     {s.icon}
                   </div>
                   <div className="min-w-0">
@@ -571,7 +548,7 @@ export const Footer = () => {
                   </div>
                   <ArrowUpRight
                     size={14}
-                    className="ml-auto text-white/30 group-hover:text-[#E2FF3B] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
+                    className="ml-auto text-white/30 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
                   />
                 </a>
               ))}
@@ -587,7 +564,7 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3">
               <div className="relative w-9 h-9 rotate-45 flex items-center justify-center">
-                <div className="absolute inset-0 bg-[#E2FF3B] rounded-sm transform scale-90" />
+                <div className="absolute inset-0 bg-white rounded-sm transform scale-90" />
                 <div className="absolute inset-0 bg-brand-navy rounded-sm transform scale-50 -translate-x-1 -translate-y-1" />
               </div>
               <span className="font-sans font-black text-2xl tracking-tighter text-white lowercase">
@@ -600,7 +577,7 @@ export const Footer = () => {
 
             <div className="mt-7">
               <div className="flex items-center gap-2 mb-3">
-                <MapPin size={14} className="text-[#E2FF3B]" />
+                <MapPin size={14} className="text-white" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
                   Sedi
                 </span>
@@ -617,7 +594,7 @@ export const Footer = () => {
           <div className="space-y-7">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Clock size={14} className="text-[#E2FF3B]" />
+                <Clock size={14} className="text-white" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
                   Segreteria
                 </span>
@@ -630,20 +607,20 @@ export const Footer = () => {
             </div>
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Phone size={14} className="text-[#E2FF3B]" />
+                <Phone size={14} className="text-white" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
                   Telefono
                 </span>
               </div>
               <a
                 href="tel:+390280016434"
-                className="block text-sm font-black text-white hover:text-[#E2FF3B] transition-colors"
+                className="block text-sm font-black text-white hover:text-white transition-colors"
               >
                 +39 02 8001 6434
               </a>
               <a
                 href="tel:+390687165254"
-                className="block text-sm font-black text-white hover:text-[#E2FF3B] transition-colors mt-1"
+                className="block text-sm font-black text-white hover:text-white transition-colors mt-1"
               >
                 +39 06 8716 5254
               </a>
@@ -654,14 +631,14 @@ export const Footer = () => {
           <div className="space-y-7">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <Mail size={14} className="text-[#E2FF3B]" />
+                <Mail size={14} className="text-white" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
                   Scrivici
                 </span>
               </div>
               <a
                 href="mailto:info@asteryslab.com"
-                className="text-sm font-black text-white hover:text-[#E2FF3B] transition-colors"
+                className="text-sm font-black text-white hover:text-white transition-colors"
               >
                 info@asteryslab.com
               </a>
@@ -683,12 +660,12 @@ export const Footer = () => {
               </div>
               <ArrowUpRight
                 size={14}
-                className="ml-auto text-white/40 group-hover:text-[#E2FF3B] transition-colors"
+                className="ml-auto text-white/40 group-hover:text-white transition-colors"
               />
             </a>
 
             <div className="flex items-center gap-3 pt-1">
-              <div className="flex text-[#E2FF3B] gap-0.5">
+              <div className="flex text-white gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={11} fill="currentColor" />
                 ))}
@@ -709,11 +686,11 @@ export const Footer = () => {
               The Campus
             </h4>
             <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/corsi/apcm" className="hover:text-[#E2FF3B] transition-colors">Master APCM</Link></li>
-              <li><Link to="/corsi/systemic-team-coaching" className="hover:text-[#E2FF3B] transition-colors">Team Coaching</Link></li>
-              <li><Link to="/corsi/eiw" className="hover:text-[#E2FF3B] transition-colors">Intelligenza Emotiva</Link></li>
-              <li><Link to="/corsi/prosperous-coach" className="hover:text-[#E2FF3B] transition-colors">Prosperous Coach</Link></li>
-              <li><Link to="/corsi" className="hover:text-[#E2FF3B] transition-colors">Tutti i corsi</Link></li>
+              <li><Link to="/corsi/apcm" className="hover:text-white transition-colors">Master APCM</Link></li>
+              <li><Link to="/corsi/systemic-team-coaching" className="hover:text-white transition-colors">Team Coaching</Link></li>
+              <li><Link to="/corsi/eiw" className="hover:text-white transition-colors">Intelligenza Emotiva</Link></li>
+              <li><Link to="/corsi/prosperous-coach" className="hover:text-white transition-colors">Prosperous Coach</Link></li>
+              <li><Link to="/corsi" className="hover:text-white transition-colors">Tutti i corsi</Link></li>
             </ul>
           </div>
           <div>
@@ -721,10 +698,10 @@ export const Footer = () => {
               Scopri
             </h4>
             <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/eventi" className="hover:text-[#E2FF3B] transition-colors">Eventi</Link></li>
-              <li><Link to="/blog" className="hover:text-[#E2FF3B] transition-colors">Blog</Link></li>
-              <li><Link to="/about#filosofia" className="hover:text-[#E2FF3B] transition-colors">Filosofia</Link></li>
-              <li><Link to="/about#press" className="hover:text-[#E2FF3B] transition-colors">Press</Link></li>
+              <li><Link to="/eventi" className="hover:text-white transition-colors">Eventi</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link to="/about#filosofia" className="hover:text-white transition-colors">Filosofia</Link></li>
+              <li><Link to="/about#press" className="hover:text-white transition-colors">Press</Link></li>
             </ul>
           </div>
           <div>
@@ -732,10 +709,10 @@ export const Footer = () => {
               Per le aziende
             </h4>
             <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/aziende" className="hover:text-[#E2FF3B] transition-colors">Corporate</Link></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Team Coaching</a></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Leadership programs</a></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Finanzia il corso</a></li>
+              <li><Link to="/aziende" className="hover:text-white transition-colors">Corporate</Link></li>
+              <li><a href="#" className="hover:text-white transition-colors">Team Coaching</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Leadership programs</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Finanzia il corso</a></li>
             </ul>
           </div>
           <div>
@@ -743,10 +720,10 @@ export const Footer = () => {
               Candidati
             </h4>
             <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/iscriviti" className="hover:text-[#E2FF3B] transition-colors">Iscriviti</Link></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Parla con advisor</a></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Scarica brochure</a></li>
-              <li><a href="#" className="hover:text-[#E2FF3B] transition-colors">Calendario edizioni</a></li>
+              <li><Link to="/iscriviti" className="hover:text-white transition-colors">Iscriviti</Link></li>
+              <li><a href="#" className="hover:text-white transition-colors">Parla con advisor</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Scarica brochure</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Calendario edizioni</a></li>
             </ul>
           </div>
         </div>
@@ -756,7 +733,7 @@ export const Footer = () => {
       <section className="border-b border-white/10 bg-black/20">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10">
           <div className="flex items-center gap-2 justify-center mb-7">
-            <Award size={14} className="text-[#E2FF3B]" />
+            <Award size={14} className="text-white" />
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
               Accreditamenti & Certificazioni
             </span>
@@ -767,7 +744,7 @@ export const Footer = () => {
                 key={c.label}
                 className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 flex items-center gap-3"
               >
-                <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-[11px] font-black text-[#E2FF3B] tracking-tight shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-[11px] font-black text-white tracking-tight shrink-0">
                   {c.badge}
                 </div>
                 <div className="min-w-0">
