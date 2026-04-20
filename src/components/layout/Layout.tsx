@@ -75,6 +75,33 @@ const megaIconFor = (icon: MegaColumn['icon']) => {
   return <Clock size={16} />;
 };
 
+const BrandLogo = () => (
+  <div className="flex items-center gap-3">
+    <img
+      src="/brand/asterys-lab-logo.png"
+      alt="Asterys Lab"
+      className="h-10 w-auto object-contain"
+      onError={(e) => {
+        e.currentTarget.style.display = 'none';
+        const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
+        if (fallback) fallback.style.display = 'flex';
+      }}
+    />
+    <span className="hidden items-center gap-2">
+      <span className="relative w-8 h-8 rotate-45 flex items-center justify-center">
+        <span className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></span>
+        <span className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></span>
+      </span>
+      <span className="font-display font-black text-[2rem] tracking-tight text-brand-navy uppercase leading-none select-none">
+        ASTERYS
+      </span>
+      <span className="font-display font-black text-[0.95rem] tracking-[0.16em] text-brand-navy/55 uppercase leading-none select-none mt-2">
+        LAB
+      </span>
+    </span>
+  </div>
+);
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -137,17 +164,8 @@ export const Header = () => {
     >
       <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
-              <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
-              <div className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
-            </div>
-            <span className="font-display font-black text-[2rem] tracking-tight text-brand-navy uppercase leading-none select-none">
-              ASTERYS
-            </span>
-            <span className="font-display font-black text-[0.95rem] tracking-[0.16em] text-brand-navy/55 uppercase leading-none select-none mt-2">
-              LAB
-            </span>
+          <Link to="/" className="group shrink-0">
+            <BrandLogo />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
