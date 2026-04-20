@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  ArrowRight,
+  ArrowUpRight,
+  Calendar,
+  CheckCircle2,
   ChevronLeft,
   ChevronRight,
+  MapPin,
+  Quote,
   Star,
   Award,
   GraduationCap,
   Sparkles,
-  Clock,
   MessageCircle,
   PlayCircle,
   Users,
@@ -149,38 +152,42 @@ const MasterFeatured = () => (
   <section className="bg-white pb-5">
     <div className="max-w-[1200px] mx-auto px-6">
       <Link to="/corsi/apcm" className="block group">
-        <div className="grid sm:grid-cols-[1.15fr_1fr] rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.32)] transition-shadow">
-          <div className="relative aspect-[5/3] sm:aspect-auto bg-gray-100 min-h-[260px]">
+        <div className="grid sm:grid-cols-[1fr_1fr] gap-6 rounded-[2rem] bg-white p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
+          <div className="relative aspect-[5/4] sm:aspect-auto rounded-2xl overflow-hidden bg-gray-100 min-h-[260px]">
             <img
-              src="https://picsum.photos/seed/apcm-master/900/600"
+              src="https://picsum.photos/seed/apcm-master/900/700"
               className="absolute inset-0 w-full h-full object-cover"
               referrerPolicy="no-referrer"
               alt=""
             />
-            <span className="absolute top-4 left-4 bg-[#001D4B] text-[#E2FF3B] px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.22em]">
+            <span className="absolute top-4 left-4 bg-[#E2FF3B] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
               Master Full-Time
             </span>
           </div>
-          <div className="p-8 lg:p-10 flex flex-col gap-4 justify-center">
-            <div className="flex items-center gap-4 text-[11px] text-brand-navy/60 font-bold uppercase tracking-wide">
-              <span className="flex items-center gap-1.5">
-                <Clock size={12} /> 150 ore
-              </span>
-              <span>·</span>
-              <span>In diretta</span>
-            </div>
-            <h3 className="text-2xl lg:text-[1.75rem] font-display font-black text-brand-navy leading-tight">
-              Professione Coach <span className="text-brand-accent">(APCM)</span>
+          <div className="px-4 sm:px-6 py-4 sm:py-6 flex flex-col gap-5 justify-center">
+            <h3 className="text-3xl lg:text-[2.25rem] font-display font-black text-brand-accent leading-[1.05] tracking-tight">
+              Professione Coach
             </h3>
-            <p className="text-sm text-brand-navy/75 leading-relaxed">
-              Lancia una nuova carriera da zero con supporto costante e una full immersion nelle competenze di coaching ICF Level 1 & 2.
+            <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.18em]">
+              <span className="flex items-center gap-1.5">
+                <Calendar size={13} /> 6 mesi
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin size={13} /> In diretta
+              </span>
+            </div>
+            <p className="text-sm lg:text-base text-brand-navy/75 leading-relaxed">
+              Lancia una nuova carriera da zero con supporto costante e una full-immersion nelle competenze di coaching ICF Level 1 & 2.
             </p>
-            <div className="flex items-center justify-between flex-wrap gap-3 mt-1">
-              <span className="bg-[#E2FF3B] text-brand-navy text-[10px] font-black uppercase tracking-[0.18em] px-3 py-1.5 rounded-md">
+            <div className="inline-flex items-center gap-2 bg-[#E8F5EC] text-brand-navy px-3.5 py-2 rounded-lg self-start">
+              <CheckCircle2 size={16} className="text-[#008060]" />
+              <span className="text-[13px] font-black tracking-tight">
                 Garanzia di rimborso se non trovi lavoro
               </span>
-              <span className="text-brand-navy font-black text-[11px] uppercase tracking-[0.2em] flex items-center gap-1 group-hover:gap-2 transition-all">
-                Scopri <ArrowRight size={14} />
+            </div>
+            <div className="flex items-center justify-end mt-2">
+              <span className="text-brand-accent font-black text-[11px] uppercase tracking-[0.22em] flex items-center gap-1 group-hover:gap-2 transition-all">
+                Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
               </span>
             </div>
           </div>
@@ -195,83 +202,103 @@ const MasterGrid = () => {
   const masters = [
     {
       id: 'systemic-team-coaching',
-      label: 'Master Part-Time',
       title: 'Systemic Team Coaching',
-      duration: '60 ore',
-      start: '21 Maggio',
+      duration: '3 mesi',
+      desc: 'Per coach certificati: guida team complessi con strumenti sistemici e misurabili.',
+      start: '21 maggio',
+      lastSeats: false,
       seed: 'stc'
     },
     {
       id: 'eiw',
-      label: 'Master Part-Time',
       title: 'Intelligenza Emotiva',
-      duration: '24 ore',
-      start: '20 Maggio',
+      duration: '2 mesi',
+      desc: "Allena l'IE con Six Seconds: misurabile, scientifica, immediatamente applicabile.",
+      start: '20 maggio',
+      lastSeats: true,
       seed: 'eiw'
     },
     {
       id: 'prosperous-coach',
-      label: 'Master Part-Time',
       title: 'Prosperous Coach',
       duration: '3 mesi',
-      start: '15 Maggio',
+      desc: 'Costruisci il tuo business di coaching: posizionamento, clienti, pricing.',
+      start: '15 maggio',
+      lastSeats: false,
       seed: 'prosperous'
     },
     {
       id: 'hr-manager-coaching',
-      label: 'Master Part-Time',
       title: 'Coaching per HR & Manager',
-      duration: '45 ore',
-      start: '28 Maggio',
+      duration: '2 mesi',
+      desc: 'Porta il coaching in azienda e sviluppa leader coach efficaci.',
+      start: '28 maggio',
+      lastSeats: false,
       seed: 'hr'
     },
     {
       id: 'mentor-coaching',
-      label: 'Master Part-Time',
       title: 'Mentor Coaching',
-      duration: '30 ore',
-      start: '10 Giugno',
+      duration: '1 mese',
+      desc: 'Il percorso dedicato ai coach che vogliono accompagnare altri coach alla credenziale.',
+      start: '10 giugno',
+      lastSeats: false,
       seed: 'mentor'
     }
   ];
   return (
     <section className="bg-white pt-3 pb-16">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           {masters.map((m) => (
             <Link
               key={m.id}
               to={`/corsi/${m.id}`}
-              className="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-[0_12px_40px_-28px_rgba(0,21,51,0.18)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.3)] transition-shadow flex flex-col"
+              className="group bg-white border border-gray-100 rounded-[2rem] p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
             >
-              <div className="aspect-[4/3] relative bg-gray-100">
+              <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
                 <img
-                  src={`https://picsum.photos/seed/${m.seed}/600/450`}
+                  src={`https://picsum.photos/seed/${m.seed}/700/400`}
                   className="absolute inset-0 w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                   alt=""
                 />
-                <span className="absolute top-3 left-3 bg-[#001D4B] text-[#E2FF3B] px-2.5 py-1 rounded text-[9px] font-black uppercase tracking-[0.2em]">
-                  {m.label}
+                <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
+                  Master Part-Time
                 </span>
               </div>
-              <div className="p-6 flex flex-col gap-3 flex-1">
-                <div className="flex items-center gap-3 text-[10px] text-brand-navy/60 font-bold uppercase tracking-wide">
-                  <span className="flex items-center gap-1">
-                    <Clock size={11} /> {m.duration}
-                  </span>
-                  <span>·</span>
-                  <span>In diretta</span>
-                </div>
-                <h3 className="text-lg font-display font-black text-brand-navy leading-tight">
+              <div className="px-2 sm:px-3 pt-5 pb-3 flex flex-col gap-3 flex-1">
+                <h3 className="text-xl lg:text-2xl font-display font-black text-brand-accent leading-tight">
                   {m.title}
                 </h3>
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 text-[10px] font-bold uppercase tracking-[0.18em]">
-                  <span className="text-brand-navy/60">
-                    Prossima: <span className="text-brand-navy">{m.start}</span>
+                <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.16em]">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar size={12} /> {m.duration}
                   </span>
-                  <span className="text-brand-navy flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Scopri <ArrowRight size={12} />
+                  <span className="flex items-center gap-1.5">
+                    <MapPin size={12} /> In diretta
+                  </span>
+                </div>
+                <p className="text-sm text-brand-navy/75 leading-relaxed">{m.desc}</p>
+                <div className="flex items-end justify-between mt-auto pt-4 gap-3">
+                  <div>
+                    <p className="text-[11px] text-brand-navy/60 font-semibold mb-1">
+                      Prossima classe in partenza
+                    </p>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-base font-display font-black text-brand-navy">
+                        {m.start}
+                      </span>
+                      {m.lastSeats && (
+                        <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#E2193A]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E2193A] animate-pulse" />
+                          Ultimi posti
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-brand-accent font-black text-[11px] uppercase tracking-[0.22em] flex items-center gap-1 group-hover:gap-2 transition-all pb-0.5">
+                    Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
                   </span>
                 </div>
               </div>
@@ -279,19 +306,19 @@ const MasterGrid = () => {
           ))}
           <Link
             to="/corsi"
-            className="rounded-3xl overflow-hidden bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-7 flex flex-col justify-center text-white relative group"
+            className="group rounded-[2rem] bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-8 flex flex-col justify-center text-white relative overflow-hidden"
           >
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#E2FF3B] mb-3">
               Nuove competenze in poche settimane
             </p>
-            <h3 className="text-xl lg:text-2xl font-display font-black leading-tight mb-3">
+            <h3 className="text-2xl lg:text-[1.75rem] font-display font-black leading-tight mb-3">
               Cerchi un corso breve?
             </h3>
-            <p className="text-sm text-white/80 mb-5 leading-relaxed">
+            <p className="text-sm text-white/80 mb-5 leading-relaxed max-w-sm">
               Scopri i corsi brevi, pratici, in diretta con chi ti può guidare passo dopo passo.
             </p>
             <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#E2FF3B] group-hover:gap-3 transition-all">
-              Scopri <ArrowRight size={14} />
+              Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
             </span>
           </Link>
         </div>
@@ -346,84 +373,118 @@ const Testimonianze = () => {
     {
       name: 'Marco Rossetti',
       role: 'PCC Coach & Executive',
-      text: "In Asterys Lab non ho imparato solo a fare coaching: ho imparato a guardare ai sistemi e all'intelligenza emotiva come leve di business."
+      course: 'Master APCM',
+      text: "In Asterys Lab non ho imparato solo a fare coaching: ho imparato a guardare ai sistemi e all'intelligenza emotiva come leve di business. Dopo il Master lavoro con clienti C-level ogni settimana."
     },
     {
       name: 'Sara Lombardi',
       role: 'HR Director',
-      text: 'Il Master APCM ha cambiato il mio modo di gestire le persone. Una formazione intensa, seria e profondamente umana.'
+      course: 'Coaching per HR',
+      text: 'Il Master ha cambiato il mio modo di gestire le persone. Una formazione intensa, seria, profondamente umana — e con strumenti che uso ogni giorno in azienda.'
     },
     {
       name: 'Giorgio Bianchi',
       role: 'Full-time Coach',
-      text: 'Grazie a Prosperous Coach sono passato da dipendente a libero professionista in meno di 6 mesi. La community è formidabile.'
+      course: 'Prosperous Coach',
+      text: 'Grazie a Prosperous Coach sono passato da dipendente a libero professionista in meno di 6 mesi. La community è formidabile e non ti lascia mai da solo.'
     },
     {
       name: 'Elena Monti',
       role: 'Team Coach aziendale',
-      text: 'Il Master in Team Coaching Sistemico mi ha dato strumenti concreti per affrontare dinamiche di gruppo complesse.'
+      course: 'Systemic Team Coaching',
+      text: 'Il Master in Team Coaching Sistemico mi ha dato strumenti concreti per affrontare dinamiche di gruppo complesse. Lavoro già con 3 team di multinazionali.'
     }
   ];
   const [idx, setIdx] = useState(0);
   const t = tms[idx];
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 lg:py-24 bg-[#F4F6FB]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-          <div className="max-w-2xl">
-            <h2 className={`${tSection} mb-4`}>Cosa dicono i nostri studenti</h2>
-            <p className="text-sm text-brand-navy/70 leading-relaxed">
-              Oltre 3.000 studenti ci hanno già scelto: nessuno meglio di loro ti può raccontare perché Asterys è il percorso giusto per far evolvere la tua carriera.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <button
-              aria-label="Prev"
-              onClick={() => setIdx((idx - 1 + tms.length) % tms.length)}
-              className="w-11 h-11 rounded-full border border-brand-navy/15 flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              aria-label="Next"
-              onClick={() => setIdx((idx + 1) % tms.length)}
-              className="w-11 h-11 rounded-full border border-brand-navy/15 flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-brand-accent mb-4">
+            Storie di trasformazione
+          </p>
+          <h2 className={`${tSection} mb-4`}>Cosa dicono i nostri studenti</h2>
+          <p className="text-sm text-brand-navy/70 leading-relaxed">
+            Oltre 3.000 coach ci hanno già scelto: nessuno meglio di loro ti può raccontare perché Asterys è il percorso giusto per la tua carriera.
+          </p>
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="bg-[#F4F6FB] rounded-3xl p-10 lg:p-14"
-          >
-            <div className="flex gap-1 text-brand-accent mb-6">
-              {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={18} fill="currentColor" />
+
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-14 bg-white rounded-[2rem] p-8 lg:p-14 shadow-[0_24px_70px_-40px_rgba(0,21,51,0.25)] border border-gray-100"
+            >
+              <div className="flex flex-col items-center lg:items-start gap-4">
+                <div className="relative">
+                  <img
+                    src={`https://picsum.photos/seed/${t.name.split(' ').join('-')}/320/320`}
+                    className="w-40 h-40 lg:w-48 lg:h-48 rounded-[1.5rem] object-cover"
+                    referrerPolicy="no-referrer"
+                    alt={t.name}
+                  />
+                  <div className="absolute -bottom-3 -right-3 bg-brand-accent text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
+                    <Quote size={18} fill="currentColor" />
+                  </div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <p className="font-black text-base text-brand-navy leading-tight">{t.name}</p>
+                  <p className="text-xs text-brand-navy/60 mt-1">{t.role}</p>
+                  <span className="inline-block mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent bg-brand-blue-soft px-2.5 py-1 rounded">
+                    {t.course}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center">
+                <div className="flex gap-1 text-brand-accent mb-5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={16} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="text-xl lg:text-[1.75rem] font-display font-black text-brand-navy leading-[1.25] tracking-tight">
+                  "{t.text}"
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex items-center justify-between mt-8">
+            <div className="flex gap-2">
+              {tms.map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Vai alla testimonianza ${i + 1}`}
+                  onClick={() => setIdx(i)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === idx ? 'w-8 bg-brand-accent' : 'w-1.5 bg-brand-navy/20'
+                  }`}
+                />
               ))}
             </div>
-            <p className="text-xl lg:text-2xl font-display font-black text-brand-navy leading-snug mb-8 max-w-3xl">
-              "{t.text}"
-            </p>
-            <div className="flex items-center gap-4">
-              <img
-                src={`https://picsum.photos/seed/${t.name.split(' ').join('-')}/100/100`}
-                className="w-12 h-12 rounded-full object-cover"
-                referrerPolicy="no-referrer"
-                alt={t.name}
-              />
-              <div>
-                <p className="font-black text-sm text-brand-navy">{t.name}</p>
-                <p className="text-xs text-brand-navy/60">{t.role}</p>
-              </div>
+            <div className="flex gap-2">
+              <button
+                aria-label="Prev"
+                onClick={() => setIdx((idx - 1 + tms.length) % tms.length)}
+                className="w-11 h-11 rounded-full border border-brand-navy/15 bg-white flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                aria-label="Next"
+                onClick={() => setIdx((idx + 1) % tms.length)}
+                className="w-11 h-11 rounded-full border border-brand-navy/15 bg-white flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
+              >
+                <ChevronRight size={18} />
+              </button>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -490,113 +551,50 @@ const StatsBand = () => (
   </section>
 );
 
-/* 10. PROVA ASTERYS, GRATIS */
-const ProvaGratis = () => {
-  const items = [
-    {
-      tag: 'Masterclass aperta',
-      title: 'Introduzione al Coaching',
-      desc: '2 ore di lezione live per capire cosa significa diventare coach professionista ICF.',
-      seed: 'masterclass-intro'
-    },
-    {
-      tag: 'Webinar gratuito',
-      title: 'Intelligenza Emotiva misurabile',
-      desc: "Scopri come l'IE misurata con Six Seconds trasforma la tua leadership.",
-      seed: 'webinar-ei'
-    },
-    {
-      tag: 'Workshop demo',
-      title: 'Team Coaching Sistemico',
-      desc: 'Un assaggio pratico delle dinamiche di team coaching avanzate.',
-      seed: 'workshop-team'
-    },
-    {
-      tag: 'Sessione live',
-      title: 'Prosperous Coach Q&A',
-      desc: 'Parla con un advisor e scopri come costruire un business di coaching sostenibile.',
-      seed: 'live-pro'
-    }
-  ];
-  return (
-    <section className="py-20 bg-[#C4F4DB]">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className={`${tSection} mb-4`}>Prova Asterys, gratis</h2>
-          <p className="text-sm text-brand-navy/80 leading-relaxed">
-            Con le <strong>Masterclass introduttive</strong> puoi iniziare subito, seguendo lezioni live on-demand tenute direttamente dai nostri coach. Un modo concreto per capire il nostro metodo didattico prima di scegliere il tuo percorso.
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-2 mt-5 text-[11px] text-brand-navy/70 font-bold uppercase tracking-wide">
-            <span>· Scopri il metodo Asterys</span>
-            <span>· Segui le lezioni quando vuoi</span>
-            <span>· Parti da zero e fai pratica</span>
-          </div>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {items.map((i) => (
-            <div
-              key={i.title}
-              className="bg-[#1D3BB9] rounded-3xl overflow-hidden grid grid-cols-[1.1fr_1fr]"
-            >
-              <div className="p-7 text-white flex flex-col justify-center gap-3">
-                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
-                  {i.tag}
-                </p>
-                <h3 className="text-lg lg:text-xl font-display font-black leading-tight">
-                  {i.title}
-                </h3>
-                <p className="text-xs text-white/75 leading-relaxed">{i.desc}</p>
-                <button className="mt-2 self-start inline-flex items-center gap-2 bg-[#E2FF3B] text-brand-navy px-4 py-2 rounded-md text-[10px] font-black uppercase tracking-[0.22em] hover:bg-white transition-colors">
-                  Inizia gratis
-                </button>
-              </div>
-              <div className="bg-gray-100">
-                <img
-                  src={`https://picsum.photos/seed/${i.seed}/500/450`}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                  alt=""
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* 11. COSA STAI ASPETTANDO */
+/* 10. COSA STAI ASPETTANDO */
 const CorsiCta = () => {
   const ids = Object.keys(coursesContent);
   return (
-    <section className="py-24 bg-[#F4F6FB]">
-      <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[1fr_1.1fr] gap-12 items-start">
-        <div>
-          <h2 className={`${tSection} mb-4`}>
+    <section className="py-24 bg-white">
+      <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-16 items-start">
+        <div className="lg:sticky lg:top-24">
+          <h2 className={`${tSection} mb-5`}>
             Cosa stai <br />
             aspettando?
           </h2>
-          <p className="text-sm text-brand-navy/70">Scegli il tuo percorso.</p>
+          <p className="text-base text-brand-navy/70 leading-relaxed">Scegli il tuo percorso.</p>
         </div>
         <ul className="space-y-3">
           {ids.map((id) => {
             const c = coursesContent[id];
+            const isMaster = c.type.toLowerCase().includes('master') || c.type.toLowerCase().includes('level');
             return (
               <li key={id}>
                 <Link
                   to={`/corsi/${id}`}
-                  className="flex items-center justify-between gap-4 bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
+                  className="flex items-center justify-between gap-4 bg-[#F4F6FB] hover:bg-brand-blue-soft rounded-2xl pl-4 pr-5 py-3 transition-colors group"
                 >
-                  <div>
-                    <p className="text-sm font-black text-brand-navy leading-tight">
-                      {c.subtitle}
-                    </p>
-                    <p className="text-[11px] text-brand-navy/60 mt-1">{c.type}</p>
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="shrink-0 w-10 h-10 rounded-xl bg-white flex items-center justify-center">
+                      {isMaster ? (
+                        <GraduationCap className="text-brand-accent" size={18} strokeWidth={2} />
+                      ) : (
+                        <Sparkles className="text-brand-accent" size={18} strokeWidth={2} />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[15px] font-black text-brand-navy leading-tight truncate">
+                        {c.subtitle}
+                      </p>
+                      <p className="text-[11px] text-brand-navy/60 mt-0.5 uppercase tracking-wide font-bold">
+                        {c.type}
+                      </p>
+                    </div>
                   </div>
-                  <ArrowRight
+                  <ArrowUpRight
                     size={16}
-                    className="text-brand-navy/40 group-hover:text-brand-navy group-hover:translate-x-1 transition-all"
+                    strokeWidth={2.5}
+                    className="text-brand-navy/40 group-hover:text-brand-accent transition-colors shrink-0"
                   />
                 </Link>
               </li>
@@ -620,7 +618,6 @@ export default function Home() {
       <Testimonianze />
       <PercheNoi />
       <StatsBand />
-      <ProvaGratis />
       <CorsiCta />
     </>
   );
