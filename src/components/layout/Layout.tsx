@@ -31,6 +31,7 @@ export const Header = () => {
 
   const navLinks = [
     { name: 'Corsi', href: '/corsi', hasDropdown: true },
+    { name: 'Voice Dialogue', href: '/corsi/voice-dialogue' },
     { name: 'Eventi', href: '/eventi' },
     { name: 'Blog', href: '/blog' },
   ];

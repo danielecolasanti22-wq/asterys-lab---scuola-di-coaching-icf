@@ -300,6 +300,14 @@ const CourseGrid = () => {
       duration: "3 mesi - Mentoring",
       next: "Inizio libero",
       img: "https://picsum.photos/seed/business/600/400"
+    },
+    {
+      type: "LAB",
+      title: "Voice Dialogue Skills",
+      desc: "3 giornate in presenza a Milano per sperimentare le tecniche base del Voice Dialogue e applicarle nel coaching.",
+      duration: "3 giorni - In presenza",
+      next: "Nuove date in arrivo",
+      img: "https://picsum.photos/seed/voice-dialogue-home/600/400"
     }
   ];
 

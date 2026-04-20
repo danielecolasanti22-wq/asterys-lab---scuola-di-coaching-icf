@@ -91,6 +91,17 @@ const coursesData = [
     next: "Sessioni individuali",
     img: "https://picsum.photos/seed/mentoring/600/400",
     tags: ['ICF Renewal', 'MCC Feedback']
+  },
+  {
+    id: 'voice-dialogue',
+    category: 'Per coach già attivi',
+    type: "LAB",
+    title: "Voice Dialogue Skills",
+    desc: "Laboratorio in presenza di 3 giorni a Milano per integrare tecniche e principi del Voice Dialogue nella pratica professionale.",
+    duration: "3 giorni - In presenza",
+    next: "Nuove date in arrivo",
+    img: "https://picsum.photos/seed/voice-dialogue-courses/600/400",
+    tags: ['Voice Dialogue', 'Consapevolezza', 'Pratica']
   }
 ];
 

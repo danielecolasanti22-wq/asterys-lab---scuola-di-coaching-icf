@@ -597,6 +597,86 @@ export const coursesContent: Record<string, CourseData> = {
     fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "450€", priceLabel: "una tantum" }],
     faqs: commonFaqs
   },
+  'voice-dialogue': {
+    title: "Voice Dialogue Skills",
+    subtitle: "Voice Dialogue",
+    tagline: "Un laboratorio full immersion in presenza per applicare il Voice Dialogue in percorsi di coaching e sviluppo personale.",
+    type: "LAB IN PRESENZA",
+    heroBenefits: [
+      "Sperimenti in prima persona le tecniche base del Voice Dialogue",
+      "Acquisisci padronanza pratica da applicare nel coaching",
+      "Alleni consapevolezza sulle tue voci interiori e su quelle dei clienti",
+      "Colleghi il Voice Dialogue alle competenze ICF"
+    ],
+    summaryBox: {
+      nextEdition: "Milano",
+      dates: "Nuove date in arrivo",
+      format: "In presenza",
+      duration: "3 giornate full immersion",
+      price: "Contattaci per l'offerta",
+      installments: "Prezzo speciale Early Bird"
+    },
+    badges: ["3 giorni in aula", "Lab su Inner", "Pratica esperienziale"],
+    overview: {
+      title: "Un metodo concreto per espandere consapevolezza ed efficacia",
+      content: [
+        "Durante il laboratorio in aula sperimenti in prima persona le tecniche di base del Voice Dialogue.",
+        "Al termine avrai strumenti pratici per integrare il metodo in un percorso di coaching.",
+        "Per tutta la durata del corso è attivo un Lab dedicato su Inner, lo spazio web dove confrontarti con colleghi e trainer."
+      ]
+    },
+    target: [
+      { title: "Coach professionisti", desc: "Per potenziare la pratica con una metodologia di riconosciuta efficacia.", icon: <Users /> },
+      { title: "Professionisti dello sviluppo personale", desc: "Per integrare strumenti avanzati nel supporto alla persona.", icon: <Target /> },
+      { title: "Chi cerca maggiore consapevolezza", desc: "Aperto anche a chi vuole applicare le tecniche base su di sé.", icon: <Brain /> }
+    ],
+    learning: {
+      cols: [
+        {
+          title: "Voice Dialogue Skills ti servirà per",
+          items: [
+            "Applicare tecniche e principi del Voice Dialogue nella pratica professionale",
+            "Aumentare la consapevolezza delle tue voci e di quelle dei tuoi interlocutori",
+            "Supportare le tue competenze di coach o professionista dello sviluppo personale",
+            "Scoprire la relazione tra competenze ICF e Voice Dialogue"
+          ]
+        }
+      ],
+      softSkills: ["Presenza", "Ascolto", "Consapevolezza", "Efficacia professionale"]
+    },
+    structure: {
+      modules: [
+        { title: "Giorno 1", desc: "Fondamenti del metodo e prime sperimentazioni guidate." },
+        { title: "Giorno 2", desc: "Tecniche base applicate a casi reali di coaching." },
+        { title: "Giorno 3", desc: "Integrazione professionale, collegamento alle competenze ICF e piano di applicazione." }
+      ]
+    },
+    programIntro:
+      "Il corso si sviluppa in 3 giorni di full immersion in aula, in presenza. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci capacità e padronanza per applicarle in un percorso di coaching.",
+    sessionSchedule: [
+      { days: "3 giornate in aula", time: "Full immersion in presenza" }
+    ],
+    classDates: [
+      { date: "Milano", badge: "IN PRESENZA" },
+      { date: "Nuova edizione", note: "Date in pubblicazione" }
+    ],
+    teachers: [
+      { name: "Faculty Asterys Lab", creds: "Trainer Voice Dialogue", role: "Team formativo", bio: "Trainer con esperienza in coaching e sviluppo personale con approccio Voice Dialogue.", img: "https://picsum.photos/seed/voice-dialogue-trainer/300/300" }
+    ],
+    career: {
+      title: "Impatto professionale",
+      content: "Integra il Voice Dialogue nella tua pratica per accompagnare clienti e team con maggiore profondità, chiarezza e consapevolezza.",
+      points: [
+        { title: "Applicazione immediata", desc: "Tecniche subito utilizzabili in sessioni individuali e contesti di sviluppo personale." },
+        { title: "Supporto continuo", desc: "Confronto con colleghi e trainer nel Lab dedicato su Inner durante il periodo del corso." }
+      ]
+    },
+    fees: [
+      { title: "Early Bird", type: "lump" as const, benefit: "Prezzo speciale", heading: "Iscrizione agevolata", desc: "Approfitta del prezzo scontato Early Bird: iscriviti prima e risparmia.", price: "Prezzo su richiesta", priceLabel: "" },
+      { title: "Standard", type: "after" as const, benefit: "Quota ordinaria", heading: "Iscrizione corso", desc: "Accesso completo alle 3 giornate in aula e al Lab online su Inner.", price: "Contattaci", priceLabel: "" }
+    ],
+    faqs: commonFaqs
+  },
   'mentor-coaching': {
     title: "Mentor Coaching ICF",
     subtitle: "Verso ACC e PCC",
