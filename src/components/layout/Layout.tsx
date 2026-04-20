@@ -125,7 +125,7 @@ export const Header = () => {
   const navLinks = [
     { name: 'The Campus', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Risorse', href: '/blog' },
   ];
 
   const isHome = location.pathname === '/';
@@ -142,7 +142,12 @@ export const Header = () => {
               <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
               <div className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
             </div>
-            <span className="font-sans font-black text-2xl tracking-tighter text-brand-navy lowercase select-none">asteryslab</span>
+            <span className="font-display font-black text-[2rem] tracking-tight text-brand-navy uppercase leading-none select-none">
+              ASTERYS
+            </span>
+            <span className="font-display font-black text-[0.95rem] tracking-[0.16em] text-brand-navy/55 uppercase leading-none select-none mt-2">
+              LAB
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -183,13 +188,6 @@ export const Header = () => {
                 </Link>
               )
             )}
-            <div className="h-4 w-px bg-gray-200"></div>
-            <Link
-              to="/aziende"
-              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
-            >
-              Per le aziende
-            </Link>
             <div
               className="relative"
               onMouseEnter={openAbout}
@@ -241,6 +239,13 @@ export const Header = () => {
                 )}
               </AnimatePresence>
             </div>
+            <div className="h-4 w-px bg-gray-200"></div>
+            <Link
+              to="/aziende"
+              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+            >
+              Per Aziende
+            </Link>
           </nav>
         </div>
 
@@ -395,9 +400,8 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
             >
-              Blog
+              Risorse
             </Link>
-            <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per le aziende</Link>
             <div className="flex flex-col gap-2">
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/50">About</span>
               <Link
@@ -415,6 +419,7 @@ export const Header = () => {
                 Press
               </Link>
             </div>
+            <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
               to="/iscriviti"
