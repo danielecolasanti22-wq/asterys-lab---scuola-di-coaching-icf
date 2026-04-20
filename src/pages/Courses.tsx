@@ -40,13 +40,13 @@ const coursesData = [
   {
     id: 'eiw',
     category: 'Intelligenza emotiva',
-    type: "SHORT",
+    type: "WORKOUT EQ",
     title: "Emotional Intelligence Workout (EIW)",
-    desc: "Sviluppa la tua intelligenza emotiva con il metodo Six Seconds. Un percorso pratico per migliorare la tua efficacia personale e professionale.",
-    duration: "24 ore - Online",
-    next: "Settembre 2026",
+    desc: "Allena la tua intelligenza emotiva con esperienze consapevoli guidate dai coach EIW. Modello CSI, fiore di Plutchik, 4 CCE ICF per Round.",
+    duration: "Round da 4 CCE ICF",
+    next: "Prossimo Round",
     img: "https://picsum.photos/seed/ei/600/400",
-    tags: ['Six Seconds', 'Soft Skills', 'Leadership']
+    tags: ['Modello CSI', 'Plutchik', 'CCE ICF']
   },
   {
     id: 'prosperous-coach',

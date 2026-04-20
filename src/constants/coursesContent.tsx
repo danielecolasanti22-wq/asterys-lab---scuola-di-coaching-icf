@@ -1215,59 +1215,127 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Emotional Intelligence Workout (EIW)",
-    subtitle: "Allenare il Cuore",
-    tagline: "Sviluppa la competenza chiave per il futuro: l'Intelligenza Emotiva misurabile.",
-    type: "CORTO",
+    subtitle: "Allena i tuoi muscoli emozionali",
+    tagline: "Un percorso di sperimentazione e allenamento per sviluppare davvero la tua intelligenza emotiva. Non solo concetti: esperienze consapevoli, guidate, trasformative.",
+    type: "WORKOUT EQ",
     heroBenefits: [
-      "Mappa il tuo profilo EQ con il test Six Seconds",
-      "Migliora l'autoconsapevolezza e la gestione emotiva",
-      "Ottieni strumenti pratici per la tua leadership",
-      "Certificazione internazionale riconosciuta"
+      "Sviluppa l'intelligenza emotiva facendo esperienze, non solo ascoltando teoria",
+      "Affronta 4 emozioni per Round seguendo il fiore di Plutchik",
+      "Lavora sul modello CSI di Asterys Lab: Consapevolezza · Strategia · Interazione",
+      "Ottieni 4 CCE ICF per ogni Round · posti limitati"
     ],
     summaryBox: {
-      nextEdition: "Online Live",
-      dates: "Settembre 2026",
+      nextEdition: "Round aperto",
+      dates: "Round in programma",
       format: "Live Online",
-      duration: "24 ore",
-      price: "950€",
-      installments: "Fino a 3 rate"
+      duration: "4 CCE ICF per Round",
+      price: "100€ + IVA",
+      installments: "Rateizzazione su richiesta"
     },
-    badges: ["Six Seconds Partner", "Evidence Based", "Skill Trasversale"],
+    badges: ["Modello CSI Asterys", "Fiore di Plutchik", "4 CCE ICF per Round"],
     overview: {
-      title: "Perché l'Intelligenza Emotiva?",
-      content: ["Secondo il WEF è tra le 10 skill più richieste.", "Imparerai a navigare le emozioni invece di subirle."]
+      title: "Sviluppare l'Intelligenza Emotiva: l'esperienza, non solo la teoria",
+      content: [
+        "Non serve più dire che l'intelligenza emotiva è importante e ormai il concetto che sia sviluppabile è abbastanza diffuso. **Come farlo è un'altra storia.**",
+        "Ormai sembra scontato dire che l'IE è importante per buoni risultati nella vita privata e pubblica, è stata persino sdoganata la \"happyness\" in azienda, tutti concordano sulla possibilità di svilupparla… ma come farlo? Qui le voci perdono forza, si fanno vaghe e le soluzioni proposte non sempre sono praticabili.",
+        "Per questo, accumulati decenni di esperienza sul campo e dopo collaborazioni pluriennali con i principali riferimenti internazionali dell'intelligenza emotiva, Asterys Lab ha progettato **programmi specificamente destinati al reale sviluppo dell'intelligenza emotiva** di tutti.",
+        "Nella maggior parte dei corsi di IE si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve **\"essere\" diversi**, sviluppando un livello di coscienza specifico che passa per l'esperienza. **Ci sarà da sudare**: sarai coinvolto in esperienze consapevoli e mirate, progettate allo scopo.",
+        "Se sei tra quelle persone che vogliono **spostarsi veramente da dove sono per andare in un posto migliore**, questo è il percorso giusto. EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno senza farti perdere nei meandri delle tue distrazioni, aiutandoti nei momenti più difficili, rendendo l'esperienza piacevole e appagante.",
+        "Non perdere altro tempo: lavora seriamente sulla competenza che oggi più che mai può fare la differenza nella tua efficacia in ogni campo."
+      ]
     },
     target: [
-      { title: "Manager", desc: "Per una leadership più umana ed efficace.", icon: <Users /> },
-      { title: "Tutti", desc: "Chiunque voglia migliorare le proprie relazioni.", icon: <MessageCircle /> }
+      { title: "Manager & Leader", desc: "Per una leadership più lucida, empatica ed efficace nei momenti che contano.", icon: <Users /> },
+      { title: "Coach, counsellor, psicologi", desc: "E chiunque per professione abbia nella relazione lo strumento principale di lavoro.", icon: <Brain /> },
+      { title: "Chiunque voglia crescere", desc: "Ogni persona che vuole sviluppare davvero la propria intelligenza emotiva.", icon: <MessageCircle /> }
     ],
     learning: {
       cols: [
-        { title: "Self Science", items: ["Conoscersi", "Scegliersi", "Darsi"] }
+        { title: "Consapevolezza", items: ["Riconoscere e distinguere le emozioni", "Dare un nome alle emozioni", "Percepirne l'intensità"] },
+        { title: "Strategia", items: ["Prevedere trigger ed emozioni", "Conoscere i propri percorsi interiori", "Agire strategicamente con le emozioni"] },
+        { title: "Interazione", items: ["Emozioni nelle relazioni", "Empatia e percezione dell'altro", "Emozioni, scelte e obiettivi"] }
       ],
-      softSkills: ["Empatia", "Ottimismo", "Motivazione"]
+      softSkills: ["Autoconsapevolezza", "Empatia", "Regolazione emotiva", "Presenza relazionale"]
     },
     structure: {
       modules: [
-        { title: "EQ Foundations", desc: "Alla scoperta del modello KCG." }
+        {
+          title: "Round di Workout",
+          desc: "Ogni Round di Workout tratta 4 dei petali del fiore di Plutchik e le 4 rispettive emozioni. Non c'è una sequenza precisa: puoi iniziare dal primo Round disponibile o scegliere quello con il set di emozioni più interessante per te.",
+          tags: ["4 petali per Round", "Set di emozioni dedicato", "Nessuna sequenza obbligata"]
+        },
+        {
+          title: "Modello CSI – Consapevolezza",
+          desc: "Riconosco e distinguo le mie emozioni, so dargli un nome e riconoscerne l'intensità. È il punto di partenza per tutto il lavoro di allenamento emotivo.",
+          tags: ["Riconoscere", "Nominare", "Distinguere intensità"]
+        },
+        {
+          title: "Modello CSI – Strategia",
+          desc: "Prevedo quale evento mi farà provare un'emozione, conosco i miei trigger e percorsi interiori. Agisco in modo strategico considerando le mie emozioni, quelle degli altri e il loro possibile sviluppo nel tempo.",
+          tags: ["Trigger", "Percorsi interiori", "Azione strategica"]
+        },
+        {
+          title: "Modello CSI – Interazione",
+          desc: "Quel che faccio nel mondo con le mie emozioni e quelle degli altri: il loro ruolo nelle mie scelte, obiettivi e relazioni. Nelle relazioni riesco a percepire cosa provano gli altri? Mi interessa?",
+          tags: ["Relazioni", "Empatia", "Scelte & obiettivi"]
+        },
+        {
+          title: "Ripetere un Round",
+          desc: "A distanza di tempo puoi partecipare a un Round dove si affronta lo stesso set di emozioni: è un'esperienza sempre nuova e stimolante, utile per consolidare ciò che hai imparato.",
+          tags: ["Ri-partecipare", "Consolidamento", "Nuove consapevolezze"]
+        }
       ]
     },
     teachers: [
-      { name: "Giovanna Giuffredi", creds: "MCC / EQ Assessor", role: "EQ Expert", bio: "Certificata Six Seconds.", img: "https://picsum.photos/seed/giovannaei/300/300" }
+      {
+        name: "Renata Cargnelutti Beltrami",
+        creds: "Coach & Facilitatrice EQ",
+        role: "Trainer EIW",
+        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti del percorso EIW.",
+        img: "https://picsum.photos/seed/eiw-renata/600/800"
+      },
+      {
+        name: "Nicoletta Stellino",
+        creds: "Coach & Facilitatrice EQ",
+        role: "Trainer EIW",
+        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Accompagna i partecipanti nelle esperienze di allenamento emotivo.",
+        img: "https://picsum.photos/seed/eiw-nicoletta/600/800"
+      },
+      {
+        name: "Pier Paolo Colasanti",
+        creds: "Coach & Facilitatore EQ",
+        role: "Trainer EIW",
+        bio: "Coach e facilitatore specializzato nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
+        img: "https://picsum.photos/seed/eiw-colasanti/600/800"
+      }
     ],
     career: {
-      title: "EQ per il tuo CV",
-      content: "Una competenza differenziante in ogni processo di selezione.",
-      points: [{ title: "Certificato EQ", desc: "Rilasciato da Asterys in partnership con Six Seconds." }]
+      title: "Cosa ti porti a casa da ogni Round",
+      content: "Un allenamento concreto della tua intelligenza emotiva, crediti ICF riconosciuti e strumenti che puoi applicare subito nella vita privata, professionale e nelle relazioni di ogni giorno.",
+      points: [
+        { title: "4 CCE ICF per Round", desc: "Ogni Round EIW vale 4 CCE ICF, utili per il rinnovo della tua credenziale di coach." },
+        { title: "Modello CSI di Asterys Lab", desc: "Consapevolezza, Strategia, Interazione: un modello chiaro per porti le domande giuste su ogni emozione." },
+        { title: "Esperienza, non solo concetti", desc: "Attività progettate per sviluppare coscienza emotiva attraverso la pratica consapevole." },
+        { title: "Accompagnamento dei coach", desc: "Renata, Nicoletta e Pier Paolo ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
+      ]
     },
     classDates: [
-      { date: "Settembre 2026", badge: "APERTE LE ISCRIZIONI" }
+      { date: "Prossimo Round", badge: "POSTI LIMITATI" }
     ],
     sessionSchedule: [
-      { days: "Sabato mattina", time: "9:00 - 13:00" }
+      { days: "Round di Workout · Live Online", time: "Calendario per Round" }
     ],
     fees: [
-      { title: "Early Bird", type: "lump" as const, benefit: "Prenota entro Luglio", heading: "Quota iscrizione", desc: "Prenota entro luglio e ottieni il 15% di sconto. Disponibilità limitata.", price: "800€", priceLabel: "una tantum" }
+      {
+        title: "Round EIW",
+        type: "lump" as const,
+        benefit: "4 CCE ICF",
+        heading: "Quota per Round",
+        desc: "Iscrizione a un Round di Workout: 4 emozioni lavorate, esperienze guidate dai coach e 4 CCE ICF riconosciute. Su richiesta è previsto il frazionamento in più rate.",
+        price: "100€",
+        priceLabel: "+ IVA per Round",
+        footnote: "Posti limitati · Rateizzazione disponibile su richiesta"
+      }
     ],
     faqs: commonFaqs
   },

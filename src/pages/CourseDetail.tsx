@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment, type ReactNode } from 'react';
+import { useState, useEffect, useRef, Fragment, type ReactNode } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   CheckCircle2,
@@ -24,6 +24,8 @@ import {
   Flag,
   CalendarCheck,
   Hourglass,
+  ChevronLeft,
+  ChevronRight as ChevronRightIcon,
   X,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -171,6 +173,14 @@ export default function CourseDetail() {
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
   const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
+  const teachersScrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollTeachers = (dir: 'left' | 'right') => {
+    const el = teachersScrollerRef.current;
+    if (!el) return;
+    const amount = Math.max(280, el.clientWidth * 0.8);
+    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1274,6 +1284,87 @@ export default function CourseDetail() {
                 {course.levelsComparison.footnote}
               </p>
             ) : null}
+          </div>
+        </section>
+      ) : null}
+
+      {/* 5b. DOCENTI DEL CORSO */}
+      {course.teachers?.length ? (
+        <section id="docenti" className="relative py-16 lg:py-24 bg-brand-navy overflow-hidden">
+          <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-accent/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+          <div className="relative max-w-[941px] mx-auto px-4">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-10">
+              <div className="max-w-2xl">
+                <p className="text-brand-accent text-[11px] font-display font-black uppercase tracking-[0.18em] mb-3">
+                  Docenti del corso
+                </p>
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-white tracking-tight leading-[1.05]">
+                  Impara dai migliori del settore!
+                </h2>
+              </div>
+              {course.teachers.length > 3 ? (
+                <div className="flex gap-3 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => scrollTeachers('left')}
+                    aria-label="Scorri indietro"
+                    className="h-12 w-12 rounded-full border border-white/30 text-white hover:bg-brand-accent hover:border-brand-accent transition-colors flex items-center justify-center"
+                  >
+                    <ChevronLeft size={20} strokeWidth={2} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollTeachers('right')}
+                    aria-label="Scorri avanti"
+                    className="h-12 w-12 rounded-full border border-white/30 text-white hover:bg-brand-accent hover:border-brand-accent transition-colors flex items-center justify-center"
+                  >
+                    <ChevronRightIcon size={20} strokeWidth={2} />
+                  </button>
+                </div>
+              ) : null}
+            </div>
+
+            <div
+              ref={teachersScrollerRef}
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scroll-smooth"
+              style={{ scrollbarWidth: 'none' }}
+            >
+              {course.teachers.map((t, i) => (
+                <article
+                  key={`${t.name}-${i}`}
+                  className="snap-start shrink-0 w-[260px] sm:w-[280px] rounded-[1.5rem] overflow-hidden relative aspect-[3/4] bg-brand-navy/80 group"
+                >
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/55 to-brand-accent/25 mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <span className="absolute top-4 left-4 bg-white text-brand-navy text-[10px] font-display font-black uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
+                    Faculty
+                  </span>
+                  <div className="absolute left-5 right-5 bottom-5 text-white">
+                    <h3 className="font-display font-black text-2xl leading-[1.05] tracking-tight mb-2">
+                      {t.name}
+                    </h3>
+                    <p className="text-[13px] font-medium text-white/85 leading-snug mb-4">
+                      {t.role}
+                      {t.creds ? <span className="text-white/60"> · {t.creds}</span> : null}
+                    </p>
+                    {t.bio ? (
+                      <p className="text-[12px] text-white/70 leading-relaxed mb-4 line-clamp-3">
+                        {t.bio}
+                      </p>
+                    ) : null}
+                    <span className="inline-flex items-center gap-2 bg-white text-brand-navy text-[11px] font-display font-black uppercase tracking-[0.14em] px-4 py-2 rounded-full shadow-md">
+                      Asterys Lab
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}

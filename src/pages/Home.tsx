@@ -211,10 +211,10 @@ const MasterGrid = () => {
     },
     {
       id: 'eiw',
-      title: 'Intelligenza Emotiva',
-      duration: '2 mesi',
-      desc: "Allena l'IE con Six Seconds: misurabile, scientifica, immediatamente applicabile.",
-      start: '20 maggio',
+      title: 'Emotional Intelligence Workout',
+      duration: 'Round · 4 CCE',
+      desc: "Allena l'IE con esperienze consapevoli: modello CSI, fiore di Plutchik, coach dedicati.",
+      start: 'Prossimo Round',
       lastSeats: true,
       seed: 'eiw'
     },
