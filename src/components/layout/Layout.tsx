@@ -75,19 +75,39 @@ const megaIconFor = (icon: MegaColumn['icon']) => {
   return <Clock size={16} />;
 };
 
-const BrandLogo = () => (
-  <div className="flex items-center gap-3">
-    <img
-      src="/brand/asterys-lab-logo.png"
-      alt="Asterys Lab"
-      className="h-10 w-auto object-contain"
-      onError={(e) => {
-        e.currentTarget.style.display = 'none';
-        const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
-        if (fallback) fallback.style.display = 'flex';
-      }}
-    />
-    <span className="hidden items-center gap-2">
+const BrandLogo = () => {
+  const base = import.meta.env.BASE_URL || '/';
+  const [logoSrc, setLogoSrc] = useState(`${base}brand/asterys-lab-logo.png`);
+  const [showFallback, setShowFallback] = useState(false);
+
+  const tryNextAsset = () => {
+    const candidates = [
+      `${base}brand/asterys-lab-logo.png`,
+      `${base}brand/asterys-lab-logo.svg`,
+      `${base}brand/asterys-lab-logo.webp`,
+      `${base}brand/asterys-lab-logo.jpg`,
+      `${base}brand/asterys-lab-logo.jpeg`,
+    ];
+    const idx = candidates.indexOf(logoSrc);
+    const next = candidates[idx + 1];
+    if (next) {
+      setLogoSrc(next);
+      return;
+    }
+    setShowFallback(true);
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      {!showFallback && (
+        <img
+          src={logoSrc}
+          alt="Asterys Lab"
+          className="h-10 w-auto object-contain"
+          onError={tryNextAsset}
+        />
+      )}
+      <span className={`${showFallback ? 'flex' : 'hidden'} items-center gap-2`}>
       <span className="relative w-8 h-8 rotate-45 flex items-center justify-center">
         <span className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></span>
         <span className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></span>
@@ -98,9 +118,10 @@ const BrandLogo = () => (
       <span className="font-display font-black text-[0.95rem] tracking-[0.16em] text-brand-navy/55 uppercase leading-none select-none mt-2">
         LAB
       </span>
-    </span>
-  </div>
-);
+      </span>
+    </div>
+  );
+};
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
