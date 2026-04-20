@@ -12,18 +12,31 @@ import {
   UserCheck,
   Briefcase,
   Play,
-  Zap,
   TrendingUp,
   Calendar,
   Monitor,
   Sparkles,
+  Quote,
+  Compass,
+  Target as TargetIcon,
+  MapPin,
+  GraduationCap,
+  Flag,
+  CalendarCheck,
+  Hourglass,
+  X,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   coursesContent,
+  commonTestimonials,
   defaultCourseMedia,
   CourseData,
   CourseScheduleBand,
+  CourseCompetency,
+  CourseCareerPath,
+  CourseEdition,
+  CourseEditionEventType,
 } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 
@@ -100,19 +113,81 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
   </div>
 );
 
+const EDITION_EVENT_STYLES: Record<
+  CourseEditionEventType,
+  { dot: string; label: string; ring: string }
+> = {
+  'deadline-early': {
+    dot: 'bg-[#008060]',
+    label: 'text-[#008060]',
+    ring: 'ring-[#008060]/25',
+  },
+  'deadline-final': {
+    dot: 'bg-[#DC2626]',
+    label: 'text-[#DC2626]',
+    ring: 'ring-[#DC2626]/25',
+  },
+  'live-class': {
+    dot: 'bg-brand-accent',
+    label: 'text-brand-accent',
+    ring: 'ring-brand-accent/20',
+  },
+  'live-lab': {
+    dot: 'bg-[#1D3BB9]',
+    label: 'text-[#1D3BB9]',
+    ring: 'ring-[#1D3BB9]/25',
+  },
+  corso: {
+    dot: 'bg-[#7C3AED]',
+    label: 'text-[#7C3AED]',
+    ring: 'ring-[#7C3AED]/25',
+  },
+  orientamento: {
+    dot: 'bg-[#F59E0B]',
+    label: 'text-[#F59E0B]',
+    ring: 'ring-[#F59E0B]/25',
+  },
+  milestone: {
+    dot: 'bg-brand-navy/40',
+    label: 'text-brand-navy/45',
+    ring: 'ring-brand-navy/15',
+  },
+  individual: {
+    dot: 'bg-brand-navy',
+    label: 'text-brand-navy',
+    ring: 'ring-brand-navy/20',
+  },
+};
+
 export default function CourseDetail() {
   const { id } = useParams<{ id: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeModule, setActiveModule] = useState(0);
   const course: CourseData | undefined = id ? coursesContent[id] : undefined;
   const [paymentTab, setPaymentTab] = useState('');
+  const [activeCitySlug, setActiveCitySlug] = useState<string>('');
+  const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
+  const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
+  const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
+  const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
+  const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (course) {
       setPaymentTab(course.fees[0]?.title.toLowerCase() || '');
+      const first = course.editions?.[0];
+      if (first) {
+        setActiveCitySlug(first.citySlug);
+        setActiveLevelSlug(first.levelSlug);
+        setActiveEditionSlug(first.editionSlug);
+      }
     }
   }, [id, course]);
+
+  useEffect(() => {
+    setTimelineOpenMobile(false);
+  }, [activeCitySlug, activeLevelSlug, activeEditionSlug]);
 
   if (!course) {
     return (
@@ -166,6 +241,95 @@ export default function CourseDetail() {
   };
 
   const scheduleBands = scheduleBandsFromCourse(course);
+
+  const testimonials = course.testimonials?.length ? course.testimonials : commonTestimonials;
+
+  const derivedCompetencies: CourseCompetency[] = course.learning.cols.flatMap((col) =>
+    col.items.slice(0, 2).map((item) => ({
+      title: item,
+      desc: `Approfondisci ${item.toLowerCase()} all'interno del modulo "${col.title}", con pratica guidata e feedback dai trainer.`,
+    })),
+  );
+
+  const derivedCareerPaths: CourseCareerPath[] = course.career.points.length
+    ? course.career.points.map((p) => ({ title: p.title, desc: p.desc }))
+    : [
+        {
+          title: 'Libera professione',
+          desc: 'Applichi le competenze del percorso in contesti professionali autonomi e come consulente.',
+        },
+        {
+          title: 'Ruoli aziendali',
+          desc: 'Porti il metodo dentro organizzazioni che cercano competenze trasversali e people skill.',
+        },
+      ];
+
+  const competenciesAndCareers = course.competenciesAndCareers ?? {
+    eyebrow: 'Competenze & Professione',
+    title: 'Cosa saprai fare e dove potrai lavorare',
+    intro: `Un mix equilibrato di **competenze tecniche e trasversali**, pensato per renderti operativo in contesti professionali diversi fin da subito.`,
+    competencies: derivedCompetencies,
+    careerPaths: derivedCareerPaths,
+  };
+
+  const editions = course.editions ?? [];
+  const editionCities = Array.from(
+    new Map(editions.map((e) => [e.citySlug, { slug: e.citySlug, name: e.city }])).values(),
+  );
+  const effectiveCitySlug =
+    editionCities.find((c) => c.slug === activeCitySlug)?.slug ?? editionCities[0]?.slug ?? '';
+  const editionLevelsForCity = Array.from(
+    new Map(
+      editions
+        .filter((e) => e.citySlug === effectiveCitySlug)
+        .map((e) => [e.levelSlug, { slug: e.levelSlug, name: e.level }]),
+    ).values(),
+  );
+  const effectiveLevelSlug =
+    editionLevelsForCity.find((l) => l.slug === activeLevelSlug)?.slug ??
+    editionLevelsForCity[0]?.slug ??
+    '';
+  const editionsForCityLevel = editions.filter(
+    (e) => e.citySlug === effectiveCitySlug && e.levelSlug === effectiveLevelSlug,
+  );
+  const activeEdition: CourseEdition | undefined =
+    editionsForCityLevel.find((e) => e.editionSlug === activeEditionSlug) ??
+    editionsForCityLevel[0];
+
+  const editionStats = activeEdition
+    ? activeEdition.events.reduce<Record<CourseEditionEventType, number>>(
+        (acc, ev) => {
+          const key = ev.type ?? 'live-class';
+          acc[key] = (acc[key] ?? 0) + 1;
+          return acc;
+        },
+        {
+          'deadline-early': 0,
+          'deadline-final': 0,
+          'live-class': 0,
+          'live-lab': 0,
+          corso: 0,
+          orientamento: 0,
+          milestone: 0,
+          individual: 0,
+        },
+      )
+    : null;
+
+  const editionStatBadges: { type: CourseEditionEventType; label: string }[] = [
+    { type: 'live-class', label: 'Live Class' },
+    { type: 'live-lab', label: 'Live Lab' },
+    { type: 'corso', label: 'Corsi intensivi' },
+    { type: 'orientamento', label: 'Orientamento' },
+    { type: 'individual', label: 'Sessioni 1:1' },
+  ];
+
+  const editionsSection = course.editionsSection ?? {
+    eyebrow: 'Calendario edizioni',
+    title: 'Scegli sede, livello ed edizione',
+    intro:
+      'Seleziona la **città**, il **livello** e l\'**edizione** per vedere il calendario completo delle sessioni e le scadenze di iscrizione.',
+  };
 
   const studyMode =
     course.studyModeBox ?? {
@@ -274,11 +438,11 @@ export default function CourseDetail() {
           </div>
           
           <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
-             <div className="w-full lg:w-[105%] h-auto relative overflow-visible flex items-end">
+             <div className="w-full lg:w-[140%] lg:-mr-[20%] lg:-ml-[10%] h-auto relative overflow-visible flex items-end">
                 <CourseImage
                   src={media.hero}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
-                  className="w-full h-auto object-contain scale-100 lg:origin-bottom-right drop-shadow-[0_30px_80px_rgba(0,21,51,0.18)]"
+                  className="w-full h-auto object-contain lg:origin-bottom-right"
                   alt={course.title}
                 />
              </div>
@@ -289,8 +453,20 @@ export default function CourseDetail() {
       {/* 2. LA FIGURA CENTRALE SECTION */}
       <section className="py-24 bg-white">
         <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
-          <div className="relative">
-             <div className="rounded-[3rem] overflow-hidden shadow-2xl overflow-hidden">
+          <div className="order-2 lg:order-1">
+             <h2 className={`${tSection} mb-8 leading-tight`}>
+                {course.overview.title}
+             </h2>
+             <div className="space-y-6">
+               {course.overview.content.map((p, i) => (
+                 <p key={i} className={tBody}>
+                    {p}
+                 </p>
+               ))}
+             </div>
+          </div>
+          <div className="relative order-1 lg:order-2">
+             <div className="rounded-[3rem] overflow-hidden shadow-2xl">
                 <CourseImage
                   src={media.overview}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
@@ -299,20 +475,49 @@ export default function CourseDetail() {
                 />
              </div>
           </div>
-          <div>
-             <h2 className="text-4xl lg:text-7xl font-display font-black leading-[0.9] mb-10 text-brand-navy uppercase tracking-tighter">
-                {course.overview.title}
-             </h2>
-             <div className="space-y-8">
-               {course.overview.content.map((p, i) => (
-                 <p key={i} className="text-lg text-brand-navy/70 leading-relaxed font-medium">
-                    {p}
-                 </p>
-               ))}
-             </div>
-          </div>
         </div>
       </section>
+
+      {/* 2b. WHY CHOOSE */}
+      {course.whyChoose ? (
+        <section className="py-16 lg:py-20 bg-[#F6F8FC]">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="text-center mb-12 lg:mb-14">
+              {course.whyChoose.eyebrow ? (
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                  {course.whyChoose.eyebrow}
+                </p>
+              ) : null}
+              <h2 className={`${tSection} mb-4 max-w-3xl mx-auto`}>
+                {course.whyChoose.title}
+              </h2>
+              {course.whyChoose.intro ? (
+                <p className={`${tLead} max-w-2xl mx-auto`}>
+                  {richText(course.whyChoose.intro)}
+                </p>
+              ) : null}
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {course.whyChoose.bullets.map((b, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl bg-white p-6 lg:p-7 ring-1 ring-black/5 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.3)]"
+                >
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent mb-4">
+                    <CheckCircle2 size={20} strokeWidth={2.25} />
+                  </div>
+                  <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
+                    {b.title}
+                  </h3>
+                  <p className="text-sm text-brand-navy/70 leading-relaxed">
+                    {b.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 3. PROGRAMMA DEL MASTER TABS */}
       <section id="programma" className="py-16 lg:py-20 bg-white">
@@ -406,6 +611,374 @@ export default function CourseDetail() {
             </div>
          </div>
       </section>
+
+      {/* 4b. CALENDARIO EDIZIONI */}
+      {editions.length > 0 && activeEdition ? (
+        <section id="calendario-edizioni" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
+          <div className="max-w-[941px] mx-auto px-4">
+            {editionsSection.eyebrow ? (
+              <p className="text-lg font-display font-black text-brand-accent mb-3">
+                {editionsSection.eyebrow}
+              </p>
+            ) : null}
+            <h2 className={`${tSection} mb-4`}>
+              {editionsSection.title ?? 'Scegli sede, livello ed edizione'}
+            </h2>
+            {editionsSection.intro ? (
+              <p className={`${tLead} mb-10`}>{richText(editionsSection.intro)}</p>
+            ) : null}
+
+            {/* City tabs */}
+            <div className="mb-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                <MapPin size={12} strokeWidth={2.5} /> Sede
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {editionCities.map((c) => {
+                  const active = c.slug === effectiveCitySlug;
+                  return (
+                    <button
+                      key={c.slug}
+                      type="button"
+                      onClick={() => {
+                        setActiveCitySlug(c.slug);
+                        const firstOfCity = editions.find((e) => e.citySlug === c.slug);
+                        if (firstOfCity) {
+                          setActiveLevelSlug(firstOfCity.levelSlug);
+                          setActiveEditionSlug(firstOfCity.editionSlug);
+                        }
+                      }}
+                      className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                        active
+                          ? 'bg-brand-navy text-white ring-brand-navy shadow-md'
+                          : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                      }`}
+                    >
+                      {c.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Level tabs */}
+            {editionLevelsForCity.length > 1 ? (
+              <div className="mb-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                  <GraduationCap size={12} strokeWidth={2.5} /> Livello
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {editionLevelsForCity.map((l) => {
+                    const active = l.slug === effectiveLevelSlug;
+                    return (
+                      <button
+                        key={l.slug}
+                        type="button"
+                        onClick={() => {
+                          setActiveLevelSlug(l.slug);
+                          const firstOfLevel = editions.find(
+                            (e) => e.citySlug === effectiveCitySlug && e.levelSlug === l.slug,
+                          );
+                          if (firstOfLevel) setActiveEditionSlug(firstOfLevel.editionSlug);
+                        }}
+                        className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                          active
+                            ? 'bg-brand-accent text-white ring-brand-accent shadow-md'
+                            : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                        }`}
+                      >
+                        {l.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+
+            {/* Edition pills */}
+            {editionsForCityLevel.length > 1 ? (
+              <div className="mb-8">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+                  <Flag size={12} strokeWidth={2.5} /> Edizione
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {editionsForCityLevel.map((e) => {
+                    const active = e.editionSlug === activeEdition.editionSlug;
+                    return (
+                      <button
+                        key={e.editionSlug}
+                        type="button"
+                        onClick={() => setActiveEditionSlug(e.editionSlug)}
+                        className={`text-left rounded-2xl px-4 py-3 transition-all ring-1 ${
+                          active
+                            ? 'bg-white ring-brand-accent shadow-[0_18px_40px_-28px_rgba(29,59,185,0.5)]'
+                            : 'bg-white/60 ring-brand-navy/10 hover:bg-white hover:ring-brand-navy/25'
+                        }`}
+                      >
+                        <p
+                          className={`text-[11px] font-black uppercase tracking-[0.18em] ${
+                            active ? 'text-brand-accent' : 'text-brand-navy/55'
+                          }`}
+                        >
+                          {e.editionLabel}
+                        </p>
+                        {e.subtitle ? (
+                          <p
+                            className={`mt-1 text-[11px] font-semibold ${
+                              active ? 'text-brand-navy' : 'text-brand-navy/45'
+                            }`}
+                          >
+                            {e.subtitle}
+                          </p>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="mb-4" />
+            )}
+
+            {/* Edition detail card */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${effectiveCitySlug}-${effectiveLevelSlug}-${activeEdition.editionSlug}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
+              >
+                {/* Header */}
+                <div className="p-5 sm:p-7 bg-[#001D4B] text-white relative overflow-hidden">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/25 blur-3xl" />
+                  <div className="relative z-10">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55 mb-2 flex items-center gap-2">
+                          <MapPin size={12} strokeWidth={2.5} />
+                          {activeEdition.city} · {activeEdition.level}
+                        </p>
+                        <h3 className="text-xl sm:text-2xl font-display font-black tracking-tight leading-tight">
+                          {activeEdition.editionLabel}
+                        </h3>
+                        {activeEdition.subtitle ? (
+                          <p className="mt-1 text-sm text-white/65 font-medium">
+                            {activeEdition.subtitle}
+                          </p>
+                        ) : null}
+                      </div>
+                      {activeEdition.badge ? (
+                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
+                          {activeEdition.badge}
+                        </span>
+                      ) : null}
+                    </div>
+                    {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
+                      <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                        {activeEdition.earlyBird ? (
+                          <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
+                            <Hourglass size={12} strokeWidth={2.5} className="text-[#6EE7B7]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
+                              {activeEdition.earlyBird.label}
+                            </span>
+                            <span className="text-[11px] font-black text-white">
+                              {activeEdition.earlyBird.date}
+                            </span>
+                          </span>
+                        ) : null}
+                        {activeEdition.enrollmentEnd ? (
+                          <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
+                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#FCA5A5]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
+                              {activeEdition.enrollmentEnd.label}
+                            </span>
+                            <span className="text-[11px] font-black text-white">
+                              {activeEdition.enrollmentEnd.date}
+                            </span>
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Summary stats (mobile + desktop) */}
+                {editionStats ? (
+                  <div className="px-5 sm:px-9 pt-5 sm:pt-7">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3">
+                      Cosa include il percorso
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {editionStatBadges
+                        .filter(({ type }) => (editionStats[type] ?? 0) > 0)
+                        .map(({ type, label }) => {
+                          const style = EDITION_EVENT_STYLES[type];
+                          return (
+                            <span
+                              key={type}
+                              className="inline-flex items-center gap-1.5 rounded-full bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-2.5 py-1 text-[11px] font-black text-brand-navy"
+                            >
+                              <span className={`h-2 w-2 rounded-full ${style.dot}`} />
+                              {editionStats[type]} {label}
+                            </span>
+                          );
+                        })}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* Timeline */}
+                <div className="px-5 pt-5 pb-5 sm:px-9 sm:pt-7 sm:pb-9">
+                  <button
+                    type="button"
+                    onClick={() => setTimelineOpenMobile((v) => !v)}
+                    className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[#F9FAFB] ring-1 ring-brand-navy/10 px-4 py-3 text-left hover:ring-brand-navy/25 transition-colors"
+                    aria-expanded={timelineOpenMobile}
+                    aria-controls="edition-timeline"
+                  >
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy">
+                      {timelineOpenMobile ? 'Nascondi calendario' : 'Vedi calendario completo'}
+                    </span>
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/55">
+                      {activeEdition.events.length} date {timelineOpenMobile ? '▲' : '▼'}
+                    </span>
+                  </button>
+                  <div
+                    id="edition-timeline"
+                    className={`${timelineOpenMobile ? 'block mt-6' : 'hidden'}`}
+                  >
+                  <ol className="relative">
+                    {activeEdition.events.map((ev, i) => {
+                      const style =
+                        EDITION_EVENT_STYLES[ev.type ?? 'live-class'] ??
+                        EDITION_EVENT_STYLES['live-class'];
+                      const isLast = i === activeEdition.events.length - 1;
+                      return (
+                        <li key={i} className="relative flex gap-3 sm:gap-4 pb-3.5 sm:pb-5 last:pb-0">
+                          <div className="flex flex-col items-center shrink-0">
+                            <span
+                              className={`h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full ring-[3px] sm:ring-4 ${style.dot} ${style.ring} mt-1.5`}
+                            />
+                            {!isLast ? (
+                              <span className="mt-1 w-px flex-1 bg-gray-200" />
+                            ) : null}
+                          </div>
+                          <div className="flex-1 pb-1 min-w-0">
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                              <p
+                                className={`text-sm sm:text-base font-black leading-snug ${
+                                  ev.type === 'milestone'
+                                    ? 'text-brand-navy/55'
+                                    : 'text-brand-navy'
+                                }`}
+                              >
+                                {ev.label}
+                              </p>
+                              <p className="text-[10px] sm:text-xs font-black uppercase tracking-wide text-brand-navy/55">
+                                {ev.date}
+                              </p>
+                            </div>
+                            {ev.note ? (
+                              <p
+                                className={`mt-0.5 text-[10px] sm:text-[11px] font-black uppercase tracking-wide ${style.label}`}
+                              >
+                                {ev.note}
+                              </p>
+                            ) : null}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="px-5 pb-5 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-5 sm:pt-6">
+                  <p className="text-xs sm:text-sm text-brand-navy/55 font-semibold">
+                    Vuoi approfondire questa edizione? Prenota una call con un Advisor.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="#prezzo"
+                      className="rounded-full bg-brand-navy px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-white shadow-lg hover:bg-brand-accent transition-colors text-center"
+                    >
+                      {activeEdition.ctaLabel ?? 'Iscriviti a questa edizione'}
+                    </a>
+                    <a
+                      href="#"
+                      className="rounded-full border-2 border-brand-navy/20 px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy hover:bg-gray-50 transition-colors text-center"
+                    >
+                      Parla con un Advisor
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </section>
+      ) : null}
+
+      {/* 4c. SCHOLARSHIP */}
+      {course.scholarship ? (
+        <section className="py-14 lg:py-16 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-brand-navy text-white px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-accent/30 blur-3xl" />
+              <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
+                <div>
+                  {course.scholarship.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.scholarship.eyebrow}
+                    </p>
+                  ) : null}
+                  <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
+                    {course.scholarship.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-white/80 leading-relaxed mb-6 max-w-xl">
+                    {richText(course.scholarship.body)}
+                  </p>
+                  {course.scholarship.availability ? (
+                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/20 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] mb-6">
+                      <Sparkles size={14} strokeWidth={2.25} />
+                      {course.scholarship.availability}
+                    </p>
+                  ) : null}
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    {course.scholarship.ctaHref ? (
+                      <Link
+                        to={course.scholarship.ctaHref}
+                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-8 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
+                      >
+                        {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-6 backdrop-blur-sm">
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-2">Importo borsa</p>
+                    <p className="text-4xl sm:text-5xl font-display font-black tracking-tight leading-none mb-4">
+                      {course.scholarship.amount}
+                    </p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/60 mb-3">Requisiti</p>
+                    <ul className="space-y-2">
+                      {course.scholarship.eligibility.map((e, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-white/85 leading-snug">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand-accent" strokeWidth={2.25} />
+                          <span>{e}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
       <section id="metodo" className="py-16 lg:py-24 bg-white">
@@ -576,8 +1149,10 @@ export default function CourseDetail() {
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="mt-14 flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 mt-14">
+            <div className="flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
               <div className="text-white">
                 <p className="text-lg sm:text-xl font-display font-black">Leggi il programma completo</p>
                 <p className="mt-2 text-sm text-white/85 font-medium">Scarica il dettaglio delle unità e degli obiettivi formativi.</p>
@@ -593,47 +1168,131 @@ export default function CourseDetail() {
         </section>
       ) : null}
 
+      {/* 5c. LEVELS COMPARISON */}
+      {course.levelsComparison ? (
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-[1100px] mx-auto px-4">
+            <div className="text-center mb-10 lg:mb-12">
+              {course.levelsComparison.eyebrow ? (
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                  {course.levelsComparison.eyebrow}
+                </p>
+              ) : null}
+              <h2 className={`${tSection} mb-4 max-w-3xl mx-auto`}>
+                {course.levelsComparison.title}
+              </h2>
+              {course.levelsComparison.intro ? (
+                <p className={`${tLead} max-w-2xl mx-auto`}>
+                  {richText(course.levelsComparison.intro)}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+              {course.levelsComparison.levels.map((lvl, i) => (
+                <div
+                  key={i}
+                  className={`relative flex flex-col rounded-[1.5rem] p-6 lg:p-7 ring-1 ${
+                    lvl.highlight
+                      ? 'bg-brand-navy text-white ring-brand-navy shadow-[0_30px_80px_-40px_rgba(0,21,51,0.55)] lg:scale-[1.03]'
+                      : 'bg-white text-brand-navy ring-black/8 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.22)]'
+                  }`}
+                >
+                  {lvl.highlight ? (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center rounded-full bg-brand-accent px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-white shadow-lg">
+                      Più scelto
+                    </span>
+                  ) : null}
+                  <p className={`text-[11px] font-black uppercase tracking-[0.22em] mb-2 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}>
+                    {lvl.label}
+                  </p>
+                  <h3 className={`text-xl sm:text-2xl font-display font-black tracking-tight leading-tight mb-3 ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                    {lvl.name}
+                  </h3>
+                  {lvl.hours ? (
+                    <p className={`text-[11px] font-black uppercase tracking-[0.18em] mb-5 ${lvl.highlight ? 'text-white/60' : 'text-brand-navy/45'}`}>
+                      {lvl.hours}
+                    </p>
+                  ) : null}
+                  <div className="mb-5">
+                    <p className={`text-3xl sm:text-4xl font-display font-black tracking-tight leading-none ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                      {lvl.price}
+                    </p>
+                    {lvl.priceLabel ? (
+                      <p className={`text-xs font-semibold mt-1 ${lvl.highlight ? 'text-white/70' : 'text-brand-navy/55'}`}>
+                        {lvl.priceLabel}
+                      </p>
+                    ) : null}
+                  </div>
+                  {lvl.benefit ? (
+                    <p className={`inline-flex self-start items-center rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] mb-5 ${
+                      lvl.highlight ? 'bg-brand-accent/20 text-brand-accent' : 'bg-brand-accent/10 text-brand-accent'
+                    }`}>
+                      {lvl.benefit}
+                    </p>
+                  ) : null}
+                  <ul className="space-y-2.5 mb-6 flex-1">
+                    {lvl.features.map((f, j) => (
+                      <li key={j} className={`flex items-start gap-2 text-sm leading-snug ${lvl.highlight ? 'text-white/85' : 'text-brand-navy/75'}`}>
+                        <CheckCircle2
+                          size={16}
+                          className={`mt-0.5 shrink-0 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}
+                          strokeWidth={2.25}
+                        />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {lvl.ctaHref ? (
+                    <Link
+                      to={lvl.ctaHref}
+                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                        lvl.highlight
+                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
+                          : 'bg-brand-navy text-white hover:bg-brand-accent'
+                      }`}
+                    >
+                      {lvl.ctaLabel ?? 'Iscriviti ora'}
+                    </Link>
+                  ) : (
+                    <a
+                      href="#prezzo"
+                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                        lvl.highlight
+                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
+                          : 'border-2 border-brand-navy/20 text-brand-navy hover:bg-gray-50'
+                      }`}
+                    >
+                      Scopri i dettagli
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+            {course.levelsComparison.footnote ? (
+              <p className="text-center text-xs text-brand-navy/55 font-medium mt-8 max-w-2xl mx-auto">
+                {course.levelsComparison.footnote}
+              </p>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
       <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#eef5ff_0%,_#dbeaff_45%,_#cfe2ff_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#C6D3FF_0%,#B8C8FF_55%,#AEBEFF_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-brand-navy tracking-tight mb-4 normal-case">
-            La migliore formazione professionale, <span className="text-brand-accent">accessibile</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-4 normal-case max-w-3xl mx-auto">
+            La migliore formazione professionale, accessibile
           </h2>
-          <p className="text-sm sm:text-base text-brand-navy/70 font-medium mb-10 sm:mb-12">
+          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-10 sm:mb-12">
             {isMasterLike
               ? `Scegli il metodo di pagamento per il tuo Master in ${course.subtitle}`
               : `Scegli il metodo di pagamento per ${course.title}`}
           </p>
 
-          {course.earlyBirdPromo ? (
-            <div className="max-w-xl mx-auto mb-12">
-              <div className="grid grid-cols-2 bg-white rounded-full p-1.5 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.2)] border border-gray-100 overflow-hidden">
-                <div className="bg-[#008060] text-white rounded-full py-7 px-4 sm:px-6 flex flex-col items-center justify-center relative text-center">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-[#00664D] px-4 py-1 rounded-full text-[8px] font-black tracking-widest">
-                    EARLY BIRD
-                  </div>
-                  <p className="text-[10px] font-black opacity-80 mb-2 uppercase tracking-widest">
-                    ENTRO IL {course.earlyBirdPromo.pillDeadlineLabel ?? 'TERMINE PROMO'}
-                  </p>
-                  <p className="text-3xl sm:text-4xl font-black italic tracking-tighter leading-none">
-                    {course.earlyBirdPromo.discountAmount ?? '800€'}{' '}
-                    <span className="text-base sm:text-lg">di sconto</span>
-                  </p>
-                </div>
-                <div className="flex flex-col items-center justify-center py-7 text-center px-3">
-                  <p className="text-[10px] font-black text-brand-navy/30 mb-2 uppercase tracking-widest">DOPO LA SCADENZA</p>
-                  <p className="text-2xl sm:text-3xl font-black text-brand-navy/25 italic tracking-tighter leading-none">Prezzo pieno</p>
-                </div>
-              </div>
-              <p className="mt-6 text-[9px] font-black text-brand-navy/35 uppercase tracking-[0.28em] inline-block border-t border-brand-navy/5 pt-3">
-                Sconti validi per contratti di iscrizione firmati entro le date indicate.
-              </p>
-            </div>
-          ) : null}
-
-          <div className="mx-auto max-w-[840px] rounded-full bg-[#bcd6ff]/90 p-1.5 shadow-inner ring-1 ring-white/60">
-            <div className="flex overflow-x-auto">
+          <div className="mx-auto max-w-[840px] rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
+            <div className="flex overflow-x-auto gap-1">
               {course.fees.map((fee, idx) => {
                 const key = fee.title.toLowerCase();
                 const active = paymentTab === key;
@@ -642,8 +1301,10 @@ export default function CourseDetail() {
                     key={idx}
                     type="button"
                     onClick={() => setPaymentTab(key)}
-                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-3 py-3 text-[9px] font-black uppercase tracking-[0.26em] transition-all ${
-                      active ? 'bg-white text-brand-navy shadow-md' : 'text-brand-navy/55 hover:text-brand-navy'
+                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-display font-black uppercase tracking-wide transition-all ${
+                      active
+                        ? 'bg-white text-brand-navy shadow-[0_10px_24px_-14px_rgba(0,21,51,0.35)]'
+                        : 'text-brand-navy/75 hover:text-brand-navy'
                     }`}
                   >
                     {fee.title}
@@ -653,71 +1314,122 @@ export default function CourseDetail() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-12 shadow-[0_26px_70px_-40px_rgba(0,21,51,0.35)] ring-1 ring-black/5">
-            {course.fees.map(
-              (fee, idx) =>
-                paymentTab === fee.title.toLowerCase() && (
-                  <div key={idx} className="mx-auto max-w-xl text-center">
-                    <h3 className="text-lg sm:text-xl font-black text-brand-navy mb-4 normal-case">{fee.heading}</h3>
-                    <p className={`${tBody} mb-10`}>{richText(fee.desc)}</p>
+          <div className="mt-5 sm:mt-6 rounded-[1.5rem] sm:rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
+            {course.fees.map((fee, idx) => {
+              if (paymentTab !== fee.title.toLowerCase()) return null;
+              const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
+              const priceLabel = isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
+              return (
+                <div key={idx} className="mx-auto max-w-xl text-center">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-navy mb-5 normal-case tracking-tight leading-tight">
+                    {fee.heading}
+                  </h3>
+                  <p className="text-sm sm:text-base text-brand-navy/80 font-medium leading-relaxed mb-10">
+                    {richText(fee.desc)}
+                  </p>
 
-                    <p className="text-[11px] font-black uppercase tracking-[0.35em] text-brand-navy/35 mb-3">
-                      {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? 'a partire da' : 'prezzo'}
+                  <p className="text-sm sm:text-base font-semibold text-brand-navy/75 mb-4 normal-case tracking-normal">
+                    {priceLabel}
+                  </p>
+
+                  <div className="mx-auto mb-8 inline-block rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
+                    <p className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight leading-none">
+                      {fee.price}
+                      {fee.priceLabel ? (
+                        <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
+                      ) : null}
                     </p>
-
-                    {fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after' ? (
-                      <div className="mx-auto mb-8 inline-flex flex-col items-center gap-2">
-                        <div className="rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-lg">
-                          <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-                            {fee.price}
-                            {fee.priceLabel ? (
-                              <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
-                            ) : null}
-                          </p>
-                        </div>
-                        {course.earlyBirdPromo ? (
-                          <span className="rounded-full bg-[#008060] px-3 py-1 text-[9px] font-black uppercase tracking-widest text-white">
-                            Early bird
-                          </span>
-                        ) : null}
-                      </div>
-                    ) : (
-                      <div className="relative mx-auto mb-8 inline-block">
-                        <p className="text-4xl sm:text-5xl font-display font-black italic tracking-tighter text-[#008060]">
-                          {fee.price}
-                          {fee.priceLabel ? (
-                            <span className="text-xl sm:text-2xl not-italic font-black">{fee.priceLabel}</span>
-                          ) : null}
-                        </p>
-                      </div>
-                    )}
-
-                    {fee.footnote ? (
-                      <p className="text-brand-navy/45 text-[11px] font-bold leading-relaxed mb-10">{fee.footnote}</p>
-                    ) : (
-                      <div className="mb-10" />
-                    )}
-
-                    <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-                      <button
-                        type="button"
-                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
-                      >
-                        Iscriviti ora
-                      </button>
-                      <button
-                        type="button"
-                        className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
-                      >
-                        Parla con noi
-                      </button>
-                    </div>
                   </div>
-                ),
-            )}
+
+                  {fee.footnote ? (
+                    <p className="text-brand-navy/55 text-xs sm:text-sm font-medium leading-relaxed mb-10">
+                      {fee.footnote}
+                    </p>
+                  ) : (
+                    <div className="mb-10" />
+                  )}
+
+                  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                    <button
+                      type="button"
+                      className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
+                    >
+                      Iscriviti ora
+                    </button>
+                    <button
+                      type="button"
+                      className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                    >
+                      Parla con noi
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* 6b. GUARANTEE 30 HOURS */}
+      {course.guarantee30Hours ? (
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="rounded-[1.75rem] bg-[#F6F8FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
+              <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
+                <div>
+                  {course.guarantee30Hours.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.guarantee30Hours.eyebrow}
+                    </p>
+                  ) : null}
+                  <div className="inline-flex items-center gap-3 mb-5">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-white">
+                      <Hourglass size={20} strokeWidth={2.25} />
+                    </span>
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-5">
+                    {course.guarantee30Hours.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-brand-navy/75 leading-relaxed mb-6">
+                    {richText(course.guarantee30Hours.body)}
+                  </p>
+                  {course.guarantee30Hours.refunds?.length ? (
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {course.guarantee30Hours.refunds.map((r, i) => (
+                        <div key={i} className="rounded-xl bg-white ring-1 ring-black/5 p-4">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/50 mb-1">
+                            {r.label}
+                          </p>
+                          <p className="text-sm font-black text-brand-navy leading-tight">
+                            {r.amount}
+                          </p>
+                          <p className="text-xs text-brand-navy/60 mt-1">
+                            {r.withheld}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                {course.guarantee30Hours.steps?.length ? (
+                  <div className="space-y-4">
+                    {course.guarantee30Hours.steps.map((s, i) => (
+                      <div key={i} className="rounded-2xl bg-white ring-1 ring-black/5 p-5 sm:p-6 shadow-[0_8px_30px_-22px_rgba(0,21,51,0.2)]">
+                        <h3 className="text-sm sm:text-base font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
+                          {s.title}
+                        </h3>
+                        <p className="text-sm text-brand-navy/70 leading-relaxed">
+                          {s.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-16 lg:py-20 bg-white">
@@ -771,62 +1483,408 @@ export default function CourseDetail() {
          </div>
       </section>
 
+      {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
+      <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
+         <div className="max-w-[941px] mx-auto px-4">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-8 lg:mb-10">
+              <div className="max-w-2xl">
+                {competenciesAndCareers.eyebrow ? (
+                  <p className="text-base font-display font-black text-brand-accent mb-2">
+                    {competenciesAndCareers.eyebrow}
+                  </p>
+                ) : null}
+                <h2 className={`${tSection} mb-3`}>
+                  {competenciesAndCareers.title ?? 'Cosa saprai fare e dove potrai lavorare'}
+                </h2>
+                {competenciesAndCareers.intro ? (
+                  <p className={`${tBody} max-w-xl`}>
+                    {richText(competenciesAndCareers.intro)}
+                  </p>
+                ) : null}
+              </div>
+              {competenciesAndCareers.stats?.length ? (
+                <div className="flex flex-wrap gap-2 lg:justify-end lg:flex-col lg:items-end lg:gap-1.5">
+                  {competenciesAndCareers.stats.map((s, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-baseline gap-1.5 rounded-full bg-white ring-1 ring-brand-navy/10 px-3 py-1.5"
+                    >
+                      <span className="text-sm font-display font-black tracking-tight text-brand-navy">
+                        {s.value}
+                      </span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-navy/55">
+                        {s.label}
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
+               {/* Tab switcher */}
+               <div className="grid grid-cols-2 gap-2 p-2 bg-[#F4F6FB] border-b border-gray-100">
+                  <button
+                    type="button"
+                    onClick={() => setCareerTab('competencies')}
+                    aria-pressed={careerTab === 'competencies'}
+                    className={`flex items-center justify-center gap-2 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-display font-black uppercase tracking-tight transition-all ${
+                      careerTab === 'competencies'
+                        ? 'bg-white text-brand-navy shadow-[0_8px_24px_-12px_rgba(0,21,51,0.25)] ring-1 ring-brand-navy/5'
+                        : 'text-brand-navy/55 hover:text-brand-navy'
+                    }`}
+                  >
+                    <TargetIcon size={16} strokeWidth={2.25} className={careerTab === 'competencies' ? 'text-brand-accent' : ''} />
+                    <span>Competenze</span>
+                    <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
+                      careerTab === 'competencies' ? 'bg-[#E6EFFF] text-brand-accent' : 'bg-brand-navy/5 text-brand-navy/50'
+                    }`}>
+                      {competenciesAndCareers.competencies.length}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCareerTab('careers')}
+                    aria-pressed={careerTab === 'careers'}
+                    className={`flex items-center justify-center gap-2 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-display font-black uppercase tracking-tight transition-all ${
+                      careerTab === 'careers'
+                        ? 'bg-brand-navy text-white shadow-[0_8px_24px_-12px_rgba(0,21,51,0.45)]'
+                        : 'text-brand-navy/55 hover:text-brand-navy'
+                    }`}
+                  >
+                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#E2FF3B]' : ''} />
+                    <span>Sbocchi professionali</span>
+                    <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
+                      careerTab === 'careers' ? 'bg-[#E2FF3B] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
+                    }`}>
+                      {competenciesAndCareers.careerPaths.length}
+                    </span>
+                  </button>
+               </div>
+
+               {/* List area */}
+               <div className="relative">
+                  <AnimatePresence mode="wait" initial={false}>
+                    {careerTab === 'competencies' ? (
+                      <motion.ul
+                        key="competencies"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="divide-y divide-gray-100"
+                      >
+                        {competenciesAndCareers.competencies.map((c, i) => (
+                          <li key={i} className="flex gap-3 px-5 py-4 sm:py-4.5">
+                            <CheckCircle2 size={18} className="shrink-0 text-[#008060] mt-0.5" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-black text-brand-navy leading-snug mb-1">
+                                {c.title}
+                              </p>
+                              <p className="text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed">
+                                {c.desc}
+                              </p>
+                            </div>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    ) : (
+                      <motion.ul
+                        key="careers"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="divide-y divide-gray-100"
+                      >
+                        {competenciesAndCareers.careerPaths.map((p, i) => (
+                          <li key={i} className="flex gap-3 px-5 py-4 sm:py-4.5">
+                            <span className="h-2 w-2 rounded-full bg-brand-accent shrink-0 mt-2" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-black text-brand-navy leading-snug mb-1">
+                                {p.title}
+                              </p>
+                              <p className="text-xs sm:text-[13px] text-brand-navy/65 font-medium leading-relaxed mb-2">
+                                {p.desc}
+                              </p>
+                              {p.contexts?.length ? (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {p.contexts.map((ctx, ci) => (
+                                    <span
+                                      key={ci}
+                                      className="inline-flex items-center rounded-md bg-brand-navy/5 border border-brand-navy/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-navy/70"
+                                    >
+                                      {ctx}
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : null}
+                            </div>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* 8c. TESTIMONIANZE */}
+      <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F6FB] to-white">
+         <div className="max-w-[941px] mx-auto px-4">
+            <div className="max-w-2xl mb-10 lg:mb-12">
+              <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
+              <h2 className={`${tSection} mb-4`}>
+                Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
+              </h2>
+              <p className={tLead}>
+                Professionisti che hanno trasformato la loro carriera con il nostro metodo. Video e racconti dalla nostra community.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:auto-rows-[225px]">
+              {testimonials.map((t, i) => {
+                const isBig = i === 0;
+                const layout = isBig
+                  ? 'sm:col-span-2 sm:row-span-2 lg:col-span-1 lg:row-span-2'
+                  : 'lg:col-span-2 lg:row-span-1';
+
+                if (t.video) {
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveVideoTestimonial(i)}
+                      className={`group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[380px] lg:min-h-0 ${layout}`}
+                    >
+                      <img
+                        src={t.video.poster}
+                        alt={t.name}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
+                        <Video size={11} strokeWidth={2.75} />
+                        Video
+                      </div>
+                      {t.video.duration ? (
+                        <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
+                          {t.video.duration}
+                        </div>
+                      ) : null}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
+                          <Play size={isBig ? 28 : 22} strokeWidth={2.5} className="ml-1" fill="currentColor" />
+                        </span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
+                        <p className={`font-display font-black leading-tight mb-0.5 ${isBig ? 'text-lg lg:text-xl' : 'text-sm lg:text-base'}`}>{t.name}</p>
+                        <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{t.role}</p>
+                        {t.cohort ? (
+                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
+                            {t.cohort}
+                          </p>
+                        ) : null}
+                      </div>
+                    </button>
+                  );
+                }
+
+                return (
+                  <div
+                    key={i}
+                    className={`relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden ${layout}`}
+                  >
+                    <div className="flex items-center justify-between mb-2 shrink-0">
+                      <Quote size={22} className="text-brand-accent/25" strokeWidth={2.25} />
+                      {t.rating ? (
+                        <div className="flex text-[#008060] gap-0.5">
+                          {Array.from({ length: t.rating }).map((_, s) => (
+                            <Star key={s} size={11} fill="currentColor" />
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                    <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-3 line-clamp-4 min-h-0">
+                      “{t.quote}”
+                    </p>
+                    <div className="flex items-center gap-3 pt-3 border-t border-gray-100 shrink-0">
+                      {t.img ? (
+                        <img
+                          src={t.img}
+                          alt={t.name}
+                          className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
+                        />
+                      ) : (
+                        <div className="h-10 w-10 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
+                          {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-brand-navy leading-tight truncate">{t.name}</p>
+                        <p className="text-[11px] font-semibold text-brand-navy/55 leading-tight mt-0.5 truncate">
+                          {t.role}
+                        </p>
+                        {t.cohort ? (
+                          <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent mt-0.5 truncate">
+                            {t.cohort}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+         </div>
+
+         <AnimatePresence>
+           {activeVideoTestimonial !== null && testimonials[activeVideoTestimonial]?.video ? (
+             <motion.div
+               key="video-modal"
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               transition={{ duration: 0.2 }}
+               className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+               onClick={() => setActiveVideoTestimonial(null)}
+             >
+               <motion.div
+                 initial={{ opacity: 0, scale: 0.94, y: 16 }}
+                 animate={{ opacity: 1, scale: 1, y: 0 }}
+                 exit={{ opacity: 0, scale: 0.94, y: 16 }}
+                 transition={{ duration: 0.22 }}
+                 className="relative w-full max-w-3xl"
+                 onClick={(e) => e.stopPropagation()}
+               >
+                 <button
+                   type="button"
+                   aria-label="Chiudi video"
+                   onClick={() => setActiveVideoTestimonial(null)}
+                   className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 h-10 w-10 rounded-full bg-white text-brand-navy shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors z-10"
+                 >
+                   <X size={18} strokeWidth={2.5} />
+                 </button>
+                 <div className="bg-brand-navy rounded-[1.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)]">
+                   <div className="aspect-video bg-black">
+                     {testimonials[activeVideoTestimonial].video?.src ? (
+                       <video
+                         src={testimonials[activeVideoTestimonial].video?.src}
+                         poster={testimonials[activeVideoTestimonial].video?.poster}
+                         controls
+                         autoPlay
+                         className="w-full h-full object-cover"
+                       />
+                     ) : (
+                       <div className="w-full h-full flex items-center justify-center text-white/60 text-sm">
+                         Video in arrivo
+                       </div>
+                     )}
+                   </div>
+                   <div className="p-5 sm:p-6 text-white">
+                     <p className="text-base sm:text-lg font-display font-black leading-tight">
+                       {testimonials[activeVideoTestimonial].name}
+                     </p>
+                     <p className="text-xs sm:text-sm font-semibold text-white/65 mt-1">
+                       {testimonials[activeVideoTestimonial].role}
+                     </p>
+                     {testimonials[activeVideoTestimonial].cohort ? (
+                       <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
+                         {testimonials[activeVideoTestimonial].cohort}
+                       </p>
+                     ) : null}
+                   </div>
+                 </div>
+               </motion.div>
+             </motion.div>
+           ) : null}
+         </AnimatePresence>
+      </section>
+
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
-              Un percorso formativo <span className="text-brand-accent underline decoration-4 underline-offset-4">completo</span>
+              Un percorso formativo{' '}
+              <span className="relative inline-block">
+                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#E2FF3B] -z-10 rounded-sm" aria-hidden="true" />
+                <span className="relative">completo</span>
+              </span>
             </h2>
             <p className={`${tLead} mb-12 lg:mb-14 max-w-2xl`}>
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.
             </p>
-            
-            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-               <div className="lg:col-span-2 space-y-6 lg:space-y-8">
-                  <div className="bg-[#E6EFFF] rounded-[1.75rem] p-8 lg:p-10 lg:flex items-center gap-10 group overflow-hidden border border-brand-accent/5">
-                     <div className="lg:w-1/2">
-                        <h3 className="text-lg sm:text-xl font-display font-black mb-4 uppercase tracking-tight leading-snug">Formazione pratica e certificata ICF</h3>
-                        <p className={tBody}>Competenze di coaching, intelligenza emotiva, approccio sistemico e sviluppo del business: un programma accreditato per trasformare le conoscenze in pratica professionale concreta.</p>
-                     </div>
-                     <div className="lg:w-1/2 mt-8 lg:mt-0 relative group-hover:scale-[1.02] transition-transform duration-700">
-                        <CourseImage
-                          src={media.completePractical}
-                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
-                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
-                          alt="Practical"
-                        />
-                     </div>
+
+            <div className="space-y-4 lg:space-y-6">
+               {/* Card 1 — full width, periwinkle, icon + text */}
+               <div className="bg-[#D5DCFB] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 border border-white/40">
+                  <div className="shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
+                     <Sparkles size={30} strokeWidth={2} className="text-brand-navy" />
                   </div>
-                  <div className="bg-[#F2F7FF] rounded-[1.75rem] p-8 lg:p-10 lg:flex items-center gap-10 group overflow-hidden border border-gray-100">
-                     <div className="lg:w-1/2">
-                        <h3 className="text-lg sm:text-xl font-display font-black mb-4 uppercase tracking-tight leading-snug">Piattaforma, registrazioni e supervisione</h3>
-                        <p className={tBody}>
-                          Hai perso una sessione? Nessun problema: in piattaforma trovi registrazioni, materiali e percorsi strutturati per recuperare con ordine. La supervisione con coach MCC è parte del metodo, per trasformare la pratica in competenza misurabile.
-                        </p>
-                     </div>
-                     <div className="lg:w-1/2 mt-8 lg:mt-0">
-                        <CourseImage
-                          src={media.completePlatform}
-                          fallbackSrc={defaultCourseMedia(id ?? 'corso').completePlatform}
-                          className="rounded-3xl shadow-[0_24px_70px_-28px_rgba(0,21,51,0.22)] w-full"
-                          alt="Platform"
-                        />
-                     </div>
+                  <div className="flex-1 min-w-0">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Mindset ICF e presenza del coach
+                     </h3>
+                     <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl">
+                       Il coaching parte da chi sei. Alleni presenza, ascolto e capacità di generare consapevolezza prima degli strumenti — un metodo ICF integrato con intelligenza emotiva e approccio sistemico.
+                     </p>
                   </div>
                </div>
-               
-               <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 text-white relative overflow-hidden flex flex-col items-center text-center justify-between group min-h-[420px] lg:min-h-0">
-                  <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:scale-150 transition-transform duration-700">
-                     <Zap size={150} />
-                  </div>
-                  <div className="relative z-10 w-full mt-10">
-                     <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-10 mx-auto border border-white/10 shadow-xl">
-                        <Play size={36} fill="currentColor" />
+
+               {/* Row 2 — two cards side by side */}
+               <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
+                  {/* Card 2 — cyan/blue gradient, text top, image bottom */}
+                  <div className="lg:col-span-3 bg-gradient-to-br from-[#DFF3FB] to-[#E8EEFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Piattaforma didattica con registrazioni
+                     </h3>
+                     <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md">
+                       Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.
+                     </p>
+                     <div className="mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4">
+                       <CourseImage
+                         src={media.completePlatform}
+                         fallbackSrc={defaultCourseMedia(id ?? 'corso').completePlatform}
+                         className="w-full rounded-xl lg:rounded-2xl shadow-[0_24px_60px_-28px_rgba(0,21,51,0.3)] rotate-[-1deg]"
+                         alt="Piattaforma didattica"
+                       />
                      </div>
-                     <h3 className="text-xl sm:text-2xl font-display font-black uppercase mb-6 tracking-tight leading-snug">Il coaching nella vita reale</h3>
-                     <p className="text-white/55 text-sm sm:text-base font-medium leading-relaxed">Il coaching non resta in aula: lo applicherai sin dalla prima sessione, confrontandoti con situazioni reali, feedback diretti da coach MCC e casi d’uso che stanno cambiando il modo di lavorare con le persone.</p>
                   </div>
-                  <div className="h-20"></div>
+
+                  {/* Card 3 — lime yellow, image top, text bottom */}
+                  <div className="lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden flex flex-col border border-[#CBE430]/40">
+                     <div className="mb-6">
+                       <CourseImage
+                         src={media.completePractical}
+                         fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
+                         className="w-full rounded-xl lg:rounded-2xl shadow-[0_20px_50px_-26px_rgba(0,21,51,0.4)]"
+                         alt="Supervisione 1:1"
+                       />
+                     </div>
+                     <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       Supervisione 1:1 con Mentor MCC
+                     </h3>
+                     <p className="text-sm text-brand-navy/75 font-medium leading-relaxed">
+                       Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.
+                     </p>
+                  </div>
+               </div>
+
+               {/* Card 4 — full width, brand-accent blue, icon + text */}
+               <div className="bg-brand-accent rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 text-white relative overflow-hidden">
+                  <div className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+                  <div className="relative shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/15 flex items-center justify-center ring-1 ring-white/25">
+                     <Briefcase size={30} strokeWidth={2} />
+                  </div>
+                  <div className="relative flex-1 min-w-0">
+                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-3 tracking-tight">
+                       Community Alumni e opportunità continue
+                     </h3>
+                     <p className="text-sm sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
+                       Alla fine del percorso entri nel network degli alumni Asterys: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con <span className="text-white font-black">oltre 3.000 professionisti</span> in Italia e all'estero.
+                     </p>
+                  </div>
                </div>
             </div>
          </div>
@@ -834,7 +1892,7 @@ export default function CourseDetail() {
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-16 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="bg-[#1D3BB9] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">

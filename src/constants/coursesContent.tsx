@@ -125,6 +125,119 @@ export interface CourseData {
     title: string;
     intro: string;
   };
+  testimonials?: CourseTestimonial[];
+  competenciesAndCareers?: {
+    eyebrow?: string;
+    title?: string;
+    intro?: string;
+    competencies: CourseCompetency[];
+    careerPaths: CourseCareerPath[];
+    stats?: { value: string; label: string }[];
+  };
+  editions?: CourseEdition[];
+  editionsSection?: {
+    eyebrow?: string;
+    title?: string;
+    intro?: string;
+  };
+  whyChoose?: {
+    eyebrow?: string;
+    title: string;
+    intro?: string;
+    bullets: { title: string; desc: string }[];
+  };
+  levelsComparison?: {
+    eyebrow?: string;
+    title: string;
+    intro?: string;
+    levels: {
+      label: string;
+      name: string;
+      price: string;
+      priceLabel?: string;
+      hours?: string;
+      highlight?: boolean;
+      benefit?: string;
+      features: string[];
+      ctaLabel?: string;
+      ctaHref?: string;
+    }[];
+    footnote?: string;
+  };
+  guarantee30Hours?: {
+    eyebrow?: string;
+    title: string;
+    body: string;
+    refunds?: { label: string; amount: string; withheld: string }[];
+    steps?: { title: string; desc: string }[];
+  };
+  scholarship?: {
+    eyebrow?: string;
+    title: string;
+    amount: string;
+    body: string;
+    eligibility: string[];
+    availability?: string;
+    ctaLabel?: string;
+    ctaHref?: string;
+  };
+}
+
+export interface CourseTestimonial {
+  name: string;
+  role: string;
+  img?: string;
+  quote: string;
+  rating?: number;
+  cohort?: string;
+  video?: {
+    poster: string;
+    src?: string;
+    duration?: string;
+  };
+}
+
+export interface CourseCompetency {
+  title: string;
+  desc: string;
+}
+
+export interface CourseCareerPath {
+  title: string;
+  desc: string;
+  contexts?: string[];
+}
+
+export type CourseEditionEventType =
+  | 'deadline-early'
+  | 'deadline-final'
+  | 'live-class'
+  | 'live-lab'
+  | 'corso'
+  | 'orientamento'
+  | 'milestone'
+  | 'individual';
+
+export interface CourseEditionEvent {
+  label: string;
+  date: string;
+  type?: CourseEditionEventType;
+  note?: string;
+}
+
+export interface CourseEdition {
+  city: string;
+  citySlug: string;
+  level: string;
+  levelSlug: string;
+  editionLabel: string;
+  editionSlug: string;
+  subtitle?: string;
+  badge?: string;
+  earlyBird?: { label: string; date: string };
+  enrollmentEnd?: { label: string; date: string };
+  events: CourseEditionEvent[];
+  ctaLabel?: string;
 }
 
 export interface CourseMedia {
@@ -148,6 +261,62 @@ export function defaultCourseMedia(slug: string): CourseMedia {
     howItWorks: `https://picsum.photos/seed/${slug}-how/900/700`,
   };
 }
+
+export const commonTestimonials: CourseTestimonial[] = [
+  {
+    name: "Giulia Moretti",
+    role: "Leadership Coach · Alumna APCM",
+    img: "https://picsum.photos/seed/testimonial-giulia/400/400",
+    cohort: "Ed. 2023 · Milano",
+    quote:
+      "In video ti racconto come è stato tornare a lavorare con i team dopo il Master.",
+    video: {
+      poster: "https://picsum.photos/seed/video-giulia/900/1100",
+      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      duration: "1:42"
+    }
+  },
+  {
+    name: "Laura Bianchi",
+    role: "Executive Coach · ex HR Director",
+    img: "https://picsum.photos/seed/testimonial-laura/400/400",
+    quote:
+      "Il percorso con Asterys Lab ha trasformato il mio modo di lavorare con le persone. Ho trovato metodo, comunità e una credibilità professionale che prima non avevo.",
+    rating: 5,
+    cohort: "Alumna APCM"
+  },
+  {
+    name: "Marco Ferrari",
+    role: "Team Coach & Consulente",
+    img: "https://picsum.photos/seed/testimonial-marco/400/400",
+    quote:
+      "Qualità dei docenti, supervisione seria e una rete di alumni concreta. Ho iniziato a prendere i primi clienti durante il Master e oggi lavoro come coach full-time.",
+    rating: 5,
+    cohort: "Alumno APCM"
+  },
+  {
+    name: "Andrea Conti",
+    role: "Business Coach · Founder Studio Evolve",
+    img: "https://picsum.photos/seed/testimonial-andrea/400/400",
+    cohort: "Ed. 2022 · Roma",
+    quote:
+      "La mia storia: dalla consulenza al coaching, dopo Asterys Lab.",
+    video: {
+      poster: "https://picsum.photos/seed/video-andrea/1200/900",
+      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      duration: "2:05"
+    }
+  },
+  {
+    name: "Silvia Rossi",
+    role: "People Manager · Coach PCC",
+    img: "https://picsum.photos/seed/testimonial-silvia/400/400",
+    quote:
+      "Non è solo una certificazione: è un percorso di crescita personale. L'intelligenza emotiva e l'approccio sistemico mi hanno cambiato anche nella vita quotidiana.",
+    rating: 5,
+    cohort: "Alumna APCM"
+  }
+];
 
 const commonFaqs = [
   {
@@ -176,11 +345,11 @@ export const coursesContent: Record<string, CourseData> = {
   'apcm': {
     title: "Accredited Professional Coaching Mastery (APCM)",
     subtitle: "Professione Coach",
-    tagline: "Il Master d'eccellenza per diventare un coach professionista accreditato ICF con intelligenza emotiva misurabile e approccio sistemico.",
+    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: APCM è il Master d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "PER PROFESSIONISTI",
     media: {
-      hero: "/course-media/apcm/hero.webp",
+      hero: "/course-media/apcm/hero.png",
       overview: "/course-media/apcm/overview.webp",
       brochureDecor: "/course-media/apcm/brochure.webp",
       advisor: "/course-media/apcm/advisor.webp",
@@ -233,16 +402,16 @@ export const coursesContent: Record<string, CourseData> = {
       dates: "Maggio – Dicembre 2026",
       format: "Ibrido (Presenza + Live Online)",
       duration: "150 ore accademiche",
-      price: "A partire da 3.900€",
-      installments: "Fino a 24 rate senza interessi"
+      price: "A partire da 3.400€ + IVA",
+      installments: "Rateizzabile fino a 24 mesi senza interessi"
     },
     badges: ["ICF Level 1 & 2", "20+ anni esperienza", "Community Alumni"],
     overview: {
       title: "Perché questo Master in Coaching Professionale",
       content: [
-        "Il Master APCM di Asterys Lab non è solo un corso di formazione, è un viaggio di trasformazione profonda.",
-        "Integriamo le più moderne scoperte delle neuroscienze con la pratica del coaching sistemico.",
-        "Il nostro obiettivo è portarti da essere un professionista curioso a un coach competente, etico e riconosciuto a livello internazionale."
+        "L'APCM è il percorso di Asterys Lab per chi vuole diventare **coach professionista** e operare con credenziali ICF riconosciute in tutto il mondo. Non è solo formazione tecnica: è un viaggio di trasformazione che integra **metodo**, **intelligenza emotiva** e **approccio sistemico**.",
+        "Impari a condurre sessioni di coaching con rigore etico, a leggere le dinamiche relazionali oltre il singolo individuo e a costruire un business sostenibile. Tutto questo accanto a **trainer MCC & PCC** con 20+ anni di esperienza e una community di 3.000+ alumni attivi.",
+        "Che tu provenga dal mondo HR, dalla consulenza, dal management o dalla psicologia, APCM ti porta da professionista curioso a coach competente, riconosciuto e preparato a entrare sul mercato con metodo."
       ]
     },
     target: [
@@ -326,38 +495,543 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "Rate Smart",
+        title: "Rateizzazione 24 mesi",
         type: "installment",
-        benefit: "Fino a 24 mesi",
+        benefit: "0% interessi",
         heading: "Paga in rate mensili",
-        desc: "Con Rate Smart puoi dilazionare l'intero importo in piccole rate mensili (fino a 24 mesi), senza garanzie e con attivazione completamente online.",
-        price: "190€",
+        desc: "Dilaziona l'intero importo del Master in rate mensili fino a 24 mesi, senza interessi e senza garanzie. Attivazione semplice e completamente online.",
+        price: "288€",
         priceLabel: "/mese",
-        footnote: "Simulazione su 24 mesi, prezzo del Master: 4.200€ → 3.510€"
+        footnote: "Simulazione su 24 mesi · Percorso Completo L1+L2: 6.900€ + IVA"
       },
       {
         title: "Pagamento Unico",
         type: "lump",
-        benefit: "Sconto 10%",
-        heading: "Risparmia con il pagamento unico",
-        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul percorso. Ideal per chi preferisce saldare tutto subito e non pensarci più.",
-        price: "3.510€",
-        priceLabel: "una tantum",
-        footnote: "Prezzo pieno: 3.900€ — risparmi 390€ con il pagamento unico"
+        benefit: "Risparmi 1.000€",
+        heading: "Percorso Completo L1+L2",
+        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul Percorso Completo (Livello 1 + Livello 2). Ideale per chi preferisce saldare tutto subito.",
+        price: "6.900€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Prezzo pieno: 7.900€ + IVA — con pagamento unico risparmi 1.000€"
       },
       {
-        title: "Tasso Zero",
-        type: "zero-rate",
-        benefit: "0% interessi",
-        heading: "Finanziamento a tasso zero",
-        desc: "Attiva il finanziamento a tasso zero e paga il percorso in comode rate mensili senza alcuna maggiorazione. Procedura semplice e completamente online.",
-        price: "190€",
-        priceLabel: "/mese",
-        footnote: "Soggetto ad approvazione del finanziatore. Simulazione indicativa."
+        title: "Solo Livello 1",
+        type: "after",
+        benefit: "Fondamenti coaching",
+        heading: "Parti dal 1° Livello",
+        desc: "Frequenta solo il Livello 1 (ICF Level 1 ready) e decidi in seguito se proseguire con il 2° Livello. Potrai sempre completare il percorso con una successiva edizione.",
+        price: "3.400€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
       }
     ],
     faqs: commonFaqs,
-    placementStats: { rate: "98%", partners: "150+", opportunities: "500+" }
+    placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
+    testimonials: [
+      {
+        name: "Chiara De Luca",
+        role: "Executive Coach · ex Senior HR Manager",
+        img: "https://picsum.photos/seed/apcm-chiara/400/400",
+        quote:
+          "La mia storia in video: dai 15 anni di HR al mio studio di coaching certificato ICF.",
+        rating: 5,
+        cohort: "APCM 2023 · Certificata PCC",
+        video: {
+          poster: "https://picsum.photos/seed/apcm-chiara-video/1200/1400",
+          src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          duration: "1:48"
+        }
+      },
+      {
+        name: "Andrea Moretti",
+        role: "Team Coach & Facilitator",
+        img: "https://picsum.photos/seed/apcm-andrea/400/400",
+        quote:
+          "Il modulo Prosperous Coach mi ha dato gli strumenti pratici per costruire la mia offerta. A sei mesi dalla fine del Master seguivo già i primi progetti corporate.",
+        rating: 5,
+        cohort: "APCM 2022 · Alumno"
+      },
+      {
+        name: "Martina Colombo",
+        role: "Leadership Coach · Psicologa del lavoro",
+        img: "https://picsum.photos/seed/apcm-martina/400/400",
+        quote:
+          "L'approccio sistemico e l'intelligenza emotiva misurabile hanno portato la mia pratica a un altro livello. La community degli alumni è un supporto quotidiano.",
+        rating: 5,
+        cohort: "APCM 2024 · In certificazione ACC"
+      }
+    ],
+    competenciesAndCareers: {
+      eyebrow: "Competenze & Professione",
+      title: "Cosa saprai fare e dove potrai lavorare",
+      intro:
+        "Al termine del Master padroneggi **competenze ICF certificabili**, strumenti di **intelligenza emotiva misurabile** e un **approccio sistemico**. Potrai operare come coach professionista in diversi contesti — libera professione, aziende, enti pubblici e terzo settore.",
+      stats: [
+        { value: "98%", label: "Tasso di certificazione ICF" },
+        { value: "3.000+", label: "Alumni Asterys nel mondo" },
+        { value: "20+ anni", label: "Di metodo e ricerca sul coaching" }
+      ],
+      competencies: [
+        {
+          title: "Condurre sessioni ICF Level 1 & 2",
+          desc: "Progetti e guidi percorsi di coaching strutturati rispettando le 8 core competence ICF e il codice etico internazionale."
+        },
+        {
+          title: "Leggere e allenare l'intelligenza emotiva",
+          desc: "Utilizzi il modello KCG / Six Seconds per mappare, allenare e misurare competenze emotive nei clienti e nei team."
+        },
+        {
+          title: "Facilitare sistemi complessi",
+          desc: "Applichi un approccio sistemico alle dinamiche organizzative, leggendo relazioni, stakeholder e vincoli oltre il singolo individuo."
+        },
+        {
+          title: "Costruire il tuo business di coaching",
+          desc: "Definisci posizionamento, offerta e pricing. Acquisisci clienti in modo etico e costruisci un portfolio sostenibile nel tempo."
+        },
+        {
+          title: "Supervisionare la tua pratica",
+          desc: "Integri pratica supervisionata, feedback da Mentor MCC e auto-riflessione come parte del metodo professionale continuativo."
+        },
+        {
+          title: "Operare in contesti internazionali",
+          desc: "Padroneggi un linguaggio e uno standard riconosciuti a livello internazionale, con credenziali ICF spendibili ovunque."
+        }
+      ],
+      careerPaths: [
+        {
+          title: "Coach Libero Professionista",
+          desc: "Avvii la tua pratica 1-to-1 come Life, Career o Executive Coach, lavorando con clienti privati e manager.",
+          contexts: ["Studio privato", "Percorsi individuali", "Online & in presenza"]
+        },
+        {
+          title: "Executive & Leadership Coach",
+          desc: "Affianchi manager e C-level in percorsi di sviluppo della leadership, transizioni di ruolo e gestione della complessità.",
+          contexts: ["Aziende", "Scale-up", "Board & C-level"]
+        },
+        {
+          title: "Team & Business Coach",
+          desc: "Accompagni team e reparti ad alta performance, gestendo conflitti, allineamento e obiettivi in una logica sistemica.",
+          contexts: ["Team aziendali", "Start-up", "Progetti trasformativi"]
+        },
+        {
+          title: "HR & People Development",
+          desc: "Porti cultura coaching dentro l'organizzazione come HR Business Partner, People Manager o responsabile L&D.",
+          contexts: ["HR & L&D interni", "Talent development", "Change management"]
+        },
+        {
+          title: "Trainer & Formatore",
+          desc: "Progetti e conduci percorsi formativi d'aula, workshop e programmi di sviluppo competenze per aziende e scuole.",
+          contexts: ["Aziende", "Scuole & università", "Corporate academy"]
+        },
+        {
+          title: "Consulente di sviluppo organizzativo",
+          desc: "Integri coaching, IE e approccio sistemico in interventi di OD, cultura aziendale e trasformazione delle persone.",
+          contexts: ["Società di consulenza", "Studi professionali", "Progetti in autonomia"]
+        }
+      ]
+    },
+    editionsSection: {
+      eyebrow: "Calendario edizioni",
+      title: "Scegli sede, livello ed edizione",
+      intro:
+        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutte le Live Class, i Live Lab, i Corsi intensivi e le scadenze di iscrizione."
+    },
+    whyChoose: {
+      eyebrow: "Perché scegliere APCM",
+      title: "Un Master che unisce rigore, umanità e mercato",
+      intro:
+        "APCM è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **trainer con credenziali MCC & PCC**, **pratica supervisionata** e un **Career Center** che ti accompagna nell'avvio della professione.",
+      bullets: [
+        {
+          title: "Accreditamento ICF Level 1 & 2",
+          desc: "Programma riconosciuto ICF: al termine hai tutte le ore formative necessarie per le credenziali ACC e PCC, spendibili a livello internazionale."
+        },
+        {
+          title: "Intelligenza Emotiva misurabile",
+          desc: "Integriamo il modello KCG / Six Seconds: impari ad allenare l'IE con strumenti di assessment certificati, non solo con la teoria."
+        },
+        {
+          title: "Approccio sistemico",
+          desc: "Lavori non solo sull'individuo ma sulle relazioni, sui gruppi e sui contesti. È ciò che fa la differenza nelle organizzazioni complesse."
+        },
+        {
+          title: "Trainer MCC e PCC",
+          desc: "Apprendi da coach professionisti con 20+ anni di esperienza su board, team e percorsi individuali, in contesti italiani e internazionali."
+        },
+        {
+          title: "Pratica supervisionata reale",
+          desc: "Sessioni vere, feedback da Mentor MCC, supervisione continua: il Master ti fa iniziare a coachare dal primo mese, non a libro finito."
+        },
+        {
+          title: "Prosperous Coach incluso",
+          desc: "Posizionamento, pricing, acquisizione clienti ed etica del business: gli strumenti per costruire davvero la tua professione."
+        }
+      ]
+    },
+    levelsComparison: {
+      eyebrow: "Struttura del percorso",
+      title: "Scegli come affrontare il Master",
+      intro:
+        "APCM è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio.",
+      levels: [
+        {
+          label: "Livello 1",
+          name: "ICF Level 1 Ready",
+          price: "3.400€",
+          priceLabel: "+ IVA",
+          hours: "60 ore accademiche",
+          benefit: "Fondamenti del coaching",
+          features: [
+            "8 core competence ICF · Livello 1",
+            "Etica, alleanza e accordo di coaching",
+            "Basi di Intelligenza Emotiva",
+            "Sessioni pratiche con feedback",
+            "Abilita alla credenziale ICF ACC",
+            "Modulo Prosperous Coach incluso"
+          ]
+        },
+        {
+          label: "Percorso Completo",
+          name: "ICF Level 1 + Level 2",
+          price: "6.900€",
+          priceLabel: "+ IVA · invece di 7.900€",
+          hours: "150 ore accademiche",
+          benefit: "Risparmi 1.000€",
+          highlight: true,
+          features: [
+            "Tutto il Livello 1 + Livello 2 integrale",
+            "Intelligenza Emotiva misurabile (KCG/SEI)",
+            "Approccio sistemico avanzato",
+            "Pratica supervisionata con Mentor MCC",
+            "Abilita alla credenziale ICF PCC",
+            "Accesso alla Community Alumni Asterys",
+            "Percorso di Personal Coaching individuale"
+          ],
+          ctaLabel: "Iscriviti al Percorso Completo",
+          ctaHref: "/iscriviti"
+        },
+        {
+          label: "Livello 2",
+          name: "ICF Level 2 Advanced",
+          price: "4.500€",
+          priceLabel: "+ IVA",
+          hours: "90 ore accademiche",
+          benefit: "Solo per chi ha già il L1",
+          features: [
+            "Intelligenza Emotiva avanzata",
+            "Lavoro sui sistemi complessi",
+            "Mentor coaching ICF (7+3 ore)",
+            "Supervisione individuale",
+            "Abilita alla credenziale ICF PCC",
+            "Personal Coaching individuale"
+          ]
+        }
+      ],
+      footnote: "Tutti i livelli sono rateizzabili fino a 24 mesi senza interessi. Prezzi IVA esclusa."
+    },
+    guarantee30Hours: {
+      eyebrow: "La nostra garanzia",
+      title: "Hai 30 ore per ripensarci",
+      body: "Vogliamo che tu entri nel Master con la certezza di aver fatto la scelta giusta. Per questo puoi frequentare le **prime 30 ore di formazione** e, se capisci che non fa per te, **recedere ottenendo il rimborso** della quota già versata, al netto di una piccola trattenuta a copertura dei costi.",
+      refunds: [
+        { label: "Pagamento Unico", amount: "Rimborso totale", withheld: "Trattenuta: 500€" },
+        { label: "Rateizzazione", amount: "Rimborso totale", withheld: "Trattenuta: 650€" }
+      ],
+      steps: [
+        { title: "1. Frequenti senza impegno", desc: "Partecipi alle prime 30 ore di Master come se fossi già iscritto definitivamente." },
+        { title: "2. Valuti con calma", desc: "Vivi il metodo, i trainer, i compagni di percorso e capisci se è il percorso che fa per te." },
+        { title: "3. Decidi liberamente", desc: "Se non ti convince, comunichi il recesso entro le 30 ore e rientra il rimborso come previsto." }
+      ]
+    },
+    scholarship: {
+      eyebrow: "Opportunità",
+      title: "Borsa di studio fino a 1.500€",
+      amount: "Fino a 1.500€",
+      body: "Per supportare l'accesso al Master ai professionisti del **Centro e Sud Italia**, riserviamo una borsa di studio sulle **prime iscrizioni** delle edizioni di **Roma**. Un investimento concreto sulla comunità dei coach italiani.",
+      eligibility: [
+        "Residenti in una regione del Centro o Sud Italia",
+        "Iscrizione a un'edizione del Master APCM a Roma",
+        "Tra i primi 3 iscritti per edizione (ordine cronologico)",
+        "Colloquio di ammissione positivo con un nostro Advisor"
+      ],
+      availability: "3 borse di studio disponibili per edizione Roma",
+      ctaLabel: "Richiedi la borsa di studio",
+      ctaHref: "/iscriviti"
+    },
+    editions: [
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 1",
+        editionSlug: "ed1-2026",
+        subtitle: "Febbraio – Maggio 2026",
+        badge: "Iscrizioni chiuse",
+        earlyBird: { label: "Early Bird", date: "12 dicembre 2025" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "29 gennaio 2026" },
+        events: [
+          { label: "Early Bird", date: "12 dicembre 2025", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "29 gennaio 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "12 febbraio 2026", type: "live-class" },
+          { label: "Live Lab", date: "19, 20, 21 febbraio 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "25 febbraio 2026", type: "live-class" },
+          { label: "Live Class 3", date: "3 marzo 2026", type: "live-class" },
+          { label: "Live Class 4", date: "9 marzo 2026", type: "live-class" },
+          { label: "Corso II", date: "19, 20, 21 marzo 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "25 marzo 2026", type: "live-class" },
+          { label: "Live Class 6", date: "31 marzo 2026", type: "live-class" },
+          { label: "Orientamento", date: "6 maggio 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Maggio 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 2",
+        editionSlug: "ed2-2026",
+        subtitle: "Maggio – Dicembre 2026",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "12 marzo 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "28 aprile 2026" },
+        events: [
+          { label: "Early Bird", date: "12 marzo 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "28 aprile 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "12 maggio 2026", type: "live-class" },
+          { label: "Live Lab", date: "21, 22, 23 maggio 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "28 maggio 2026", type: "live-class" },
+          { label: "Live Class 3", date: "3 giugno 2026", type: "live-class" },
+          { label: "Live Class 4", date: "23 settembre 2026", type: "live-class" },
+          { label: "Corso II", date: "1, 2, 3 ottobre 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "13 ottobre 2026", type: "live-class" },
+          { label: "Live Class 6", date: "21 ottobre 2026", type: "live-class" },
+          { label: "Orientamento", date: "2 dicembre 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Dicembre 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 3",
+        editionSlug: "ed3-2026",
+        subtitle: "Ottobre 2026 – Marzo 2027",
+        badge: "Early Bird attivo",
+        earlyBird: { label: "Early Bird", date: "27 agosto 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "13 ottobre 2026" },
+        events: [
+          { label: "Early Bird", date: "27 agosto 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "13 ottobre 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "27 ottobre 2026", type: "live-class" },
+          { label: "Live Lab", date: "5, 6, 7 novembre 2026", type: "live-lab", note: "Videoconferenza" },
+          { label: "Live Class 2", date: "12 novembre 2026", type: "live-class" },
+          { label: "Live Class 3", date: "18 novembre 2026", type: "live-class" },
+          { label: "Live Class 4", date: "13 gennaio 2027", type: "live-class" },
+          { label: "Corso II", date: "21, 22, 23 gennaio 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 5", date: "4 febbraio 2027", type: "live-class" },
+          { label: "Live Class 6", date: "10 febbraio 2027", type: "live-class" },
+          { label: "Orientamento", date: "2 marzo 2027", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Marzo 2027", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2026",
+        editionSlug: "ed-2026",
+        subtitle: "Aprile – Giugno 2026",
+        badge: "In corso",
+        earlyBird: { label: "Early Bird", date: "21 febbraio 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "7 aprile 2026" },
+        events: [
+          { label: "Early Bird", date: "21 febbraio 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "7 aprile 2026", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "21 aprile 2026", type: "live-class" },
+          { label: "Live Class 8", date: "29 aprile 2026", type: "live-class" },
+          { label: "Live Class 9 EI", date: "6 maggio 2026", type: "live-class" },
+          { label: "Corso III", date: "14, 15, 16 maggio 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 10 EI", date: "19 maggio 2026", type: "live-class" },
+          { label: "Live Class 11", date: "26 maggio 2026", type: "live-class" },
+          { label: "Live Class 12", date: "4 giugno 2026", type: "live-class" },
+          { label: "Live Class 13 EI", date: "10 giugno 2026", type: "live-class" },
+          { label: "Corso IV", date: "18, 19, 20 giugno 2026", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 14", date: "24 giugno 2026", type: "live-class" },
+          { label: "Live Class 15", date: "30 giugno 2026", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Giugno 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2027",
+        editionSlug: "ed-2027",
+        subtitle: "Marzo – Giugno 2027",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "10 gennaio 2027" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "24 febbraio 2027" },
+        events: [
+          { label: "Early Bird", date: "10 gennaio 2027", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "24 febbraio 2027", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "10 marzo 2027", type: "live-class" },
+          { label: "Live Class 8", date: "17 marzo 2027", type: "live-class" },
+          { label: "Live Class 9 EI", date: "24 marzo 2027", type: "live-class" },
+          { label: "Corso III", date: "1, 2, 3 aprile 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 10", date: "14 aprile 2027", type: "live-class" },
+          { label: "Live Class 11 EI", date: "21 aprile 2027", type: "live-class" },
+          { label: "Live Class 12", date: "28 aprile 2027", type: "live-class" },
+          { label: "Live Class 13 EI", date: "5 maggio 2027", type: "live-class" },
+          { label: "Corso IV", date: "13, 14, 15 maggio 2027", type: "corso", note: "Modulo intensivo" },
+          { label: "Live Class 14", date: "26 maggio 2027", type: "live-class" },
+          { label: "Live Class 15", date: "8 giugno 2027", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 1",
+        editionSlug: "ed1-2026",
+        subtitle: "Febbraio – Maggio 2026",
+        badge: "Iscrizioni chiuse",
+        earlyBird: { label: "Early Bird", date: "19 dicembre 2025" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "5 febbraio 2026" },
+        events: [
+          { label: "Early Bird", date: "19 dicembre 2025", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "5 febbraio 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "19 febbraio 2026", type: "live-class" },
+          { label: "Live Lab", date: "26, 27, 28 febbraio 2026", type: "live-lab", note: "In presenza a Roma" },
+          { label: "Live Class 2", date: "4 marzo 2026", type: "live-class" },
+          { label: "Live Class 3", date: "10 marzo 2026", type: "live-class" },
+          { label: "Live Class 4", date: "16 marzo 2026", type: "live-class" },
+          { label: "Corso II", date: "26, 27, 28 marzo 2026", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 5", date: "1 aprile 2026", type: "live-class" },
+          { label: "Live Class 6", date: "7 aprile 2026", type: "live-class" },
+          { label: "Orientamento", date: "13 maggio 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Maggio 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 2",
+        editionSlug: "ed2-2026",
+        subtitle: "Maggio – Dicembre 2026",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "19 marzo 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "5 maggio 2026" },
+        events: [
+          { label: "Early Bird", date: "19 marzo 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "5 maggio 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "19 maggio 2026", type: "live-class" },
+          { label: "Live Lab", date: "28, 29, 30 maggio 2026", type: "live-lab", note: "In presenza a Roma" },
+          { label: "Live Class 2", date: "3 giugno 2026", type: "live-class" },
+          { label: "Live Class 3", date: "10 giugno 2026", type: "live-class" },
+          { label: "Live Class 4", date: "30 settembre 2026", type: "live-class" },
+          { label: "Corso II", date: "8, 9, 10 ottobre 2026", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 5", date: "20 ottobre 2026", type: "live-class" },
+          { label: "Live Class 6", date: "28 ottobre 2026", type: "live-class" },
+          { label: "Orientamento", date: "9 dicembre 2026", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Dicembre 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "Edizione 3",
+        editionSlug: "ed3-2026",
+        subtitle: "Novembre 2026 – Marzo 2027",
+        badge: "Early Bird attivo",
+        earlyBird: { label: "Early Bird", date: "3 settembre 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "20 ottobre 2026" },
+        events: [
+          { label: "Early Bird", date: "3 settembre 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "20 ottobre 2026", type: "deadline-final" },
+          { label: "Live Class 1", date: "3 novembre 2026", type: "live-class" },
+          { label: "Live Lab", date: "12, 13, 14 novembre 2026", type: "live-lab", note: "In presenza a Roma" },
+          { label: "Live Class 2", date: "19 novembre 2026", type: "live-class" },
+          { label: "Live Class 3", date: "25 novembre 2026", type: "live-class" },
+          { label: "Live Class 4", date: "20 gennaio 2027", type: "live-class" },
+          { label: "Corso II", date: "28, 29, 30 gennaio 2027", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 5", date: "11 febbraio 2027", type: "live-class" },
+          { label: "Live Class 6", date: "17 febbraio 2027", type: "live-class" },
+          { label: "Orientamento", date: "9 marzo 2027", type: "orientamento" },
+          { label: "Fine Attività 1° livello", date: "Marzo 2027", type: "milestone" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2026",
+        editionSlug: "ed-2026",
+        subtitle: "Aprile – Luglio 2026",
+        badge: "In corso",
+        earlyBird: { label: "Early Bird", date: "28 febbraio 2026" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "14 aprile 2026" },
+        events: [
+          { label: "Early Bird", date: "28 febbraio 2026", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "14 aprile 2026", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "28 aprile 2026", type: "live-class" },
+          { label: "Live Class 8", date: "6 maggio 2026", type: "live-class" },
+          { label: "Live Class 9 EI", date: "13 maggio 2026", type: "live-class" },
+          { label: "Corso III", date: "21, 22, 23 maggio 2026", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 10 EI", date: "26 maggio 2026", type: "live-class" },
+          { label: "Live Class 11", date: "3 giugno 2026", type: "live-class" },
+          { label: "Live Class 12", date: "11 giugno 2026", type: "live-class" },
+          { label: "Live Class 13 EI", date: "17 giugno 2026", type: "live-class" },
+          { label: "Corso IV", date: "25, 26, 27 giugno 2026", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 14", date: "1 luglio 2026", type: "live-class" },
+          { label: "Live Class 15", date: "7 luglio 2026", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Luglio 2026", type: "milestone" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "Edizione 2027",
+        editionSlug: "ed-2027",
+        subtitle: "Marzo – Giugno 2027",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "17 gennaio 2027" },
+        enrollmentEnd: { label: "Fine iscrizioni", date: "3 marzo 2027" },
+        events: [
+          { label: "Early Bird", date: "17 gennaio 2027", type: "deadline-early" },
+          { label: "Fine iscrizioni", date: "3 marzo 2027", type: "deadline-final" },
+          { label: "Live Class 7 EI", date: "17 marzo 2027", type: "live-class" },
+          { label: "Live Class 8", date: "24 marzo 2027", type: "live-class" },
+          { label: "Live Class 9 EI", date: "31 marzo 2027", type: "live-class" },
+          { label: "Corso III", date: "8, 9, 10 aprile 2027", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 10", date: "21 aprile 2027", type: "live-class" },
+          { label: "Live Class 11 EI", date: "28 aprile 2027", type: "live-class" },
+          { label: "Live Class 12", date: "5 maggio 2027", type: "live-class" },
+          { label: "Live Class 13 EI", date: "12 maggio 2027", type: "live-class" },
+          { label: "Corso IV", date: "20, 21, 22 maggio 2027", type: "corso", note: "Modulo intensivo in presenza" },
+          { label: "Live Class 14", date: "2 giugno 2027", type: "live-class" },
+          { label: "Live Class 15", date: "15 giugno 2027", type: "live-class" },
+          { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
+          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
+        ]
+      }
+    ]
   },
   'systemic-team-coaching': {
     title: "Systemic Team Coaching Master",
