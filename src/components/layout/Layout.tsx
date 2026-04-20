@@ -77,7 +77,9 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
+  const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
 
@@ -89,6 +91,7 @@ export const Header = () => {
 
   useEffect(() => {
     setIsMegaOpen(false);
+    setIsAboutOpen(false);
   }, [location.pathname]);
 
   const openMega = () => {
@@ -104,8 +107,21 @@ export const Header = () => {
     closeTimer.current = window.setTimeout(() => setIsMegaOpen(false), 120);
   };
 
+  const openAbout = () => {
+    if (aboutCloseTimer.current) {
+      window.clearTimeout(aboutCloseTimer.current);
+      aboutCloseTimer.current = null;
+    }
+    setIsAboutOpen(true);
+  };
+
+  const scheduleCloseAbout = () => {
+    if (aboutCloseTimer.current) window.clearTimeout(aboutCloseTimer.current);
+    aboutCloseTimer.current = window.setTimeout(() => setIsAboutOpen(false), 120);
+  };
+
   const navLinks = [
-    { name: 'Corsi', href: '/corsi', hasDropdown: true },
+    { name: 'The Campus', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
     { name: 'Blog', href: '/blog' },
   ];
@@ -172,16 +188,67 @@ export const Header = () => {
             >
               Per le aziende
             </Link>
+            <div
+              className="relative"
+              onMouseEnter={openAbout}
+              onMouseLeave={scheduleCloseAbout}
+              onFocus={openAbout}
+              onBlur={scheduleCloseAbout}
+            >
+              <Link
+                to="/about"
+                className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                  location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={isAboutOpen}
+              >
+                About
+                <ChevronDown
+                  size={14}
+                  className={`mt-0.5 opacity-60 transition-transform ${isAboutOpen ? 'rotate-180' : ''}`}
+                />
+              </Link>
+              <AnimatePresence>
+                {isAboutOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.15, ease: 'easeOut' }}
+                    className="absolute top-full right-0 pt-3"
+                  >
+                    <div className="w-48 bg-white border border-gray-100 rounded-xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
+                      <Link
+                        to="/about#filosofia"
+                        className="flex items-center justify-between px-4 py-3 text-sm font-black text-brand-navy hover:bg-gray-50 hover:text-brand-accent transition-colors"
+                      >
+                        Filosofia
+                        <ArrowUpRight size={14} className="opacity-40" />
+                      </Link>
+                      <div className="h-px bg-gray-100 mx-4" />
+                      <Link
+                        to="/about#press"
+                        className="flex items-center justify-between px-4 py-3 text-sm font-black text-brand-navy hover:bg-gray-50 hover:text-brand-accent transition-colors"
+                      >
+                        Press
+                        <ArrowUpRight size={14} className="opacity-40" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
         </div>
 
-        <div className="hidden lg:flex items-center gap-10">
-          <button className="text-brand-navy font-bold text-xs uppercase tracking-widest hover:text-brand-accent transition-colors">
-            Accedi
-          </button>
-          <button className="bg-[#1D3BB9] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95">
+        <div className="hidden lg:flex items-center gap-6">
+          <Link
+            to="/iscriviti"
+            className="bg-[#1D3BB9] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
+          >
             Iscriviti
-          </button>
+          </Link>
         </div>
 
         <button className="lg:hidden text-brand-navy" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -311,7 +378,7 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className="text-xs font-black uppercase tracking-[0.2em] text-brand-accent flex items-center gap-2"
             >
-              Vedi tutti i corsi <ArrowRight size={14} />
+              The Campus · Tutti i corsi <ArrowRight size={14} />
             </Link>
             <hr className="my-1 border-brand-blue-soft" />
             <Link
@@ -329,9 +396,31 @@ export const Header = () => {
               Blog
             </Link>
             <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per le aziende</Link>
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/50">About</span>
+              <Link
+                to="/about#filosofia"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-base font-black text-brand-navy tracking-tight pl-1"
+              >
+                Filosofia
+              </Link>
+              <Link
+                to="/about#press"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-base font-black text-brand-navy tracking-tight pl-1"
+              >
+                Press
+              </Link>
+            </div>
             <hr className="my-2 border-brand-blue-soft" />
-            <button className="bg-[#1D3BB9] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center">Iscriviti</button>
-            <button className="border-2 border-brand-navy/10 text-brand-navy py-4 rounded-md font-black text-xs uppercase tracking-widest text-center">Accedi</button>
+            <Link
+              to="/iscriviti"
+              onClick={() => setIsMenuOpen(false)}
+              className="bg-[#1D3BB9] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
+            >
+              Iscriviti
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
