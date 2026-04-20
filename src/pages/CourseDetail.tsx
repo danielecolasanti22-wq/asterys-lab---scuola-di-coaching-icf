@@ -1049,8 +1049,10 @@ export default function CourseDetail() {
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="mt-14 flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 mt-14">
+            <div className="flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
               <div className="text-white">
                 <p className="text-lg sm:text-xl font-display font-black">Leggi il programma completo</p>
                 <p className="mt-2 text-sm text-white/85 font-medium">Scarica il dettaglio delle unità e degli obiettivi formativi.</p>
@@ -1619,7 +1621,7 @@ export default function CourseDetail() {
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-16 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="bg-[#1D3BB9] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">
