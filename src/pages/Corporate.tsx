@@ -107,33 +107,36 @@ export default function Corporate() {
 
       {/* SERVICE 1 */}
       <section id="ai-adoption" className="bg-white py-12 lg:py-16">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-12 items-start">
-          <div>
-            <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">AI Adoption</h3>
-            <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Dalle persone ai flussi: porta l'AI dove serve davvero</p>
-            <p className="mt-4 text-brand-navy/70 leading-relaxed">
-              Costruiamo con te la strategia AI per ogni livello aziendale, allineando leadership e team operativi
-              attraverso piani formativi, progetti di implementazione e percorsi di approfondimento specifici.
-            </p>
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+          <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">AI Adoption</h3>
+          <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Dalle persone ai flussi: porta l'AI dove serve davvero</p>
+          <p className="mt-4 text-brand-navy/80 leading-relaxed max-w-[980px]">
+            Costruiamo con te la strategia AI per ogni livello aziendale, allineando leadership e team operativi
+            attraverso piani formativi, progetti di implementazione e percorsi di approfondimento specifici.
+          </p>
+
+          <div className="mt-9 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+            <div>
             <img
               src="https://picsum.photos/seed/corporate-ai/640/420"
               alt="AI Adoption"
-              className="mt-8 rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
+              className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="space-y-6 pt-24 lg:pt-[11.5rem]">
-            {aiAdoptionPoints.map((point) => (
-              <div key={point} className="flex items-start gap-3">
-                <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
-                  <Rocket size={16} />
-                </span>
-                <p className="text-brand-navy/85 leading-snug font-medium">{point}</p>
-              </div>
-            ))}
-            <button className="mt-3 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
-              Scopri di più
-            </button>
+            <div className="space-y-4">
+              {aiAdoptionPoints.map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
+                    <Rocket size={16} />
+                  </span>
+                  <p className="text-brand-navy/85 leading-snug font-medium">{point}</p>
+                </div>
+              ))}
+              <button className="mt-4 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
+                Scopri di più
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -176,33 +179,36 @@ export default function Corporate() {
 
       {/* SERVICE 3 */}
       <section id="recruiting-tech" className="bg-white py-6 lg:py-10">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-10 items-start">
-          <div>
-            <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">Recruiting Tech</h3>
-            <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Efficiente e veloce: trova un nuovo talento in 2 settimane</p>
-            <p className="mt-4 text-brand-navy/70 leading-relaxed">
-              Selezione di figure mid e senior in ambito IT. Dalla ricerca alla shortlist in tempi rapidi,
-              con assessment strutturato e possibilità di upskilling sui ruoli inseriti.
-            </p>
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+          <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">Recruiting Tech</h3>
+          <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Efficiente e veloce: trova un nuovo talento in 2 settimane</p>
+          <p className="mt-4 text-brand-navy/80 leading-relaxed max-w-[980px]">
+            Selezione di figure mid e senior in ambito IT. Dalla ricerca alla shortlist in tempi rapidi,
+            con assessment strutturato e possibilità di upskilling sui ruoli inseriti.
+          </p>
+
+          <div className="mt-9 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+            <div>
             <img
               src="https://picsum.photos/seed/corporate-recruiting/640/420"
               alt="Recruiting Tech"
-              className="mt-8 rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
+              className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="space-y-4 pt-20 lg:pt-[8.5rem]">
-            {recruitingTechPoints.map((point) => (
-              <div key={point} className="flex items-start gap-3">
-                <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
-                  <Briefcase size={16} />
-                </span>
-                <p className="text-brand-navy/85 leading-snug font-medium">{point}</p>
-              </div>
-            ))}
-            <button className="mt-3 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
-              Scopri di più
-            </button>
+            <div className="space-y-4">
+              {recruitingTechPoints.map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
+                    <Briefcase size={16} />
+                  </span>
+                  <p className="text-brand-navy/85 leading-snug font-medium">{point}</p>
+                </div>
+              ))}
+              <button className="mt-4 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
+                Scopri di più
+              </button>
+            </div>
           </div>
         </div>
       </section>
