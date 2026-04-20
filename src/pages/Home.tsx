@@ -228,15 +228,6 @@ const MasterGrid = () => {
       seed: 'prosperous'
     },
     {
-      id: 'hr-manager-coaching',
-      title: 'Coaching per HR & Manager',
-      duration: '2 mesi',
-      desc: 'Porta il coaching in azienda e sviluppa leader coach efficaci.',
-      start: '28 maggio',
-      lastSeats: false,
-      seed: 'hr'
-    },
-    {
       id: 'voice-dialogue',
       title: 'Voice Dialogue Skills',
       duration: '3 giornate · In aula',
@@ -254,15 +245,7 @@ const MasterGrid = () => {
       lastSeats: false,
       seed: 'continuous-learning'
     },
-    {
-      id: 'mentor-coaching',
-      title: 'Mentor Coaching',
-      duration: '1 mese',
-      desc: 'Il percorso dedicato ai coach che vogliono accompagnare altri coach alla credenziale.',
-      start: '10 giugno',
-      lastSeats: false,
-      seed: 'mentor'
-    }
+    
   ];
   return (
     <section className="bg-white pt-3 pb-16">

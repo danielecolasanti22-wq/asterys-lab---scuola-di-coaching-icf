@@ -46,7 +46,6 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'apcm', title: 'Professione Coach', kicker: 'APCM · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
       { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'ASTC · Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
-      { id: 'mentor-coaching', title: 'Mentor Coaching ICF', kicker: 'Verso ACC e PCC', meta: '10 ore · Online' },
     ],
   },
   {
@@ -56,7 +55,6 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'prosperous-coach', title: 'Prosperous Coach', kicker: 'Business del Coaching', meta: '3 mesi · Masterclass + 1:1' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
-      { id: 'hr-manager-coaching', title: 'Manager come Coach', kicker: 'Leadership & HR', meta: '32 ore · Ibrido' },
     ],
   },
   {

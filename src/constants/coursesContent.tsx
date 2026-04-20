@@ -1371,53 +1371,6 @@ export const coursesContent: Record<string, CourseData> = {
     fees: [{ title: "Accesso Standard", type: "lump" as const, benefit: "One-timer", heading: "Quota iscrizione", desc: "Tutto incluso: accesso a tutti i moduli, materiali e mentoring individuale.", price: "1.200€", priceLabel: "una tantum" }],
     faqs: commonFaqs
   },
-  'hr-manager-coaching': {
-    title: "Coaching Skills for Leaders",
-    subtitle: "Manager come Coach",
-    tagline: "Porta lo strumento più potente di sviluppo delle persone nel tuo stile di gestione quotidiano.",
-    type: "LEADERSHIP",
-    heroBenefits: [
-      "Passa dal comandare al facilitare",
-      "Impara a dare feedback che generano azione",
-      "Sblocca il potenziale dei tuoi collaboratori",
-      "Migliora il clima e la produttività del team"
-    ],
-    summaryBox: {
-      nextEdition: "In Aula a Milano / Online",
-      dates: "Ottobre 2026",
-      format: "Ibrido",
-      duration: "32 ore",
-      price: "1.500€",
-      installments: "Convenzioni aziendali"
-    },
-    badges: ["Corporate Ready", "Metodi Pratici", "ICF CCE Ready"],
-    overview: {
-      title: "Il Manager Coach",
-      content: ["Le persone non lasciano le aziende, lasciano i capi.", "Sviluppa le skill per essere il leader che avresti voluto avere."]
-    },
-    target: [
-      { title: "Manager & HR", desc: "Chiunque gestisca persone.", icon: <Users /> }
-    ],
-    learning: {
-      cols: [
-        { title: "Leadership", items: ["Feedback", "Delega", "Empatia", "Focus risultati"] }
-      ],
-      softSkills: ["Ascolto", "Pazienza", "Chiarezza"]
-    },
-    structure: {
-      modules: [{ title: "Modulo 1", desc: "La conversazione di sviluppo." }]
-    },
-    teachers: [
-      { name: "Pietro Monti", creds: "PCC", role: "Trainer Corporate", bio: "Ex manager trasformato in coach.", img: "https://picsum.photos/seed/hrc/300/300" }
-    ],
-    career: {
-      title: "Upgrade Professionale",
-      content: "Diventa un leader moderno in grado di attrarre e trattenere talenti.",
-      points: []
-    },
-    fees: [{ title: "Corporate", type: "lump" as const, benefit: "Prezzo Azienda", heading: "Quota aziendale", desc: "Fatturazione diretta all'azienda. Preventivi personalizzati per gruppi e formazione interna.", price: "Su richiesta", priceLabel: "" }],
-    faqs: commonFaqs
-  },
   'public-speaking': {
     title: "Public Speaking Pro",
     subtitle: "Parla con Presenza",
@@ -1433,23 +1386,6 @@ export const coursesContent: Record<string, CourseData> = {
     teachers: [{ name: "Esperti Lab", creds: "Pro Speakers", role: "Speakers", bio: "Comunicatori di professione.", img: "https://picsum.photos/seed/spk/300/300" }],
     career: { title: "Datti Voce", content: "Migliora la tua visibilità interna ed esterna.", points: [] },
     fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "450€", priceLabel: "una tantum" }],
-    faqs: commonFaqs
-  },
-  'mentor-coaching': {
-    title: "Mentor Coaching ICF",
-    subtitle: "Verso ACC e PCC",
-    tagline: "Le ore di mentoring necessarie per le tue credenziali ICF con feedback dai migliori MCC.",
-    type: "MENTORING",
-    heroBenefits: ["10 ore di mentoring (7 di gruppo, 3 individuali)", "Feedback scritto su ogni sessione", "Revisione dei requisiti ICF", "Success rate elevatissimo"],
-    summaryBox: { nextEdition: "Sempre Attivo", dates: "Date flessibili", format: "Online", duration: "10 ore", price: "850€", installments: "2 rate" },
-    badges: ["Requisito ICF", "Gold Standard"],
-    overview: { title: "Il Mentoring è Crescita", content: ["Affina le tue 8 core competence."] },
-    target: [{ title: "Coach in formazione", desc: "Chi punta alle credenziali.", icon: <Award /> }],
-    learning: { cols: [{ title: "Core Competence", items: ["Etica", "Alleanza", "Presenza", "Sviluppo consapevolezza"] }], softSkills: ["Ascolto", "Precisione"] },
-    structure: { modules: [{ title: "Mentoring Gruppo", desc: "7 ore di confronto." }] },
-    teachers: [{ name: "Giovanna Giuffredi", creds: "MCC", role: "Assessor", bio: "Assessor ICF qualificata.", img: "https://picsum.photos/seed/mnt/300/300" }],
-    career: { title: "Credenziali ICF", content: "Il passaporto internazionale per la tua carriera.", points: [] },
-    fees: [{ title: "Full Program", type: "lump" as const, benefit: "Gruppo + Individuale", heading: "Quota iscrizione", desc: "Include 7 ore di mentoring di gruppo e 3 ore individuali. Conforme ai requisiti ICF per le credenziali ACC e PCC.", price: "850€", priceLabel: "una tantum" }],
     faqs: commonFaqs
   },
   'voice-dialogue': {

@@ -60,17 +60,6 @@ const coursesData = [
     tags: ['Business', 'Marketing', 'Posizionamento']
   },
   {
-    id: 'hr-manager-coaching',
-    category: 'Per HR/manager',
-    type: "SKILLS",
-    title: "Coaching Skills for Leaders",
-    desc: "Integra il coaching nel tuo stile di gestione. Per manager che vogliono sbloccare il potenziale dei propri collaboratori.",
-    duration: "32 ore - In Sede/Online",
-    next: "Ottobre 2026",
-    img: "https://picsum.photos/seed/manager/600/400",
-    tags: ['Management', 'HR', 'Leadership']
-  },
-  {
     id: 'public-speaking',
     category: 'Per HR/manager',
     type: "COMUNICAZIONE",
@@ -80,17 +69,6 @@ const coursesData = [
     next: "Novembre 2026",
     img: "https://picsum.photos/seed/speaking/600/400",
     tags: ['Soft Skills', 'Comunicazione']
-  },
-  {
-    id: 'mentor-coaching',
-    category: 'Per coach già attivi',
-    type: "MENTORING",
-    title: "Mentor Coaching ICF per ACC/PCC",
-    desc: "Ore di mentoring obbligatorie per il rinnovo o l'ottenimento delle credenziali ICF. Feedback diretto dai nostri MCC.",
-    duration: "10 ore - Online",
-    next: "Sessioni individuali",
-    img: "https://picsum.photos/seed/mentoring/600/400",
-    tags: ['ICF Renewal', 'MCC Feedback']
   }
 ];
 
