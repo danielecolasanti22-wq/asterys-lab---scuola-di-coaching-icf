@@ -45,7 +45,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'master',
     items: [
       { id: 'apcm', title: 'Professione Coach', kicker: 'APCM · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
-      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Master Avanzato', meta: '60 ore · Live Online' },
+      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'ASTC · Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
       { id: 'mentor-coaching', title: 'Mentor Coaching ICF', kicker: 'Verso ACC e PCC', meta: '10 ore · Online' },
     ],
   },

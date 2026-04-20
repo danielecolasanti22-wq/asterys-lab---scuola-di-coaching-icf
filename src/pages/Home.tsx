@@ -202,10 +202,10 @@ const MasterGrid = () => {
   const masters = [
     {
       id: 'systemic-team-coaching',
-      title: 'Systemic Team Coaching',
-      duration: '3 mesi',
-      desc: 'Per coach certificati: guida team complessi con strumenti sistemici e misurabili.',
-      start: '21 maggio',
+      title: 'Asterys Systemic Team Coaching',
+      duration: '54 ore · 60 CCE',
+      desc: "Master ICF per apprendere il modello ASTC di coaching sistemico dei team. Prerequisito per la credenziale ACTC.",
+      start: '6 ottobre 2026',
       lastSeats: false,
       seed: 'stc'
     },

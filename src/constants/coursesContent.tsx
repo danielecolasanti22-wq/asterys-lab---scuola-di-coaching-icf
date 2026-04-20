@@ -1034,71 +1034,182 @@ export const coursesContent: Record<string, CourseData> = {
     ]
   },
   'systemic-team-coaching': {
-    title: "Systemic Team Coaching Master",
-    subtitle: "Coach di Squadra Eccellenti",
-    tagline: "La frontiera del coaching aziendale per trasformare i gruppi in team ad alta performance.",
+    title: "Asterys Systemic Team Coaching (ASTC)",
+    subtitle: "Team Coaching Sistemico accreditato ICF",
+    tagline: "Il nuovo corso di Asterys Lab, accreditato dalla International Coaching Federation, per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
     heroBenefits: [
-      "Specializzati nel guidare team aziendali complessi",
-      "Applica il pensiero sistemico alle dinamiche di gruppo",
-      "Ottieni strumenti diagnostici esclusivi per i team",
-      "Accedi a casi studio reali di trasformazione corporate"
+      "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
+      "Prerequisito per la credenziale ICF ACTC (Advanced Certification in Team Coaching)",
+      "54 ore di formazione sincrona · equivalenti a 60 CCE ICF",
+      "Edizioni in videoconferenza e in aula a Milano e Roma"
     ],
     summaryBox: {
-      nextEdition: "Online Live",
-      dates: "Giugno – Settembre 2026",
-      format: "Live Online",
-      duration: "60 ore accademiche",
-      price: "A partire da 2.500€",
-      installments: "Fino a 12 rate"
+      nextEdition: "Videoconferenza + Milano / Roma",
+      dates: "Ottobre 2026 – Febbraio 2027",
+      format: "Ibrido (Live Online + In aula)",
+      duration: "54 ore sincrone · 60 CCE",
+      price: "Su richiesta",
+      installments: "Rateizzazione disponibile"
     },
-    badges: ["Avanzato", "Sistemico Evolutivo", "Focus Corporate"],
+    badges: ["ICF Accreditato", "Diploma AATC", "Verso ACTC"],
     overview: {
-      title: "Oltre l'individuo: il Team Coaching",
+      title: "Asterys Systemic Team Coaching",
       content: [
-        "In un'epoca di complessità, il successo non dipende dai singoli ma dalle interazioni tra loro.",
-        "Questo Master ti insegna a leggere non solo le persone, ma lo spazio tra le persone.",
-        "Imparerai a facilitare il cambiamento in board e team operativi."
+        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse e collaborato con eccellenze di livello internazionale nel campo del Team Coaching.",
+        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale e alle decine di migliaia di ore di esperienza con tanti clienti e nelle più diverse e complesse situazioni, abbiamo sviluppato il modello innovativo **ASTC**.",
+        "Il modello **Asterys Systemic Team Coaching** si occupa delle persone che compongono il team ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro.",
+        "**“I membri del team lavorano sulle proprie dinamiche per migliorarle nella prospettiva di ottenere migliori risultati”** → **“Tutto il team si focalizza sui risultati da raggiungere e sui pattern che ne condizionano la performance. Cambiando il sistema, migliorano le dinamiche e cambiano i risultati”**."
       ]
     },
     target: [
-      { title: "Coach PCC/ACC", desc: "Che vogliono scalare il business nel corporate.", icon: <TrendingUp /> },
-      { title: "HR Business Partner", desc: "Per supportare la trasformazione dei leader.", icon: <Users /> }
+      { title: "Coach certificati", desc: "Professionisti che vogliono specializzarsi nel team coaching sistemico e puntare alla credenziale ACTC.", icon: <TrendingUp /> },
+      { title: "Manager & Consulenti", desc: "Con una solida formazione di coaching, di supporto a team e organizzazioni per liberarne il massimo potenziale.", icon: <Users /> },
+      { title: "Coach esperti verso ACTC", desc: "Che vogliono ottenere il diploma AATC per impegnarsi nell'ottenimento della credenziale ICF ACTC.", icon: <Award /> }
     ],
     learning: {
       cols: [
-        { title: "Dinamiche Sistemi", items: ["Leggi di Hellinger", "Oltre la psicologia", "Il team come organismo"] },
-        { title: "Strumenti", items: ["Team Assessment", "Mappatura stakeholder", "Gestione conflitti"] }
+        { title: "Modello ASTC", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente"] },
+        { title: "Metodo & Strumenti", items: ["ToolBox ASTC", "Piattaforma Inner di social learning", "Homework su progetti reali"] },
+        { title: "Alta performance", items: ["Ri-pensare le high performing team", "Sostituire convinzioni limitanti", "Facilitare il cambiamento sistemico"] }
       ],
-      softSkills: ["Visione d'insieme", "Gestione del silenzio", "Neutralità"]
+      softSkills: ["Visione d'insieme", "Neutralità sistemica", "Presenza nei team", "Gestione della complessità"]
     },
     structure: {
       modules: [
-        { title: "Introduzione", desc: "Il passaggio dal coaching individuale al team." },
-        { title: "Metodologia", desc: "Protocolli di intervento sistemico." },
-        { title: "Pratica Lab", desc: "Supervisione su casi aziendali reali." }
+        {
+          title: "ASTC 1° livello",
+          desc: "Corso di due giornate in videoconferenza più alcune Live Class da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra piattaforma di social learning Inner.",
+          tags: ["Live Online", "Live Class 2h", "Piattaforma Inner", "Homework"]
+        },
+        {
+          title: "ASTC 2° livello",
+          desc: "Corso della durata di 3 giorni in aula (Milano o Roma), modulo di e-learning specifico e ToolBox ASTC per applicare il modello nei contesti reali.",
+          tags: ["In aula · Milano/Roma", "E-learning", "ToolBox ASTC"]
+        },
+        {
+          title: "ASTC Expert Exam",
+          desc: "Opzionale e a pagamento, per chi vuole certificarsi come ASTC Expert: valutazione di quanto prodotto nei tre giorni del 2° livello, verifica scritta e incontro individuale di chiusura.",
+          tags: ["Opzionale", "Certificazione Expert", "Colloquio finale"]
+        }
       ]
     },
     teachers: [
-      { name: "Pietro Monti", creds: "PCC", role: "Specialista Sistemi", bio: "Anni di interventi su board internazionali.", img: "https://picsum.photos/seed/pietrstc/300/300" }
+      { name: "Pier Paolo Colasanti", creds: "Team Coach & Consulente", role: "Co-autore del modello ASTC", bio: "Team coach e consulente nelle realtà organizzative più complesse, con esperienza internazionale.", img: "https://picsum.photos/seed/astc-colasanti/300/300" },
+      { name: "Stefano Petti", creds: "Team Coach & Consulente", role: "Co-autore del modello ASTC", bio: "Team coach e consulente; decine di migliaia di ore di esperienza con clienti italiani e internazionali.", img: "https://picsum.photos/seed/astc-petti/300/300" }
     ],
     career: {
-      title: "Supporto Corporate",
-      content: "Accesso a progetti di team coaching all'interno del network Asterys.",
+      title: "Dopo il Master ASTC",
+      content: "Al termine del percorso potrai operare come team coach sistemico e, superando l'esame ASTC Expert, accedere al diploma AATC — prerequisito ICF per ottenere la credenziale Advanced Certification in Team Coaching (ACTC).",
       points: [
-        { title: "Mentoring Avanzato", desc: "Supporto su progetti reali venduti alle aziende." }
+        { title: "Diploma AATC ICF", desc: "Rilasciato dopo il superamento dell'esame ASTC Expert. Utile come prerequisito per la credenziale ICF ACTC." },
+        { title: "Attestato di partecipazione", desc: "Per chi non sostiene o non supera l'esame: 54 ore di formazione sincrona certificate." },
+        { title: "60 CCE ICF", desc: "L'attestato AATC equivale a 60 CCE, utili per il rinnovo della tua credenziale di Coach ICF." },
+        { title: "Metodologia ASTC", desc: "Imparerai a condurre percorsi di team coaching immersivi e team-centrici grazie alle procedure e alla metodologia ASTC." }
       ]
     },
     classDates: [
-      { date: "10 giugno", badge: "PROSSIMA EDIZIONE" },
-      { date: "Settembre 2026", note: "Date da confermare" }
+      { date: "6 ottobre 2026", badge: "ASTC 1° LIVELLO · Live Online" },
+      { date: "20 gennaio 2027", note: "ASTC 2° livello · Milano / Roma" }
     ],
     sessionSchedule: [
-      { days: "Sabato mattina", time: "9:00 - 13:00" },
-      { days: "Domenica (modulo intensivo)", time: "9:00 - 17:00" }
+      { days: "Corso 1° livello · Videoconferenza", time: "2 giornate intensive" },
+      { days: "Live Class 1° livello · Online", time: "Sessioni da 2 ore" },
+      { days: "Corso 2° livello · In aula", time: "3 giornate (Milano o Roma)" }
     ],
     fees: [
-      { title: "Quota Standard", type: "lump" as const, benefit: "Alumni Discount", heading: "Quota iscrizione", desc: "Per chi ha già frequentato l'APCM. Sconto riservato agli alumni Asterys Lab.", price: "2.500€", priceLabel: "una tantum" }
+      {
+        title: "ASTC 1° livello",
+        type: "lump" as const,
+        benefit: "Live Online",
+        heading: "1° livello in videoconferenza",
+        desc: "Corso di 2 giornate in videoconferenza + Live Class da 2 ore + homework su progetti di team coaching supportati dalla piattaforma Inner.",
+        price: "Su richiesta",
+        priceLabel: "una tantum"
+      },
+      {
+        title: "ASTC 2° livello",
+        type: "lump" as const,
+        benefit: "In aula · Milano / Roma",
+        heading: "2° livello in presenza",
+        desc: "3 giorni di corso in aula (Milano o Roma), modulo e-learning dedicato e ToolBox ASTC per applicare il modello sul campo.",
+        price: "Su richiesta",
+        priceLabel: "una tantum"
+      },
+      {
+        title: "ASTC Expert Exam",
+        type: "after" as const,
+        benefit: "Opzionale",
+        heading: "Esame di certificazione",
+        desc: "Valutazione del lavoro svolto nei 3 giorni del 2° livello, verifica scritta e incontro individuale di chiusura. Supera l'esame per ottenere il diploma AATC ICF.",
+        price: "Su richiesta",
+        priceLabel: "una tantum"
+      }
+    ],
+    editionsSection: {
+      eyebrow: "Calendario edizioni",
+      title: "Edizione 2026/2027",
+      intro: "Il percorso si articola in **due livelli + esame opzionale**. Il 1° livello è in **videoconferenza**, il 2° livello si svolge **in aula** a **Milano** o **Roma** a scelta."
+    },
+    editions: [
+      {
+        city: "Online",
+        citySlug: "online",
+        level: "1° Livello",
+        levelSlug: "l1",
+        editionLabel: "ASTC 1° livello 261",
+        editionSlug: "astc-l1-261",
+        subtitle: "Ottobre – Novembre 2026 · In videoconferenza",
+        badge: "Early Bird attivo",
+        earlyBird: { label: "Early Bird", date: "19 agosto 2026" },
+        enrollmentEnd: { label: "Termine iscrizioni", date: "19 settembre 2026" },
+        events: [
+          { label: "Early Bird", date: "19 agosto 2026", type: "deadline-early" },
+          { label: "Termine iscrizioni", date: "19 settembre 2026", type: "deadline-final" },
+          { label: "1a Live Class", date: "6 ottobre 2026", type: "live-class" },
+          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "In videoconferenza" },
+          { label: "2a Live Class", date: "29 ottobre 2026", type: "live-class" },
+          { label: "3a Live Class", date: "10 novembre 2026", type: "live-class" }
+        ]
+      },
+      {
+        city: "Milano",
+        citySlug: "milano",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "ASTC 2° livello · Milano",
+        editionSlug: "astc-l2-milano",
+        subtitle: "Gennaio – Febbraio 2027 · In aula a Milano",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "21 novembre 2026" },
+        enrollmentEnd: { label: "Termine iscrizioni", date: "20 dicembre 2026" },
+        events: [
+          { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
+          { label: "Termine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
+          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class" },
+          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "In presenza a Milano" },
+          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class" }
+        ]
+      },
+      {
+        city: "Roma",
+        citySlug: "roma",
+        level: "2° Livello",
+        levelSlug: "l2",
+        editionLabel: "ASTC 2° livello · Roma",
+        editionSlug: "astc-l2-roma",
+        subtitle: "Gennaio – Febbraio 2027 · In aula a Roma",
+        badge: "Iscrizioni aperte",
+        earlyBird: { label: "Early Bird", date: "21 novembre 2026" },
+        enrollmentEnd: { label: "Termine iscrizioni", date: "20 dicembre 2026" },
+        events: [
+          { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
+          { label: "Termine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
+          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class" },
+          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "In presenza a Roma" },
+          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class" }
+        ]
+      }
     ],
     faqs: commonFaqs
   },

@@ -30,12 +30,12 @@ const coursesData = [
     id: 'systemic-team-coaching',
     category: 'Per coach già attivi',
     type: "AVANZATO",
-    title: "Systemic Team Coaching Master",
-    desc: "Specializzati nel guidare team complessi attraverso l'approccio sistemico. Ideale per coach che vogliono lavorare in contesti corporate.",
-    duration: "60 ore - Online",
-    next: "Giugno 2026",
+    title: "Asterys Systemic Team Coaching (ASTC)",
+    desc: "Il modello ASTC accreditato ICF per il coaching sistemico dei team. Prerequisito per la credenziale ACTC, 54 ore sincrone equivalenti a 60 CCE.",
+    duration: "54 ore - Online + Aula",
+    next: "Ottobre 2026",
     img: "https://picsum.photos/seed/team/600/400",
-    tags: ['Team Coaching', 'Sistemico', 'Corporate']
+    tags: ['ICF AATC', 'Sistemico', 'Milano / Roma']
   },
   {
     id: 'eiw',
