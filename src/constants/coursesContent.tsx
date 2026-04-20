@@ -1035,8 +1035,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'systemic-team-coaching': {
     title: "Asterys Systemic Team Coaching (ASTC)",
-    subtitle: "Team Coaching Sistemico accreditato ICF",
-    tagline: "Il nuovo corso di Asterys Lab, accreditato dalla International Coaching Federation, per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
+    subtitle: "Team Coaching",
+    tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
     heroBenefits: [
       "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
@@ -1054,12 +1054,10 @@ export const coursesContent: Record<string, CourseData> = {
     },
     badges: ["ICF Accreditato", "Diploma AATC", "Verso ACTC"],
     overview: {
-      title: "Asterys Systemic Team Coaching",
+      title: "Dal singolo al sistema: il modello ASTC",
       content: [
-        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse e collaborato con eccellenze di livello internazionale nel campo del Team Coaching.",
-        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale e alle decine di migliaia di ore di esperienza con tanti clienti e nelle più diverse e complesse situazioni, abbiamo sviluppato il modello innovativo **ASTC**.",
-        "Il modello **Asterys Systemic Team Coaching** si occupa delle persone che compongono il team ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro.",
-        "**“I membri del team lavorano sulle proprie dinamiche per migliorarle nella prospettiva di ottenere migliori risultati”** → **“Tutto il team si focalizza sui risultati da raggiungere e sui pattern che ne condizionano la performance. Cambiando il sistema, migliorano le dinamiche e cambiano i risultati”**."
+        "Pier Paolo Colasanti e Stefano Petti hanno sviluppato il modello **ASTC** unendo decenni di esperienza come team coach nelle realtà organizzative più complesse e lo studio dei principali modelli internazionali di team coaching.",
+        "Il modello si occupa delle persone che compongono il team ma soprattutto dei **pattern** in cui sono coinvolte e delle **interazioni** tra di loro. Si passa da *\"i membri lavorano sulle proprie dinamiche\"* a *\"**tutto il team si focalizza sui pattern che condizionano la performance**: cambiando il sistema, cambiano i risultati\"*."
       ]
     },
     target: [
@@ -1215,14 +1213,14 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Emotional Intelligence Workout (EIW)",
-    subtitle: "Allena i tuoi muscoli emozionali",
-    tagline: "Un percorso di sperimentazione e allenamento per sviluppare davvero la tua intelligenza emotiva. Non solo concetti: esperienze consapevoli, guidate, trasformative.",
+    subtitle: "Muscoli Emozionali",
+    tagline: "Un allenamento concreto per sviluppare l'intelligenza emotiva attraverso l'esperienza: non solo teoria, ma pratica consapevole guidata dai coach EIW.",
     type: "WORKOUT EQ",
     heroBenefits: [
-      "Sviluppa l'intelligenza emotiva facendo esperienze, non solo ascoltando teoria",
-      "Affronta 4 emozioni per Round seguendo il fiore di Plutchik",
-      "Lavora sul modello CSI di Asterys Lab: Consapevolezza · Strategia · Interazione",
-      "Ottieni 4 CCE ICF per ogni Round · posti limitati"
+      "Sviluppa l'IE facendo esperienza, non ascoltando teoria",
+      "4 emozioni per Round seguendo il fiore di Plutchik",
+      "Modello CSI Asterys: Consapevolezza · Strategia · Interazione",
+      "4 CCE ICF per ogni Round · posti limitati"
     ],
     summaryBox: {
       nextEdition: "Round aperto",
@@ -1234,26 +1232,23 @@ export const coursesContent: Record<string, CourseData> = {
     },
     badges: ["Modello CSI Asterys", "Fiore di Plutchik", "4 CCE ICF per Round"],
     overview: {
-      title: "Sviluppare l'Intelligenza Emotiva: l'esperienza, non solo la teoria",
+      title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
-        "Non serve più dire che l'intelligenza emotiva è importante e ormai il concetto che sia sviluppabile è abbastanza diffuso. **Come farlo è un'altra storia.**",
-        "Ormai sembra scontato dire che l'IE è importante per buoni risultati nella vita privata e pubblica, è stata persino sdoganata la \"happyness\" in azienda, tutti concordano sulla possibilità di svilupparla… ma come farlo? Qui le voci perdono forza, si fanno vaghe e le soluzioni proposte non sempre sono praticabili.",
-        "Per questo, accumulati decenni di esperienza sul campo e dopo collaborazioni pluriennali con i principali riferimenti internazionali dell'intelligenza emotiva, Asterys Lab ha progettato **programmi specificamente destinati al reale sviluppo dell'intelligenza emotiva** di tutti.",
-        "Nella maggior parte dei corsi di IE si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve **\"essere\" diversi**, sviluppando un livello di coscienza specifico che passa per l'esperienza. **Ci sarà da sudare**: sarai coinvolto in esperienze consapevoli e mirate, progettate allo scopo.",
-        "Se sei tra quelle persone che vogliono **spostarsi veramente da dove sono per andare in un posto migliore**, questo è il percorso giusto. EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno senza farti perdere nei meandri delle tue distrazioni, aiutandoti nei momenti più difficili, rendendo l'esperienza piacevole e appagante.",
-        "Non perdere altro tempo: lavora seriamente sulla competenza che oggi più che mai può fare la differenza nella tua efficacia in ogni campo."
+        "Nella maggior parte dei corsi di intelligenza emotiva si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve **\"essere\" diversi**, sviluppando un livello di coscienza specifico che passa per l'esperienza.",
+        "Per questo, accumulati decenni di esperienza sul campo, Asterys Lab ha progettato EIW: **esperienze consapevoli e mirate**, non lezioni frontali. Ci sarà da sudare, ma lavorerai davvero sulla competenza che oggi più che mai fa la differenza.",
+        "EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno anche nei momenti difficili, rendendo l'esperienza **piacevole e appagante**."
       ]
     },
     target: [
       { title: "Manager & Leader", desc: "Per una leadership più lucida, empatica ed efficace nei momenti che contano.", icon: <Users /> },
-      { title: "Coach, counsellor, psicologi", desc: "E chiunque per professione abbia nella relazione lo strumento principale di lavoro.", icon: <Brain /> },
-      { title: "Chiunque voglia crescere", desc: "Ogni persona che vuole sviluppare davvero la propria intelligenza emotiva.", icon: <MessageCircle /> }
+      { title: "Coach & Counsellor", desc: "E chiunque per professione abbia nella relazione lo strumento principale di lavoro.", icon: <Brain /> },
+      { title: "Chi vuole crescere", desc: "Ogni persona che vuole sviluppare davvero la propria intelligenza emotiva.", icon: <MessageCircle /> }
     ],
     learning: {
       cols: [
-        { title: "Consapevolezza", items: ["Riconoscere e distinguere le emozioni", "Dare un nome alle emozioni", "Percepirne l'intensità"] },
-        { title: "Strategia", items: ["Prevedere trigger ed emozioni", "Conoscere i propri percorsi interiori", "Agire strategicamente con le emozioni"] },
-        { title: "Interazione", items: ["Emozioni nelle relazioni", "Empatia e percezione dell'altro", "Emozioni, scelte e obiettivi"] }
+        { title: "Consapevolezza", items: ["Riconoscere le emozioni", "Dare loro un nome", "Percepirne l'intensità"] },
+        { title: "Strategia", items: ["Anticipare i trigger", "Conoscere i percorsi interiori", "Agire in modo strategico"] },
+        { title: "Interazione", items: ["Emozioni nelle relazioni", "Empatia e percezione", "Scelte & obiettivi"] }
       ],
       softSkills: ["Autoconsapevolezza", "Empatia", "Regolazione emotiva", "Presenza relazionale"]
     },
@@ -1261,62 +1256,52 @@ export const coursesContent: Record<string, CourseData> = {
       modules: [
         {
           title: "Round di Workout",
-          desc: "Ogni Round di Workout tratta 4 dei petali del fiore di Plutchik e le 4 rispettive emozioni. Non c'è una sequenza precisa: puoi iniziare dal primo Round disponibile o scegliere quello con il set di emozioni più interessante per te.",
-          tags: ["4 petali per Round", "Set di emozioni dedicato", "Nessuna sequenza obbligata"]
+          desc: "Ogni Round tratta 4 petali del fiore di Plutchik e le 4 rispettive emozioni. Nessuna sequenza obbligata: inizi dal primo Round disponibile o scegli quello con il set di emozioni più interessante per te.",
+          tags: ["4 petali per Round", "Set dedicato", "Nessuna sequenza"]
         },
         {
-          title: "Modello CSI – Consapevolezza",
-          desc: "Riconosco e distinguo le mie emozioni, so dargli un nome e riconoscerne l'intensità. È il punto di partenza per tutto il lavoro di allenamento emotivo.",
-          tags: ["Riconoscere", "Nominare", "Distinguere intensità"]
-        },
-        {
-          title: "Modello CSI – Strategia",
-          desc: "Prevedo quale evento mi farà provare un'emozione, conosco i miei trigger e percorsi interiori. Agisco in modo strategico considerando le mie emozioni, quelle degli altri e il loro possibile sviluppo nel tempo.",
-          tags: ["Trigger", "Percorsi interiori", "Azione strategica"]
-        },
-        {
-          title: "Modello CSI – Interazione",
-          desc: "Quel che faccio nel mondo con le mie emozioni e quelle degli altri: il loro ruolo nelle mie scelte, obiettivi e relazioni. Nelle relazioni riesco a percepire cosa provano gli altri? Mi interessa?",
-          tags: ["Relazioni", "Empatia", "Scelte & obiettivi"]
+          title: "Modello CSI Asterys",
+          desc: "Tutto il percorso è costruito sul modello CSI di sviluppo dell'IE: Consapevolezza (riconosco le emozioni), Strategia (anticipo trigger e percorsi interiori), Interazione (le emozioni nelle relazioni e nelle scelte).",
+          tags: ["Consapevolezza", "Strategia", "Interazione"]
         },
         {
           title: "Ripetere un Round",
-          desc: "A distanza di tempo puoi partecipare a un Round dove si affronta lo stesso set di emozioni: è un'esperienza sempre nuova e stimolante, utile per consolidare ciò che hai imparato.",
-          tags: ["Ri-partecipare", "Consolidamento", "Nuove consapevolezze"]
+          desc: "A distanza di tempo puoi rifare un Round sullo stesso set di emozioni: un'esperienza sempre nuova, utile per consolidare le consapevolezze acquisite.",
+          tags: ["Ri-partecipare", "Consolidamento", "Nuove letture"]
         }
       ]
     },
     teachers: [
       {
         name: "Renata Cargnelutti Beltrami",
-        creds: "Coach & Facilitatrice EQ",
+        creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti del percorso EIW.",
+        bio: "Coach e facilitatrice specializzata nell'Intelligenza Emotiva.",
         img: "https://picsum.photos/seed/eiw-renata/600/800"
       },
       {
         name: "Nicoletta Stellino",
-        creds: "Coach & Facilitatrice EQ",
+        creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Accompagna i partecipanti nelle esperienze di allenamento emotivo.",
+        bio: "Coach e facilitatrice specializzata nell'Intelligenza Emotiva.",
         img: "https://picsum.photos/seed/eiw-nicoletta/600/800"
       },
       {
         name: "Pier Paolo Colasanti",
-        creds: "Coach & Facilitatore EQ",
+        creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatore specializzato nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
+        bio: "Coach e facilitatore specializzato nell'Intelligenza Emotiva.",
         img: "https://picsum.photos/seed/eiw-colasanti/600/800"
       }
     ],
     career: {
       title: "Cosa ti porti a casa da ogni Round",
-      content: "Un allenamento concreto della tua intelligenza emotiva, crediti ICF riconosciuti e strumenti che puoi applicare subito nella vita privata, professionale e nelle relazioni di ogni giorno.",
+      content: "Un allenamento concreto della tua intelligenza emotiva, crediti ICF riconosciuti e strumenti da applicare subito nelle relazioni di ogni giorno.",
       points: [
-        { title: "4 CCE ICF per Round", desc: "Ogni Round EIW vale 4 CCE ICF, utili per il rinnovo della tua credenziale di coach." },
-        { title: "Modello CSI di Asterys Lab", desc: "Consapevolezza, Strategia, Interazione: un modello chiaro per porti le domande giuste su ogni emozione." },
-        { title: "Esperienza, non solo concetti", desc: "Attività progettate per sviluppare coscienza emotiva attraverso la pratica consapevole." },
-        { title: "Accompagnamento dei coach", desc: "Renata, Nicoletta e Pier Paolo ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
+        { title: "4 CCE ICF per Round", desc: "Ogni Round vale 4 CCE ICF, utili per il rinnovo della tua credenziale di coach." },
+        { title: "Modello CSI", desc: "Consapevolezza, Strategia, Interazione: un modello chiaro per porti le domande giuste su ogni emozione." },
+        { title: "Esperienza, non concetti", desc: "Attività progettate per sviluppare coscienza emotiva attraverso la pratica consapevole." },
+        { title: "Coach al tuo fianco", desc: "I trainer EIW ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
       ]
     },
     classDates: [
