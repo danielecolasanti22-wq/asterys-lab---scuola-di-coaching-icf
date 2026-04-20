@@ -55,6 +55,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'specialization',
     items: [
       { id: 'prosperous-coach', title: 'Prosperous Coach', kicker: 'Business del Coaching', meta: '3 mesi · Masterclass + 1:1' },
+      { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
       { id: 'hr-manager-coaching', title: 'Manager come Coach', kicker: 'Leadership & HR', meta: '32 ore · Ibrido' },
     ],
   },

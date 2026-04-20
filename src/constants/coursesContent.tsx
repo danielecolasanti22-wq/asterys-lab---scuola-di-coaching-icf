@@ -1451,5 +1451,153 @@ export const coursesContent: Record<string, CourseData> = {
     career: { title: "Credenziali ICF", content: "Il passaporto internazionale per la tua carriera.", points: [] },
     fees: [{ title: "Full Program", type: "lump" as const, benefit: "Gruppo + Individuale", heading: "Quota iscrizione", desc: "Include 7 ore di mentoring di gruppo e 3 ore individuali. Conforme ai requisiti ICF per le credenziali ACC e PCC.", price: "850€", priceLabel: "una tantum" }],
     faqs: commonFaqs
+  },
+  'voice-dialogue': {
+    title: "Voice Dialogue Skills",
+    subtitle: "Voice Dialogue",
+    tagline: "Un laboratorio intensivo in presenza per integrare il Voice Dialogue nella tua pratica di coaching e sviluppo personale.",
+    type: "SPECIALIZZAZIONE",
+    heroKicker: "PER COACH E PROFESSIONISTI",
+    heroBenefits: [
+      "Sperimenti in prima persona le tecniche base del Voice Dialogue",
+      "Acquisisci padronanza operativa da applicare nel coaching",
+      "Alleni consapevolezza sulle tue voci interne e su quelle dei clienti",
+      "Colleghi il metodo alle competenze ICF"
+    ],
+    summaryBox: {
+      nextEdition: "Milano",
+      dates: "17–19 novembre 2026",
+      format: "In presenza",
+      duration: "3 giornate full immersion",
+      price: "Da 1.575€ + IVA",
+      installments: "Pagamento rateizzato disponibile"
+    },
+    badges: ["3 giornate in aula", "Lab su piattaforma Inner", "Metodo esperienziale"],
+    overview: {
+      title: "Perché scegliere Voice Dialogue Skills",
+      content: [
+        "Il corso si sviluppa in **3 giorni di full immersion in aula**, in presenza. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue, così da acquisire capacità e padronanza da trasferire nei percorsi di coaching.",
+        "Anche per questo corso è allestito un **Lab online** sulla piattaforma **Inner**, uno spazio web dove confrontarti con colleghi e trainer durante tutto il periodo di svolgimento.",
+        "Il percorso è pensato per coach professionisti, professionisti del supporto alla persona e per chi desidera aumentare il proprio livello di consapevolezza ed efficacia professionale attraverso il Voice Dialogue."
+      ]
+    },
+    target: [
+      { title: "Coach professionisti", desc: "Per integrare una metodologia riconosciuta nella pratica quotidiana.", icon: <Target /> },
+      { title: "Professionisti dello sviluppo personale", desc: "Per potenziare il lavoro con clienti e gruppi.", icon: <Users /> },
+      { title: "Professionisti del supporto alla persona", desc: "Per aggiungere strumenti pratici di ascolto e consapevolezza.", icon: <MessageCircle /> },
+      { title: "Chi desidera maggiore efficacia", desc: "Per usare le tecniche base su di sé e nelle relazioni professionali.", icon: <TrendingUp /> },
+    ],
+    learning: {
+      cols: [
+        {
+          title: "Tecniche di base",
+          items: [
+            "Applicare i principi del Voice Dialogue",
+            "Riconoscere le principali voci interiori",
+            "Conduzione di esercizi esperienziali",
+            "Integrazione nella relazione di coaching"
+          ]
+        },
+        {
+          title: "Consapevolezza professionale",
+          items: [
+            "Osservare dinamiche interne nei colloqui",
+            "Migliorare centratura e presenza",
+            "Scegliere quando usare il metodo",
+            "Ampliare la prospettiva sul consueto"
+          ]
+        },
+        {
+          title: "Metodo e competenze ICF",
+          items: [
+            "Relazione tra Voice Dialogue e competenze ICF",
+            "Uso etico e contestuale delle tecniche",
+            "Allenamento con feedback dei trainer",
+            "Applicazione a casi reali"
+          ]
+        }
+      ],
+      softSkills: ["Presenza", "Ascolto profondo", "Consapevolezza", "Flessibilità"]
+    },
+    structure: {
+      modules: [
+        {
+          title: "Giornata 1 · Fondamenti",
+          desc: "Introduzione al Voice Dialogue, cornice metodologica ed esercizi base per entrare nel dialogo con le voci interiori."
+        },
+        {
+          title: "Giornata 2 · Pratica guidata",
+          desc: "Laboratorio intensivo in aula con sperimentazione diretta, osservazione e feedback su casi portati dai partecipanti."
+        },
+        {
+          title: "Giornata 3 · Applicazione nel coaching",
+          desc: "Integrazione pratica del metodo nei percorsi di coaching, con focus su contesti, utilità e limiti d'uso."
+        }
+      ]
+    },
+    programIntro:
+      "Un percorso esperienziale, concreto e intensivo per integrare il Voice Dialogue nel tuo lavoro con persone e team.",
+    studyModeBox: {
+      title: "Modalità di studio",
+      highlight: "in presenza + Lab Inner",
+      body: "Le attività principali si svolgono in aula a Milano. In parallelo hai accesso al Lab sulla piattaforma Inner per confronto continuo con colleghi e trainer.",
+    },
+    teachers: [
+      { name: "Giovanna Giuffredi", creds: "MCC", role: "Trainer", bio: "Coach senior e co-fondatrice Asterys Lab.", img: "https://picsum.photos/seed/voice-giovanna/300/300" },
+      { name: "Team Voice Dialogue", creds: "PCC/MCC", role: "Facilitatori", bio: "Trainer specializzati nelle tecniche di Voice Dialogue.", img: "https://picsum.photos/seed/voice-team/300/300" }
+    ],
+    career: {
+      title: "Come ti sarà utile nella professione",
+      content: "Voice Dialogue Skills amplia la tua cassetta degli attrezzi professionale e rafforza la qualità del tuo intervento nel coaching e nello sviluppo personale.",
+      points: [
+        { title: "Applicazione immediata", desc: "Usi subito principi e tecniche nelle sessioni di coaching e nei colloqui professionali." },
+        { title: "Maggiore consapevolezza", desc: "Riconosci meglio le dinamiche interne tue e dei tuoi interlocutori." },
+        { title: "Metodo integrabile", desc: "Colleghi Voice Dialogue e competenze ICF in modo coerente e pratico." },
+        { title: "Nuova prospettiva", desc: "Impari a leggere il consueto da un punto di vista più ampio e funzionale." }
+      ]
+    },
+    sessionSchedule: [
+      { days: "17 novembre 2026", time: "09:00 - 18:00" },
+      { days: "18 novembre 2026", time: "09:00 - 18:00" },
+      { days: "19 novembre 2026", time: "09:00 - 18:00" }
+    ],
+    fees: [
+      {
+        title: "Early Bird",
+        type: "lump",
+        benefit: "Prezzo speciale",
+        heading: "Iscriviti prima e risparmia",
+        desc: "Approfitta del prezzo scontato Early Bird per il corso in presenza a Milano.",
+        price: "1.575€",
+        priceLabel: "+ IVA"
+      },
+      {
+        title: "Prezzo pieno",
+        type: "lump",
+        benefit: "Quota standard",
+        heading: "Quota iscrizione",
+        desc: "Include 3 giornate in aula, materiali didattici e accesso al Lab su piattaforma Inner.",
+        price: "1.750€",
+        priceLabel: "+ IVA"
+      }
+    ],
+    faqs: [
+      {
+        q: "A chi è rivolto il corso Voice Dialogue?",
+        a: "Il corso è rivolto a coach professionisti, professionisti dello sviluppo personale e del supporto alla persona. È aperto anche a chi desidera utilizzare le tecniche di base del Voice Dialogue per aumentare consapevolezza ed efficacia."
+      },
+      {
+        q: "Com'è strutturato il percorso?",
+        a: "Il percorso prevede 3 giornate full immersion in aula, in presenza a Milano, con attività laboratoriali ed esercitazioni pratiche guidate."
+      },
+      {
+        q: "Che cos'è la piattaforma Inner?",
+        a: "Inner è il Lab digitale del corso: uno spazio web dove confrontarti con colleghi e trainer durante tutto il periodo di svolgimento."
+      },
+      {
+        q: "Cosa avrò alla fine del corso?",
+        a: "Avrai una buona conoscenza delle tecniche di Voice Dialogue, una maggiore consapevolezza operativa e criteri chiari per capire quando il metodo è più utile nei percorsi di coaching."
+      }
+    ]
   }
 };

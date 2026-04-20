@@ -237,6 +237,15 @@ const MasterGrid = () => {
       seed: 'hr'
     },
     {
+      id: 'voice-dialogue',
+      title: 'Voice Dialogue Skills',
+      duration: '3 giornate · In aula',
+      desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
+      start: '17 novembre 2026',
+      lastSeats: false,
+      seed: 'voice-dialogue'
+    },
+    {
       id: 'mentor-coaching',
       title: 'Mentor Coaching',
       duration: '1 mese',
