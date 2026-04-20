@@ -478,6 +478,47 @@ export default function CourseDetail() {
         </div>
       </section>
 
+      {/* 2b. WHY CHOOSE */}
+      {course.whyChoose ? (
+        <section className="py-16 lg:py-20 bg-[#F6F8FC]">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="text-center mb-12 lg:mb-14">
+              {course.whyChoose.eyebrow ? (
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                  {course.whyChoose.eyebrow}
+                </p>
+              ) : null}
+              <h2 className={`${tSection} mb-4 max-w-3xl mx-auto`}>
+                {course.whyChoose.title}
+              </h2>
+              {course.whyChoose.intro ? (
+                <p className={`${tLead} max-w-2xl mx-auto`}>
+                  {richText(course.whyChoose.intro)}
+                </p>
+              ) : null}
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {course.whyChoose.bullets.map((b, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl bg-white p-6 lg:p-7 ring-1 ring-black/5 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.3)]"
+                >
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent mb-4">
+                    <CheckCircle2 size={20} strokeWidth={2.25} />
+                  </div>
+                  <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
+                    {b.title}
+                  </h3>
+                  <p className="text-sm text-brand-navy/70 leading-relaxed">
+                    {b.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* 3. PROGRAMMA DEL MASTER TABS */}
       <section id="programma" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
@@ -880,6 +921,65 @@ export default function CourseDetail() {
         </section>
       ) : null}
 
+      {/* 4c. SCHOLARSHIP */}
+      {course.scholarship ? (
+        <section className="py-14 lg:py-16 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-brand-navy text-white px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-accent/30 blur-3xl" />
+              <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
+                <div>
+                  {course.scholarship.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.scholarship.eyebrow}
+                    </p>
+                  ) : null}
+                  <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
+                    {course.scholarship.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-white/80 leading-relaxed mb-6 max-w-xl">
+                    {richText(course.scholarship.body)}
+                  </p>
+                  {course.scholarship.availability ? (
+                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/20 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] mb-6">
+                      <Sparkles size={14} strokeWidth={2.25} />
+                      {course.scholarship.availability}
+                    </p>
+                  ) : null}
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    {course.scholarship.ctaHref ? (
+                      <Link
+                        to={course.scholarship.ctaHref}
+                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-8 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
+                      >
+                        {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-6 backdrop-blur-sm">
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-2">Importo borsa</p>
+                    <p className="text-4xl sm:text-5xl font-display font-black tracking-tight leading-none mb-4">
+                      {course.scholarship.amount}
+                    </p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/60 mb-3">Requisiti</p>
+                    <ul className="space-y-2">
+                      {course.scholarship.eligibility.map((e, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-white/85 leading-snug">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand-accent" strokeWidth={2.25} />
+                          <span>{e}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
       <section id="metodo" className="py-16 lg:py-24 bg-white">
         <div className="max-w-[941px] mx-auto px-4">
@@ -1068,6 +1168,116 @@ export default function CourseDetail() {
         </section>
       ) : null}
 
+      {/* 5c. LEVELS COMPARISON */}
+      {course.levelsComparison ? (
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-[1100px] mx-auto px-4">
+            <div className="text-center mb-10 lg:mb-12">
+              {course.levelsComparison.eyebrow ? (
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                  {course.levelsComparison.eyebrow}
+                </p>
+              ) : null}
+              <h2 className={`${tSection} mb-4 max-w-3xl mx-auto`}>
+                {course.levelsComparison.title}
+              </h2>
+              {course.levelsComparison.intro ? (
+                <p className={`${tLead} max-w-2xl mx-auto`}>
+                  {richText(course.levelsComparison.intro)}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+              {course.levelsComparison.levels.map((lvl, i) => (
+                <div
+                  key={i}
+                  className={`relative flex flex-col rounded-[1.5rem] p-6 lg:p-7 ring-1 ${
+                    lvl.highlight
+                      ? 'bg-brand-navy text-white ring-brand-navy shadow-[0_30px_80px_-40px_rgba(0,21,51,0.55)] lg:scale-[1.03]'
+                      : 'bg-white text-brand-navy ring-black/8 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.22)]'
+                  }`}
+                >
+                  {lvl.highlight ? (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center rounded-full bg-brand-accent px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-white shadow-lg">
+                      Più scelto
+                    </span>
+                  ) : null}
+                  <p className={`text-[11px] font-black uppercase tracking-[0.22em] mb-2 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}>
+                    {lvl.label}
+                  </p>
+                  <h3 className={`text-xl sm:text-2xl font-display font-black tracking-tight leading-tight mb-3 ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                    {lvl.name}
+                  </h3>
+                  {lvl.hours ? (
+                    <p className={`text-[11px] font-black uppercase tracking-[0.18em] mb-5 ${lvl.highlight ? 'text-white/60' : 'text-brand-navy/45'}`}>
+                      {lvl.hours}
+                    </p>
+                  ) : null}
+                  <div className="mb-5">
+                    <p className={`text-3xl sm:text-4xl font-display font-black tracking-tight leading-none ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                      {lvl.price}
+                    </p>
+                    {lvl.priceLabel ? (
+                      <p className={`text-xs font-semibold mt-1 ${lvl.highlight ? 'text-white/70' : 'text-brand-navy/55'}`}>
+                        {lvl.priceLabel}
+                      </p>
+                    ) : null}
+                  </div>
+                  {lvl.benefit ? (
+                    <p className={`inline-flex self-start items-center rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] mb-5 ${
+                      lvl.highlight ? 'bg-brand-accent/20 text-brand-accent' : 'bg-brand-accent/10 text-brand-accent'
+                    }`}>
+                      {lvl.benefit}
+                    </p>
+                  ) : null}
+                  <ul className="space-y-2.5 mb-6 flex-1">
+                    {lvl.features.map((f, j) => (
+                      <li key={j} className={`flex items-start gap-2 text-sm leading-snug ${lvl.highlight ? 'text-white/85' : 'text-brand-navy/75'}`}>
+                        <CheckCircle2
+                          size={16}
+                          className={`mt-0.5 shrink-0 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}
+                          strokeWidth={2.25}
+                        />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {lvl.ctaHref ? (
+                    <Link
+                      to={lvl.ctaHref}
+                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                        lvl.highlight
+                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
+                          : 'bg-brand-navy text-white hover:bg-brand-accent'
+                      }`}
+                    >
+                      {lvl.ctaLabel ?? 'Iscriviti ora'}
+                    </Link>
+                  ) : (
+                    <a
+                      href="#prezzo"
+                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                        lvl.highlight
+                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
+                          : 'border-2 border-brand-navy/20 text-brand-navy hover:bg-gray-50'
+                      }`}
+                    >
+                      Scopri i dettagli
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+            {course.levelsComparison.footnote ? (
+              <p className="text-center text-xs text-brand-navy/55 font-medium mt-8 max-w-2xl mx-auto">
+                {course.levelsComparison.footnote}
+              </p>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
       <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#C6D3FF_0%,#B8C8FF_55%,#AEBEFF_100%)]" />
@@ -1159,6 +1369,67 @@ export default function CourseDetail() {
           </div>
         </div>
       </section>
+
+      {/* 6b. GUARANTEE 30 HOURS */}
+      {course.guarantee30Hours ? (
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="rounded-[1.75rem] bg-[#F6F8FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
+              <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
+                <div>
+                  {course.guarantee30Hours.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.guarantee30Hours.eyebrow}
+                    </p>
+                  ) : null}
+                  <div className="inline-flex items-center gap-3 mb-5">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-white">
+                      <Hourglass size={20} strokeWidth={2.25} />
+                    </span>
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-5">
+                    {course.guarantee30Hours.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-brand-navy/75 leading-relaxed mb-6">
+                    {richText(course.guarantee30Hours.body)}
+                  </p>
+                  {course.guarantee30Hours.refunds?.length ? (
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {course.guarantee30Hours.refunds.map((r, i) => (
+                        <div key={i} className="rounded-xl bg-white ring-1 ring-black/5 p-4">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/50 mb-1">
+                            {r.label}
+                          </p>
+                          <p className="text-sm font-black text-brand-navy leading-tight">
+                            {r.amount}
+                          </p>
+                          <p className="text-xs text-brand-navy/60 mt-1">
+                            {r.withheld}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                {course.guarantee30Hours.steps?.length ? (
+                  <div className="space-y-4">
+                    {course.guarantee30Hours.steps.map((s, i) => (
+                      <div key={i} className="rounded-2xl bg-white ring-1 ring-black/5 p-5 sm:p-6 shadow-[0_8px_30px_-22px_rgba(0,21,51,0.2)]">
+                        <h3 className="text-sm sm:text-base font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
+                          {s.title}
+                        </h3>
+                        <p className="text-sm text-brand-navy/70 leading-relaxed">
+                          {s.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-16 lg:py-20 bg-white">

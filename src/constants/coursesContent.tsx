@@ -140,6 +140,47 @@ export interface CourseData {
     title?: string;
     intro?: string;
   };
+  whyChoose?: {
+    eyebrow?: string;
+    title: string;
+    intro?: string;
+    bullets: { title: string; desc: string }[];
+  };
+  levelsComparison?: {
+    eyebrow?: string;
+    title: string;
+    intro?: string;
+    levels: {
+      label: string;
+      name: string;
+      price: string;
+      priceLabel?: string;
+      hours?: string;
+      highlight?: boolean;
+      benefit?: string;
+      features: string[];
+      ctaLabel?: string;
+      ctaHref?: string;
+    }[];
+    footnote?: string;
+  };
+  guarantee30Hours?: {
+    eyebrow?: string;
+    title: string;
+    body: string;
+    refunds?: { label: string; amount: string; withheld: string }[];
+    steps?: { title: string; desc: string }[];
+  };
+  scholarship?: {
+    eyebrow?: string;
+    title: string;
+    amount: string;
+    body: string;
+    eligibility: string[];
+    availability?: string;
+    ctaLabel?: string;
+    ctaHref?: string;
+  };
 }
 
 export interface CourseTestimonial {
@@ -304,7 +345,7 @@ export const coursesContent: Record<string, CourseData> = {
   'apcm': {
     title: "Accredited Professional Coaching Mastery (APCM)",
     subtitle: "Professione Coach",
-    tagline: "Il Master d'eccellenza per diventare un coach professionista accreditato ICF con intelligenza emotiva misurabile e approccio sistemico.",
+    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: APCM è il Master d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "PER PROFESSIONISTI",
     media: {
@@ -361,16 +402,16 @@ export const coursesContent: Record<string, CourseData> = {
       dates: "Maggio – Dicembre 2026",
       format: "Ibrido (Presenza + Live Online)",
       duration: "150 ore accademiche",
-      price: "A partire da 3.900€",
-      installments: "Fino a 24 rate senza interessi"
+      price: "A partire da 3.400€ + IVA",
+      installments: "Rateizzabile fino a 24 mesi senza interessi"
     },
     badges: ["ICF Level 1 & 2", "20+ anni esperienza", "Community Alumni"],
     overview: {
       title: "Perché questo Master in Coaching Professionale",
       content: [
-        "Il Master APCM di Asterys Lab non è solo un corso di formazione, è un viaggio di trasformazione profonda.",
-        "Integriamo le più moderne scoperte delle neuroscienze con la pratica del coaching sistemico.",
-        "Il nostro obiettivo è portarti da essere un professionista curioso a un coach competente, etico e riconosciuto a livello internazionale."
+        "L'APCM è il percorso di Asterys Lab per chi vuole diventare **coach professionista** e operare con credenziali ICF riconosciute in tutto il mondo. Non è solo formazione tecnica: è un viaggio di trasformazione che integra **metodo**, **intelligenza emotiva** e **approccio sistemico**.",
+        "Impari a condurre sessioni di coaching con rigore etico, a leggere le dinamiche relazionali oltre il singolo individuo e a costruire un business sostenibile. Tutto questo accanto a **trainer MCC & PCC** con 20+ anni di esperienza e una community di 3.000+ alumni attivi.",
+        "Che tu provenga dal mondo HR, dalla consulenza, dal management o dalla psicologia, APCM ti porta da professionista curioso a coach competente, riconosciuto e preparato a entrare sul mercato con metodo."
       ]
     },
     target: [
@@ -454,34 +495,34 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "Rate Smart",
+        title: "Rateizzazione 24 mesi",
         type: "installment",
-        benefit: "Fino a 24 mesi",
+        benefit: "0% interessi",
         heading: "Paga in rate mensili",
-        desc: "Con Rate Smart puoi dilazionare l'intero importo in piccole rate mensili (fino a 24 mesi), senza garanzie e con attivazione completamente online.",
-        price: "190€",
+        desc: "Dilaziona l'intero importo del Master in rate mensili fino a 24 mesi, senza interessi e senza garanzie. Attivazione semplice e completamente online.",
+        price: "288€",
         priceLabel: "/mese",
-        footnote: "Simulazione su 24 mesi, prezzo del Master: 4.200€ → 3.510€"
+        footnote: "Simulazione su 24 mesi · Percorso Completo L1+L2: 6.900€ + IVA"
       },
       {
         title: "Pagamento Unico",
         type: "lump",
-        benefit: "Sconto 10%",
-        heading: "Risparmia con il pagamento unico",
-        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul percorso. Ideal per chi preferisce saldare tutto subito e non pensarci più.",
-        price: "3.510€",
-        priceLabel: "una tantum",
-        footnote: "Prezzo pieno: 3.900€ — risparmi 390€ con il pagamento unico"
+        benefit: "Risparmi 1.000€",
+        heading: "Percorso Completo L1+L2",
+        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul Percorso Completo (Livello 1 + Livello 2). Ideale per chi preferisce saldare tutto subito.",
+        price: "6.900€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Prezzo pieno: 7.900€ + IVA — con pagamento unico risparmi 1.000€"
       },
       {
-        title: "Tasso Zero",
-        type: "zero-rate",
-        benefit: "0% interessi",
-        heading: "Finanziamento a tasso zero",
-        desc: "Attiva il finanziamento a tasso zero e paga il percorso in comode rate mensili senza alcuna maggiorazione. Procedura semplice e completamente online.",
-        price: "190€",
-        priceLabel: "/mese",
-        footnote: "Soggetto ad approvazione del finanziatore. Simulazione indicativa."
+        title: "Solo Livello 1",
+        type: "after",
+        benefit: "Fondamenti coaching",
+        heading: "Parti dal 1° Livello",
+        desc: "Frequenta solo il Livello 1 (ICF Level 1 ready) e decidi in seguito se proseguire con il 2° Livello. Potrai sempre completare il percorso con una successiva edizione.",
+        price: "3.400€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
       }
     ],
     faqs: commonFaqs,
@@ -594,6 +635,128 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Scegli sede, livello ed edizione",
       intro:
         "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutte le Live Class, i Live Lab, i Corsi intensivi e le scadenze di iscrizione."
+    },
+    whyChoose: {
+      eyebrow: "Perché scegliere APCM",
+      title: "Un Master che unisce rigore, umanità e mercato",
+      intro:
+        "APCM è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **trainer con credenziali MCC & PCC**, **pratica supervisionata** e un **Career Center** che ti accompagna nell'avvio della professione.",
+      bullets: [
+        {
+          title: "Accreditamento ICF Level 1 & 2",
+          desc: "Programma riconosciuto ICF: al termine hai tutte le ore formative necessarie per le credenziali ACC e PCC, spendibili a livello internazionale."
+        },
+        {
+          title: "Intelligenza Emotiva misurabile",
+          desc: "Integriamo il modello KCG / Six Seconds: impari ad allenare l'IE con strumenti di assessment certificati, non solo con la teoria."
+        },
+        {
+          title: "Approccio sistemico",
+          desc: "Lavori non solo sull'individuo ma sulle relazioni, sui gruppi e sui contesti. È ciò che fa la differenza nelle organizzazioni complesse."
+        },
+        {
+          title: "Trainer MCC e PCC",
+          desc: "Apprendi da coach professionisti con 20+ anni di esperienza su board, team e percorsi individuali, in contesti italiani e internazionali."
+        },
+        {
+          title: "Pratica supervisionata reale",
+          desc: "Sessioni vere, feedback da Mentor MCC, supervisione continua: il Master ti fa iniziare a coachare dal primo mese, non a libro finito."
+        },
+        {
+          title: "Prosperous Coach incluso",
+          desc: "Posizionamento, pricing, acquisizione clienti ed etica del business: gli strumenti per costruire davvero la tua professione."
+        }
+      ]
+    },
+    levelsComparison: {
+      eyebrow: "Struttura del percorso",
+      title: "Scegli come affrontare il Master",
+      intro:
+        "APCM è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio.",
+      levels: [
+        {
+          label: "Livello 1",
+          name: "ICF Level 1 Ready",
+          price: "3.400€",
+          priceLabel: "+ IVA",
+          hours: "60 ore accademiche",
+          benefit: "Fondamenti del coaching",
+          features: [
+            "8 core competence ICF · Livello 1",
+            "Etica, alleanza e accordo di coaching",
+            "Basi di Intelligenza Emotiva",
+            "Sessioni pratiche con feedback",
+            "Abilita alla credenziale ICF ACC",
+            "Modulo Prosperous Coach incluso"
+          ]
+        },
+        {
+          label: "Percorso Completo",
+          name: "ICF Level 1 + Level 2",
+          price: "6.900€",
+          priceLabel: "+ IVA · invece di 7.900€",
+          hours: "150 ore accademiche",
+          benefit: "Risparmi 1.000€",
+          highlight: true,
+          features: [
+            "Tutto il Livello 1 + Livello 2 integrale",
+            "Intelligenza Emotiva misurabile (KCG/SEI)",
+            "Approccio sistemico avanzato",
+            "Pratica supervisionata con Mentor MCC",
+            "Abilita alla credenziale ICF PCC",
+            "Accesso alla Community Alumni Asterys",
+            "Percorso di Personal Coaching individuale"
+          ],
+          ctaLabel: "Iscriviti al Percorso Completo",
+          ctaHref: "/iscriviti"
+        },
+        {
+          label: "Livello 2",
+          name: "ICF Level 2 Advanced",
+          price: "4.500€",
+          priceLabel: "+ IVA",
+          hours: "90 ore accademiche",
+          benefit: "Solo per chi ha già il L1",
+          features: [
+            "Intelligenza Emotiva avanzata",
+            "Lavoro sui sistemi complessi",
+            "Mentor coaching ICF (7+3 ore)",
+            "Supervisione individuale",
+            "Abilita alla credenziale ICF PCC",
+            "Personal Coaching individuale"
+          ]
+        }
+      ],
+      footnote: "Tutti i livelli sono rateizzabili fino a 24 mesi senza interessi. Prezzi IVA esclusa."
+    },
+    guarantee30Hours: {
+      eyebrow: "La nostra garanzia",
+      title: "Hai 30 ore per ripensarci",
+      body: "Vogliamo che tu entri nel Master con la certezza di aver fatto la scelta giusta. Per questo puoi frequentare le **prime 30 ore di formazione** e, se capisci che non fa per te, **recedere ottenendo il rimborso** della quota già versata, al netto di una piccola trattenuta a copertura dei costi.",
+      refunds: [
+        { label: "Pagamento Unico", amount: "Rimborso totale", withheld: "Trattenuta: 500€" },
+        { label: "Rateizzazione", amount: "Rimborso totale", withheld: "Trattenuta: 650€" }
+      ],
+      steps: [
+        { title: "1. Frequenti senza impegno", desc: "Partecipi alle prime 30 ore di Master come se fossi già iscritto definitivamente." },
+        { title: "2. Valuti con calma", desc: "Vivi il metodo, i trainer, i compagni di percorso e capisci se è il percorso che fa per te." },
+        { title: "3. Decidi liberamente", desc: "Se non ti convince, comunichi il recesso entro le 30 ore e rientra il rimborso come previsto." }
+      ]
+    },
+    scholarship: {
+      eyebrow: "Opportunità",
+      title: "Borsa di studio fino a 1.500€",
+      amount: "Fino a 1.500€",
+      body: "Per supportare l'accesso al Master ai professionisti del **Centro e Sud Italia**, riserviamo una borsa di studio sulle **prime iscrizioni** delle edizioni di **Roma**. Un investimento concreto sulla comunità dei coach italiani.",
+      eligibility: [
+        "Residenti in una regione del Centro o Sud Italia",
+        "Iscrizione a un'edizione del Master APCM a Roma",
+        "Tra i primi 3 iscritti per edizione (ordine cronologico)",
+        "Colloquio di ammissione positivo con un nostro Advisor"
+      ],
+      availability: "3 borse di studio disponibili per edizione Roma",
+      ctaLabel: "Richiedi la borsa di studio",
+      ctaHref: "/iscriviti"
     },
     editions: [
       {
