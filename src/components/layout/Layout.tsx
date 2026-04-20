@@ -430,6 +430,88 @@ export const Header = () => {
   );
 };
 
+const CorporateHeader = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const links = [
+    { label: 'AI Adoption', href: '#ai-adoption' },
+    { label: 'Formazione', href: '#formazione-tech' },
+    { label: 'Recruiting', href: '#recruiting-tech' },
+    { label: 'Hiring Platform', href: '#hiring-platform' },
+  ];
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
+      <div className="max-w-[1200px] mx-auto px-4 w-full flex items-center justify-between gap-4">
+        <Link to="/aziende" className="flex items-center gap-3 shrink-0">
+          <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
+            <div className="absolute inset-0 bg-[#001D4B] rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
+          </div>
+          <span className="font-display font-black text-2xl tracking-tight text-[#001D4B] leading-none">asterys</span>
+          <span className="text-sm font-bold text-[#001D4B]/70 -ml-1 mt-1">for business</span>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-10">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[#001D4B] font-black text-[15px] tracking-tight hover:text-[#1D3BB9] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden lg:flex items-center">
+          <a
+            href="#contatti-aziende"
+            className="bg-[#3752D7] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.08em] hover:bg-[#2b45c6] transition-colors"
+          >
+            Parla con noi
+          </a>
+        </div>
+
+        <button className="lg:hidden text-[#001D4B]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-xl lg:hidden p-5"
+          >
+            <div className="flex flex-col gap-3">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-[#001D4B] font-black text-base tracking-tight"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#contatti-aziende"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-2 bg-[#3752D7] text-white rounded-full py-3 text-center text-xs font-black uppercase tracking-[0.08em]"
+              >
+                Parla con noi
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
 const socialChannels = [
   {
     name: 'Instagram',
@@ -778,13 +860,18 @@ export const Footer = () => {
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
+  const isCorporatePage = location.pathname === '/aziende';
 
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col">
-      <Header />
+      {isCorporatePage ? <CorporateHeader /> : <Header />}
       <main
         className={`flex-grow ${
-          isCourseDetailPage ? 'pt-[120px] max-[939px]:pt-[134px]' : 'pt-[72px] max-[939px]:pt-[74px]'
+          isCourseDetailPage
+            ? 'pt-[120px] max-[939px]:pt-[134px]'
+            : isCorporatePage
+              ? 'pt-[72px]'
+              : 'pt-[72px] max-[939px]:pt-[74px]'
         }`}
       >
         {children}

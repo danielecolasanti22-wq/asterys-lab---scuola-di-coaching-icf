@@ -30,12 +30,12 @@ const recruitingTechPoints = [
 
 export default function Corporate() {
   return (
-    <div className="pt-24 bg-[#F8FAFF] text-brand-navy">
+    <div className="bg-[#F8FAFF] text-brand-navy">
       {/* HERO */}
       <section className="bg-[#001D4B] text-white">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 py-14 lg:py-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div>
-            <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight max-w-[560px]">
+            <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-[6.25rem] leading-[0.92] tracking-tight max-w-[620px]">
               Fai crescere il business con il coaching
             </h1>
             <p className="mt-6 text-white/75 text-base sm:text-lg max-w-[540px] leading-relaxed">
@@ -106,11 +106,11 @@ export default function Corporate() {
       </section>
 
       {/* SERVICE 1 */}
-      <section className="bg-white py-12 lg:py-16">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-10 items-center">
+      <section id="ai-adoption" className="bg-white py-12 lg:py-16">
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-12 items-start">
           <div>
-            <h3 className="text-[2rem] font-display font-black tracking-tight">AI Adoption</h3>
-            <p className="text-xl font-display font-bold mt-1">Dalle persone ai flussi: porta l'AI dove serve davvero</p>
+            <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">AI Adoption</h3>
+            <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Dalle persone ai flussi: porta l'AI dove serve davvero</p>
             <p className="mt-4 text-brand-navy/70 leading-relaxed">
               Costruiamo con te la strategia AI per ogni livello aziendale, allineando leadership e team operativi
               attraverso piani formativi, progetti di implementazione e percorsi di approfondimento specifici.
@@ -118,11 +118,11 @@ export default function Corporate() {
             <img
               src="https://picsum.photos/seed/corporate-ai/640/420"
               alt="AI Adoption"
-              className="mt-8 rounded-2xl shadow-lg w-full max-w-[520px]"
+              className="mt-8 rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-6 pt-24 lg:pt-[11.5rem]">
             {aiAdoptionPoints.map((point) => (
               <div key={point} className="flex items-start gap-3">
                 <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
@@ -139,9 +139,17 @@ export default function Corporate() {
       </section>
 
       {/* SERVICE 2 */}
-      <section className="bg-white py-6 lg:py-10">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.9fr_1fr] gap-10 items-center">
-          <div className="order-2 lg:order-1 space-y-4">
+      <section id="formazione-tech" className="bg-white py-8 lg:py-10">
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+          <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">Formazione Tech</h3>
+          <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Potenzia il tuo team con skill di nuova generazione</p>
+          <p className="mt-4 text-brand-navy/80 leading-relaxed max-w-[980px]">
+            Formazione live con <strong>esperti del settore</strong> e piattaforma di e-learning potenziata dall'AI.
+            Programmazione, analisi dati, UX/UI, marketing e tanto altro: ottieni il meglio dai docenti professionisti.
+          </p>
+
+          <div className="mt-9 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+            <div className="space-y-4">
             {formazioneTechPoints.map((point) => (
               <div key={point} className="flex items-start gap-3">
                 <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
@@ -150,33 +158,28 @@ export default function Corporate() {
                 <p className="text-brand-navy/85 leading-snug font-medium">{point}</p>
               </div>
             ))}
-            <button className="mt-3 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
+            <button className="mt-4 inline-flex items-center gap-2 bg-[#001D90] hover:bg-[#0b2baa] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors">
               Scopri di più
             </button>
           </div>
-          <div className="order-1 lg:order-2">
-            <h3 className="text-[2rem] font-display font-black tracking-tight">Formazione Tech</h3>
-            <p className="text-xl font-display font-bold mt-1">Potenzia il tuo team con skill di nuova generazione</p>
-            <p className="mt-4 text-brand-navy/70 leading-relaxed">
-              Formazione live con esperti del settore e percorsi blended: programmazione, analisi dati,
-              UX/UI, AI e marketing per accelerare la crescita del team.
-            </p>
+          <div>
             <img
               src="https://picsum.photos/seed/corporate-training/640/420"
               alt="Formazione Tech"
-              className="mt-8 rounded-2xl shadow-lg w-full max-w-[520px]"
+              className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
               referrerPolicy="no-referrer"
             />
           </div>
         </div>
+        </div>
       </section>
 
       {/* SERVICE 3 */}
-      <section className="bg-white py-6 lg:py-10">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-10 items-center">
+      <section id="recruiting-tech" className="bg-white py-6 lg:py-10">
+        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-10 items-start">
           <div>
-            <h3 className="text-[2rem] font-display font-black tracking-tight">Recruiting Tech</h3>
-            <p className="text-xl font-display font-bold mt-1">Efficiente e veloce: trova un nuovo talento in 2 settimane</p>
+            <h3 className="text-[3rem] leading-none font-display font-black tracking-tight">Recruiting Tech</h3>
+            <p className="text-[2.1rem] font-display font-bold leading-[1.05] mt-2">Efficiente e veloce: trova un nuovo talento in 2 settimane</p>
             <p className="mt-4 text-brand-navy/70 leading-relaxed">
               Selezione di figure mid e senior in ambito IT. Dalla ricerca alla shortlist in tempi rapidi,
               con assessment strutturato e possibilità di upskilling sui ruoli inseriti.
@@ -184,11 +187,11 @@ export default function Corporate() {
             <img
               src="https://picsum.photos/seed/corporate-recruiting/640/420"
               alt="Recruiting Tech"
-              className="mt-8 rounded-2xl shadow-lg w-full max-w-[520px]"
+              className="mt-8 rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full max-w-[650px]"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 pt-20 lg:pt-[8.5rem]">
             {recruitingTechPoints.map((point) => (
               <div key={point} className="flex items-start gap-3">
                 <span className="w-8 h-8 rounded-lg bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center shrink-0 mt-0.5">
@@ -205,7 +208,7 @@ export default function Corporate() {
       </section>
 
       {/* EMPLOYER BRANDING */}
-      <section className="bg-white py-14 lg:py-16">
+      <section id="hiring-platform" className="bg-white py-14 lg:py-16">
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12">
           <div>
             <h3 className="text-4xl font-display font-black tracking-tight">Fai employer branding con noi</h3>
@@ -233,7 +236,7 @@ export default function Corporate() {
       </section>
 
       {/* CONTACT */}
-      <section className="bg-[#CFE0FF] py-14 lg:py-16 border-t border-[#B7CDF7]">
+      <section id="contatti-aziende" className="bg-[#CFE0FF] py-14 lg:py-16 border-t border-[#B7CDF7]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-6">
           <h3 className="text-4xl font-display font-black tracking-tight text-center">Contattaci per maggiori informazioni</h3>
           <p className="text-center text-brand-navy/75 mt-2">Compila il modulo per ricevere dettagli sui nostri servizi.</p>
