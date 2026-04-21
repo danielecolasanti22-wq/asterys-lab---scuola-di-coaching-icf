@@ -83,10 +83,14 @@ const BrandLogo = () => {
   const tryNextAsset = () => {
     const candidates = [
       `${base}brand/asterys-lab-logo.png`,
+      `${base}brand/asterys-lab-logo.PNG`,
       `${base}brand/asterys-lab-logo.svg`,
       `${base}brand/asterys-lab-logo.webp`,
       `${base}brand/asterys-lab-logo.jpg`,
       `${base}brand/asterys-lab-logo.jpeg`,
+      `${base}public/brand/asterys-lab-logo.png`,
+      `${base}asterys-lab-logo.png`,
+      `${base}brand/asteryslab-logo.png`,
     ];
     const idx = candidates.indexOf(logoSrc);
     const next = candidates[idx + 1];
