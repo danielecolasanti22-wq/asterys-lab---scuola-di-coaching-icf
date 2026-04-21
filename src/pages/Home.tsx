@@ -20,6 +20,7 @@ import {
   Target
 } from 'lucide-react';
 import { coursesContent, commonTestimonials } from '../constants/coursesContent';
+import { CourseImage } from '../components/CourseImage';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -182,11 +183,11 @@ const MasterFeatured = () => (
       <Link to="/corsi/apcm" className="block group">
         <div className="grid sm:grid-cols-[1fr_1fr] gap-6 rounded-[2rem] bg-white p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
           <div className="relative aspect-[5/4] sm:aspect-auto rounded-2xl overflow-hidden bg-gray-100 min-h-[260px]">
-            <img
-              src="https://picsum.photos/seed/apcm-master/900/700"
+            <CourseImage
+              src="/course-media/apcm/card.png"
+              fallbackSrc="https://picsum.photos/seed/apcm-master/900/700"
+              alt="Master Professione Coach"
               className="absolute inset-0 w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-              alt=""
             />
             <span className="absolute top-4 left-4 bg-[#E2FF3B] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
               Master Full-Time
@@ -286,11 +287,11 @@ const MasterGrid = () => {
               className="group bg-white border border-gray-100 rounded-[2rem] p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
             >
               <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
-                <img
-                  src={`https://picsum.photos/seed/${m.seed}/700/400`}
+                <CourseImage
+                  src={`/course-media/${m.id}/card.png`}
+                  fallbackSrc={`https://picsum.photos/seed/${m.seed}/700/400`}
+                  alt={m.title}
                   className="absolute inset-0 w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                  alt=""
                 />
                 <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
                   Master Part-Time
