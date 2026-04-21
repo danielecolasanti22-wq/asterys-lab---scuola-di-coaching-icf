@@ -22,7 +22,6 @@ const upcomingClasses = [
   { course: 'Master APCM · Milano', date: '12 maggio 2026', note: 'ULTIMI POSTI DISPONIBILI', highlight: true },
   { course: 'Master APCM · Roma', date: '19 maggio 2026', note: 'Termine candidature: 5 maggio' },
   { course: 'Team Coaching Sistemico', date: '10 giugno 2026', note: 'PROSSIMA EDIZIONE', highlight: true },
-  { course: 'Manager come Coach', date: 'Ottobre 2026', note: 'Convenzioni aziendali' },
   { course: 'Intelligenza Emotiva (EIW)', date: 'Settembre 2026', note: 'APERTE LE ISCRIZIONI', highlight: true },
 ];
 

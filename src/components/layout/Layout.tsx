@@ -46,7 +46,6 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'apcm', title: 'Professione Coach', kicker: 'APCM · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
       { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'ASTC · Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
-      { id: 'mentor-coaching', title: 'Mentor Coaching ICF', kicker: 'Verso ACC e PCC', meta: '10 ore · Online' },
     ],
   },
   {
@@ -55,7 +54,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'specialization',
     items: [
       { id: 'prosperous-coach', title: 'Prosperous Coach', kicker: 'Business del Coaching', meta: '3 mesi · Masterclass + 1:1' },
-      { id: 'hr-manager-coaching', title: 'Manager come Coach', kicker: 'Leadership & HR', meta: '32 ore · Ibrido' },
+      { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
     ],
   },
   {
@@ -64,6 +63,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'short',
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'EIW · Six Seconds', meta: '24 ore · Live Online' },
+      { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Live Class mensili', meta: 'Annuale · Zoom 18:30–20:00' },
       { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '16 ore · Live Online' },
     ],
   },
@@ -73,6 +73,54 @@ const megaIconFor = (icon: MegaColumn['icon']) => {
   if (icon === 'master') return <GraduationCap size={16} />;
   if (icon === 'specialization') return <Sparkles size={16} />;
   return <Clock size={16} />;
+};
+
+const BrandLogo = () => {
+  const base = import.meta.env.BASE_URL || '/';
+  const [logoSrc, setLogoSrc] = useState(`${base}brand/asterys-lab-logo.png`);
+  const [showFallback, setShowFallback] = useState(false);
+
+  const tryNextAsset = () => {
+    const candidates = [
+      `${base}brand/asterys-lab-logo.png`,
+      `${base}brand/asterys-lab-logo.svg`,
+      `${base}brand/asterys-lab-logo.webp`,
+      `${base}brand/asterys-lab-logo.jpg`,
+      `${base}brand/asterys-lab-logo.jpeg`,
+    ];
+    const idx = candidates.indexOf(logoSrc);
+    const next = candidates[idx + 1];
+    if (next) {
+      setLogoSrc(next);
+      return;
+    }
+    setShowFallback(true);
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      {!showFallback && (
+        <img
+          src={logoSrc}
+          alt="Asterys Lab"
+          className="h-10 w-auto object-contain"
+          onError={tryNextAsset}
+        />
+      )}
+      <span className={`${showFallback ? 'flex' : 'hidden'} items-center gap-2`}>
+      <span className="relative w-8 h-8 rotate-45 flex items-center justify-center">
+        <span className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></span>
+        <span className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></span>
+      </span>
+      <span className="font-display font-black text-[2rem] tracking-tight text-brand-navy uppercase leading-none select-none">
+        ASTERYS
+      </span>
+      <span className="font-display font-black text-[0.95rem] tracking-[0.16em] text-brand-navy/55 uppercase leading-none select-none mt-2">
+        LAB
+      </span>
+      </span>
+    </div>
+  );
 };
 
 export const Header = () => {
@@ -125,7 +173,7 @@ export const Header = () => {
   const navLinks = [
     { name: 'The Campus', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Risorse', href: '/blog' },
   ];
 
   const isHome = location.pathname === '/';
@@ -137,12 +185,8 @@ export const Header = () => {
     >
       <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
-              <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
-              <div className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
-            </div>
-            <span className="font-sans font-black text-2xl tracking-tighter text-brand-navy lowercase select-none">asteryslab</span>
+          <Link to="/" className="group shrink-0">
+            <BrandLogo />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -183,13 +227,6 @@ export const Header = () => {
                 </Link>
               )
             )}
-            <div className="h-4 w-px bg-gray-200"></div>
-            <Link
-              to="/aziende"
-              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
-            >
-              Per le aziende
-            </Link>
             <div
               className="relative"
               onMouseEnter={openAbout}
@@ -241,6 +278,13 @@ export const Header = () => {
                 )}
               </AnimatePresence>
             </div>
+            <div className="h-4 w-px bg-gray-200"></div>
+            <Link
+              to="/aziende"
+              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+            >
+              Per Aziende
+            </Link>
           </nav>
         </div>
 
@@ -395,9 +439,8 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
             >
-              Blog
+              Risorse
             </Link>
-            <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per le aziende</Link>
             <div className="flex flex-col gap-2">
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/50">About</span>
               <Link
@@ -415,6 +458,7 @@ export const Header = () => {
                 Press
               </Link>
             </div>
+            <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
               to="/iscriviti"
@@ -423,6 +467,88 @@ export const Header = () => {
             >
               Iscriviti
             </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+const CorporateHeader = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const links = [
+    { label: 'AI Adoption', href: '#ai-adoption' },
+    { label: 'Formazione', href: '#formazione-tech' },
+    { label: 'Recruiting', href: '#recruiting-tech' },
+    { label: 'Hiring Platform', href: '#hiring-platform' },
+  ];
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
+      <div className="max-w-[1200px] mx-auto px-4 w-full flex items-center justify-between gap-4">
+        <Link to="/aziende" className="flex items-center gap-3 shrink-0">
+          <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
+            <div className="absolute inset-0 bg-[#001D4B] rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
+          </div>
+          <span className="font-display font-black text-2xl tracking-tight text-[#001D4B] leading-none">asterys</span>
+          <span className="text-sm font-bold text-[#001D4B]/70 -ml-1 mt-1">for business</span>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-10">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[#001D4B] font-black text-[15px] tracking-tight hover:text-[#1D3BB9] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden lg:flex items-center">
+          <a
+            href="#contatti-aziende"
+            className="bg-[#3752D7] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.08em] hover:bg-[#2b45c6] transition-colors"
+          >
+            Parla con noi
+          </a>
+        </div>
+
+        <button className="lg:hidden text-[#001D4B]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-xl lg:hidden p-5"
+          >
+            <div className="flex flex-col gap-3">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-[#001D4B] font-black text-base tracking-tight"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#contatti-aziende"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-2 bg-[#3752D7] text-white rounded-full py-3 text-center text-xs font-black uppercase tracking-[0.08em]"
+              >
+                Parla con noi
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -778,13 +904,18 @@ export const Footer = () => {
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
+  const isCorporatePage = location.pathname === '/aziende';
 
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col">
-      <Header />
+      {isCorporatePage ? <CorporateHeader /> : <Header />}
       <main
         className={`flex-grow ${
-          isCourseDetailPage ? 'pt-[120px] max-[939px]:pt-[134px]' : 'pt-[72px] max-[939px]:pt-[74px]'
+          isCourseDetailPage
+            ? 'pt-[120px] max-[939px]:pt-[134px]'
+            : isCorporatePage
+              ? 'pt-[72px]'
+              : 'pt-[72px] max-[939px]:pt-[74px]'
         }`}
       >
         {children}
