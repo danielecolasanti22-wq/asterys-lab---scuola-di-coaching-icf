@@ -100,11 +100,11 @@ const AccreditamentoBadge = ({
 
   if (logo && !showFallback) {
     return (
-      <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
+      <div className="flex items-center gap-2">
         <img
           src={`${base}${logo}`}
           alt={label}
-          className="h-10 w-auto object-contain"
+          className="h-20 md:h-24 w-auto object-contain"
           onError={() => setShowFallback(true)}
         />
       </div>
@@ -112,7 +112,7 @@ const AccreditamentoBadge = ({
   }
 
   return (
-    <div className="flex items-center gap-2 text-brand-navy/80 grayscale hover:grayscale-0 transition-all">
+    <div className="flex items-center gap-2 text-brand-navy/80">
       <Award size={22} strokeWidth={2} />
       <span className={`font-black tracking-[0.2em] ${size}`}>{label}</span>
     </div>
@@ -129,7 +129,7 @@ const Accreditamenti = () => {
   ];
   return (
     <section className="bg-[#F2F7FF] border-t border-brand-navy/5">
-      <div className="max-w-[1200px] mx-auto px-6 py-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-5 opacity-70">
+      <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-wrap items-center justify-center gap-x-16 gap-y-6">
         {items.map((i) => (
           <AccreditamentoBadge key={i.label} label={i.label} size={i.size} logo={i.logo} />
         ))}
