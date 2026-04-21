@@ -5,8 +5,6 @@ import {
   ArrowUpRight,
   Calendar,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   MapPin,
   Quote,
   Star,
@@ -15,10 +13,14 @@ import {
   Sparkles,
   MessageCircle,
   PlayCircle,
+  Play,
+  Video,
+  X,
   Users,
   Target
 } from 'lucide-react';
-import { coursesContent } from '../constants/coursesContent';
+import { coursesContent, commonTestimonials } from '../constants/coursesContent';
+import { CourseImage } from '../components/CourseImage';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -100,11 +102,11 @@ const AccreditamentoBadge = ({
 
   if (logo && !showFallback) {
     return (
-      <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
+      <div className="flex items-center gap-2">
         <img
           src={`${base}${logo}`}
           alt={label}
-          className="h-10 w-auto object-contain"
+          className="h-16 md:h-20 w-auto object-contain"
           onError={() => setShowFallback(true)}
         />
       </div>
@@ -112,7 +114,7 @@ const AccreditamentoBadge = ({
   }
 
   return (
-    <div className="flex items-center gap-2 text-brand-navy/80 grayscale hover:grayscale-0 transition-all">
+    <div className="flex items-center gap-2 text-brand-navy/80">
       <Award size={22} strokeWidth={2} />
       <span className={`font-black tracking-[0.2em] ${size}`}>{label}</span>
     </div>
@@ -129,7 +131,7 @@ const Accreditamenti = () => {
   ];
   return (
     <section className="bg-[#F2F7FF] border-t border-brand-navy/5">
-      <div className="max-w-[1200px] mx-auto px-6 py-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-5 opacity-70">
+      <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-wrap items-center justify-center gap-x-16 gap-y-6">
         {items.map((i) => (
           <AccreditamentoBadge key={i.label} label={i.label} size={i.size} logo={i.logo} />
         ))}
@@ -181,11 +183,11 @@ const MasterFeatured = () => (
       <Link to="/corsi/apcm" className="block group">
         <div className="grid sm:grid-cols-[1fr_1fr] gap-6 rounded-[2rem] bg-white p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
           <div className="relative aspect-[5/4] sm:aspect-auto rounded-2xl overflow-hidden bg-gray-100 min-h-[260px]">
-            <img
-              src="https://picsum.photos/seed/apcm-master/900/700"
+            <CourseImage
+              src="/course-media/apcm/card.png"
+              fallbackSrc="https://picsum.photos/seed/apcm-master/900/700"
+              alt="Master Professione Coach"
               className="absolute inset-0 w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-              alt=""
             />
             <span className="absolute top-4 left-4 bg-[#E2FF3B] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
               Master Full-Time
@@ -285,11 +287,11 @@ const MasterGrid = () => {
               className="group bg-white border border-gray-100 rounded-[2rem] p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
             >
               <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
-                <img
-                  src={`https://picsum.photos/seed/${m.seed}/700/400`}
+                <CourseImage
+                  src={`/course-media/${m.id}/card.png`}
+                  fallbackSrc={`https://picsum.photos/seed/${m.seed}/700/400`}
+                  alt={m.title}
                   className="absolute inset-0 w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                  alt=""
                 />
                 <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
                   Master Part-Time
@@ -397,123 +399,180 @@ const AdvisorBand = () => (
 
 /* 7. TESTIMONIANZE */
 const Testimonianze = () => {
-  const tms = [
-    {
-      name: 'Marco Rossetti',
-      role: 'PCC Coach & Executive',
-      course: 'Master APCM',
-      text: "In Asterys Lab non ho imparato solo a fare coaching: ho imparato a guardare ai sistemi e all'intelligenza emotiva come leve di business. Dopo il Master lavoro con clienti C-level ogni settimana."
-    },
-    {
-      name: 'Sara Lombardi',
-      role: 'HR Director',
-      course: 'Coaching per HR',
-      text: 'Il Master ha cambiato il mio modo di gestire le persone. Una formazione intensa, seria, profondamente umana — e con strumenti che uso ogni giorno in azienda.'
-    },
-    {
-      name: 'Giorgio Bianchi',
-      role: 'Full-time Coach',
-      course: 'Prosperous Coach',
-      text: 'Grazie a Prosperous Coach sono passato da dipendente a libero professionista in meno di 6 mesi. La community è formidabile e non ti lascia mai da solo.'
-    },
-    {
-      name: 'Elena Monti',
-      role: 'Team Coach aziendale',
-      course: 'Systemic Team Coaching',
-      text: 'Il Master in Team Coaching Sistemico mi ha dato strumenti concreti per affrontare dinamiche di gruppo complesse. Lavoro già con 3 team di multinazionali.'
-    }
-  ];
-  const [idx, setIdx] = useState(0);
-  const t = tms[idx];
+  const testimonials = commonTestimonials;
+  const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
+  const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
+
   return (
-    <section className="py-20 lg:py-24 bg-[#F4F6FB]">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-12 max-w-2xl mx-auto">
-          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-brand-accent mb-4">
-            Storie di trasformazione
-          </p>
-          <h2 className={`${tSection} mb-4`}>Cosa dicono i nostri studenti</h2>
-          <p className="text-sm text-brand-navy/70 leading-relaxed">
-            Oltre 3.000 coach ci hanno già scelto: nessuno meglio di loro ti può raccontare perché Asterys è il percorso giusto per la tua carriera.
+    <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F6FB] to-white">
+      <div className="max-w-[941px] mx-auto px-4">
+        <div className="max-w-2xl mb-10 lg:mb-12">
+          <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
+          <h2 className={`${tSection} uppercase mb-4`}>
+            Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
+          </h2>
+          <p className={tLead}>
+            Professionisti che hanno trasformato la loro carriera con il nostro metodo. Video e racconti dalla nostra community.
           </p>
         </div>
 
-        <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3 }}
-              className="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-14 bg-white rounded-[2rem] p-8 lg:p-14 shadow-[0_24px_70px_-40px_rgba(0,21,51,0.25)] border border-gray-100"
-            >
-              <div className="flex flex-col items-center lg:items-start gap-4">
-                <div className="relative">
-                  <img
-                    src={`https://picsum.photos/seed/${t.name.split(' ').join('-')}/320/320`}
-                    className="w-40 h-40 lg:w-48 lg:h-48 rounded-[1.5rem] object-cover"
-                    referrerPolicy="no-referrer"
-                    alt={t.name}
-                  />
-                  <div className="absolute -bottom-3 -right-3 bg-brand-accent text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
-                    <Quote size={18} fill="currentColor" />
-                  </div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <p className="font-black text-base text-brand-navy leading-tight">{t.name}</p>
-                  <p className="text-xs text-brand-navy/60 mt-1">{t.role}</p>
-                  <span className="inline-block mt-3 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent bg-brand-blue-soft px-2.5 py-1 rounded">
-                    {t.course}
-                  </span>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:auto-rows-[225px]">
+          {testimonials.map((t, i) => {
+            const isBig = i === 0;
+            const layout = isBig
+              ? 'sm:col-span-2 sm:row-span-2 lg:col-span-1 lg:row-span-2'
+              : 'lg:col-span-2 lg:row-span-1';
 
-              <div className="flex flex-col justify-center">
-                <div className="flex gap-1 text-brand-accent mb-5">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-xl lg:text-[1.75rem] font-display font-black text-brand-navy leading-[1.25] tracking-tight">
-                  "{t.text}"
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="flex items-center justify-between mt-8">
-            <div className="flex gap-2">
-              {tms.map((_, i) => (
+            if (t.video) {
+              return (
                 <button
                   key={i}
-                  aria-label={`Vai alla testimonianza ${i + 1}`}
-                  onClick={() => setIdx(i)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === idx ? 'w-8 bg-brand-accent' : 'w-1.5 bg-brand-navy/20'
-                  }`}
-                />
-              ))}
-            </div>
-            <div className="flex gap-2">
-              <button
-                aria-label="Prev"
-                onClick={() => setIdx((idx - 1 + tms.length) % tms.length)}
-                className="w-11 h-11 rounded-full border border-brand-navy/15 bg-white flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
+                  type="button"
+                  onClick={() => setActiveVideoTestimonial(i)}
+                  className={`group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[380px] lg:min-h-0 ${layout}`}
+                >
+                  <img
+                    src={t.video.poster}
+                    alt={t.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
+                    <Video size={11} strokeWidth={2.75} />
+                    Video
+                  </div>
+                  {t.video.duration ? (
+                    <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
+                      {t.video.duration}
+                    </div>
+                  ) : null}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
+                      <Play size={isBig ? 28 : 22} strokeWidth={2.5} className="ml-1" fill="currentColor" />
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
+                    <p className={`font-display font-black leading-tight mb-0.5 ${isBig ? 'text-lg lg:text-xl' : 'text-sm lg:text-base'}`}>{t.name}</p>
+                    <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{t.role}</p>
+                    {t.cohort ? (
+                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
+                        {t.cohort}
+                      </p>
+                    ) : null}
+                  </div>
+                </button>
+              );
+            }
+
+            return (
+              <div
+                key={i}
+                className={`relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden ${layout}`}
               >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                aria-label="Next"
-                onClick={() => setIdx((idx + 1) % tms.length)}
-                className="w-11 h-11 rounded-full border border-brand-navy/15 bg-white flex items-center justify-center text-brand-navy hover:bg-brand-blue-soft transition-colors"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
+                <div className="flex items-center justify-between mb-2 shrink-0">
+                  <Quote size={22} className="text-brand-accent/25" strokeWidth={2.25} />
+                  {t.rating ? (
+                    <div className="flex text-[#008060] gap-0.5">
+                      {Array.from({ length: t.rating }).map((_, s) => (
+                        <Star key={s} size={11} fill="currentColor" />
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+                <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-3 line-clamp-4 min-h-0">
+                  “{t.quote}”
+                </p>
+                <div className="flex items-center gap-3 pt-3 border-t border-gray-100 shrink-0">
+                  {t.img ? (
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
+                    />
+                  ) : (
+                    <div className="h-10 w-10 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
+                      {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="text-sm font-black text-brand-navy leading-tight truncate">{t.name}</p>
+                    <p className="text-[11px] font-semibold text-brand-navy/55 leading-tight mt-0.5 truncate">
+                      {t.role}
+                    </p>
+                    {t.cohort ? (
+                      <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent mt-0.5 truncate">
+                        {t.cohort}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
+
+      <AnimatePresence>
+        {activeVideoTestimonial !== null && testimonials[activeVideoTestimonial]?.video ? (
+          <motion.div
+            key="video-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setActiveVideoTestimonial(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 16 }}
+              transition={{ duration: 0.22 }}
+              className="relative w-full max-w-3xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                aria-label="Chiudi video"
+                onClick={() => setActiveVideoTestimonial(null)}
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 h-10 w-10 rounded-full bg-white text-brand-navy shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors z-10"
+              >
+                <X size={18} strokeWidth={2.5} />
+              </button>
+              <div className="bg-brand-navy rounded-[1.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)]">
+                <div className="aspect-video bg-black">
+                  {testimonials[activeVideoTestimonial].video?.src ? (
+                    <video
+                      src={testimonials[activeVideoTestimonial].video?.src}
+                      poster={testimonials[activeVideoTestimonial].video?.poster}
+                      controls
+                      autoPlay
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-white/60 text-sm">
+                      Video in arrivo
+                    </div>
+                  )}
+                </div>
+                <div className="p-5 sm:p-6 text-white">
+                  <p className="text-base sm:text-lg font-display font-black leading-tight">
+                    {testimonials[activeVideoTestimonial].name}
+                  </p>
+                  <p className="text-xs sm:text-sm font-semibold text-white/65 mt-1">
+                    {testimonials[activeVideoTestimonial].role}
+                  </p>
+                  {testimonials[activeVideoTestimonial].cohort ? (
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
+                      {testimonials[activeVideoTestimonial].cohort}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 };
