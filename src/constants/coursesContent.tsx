@@ -1324,52 +1324,152 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     faqs: commonFaqs
   },
-  'prosperous-coach': {
-    title: "Prosperous Coach Program",
-    subtitle: "Il Business del Coaching",
-    tagline: "Smetti di sperare nei clienti. Impara a costruire un business solido, etico e profittevole.",
-    type: "BUSINESS",
+  'coaching-circle': {
+    title: "Coaching Circle",
+    subtitle: "Pratica supervisionata di coaching",
+    tagline: "Uno spazio per fare pratica di coaching in gruppi da 4, con feedback immediato di un mentor-coach PCC.",
+    type: "PRATICA SUPERVISIONATA",
+    heroKicker: "PER COACH CHE HANNO COMPLETATO UN PERCORSO BASE",
     heroBenefits: [
-      "Definisci il tuo posizionamento unico sul mercato",
-      "Costruisci un funnel di acquisizione clienti etico",
-      "Impara a vendere il valore del coaching, non le ore",
-      "Mentoring individuale sul tuo business plan"
+      "3,30h di pratica supervisionata in gruppi da 4 persone",
+      "20' nel ruolo di coach + 30' di feedback dedicato per ciascun partecipante",
+      "Mentor-coach con credenziale ICF almeno PCC formati in Asterys Lab",
+      "Apprendimento dalle tre posizioni: coach, cliente, osservatore"
     ],
     summaryBox: {
-      nextEdition: "Iscrizioni Aperte",
-      dates: "Inizio personalizzato",
-      format: "One-to-One e Masterclass",
-      duration: "3 Mesi",
-      price: "1.200€",
-      installments: "3 rate"
+      nextEdition: "Online · Zoom",
+      dates: "Data condivisa nel gruppo all'iscrizione",
+      format: "Videochiamata · Gruppi da 4",
+      duration: "3,30 ore",
+      price: "90€ + IVA 22%",
+      installments: "Pagamento una tantum"
     },
-    badges: ["Pratico", "Risultato Garantito", "Mentoring"],
+    badges: ["Gruppi da 4", "Mentor PCC+", "Feedback immediato"],
     overview: {
-      title: "Perché un programma di business?",
-      content: ["Essere un bravo coach non basta a pagare le bollette.", "Molti coach falliscono non per mancanza di cuore, ma di metodo commerciale."]
+      title: "Fai pratica di coaching",
+      content: [
+        "Dopo aver terminato un percorso di formazione di coaching, anche dopo aver preso la credenziale, è alto il rischio di **\"viziare\" la propria pratica** con modalità poco efficaci e che si scostino dal coaching secondo ICF, tralasciando le linee guida e il codice etico ma anche adottando modelli di conversazione non specifici del coaching e/o mutuati da altre discipline.",
+        "Sebbene ci si aspetti, da ogni coach, che scopra e adotti un proprio stile — e noi, come scuola, incoraggiamo sempre i nostri studenti a trovare la propria forma di espressione — è importante che il coach faccia attenzione a non concedersi licenze che poco hanno a che fare con il coaching, rischiando di perdere di efficacia.",
+        "Per questa ragione, Asterys Lab propone **uno spazio per fare pratica di coaching, in gruppi da quattro persone, supervisionata da un mentor-coach professionista PCC**. Il mentor coach offre feedback immediato e discute, con i partecipanti, anche le scelte e le possibili strategie nei casi affrontati di volta in volta."
+      ]
     },
     target: [
-      { title: "Neo Coach", desc: "Che devono partire da zero.", icon: <Zap /> }
+      { title: "Coach con percorso base completato", desc: "Ha già effettuato un percorso base per diventare coach e vuole fare pratica attraverso feedback diretto.", icon: <Target /> },
+      { title: "Coach credenzialati", desc: "Vuole allenare la pratica rimanendo aderente alle linee guida e al codice etico ICF.", icon: <Award /> },
+      { title: "Coach in cerca di feedback", desc: "Desidera confrontarsi con un professionista del settore e con altri coach in un contesto strutturato.", icon: <Users /> },
     ],
     learning: {
       cols: [
-        { title: "Strategy", items: ["Nicchia", "Offerta irresistibile", "Copywriting"] }
+        {
+          title: "Pratica nel ruolo di coach",
+          items: [
+            "Sessione di 20' con un coachee reale",
+            "30' di feedback dedicato dal mentor",
+            "Riflessione guidata sulle scelte fatte",
+            "Strategie alternative per i casi affrontati"
+          ]
+        },
+        {
+          title: "Apprendimento dalle tre posizioni",
+          items: [
+            "Ruolo di coach: sperimentazione diretta",
+            "Ruolo di cliente: vivere il coaching dall'interno",
+            "Ruolo di osservatore: affinare lo sguardo",
+            "Confronto tra i punti di vista"
+          ]
+        },
+        {
+          title: "Aderenza al metodo ICF",
+          items: [
+            "Linee guida e codice etico ICF",
+            "Modelli di conversazione specifici del coaching",
+            "Riconoscimento di derive da altre discipline",
+            "Sviluppo del proprio stile dentro la cornice ICF"
+          ]
+        }
       ],
-      softSkills: ["Marketing Mentality", "Resilienza", "Focus"]
+      softSkills: ["Presenza", "Ascolto", "Autoconsapevolezza", "Ricezione del feedback"]
     },
     structure: {
-      modules: [{ title: "Foundations", desc: "Chi sei e chi aiuti." }]
+      modules: [
+        {
+          title: "Apertura e setting",
+          desc: "Il mentor coach imposta il lavoro del gruppo, chiarisce i ruoli e il contratto del circle."
+        },
+        {
+          title: "Sessioni a rotazione",
+          desc: "Ogni partecipante fa una sessione di 20' nel ruolo di coach; gli altri si alternano come cliente e osservatori."
+        },
+        {
+          title: "Feedback e riflessione",
+          desc: "Dopo ogni sessione, 30' di feedback dedicato dal mentor e confronto di gruppo su scelte, strategie e aderenza al metodo ICF."
+        }
+      ]
+    },
+    programIntro:
+      "Il Coaching Circle è pensato per chi ha già completato un percorso base e vuole continuare a crescere attraverso una pratica supervisionata di qualità.",
+    studyModeBox: {
+      title: "Modalità di svolgimento",
+      highlight: "Zoom · Gruppi da 4",
+      body: "Dopo l'acquisto ricevi il link al calendario per scegliere la data disponibile più comoda. L'evento avrà luogo al raggiungimento del numero minimo di partecipanti; altrimenti vieni ricollocato nel circle successivo. Le iscrizioni vengono raccolte in ordine di arrivo e ti verrà proposta l'adesione a un gruppo WhatsApp con mentor e altri iscritti per definire la data utile per tutti.",
     },
     teachers: [
-      { name: "Asterys Lab Team", creds: "Business Experts", role: "Mentors", bio: "Hanno costruito Asterys da zero.", img: "https://picsum.photos/seed/biz/300/300" }
+      {
+        name: "Mentor Coach Asterys Lab",
+        creds: "ICF PCC+",
+        role: "Mentor del Coaching Circle",
+        bio: "Tutti i mentor impegnati nel Coaching Circle sono Coach ICF con credenziale almeno PCC, formati nella scuola di coaching Asterys Lab.",
+        img: "https://picsum.photos/seed/coaching-circle-mentor/300/300"
+      }
     ],
     career: {
-      title: "Libertà Finanziaria",
-      content: "Vivi della tua passione con un metodo replicabile.",
-      points: []
+      title: "Perché inserirlo nella tua pratica",
+      content: "Il Coaching Circle mantiene alta la qualità della tua pratica professionale: feedback immediato, confronto tra pari e aderenza alle linee guida ICF.",
+      points: [
+        { title: "Feedback immediato", desc: "Il mentor PCC+ osserva la tua sessione e restituisce un feedback dedicato di 30 minuti." },
+        { title: "Allenamento costante", desc: "Uno spazio ricorrente per affinare la pratica tra un corso e l'altro o dopo la credenziale." },
+        { title: "Apprendimento di gruppo", desc: "Osservare e ricevere coaching dai pari è parte essenziale della crescita professionale." },
+        { title: "Aderenza al metodo ICF", desc: "Mantieni la tua pratica allineata alle linee guida e al codice etico ICF." }
+      ]
     },
-    fees: [{ title: "Accesso Standard", type: "lump" as const, benefit: "One-timer", heading: "Quota iscrizione", desc: "Tutto incluso: accesso a tutti i moduli, materiali e mentoring individuale.", price: "1.200€", priceLabel: "una tantum" }],
-    faqs: commonFaqs
+    fees: [
+      {
+        title: "Coaching Circle",
+        type: "lump",
+        benefit: "Pratica supervisionata",
+        heading: "Quota di partecipazione",
+        desc: "Include 3,30h di mentor coaching di gruppo in videocall con un mentor-coach PCC+.",
+        price: "90€",
+        priceLabel: "+ IVA 22%",
+        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+      }
+    ],
+    faqs: [
+      {
+        q: "A chi è rivolto il Coaching Circle?",
+        a: "A chi ha già effettuato un percorso base per diventare coach e vuole fare pratica di coaching attraverso il feedback diretto di un professionista del settore."
+      },
+      {
+        q: "Come si svolge l'incontro?",
+        a: "3,30 ore di pratica supervisionata in gruppi da 4 persone, in videoconferenza Zoom. I partecipanti si alternano nei ruoli di coach, cliente e osservatore. Ogni partecipante fa una sessione di 20' nel ruolo di coach e riceve 30' di feedback dedicato dal mentor."
+      },
+      {
+        q: "Come si definisce la data del Coaching Circle?",
+        a: "Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base all'ordine di arrivo. Riceverai una richiesta di adesione a un gruppo WhatsApp nel quale, insieme al mentor coach e agli altri iscritti, sarà definita la data utile per tutti."
+      },
+      {
+        q: "Cosa succede se non si raggiunge il numero minimo?",
+        a: "L'evento avrà luogo al raggiungimento del numero minimo di partecipanti per ogni incontro; altrimenti verrai ricollocato nel Coaching Circle successivo."
+      },
+      {
+        q: "Chi sono i mentor del Coaching Circle?",
+        a: "Tutti i mentor impegnati nel Coaching Circle sono Coach ICF con credenziale almeno PCC, formati nella scuola di coaching Asterys Lab."
+      },
+      {
+        q: "Dove si svolge il Coaching Circle?",
+        a: "In videoconferenza su Zoom. Dopo la definizione della data riceverai il link per partecipare."
+      }
+    ]
   },
   'public-speaking': {
     title: "Public Speaking Pro",

@@ -236,7 +236,8 @@ const MasterGrid = () => {
       desc: "Master ICF per apprendere il modello ASTC di coaching sistemico dei team. Prerequisito per la credenziale ACTC.",
       start: '6 ottobre 2026',
       lastSeats: false,
-      seed: 'stc'
+      seed: 'stc',
+      image: 'card.jpg'
     },
     {
       id: 'eiw',
@@ -248,13 +249,13 @@ const MasterGrid = () => {
       seed: 'eiw'
     },
     {
-      id: 'prosperous-coach',
-      title: 'Prosperous Coach',
-      duration: '3 mesi',
-      desc: 'Costruisci il tuo business di coaching: posizionamento, clienti, pricing.',
-      start: '15 maggio',
+      id: 'coaching-circle',
+      title: 'Coaching Circle',
+      duration: '3,30 ore · Gruppi da 4',
+      desc: 'Pratica supervisionata di coaching con un mentor-coach PCC: feedback immediato e confronto tra pari.',
+      start: 'Data condivisa nel gruppo',
       lastSeats: false,
-      seed: 'prosperous'
+      seed: 'coaching-circle'
     },
     {
       id: 'voice-dialogue',
@@ -272,7 +273,8 @@ const MasterGrid = () => {
       desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
       start: '14 gennaio 2026',
       lastSeats: false,
-      seed: 'continuous-learning'
+      seed: 'continuous-learning',
+      image: 'card.jpg'
     },
     
   ];
@@ -288,7 +290,7 @@ const MasterGrid = () => {
             >
               <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
                 <CourseImage
-                  src={`/course-media/${m.id}/card.png`}
+                  src={`/course-media/${m.id}/${m.image ?? 'card.png'}`}
                   fallbackSrc={`https://picsum.photos/seed/${m.seed}/700/400`}
                   alt={m.title}
                   className="absolute inset-0 w-full h-full object-cover"
