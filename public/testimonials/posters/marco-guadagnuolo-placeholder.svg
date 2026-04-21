@@ -1,0 +1,19 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Video testimonianza Marco Guadagnuolo</title>
+  <desc id="desc">Placeholder per la video testimonianza in attesa del file definitivo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2A4A"/>
+      <stop offset="1" stop-color="#1A5A86"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="600" cy="320" r="74" fill="white" fill-opacity="0.92"/>
+  <path d="M575 275V365L645 320L575 275Z" fill="#0B2A4A"/>
+  <text x="600" y="470" text-anchor="middle" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">
+    Marco Guadagnuolo
+  </text>
+  <text x="600" y="520" text-anchor="middle" fill="#CDE6FF" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="500">
+    Video testimonianza in arrivo
+  </text>
+</svg>
