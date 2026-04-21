@@ -228,23 +228,24 @@ const MasterGrid = () => {
       seed: 'prosperous'
     },
     {
-      id: 'hr-manager-coaching',
-      title: 'Coaching per HR & Manager',
-      duration: '2 mesi',
-      desc: 'Porta il coaching in azienda e sviluppa leader coach efficaci.',
-      start: '28 maggio',
+      id: 'voice-dialogue',
+      title: 'Voice Dialogue Skills',
+      duration: '3 giornate · In aula',
+      desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
+      start: '17 novembre 2026',
       lastSeats: false,
-      seed: 'hr'
+      seed: 'voice-dialogue'
     },
     {
-      id: 'mentor-coaching',
-      title: 'Mentor Coaching',
-      duration: '1 mese',
-      desc: 'Il percorso dedicato ai coach che vogliono accompagnare altri coach alla credenziale.',
-      start: '10 giugno',
+      id: 'continuous-learning',
+      title: 'Continuous Learning',
+      duration: '1 live class/mese',
+      desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
+      start: '14 gennaio 2026',
       lastSeats: false,
-      seed: 'mentor'
-    }
+      seed: 'continuous-learning'
+    },
+    
   ];
   return (
     <section className="bg-white pt-3 pb-16">
