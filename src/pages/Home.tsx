@@ -249,13 +249,13 @@ const MasterGrid = () => {
       seed: 'eiw'
     },
     {
-      id: 'prosperous-coach',
-      title: 'Prosperous Coach',
-      duration: '3 mesi',
-      desc: 'Costruisci il tuo business di coaching: posizionamento, clienti, pricing.',
-      start: '15 maggio',
+      id: 'coaching-circle',
+      title: 'Coaching Circle',
+      duration: '3,30 ore · Gruppi da 4',
+      desc: 'Pratica supervisionata di coaching con un mentor-coach PCC: feedback immediato e confronto tra pari.',
+      start: 'Data condivisa nel gruppo',
       lastSeats: false,
-      seed: 'prosperous'
+      seed: 'coaching-circle'
     },
     {
       id: 'voice-dialogue',

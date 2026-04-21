@@ -49,15 +49,15 @@ const coursesData = [
     tags: ['Modello CSI', 'Plutchik', 'CCE ICF']
   },
   {
-    id: 'prosperous-coach',
+    id: 'coaching-circle',
     category: 'Per coach già attivi',
-    type: "BUSINESS",
-    title: "Prosperous Coach Program",
-    desc: "Dimentica il marketing generico. Impara a posizionarti come esperto e a trovare clienti in linea con i tuoi valori.",
-    duration: "3 mesi - Mentoring",
-    next: "Inizio libero",
-    img: "https://picsum.photos/seed/business/600/400",
-    tags: ['Business', 'Marketing', 'Posizionamento']
+    type: "PRATICA SUPERVISIONATA",
+    title: "Coaching Circle",
+    desc: "3,30 ore di pratica di coaching supervisionata da un mentor-coach PCC, in gruppi da 4. Feedback immediato e confronto tra pari.",
+    duration: "3,30 ore - Zoom",
+    next: "Data condivisa nel gruppo",
+    img: "https://picsum.photos/seed/coaching-circle/600/400",
+    tags: ['Mentor PCC+', 'Gruppi da 4', 'Feedback immediato']
   },
   {
     id: 'public-speaking',
