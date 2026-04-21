@@ -86,25 +86,52 @@ const Hero = () => (
 );
 
 /* 2. ACCREDITAMENTI ICF */
+const AccreditamentoBadge = ({
+  label,
+  size,
+  logo,
+}: {
+  label: string;
+  size: string;
+  logo?: string;
+}) => {
+  const base = import.meta.env.BASE_URL || '/';
+  const [showFallback, setShowFallback] = useState(false);
+
+  if (logo && !showFallback) {
+    return (
+      <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
+        <img
+          src={`${base}${logo}`}
+          alt={label}
+          className="h-10 w-auto object-contain"
+          onError={() => setShowFallback(true)}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2 text-brand-navy/80 grayscale hover:grayscale-0 transition-all">
+      <Award size={22} strokeWidth={2} />
+      <span className={`font-black tracking-[0.2em] ${size}`}>{label}</span>
+    </div>
+  );
+};
+
 const Accreditamenti = () => {
   const items = [
-    { label: 'ICF', size: 'text-lg' },
-    { label: 'ACC', size: 'text-base' },
-    { label: 'PCC', size: 'text-base' },
-    { label: 'CCE', size: 'text-base' },
-    { label: 'ACTC', size: 'text-base' }
+    { label: 'ICF', size: 'text-lg', logo: 'brand/icf.png' },
+    { label: 'ACC', size: 'text-base', logo: 'brand/acc.png' },
+    { label: 'PCC', size: 'text-base', logo: 'brand/pcc.png' },
+    { label: 'CCE', size: 'text-base', logo: 'brand/cce.png' },
+    { label: 'ACTC', size: 'text-base', logo: 'brand/actc.png' }
   ];
   return (
     <section className="bg-[#F2F7FF] border-t border-brand-navy/5">
       <div className="max-w-[1200px] mx-auto px-6 py-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-5 opacity-70">
         {items.map((i) => (
-          <div
-            key={i.label}
-            className="flex items-center gap-2 text-brand-navy/80 grayscale hover:grayscale-0 transition-all"
-          >
-            <Award size={22} strokeWidth={2} />
-            <span className={`font-black tracking-[0.2em] ${i.size}`}>{i.label}</span>
-          </div>
+          <AccreditamentoBadge key={i.label} label={i.label} size={i.size} logo={i.logo} />
         ))}
       </div>
     </section>
