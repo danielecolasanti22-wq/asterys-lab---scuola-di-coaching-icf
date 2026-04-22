@@ -264,57 +264,46 @@ export function defaultCourseMedia(slug: string): CourseMedia {
 
 export const commonTestimonials: CourseTestimonial[] = [
   {
-    name: "Giulia Moretti",
-    role: "Leadership Coach · Alumna APCM",
-    img: "https://picsum.photos/seed/testimonial-giulia/400/400",
-    cohort: "Ed. 2023 · Milano",
+    name: "Marco Guadagnuolo",
+    role: "HR · Master in Coaching APCM",
+    cohort: "Video testimonianza",
     quote:
-      "In video ti racconto come è stato tornare a lavorare con i team dopo il Master.",
+      "Video testimonianza in arrivo: qui comparirà il contributo di Marco Guadagnuolo appena caricato.",
     video: {
-      poster: "https://picsum.photos/seed/video-giulia/900/1100",
-      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      duration: "1:42"
+      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg"
     }
   },
   {
-    name: "Laura Bianchi",
-    role: "Executive Coach · ex HR Director",
-    img: "https://picsum.photos/seed/testimonial-laura/400/400",
+    name: "Damiano Zanotti",
+    role: "COO · APCM 1+2",
     quote:
-      "Il percorso con Asterys Lab ha trasformato il mio modo di lavorare con le persone. Ho trovato metodo, comunità e una credibilità professionale che prima non avevo.",
+      "Oltre ad aiutarmi a diventare coach, questo percorso mi sta aiutando a cambiare come persona: ad essere più sensibile, ad ascoltare di più. Mi sta aiutando sia nella vita lavorativa che personale. Il clima, sia con i formatori che con gli altri partecipanti, è stato di profonda condivisione. Mi sono sentito libero di esprimere i miei pensieri e le mie emozioni e di essere ascoltato.",
     rating: 5,
-    cohort: "Alumna APCM"
+    cohort: "Consiglierebbe il corso: 5/5"
   },
   {
-    name: "Marco Ferrari",
-    role: "Team Coach & Consulente",
-    img: "https://picsum.photos/seed/testimonial-marco/400/400",
+    name: "Camilla Pedrazzini",
+    role: "Leader Organizzazione",
     quote:
-      "Qualità dei docenti, supervisione seria e una rete di alumni concreta. Ho iniziato a prendere i primi clienti durante il Master e oggi lavoro come coach full-time.",
-    rating: 5,
-    cohort: "Alumno APCM"
+      "Un percorso in primis su se stesso, un percorso sulla consapevolezza. Fare il coach è ben diverso da essere coach e in questo Asterys si impegna molto. La scuola offre metodi di lavoro e tecniche per poter accompagnare un cliente al suo obiettivo. Bisogna avere una totale fiducia nella scuola e nei mentor che ci sono.",
+    rating: 4,
+    cohort: "Consiglierebbe il corso: 4/5"
   },
   {
-    name: "Andrea Conti",
-    role: "Business Coach · Founder Studio Evolve",
-    img: "https://picsum.photos/seed/testimonial-andrea/400/400",
-    cohort: "Ed. 2022 · Roma",
+    name: "Alessandro Stocco",
+    role: "Pensionato",
+    cohort: "Consiglierebbe il corso: 5/5",
     quote:
-      "La mia storia: dalla consulenza al coaching, dopo Asterys Lab.",
-    video: {
-      poster: "https://picsum.photos/seed/video-andrea/1200/900",
-      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      duration: "2:05"
-    }
+      "Avevo aspettative limitate rispetto al corso, non tanto per il corso in sé quanto per il mio vero e concreto interesse. Ebbene non solo le mie aspettative sono state ampiamente superate, ma addirittura ho scoperto mano a mano di aver creato altre aspettative soddisfatte prima nello Skills e ora nel corso della scorsa settimana... e adesso vedremo.",
+    rating: 5
   },
   {
-    name: "Silvia Rossi",
-    role: "People Manager · Coach PCC",
-    img: "https://picsum.photos/seed/testimonial-silvia/400/400",
+    name: "Costanza Catapano",
+    role: "Learning and Development Manager",
     quote:
-      "Non è solo una certificazione: è un percorso di crescita personale. L'intelligenza emotiva e l'approccio sistemico mi hanno cambiato anche nella vita quotidiana.",
+      "Un viaggio alla scoperta di sé stessi e degli altri in compagnia di trainer esperte e competenti e di un gruppo entusiasta ed eterogeneo. Le giornate di formazione sono andate ben oltre le mie aspettative sia in termini di contenuti sia in termini di risultati. Sono grata a tutto il team Asterys per questo percorso di crescita e di trasformazione.",
     rating: 5,
-    cohort: "Alumna APCM"
+    cohort: "Consiglierebbe il corso: 5/5"
   }
 ];
 
@@ -527,40 +516,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     faqs: commonFaqs,
     placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
-    testimonials: [
-      {
-        name: "Chiara De Luca",
-        role: "Executive Coach · ex Senior HR Manager",
-        img: "https://picsum.photos/seed/apcm-chiara/400/400",
-        quote:
-          "La mia storia in video: dai 15 anni di HR al mio studio di coaching certificato ICF.",
-        rating: 5,
-        cohort: "APCM 2023 · Certificata PCC",
-        video: {
-          poster: "https://picsum.photos/seed/apcm-chiara-video/1200/1400",
-          src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-          duration: "1:48"
-        }
-      },
-      {
-        name: "Andrea Moretti",
-        role: "Team Coach & Facilitator",
-        img: "https://picsum.photos/seed/apcm-andrea/400/400",
-        quote:
-          "Il modulo Prosperous Coach mi ha dato gli strumenti pratici per costruire la mia offerta. A sei mesi dalla fine del Master seguivo già i primi progetti corporate.",
-        rating: 5,
-        cohort: "APCM 2022 · Alumno"
-      },
-      {
-        name: "Martina Colombo",
-        role: "Leadership Coach · Psicologa del lavoro",
-        img: "https://picsum.photos/seed/apcm-martina/400/400",
-        quote:
-          "L'approccio sistemico e l'intelligenza emotiva misurabile hanno portato la mia pratica a un altro livello. La community degli alumni è un supporto quotidiano.",
-        rating: 5,
-        cohort: "APCM 2024 · In certificazione ACC"
-      }
-    ],
+    testimonials: commonTestimonials,
     competenciesAndCareers: {
       eyebrow: "Competenze & Professione",
       title: "Cosa saprai fare e dove potrai lavorare",
