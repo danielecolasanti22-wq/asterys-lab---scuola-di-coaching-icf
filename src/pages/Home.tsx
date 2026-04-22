@@ -28,24 +28,7 @@ const tSection =
 /* 1. HERO */
 const Hero = () => (
   <section className="relative bg-[#F2F7FF] overflow-hidden pb-8 lg:pb-0">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-[560px]">
-      <div className="relative lg:hidden pt-2">
-        <div className="relative rounded-[1.2rem] overflow-hidden shadow-[0_16px_40px_-30px_rgba(0,21,51,0.45)]">
-          <img
-            src="/course-media/apcm/hero.png"
-            alt="Coach Asterys"
-            className="w-full h-auto object-cover aspect-[16/10]"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
-          <div className="absolute left-3 right-3 bottom-2.5">
-            <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
-              <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-              ICF Accreditato
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[560px]">
 
       <div className="pt-5 lg:pt-20 pb-0 lg:pb-16 relative z-10">
         <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
@@ -82,6 +65,23 @@ const Hero = () => (
             </li>
           ))}
         </ul>
+        <div className="relative lg:hidden pt-1">
+          <div className="relative rounded-[1.2rem] overflow-hidden shadow-[0_16px_40px_-30px_rgba(0,21,51,0.45)] w-full max-w-[360px]">
+            <img
+              src="/course-media/apcm/hero.png"
+              alt="Coach Asterys"
+              className="w-full h-auto object-cover aspect-[16/10]"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
+            <div className="absolute left-3 right-3 bottom-2.5">
+              <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
+                <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
+                ICF Accreditato
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex -space-x-2">
             {[1, 2, 3, 4].map((i) => (
