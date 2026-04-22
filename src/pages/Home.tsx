@@ -27,24 +27,50 @@ const tSection =
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="relative bg-[#F2F7FF] overflow-hidden">
-    <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-end min-h-[560px]">
-      <div className="pt-16 lg:pt-20 pb-12 lg:pb-16 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-6">
+  <section className="relative bg-[#F2F7FF] overflow-hidden pb-8 lg:pb-0">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-[560px]">
+      <div className="relative lg:hidden pt-2">
+        <div className="relative rounded-[1.2rem] overflow-hidden shadow-[0_16px_40px_-30px_rgba(0,21,51,0.45)]">
+          <img
+            src="/course-media/apcm/hero.png"
+            alt="Coach Asterys"
+            className="w-full h-auto object-cover aspect-[16/10]"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
+          <div className="absolute left-3 right-3 bottom-2.5">
+            <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
+              <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
+              ICF Accreditato
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="pt-5 lg:pt-20 pb-0 lg:pb-16 relative z-10">
+        <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           La 1ª scuola di coaching accreditata ICF
         </div>
-        <h1 className="text-5xl sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.95] tracking-tighter mb-7 text-brand-navy">
+        <h1 className="text-[2.45rem] sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.92] tracking-tighter mb-4 lg:mb-7 text-brand-navy">
           Sblocca il tuo{' '}
           <span className="relative inline-block">
             <span className="relative z-10">talento nel coaching</span>
             <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#E2FF3B] -z-0 rounded-sm" />
           </span>
         </h1>
-        <p className="text-base lg:text-lg text-brand-navy/80 mb-8 max-w-[520px] leading-relaxed">
+        <p className="text-[12px] lg:text-lg text-brand-navy/80 mb-5 lg:mb-8 max-w-[520px] leading-relaxed">
           Non inseguire il futuro: costruiscilo. Diventa coach professionista accreditato ICF con un metodo d'eccellenza che integra intelligenza emotiva misurabile e approccio sistemico.
         </p>
-        <ul className="space-y-3 mb-10 text-sm lg:text-[15px] font-medium text-brand-navy">
+        <div className="flex mb-5 lg:hidden justify-center sm:justify-start">
+          <a
+            href="#contatti"
+            className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
+          >
+            SCOPRI
+          </a>
+        </div>
+        <ul className="space-y-2 lg:space-y-3 mb-5 lg:mb-10 text-[12px] lg:text-[15px] font-medium text-brand-navy">
           {[
             'Impara da chi porta il coaching ICF in Italia dal 2001',
             'Trasforma la teoria in pratica supervisionata',
@@ -56,7 +82,7 @@ const Hero = () => (
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <div className="flex -space-x-2">
             {[1, 2, 3, 4].map((i) => (
               <img
@@ -73,7 +99,7 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
+      <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
         <div className="w-full lg:w-[135%] lg:-mr-[15%] h-auto relative flex items-end">
           <img
             src="/course-media/apcm/hero.png"
@@ -121,6 +147,27 @@ const AccreditamentoBadge = ({
   );
 };
 
+const MobileQuickNav = () => (
+  <div className="lg:hidden sticky top-14 z-30 bg-white/95 backdrop-blur border-y border-brand-navy/10">
+    <div className="px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar">
+      {[
+        { href: '#percorsi', label: 'Percorsi' },
+        { href: '#testimonianze', label: 'Testimonianze' },
+        { href: '#perche-noi', label: 'Perché noi' },
+        { href: '#catalogo', label: 'Catalogo' }
+      ].map((item) => (
+        <a
+          key={item.href}
+          href={item.href}
+          className="shrink-0 rounded-full border border-brand-navy/15 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-brand-navy"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+);
+
 const Accreditamenti = () => {
   const items = [
     { label: 'ICF', size: 'text-lg', logo: 'brand/icf.png' },
@@ -148,19 +195,19 @@ const ScegliPercorso = () => {
     { icon: Award, title: 'Certificazione ICF delle skill acquisite' }
   ];
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section id="percorsi" className="py-14 lg:py-20 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className={`${tSection} mb-4`}>Scegli il percorso giusto per te</h2>
           <p className="text-brand-navy/70 text-base leading-relaxed">
             Master professionalizzanti 100% blended, completi e in diretta per imparare da zero tutto ciò di cui hai bisogno per evolvere la tua carriera.
           </p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-6 max-w-[900px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-[900px] mx-auto">
           {features.map((f) => (
             <div
               key={f.title}
-              className="flex flex-col items-center text-center gap-3 p-4"
+              className="flex flex-row sm:flex-col items-center sm:text-center gap-3 p-4 rounded-2xl bg-[#F5F8FF] sm:bg-transparent"
             >
               <div className="w-12 h-12 rounded-xl bg-brand-blue-soft flex items-center justify-center">
                 <f.icon className="text-brand-accent" size={22} strokeWidth={2} />
@@ -179,9 +226,9 @@ const ScegliPercorso = () => {
 /* 4. MASTER FEATURED (APCM) */
 const MasterFeatured = () => (
   <section className="bg-white pb-5">
-    <div className="max-w-[1200px] mx-auto px-6">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
       <Link to="/corsi/apcm" className="block group">
-        <div className="grid sm:grid-cols-[1fr_1fr] gap-6 rounded-[2rem] bg-white p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
+        <div className="grid sm:grid-cols-[1fr_1fr] gap-4 sm:gap-6 rounded-[1.5rem] sm:rounded-[2rem] bg-white p-3 sm:p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
           <div className="relative aspect-[5/4] sm:aspect-auto rounded-2xl overflow-hidden bg-gray-100 min-h-[260px]">
             <CourseImage
               src="/course-media/apcm/card.png"
@@ -194,7 +241,7 @@ const MasterFeatured = () => (
             </span>
           </div>
           <div className="px-4 sm:px-6 py-4 sm:py-6 flex flex-col gap-5 justify-center">
-            <h3 className="text-3xl lg:text-[2.25rem] font-display font-black text-brand-accent leading-[1.05] tracking-tight">
+            <h3 className="text-[1.65rem] lg:text-[2.25rem] font-display font-black text-brand-accent leading-[1.05] tracking-tight">
               Professione Coach
             </h3>
             <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.18em]">
@@ -280,13 +327,13 @@ const MasterGrid = () => {
   ];
   return (
     <section className="bg-white pt-3 pb-16">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="grid sm:grid-cols-2 gap-5">
           {masters.map((m) => (
             <Link
               key={m.id}
               to={`/corsi/${m.id}`}
-              className="group bg-white border border-gray-100 rounded-[2rem] p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
+              className="group bg-white border border-gray-100 rounded-[1.4rem] sm:rounded-[2rem] p-3.5 sm:p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
             >
               <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
                 <CourseImage
@@ -295,12 +342,12 @@ const MasterGrid = () => {
                   alt={m.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">
+                <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[9px] font-black uppercase tracking-[0.2em] shadow-sm">
                   Master Part-Time
                 </span>
               </div>
               <div className="px-2 sm:px-3 pt-5 pb-3 flex flex-col gap-3 flex-1">
-                <h3 className="text-xl lg:text-2xl font-display font-black text-brand-accent leading-tight">
+                <h3 className="text-lg lg:text-2xl font-display font-black text-brand-accent leading-tight">
                   {m.title}
                 </h3>
                 <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.16em]">
@@ -329,8 +376,8 @@ const MasterGrid = () => {
                       )}
                     </div>
                   </div>
-                  <span className="text-brand-accent font-black text-[11px] uppercase tracking-[0.22em] flex items-center gap-1 group-hover:gap-2 transition-all pb-0.5">
-                    Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
+                  <span className="inline-flex items-center justify-center rounded-full bg-[#142E9F] text-white px-4 py-2 text-[10px] uppercase tracking-[0.18em] font-black gap-1 group-hover:brightness-110 transition-all pb-0.5">
+                    Scopri <ArrowUpRight size={13} strokeWidth={2.5} />
                   </span>
                 </div>
               </div>
@@ -338,7 +385,7 @@ const MasterGrid = () => {
           ))}
           <Link
             to="/corsi"
-            className="group rounded-[2rem] bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-8 flex flex-col justify-center text-white relative overflow-hidden"
+            className="group rounded-[1.4rem] sm:rounded-[2rem] bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden"
           >
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#E2FF3B] mb-3">
               Nuove competenze in poche settimane
@@ -604,8 +651,8 @@ const PercheNoi = () => {
     }
   ];
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section id="perche-noi" className="py-16 lg:py-20 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <h2 className={`${tSection} mb-12 max-w-2xl`}>Perché scegliere i nostri percorsi?</h2>
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
           {reasons.map((r) => (
@@ -644,8 +691,8 @@ const StatsBand = () => (
 const CorsiCta = () => {
   const ids = Object.keys(coursesContent);
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-16 items-start">
+    <section id="catalogo" className="py-20 lg:py-24 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
         <div className="lg:sticky lg:top-24">
           <h2 className={`${tSection} mb-5`}>
             Cosa stai <br />
@@ -699,6 +746,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <MobileQuickNav />
       <Accreditamenti />
       <ScegliPercorso />
       <MasterFeatured />
