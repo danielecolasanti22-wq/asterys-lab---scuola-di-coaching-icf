@@ -29,17 +29,17 @@ const tSection =
 const Hero = () => (
   <section className="relative bg-[#F2F7FF] overflow-hidden pb-8 lg:pb-0">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-[560px]">
-      <div className="relative lg:hidden pt-4">
-        <div className="relative rounded-[1.6rem] overflow-hidden shadow-[0_22px_55px_-35px_rgba(0,21,51,0.45)]">
+      <div className="relative lg:hidden pt-2">
+        <div className="relative rounded-[1.2rem] overflow-hidden shadow-[0_16px_40px_-30px_rgba(0,21,51,0.45)]">
           <img
             src="/course-media/apcm/hero.png"
             alt="Coach Asterys"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover aspect-[16/10]"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/10 to-transparent" />
-          <div className="absolute left-3 right-3 bottom-3">
-            <div className="inline-flex items-center gap-2 bg-[#E2FF3B] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
+          <div className="absolute left-3 right-3 bottom-2.5">
+            <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               ICF Accreditato
             </div>
@@ -47,36 +47,30 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="pt-6 lg:pt-20 pb-0 lg:pb-16 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6">
+      <div className="pt-5 lg:pt-20 pb-0 lg:pb-16 relative z-10">
+        <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           La 1ª scuola di coaching accreditata ICF
         </div>
-        <h1 className="text-[2.15rem] sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.95] tracking-tighter mb-5 lg:mb-7 text-brand-navy">
+        <h1 className="text-[2.45rem] sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.92] tracking-tighter mb-4 lg:mb-7 text-brand-navy">
           Sblocca il tuo{' '}
           <span className="relative inline-block">
             <span className="relative z-10">talento nel coaching</span>
             <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#E2FF3B] -z-0 rounded-sm" />
           </span>
         </h1>
-        <p className="text-sm lg:text-lg text-brand-navy/80 mb-6 lg:mb-8 max-w-[520px] leading-relaxed">
+        <p className="text-[12px] lg:text-lg text-brand-navy/80 mb-5 lg:mb-8 max-w-[520px] leading-relaxed">
           Non inseguire il futuro: costruiscilo. Diventa coach professionista accreditato ICF con un metodo d'eccellenza che integra intelligenza emotiva misurabile e approccio sistemico.
         </p>
-        <div className="flex flex-col sm:flex-row gap-2.5 mb-6 lg:hidden">
+        <div className="flex mb-5 lg:hidden justify-center sm:justify-start">
           <a
             href="#contatti"
-            className="inline-flex items-center justify-center bg-[#142E9F] text-white rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
+            className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
           >
-            Parla con un advisor
-          </a>
-          <a
-            href="#testimonianze"
-            className="inline-flex items-center justify-center bg-white border border-brand-navy/15 text-brand-navy rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
-          >
-            Guarda le storie
+            SCOPRI
           </a>
         </div>
-        <ul className="space-y-2.5 lg:space-y-3 mb-7 lg:mb-10 text-[13px] lg:text-[15px] font-medium text-brand-navy">
+        <ul className="space-y-2 lg:space-y-3 mb-5 lg:mb-10 text-[12px] lg:text-[15px] font-medium text-brand-navy">
           {[
             'Impara da chi porta il coaching ICF in Italia dal 2001',
             'Trasforma la teoria in pratica supervisionata',
@@ -88,7 +82,7 @@ const Hero = () => (
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <div className="flex -space-x-2">
             {[1, 2, 3, 4].map((i) => (
               <img
