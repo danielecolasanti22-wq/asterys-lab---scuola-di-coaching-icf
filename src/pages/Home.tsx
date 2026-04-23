@@ -29,28 +29,43 @@ const tSection =
 const Hero = () => (
   <section className="relative bg-[#F2F7FF] overflow-hidden pb-8 lg:pb-0">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[560px]">
+      <div className="relative lg:hidden -mx-4 sm:-mx-6">
+        <img
+          src="/course-media/apcm/hero.png"
+          alt="Coach Asterys"
+          className="w-full h-auto object-cover aspect-[16/10]"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-10">
+          <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
+            <span className="w-2 h-2 bg-brand-accent rounded-full" />
+            ICF Accreditato
+          </div>
+        </div>
+      </div>
 
-      <div className="pt-5 lg:pt-20 pb-0 lg:pb-16 relative z-10">
-        <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
+      <div className="pt-16 lg:pt-20 pb-0 lg:pb-16 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF]">
+        <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           La 1ª scuola di coaching accreditata ICF
         </div>
-        <h1 className="text-[2.45rem] sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.92] tracking-tighter mb-4 lg:mb-7 text-brand-navy">
+        <h1 className="text-[3.45rem] text-center lg:text-left sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.92] tracking-tighter mb-4 lg:mb-7 text-brand-navy">
           Sblocca il tuo{' '}
           <span className="relative inline-block">
             <span className="relative z-10">talento nel coaching</span>
-            <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#E2FF3B] -z-0 rounded-sm" />
+            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#BED5FF] -z-0 rounded-none" />
           </span>
         </h1>
-        <p className="text-[12px] lg:text-lg text-brand-navy/80 mb-5 lg:mb-8 max-w-[520px] leading-relaxed">
+        <p className="text-[12px] text-center lg:text-left lg:text-lg text-brand-navy/80 mb-5 lg:mb-8 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Non inseguire il futuro: costruiscilo. Diventa coach professionista accreditato ICF con un metodo d'eccellenza che integra intelligenza emotiva misurabile e approccio sistemico.
         </p>
-        <div className="flex mb-5 lg:hidden justify-center sm:justify-start">
+        <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
           <a
             href="#contatti"
-            className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
+            className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
           >
-            SCOPRI
+            SCOPRI I CORSI
           </a>
         </div>
         <ul className="space-y-2 lg:space-y-3 mb-5 lg:mb-10 text-[12px] lg:text-[15px] font-medium text-brand-navy">
@@ -65,23 +80,6 @@ const Hero = () => (
             </li>
           ))}
         </ul>
-        <div className="relative lg:hidden pt-1">
-          <div className="relative rounded-[1.2rem] overflow-hidden shadow-[0_16px_40px_-30px_rgba(0,21,51,0.45)] w-full max-w-[360px]">
-            <img
-              src="/course-media/apcm/hero.png"
-              alt="Coach Asterys"
-              className="w-full h-auto object-cover aspect-[16/10]"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
-            <div className="absolute left-3 right-3 bottom-2.5">
-              <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy">
-                <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-                ICF Accreditato
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex -space-x-2">
             {[1, 2, 3, 4].map((i) => (
