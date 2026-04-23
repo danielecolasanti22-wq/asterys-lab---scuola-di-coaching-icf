@@ -37,7 +37,7 @@ const Hero = () => (
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
           <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
             <span className="w-2 h-2 bg-brand-accent rounded-full" />
             ICF Accreditato
@@ -45,7 +45,7 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="pt-16 lg:pt-20 pb-0 lg:pb-16 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF]">
+      <div className="pt-16 lg:pt-20 pb-0 lg:pb-16 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           La 1ª scuola di coaching accreditata ICF
