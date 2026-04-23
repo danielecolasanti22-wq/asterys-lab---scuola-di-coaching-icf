@@ -187,38 +187,9 @@ export const Header = () => {
   return (
     <header
       id="site-header"
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'} lg:h-[72px] lg:flex lg:items-center`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
-      <div className="lg:hidden w-full">
-        <div className="h-[86px] bg-gradient-to-r from-[#D6F3E7] to-[#C2DCF8] relative overflow-hidden px-4 py-3">
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-[#B8C7FF] opacity-70" />
-          <p className="text-[11px] font-black uppercase tracking-[0.08em] text-brand-navy">Novità</p>
-          <p className="text-[19px] leading-[1.08] text-brand-navy max-w-[300px]">
-            Diventa AI Engineer: aperte le iscrizioni al nuovo Master part-time
-          </p>
-        </div>
-        <div className="h-[92px] px-6 flex items-center justify-between border-b border-brand-navy/10 bg-white">
-          <Link to="/" className="shrink-0" aria-label="Homepage">
-            <span className="w-[68px] h-[68px] rounded-full bg-[#001D4B] flex items-center justify-center">
-              <span className="relative w-8 h-8 rotate-45 flex items-center justify-center">
-                <span className="absolute inset-0 bg-[#00D886] rounded-sm transform scale-90" />
-                <span className="absolute inset-0 bg-white rounded-sm transform scale-50 -translate-x-1 -translate-y-1" />
-              </span>
-            </span>
-          </Link>
-          <Link
-            to="/iscriviti"
-            className="bg-[#3348CC] text-white px-11 py-5 rounded-full font-display font-black text-[2rem] leading-none tracking-tight"
-          >
-            Iscriviti
-          </Link>
-          <button className="text-brand-navy" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Apri menu">
-            {isMenuOpen ? <X size={44} strokeWidth={3} /> : <Menu size={44} strokeWidth={3} />}
-          </button>
-        </div>
-      </div>
-
-      <div className="max-w-[941px] mx-auto px-4 w-full items-center justify-between hidden lg:flex">
+      <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/" className="group shrink-0">
             <BrandLogo />
@@ -332,6 +303,9 @@ export const Header = () => {
           </Link>
         </div>
 
+        <button className="lg:hidden text-brand-navy" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {/* Desktop Mega Menu */}
@@ -427,7 +401,7 @@ export const Header = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t lg:hidden flex flex-col p-6 gap-4 max-h-[70vh] overflow-y-auto"
+            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t lg:hidden flex flex-col p-6 gap-4 max-h-[85vh] overflow-y-auto"
           >
             {megaColumns.map((col) => (
               <div key={col.label} className="flex flex-col gap-2">
@@ -947,7 +921,7 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
             ? 'pt-[120px] max-[939px]:pt-[134px]'
             : isCorporatePage
               ? 'pt-[72px]'
-              : 'pt-[72px] max-[939px]:pt-[178px]'
+              : 'pt-[72px] max-[939px]:pt-[74px]'
         }`}
       >
         {children}
