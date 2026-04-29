@@ -448,6 +448,13 @@ const AdvisorBand = () => (
 
 /* 7. TESTIMONIANZE */
 const Testimonianze = () => {
+  const sourceMimeType = (source: string) => {
+    const clean = source.toLowerCase().split('?')[0];
+    if (clean.endsWith('.mp4')) return 'video/mp4';
+    if (clean.endsWith('.webm')) return 'video/webm';
+    if (clean.endsWith('.mov')) return 'video/quicktime';
+    return undefined;
+  };
   const testimonials = commonTestimonials;
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -523,7 +530,7 @@ const Testimonianze = () => {
                       onError={() => setVideoPreviewError(true)}
                     >
                       {(slides[activeSlide].video.video?.sources ?? [slides[activeSlide].video.video?.src]).filter(Boolean).map((source) => (
-                        <source key={source} src={source} />
+                        <source key={source} src={source} type={sourceMimeType(source)} />
                       ))}
                     </video>
                   ) : (
@@ -653,7 +660,7 @@ const Testimonianze = () => {
                       onError={() => setVideoModalError(true)}
                     >
                       {(testimonials[activeVideoTestimonial].video?.sources ?? [testimonials[activeVideoTestimonial].video?.src]).filter(Boolean).map((source) => (
-                        <source key={source} src={source} />
+                        <source key={source} src={source} type={sourceMimeType(source)} />
                       ))}
                     </video>
                   ) : (
