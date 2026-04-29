@@ -448,25 +448,9 @@ const AdvisorBand = () => (
 
 /* 7. TESTIMONIANZE */
 const Testimonianze = () => {
-  const sourceMimeType = (source: string) => {
-    const clean = source.toLowerCase().split('?')[0];
-    if (clean.endsWith('.mp4')) return 'video/mp4';
-    if (clean.endsWith('.webm')) return 'video/webm';
-    if (clean.endsWith('.mov')) return 'video/quicktime';
-    return undefined;
-  };
-  const pickPlayableSource = (sources: string[]) => {
-    if (typeof document === 'undefined') return sources[0];
-    const video = document.createElement('video');
-    const withTypes = sources.map((source) => ({ source, type: sourceMimeType(source) }));
-    const playable = withTypes.find(({ type }) => (type ? video.canPlayType(type) !== '' : false));
-    return playable?.source ?? sources[0];
-  };
   const testimonials = commonTestimonials;
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [videoPreviewError, setVideoPreviewError] = useState(false);
-  const [videoModalError, setVideoModalError] = useState(false);
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
   const videoTestimonials = useMemo(() => testimonials.filter((t) => t.video), [testimonials]);
   const textTestimonials = useMemo(() => testimonials.filter((t) => !t.video), [testimonials]);
@@ -520,36 +504,14 @@ const Testimonianze = () => {
               >
                 <button
                   type="button"
-                  onClick={() => {
-                    setVideoModalError(false);
-                    setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === slides[activeSlide].video.name));
-                  }}
+                  onClick={() => setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === slides[activeSlide].video.name))}
                   className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[420px]"
                 >
-                  {slides[activeSlide].video.video?.src ? (
-                    <video
-                      src={pickPlayableSource((slides[activeSlide].video.video?.sources ?? [slides[activeSlide].video.video?.src]).filter(Boolean))}
-                      poster={slides[activeSlide].video.video?.poster}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={() => setVideoPreviewError(true)}
-                    >
-                    </video>
-                  ) : (
-                    <img
-                      src={slides[activeSlide].video.video?.poster}
-                      alt={slides[activeSlide].video.name}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  )}
-                  {videoPreviewError ? (
-                    <div className="absolute top-12 left-4 rounded-md bg-black/65 px-2.5 py-1 text-[10px] font-bold text-white/90">
-                      Formato video non supportato dal browser
-                    </div>
-                  ) : null}
+                  <img
+                    src={slides[activeSlide].video.video?.poster}
+                    alt={slides[activeSlide].video.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                   <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
                     <Video size={11} strokeWidth={2.75} />
@@ -656,26 +618,20 @@ const Testimonianze = () => {
               </button>
               <div className="bg-brand-navy rounded-[1.5rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.7)]">
                 <div className="aspect-video bg-black">
-                  {testimonials[activeVideoTestimonial].video?.src ? (
-                    <video
-                      src={pickPlayableSource((testimonials[activeVideoTestimonial].video?.sources ?? [testimonials[activeVideoTestimonial].video?.src]).filter(Boolean))}
-                      poster={testimonials[activeVideoTestimonial].video?.poster}
-                      controls
-                      autoPlay
-                      className="w-full h-full object-cover"
-                      onError={() => setVideoModalError(true)}
-                    >
-                    </video>
+                  {testimonials[activeVideoTestimonial].video?.vimeoEmbedUrl ? (
+                    <iframe
+                      src={testimonials[activeVideoTestimonial].video?.vimeoEmbedUrl}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      title={`Testimonianza video ${testimonials[activeVideoTestimonial].name}`}
+                      allowFullScreen
+                    />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white/60 text-sm">
                       Video in arrivo
                     </div>
                   )}
-                  {videoModalError ? (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-white text-sm font-semibold px-6 text-center">
-                      Impossibile riprodurre questo file nel browser attuale. Esporta il video in MP4 H.264 + AAC.
-                    </div>
-                  ) : null}
                 </div>
                 <div className="p-5 sm:p-6 text-white">
                   <p className="text-base sm:text-lg font-display font-black leading-tight">
