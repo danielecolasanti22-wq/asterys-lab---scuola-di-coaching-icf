@@ -178,7 +178,9 @@ const Accreditamenti = () => {
     <section className="bg-[#F2F7FF] border-t border-brand-navy/5">
       <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-wrap items-center justify-center gap-x-16 gap-y-6">
         {items.map((i) => (
-          <AccreditamentoBadge key={i.label} label={i.label} size={i.size} logo={i.logo} />
+          <div key={i.label}>
+            <AccreditamentoBadge label={i.label} size={i.size} logo={i.logo} />
+          </div>
         ))}
       </div>
     </section>
