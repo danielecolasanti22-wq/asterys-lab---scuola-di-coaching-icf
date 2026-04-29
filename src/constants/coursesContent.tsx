@@ -193,6 +193,7 @@ export interface CourseTestimonial {
   video?: {
     poster: string;
     src?: string;
+    sources?: string[];
     duration?: string;
   };
 }
@@ -270,7 +271,15 @@ export const commonTestimonials: CourseTestimonial[] = [
     quote:
       "Video testimonianza in arrivo: qui comparirà il contributo di Marco Guadagnuolo appena caricato.",
     video: {
-      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg"
+      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg",
+      src: "/testimonials/videos/marco-guadagnuolo.mp4",
+      sources: [
+        "/testimonials/videos/marco-guadagnuolo.mp4",
+        "/testimonials/videos/marco-guadagnuolo.MP4",
+        "/testimonials/videos/marco-guadagnuolo.mov",
+        "/testimonials/videos/marco-guadagnuolo.MOV",
+        "/testimonials/videos/marco-guadagnuolo.webm"
+      ]
     }
   },
   {
