@@ -455,6 +455,13 @@ const Testimonianze = () => {
     if (clean.endsWith('.mov')) return 'video/quicktime';
     return undefined;
   };
+  const pickPlayableSource = (sources: string[]) => {
+    if (typeof document === 'undefined') return sources[0];
+    const video = document.createElement('video');
+    const withTypes = sources.map((source) => ({ source, type: sourceMimeType(source) }));
+    const playable = withTypes.find(({ type }) => (type ? video.canPlayType(type) !== '' : false));
+    return playable?.source ?? sources[0];
+  };
   const testimonials = commonTestimonials;
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -521,6 +528,7 @@ const Testimonianze = () => {
                 >
                   {slides[activeSlide].video.video?.src ? (
                     <video
+                      src={pickPlayableSource((slides[activeSlide].video.video?.sources ?? [slides[activeSlide].video.video?.src]).filter(Boolean))}
                       poster={slides[activeSlide].video.video?.poster}
                       autoPlay
                       muted
@@ -529,9 +537,6 @@ const Testimonianze = () => {
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       onError={() => setVideoPreviewError(true)}
                     >
-                      {(slides[activeSlide].video.video?.sources ?? [slides[activeSlide].video.video?.src]).filter(Boolean).map((source) => (
-                        <source key={source} src={source} type={sourceMimeType(source)} />
-                      ))}
                     </video>
                   ) : (
                     <img
@@ -653,15 +658,13 @@ const Testimonianze = () => {
                 <div className="aspect-video bg-black">
                   {testimonials[activeVideoTestimonial].video?.src ? (
                     <video
+                      src={pickPlayableSource((testimonials[activeVideoTestimonial].video?.sources ?? [testimonials[activeVideoTestimonial].video?.src]).filter(Boolean))}
                       poster={testimonials[activeVideoTestimonial].video?.poster}
                       controls
                       autoPlay
                       className="w-full h-full object-cover"
                       onError={() => setVideoModalError(true)}
                     >
-                      {(testimonials[activeVideoTestimonial].video?.sources ?? [testimonials[activeVideoTestimonial].video?.src]).filter(Boolean).map((source) => (
-                        <source key={source} src={source} type={sourceMimeType(source)} />
-                      ))}
                     </video>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white/60 text-sm">
