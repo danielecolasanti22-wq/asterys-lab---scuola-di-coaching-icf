@@ -270,7 +270,8 @@ export const commonTestimonials: CourseTestimonial[] = [
     quote:
       "Video testimonianza in arrivo: qui comparirà il contributo di Marco Guadagnuolo appena caricato.",
     video: {
-      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg"
+      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg",
+      src: "/testimonials/videos/marco-guadagnuolo.mp4"
     }
   },
   {
