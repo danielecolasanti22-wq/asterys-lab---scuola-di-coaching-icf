@@ -224,8 +224,8 @@ function buildApcmCompleteEditions(editions: CourseEdition[], citySlug: string):
 
 function levelSortWeight(slug: string): number {
   if (slug === 'l1') return 0;
-  if (slug === APCM_COMPLETE_LEVEL_SLUG) return 1;
-  if (slug === 'l2') return 2;
+  if (slug === 'l2') return 1;
+  if (slug === APCM_COMPLETE_LEVEL_SLUG) return 2;
   return 3;
 }
 
@@ -861,7 +861,7 @@ export default function CourseDetail() {
                           {activeEdition.editionLabel}
                         </h3>
                         {activeEdition.subtitle ? (
-                          <p className="mt-1 text-sm text-white/65 font-medium">
+                          <p className="mt-1 text-base sm:text-lg text-white/65 font-medium">
                             {activeEdition.subtitle}
                           </p>
                         ) : null}
