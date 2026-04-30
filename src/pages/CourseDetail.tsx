@@ -161,6 +161,74 @@ const EDITION_EVENT_STYLES: Record<
   },
 };
 
+const APCM_COMPLETE_LEVEL_SLUG = 'complete';
+
+function displayEditionEventLabel(label: string, courseId?: string): string {
+  if (courseId !== 'apcm') return label;
+  return label.replace(/Live Class/g, 'Incontro Online');
+}
+
+function completeLevelNote(note: string | undefined, level: string): string {
+  return note ? `${note} · ${level}` : level;
+}
+
+function buildApcmCompleteEditions(editions: CourseEdition[], citySlug: string): CourseEdition[] {
+  const l1Editions = editions.filter((e) => e.citySlug === citySlug && e.levelSlug === 'l1');
+  const l2Editions = editions.filter((e) => e.citySlug === citySlug && e.levelSlug === 'l2');
+  if (!l1Editions.length || !l2Editions.length) return [];
+
+  return l1Editions.map((l1, index) => {
+    const fallbackL2 = l2Editions[l2Editions.length - 1];
+    const preferredYear = index === 0 ? '2026' : '2027';
+    const l2 =
+      l2Editions.find(
+        (e) => e.editionSlug.includes(preferredYear) || e.editionLabel.includes(preferredYear),
+      ) ??
+      l2Editions[index] ??
+      fallbackL2;
+
+    const completeEdition: CourseEdition = {
+      city: l1.city,
+      citySlug: l1.citySlug,
+      level: 'Percorso Completo',
+      levelSlug: APCM_COMPLETE_LEVEL_SLUG,
+      editionLabel: `${l1.editionLabel} · Percorso Completo`,
+      editionSlug: `complete-${l1.editionSlug}-${l2.editionSlug}`,
+      subtitle: `${l1.subtitle ?? '1° livello'} + ${l2.subtitle ?? '2° livello'}`,
+      badge: l1.badge,
+      earlyBird: l1.earlyBird,
+      enrollmentEnd: l1.enrollmentEnd,
+      ctaLabel: 'Iscriviti al Percorso Completo',
+      events: [
+        ...l1.events.map((ev) => ({
+          ...ev,
+          note: completeLevelNote(ev.note, '1° livello'),
+        })),
+        {
+          label: 'Passaggio al 2° livello',
+          date: l2.subtitle ?? l2.editionLabel,
+          type: 'milestone' as const,
+          note: 'Dopo il completamento del 1° livello',
+        },
+        ...l2.events
+          .filter((ev) => ev.type !== 'deadline-early' && ev.type !== 'deadline-final')
+          .map((ev) => ({
+            ...ev,
+            note: completeLevelNote(ev.note, '2° livello'),
+          })),
+      ],
+    };
+    return completeEdition;
+  });
+}
+
+function levelSortWeight(slug: string): number {
+  if (slug === 'l1') return 0;
+  if (slug === APCM_COMPLETE_LEVEL_SLUG) return 1;
+  if (slug === 'l2') return 2;
+  return 3;
+}
+
 export default function CourseDetail() {
   const { id } = useParams<{ id: string }>();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -288,20 +356,29 @@ export default function CourseDetail() {
   );
   const effectiveCitySlug =
     editionCities.find((c) => c.slug === activeCitySlug)?.slug ?? editionCities[0]?.slug ?? '';
-  const editionLevelsForCity = Array.from(
+  const apcmCompleteEditionsForCity =
+    id === 'apcm' ? buildApcmCompleteEditions(editions, effectiveCitySlug) : [];
+  const baseEditionLevelsForCity = Array.from(
     new Map(
       editions
         .filter((e) => e.citySlug === effectiveCitySlug)
         .map((e) => [e.levelSlug, { slug: e.levelSlug, name: e.level }]),
     ).values(),
   );
+  const editionLevelsForCity = [
+    ...baseEditionLevelsForCity,
+    ...(apcmCompleteEditionsForCity.length
+      ? [{ slug: APCM_COMPLETE_LEVEL_SLUG, name: 'Percorso Completo' }]
+      : []),
+  ].sort((a, b) => levelSortWeight(a.slug) - levelSortWeight(b.slug));
   const effectiveLevelSlug =
     editionLevelsForCity.find((l) => l.slug === activeLevelSlug)?.slug ??
     editionLevelsForCity[0]?.slug ??
     '';
-  const editionsForCityLevel = editions.filter(
-    (e) => e.citySlug === effectiveCitySlug && e.levelSlug === effectiveLevelSlug,
-  );
+  const editionsForCityLevel =
+    effectiveLevelSlug === APCM_COMPLETE_LEVEL_SLUG
+      ? apcmCompleteEditionsForCity
+      : editions.filter((e) => e.citySlug === effectiveCitySlug && e.levelSlug === effectiveLevelSlug);
   const activeEdition: CourseEdition | undefined =
     editionsForCityLevel.find((e) => e.editionSlug === activeEditionSlug) ??
     editionsForCityLevel[0];
@@ -327,7 +404,7 @@ export default function CourseDetail() {
     : null;
 
   const editionStatBadges: { type: CourseEditionEventType; label: string }[] = [
-    { type: 'live-class', label: 'Live Class' },
+    { type: 'live-class', label: id === 'apcm' ? 'Incontri Online' : 'Live Class' },
     { type: 'live-lab', label: 'Live Lab' },
     { type: 'corso', label: 'Corsi intensivi' },
     { type: 'orientamento', label: 'Orientamento' },
@@ -652,6 +729,13 @@ export default function CourseDetail() {
                       type="button"
                       onClick={() => {
                         setActiveCitySlug(c.slug);
+                        const completeForCity =
+                          id === 'apcm' ? buildApcmCompleteEditions(editions, c.slug) : [];
+                        if (activeLevelSlug === APCM_COMPLETE_LEVEL_SLUG && completeForCity[0]) {
+                          setActiveLevelSlug(APCM_COMPLETE_LEVEL_SLUG);
+                          setActiveEditionSlug(completeForCity[0].editionSlug);
+                          return;
+                        }
                         const firstOfCity = editions.find((e) => e.citySlug === c.slug);
                         if (firstOfCity) {
                           setActiveLevelSlug(firstOfCity.levelSlug);
@@ -686,9 +770,12 @@ export default function CourseDetail() {
                         type="button"
                         onClick={() => {
                           setActiveLevelSlug(l.slug);
-                          const firstOfLevel = editions.find(
-                            (e) => e.citySlug === effectiveCitySlug && e.levelSlug === l.slug,
-                          );
+                          const firstOfLevel =
+                            l.slug === APCM_COMPLETE_LEVEL_SLUG
+                              ? apcmCompleteEditionsForCity[0]
+                              : editions.find(
+                                  (e) => e.citySlug === effectiveCitySlug && e.levelSlug === l.slug,
+                                );
                           if (firstOfLevel) setActiveEditionSlug(firstOfLevel.editionSlug);
                         }}
                         className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
@@ -884,7 +971,7 @@ export default function CourseDetail() {
                                     : 'text-brand-navy'
                                 }`}
                               >
-                                {ev.label}
+                                {displayEditionEventLabel(ev.label, id)}
                               </p>
                               <p className="text-[10px] sm:text-xs font-black uppercase tracking-wide text-brand-navy/55">
                                 {ev.date}
