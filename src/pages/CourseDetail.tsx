@@ -569,8 +569,8 @@ export default function CourseDetail() {
       {course.whyChoose ? (
         <section className="py-16 lg:py-24 bg-[#F6F8FC]">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="grid lg:grid-cols-[0.9fr_1.35fr] gap-10 lg:gap-16 items-start">
-              <div>
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
+              <div className="max-w-xl">
                 {course.whyChoose.eyebrow ? (
                   <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
                     {course.whyChoose.eyebrow}
@@ -579,36 +579,78 @@ export default function CourseDetail() {
                 <h2 className={`${tSection} mb-5 max-w-xl`}>
                   {course.whyChoose.title}
                 </h2>
-                {course.whyChoose.intro ? (
-                  <p className={`${tBody} max-w-xl`}>
-                    {richText(course.whyChoose.intro)}
-                  </p>
-                ) : null}
               </div>
+              {course.whyChoose.intro ? (
+                <p className={`${tBody} max-w-xl lg:pb-2`}>
+                  {richText(course.whyChoose.intro)}
+                </p>
+              ) : null}
+            </div>
 
-              <div className="bg-white border-y border-brand-navy/10">
-                {course.whyChoose.bullets.map((b, i) => (
-                  <div
-                    key={i}
-                    className="grid sm:grid-cols-[72px_1fr] gap-4 sm:gap-6 px-0 py-6 sm:py-7 border-b border-brand-navy/10 last:border-b-0"
-                  >
-                    <div className="flex items-start gap-3 sm:block">
-                      <span className="block text-[11px] font-black uppercase tracking-[0.22em] text-brand-accent sm:mb-2">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="hidden sm:block h-px w-10 bg-brand-accent/35" />
+            <div className="bg-[#001D4B] text-white">
+              {[
+                {
+                  phase: 'Prima',
+                  label: 'Orientamento',
+                  title: 'Direzione',
+                  body:
+                    'Chiarisci obiettivi, aspettative e piano di studio. Entri nel Master con un coach di riferimento già assegnato e una roadmap personale.',
+                  output: 'Coach dedicato + piano di percorso',
+                },
+                {
+                  phase: 'Durante',
+                  label: 'Formazione',
+                  title: 'Metodo',
+                  body:
+                    'Alleni competenze ICF Level 1 & 2, intelligenza emotiva misurabile e approccio sistemico con lezioni, pratica reale, feedback e supervisione.',
+                  output: 'Standard ICF + pratica supervisionata',
+                },
+                {
+                  phase: 'Dopo',
+                  label: 'Professione',
+                  title: 'Mercato',
+                  body:
+                    'Trasformi la formazione in posizionamento professionale grazie a Prosperous Coach, Career Center, community alumni e formazione continua.',
+                  output: 'Career Center + community alumni',
+                },
+              ].map((phase, i, arr) => (
+                <div key={phase.phase}>
+                  <div className="grid lg:grid-cols-[160px_1fr_230px]">
+                    <div className="px-6 py-7 lg:px-8 lg:py-10 border-b lg:border-b-0 lg:border-r border-white/10">
+                      <p className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">
+                        {phase.label}
+                      </p>
+                      <p className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tight leading-none">
+                        {phase.phase}
+                      </p>
                     </div>
-                    <div className="grid md:grid-cols-[0.78fr_1fr] gap-3 md:gap-7">
-                      <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight">
-                        {b.title}
-                      </h3>
-                      <p className="text-sm sm:text-[15px] text-brand-navy/68 leading-relaxed font-medium">
-                        {b.desc}
+                    <div className="px-6 py-7 lg:px-9 lg:py-10 border-b lg:border-b-0 lg:border-r border-white/10">
+                      <div className="flex items-start gap-5">
+                        <span className="hidden sm:block mt-1 text-[11px] font-black uppercase tracking-[0.22em] text-white/35">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight leading-[1.05] mb-4">
+                            {phase.title}
+                          </h3>
+                          <p className="text-sm sm:text-base text-white/72 leading-relaxed font-medium max-w-xl">
+                            {phase.body}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="px-6 py-7 lg:px-8 lg:py-10 bg-white/[0.035]">
+                      <p className="text-[10px] font-black uppercase tracking-[0.24em] text-white/35 mb-3">
+                        Risultato
+                      </p>
+                      <p className="text-sm sm:text-base font-black leading-snug text-[#E2FF3B]">
+                        {phase.output}
                       </p>
                     </div>
                   </div>
-                ))}
-              </div>
+                  {i < arr.length - 1 ? <div className="h-px bg-white/10" /> : null}
+                </div>
+              ))}
             </div>
           </div>
         </section>
