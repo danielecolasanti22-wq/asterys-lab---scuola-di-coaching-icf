@@ -587,7 +587,9 @@ export default function CourseDetail() {
               ) : null}
             </div>
 
-            <div className="bg-[#001D4B] text-white">
+            <div className="relative overflow-hidden bg-[#001D4B] px-6 py-8 text-white sm:px-8 lg:px-12 lg:py-14">
+              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-white/10" />
+              <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px bg-white/10 lg:block" />
               {[
                 {
                   phase: 'Prima',
@@ -613,42 +615,35 @@ export default function CourseDetail() {
                     'Trasformi la formazione in posizionamento professionale grazie a Prosperous Coach, Career Center, community alumni e formazione continua.',
                   output: 'Career Center + community alumni',
                 },
-              ].map((phase, i, arr) => (
-                <div key={phase.phase}>
-                  <div className="grid lg:grid-cols-[160px_1fr_230px]">
-                    <div className="px-6 py-7 lg:px-8 lg:py-10 border-b lg:border-b-0 lg:border-r border-white/10">
-                      <p className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">
-                        {phase.label}
-                      </p>
-                      <p className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tight leading-none">
-                        {phase.phase}
-                      </p>
-                    </div>
-                    <div className="px-6 py-7 lg:px-9 lg:py-10 border-b lg:border-b-0 lg:border-r border-white/10">
-                      <div className="flex items-start gap-5">
-                        <span className="hidden sm:block mt-1 text-[11px] font-black uppercase tracking-[0.22em] text-white/35">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <div>
-                          <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight leading-[1.05] mb-4">
-                            {phase.title}
-                          </h3>
-                          <p className="text-sm sm:text-base text-white/72 leading-relaxed font-medium max-w-xl">
-                            {phase.body}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-6 py-7 lg:px-8 lg:py-10 bg-white/[0.035]">
-                      <p className="text-[10px] font-black uppercase tracking-[0.24em] text-white/35 mb-3">
-                        Risultato
-                      </p>
-                      <p className="text-sm sm:text-base font-black leading-snug text-[#E2FF3B]">
+              ].map((phase, i) => (
+                <div
+                  key={phase.phase}
+                  className={`relative grid gap-6 py-8 lg:grid-cols-[0.7fr_1fr] lg:gap-14 lg:py-10 ${
+                    i === 1 ? 'lg:ml-[18%]' : i === 2 ? 'lg:max-w-[78%]' : 'lg:max-w-[84%]'
+                  }`}
+                >
+                  <div className="relative">
+                    <span className="absolute -left-1 -top-8 select-none font-display text-7xl font-black leading-none tracking-tight text-white/[0.035] sm:text-8xl lg:text-9xl">
+                      {phase.phase}
+                    </span>
+                    <p className="relative text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-3">
+                      {String(i + 1).padStart(2, '0')} · {phase.label}
+                    </p>
+                    <h3 className="relative text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tight leading-[0.98]">
+                      {phase.title}
+                    </h3>
+                  </div>
+                  <div className="relative lg:pt-7">
+                    <p className="text-sm sm:text-base text-white/74 leading-relaxed font-medium max-w-xl">
+                      {phase.body}
+                    </p>
+                    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+                      <span className="h-px w-10 bg-brand-accent/70" />
+                      <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.18em] text-[#E2FF3B]">
                         {phase.output}
                       </p>
                     </div>
                   </div>
-                  {i < arr.length - 1 ? <div className="h-px bg-white/10" /> : null}
                 </div>
               ))}
             </div>
