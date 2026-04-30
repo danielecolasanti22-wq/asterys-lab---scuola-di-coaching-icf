@@ -569,8 +569,8 @@ export default function CourseDetail() {
       {course.whyChoose ? (
         <section className="py-16 lg:py-24 bg-[#F6F8FC]">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="grid lg:grid-cols-[0.9fr_1.35fr] gap-10 lg:gap-16 items-start">
-              <div>
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
+              <div className="max-w-xl">
                 {course.whyChoose.eyebrow ? (
                   <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
                     {course.whyChoose.eyebrow}
@@ -579,36 +579,84 @@ export default function CourseDetail() {
                 <h2 className={`${tSection} mb-5 max-w-xl`}>
                   {course.whyChoose.title}
                 </h2>
-                {course.whyChoose.intro ? (
-                  <p className={`${tBody} max-w-xl`}>
-                    {richText(course.whyChoose.intro)}
-                  </p>
-                ) : null}
               </div>
+              {course.whyChoose.intro ? (
+                <p className={`${tBody} max-w-xl lg:pb-2`}>
+                  {richText(course.whyChoose.intro)}
+                </p>
+              ) : null}
+            </div>
 
-              <div className="bg-white border-y border-brand-navy/10">
-                {course.whyChoose.bullets.map((b, i) => (
-                  <div
-                    key={i}
-                    className="grid sm:grid-cols-[72px_1fr] gap-4 sm:gap-6 px-0 py-6 sm:py-7 border-b border-brand-navy/10 last:border-b-0"
-                  >
-                    <div className="flex items-start gap-3 sm:block">
-                      <span className="block text-[11px] font-black uppercase tracking-[0.22em] text-brand-accent sm:mb-2">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="hidden sm:block h-px w-10 bg-brand-accent/35" />
-                    </div>
-                    <div className="grid md:grid-cols-[0.78fr_1fr] gap-3 md:gap-7">
-                      <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight">
-                        {b.title}
-                      </h3>
-                      <p className="text-sm sm:text-[15px] text-brand-navy/68 leading-relaxed font-medium">
-                        {b.desc}
-                      </p>
-                    </div>
+            <div className="border-y border-brand-navy/15 bg-white/45">
+              {[
+                {
+                  step: 'Prima',
+                  eyebrow: 'Orientamento',
+                  title: 'Entri con una direzione chiara',
+                  body:
+                    'Definisci obiettivi, aspettative e piano di studio con il team Asterys. Fin dall’avvio hai un coach di riferimento dedicato che ti accompagna nella lettura del percorso.',
+                  proof: ['Coach assegnato', 'Roadmap personale', 'Advisor dedicato'],
+                },
+                {
+                  step: 'Durante',
+                  eyebrow: 'Formazione',
+                  title: 'Alleni metodo, pratica e postura professionale',
+                  body:
+                    'Lavori sulle competenze ICF Level 1 & 2, integri intelligenza emotiva misurabile e approccio sistemico, alternando lezioni, sessioni reali, feedback e supervisione.',
+                  proof: ['Trainer MCC e PCC', 'Pratica supervisionata', 'Assessment e feedback'],
+                },
+                {
+                  step: 'Dopo',
+                  eyebrow: 'Professione',
+                  title: 'Continui a costruire la tua carriera',
+                  body:
+                    'Porti il metodo nel mercato con Prosperous Coach, Career Center, community alumni e formazione continua: un ecosistema che resta accessibile anche dopo il Master.',
+                  proof: ['Career Center', 'Community 3.000+ alumni', 'Formazione continua'],
+                },
+              ].map((phase, i) => (
+                <div
+                  key={phase.step}
+                  className={`grid lg:grid-cols-[148px_1fr_240px] gap-6 lg:gap-10 px-0 py-8 lg:py-10 ${
+                    i > 0 ? 'border-t border-brand-navy/10' : ''
+                  }`}
+                >
+                  <div className="flex lg:block items-baseline gap-3">
+                    <span className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className="lg:mt-3 text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
+                      {phase.step}
+                    </p>
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/40 mb-3">
+                      {phase.eyebrow}
+                    </p>
+                    <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy leading-[1.05] mb-4">
+                      {phase.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-brand-navy/68 leading-relaxed font-medium max-w-2xl">
+                      {phase.body}
+                    </p>
+                  </div>
+                  <div className="lg:border-l lg:border-brand-navy/10 lg:pl-8">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/35 mb-4">
+                      Cosa include
+                    </p>
+                    <ul className="space-y-3">
+                      {phase.proof.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-[12px] sm:text-[13px] font-black uppercase tracking-[0.08em] text-brand-navy leading-snug"
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
