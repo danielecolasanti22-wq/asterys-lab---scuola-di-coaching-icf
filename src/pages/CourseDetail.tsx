@@ -27,6 +27,12 @@ import {
   ChevronLeft,
   ChevronRight as ChevronRightIcon,
   X,
+  ShieldCheck,
+  HeartHandshake,
+  BarChart3,
+  Network,
+  BadgeCheck,
+  Route,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -587,65 +593,42 @@ export default function CourseDetail() {
               ) : null}
             </div>
 
-            <div className="relative overflow-hidden bg-[#001D4B] px-6 py-8 text-white sm:px-8 lg:px-12 lg:py-14">
-              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-white/10" />
-              <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px bg-white/10 lg:block" />
-              {[
-                {
-                  phase: 'Prima',
-                  label: 'Orientamento',
-                  title: 'Direzione',
-                  body:
-                    'Chiarisci obiettivi, aspettative e piano di studio. Entri nel Master con un coach di riferimento già assegnato e una roadmap personale.',
-                  output: 'Coach dedicato + piano di percorso',
-                },
-                {
-                  phase: 'Durante',
-                  label: 'Formazione',
-                  title: 'Metodo',
-                  body:
-                    'Alleni competenze ICF Level 1 & 2, intelligenza emotiva misurabile e approccio sistemico con lezioni, pratica reale, feedback e supervisione.',
-                  output: 'Standard ICF + pratica supervisionata',
-                },
-                {
-                  phase: 'Dopo',
-                  label: 'Professione',
-                  title: 'Mercato',
-                  body:
-                    'Trasformi la formazione in posizionamento professionale grazie a Prosperous Coach, Career Center, community alumni e formazione continua.',
-                  output: 'Career Center + community alumni',
-                },
-              ].map((phase, i) => (
-                <div
-                  key={phase.phase}
-                  className={`relative grid gap-6 py-8 lg:grid-cols-[0.7fr_1fr] lg:gap-14 lg:py-10 ${
-                    i === 1 ? 'lg:ml-[18%]' : i === 2 ? 'lg:max-w-[78%]' : 'lg:max-w-[84%]'
-                  }`}
-                >
-                  <div className="relative">
-                    <span className="absolute -left-1 -top-8 select-none font-display text-7xl font-black leading-none tracking-tight text-white/[0.035] sm:text-8xl lg:text-9xl">
-                      {phase.phase}
-                    </span>
-                    <p className="relative text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-3">
-                      {String(i + 1).padStart(2, '0')} · {phase.label}
-                    </p>
-                    <h3 className="relative text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tight leading-[0.98]">
-                      {phase.title}
-                    </h3>
-                  </div>
-                  <div className="relative lg:pt-7">
-                    <p className="text-sm sm:text-base text-white/74 leading-relaxed font-medium max-w-xl">
-                      {phase.body}
-                    </p>
-                    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
-                      <span className="h-px w-10 bg-brand-accent/70" />
-                      <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.18em] text-[#E2FF3B]">
-                        {phase.output}
-                      </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden border border-brand-navy/10 bg-brand-navy/10">
+              {course.whyChoose.bullets.map((b, i) => {
+                const benefitIcons = [
+                  ShieldCheck,
+                  HeartHandshake,
+                  BarChart3,
+                  Network,
+                  BadgeCheck,
+                  Route,
+                  TrendingUp,
+                  Users,
+                ];
+                const Icon = benefitIcons[i % benefitIcons.length];
+                return (
+                  <article
+                    key={i}
+                    className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#FBFCFF]"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 bg-brand-accent/0 transition-colors group-hover:bg-brand-accent" />
+                    <div className="mb-8 flex items-start justify-between gap-4">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/35">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#F6F8FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#E6EFFF]">
+                        <Icon size={20} strokeWidth={1.9} />
+                      </span>
                     </div>
-                  </div>
-                </div>
-              ))}
+                    <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-4">
+                      {b.title}
+                    </h3>
+                    <p className="text-sm text-brand-navy/68 leading-relaxed font-medium">
+                      {b.desc}
+                    </p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
