@@ -193,6 +193,7 @@ export interface CourseTestimonial {
   video?: {
     poster: string;
     src?: string;
+    vimeoEmbedUrl?: string;
     duration?: string;
   };
 }
@@ -270,7 +271,8 @@ export const commonTestimonials: CourseTestimonial[] = [
     quote:
       "Video testimonianza in arrivo: qui comparirà il contributo di Marco Guadagnuolo appena caricato.",
     video: {
-      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg"
+      poster: "/testimonials/posters/marco-guadagnuolo-placeholder.svg",
+      vimeoEmbedUrl: "https://player.vimeo.com/video/359988626?badge=0&autopause=0&player_id=0&app_id=58479"
     }
   },
   {
@@ -372,7 +374,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     orientationBanner: {
       title: "Fase di orientamento",
-      body: "Prima del via, chiarisci obiettivi, aspettative e piano di studio insieme al team Asterys: entri nel percorso con una roadmap chiara.",
+      body: "Prima del via, chiarisci obiettivi, aspettative e piano di studio insieme al team Asterys. A ogni studente viene assegnato un coach di riferimento che lo segue prima, durante e dopo il percorso.",
     },
     specializationsSection: {
       eyebrow: "Specializzazioni",
@@ -466,12 +468,12 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     career: {
       title: "Career Support Asterys",
-      content: "Il Career Center di Asterys Lab ti supporta nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale.",
+      content: "Il Career Center di Asterys Lab ti supporta nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
         { title: "Prosperous Coach Lab", desc: "Modulo specifico per costruire il tuo business di coaching con posizionamento, pricing e acquisizione clienti." },
         { title: "Alumni Community", desc: "Accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise." },
         { title: "Formazione Continua", desc: "Masterclass, webinar e workshop esclusivi per approfondire le competenze e restare aggiornato sulle evoluzioni del coaching." },
-        { title: "Supporto Carriera", desc: "Sessioni individuali con il team Asterys per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
+        { title: "Supporto Carriera", desc: "Sessioni individuali e accompagnamento del coach assegnato per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
       ]
     },
     classDates: [
@@ -590,25 +592,29 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Calendario edizioni",
       title: "Scegli sede, livello ed edizione",
       intro:
-        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutte le Live Class, i Live Lab, i Corsi intensivi e le scadenze di iscrizione."
+        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri Online, i Live Lab, i Corsi intensivi e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
     },
     whyChoose: {
       eyebrow: "Perché scegliere APCM",
       title: "Un Master che unisce rigore, umanità e mercato",
       intro:
-        "APCM è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **trainer con credenziali MCC & PCC**, **pratica supervisionata** e un **Career Center** che ti accompagna nell'avvio della professione.",
+        "APCM è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
       bullets: [
         {
           title: "Accreditamento ICF Level 1 & 2",
           desc: "Programma riconosciuto ICF: al termine hai tutte le ore formative necessarie per le credenziali ACC e PCC, spendibili a livello internazionale."
         },
         {
+          title: "Coach dedicato end-to-end",
+          desc: "A ogni studente viene assegnato un coach di riferimento che lo accompagna prima dell'avvio, durante il Master e nella fase successiva al percorso."
+        },
+        {
           title: "Intelligenza Emotiva misurabile",
-          desc: "Integriamo il modello KCG / Six Seconds: impari ad allenare l'IE con strumenti di assessment certificati, non solo con la teoria."
+          desc: "Integri il modello KCG / Six Seconds e impari ad allenare l'IE con strumenti di assessment certificati, dati leggibili e pratiche applicabili in sessione."
         },
         {
           title: "Approccio sistemico",
-          desc: "Lavori non solo sull'individuo ma sulle relazioni, sui gruppi e sui contesti. È ciò che fa la differenza nelle organizzazioni complesse."
+          desc: "Alleni uno sguardo sulle relazioni, sui gruppi e sui contesti: una competenza chiave per lavorare con persone, team e organizzazioni complesse."
         },
         {
           title: "Trainer MCC e PCC",
@@ -621,6 +627,10 @@ export const coursesContent: Record<string, CourseData> = {
         {
           title: "Prosperous Coach incluso",
           desc: "Posizionamento, pricing, acquisizione clienti ed etica del business: gli strumenti per costruire davvero la tua professione."
+        },
+        {
+          title: "Career Center e community",
+          desc: "Accedi a supporto carriera, formazione continua e a una rete di 3.000+ alumni con cui confrontarti, collaborare e crescere nel tempo."
         }
       ]
     },
@@ -628,7 +638,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Struttura del percorso",
       title: "Scegli come affrontare il Master",
       intro:
-        "APCM è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio.",
+        "APCM è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio. Il **2° livello** è accessibile dopo aver completato il **1° livello**.",
       levels: [
         {
           label: "Livello 1",
@@ -656,6 +666,7 @@ export const coursesContent: Record<string, CourseData> = {
           highlight: true,
           features: [
             "Tutto il Livello 1 + Livello 2 integrale",
+            "Coach di riferimento per tutto il percorso",
             "Intelligenza Emotiva misurabile (KCG/SEI)",
             "Approccio sistemico avanzato",
             "Pratica supervisionata con Mentor MCC",
@@ -672,8 +683,9 @@ export const coursesContent: Record<string, CourseData> = {
           price: "4.500€",
           priceLabel: "+ IVA",
           hours: "90 ore accademiche",
-          benefit: "Solo per chi ha già il L1",
+          benefit: "Prerequisito: Livello 1",
           features: [
+            "Accesso riservato a chi ha completato il Livello 1",
             "Intelligenza Emotiva avanzata",
             "Lavoro sui sistemi complessi",
             "Mentor coaching ICF (7+3 ore)",
