@@ -30,45 +30,34 @@ const coursesData = [
     id: 'systemic-team-coaching',
     category: 'Per coach già attivi',
     type: "AVANZATO",
-    title: "Systemic Team Coaching Master",
-    desc: "Specializzati nel guidare team complessi attraverso l'approccio sistemico. Ideale per coach che vogliono lavorare in contesti corporate.",
-    duration: "60 ore - Online",
-    next: "Giugno 2026",
+    title: "Asterys Systemic Team Coaching (ASTC)",
+    desc: "Il modello ASTC accreditato ICF per il coaching sistemico dei team. Prerequisito per la credenziale ACTC, 54 ore sincrone equivalenti a 60 CCE.",
+    duration: "54 ore - Online + Aula",
+    next: "Ottobre 2026",
     img: "https://picsum.photos/seed/team/600/400",
-    tags: ['Team Coaching', 'Sistemico', 'Corporate']
+    tags: ['ICF AATC', 'Sistemico', 'Milano / Roma']
   },
   {
     id: 'eiw',
     category: 'Intelligenza emotiva',
-    type: "SHORT",
+    type: "WORKOUT EQ",
     title: "Emotional Intelligence Workout (EIW)",
-    desc: "Sviluppa la tua intelligenza emotiva con il metodo Six Seconds. Un percorso pratico per migliorare la tua efficacia personale e professionale.",
-    duration: "24 ore - Online",
-    next: "Settembre 2026",
+    desc: "Allena la tua intelligenza emotiva con esperienze consapevoli guidate dai coach EIW. Modello CSI, fiore di Plutchik, 4 CCE ICF per Round.",
+    duration: "Round da 4 CCE ICF",
+    next: "Prossimo Round",
     img: "https://picsum.photos/seed/ei/600/400",
-    tags: ['Six Seconds', 'Soft Skills', 'Leadership']
+    tags: ['Modello CSI', 'Plutchik', 'CCE ICF']
   },
   {
-    id: 'prosperous-coach',
+    id: 'coaching-circle',
     category: 'Per coach già attivi',
-    type: "BUSINESS",
-    title: "Prosperous Coach Program",
-    desc: "Dimentica il marketing generico. Impara a posizionarti come esperto e a trovare clienti in linea con i tuoi valori.",
-    duration: "3 mesi - Mentoring",
-    next: "Inizio libero",
-    img: "https://picsum.photos/seed/business/600/400",
-    tags: ['Business', 'Marketing', 'Posizionamento']
-  },
-  {
-    id: 'hr-manager-coaching',
-    category: 'Per HR/manager',
-    type: "SKILLS",
-    title: "Coaching Skills for Leaders",
-    desc: "Integra il coaching nel tuo stile di gestione. Per manager che vogliono sbloccare il potenziale dei propri collaboratori.",
-    duration: "32 ore - In Sede/Online",
-    next: "Ottobre 2026",
-    img: "https://picsum.photos/seed/manager/600/400",
-    tags: ['Management', 'HR', 'Leadership']
+    type: "PRATICA SUPERVISIONATA",
+    title: "Coaching Circle",
+    desc: "3,30 ore di pratica di coaching supervisionata da un mentor-coach PCC, in gruppi da 4. Feedback immediato e confronto tra pari.",
+    duration: "3,30 ore - Zoom",
+    next: "Data condivisa nel gruppo",
+    img: "https://picsum.photos/seed/coaching-circle/600/400",
+    tags: ['Mentor PCC+', 'Gruppi da 4', 'Feedback immediato']
   },
   {
     id: 'public-speaking',
@@ -80,17 +69,6 @@ const coursesData = [
     next: "Novembre 2026",
     img: "https://picsum.photos/seed/speaking/600/400",
     tags: ['Soft Skills', 'Comunicazione']
-  },
-  {
-    id: 'mentor-coaching',
-    category: 'Per coach già attivi',
-    type: "MENTORING",
-    title: "Mentor Coaching ICF per ACC/PCC",
-    desc: "Ore di mentoring obbligatorie per il rinnovo o l'ottenimento delle credenziali ICF. Feedback diretto dai nostri MCC.",
-    duration: "10 ore - Online",
-    next: "Sessioni individuali",
-    img: "https://picsum.photos/seed/mentoring/600/400",
-    tags: ['ICF Renewal', 'MCC Feedback']
   }
 ];
 

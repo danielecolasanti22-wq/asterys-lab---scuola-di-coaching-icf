@@ -11,13 +11,16 @@ import EventDetail from './pages/EventDetail';
 import Blog from './pages/Blog';
 import BlogPostDetail from './pages/BlogPostDetail';
 import Corporate from './pages/Corporate';
+import About from './pages/About';
+import Iscriviti from './pages/Iscriviti';
 
 // --- Global Scroll Recovery Component ---
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) return;
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 };
 
@@ -35,6 +38,8 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPostDetail />} />
           <Route path="/aziende" element={<Corporate />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/iscriviti" element={<Iscriviti />} />
         </Routes>
       </LayoutWrapper>
     </Router>
