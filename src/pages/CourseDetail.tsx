@@ -567,40 +567,48 @@ export default function CourseDetail() {
 
       {/* 2b. WHY CHOOSE */}
       {course.whyChoose ? (
-        <section className="py-16 lg:py-20 bg-[#F6F8FC]">
+        <section className="py-16 lg:py-24 bg-[#F6F8FC]">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="text-center mb-12 lg:mb-14">
-              {course.whyChoose.eyebrow ? (
-                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
-                  {course.whyChoose.eyebrow}
-                </p>
-              ) : null}
-              <h2 className={`${tSection} mb-4 max-w-3xl mx-auto`}>
-                {course.whyChoose.title}
-              </h2>
-              {course.whyChoose.intro ? (
-                <p className={`${tLead} max-w-2xl mx-auto`}>
-                  {richText(course.whyChoose.intro)}
-                </p>
-              ) : null}
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {course.whyChoose.bullets.map((b, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl bg-white p-6 lg:p-7 ring-1 ring-black/5 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.3)]"
-                >
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent mb-4">
-                    <CheckCircle2 size={20} strokeWidth={2.25} />
-                  </div>
-                  <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
-                    {b.title}
-                  </h3>
-                  <p className="text-sm text-brand-navy/70 leading-relaxed">
-                    {b.desc}
+            <div className="grid lg:grid-cols-[0.9fr_1.35fr] gap-10 lg:gap-16 items-start">
+              <div>
+                {course.whyChoose.eyebrow ? (
+                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                    {course.whyChoose.eyebrow}
                   </p>
-                </div>
-              ))}
+                ) : null}
+                <h2 className={`${tSection} mb-5 max-w-xl`}>
+                  {course.whyChoose.title}
+                </h2>
+                {course.whyChoose.intro ? (
+                  <p className={`${tBody} max-w-xl`}>
+                    {richText(course.whyChoose.intro)}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="bg-white border-y border-brand-navy/10">
+                {course.whyChoose.bullets.map((b, i) => (
+                  <div
+                    key={i}
+                    className="grid sm:grid-cols-[72px_1fr] gap-4 sm:gap-6 px-0 py-6 sm:py-7 border-b border-brand-navy/10 last:border-b-0"
+                  >
+                    <div className="flex items-start gap-3 sm:block">
+                      <span className="block text-[11px] font-black uppercase tracking-[0.22em] text-brand-accent sm:mb-2">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="hidden sm:block h-px w-10 bg-brand-accent/35" />
+                    </div>
+                    <div className="grid md:grid-cols-[0.78fr_1fr] gap-3 md:gap-7">
+                      <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-tight">
+                        {b.title}
+                      </h3>
+                      <p className="text-sm sm:text-[15px] text-brand-navy/68 leading-relaxed font-medium">
+                        {b.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
