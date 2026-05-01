@@ -595,103 +595,80 @@ export default function CourseDetail() {
               </div>
 
               {(() => {
-                const includedValue = [
+                const includedCards = [
                   {
-                    label: 'Continuous Learning',
+                    icon: CalendarCheck,
                     title: '6 o 9 incontri di Continuous Learning',
-                    text: "Dal momento dell'iscrizione fino a dopo la fine del Master accedi a incontri di approfondimento continuo: 6 nel percorso di 1° livello, 9 nel Percorso Completo.",
+                    desc: "Dal momento dell'iscrizione fino a dopo la fine del Master: 6 incontri nel 1° livello, 9 nel Percorso Completo.",
                   },
                   {
-                    label: 'Tutoring',
+                    icon: HeartHandshake,
                     title: 'Coach tutor assegnato',
-                    text: 'Hai un coach tutor di riferimento che ti segue prima, durante e dopo il percorso, aiutandoti a orientare apprendimento, pratica e crescita personale.',
+                    desc: 'Un coach tutor di riferimento ti accompagna prima, durante e dopo il percorso.',
                   },
                   {
-                    label: 'Community',
+                    icon: Network,
                     title: 'Forum per classe e community',
-                    text: "Uno spazio dedicato per interagire con la classe dell'edizione scelta, confrontarti con i colleghi e restare dentro la community del Master.",
+                    desc: "Uno spazio dedicato per interagire con la classe dell'edizione scelta e con la community.",
                   },
                   {
-                    label: 'Intelligenza Emotiva',
-                    title: 'Corso da 4 lezioni sull’Intelligenza Emotiva',
-                    text: "Un modulo dedicato per integrare strumenti, linguaggio e pratiche dell'Intelligenza Emotiva nel lavoro di coaching.",
+                    icon: BarChart3,
+                    title: "Corso sull'Intelligenza Emotiva",
+                    desc: "4 lezioni dedicate a strumenti, linguaggio e pratiche dell'Intelligenza Emotiva nel coaching.",
                   },
                   {
-                    label: 'Webinar',
+                    icon: Monitor,
                     title: 'Accesso gratuito ai webinar Asterys',
-                    text: 'Puoi partecipare gratuitamente ai nostri webinar per continuare ad approfondire temi, strumenti e applicazioni professionali del coaching.',
+                    desc: 'Partecipazione gratuita ai webinar Asterys per continuare ad approfondire temi e strumenti professionali.',
                   },
                   {
-                    label: 'ICF',
+                    icon: ShieldCheck,
                     title: 'Accreditamento ICF Level 1 o Level 2',
-                    text: "In base al percorso scelto, ottieni una formazione accreditata ICF di 1° o 2° livello e le ore formative utili per accedere alle credenziali ACC o PCC.",
+                    desc: 'Formazione accreditata ICF con ore formative utili per accedere alle credenziali ACC o PCC.',
                   },
                   {
-                    label: 'Piattaforma',
+                    icon: Monitor,
                     title: 'Piattaforma virtuale con risorse e link',
-                    text: 'Hai accesso a un ambiente online con materiali, risorse operative e link alle lezioni, così tutto ciò che serve resta ordinato e raggiungibile.',
+                    desc: 'Materiali, risorse operative e link alle lezioni raccolti in un ambiente online ordinato.',
+                  },
+                  {
+                    icon: BadgeCheck,
+                    title: 'Metodo e pratica supervisionata',
+                    desc: 'Sessioni reali, feedback e supervisione per trasformare la formazione in competenza applicabile.',
+                  },
+                  {
+                    icon: Users,
+                    title: 'Community alumni e Career Center',
+                    desc: 'Accesso a rete alumni, supporto carriera e occasioni di confronto anche dopo la fine del Master.',
                   },
                 ];
 
                 return (
-                  <div className="border-y border-brand-navy/10">
-                    <div className="grid lg:grid-cols-[340px_1fr]">
-                      <div className="bg-brand-navy px-6 py-8 text-white sm:px-8 lg:px-9 lg:py-10">
-                        <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-5">
-                          Incluso nel Master
-                        </p>
-                        <h3 className="font-display text-3xl sm:text-4xl leading-[0.98] font-black tracking-tight mb-5">
-                          Tutto ciò che sostiene il tuo percorso.
-                        </h3>
-                        <p className="text-sm sm:text-base leading-relaxed text-white/68 font-medium mb-8">
-                          APCM non è solo calendario lezioni: è accompagnamento, materiali, community e accesso a contenuti che restano utili durante tutto il percorso.
-                        </p>
-                        <div className="grid grid-cols-2 gap-4 border-t border-white/12 pt-6">
-                          <div>
-                            <p className="font-display text-4xl font-black leading-none">7</p>
-                            <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/48">
-                              asset inclusi
-                            </p>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {includedCards.map((card, index) => {
+                      const Icon = card.icon;
+                      return (
+                        <article
+                          key={card.title}
+                          className="group relative min-h-[250px] rounded-[1.5rem] border border-brand-navy/10 bg-[#F6F8FC] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/25 hover:bg-white hover:shadow-xl"
+                        >
+                          <div className="mb-7 flex items-start justify-between gap-4">
+                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-accent ring-1 ring-brand-navy/10 transition-colors group-hover:bg-[#EAF0FF]">
+                              <Icon size={22} strokeWidth={1.9} />
+                            </span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/28">
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
                           </div>
-                          <div>
-                            <p className="font-display text-4xl font-black leading-none">ICF</p>
-                            <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/48">
-                              Level 1 o 2
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-[#F6F8FC]">
-                        <div className="divide-y divide-brand-navy/10">
-                          {includedValue.map((item, index) => (
-                            <article
-                              key={item.title}
-                              className="grid gap-4 px-5 py-6 sm:grid-cols-[92px_1fr] sm:px-8 lg:px-10"
-                            >
-                              <div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-accent">
-                                  {String(index + 1).padStart(2, '0')}
-                                </span>
-                              </div>
-                              <div className="grid gap-3 lg:grid-cols-[170px_1fr] lg:gap-8">
-                                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/42">
-                                  {item.label}
-                                </p>
-                                <div>
-                                  <h3 className="font-display text-xl sm:text-2xl font-black tracking-tight leading-[1.05] text-brand-navy mb-2">
-                                    {item.title}
-                                  </h3>
-                                  <p className="text-sm sm:text-base leading-relaxed text-brand-navy/64 font-medium">
-                                    {item.text}
-                                  </p>
-                                </div>
-                              </div>
-                            </article>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                          <h3 className="font-display text-xl sm:text-[22px] font-black tracking-tight leading-[1.05] text-brand-navy mb-3">
+                            {card.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-brand-navy/64 font-medium">
+                            {card.desc}
+                          </p>
+                        </article>
+                      );
+                    })}
                   </div>
                 );
               })()}
