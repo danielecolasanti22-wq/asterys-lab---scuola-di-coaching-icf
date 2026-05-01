@@ -345,7 +345,7 @@ export const coursesContent: Record<string, CourseData> = {
       brochureDecor: "/course-media/apcm/brochure.webp",
       advisor: "/course-media/apcm/advisor.webp",
       completePractical: "/course-media/apcm/practical.webp",
-      completePlatform: "/course-media/apcm/platform.webp",
+      completePlatform: "/course-media/apcm/platform-ui.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
     howItWorks: {
