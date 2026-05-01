@@ -341,12 +341,12 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER PROFESSIONISTI",
     media: {
       hero: "/course-media/apcm/hero-apcm.png",
-      overview: "/course-media/apcm/overview.webp",
+      overview: "/course-media/apcm/overview-master.jpg",
       brochureDecor: "/course-media/apcm/brochure.webp",
       advisor: "/course-media/apcm/advisor.webp",
       completePractical: "/course-media/apcm/practical.webp",
       completePlatform: "/course-media/apcm/platform.webp",
-      howItWorks: "/course-media/apcm/how-it-works.webp",
+      howItWorks: "/course-media/apcm/how-master.jpg",
     },
     howItWorks: {
       title: "Come funziona il Master",
@@ -463,8 +463,41 @@ export const coursesContent: Record<string, CourseData> = {
       ],
     },
     teachers: [
-      { name: "Giovanna Giuffredi", creds: "MCC", role: "Fondatrice", bio: "25+ anni esperienza, già Presidente ICF Italia.", img: "https://picsum.photos/seed/giovanna/300/300" },
-      { name: "Pietro Monti", creds: "PCC", role: "Senior Trainer", bio: "Esperto in Team Coaching per multinazionali.", img: "https://picsum.photos/seed/pietro/300/300" }
+      {
+        name: "Pier Paolo Colasanti",
+        creds: "PCC",
+        role: "CEO Asterys Lab, Executive e Team Coach ICF & Facilitator",
+        bio: "Executive e Team Coach, facilitator e guida dei percorsi Asterys Lab per lo sviluppo di persone, team e organizzazioni.",
+        img: "/course-media/apcm/trainer-pier-paolo-colasanti.jpg"
+      },
+      {
+        name: "Alessandra Bitelli",
+        creds: "MCC",
+        role: "Trainer & Executive Coach",
+        bio: "Trainer ed Executive Coach MCC, specializzata nell'accompagnare professionisti e leader in percorsi di crescita e trasformazione.",
+        img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg"
+      },
+      {
+        name: "Nicoletta Stellino",
+        creds: "PCC",
+        role: "EQ Facilitator, Executive & Leadership Coaching, Career Coaching, Mentor Coach",
+        bio: "Coach PCC, EQ Facilitator e Mentor Coach, con focus su leadership, carriera e sviluppo dell'intelligenza emotiva.",
+        img: "/course-media/apcm/trainer-nicoletta-stellino.jpg"
+      },
+      {
+        name: "Paola Rulfi",
+        creds: "MCC",
+        role: "Business and Executive Coach, Mentor Coach, Supervisor",
+        bio: "Business ed Executive Coach MCC, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
+        img: "/course-media/apcm/trainer-paola-rulfi.png"
+      },
+      {
+        name: "Renata Cargnelutti Beltrami",
+        creds: "PCC",
+        role: "Executive Coach & Trainer",
+        bio: "Executive Coach e Trainer PCC, accompagna leader e professionisti in percorsi di consapevolezza e cambiamento.",
+        img: "/course-media/apcm/trainer-renata-cargnelutti-beltrami.png"
+      }
     ],
     career: {
       title: "Career Support Asterys",
