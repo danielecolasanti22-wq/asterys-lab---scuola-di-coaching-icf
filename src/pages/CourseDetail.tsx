@@ -2151,11 +2151,11 @@ export default function CourseDetail() {
                      <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md">
                        Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.
                      </p>
-                     <div className={id === 'apcm' ? 'mt-auto -mx-10 -mb-10 sm:-mx-12 lg:-mx-16 lg:-mb-14' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={id === 'apcm' ? 'mt-auto -mx-16 -mb-12 sm:-mx-20 lg:-mx-24 lg:-mb-16' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePlatform}
-                           className="w-[118%] max-w-none object-contain"
+                           className="w-[142%] max-w-none object-contain"
                            alt="Piattaforma didattica"
                          />
                        ) : (
