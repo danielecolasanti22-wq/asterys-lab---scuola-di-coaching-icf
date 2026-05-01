@@ -2151,11 +2151,11 @@ export default function CourseDetail() {
                      <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md">
                        Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.
                      </p>
-                     <div className={id === 'apcm' ? 'mt-auto -mx-16 -mb-12 sm:-mx-20 lg:-mx-24 lg:-mb-16' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={id === 'apcm' ? 'mt-auto -mx-7 -mb-8 sm:-mx-9 lg:-mx-10 lg:-mb-10 overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePlatform}
-                           className="w-[142%] max-w-none object-contain"
+                           className="w-[200%] max-w-none -translate-x-1/2 object-contain"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2170,14 +2170,22 @@ export default function CourseDetail() {
                   </div>
 
                   {/* Card 3 — lime yellow, image top, text bottom */}
-                  <div className="lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden flex flex-col border border-[#CBE430]/40">
-                     <div className="mb-6">
-                       <CourseImage
-                         src={media.completePractical}
-                         fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
-                         className="w-full rounded-xl lg:rounded-2xl shadow-[0_20px_50px_-26px_rgba(0,21,51,0.4)]"
-                         alt="Supervisione 1:1"
-                       />
+                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 ${id === 'apcm' ? 'overflow-visible pt-0' : 'overflow-hidden'}`}>
+                     <div className={id === 'apcm' ? 'relative -mx-8 -mt-16 mb-4 h-[190px] sm:-mx-10 sm:-mt-20 sm:h-[220px] lg:-mx-12 lg:-mt-24 lg:h-[235px]' : 'mb-6'}>
+                       {id === 'apcm' ? (
+                         <img
+                           src={media.completePractical}
+                           className="absolute left-1/2 top-0 w-[185%] max-w-none -translate-x-1/2 object-contain"
+                           alt="Supervisione 1:1"
+                         />
+                       ) : (
+                         <CourseImage
+                           src={media.completePractical}
+                           fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
+                           className="w-full rounded-xl lg:rounded-2xl shadow-[0_20px_50px_-26px_rgba(0,21,51,0.4)]"
+                           alt="Supervisione 1:1"
+                         />
+                       )}
                      </div>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
                        Supervisione 1:1 con Mentor MCC
