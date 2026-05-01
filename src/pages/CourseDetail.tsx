@@ -595,122 +595,104 @@ export default function CourseDetail() {
               </div>
 
               {(() => {
-                const bullets = course.whyChoose!.bullets;
-                const journeySteps = [
+                const includedValue = [
                   {
-                    moment: "Dopo l'iscrizione",
-                    title: 'Hai una rotta chiara',
-                    text: 'Ricevi orientamento sul percorso, sulle edizioni e sui passaggi tra 1° e 2° livello, così sai subito come arrivare alla certificazione.',
-                    result: 'Piano di percorso',
+                    label: 'Continuous Learning',
+                    title: '6 o 9 incontri di Continuous Learning',
+                    text: "Dal momento dell'iscrizione fino a dopo la fine del Master accedi a incontri di approfondimento continuo: 6 nel percorso di 1° livello, 9 nel Percorso Completo.",
                   },
                   {
-                    moment: "Prima dell'avvio",
-                    title: 'Ti viene assegnato un coach',
-                    text: "Un coach di riferimento ti accompagna già prima delle lezioni: ti aiuta a leggere obiettivi, dubbi e priorità con cui entri nel Master.",
-                    result: 'Coach dedicato',
+                    label: 'Tutoring',
+                    title: 'Coach tutor assegnato',
+                    text: 'Hai un coach tutor di riferimento che ti segue prima, durante e dopo il percorso, aiutandoti a orientare apprendimento, pratica e crescita personale.',
                   },
                   {
-                    moment: 'Nel 1° livello',
-                    title: 'Costruisci metodo e postura',
-                    text: "Lavori sulle fondamenta ICF, sull'ascolto, sulle domande e sulla relazione di coaching attraverso Incontri Online, Live Lab e pratica guidata.",
-                    result: 'Base professionale',
+                    label: 'Community',
+                    title: 'Forum per classe e community',
+                    text: "Uno spazio dedicato per interagire con la classe dell'edizione scelta, confrontarti con i colleghi e restare dentro la community del Master.",
                   },
                   {
-                    moment: 'Tra i due livelli',
-                    title: 'Consolidi prima di avanzare',
-                    text: 'Il 2° livello arriva dopo il completamento del 1°: il passaggio è pensato per farti crescere con continuità, non per sommare moduli.',
-                    result: 'Progressione ordinata',
+                    label: 'Intelligenza Emotiva',
+                    title: 'Corso da 4 lezioni sull’Intelligenza Emotiva',
+                    text: "Un modulo dedicato per integrare strumenti, linguaggio e pratiche dell'Intelligenza Emotiva nel lavoro di coaching.",
                   },
                   {
-                    moment: 'Nel 2° livello',
-                    title: 'Alleni pratica, feedback e mercato',
-                    text: 'Sessioni reali, supervisione, Intelligenza Emotiva, approccio sistemico e Prosperous Coach trasformano la formazione in competenza spendibile.',
-                    result: 'Pratica supervisionata',
+                    label: 'Webinar',
+                    title: 'Accesso gratuito ai webinar Asterys',
+                    text: 'Puoi partecipare gratuitamente ai nostri webinar per continuare ad approfondire temi, strumenti e applicazioni professionali del coaching.',
                   },
                   {
-                    moment: 'Dopo il Master',
-                    title: 'Non resti solo a percorso finito',
-                    text: 'Continui ad accedere a Career Center, community alumni e opportunità di confronto per sviluppare posizionamento, rete e crescita professionale.',
-                    result: 'Community e carriera',
+                    label: 'ICF',
+                    title: 'Accreditamento ICF Level 1 o Level 2',
+                    text: "In base al percorso scelto, ottieni una formazione accreditata ICF di 1° o 2° livello e le ore formative utili per accedere alle credenziali ACC o PCC.",
+                  },
+                  {
+                    label: 'Piattaforma',
+                    title: 'Piattaforma virtuale con risorse e link',
+                    text: 'Hai accesso a un ambiente online con materiali, risorse operative e link alle lezioni, così tutto ciò che serve resta ordinato e raggiungibile.',
                   },
                 ];
-                const proofItems = [
-                  bullets[0],
-                  bullets[2],
-                  bullets[3],
-                  bullets[4],
-                ].filter(Boolean);
 
                 return (
-                  <>
-                    <div className="relative overflow-hidden bg-[#F6F8FC] px-5 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
-                      <div className="mb-8 grid lg:grid-cols-[0.62fr_1.38fr] gap-5 lg:gap-12 items-end">
-                        <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-4">
-                            Dal primo passo al dopo Master
-                          </p>
-                          <h3 className="font-display text-3xl sm:text-4xl lg:text-[42px] leading-[0.98] font-black tracking-tight text-brand-navy">
-                            Cosa ottieni, tappa dopo tappa.
-                          </h3>
-                        </div>
-                        <p className="text-sm sm:text-base leading-relaxed text-brand-navy/64 font-medium max-w-2xl lg:ml-auto">
-                          La timeline non racconta solo le lezioni: mostra il supporto, gli strumenti e i passaggi concreti che accompagnano una persona dall'acquisto alla crescita professionale dopo il Master.
+                  <div className="border-y border-brand-navy/10">
+                    <div className="grid lg:grid-cols-[340px_1fr]">
+                      <div className="bg-brand-navy px-6 py-8 text-white sm:px-8 lg:px-9 lg:py-10">
+                        <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-5">
+                          Incluso nel Master
                         </p>
+                        <h3 className="font-display text-3xl sm:text-4xl leading-[0.98] font-black tracking-tight mb-5">
+                          Tutto ciò che sostiene il tuo percorso.
+                        </h3>
+                        <p className="text-sm sm:text-base leading-relaxed text-white/68 font-medium mb-8">
+                          APCM non è solo calendario lezioni: è accompagnamento, materiali, community e accesso a contenuti che restano utili durante tutto il percorso.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4 border-t border-white/12 pt-6">
+                          <div>
+                            <p className="font-display text-4xl font-black leading-none">7</p>
+                            <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/48">
+                              asset inclusi
+                            </p>
+                          </div>
+                          <div>
+                            <p className="font-display text-4xl font-black leading-none">ICF</p>
+                            <p className="mt-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/48">
+                              Level 1 o 2
+                            </p>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="relative">
-                        <div className="absolute left-[21px] top-4 bottom-4 w-px bg-brand-navy/12 lg:left-0 lg:right-0 lg:top-[27px] lg:bottom-auto lg:h-px lg:w-full" />
-                        <div className="grid lg:grid-cols-6 gap-7 lg:gap-4">
-                          {journeySteps.map((step, index) => (
-                            <article key={step.moment} className="relative pl-14 lg:pl-0 lg:pt-16">
-                              <div className="absolute left-0 top-0 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-brand-accent/35 bg-white shadow-sm lg:left-0 lg:top-0">
-                                <span className="flex h-3 w-3 rounded-full bg-brand-accent" />
+                      <div className="bg-[#F6F8FC]">
+                        <div className="divide-y divide-brand-navy/10">
+                          {includedValue.map((item, index) => (
+                            <article
+                              key={item.title}
+                              className="grid gap-4 px-5 py-6 sm:grid-cols-[92px_1fr] sm:px-8 lg:px-10"
+                            >
+                              <div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-accent">
+                                  {String(index + 1).padStart(2, '0')}
+                                </span>
                               </div>
-                              <div className="mb-4 inline-flex items-center rounded-full border border-brand-navy/10 bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-brand-navy/48">
-                                {step.moment}
+                              <div className="grid gap-3 lg:grid-cols-[170px_1fr] lg:gap-8">
+                                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/42">
+                                  {item.label}
+                                </p>
+                                <div>
+                                  <h3 className="font-display text-xl sm:text-2xl font-black tracking-tight leading-[1.05] text-brand-navy mb-2">
+                                    {item.title}
+                                  </h3>
+                                  <p className="text-sm sm:text-base leading-relaxed text-brand-navy/64 font-medium">
+                                    {item.text}
+                                  </p>
+                                </div>
                               </div>
-                              <h4 className="font-display text-xl lg:text-[22px] font-black tracking-tight leading-[1.03] text-brand-navy mb-3">
-                                {step.title}
-                              </h4>
-                              <p className="text-sm leading-relaxed text-brand-navy/64 font-medium mb-4">
-                                {step.text}
-                              </p>
-                              <p className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-accent">
-                                {step.result}
-                              </p>
                             </article>
                           ))}
                         </div>
                       </div>
                     </div>
-
-                    <div className="mt-9 lg:mt-12 grid lg:grid-cols-[0.58fr_1.42fr] gap-8 lg:gap-14">
-                      <div>
-                        <p className="text-[11px] font-black uppercase tracking-[0.24em] text-brand-navy/35 mb-3">
-                          Le basi che rendono il percorso solido
-                        </p>
-                        <p className="text-lg sm:text-xl leading-snug font-display font-black text-brand-navy">
-                          Accreditamento, trainer, metodo e strumenti restano dentro ogni fase della timeline.
-                        </p>
-                      </div>
-
-                      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7 border-t border-brand-navy/10 pt-7">
-                        {proofItems.map((b, i) => (
-                          <article key={b.title} className="relative pl-10">
-                            <span className="absolute left-0 top-1 text-[11px] font-black uppercase tracking-[0.22em] text-brand-accent">
-                              {String(i + 1).padStart(2, '0')}
-                            </span>
-                            <h3 className="font-display text-lg sm:text-xl font-black tracking-tight leading-[1.05] text-brand-navy mb-2">
-                              {b.title}
-                            </h3>
-                            <p className="text-sm leading-relaxed text-brand-navy/64 font-medium">
-                              {b.desc}
-                            </p>
-                          </article>
-                        ))}
-                      </div>
-                    </div>
-                  </>
+                  </div>
                 );
               })()}
             </div>
