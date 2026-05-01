@@ -573,65 +573,169 @@ export default function CourseDetail() {
 
       {/* 2b. WHY CHOOSE */}
       {course.whyChoose ? (
-        <section className="py-16 lg:py-24 bg-[#F6F8FC]">
-          <div className="max-w-[941px] mx-auto px-4">
-            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
-              <div className="max-w-xl">
-                {course.whyChoose.eyebrow ? (
-                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
-                    {course.whyChoose.eyebrow}
+        id === 'apcm' ? (
+          <section className="py-16 lg:py-24 bg-white">
+            <div className="max-w-[1080px] mx-auto px-4">
+              <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-end mb-10 lg:mb-14">
+                <div className="max-w-xl">
+                  {course.whyChoose.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.whyChoose.eyebrow}
+                    </p>
+                  ) : null}
+                  <h2 className={`${tSection} mb-0 max-w-xl`}>
+                    {course.whyChoose.title}
+                  </h2>
+                </div>
+                {course.whyChoose.intro ? (
+                  <p className={`${tBody} max-w-xl lg:pb-1`}>
+                    {richText(course.whyChoose.intro)}
                   </p>
                 ) : null}
-                <h2 className={`${tSection} mb-5 max-w-xl`}>
-                  {course.whyChoose.title}
-                </h2>
               </div>
-              {course.whyChoose.intro ? (
-                <p className={`${tBody} max-w-xl lg:pb-2`}>
-                  {richText(course.whyChoose.intro)}
-                </p>
-              ) : null}
-            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden border border-brand-navy/10 bg-brand-navy/10">
-              {course.whyChoose.bullets.map((b, i) => {
-                const benefitIcons = [
-                  ShieldCheck,
-                  HeartHandshake,
-                  BarChart3,
-                  Network,
-                  BadgeCheck,
-                  Route,
-                  TrendingUp,
-                  Users,
-                ];
-                const Icon = benefitIcons[i % benefitIcons.length];
+              {(() => {
+                const bullets = course.whyChoose!.bullets;
+                const phases = [
+                  { label: 'Prima', item: bullets[1] },
+                  { label: 'Durante', item: bullets[5] },
+                  { label: 'Dopo', item: bullets[7] },
+                ].filter((phase) => phase.item);
+                const proofItems = bullets.filter((_, index) => ![1, 5, 7].includes(index));
+
                 return (
-                  <article
-                    key={i}
-                    className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#FBFCFF]"
-                  >
-                    <div className="absolute inset-x-0 top-0 h-1 bg-brand-accent/0 transition-colors group-hover:bg-brand-accent" />
-                    <div className="mb-8 flex items-start justify-between gap-4">
-                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/35">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#F6F8FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#E6EFFF]">
-                        <Icon size={20} strokeWidth={1.9} />
-                      </span>
+                  <>
+                    <div className="relative overflow-hidden bg-brand-navy px-6 py-8 text-white sm:px-9 sm:py-10 lg:px-12 lg:py-12">
+                      <div className="absolute left-0 top-0 h-full w-1.5 bg-brand-accent" />
+                      <div className="grid lg:grid-cols-[0.72fr_1.28fr] gap-8 lg:gap-12">
+                        <div className="max-w-sm">
+                          <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-accent mb-5">
+                            Accompagnamento reale
+                          </p>
+                          <h3 className="font-display text-3xl sm:text-4xl lg:text-[42px] leading-[0.96] font-black tracking-tight mb-5">
+                            Un percorso seguito dall'inizio alla pratica professionale.
+                          </h3>
+                          <p className="text-sm sm:text-base leading-relaxed text-white/68 font-medium">
+                            APCM non si limita alle ore d'aula: costruisce continuità, feedback e orientamento lungo tutto il cammino.
+                          </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-3 gap-7 lg:gap-9">
+                          {phases.map((phase, index) => (
+                            <article key={phase.label} className="relative pt-10 sm:pt-12">
+                              <span className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-[0.24em] text-white/36">
+                                {String(index + 1).padStart(2, '0')}
+                              </span>
+                              <div className="mb-5 h-px w-full bg-white/18" />
+                              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-brand-accent mb-3">
+                                {phase.label}
+                              </p>
+                              <h4 className="font-display text-xl font-black tracking-tight leading-[1.05] mb-4">
+                                {phase.item.title}
+                              </h4>
+                              <p className="text-sm leading-relaxed text-white/68 font-medium">
+                                {phase.item.desc}
+                              </p>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-4">
-                      {b.title}
-                    </h3>
-                    <p className="text-sm text-brand-navy/68 leading-relaxed font-medium">
-                      {b.desc}
-                    </p>
-                  </article>
+
+                    <div className="mt-9 lg:mt-12 grid lg:grid-cols-[0.6fr_1.4fr] gap-8 lg:gap-14">
+                      <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.24em] text-brand-navy/35 mb-3">
+                          Cosa resta concreto
+                        </p>
+                        <p className="text-lg sm:text-xl leading-snug font-display font-black text-brand-navy">
+                          Metodo, credenziali e strumenti da usare subito nel lavoro con persone, team e organizzazioni.
+                        </p>
+                      </div>
+
+                      <div className="divide-y divide-brand-navy/10 border-y border-brand-navy/10">
+                        {proofItems.map((b, i) => (
+                          <article key={b.title} className="grid sm:grid-cols-[72px_1fr] gap-4 py-6">
+                            <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-accent">
+                              {String(i + 1).padStart(2, '0')}
+                            </span>
+                            <div>
+                              <h3 className="font-display text-xl sm:text-2xl font-black tracking-tight leading-[1.05] text-brand-navy mb-2">
+                                {b.title}
+                              </h3>
+                              <p className="text-sm sm:text-base leading-relaxed text-brand-navy/64 font-medium max-w-2xl">
+                                {b.desc}
+                              </p>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 );
-              })}
+              })()}
             </div>
-          </div>
-        </section>
+          </section>
+        ) : (
+          <section className="py-16 lg:py-24 bg-[#F6F8FC]">
+            <div className="max-w-[941px] mx-auto px-4">
+              <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
+                <div className="max-w-xl">
+                  {course.whyChoose.eyebrow ? (
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                      {course.whyChoose.eyebrow}
+                    </p>
+                  ) : null}
+                  <h2 className={`${tSection} mb-5 max-w-xl`}>
+                    {course.whyChoose.title}
+                  </h2>
+                </div>
+                {course.whyChoose.intro ? (
+                  <p className={`${tBody} max-w-xl lg:pb-2`}>
+                    {richText(course.whyChoose.intro)}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden border border-brand-navy/10 bg-brand-navy/10">
+                {course.whyChoose.bullets.map((b, i) => {
+                  const benefitIcons = [
+                    ShieldCheck,
+                    HeartHandshake,
+                    BarChart3,
+                    Network,
+                    BadgeCheck,
+                    Route,
+                    TrendingUp,
+                    Users,
+                  ];
+                  const Icon = benefitIcons[i % benefitIcons.length];
+                  return (
+                    <article
+                      key={i}
+                      className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#FBFCFF]"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-1 bg-brand-accent/0 transition-colors group-hover:bg-brand-accent" />
+                      <div className="mb-8 flex items-start justify-between gap-4">
+                        <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/35">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#F6F8FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#E6EFFF]">
+                          <Icon size={20} strokeWidth={1.9} />
+                        </span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-4">
+                        {b.title}
+                      </h3>
+                      <p className="text-sm text-brand-navy/68 leading-relaxed font-medium">
+                        {b.desc}
+                      </p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )
       ) : null}
 
       {/* 3. PROGRAMMA DEL MASTER TABS */}
