@@ -2144,18 +2144,28 @@ export default function CourseDetail() {
                {/* Row 2 — two cards side by side */}
                <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className="lg:col-span-3 bg-gradient-to-br from-[#DFF3FB] to-[#E8EEFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col">
+                  <div className="lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col min-h-[430px] lg:min-h-[456px]">
                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
-                       Piattaforma didattica con registrazioni
+                       {id === 'apcm' ? (
+                         <>
+                           Piattaforma didattica
+                           <br />
+                           potenziata dall'AI
+                         </>
+                       ) : (
+                         'Piattaforma didattica con registrazioni'
+                       )}
                      </h3>
                      <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md">
-                       Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.
+                       {id === 'apcm'
+                         ? 'Ti sei perso una lezione? Accedi a tutte le registrazioni, con funzionalità AI per poterle seguire più facilmente.'
+                         : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
                      <div className={id === 'apcm' ? 'mt-auto -mx-7 -mb-8 sm:-mx-9 lg:-mx-10 lg:-mb-10 overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePlatform}
-                           className="w-[200%] max-w-none -translate-x-1/2 object-contain"
+                           className="w-[145%] max-w-none -translate-x-[12%] object-contain"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2170,12 +2180,12 @@ export default function CourseDetail() {
                   </div>
 
                   {/* Card 3 — lime yellow, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 ${id === 'apcm' ? 'overflow-visible pt-0' : 'overflow-hidden'}`}>
-                     <div className={id === 'apcm' ? 'relative -mx-8 -mt-16 mb-4 h-[190px] sm:-mx-10 sm:-mt-20 sm:h-[220px] lg:-mx-12 lg:-mt-24 lg:h-[235px]' : 'mb-6'}>
+                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 min-h-[430px] lg:min-h-[456px] ${id === 'apcm' ? 'overflow-visible pt-0' : 'overflow-hidden'}`}>
+                     <div className={id === 'apcm' ? 'relative -mx-6 -mt-12 mb-2 h-[182px] sm:-mx-8 sm:-mt-14 sm:h-[210px] lg:-mx-9 lg:-mt-16 lg:h-[214px]' : 'mb-6'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 top-0 w-[185%] max-w-none -translate-x-1/2 object-contain"
+                           className="absolute left-1/2 top-0 w-[134%] max-w-none -translate-x-1/2 object-contain"
                            alt="Supervisione 1:1"
                          />
                        ) : (
@@ -2188,10 +2198,12 @@ export default function CourseDetail() {
                        )}
                      </div>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
-                       Supervisione 1:1 con Mentor MCC
+                       {id === 'apcm' ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
                      <p className="text-sm text-brand-navy/75 font-medium leading-relaxed">
-                       Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.
+                       {id === 'apcm'
+                         ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
+                         : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
                   </div>
                </div>
