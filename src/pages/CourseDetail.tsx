@@ -2144,7 +2144,7 @@ export default function CourseDetail() {
                {/* Row 2 — two cards side by side */}
                <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${id === 'apcm' ? 'relative min-h-[500px] sm:min-h-[540px] lg:h-[560px]' : ''}`}>
+                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${id === 'apcm' ? 'relative min-h-[440px] sm:min-h-[460px] lg:h-[456px]' : ''}`}>
                      <h3 className={`${id === 'apcm' ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
                        {id === 'apcm' ? (
                          <>
@@ -2161,11 +2161,11 @@ export default function CourseDetail() {
                          ? 'Ti sei perso una lezione? Accedi a tutte le registrazioni, con funzionalità AI per poterle seguire più facilmente.'
                          : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
-                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[260px] sm:h-[300px] lg:h-[286px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[226px] sm:h-[244px] lg:h-[238px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePlatform}
-                           className="absolute left-1/2 bottom-[-32px] w-[150%] max-w-none -translate-x-[48%] object-contain sm:w-[144%] lg:bottom-[-46px] lg:w-[152%]"
+                           className="absolute left-1/2 bottom-[-36px] w-[158%] max-w-none -translate-x-[48%] object-contain sm:w-[150%] lg:bottom-[-48px] lg:w-[160%]"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2180,12 +2180,20 @@ export default function CourseDetail() {
                   </div>
 
                   {/* Card 3 — lime yellow, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 ${id === 'apcm' ? 'relative overflow-visible min-h-[392px] sm:min-h-[420px] lg:mt-[116px] lg:h-[444px] lg:min-h-0' : 'overflow-hidden'}`}>
-                     <div className={id === 'apcm' ? 'relative -mx-6 -mt-12 mb-1 h-[178px] sm:-mx-8 sm:-mt-14 sm:h-[198px] lg:-mx-9 lg:-mt-[118px] lg:mb-0 lg:h-[120px]' : 'mb-6'}>
+                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 ${id === 'apcm' ? 'relative overflow-hidden min-h-[440px] sm:min-h-[460px] lg:h-[456px]' : 'overflow-hidden'}`}>
+                     <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                       {id === 'apcm' ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
+                     </h3>
+                     <p className="relative z-10 text-sm text-brand-navy/75 font-medium leading-relaxed">
+                       {id === 'apcm'
+                         ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
+                         : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
+                     </p>
+                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[178px] sm:h-[194px] lg:h-[200px]' : 'mb-6'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 top-0 w-[124%] max-w-none -translate-x-1/2 object-contain sm:w-[118%] lg:w-[122%]"
+                           className="absolute left-1/2 bottom-[-16px] w-[120%] max-w-none -translate-x-1/2 object-contain sm:w-[114%] lg:bottom-[-24px] lg:w-[122%]"
                            alt="Supervisione 1:1"
                          />
                        ) : (
@@ -2197,14 +2205,6 @@ export default function CourseDetail() {
                          />
                        )}
                      </div>
-                     <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
-                       {id === 'apcm' ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
-                     </h3>
-                     <p className="text-sm text-brand-navy/75 font-medium leading-relaxed">
-                       {id === 'apcm'
-                         ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
-                         : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
-                     </p>
                   </div>
                </div>
 
