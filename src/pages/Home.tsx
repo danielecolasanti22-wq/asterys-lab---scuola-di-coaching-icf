@@ -93,9 +93,9 @@ const Hero = () => (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
-          src="/course-media/apcm/hero.png"
+          src="/home/hero-people.png"
           alt="Coach Asterys"
-          className="w-full h-auto object-cover aspect-[16/10]"
+          className="w-full h-auto object-contain aspect-[16/10] object-bottom"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
@@ -165,11 +165,11 @@ const Hero = () => (
       </div>
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-        <div className="w-full lg:w-[122%] lg:-mr-[10%] h-auto relative flex items-end">
+        <div className="w-full lg:w-[138%] lg:-mr-[20%] h-full relative flex items-end">
           <img
-            src="/course-media/apcm/hero.png"
+            src="/home/hero-people.png"
             alt="Coach Asterys"
-            className="w-full h-auto object-contain lg:origin-bottom-right"
+            className="block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
             referrerPolicy="no-referrer"
           />
         </div>
