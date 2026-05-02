@@ -2161,11 +2161,11 @@ export default function CourseDetail() {
                          ? 'Ti sei perso una lezione? Accedi a tutte le registrazioni, con funzionalità AI per poterle seguire più facilmente.'
                          : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
-                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[246px] sm:h-[260px] lg:h-[250px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[232px] sm:h-[246px] lg:h-[236px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePlatform}
-                           className="absolute left-1/2 bottom-[-68px] w-[168%] max-w-none -translate-x-[48%] object-contain sm:bottom-[-72px] sm:w-[160%] lg:bottom-[-84px] lg:w-[170%]"
+                           className="absolute left-1/2 bottom-[-34px] w-[146%] max-w-none -translate-x-[47%] object-contain sm:bottom-[-38px] sm:w-[142%] lg:bottom-[-44px] lg:w-[146%]"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2189,11 +2189,11 @@ export default function CourseDetail() {
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
-                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[210px] sm:h-[226px] lg:h-[238px]' : 'mb-6'}>
+                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[216px] sm:h-[230px] lg:h-[236px]' : 'mb-6'}>
                        {id === 'apcm' ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-20px] w-[152%] max-w-none -translate-x-1/2 object-contain sm:w-[144%] lg:bottom-[-30px] lg:w-[152%]"
+                           className="absolute left-1/2 bottom-[-8px] w-[172%] max-w-none -translate-x-1/2 object-contain sm:w-[162%] lg:bottom-[-12px] lg:w-[172%]"
                            alt="Supervisione 1:1"
                          />
                        ) : (
