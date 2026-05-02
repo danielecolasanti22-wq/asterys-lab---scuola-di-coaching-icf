@@ -477,12 +477,16 @@ const AdvisorBand = () => (
           Vuoi parlare con noi?
         </h2>
         <div className="flex -space-x-2">
-          {[1, 2, 3].map((i) => (
+          {[
+            '/advisors/advisor-1.png',
+            '/advisors/advisor-2.png',
+            '/advisors/advisor-3.jpeg'
+          ].map((src) => (
             <img
-              key={i}
-              src={`https://picsum.photos/seed/advisor${i}/80/80`}
+              key={src}
+              src={src}
               className="w-9 h-9 rounded-full border-2 border-white object-cover"
-              alt=""
+              alt="Advisor Asterys Lab"
             />
           ))}
         </div>
@@ -499,8 +503,8 @@ const AdvisorBand = () => (
         </a>
         <span className="text-xs text-brand-navy/70">
           Oppure chiamaci al{' '}
-          <a href="tel:+390255555855" className="font-black text-brand-navy underline">
-            +39 02 5555 855
+          <a href="tel:+393498864895" className="font-black text-brand-navy underline">
+            +39 349 886 4895
           </a>
         </span>
       </div>
