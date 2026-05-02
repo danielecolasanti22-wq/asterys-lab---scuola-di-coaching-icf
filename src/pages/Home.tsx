@@ -19,11 +19,70 @@ import {
   Users,
   Target
 } from 'lucide-react';
-import { coursesContent, commonTestimonials } from '../constants/coursesContent';
+import { coursesContent, type CourseTestimonial } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
+
+const homeTestimonials: CourseTestimonial[] = [
+  {
+    name: 'Nicola Fratiglioni',
+    role: 'Business Coach',
+    cohort: 'Video testimonianza',
+    quote: 'Un racconto diretto sul percorso di coaching e sull’impatto del metodo Asterys Lab nella crescita professionale.',
+    video: {
+      poster: 'https://vumbnail.com/359988626.jpg',
+      vimeoEmbedUrl: 'https://player.vimeo.com/video/359988626?badge=0&autopause=0&player_id=0&app_id=58479'
+    }
+  },
+  {
+    name: 'Alessandro Stocco',
+    role: 'Coach',
+    img: '/testimonials/people/alessandro-stocco.jpeg',
+    quote:
+      'Avevo aspettative limitate rispetto al corso. Non solo sono state ampiamente superate, ma ho scoperto passo dopo passo nuove possibilità e nuove consapevolezze.',
+    rating: 5,
+    cohort: 'Community Asterys Lab'
+  },
+  {
+    name: 'Costanza Catapano',
+    role: 'HR',
+    img: '/testimonials/people/costanza-catapano.jpeg',
+    quote:
+      'Un viaggio alla scoperta di sé stessi e degli altri, accompagnato da trainer competenti e da un gruppo entusiasta ed eterogeneo.',
+    rating: 5,
+    cohort: 'Community Asterys Lab'
+  },
+  {
+    name: 'Flora Pietropaolo',
+    role: 'Recruiting Manager',
+    cohort: 'Video testimonianza',
+    quote: 'Una testimonianza sul valore del coaching nelle relazioni professionali, nello sviluppo delle persone e nei contesti HR.',
+    video: {
+      poster: 'https://vumbnail.com/365158982.jpg',
+      vimeoEmbedUrl: 'https://player.vimeo.com/video/365158982?badge=0&autopause=0&player_id=0&app_id=58479'
+    }
+  },
+  {
+    name: 'Damiano Zanotti',
+    role: 'COO presso Claypaky',
+    img: '/testimonials/people/damiano-zanotti.jpeg',
+    quote:
+      'Questo percorso mi ha aiutato a cambiare come persona: essere più sensibile, ascoltare di più e portare questa qualità anche nel lavoro.',
+    rating: 5,
+    cohort: 'Community Asterys Lab'
+  },
+  {
+    name: 'Camilla Pedrazzini',
+    role: 'Product Manager HR',
+    img: '/testimonials/people/camilla-pedrazzini.jpeg',
+    quote:
+      'Un percorso sulla consapevolezza. La scuola offre metodi e tecniche per accompagnare davvero un cliente verso il suo obiettivo.',
+    rating: 5,
+    cohort: 'Community Asterys Lab'
+  }
+];
 
 /* 1. HERO */
 const Hero = () => (
@@ -448,7 +507,7 @@ const AdvisorBand = () => (
 
 /* 7. TESTIMONIANZE */
 const Testimonianze = () => {
-  const testimonials = commonTestimonials;
+  const testimonials = homeTestimonials;
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
@@ -456,7 +515,7 @@ const Testimonianze = () => {
   const textTestimonials = useMemo(() => testimonials.filter((t) => !t.video), [testimonials]);
   const slides = useMemo(
     () =>
-      textTestimonials.reduce<Array<{ video: (typeof testimonials)[number]; cards: (typeof testimonials)[number][] }>>(
+      textTestimonials.reduce<Array<{ video: CourseTestimonial; cards: CourseTestimonial[] }>>(
         (acc, testimonial, i) => {
           if (i % 2 === 0) {
             acc.push({ video: videoTestimonials[Math.min(acc.length, videoTestimonials.length - 1)], cards: [testimonial] });
@@ -469,6 +528,10 @@ const Testimonianze = () => {
       ),
     [textTestimonials, videoTestimonials]
   );
+  const goToSlide = (index: number) => {
+    if (!slides.length) return;
+    setActiveSlide((index + slides.length) % slides.length);
+  };
 
   useEffect(() => {
     if (slides.length < 2) return;
@@ -500,6 +563,13 @@ const Testimonianze = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -36 }}
                 transition={{ duration: 0.45, ease: 'easeOut' }}
+                drag={slides.length > 1 ? 'x' : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.08}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -70) goToSlide(activeSlide + 1);
+                  if (info.offset.x > 70) goToSlide(activeSlide - 1);
+                }}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${activeSlide % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}
               >
                 <button
@@ -585,6 +655,24 @@ const Testimonianze = () => {
                 </div>
               </motion.div>
             </AnimatePresence>
+
+            {slides.length > 1 ? (
+              <div className="mt-6 flex items-center justify-center gap-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    aria-label={`Vai alla pagina testimonianze ${index + 1}`}
+                    onClick={() => goToSlide(index)}
+                    className={`h-2.5 rounded-full transition-all ${
+                      activeSlide === index
+                        ? 'w-8 bg-brand-accent'
+                        : 'w-2.5 bg-brand-navy/18 hover:bg-brand-navy/35'
+                    }`}
+                  />
+                ))}
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>
