@@ -89,8 +89,8 @@ const homeTestimonials: CourseTestimonial[] = [
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="relative bg-[#F2F7FF] overflow-hidden pb-8 lg:pb-0">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[560px]">
+  <section className="relative bg-[#F2F7FF] overflow-hidden pb-6 lg:pb-0">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
           src="/course-media/apcm/hero.png"
@@ -107,20 +107,20 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="pt-16 lg:pt-20 pb-0 lg:pb-16 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] -mt-8 lg:mt-0">
-        <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 lg:mb-6 w-full sm:w-auto justify-center lg:justify-start">
+      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] -mt-8 lg:mt-0">
+        <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-          La 1ª scuola di coaching accreditata ICF
+          Formazione professionale accreditata ICF
         </div>
-        <h1 className="text-[3.45rem] text-center lg:text-left sm:text-6xl lg:text-[5.25rem] font-display font-black leading-[0.92] tracking-tighter mb-4 lg:mb-7 text-brand-navy">
-          Sblocca il tuo{' '}
+        <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
+          Dai forma alla tua{' '}
           <span className="relative inline-block">
-            <span className="relative z-10">talento nel coaching</span>
+            <span className="relative z-10">crescita professionale</span>
             <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#BED5FF] -z-0 rounded-none" />
           </span>
         </h1>
-        <p className="text-[12px] text-center lg:text-left lg:text-lg text-brand-navy/80 mb-5 lg:mb-8 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
-          Non inseguire il futuro: costruiscilo. Diventa coach professionista accreditato ICF con un metodo d'eccellenza che integra intelligenza emotiva misurabile e approccio sistemico.
+        <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
+          Percorsi in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master accreditati, scegli il passo giusto per evolvere.
         </p>
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
           <a
@@ -130,11 +130,11 @@ const Hero = () => (
             SCOPRI I CORSI
           </a>
         </div>
-        <ul className="space-y-2 lg:space-y-3 mb-5 lg:mb-10 text-[12px] lg:text-[15px] font-medium text-brand-navy">
+        <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-brand-navy">
           {[
-            'Impara da chi porta il coaching ICF in Italia dal 2001',
-            'Trasforma la teoria in pratica supervisionata',
-            'Studia con un metodo didattico sistemico e misurabile'
+            'Master, corsi brevi e formazione continua per professionisti',
+            'Lezioni live, pratica guidata e confronto con trainer esperti',
+            'Metodo Asterys Lab: concreto, sistemico e orientato alla crescita'
           ].map((b) => (
             <li key={b} className="flex items-start gap-2">
               <span className="text-brand-accent font-black mt-0.5">→</span>
@@ -144,23 +144,28 @@ const Hero = () => (
         </ul>
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex -space-x-2">
-            {[1, 2, 3, 4].map((i) => (
+            {[
+              '/testimonials/people/alessandro-stocco.jpeg',
+              '/testimonials/people/costanza-catapano.jpeg',
+              '/testimonials/people/damiano-zanotti.jpeg',
+              '/testimonials/people/camilla-pedrazzini.jpeg'
+            ].map((src) => (
               <img
-                key={i}
-                src={`https://picsum.photos/seed/face${i}/100/100`}
+                key={src}
+                src={src}
                 className="w-9 h-9 rounded-full border-2 border-[#F2F7FF] object-cover"
-                alt=""
+                alt="Alumni Asterys Lab"
               />
             ))}
           </div>
           <p className="text-[12px] text-brand-navy">
-            <span className="font-black">+3.000 coach</span> già formati
+            <span className="font-black">+3.000 persone</span> già formate
           </p>
         </div>
       </div>
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-        <div className="w-full lg:w-[135%] lg:-mr-[15%] h-auto relative flex items-end">
+        <div className="w-full lg:w-[122%] lg:-mr-[10%] h-auto relative flex items-end">
           <img
             src="/course-media/apcm/hero.png"
             alt="Coach Asterys"
