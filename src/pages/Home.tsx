@@ -17,7 +17,10 @@ import {
   Video,
   X,
   Users,
-  Target
+  Target,
+  Handshake,
+  BriefcaseBusiness,
+  BadgeCheck
 } from 'lucide-react';
 import { coursesContent, type CourseTestimonial } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
@@ -249,9 +252,9 @@ const Accreditamenti = () => {
 /* 3. SCEGLI IL PERCORSO */
 const ScegliPercorso = () => {
   const features = [
-    { icon: Users, title: 'Tutoring costante e dedicato' },
-    { icon: Target, title: 'Supporto alla carriera incluso' },
-    { icon: Award, title: 'Certificazione ICF delle skill acquisite' }
+    { icon: Handshake, title: 'Tutoring costante e dedicato' },
+    { icon: BriefcaseBusiness, title: 'Supporto alla carriera incluso' },
+    { icon: BadgeCheck, title: 'Credenziali internazionali ICF' }
   ];
   return (
     <section id="percorsi" className="py-14 lg:py-20 bg-white">
@@ -794,11 +797,11 @@ const StatsBand = () => (
   <section className="bg-[#C4F4DB]">
     <div className="max-w-[1200px] mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-x-16 gap-y-2 text-center">
       <p className="text-sm lg:text-base font-display font-black text-brand-navy tracking-[0.08em] uppercase">
-        +40 coach trainer certificati
+        Credenziali Internazionali ICF
       </p>
       <span className="hidden sm:block w-1 h-1 rounded-full bg-brand-navy/30" />
       <p className="text-sm lg:text-base font-display font-black text-brand-navy tracking-[0.08em] uppercase">
-        +3.000 studenti hanno cambiato carriera
+        +3.000 persone hanno cambiato carriera
       </p>
     </div>
   </section>
@@ -837,7 +840,7 @@ const CorsiCta = () => {
                     </div>
                     <div className="min-w-0">
                       <p className="text-[15px] font-black text-brand-navy leading-tight truncate">
-                        {c.subtitle}
+                        {c.title}
                       </p>
                       <p className="text-[11px] text-brand-navy/60 mt-0.5 uppercase tracking-wide font-bold">
                         {c.type}
