@@ -755,7 +755,7 @@ export const coursesContent: Record<string, CourseData> = {
         "Tra i primi 3 iscritti per edizione (ordine cronologico)",
         "Colloquio di ammissione positivo con un nostro Advisor"
       ],
-      availability: "3 borse di studio disponibili per edizione Roma",
+      availability: "Solo 2 borse di studio rimaste",
       ctaLabel: "Richiedi la borsa di studio",
       ctaHref: "/iscriviti"
     },

@@ -1178,8 +1178,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </p>
                   {course.scholarship.availability ? (
                     <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#78A4FF]/30 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#DDEBFF] mb-6">
-                      <Sparkles size={14} strokeWidth={2.25} />
-                      {course.scholarship.availability}
+                      Solo <span className="text-[#78A4FF] text-sm">2</span> borse di studio rimaste
                     </p>
                   ) : null}
                   <div className="flex flex-col sm:flex-row gap-3">
