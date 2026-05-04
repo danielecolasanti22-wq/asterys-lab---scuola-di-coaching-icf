@@ -442,22 +442,6 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
         }
       : null);
 
-  const specDefaults = {
-    eyebrow: 'Percorso',
-    title: 'Cosa approfondirai',
-    intro: `Un insieme equilibrato di moduli pratici per costruire competenze **concrete** e subito applicabili nel tuo contesto professionale.`,
-  };
-
-  const spec =
-    course.specializationsSection ??
-    (course.learning.cols.length
-      ? {
-          eyebrow: isMasterLike ? 'Specializzazioni' : 'Moduli',
-          title: isMasterLike ? 'Le competenze che ti distinguono' : 'I pilastri del percorso',
-          intro: specDefaults.intro,
-        }
-      : null);
-
   /** Tipografia compatta (reference: PDF Asterys) — migliora leggibilità sotto la piega */
   const tSection = 'text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter text-brand-navy';
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
@@ -1350,51 +1334,6 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
         </div>
       </section>
-
-      {/* 5b. SPECIALIZZAZIONI + CTA programma (reference Boolean) */}
-      {spec && course.learning.cols.length ? (
-        <section className="pb-16 lg:pb-20 bg-white">
-          <div className="max-w-[941px] mx-auto px-4">
-            <p className="text-lg font-display font-black text-brand-accent mb-3">{spec.eyebrow}</p>
-            <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight mb-6 max-w-2xl">
-              {spec.title}
-            </h2>
-            <p className={`${tBody} max-w-3xl mb-12`}>{richText(spec.intro)}</p>
-
-            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
-              {course.learning.cols.map((col, idx) => (
-                <div key={idx} className="flex gap-4">
-                  <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E6EFFF] text-brand-accent ring-1 ring-brand-accent/10">
-                    <Sparkles size={18} strokeWidth={2} />
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-black text-brand-navy mb-3">{col.title}</h3>
-                    <p className={`${tBody}`}>
-                      {col.items.slice(0, 4).join(' · ')}
-                      {col.items.length > 4 ? '…' : ''}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 mt-14">
-            <div className="flex flex-col gap-6 rounded-3xl bg-brand-accent px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-9">
-              <div className="text-white">
-                <p className="text-lg sm:text-xl font-display font-black">Leggi il programma completo</p>
-                <p className="mt-2 text-sm text-white/85 font-medium">Scarica il dettaglio delle unità e degli obiettivi formativi.</p>
-              </div>
-              <a
-                href="#programma"
-                className="inline-flex items-center justify-center rounded-full bg-[#E2FF3B] px-8 py-3.5 text-center text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy shadow-lg hover:brightness-95"
-              >
-                Scarica programma
-              </a>
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       {/* 5c. LEVELS COMPARISON */}
       {course.levelsComparison ? (
