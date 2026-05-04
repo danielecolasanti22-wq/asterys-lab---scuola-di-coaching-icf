@@ -4,7 +4,6 @@ import {
   CheckCircle2,
   ArrowRight,
   Users,
-  Star,
   Plus,
   Minus,
   Clock,
@@ -468,61 +467,81 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="bg-[#F2F7FF] relative overflow-hidden flex flex-col">
-        <div className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-[#1D3BB9]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-[#0047FF]/10 blur-3xl" />
-        <div className="max-w-[941px] mx-auto px-4 w-full grid lg:grid-cols-2 lg:gap-16 items-center min-h-[500px] lg:min-h-[550px]">
-          <div className="py-12 lg:py-16 relative z-10">
-            <p className="text-[#1D3BB9] text-[11px] font-black uppercase tracking-[0.05em] mb-8 flex items-center gap-2 flex-wrap">
-              <span className="bg-[#1D3BB9]/10 px-2 py-0.5 rounded text-[10px]">
-                {(course.heroKicker ?? course.type).toUpperCase()}
-              </span>
-              <span className="text-gray-300">|</span>
-              <span>{course.summaryBox.duration.toUpperCase()}</span>
-              <span className="text-gray-300">|</span>
-              <span>{course.summaryBox.format.toUpperCase()}</span>
-            </p>
-            
-            <h1 className="text-5xl lg:text-[76px] font-display font-black leading-[1] tracking-tighter mb-8 text-[#1D3BB9]">
-              {course.subtitle.split(' ').map((word, i) => (
-                <span key={i} className="block">{word}</span>
-              ))}
+      <section className="relative bg-[#F2F7FF] overflow-hidden pb-6 lg:pb-0">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
+          <div className="relative lg:hidden -mx-4 sm:-mx-6">
+            <CourseImage
+              src={media.hero}
+              fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
+              className="w-full h-auto object-contain aspect-[16/10] object-bottom"
+              alt={course.title}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
+          </div>
+
+          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] -mt-8 lg:mt-0">
+            <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
+              <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
+              {(course.heroKicker ?? course.type).toUpperCase()}
+            </div>
+
+            <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
+              {course.subtitle}
             </h1>
-            
-            <p className="text-lg text-brand-navy mb-10 max-w-sm leading-relaxed font-semibold opacity-90">
+
+            <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
               {course.tagline}
             </p>
-            
-            <button className="bg-[#001D4B] text-white px-9 py-4 rounded-full font-display font-black text-[11px] uppercase tracking-[0.2em] shadow-lg hover:bg-[#1D3BB9] transition-all active:scale-95 mb-10">
-              INIZIA IL PROCESSO DI AMMISSIONE
-            </button>
-            
-            <div className="flex items-center gap-4">
-               <div className="flex -space-x-2">
-                  {[1,2,3,4].map(i => (
-                    <img key={i} src={`https://picsum.photos/seed/face${i}/100/100`} className="w-9 h-9 rounded-full border-2 border-[#F2F7FF] object-cover" alt="Student" />
-                  ))}
-               </div>
-               <div className="flex flex-col">
-                  <div className="flex text-[#008060] gap-0.5">
-                     {[1,2,3,4,5].map(s => <Star key={s} size={11} fill="currentColor" />)}
-                  </div>
-                  <p className="text-[12px] text-brand-navy">
-                    <span className="font-black">4.7/5 Eccellente</span> · +8.000 studenti
-                  </p>
-               </div>
+
+            <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
+              <a
+                href="#prezzo"
+                className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
+              >
+                Iscriviti
+              </a>
+            </div>
+
+            <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-brand-navy">
+              {course.heroBenefits.slice(0, 3).map((benefit) => (
+                <li key={benefit} className="flex items-start gap-2">
+                  <span className="text-brand-accent font-black mt-0.5">→</span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex -space-x-2">
+                {[
+                  '/testimonials/people/alessandro-stocco.jpeg',
+                  '/testimonials/people/costanza-catapano.jpeg',
+                  '/testimonials/people/damiano-zanotti.jpeg',
+                  '/testimonials/people/camilla-pedrazzini.jpeg'
+                ].map((src) => (
+                  <img
+                    key={src}
+                    src={src}
+                    className="w-9 h-9 rounded-full border-2 border-[#F2F7FF] object-cover"
+                    alt="Alumni Asterys Lab"
+                  />
+                ))}
+              </div>
+              <p className="text-[12px] text-brand-navy">
+                <span className="font-black">+3.000 persone</span> già formate
+              </p>
             </div>
           </div>
           
-          <div className="relative self-end h-full flex items-end justify-center lg:justify-end">
-             <div className={`w-full h-auto relative overflow-visible flex items-end ${id === 'apcm' ? 'lg:w-[220%] lg:-mr-[78%] lg:-ml-[42%]' : 'lg:w-[140%] lg:-mr-[20%] lg:-ml-[10%]'}`}>
-                <CourseImage
-                  src={media.hero}
-                  fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
-                  className="w-full h-auto object-contain lg:origin-bottom-right"
-                  alt={course.title}
-                />
-             </div>
+          <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
+            <div className="absolute right-[-36%] bottom-0 w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]">
+              <CourseImage
+                src={media.hero}
+                fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
+                className="block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
+                alt={course.title}
+              />
+            </div>
           </div>
         </div>
       </section>
