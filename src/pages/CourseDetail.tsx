@@ -478,7 +478,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
           </div>
 
-          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] -mt-8 lg:mt-0 lg:self-start">
+          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
             <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               {(course.heroKicker ?? course.type).toUpperCase()}
