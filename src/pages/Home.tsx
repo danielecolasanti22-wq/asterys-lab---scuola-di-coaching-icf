@@ -325,7 +325,7 @@ const MasterFeatured = () => (
             <div className="inline-flex items-center gap-2 bg-[#E8F5EC] text-brand-navy px-3.5 py-2 rounded-lg self-start">
               <CheckCircle2 size={16} className="text-[#008060]" />
               <span className="text-[13px] font-black tracking-tight">
-                Garanzia di rimborso se non trovi lavoro
+                Garanzia di rimborso entro 30 ore
               </span>
             </div>
             <div className="flex items-center justify-end mt-2">
