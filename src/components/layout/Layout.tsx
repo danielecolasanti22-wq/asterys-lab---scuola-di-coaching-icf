@@ -918,7 +918,7 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
       <main
         className={`flex-grow ${
           isCourseDetailPage
-            ? 'pt-[120px] max-[939px]:pt-[134px]'
+            ? 'pt-[72px] max-[939px]:pt-[74px]'
             : isCorporatePage
               ? 'pt-[72px]'
               : 'pt-[72px] max-[939px]:pt-[74px]'

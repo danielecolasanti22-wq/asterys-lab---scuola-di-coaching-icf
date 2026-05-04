@@ -292,13 +292,6 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     body: 'Questo Master richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
   };
 
-  const earlyPromo = course.earlyBirdPromo ?? {
-    ribbon: 'PROMO',
-    line: `Scopri condizioni dedicate al Master in ${course.subtitle} | Contattaci per i dettagli`,
-    deadline: '',
-    ctaHref: '#prezzo',
-  };
-
   const activeModuleData = course.structure.modules[activeModule];
   const moduleTags =
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
@@ -450,25 +443,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
   return (
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
-      
-      {/* 0. ANNOUNCEMENT BAR */}
-      <div className="fixed top-0 left-0 right-0 h-12 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
-        <span className="text-[#008060] shrink-0">{earlyPromo.ribbon}</span>
-        <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
-          {earlyPromo.line}
-        </span>
-        <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">Dettagli e date sul Master</span>
-        <a
-          href={earlyPromo.ctaHref}
-          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#E2FF3B] transition-colors whitespace-nowrap"
-        >
-          Blocca il tuo sconto →
-        </a>
-      </div>
-
       {/* 1. HERO SECTION */}
       <section className="relative bg-[#F2F7FF] overflow-hidden pb-6 lg:pb-0">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative lg:hidden -mx-4 sm:-mx-6">
             <CourseImage
               src={media.hero}
