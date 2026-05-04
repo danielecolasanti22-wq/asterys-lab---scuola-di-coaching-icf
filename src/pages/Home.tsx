@@ -304,16 +304,16 @@ const MasterFeatured = () => (
               className="absolute inset-0 w-full h-full object-cover"
             />
             <span className="absolute top-4 left-4 bg-[#E2FF3B] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
-              Master Full-Time
+              Master
             </span>
           </div>
           <div className="px-4 sm:px-6 py-4 sm:py-6 flex flex-col gap-5 justify-center">
             <h3 className="text-[1.65rem] lg:text-[2.25rem] font-display font-black text-brand-accent leading-[1.05] tracking-tight">
-              Professione Coach
+              Master in Coaching
             </h3>
             <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.18em]">
               <span className="flex items-center gap-1.5">
-                <Calendar size={13} /> 6 mesi
+                <Calendar size={13} /> 3-8 mesi
               </span>
               <span className="flex items-center gap-1.5">
                 <MapPin size={13} /> In diretta
@@ -347,6 +347,7 @@ const MasterGrid = () => {
       id: 'systemic-team-coaching',
       title: 'Asterys Systemic Team Coaching',
       duration: '54 ore · 60 CCE',
+      label: 'Master',
       desc: "Master ICF per apprendere il modello ASTC di coaching sistemico dei team. Prerequisito per la credenziale ACTC.",
       start: '6 ottobre 2026',
       lastSeats: false,
@@ -357,6 +358,7 @@ const MasterGrid = () => {
       id: 'eiw',
       title: 'Emotional Intelligence Workout',
       duration: 'Round · 4 CCE',
+      label: 'Corso Breve',
       desc: "Allena l'IE con esperienze consapevoli: modello CSI, fiore di Plutchik, coach dedicati.",
       start: 'Prossimo Round',
       lastSeats: true,
@@ -366,6 +368,7 @@ const MasterGrid = () => {
       id: 'coaching-circle',
       title: 'Coaching Circle',
       duration: '3,30 ore · Gruppi da 4',
+      label: 'Specializzazione',
       desc: 'Pratica supervisionata di coaching con un mentor-coach PCC: feedback immediato e confronto tra pari.',
       start: 'Data condivisa nel gruppo',
       lastSeats: false,
@@ -375,6 +378,7 @@ const MasterGrid = () => {
       id: 'voice-dialogue',
       title: 'Voice Dialogue Skills',
       duration: '3 giornate · In aula',
+      label: 'Specializzazione',
       desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
       start: '17 novembre 2026',
       lastSeats: false,
@@ -384,6 +388,7 @@ const MasterGrid = () => {
       id: 'continuous-learning',
       title: 'Continuous Learning',
       duration: '1 live class/mese',
+      label: 'Corso Breve',
       desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
       start: '14 gennaio 2026',
       lastSeats: false,
@@ -410,7 +415,7 @@ const MasterGrid = () => {
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[9px] font-black uppercase tracking-[0.2em] shadow-sm">
-                  Master Part-Time
+                  {m.label}
                 </span>
               </div>
               <div className="px-2 sm:px-3 pt-5 pb-3 flex flex-col gap-3 flex-1">
