@@ -165,7 +165,7 @@ const Hero = () => (
       </div>
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-        <div className="absolute right-[-36%] bottom-0 w-[calc(78vw-65px)] max-w-[1195px] min-w-[835px] translate-x-[150px]">
+        <div className="absolute right-[-36%] bottom-0 w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]">
           <img
             src="/home/hero-people.png"
             alt="Coach Asterys"
