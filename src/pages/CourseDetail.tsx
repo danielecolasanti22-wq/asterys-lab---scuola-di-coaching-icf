@@ -1166,18 +1166,18 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
                 <div>
                   {course.scholarship.eyebrow ? (
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-4">
                       {course.scholarship.eyebrow}
                     </p>
                   ) : null}
                   <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
                     {course.scholarship.title}
                   </h2>
-                  <p className="text-sm sm:text-base text-white/80 leading-relaxed mb-6 max-w-xl">
-                    {richText(course.scholarship.body)}
+                  <p className="text-sm sm:text-base text-[#DDEBFF] leading-relaxed mb-6 max-w-xl">
+                    {course.scholarship.body}
                   </p>
                   {course.scholarship.availability ? (
-                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/20 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] mb-6">
+                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#78A4FF]/30 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#DDEBFF] mb-6">
                       <Sparkles size={14} strokeWidth={2.25} />
                       {course.scholarship.availability}
                     </p>
@@ -1195,15 +1195,15 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-6 backdrop-blur-sm">
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-2">Importo borsa</p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-2">Importo borsa</p>
                     <p className="text-4xl sm:text-5xl font-display font-black tracking-tight leading-none mb-4">
                       {course.scholarship.amount}
                     </p>
-                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/60 mb-3">Requisiti</p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] mb-3">Requisiti</p>
                     <ul className="space-y-2">
                       {course.scholarship.eligibility.map((e, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-white/85 leading-snug">
-                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand-accent" strokeWidth={2.25} />
+                        <li key={i} className="flex items-start gap-2 text-sm text-[#EAF1FF] leading-snug">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#78A4FF]" strokeWidth={2.25} />
                           <span>{e}</span>
                         </li>
                       ))}

@@ -746,12 +746,12 @@ export const coursesContent: Record<string, CourseData> = {
     },
     scholarship: {
       eyebrow: "Opportunità",
-      title: "Borsa di studio fino a 1.500€",
+      title: "Borsa di studio per te!",
       amount: "Fino a 1.500€",
-      body: "Per supportare l'accesso al Master ai professionisti del **Centro e Sud Italia**, riserviamo una borsa di studio sulle **prime iscrizioni** delle edizioni di **Roma**. Un investimento concreto sulla comunità dei coach italiani.",
+      body: "Per supportare l'accesso al Master ai professionisti del Centro e Sud Italia, riserviamo una borsa di studio sulle prime iscrizioni delle edizioni di Roma. Un investimento concreto per espandere il valore del coaching.",
       eligibility: [
         "Residenti in una regione del Centro o Sud Italia",
-        "Iscrizione a un'edizione del Master APCM a Roma",
+        "Iscrizione a un'edizione del Master in Coaching a Roma",
         "Tra i primi 3 iscritti per edizione (ordine cronologico)",
         "Colloquio di ammissione positivo con un nostro Advisor"
       ],
