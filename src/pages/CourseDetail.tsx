@@ -533,7 +533,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
           
           <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-            <div className="absolute right-[-36%] bottom-0 w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]">
+            <div
+              className={`absolute bottom-0 ${
+                id === 'apcm'
+                  ? 'right-[-26%] w-[calc(62vw-80px)] max-w-[920px] min-w-[680px] translate-x-[100px]'
+                  : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
+              }`}
+            >
               <CourseImage
                 src={media.hero}
                 fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
