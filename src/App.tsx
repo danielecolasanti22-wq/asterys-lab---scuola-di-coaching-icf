@@ -6,6 +6,13 @@ import { LayoutWrapper } from './components/layout/Layout';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
+import ApcmCourse from './pages/courses/ApcmCourse';
+import SystemicTeamCoachingCourse from './pages/courses/SystemicTeamCoachingCourse';
+import EiwCourse from './pages/courses/EiwCourse';
+import CoachingCircleCourse from './pages/courses/CoachingCircleCourse';
+import VoiceDialogueCourse from './pages/courses/VoiceDialogueCourse';
+import ContinuousLearningCourse from './pages/courses/ContinuousLearningCourse';
+import PublicSpeakingCourse from './pages/courses/PublicSpeakingCourse';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import Blog from './pages/Blog';
@@ -32,6 +39,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/corsi" element={<Courses />} />
+          <Route path="/corsi/apcm" element={<ApcmCourse />} />
+          <Route path="/corsi/systemic-team-coaching" element={<SystemicTeamCoachingCourse />} />
+          <Route path="/corsi/eiw" element={<EiwCourse />} />
+          <Route path="/corsi/coaching-circle" element={<CoachingCircleCourse />} />
+          <Route path="/corsi/voice-dialogue" element={<VoiceDialogueCourse />} />
+          <Route path="/corsi/continuous-learning" element={<ContinuousLearningCourse />} />
+          <Route path="/corsi/public-speaking" element={<PublicSpeakingCourse />} />
           <Route path="/corsi/:id" element={<CourseDetail />} />
           <Route path="/eventi" element={<Events />} />
           <Route path="/eventi/:id" element={<EventDetail />} />
