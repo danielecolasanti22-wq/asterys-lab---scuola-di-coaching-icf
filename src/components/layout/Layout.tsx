@@ -933,7 +933,7 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
         <button className="bg-[#25D366] text-white px-8 py-5 rounded-full shadow-3xl font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:scale-110 active:scale-95 transition-all shadow-green-500/30 group">
           <div className="relative">
             <MessageCircle size={24} fill="currentColor" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-[#25D366] animate-pulse"></span>
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#78A4FF] rounded-full border-2 border-[#25D366] animate-pulse"></span>
           </div>
           <span>Advisor Asterys</span>
         </button>

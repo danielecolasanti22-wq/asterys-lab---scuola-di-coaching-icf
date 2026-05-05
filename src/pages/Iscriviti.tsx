@@ -289,7 +289,7 @@ export default function Iscriviti() {
                 </p>
                 <p
                   className={`mt-1 text-[11px] font-black uppercase tracking-[0.18em] ${
-                    c.highlight ? 'text-[#E2FF3B]' : 'text-white/55'
+                    c.highlight ? 'text-[#BFD4FF]' : 'text-white/55'
                   }`}
                 >
                   {c.note}

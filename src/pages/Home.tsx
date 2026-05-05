@@ -36,7 +36,7 @@ const Hero = () => (
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
-          <div className="inline-flex items-center gap-2 bg-[#DFFF38] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
+          <div className="inline-flex items-center gap-2 bg-[#BFD4FF] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
             <span className="w-2 h-2 bg-brand-accent rounded-full" />
             ICF Accreditato
           </div>
@@ -239,7 +239,7 @@ const MasterFeatured = () => (
               alt="Master Professione Coach"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <span className="absolute top-4 left-4 bg-[#E2FF3B] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
+            <span className="absolute top-4 left-4 bg-[#BFD4FF] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
               Master
             </span>
           </div>
@@ -377,8 +377,8 @@ const MasterGrid = () => {
                         {m.start}
                       </span>
                       {m.lastSeats && (
-                        <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#E2193A]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#E2193A] animate-pulse" />
+                        <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#1D62E8]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1D62E8] animate-pulse" />
                           Ultimi posti
                         </span>
                       )}
@@ -395,7 +395,7 @@ const MasterGrid = () => {
             to="/corsi"
             className="group rounded-[1.4rem] sm:rounded-[2rem] bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden"
           >
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#E2FF3B] mb-3">
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] mb-3">
               Nuove competenze in poche settimane
             </p>
             <h3 className="text-2xl lg:text-[1.75rem] font-display font-black leading-tight mb-3">
@@ -404,7 +404,7 @@ const MasterGrid = () => {
             <p className="text-sm text-white/80 mb-5 leading-relaxed max-w-sm">
               Scopri i corsi brevi, pratici, in diretta con chi ti può guidare passo dopo passo.
             </p>
-            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#E2FF3B] group-hover:gap-3 transition-all">
+            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] group-hover:gap-3 transition-all">
               Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
             </span>
           </Link>

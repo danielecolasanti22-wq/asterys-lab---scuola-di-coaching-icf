@@ -134,9 +134,9 @@ const EDITION_EVENT_STYLES: Record<
     ring: 'ring-[#008060]/25',
   },
   'deadline-final': {
-    dot: 'bg-[#DC2626]',
-    label: 'text-[#DC2626]',
-    ring: 'ring-[#DC2626]/25',
+    dot: 'bg-[#1D62E8]',
+    label: 'text-[#1D62E8]',
+    ring: 'ring-[#1D62E8]/25',
   },
   'live-class': {
     dot: 'bg-brand-accent',
@@ -149,14 +149,14 @@ const EDITION_EVENT_STYLES: Record<
     ring: 'ring-[#1D3BB9]/25',
   },
   corso: {
-    dot: 'bg-[#7C3AED]',
-    label: 'text-[#7C3AED]',
-    ring: 'ring-[#7C3AED]/25',
+    dot: 'bg-[#3752D7]',
+    label: 'text-[#3752D7]',
+    ring: 'ring-[#3752D7]/25',
   },
   orientamento: {
-    dot: 'bg-[#F59E0B]',
-    label: 'text-[#F59E0B]',
-    ring: 'ring-[#F59E0B]/25',
+    dot: 'bg-[#4A6CF7]',
+    label: 'text-[#4A6CF7]',
+    ring: 'ring-[#4A6CF7]/25',
   },
   milestone: {
     dot: 'bg-brand-navy/40',
@@ -467,7 +467,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
         <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">Dettagli e date sul Master</span>
         <a
           href={earlyPromo.ctaHref}
-          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#E2FF3B] transition-colors whitespace-nowrap"
+          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#BFD4FF] transition-colors whitespace-nowrap"
         >
           Blocca il tuo sconto →
         </a>
@@ -1014,7 +1014,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         ) : null}
                       </div>
                       {activeEdition.badge ? (
-                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#E2FF3B]">
+                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#BFD4FF]">
                           {activeEdition.badge}
                         </span>
                       ) : null}
@@ -1023,7 +1023,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2">
                         {activeEdition.earlyBird ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
-                            <Hourglass size={12} strokeWidth={2.5} className="text-[#6EE7B7]" />
+                            <Hourglass size={12} strokeWidth={2.5} className="text-[#78A4FF]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
                               {activeEdition.earlyBird.label}
                             </span>
@@ -1034,7 +1034,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         ) : null}
                         {activeEdition.enrollmentEnd ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
-                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#FCA5A5]" />
+                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#BFD4FF]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
                               {activeEdition.enrollmentEnd.label}
                             </span>
@@ -1856,10 +1856,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         : 'text-brand-navy/55 hover:text-brand-navy'
                     }`}
                   >
-                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#E2FF3B]' : ''} />
+                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#BFD4FF]' : ''} />
                     <span>Sbocchi professionali</span>
                     <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
-                      careerTab === 'careers' ? 'bg-[#E2FF3B] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
+                      careerTab === 'careers' ? 'bg-[#BFD4FF] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
                     }`}>
                       {competenciesAndCareers.careerPaths.length}
                     </span>
@@ -1942,7 +1942,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <h2 className={`${tSection} mb-4`}>
               Un percorso formativo{' '}
               <span className="relative inline-block">
-                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#E2FF3B] -z-10 rounded-sm" aria-hidden="true" />
+                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#BFD4FF] -z-10 rounded-sm" aria-hidden="true" />
                 <span className="relative">completo</span>
               </span>
             </h2>
@@ -2004,8 +2004,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                      </div>
                   </div>
 
-                  {/* Card 3 — lime yellow, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#E2FF3B] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#CBE430]/40 ${id === 'apcm' ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                  {/* Card 3 — blue accent, image top, text bottom */}
+                  <div className={`lg:col-span-2 bg-[#BFD4FF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#8FB8FF]/40 ${id === 'apcm' ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
                        {id === 'apcm' ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
@@ -2058,10 +2058,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="bg-[#1D3BB9] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">
-                    Accelera la tua carriera: <span className="text-[#E2FF3B]">parti da qui</span>
+                    Accelera la tua carriera: <span className="text-[#BFD4FF]">parti da qui</span>
                   </h2>
                   <p className="text-sm sm:text-base text-white/55 mb-10 font-medium max-w-md mx-auto leading-relaxed">Inizia il tuo processo di ammissione gratis e senza impegno.</p>
-                  <button className="bg-[#E2FF3B] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
+                  <button className="bg-[#BFD4FF] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
                      INIZIA ORA
                   </button>
                </div>

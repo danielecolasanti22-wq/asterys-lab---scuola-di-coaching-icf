@@ -112,7 +112,7 @@ export default function About() {
               La nostra{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">filosofia</span>
-                <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#E2FF3B] -z-0 rounded-sm" />
+                <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#BFD4FF] -z-0 rounded-sm" />
               </span>{' '}
               del coaching.
             </h1>
@@ -171,7 +171,7 @@ export default function About() {
                 Il coaching come atto di{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10">responsabilità</span>
-                  <span className="absolute inset-x-[-0.08em] bottom-[0.06em] h-[0.3em] bg-[#E2FF3B] -z-0 rounded-sm" />
+                  <span className="absolute inset-x-[-0.08em] bottom-[0.06em] h-[0.3em] bg-[#BFD4FF] -z-0 rounded-sm" />
                 </span>.
               </h2>
             </div>
@@ -222,7 +222,7 @@ export default function About() {
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 items-start">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E2FF3B]">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF]">
                 Il manifesto
               </span>
               <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter leading-[1.05]">
@@ -232,7 +232,7 @@ export default function About() {
             <div className="grid sm:grid-cols-2 gap-6">
               {values.map((v) => (
                 <div key={v.label} className="border-t border-white/15 pt-5">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E2FF3B]">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF]">
                     {v.label}
                   </p>
                   <p className="mt-2 text-lg font-display font-black tracking-tight leading-tight">
