@@ -28,6 +28,13 @@ export interface CourseScheduleBand {
   timeLines: string[];
 }
 
+export interface CourseScheduleColumn {
+  icon: 'monitor' | 'users' | 'calendar';
+  title: string;
+  body?: string;
+  lines?: string[];
+}
+
 export interface CourseData {
   title: string;
   subtitle: string;
@@ -101,6 +108,8 @@ export interface CourseData {
   sessionSchedule?: { days: string; time: string }[];
   /** Se assente, viene derivato da `sessionSchedule` in pagina */
   scheduleBands?: CourseScheduleBand[];
+  /** Variante a colonne descrittive per sezioni senza orari fissi */
+  scheduleColumns?: CourseScheduleColumn[];
   /** Testi con **grassetto** inline */
   howItWorks?: {
     title?: string;
@@ -384,8 +393,25 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Lezioni in diretta",
         body: "Segui le lezioni live in aula virtuale o in presenza, interagendo con i trainer e i compagni di corso. Le registrazioni non sono accessibili agli studenti.",
-        dayLines: ["DATE VARIABILI", "SECONDO CALENDARIO"],
-        timeLines: ["ONLINE", "18:30 - 20:00"],
+        dayLines: ["CALENDARIO DELL'EDIZIONE"],
+        timeLines: [],
+      },
+    ],
+    scheduleColumns: [
+      {
+        icon: "monitor",
+        title: "Lezioni online in diretta",
+        body: "Partecipa alle sessioni live in videoconferenza, con trainer e compagni di corso. Le registrazioni non sono accessibili agli studenti.",
+      },
+      {
+        icon: "users",
+        title: "Lezioni in presenza",
+        body: "Vivi i laboratori in aula con esercitazioni, pratica guidata, confronto di gruppo e feedback diretto dai trainer.",
+      },
+      {
+        icon: "calendar",
+        title: "Calendario dell'edizione",
+        lines: ["Date e orari definiti", "in base all'edizione scelta"],
       },
     ],
     studyModeBox: {
@@ -537,7 +563,7 @@ export const coursesContent: Record<string, CourseData> = {
       { date: "25 settembre", note: "Termine candidature: 01 settembre" }
     ],
     sessionSchedule: [
-      { days: "Date variabili secondo calendario", time: "Online 18:30 - 20:00" }
+      { days: "Calendario definito in base all'edizione scelta", time: "" }
     ],
     fees: [
       {

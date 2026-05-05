@@ -36,6 +36,7 @@ import {
   defaultCourseMedia,
   CourseData,
   CourseScheduleBand,
+  CourseScheduleColumn,
   CourseCompetency,
   CourseCareerPath,
   CourseEdition,
@@ -81,6 +82,12 @@ function scheduleBandsFromCourse(course: CourseData): CourseScheduleBand[] {
     dayLines: [s.days],
     timeLines: s.time ? [s.time] : [],
   }));
+}
+
+function scheduleColumnIcon(icon: CourseScheduleColumn['icon']) {
+  if (icon === 'users') return <Users size={22} strokeWidth={1.75} />;
+  if (icon === 'calendar') return <Calendar size={22} strokeWidth={1.75} />;
+  return <Monitor size={22} strokeWidth={1.75} />;
 }
 
 const Accordion = ({ title, content, isOpen, onClick }: { title: string, content: string, isOpen: boolean, onClick: () => void }) => (
@@ -326,6 +333,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   };
 
   const scheduleBands = scheduleBandsFromCourse(course);
+  const scheduleColumns = course.scheduleColumns ?? [];
 
   const derivedCompetencies: CourseCompetency[] = course.learning.cols.flatMap((col) =>
     col.items.slice(0, 2).map((item) => ({
@@ -1247,48 +1255,73 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
           <p className={`${tBody} max-w-3xl mb-10`}>{richText(how.formazioneIntro)}</p>
 
-          <div className="divide-y divide-gray-200 border-t border-gray-200">
-            {scheduleBands.map((band, rowIdx) => (
-              <div
-                key={rowIdx}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 py-10 first:pt-8"
-              >
-                <div className="flex gap-4">
-                  <div className="mt-0.5 text-brand-navy">
-                    {rowIdx === 0 ? <Monitor size={22} strokeWidth={1.75} /> : <Video size={22} strokeWidth={1.75} />}
+          {scheduleColumns.length ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 border-t border-gray-200 py-10">
+              {scheduleColumns.map((column, idx) => (
+                <div key={idx} className={`flex gap-4 ${idx === 2 ? 'md:justify-end' : ''}`}>
+                  <div className="mt-0.5 shrink-0 text-brand-navy">
+                    {scheduleColumnIcon(column.icon)}
                   </div>
-                  <div>
-                    <p className="text-sm sm:text-base font-black text-brand-navy mb-2">{band.title}</p>
-                    <p className={`${tBody}`}>{band.body}</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 md:justify-center">
-                  <Calendar className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
-                  <div className="space-y-2">
-                    {band.dayLines.map((line, i) => (
-                      <p key={i} className="text-sm sm:text-base font-black text-brand-navy leading-snug">
-                        {line}
-                      </p>
-                    ))}
+                  <div className={idx === 2 ? 'md:text-right' : ''}>
+                    <p className="text-sm sm:text-base font-black text-brand-navy mb-2">{column.title}</p>
+                    {column.body ? <p className={`${tBody}`}>{column.body}</p> : null}
+                    {column.lines?.length ? (
+                      <div className="space-y-2">
+                        {column.lines.map((line, i) => (
+                          <p key={i} className="text-sm sm:text-base font-black text-brand-navy leading-snug">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-                <div className="flex gap-4 md:justify-end">
-                  <Clock className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
-                  <div className="space-y-2 text-left md:text-right">
-                    {band.timeLines.length ? (
-                      band.timeLines.map((line, i) => (
-                        <p key={i} className="text-sm sm:text-base font-black text-brand-navy">
+              ))}
+            </div>
+          ) : (
+            <div className="divide-y divide-gray-200 border-t border-gray-200">
+              {scheduleBands.map((band, rowIdx) => (
+                <div
+                  key={rowIdx}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 py-10 first:pt-8"
+                >
+                  <div className="flex gap-4">
+                    <div className="mt-0.5 text-brand-navy">
+                      {rowIdx === 0 ? <Monitor size={22} strokeWidth={1.75} /> : <Video size={22} strokeWidth={1.75} />}
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-black text-brand-navy mb-2">{band.title}</p>
+                      <p className={`${tBody}`}>{band.body}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 md:justify-center">
+                    <Calendar className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
+                    <div className="space-y-2">
+                      {band.dayLines.map((line, i) => (
+                        <p key={i} className="text-sm sm:text-base font-black text-brand-navy leading-snug">
                           {line}
                         </p>
-                      ))
-                    ) : (
-                      <p className="text-sm font-bold text-brand-navy/35">—</p>
-                    )}
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-4 md:justify-end">
+                    <Clock className="mt-0.5 shrink-0 text-brand-navy" size={22} strokeWidth={1.75} />
+                    <div className="space-y-2 text-left md:text-right">
+                      {band.timeLines.length ? (
+                        band.timeLines.map((line, i) => (
+                          <p key={i} className="text-sm sm:text-base font-black text-brand-navy">
+                            {line}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-sm font-bold text-brand-navy/35">—</p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className="mt-12 rounded-2xl bg-[#EBF2FF] px-6 py-8 sm:px-10 sm:py-10">
             <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy mb-4 tracking-tight">
