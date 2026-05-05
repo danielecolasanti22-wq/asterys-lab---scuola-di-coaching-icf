@@ -602,70 +602,70 @@ export const coursesContent: Record<string, CourseData> = {
     testimonials: commonTestimonials,
     competenciesAndCareers: {
       eyebrow: "Competenze & Professione",
-      title: "Cosa saprai fare e dove potrai lavorare",
+      title: "Cosa impari a fare e come puoi usarlo nel lavoro",
       intro:
-        "Al termine del Master padroneggi **competenze ICF certificabili**, strumenti di **intelligenza emotiva misurabile** e un **approccio sistemico**. Potrai operare come coach professionista in diversi contesti — libera professione, aziende, enti pubblici e terzo settore.",
+        "Il Master ti dà metodo, pratica supervisionata e strumenti concreti per iniziare a lavorare nel coaching o integrare un approccio coaching nella tua professione. Le competenze che alleni sono spendibili con persone, team e organizzazioni, con standard ICF e attenzione alla pratica reale.",
       stats: [
-        { value: "98%", label: "Tasso di certificazione ICF" },
+        { value: "150 ore", label: "Tra lezioni, pratica e studio" },
         { value: "3.000+", label: "Alumni Asterys nel mondo" },
-        { value: "20+ anni", label: "Di metodo e ricerca sul coaching" }
+        { value: "ICF", label: "Standard e competenze internazionali" }
       ],
       competencies: [
         {
-          title: "Condurre sessioni ICF Level 1 & 2",
-          desc: "Progetti e guidi percorsi di coaching strutturati rispettando le 8 core competence ICF e il codice etico internazionale."
+          title: "Condurre conversazioni di coaching strutturate",
+          desc: "Impari a costruire accordo, obiettivi e direzione della sessione, mantenendo una relazione professionale e rispettando le competenze e il codice etico ICF."
         },
         {
-          title: "Leggere e allenare l'intelligenza emotiva",
-          desc: "Utilizzi il modello KCG / Six Seconds per mappare, allenare e misurare competenze emotive nei clienti e nei team."
+          title: "Ascoltare in profondità e fare domande efficaci",
+          desc: "Alleni presenza, ascolto attivo, domande potenti e feedback per aiutare la persona a generare consapevolezza, leggere alternative e scegliere azioni concrete."
         },
         {
-          title: "Facilitare sistemi complessi",
-          desc: "Applichi un approccio sistemico alle dinamiche organizzative, leggendo relazioni, stakeholder e vincoli oltre il singolo individuo."
+          title: "Accompagnare obiettivi, scelte e cambiamenti",
+          desc: "Impari a sostenere clienti in passaggi professionali, decisioni, sviluppo personale, cambi ruolo e piani d'azione, senza sostituirti alla persona."
         },
         {
-          title: "Costruire il tuo business di coaching",
-          desc: "Definisci posizionamento, offerta e pricing. Acquisisci clienti in modo etico e costruisci un portfolio sostenibile nel tempo."
+          title: "Usare intelligenza emotiva e lettura sistemica",
+          desc: "Integra strumenti di intelligenza emotiva e approccio sistemico per comprendere relazioni, contesti, stakeholder e dinamiche che influenzano la persona o il team."
         },
         {
-          title: "Supervisionare la tua pratica",
-          desc: "Integri pratica supervisionata, feedback da Mentor MCC e auto-riflessione come parte del metodo professionale continuativo."
+          title: "Gestire pratica, feedback e report",
+          desc: "Sviluppi abitudine alla pratica supervisionata, alla riflessione sul metodo, alla preparazione tra una lezione e l'altra e alla produzione di report professionali."
         },
         {
-          title: "Operare in contesti internazionali",
-          desc: "Padroneggi un linguaggio e uno standard riconosciuti a livello internazionale, con credenziali ICF spendibili ovunque."
+          title: "Costruire identità e posizionamento da coach",
+          desc: "Lavori su confini professionali, stile personale, proposta di valore e primi passi per presentarti in modo credibile a clienti, aziende o contesti HR."
         }
       ],
       careerPaths: [
         {
-          title: "Coach Libero Professionista",
-          desc: "Avvii la tua pratica 1-to-1 come Life, Career o Executive Coach, lavorando con clienti privati e manager.",
-          contexts: ["Studio privato", "Percorsi individuali", "Online & in presenza"]
+          title: "Coach professionista indipendente",
+          desc: "Puoi costruire una tua attività lavorando con clienti individuali su obiettivi personali, professionali, transizioni, scelte e sviluppo.",
+          contexts: ["Clienti privati", "Percorsi individuali", "Online e presenza"]
         },
         {
-          title: "Executive & Leadership Coach",
-          desc: "Affianchi manager e C-level in percorsi di sviluppo della leadership, transizioni di ruolo e gestione della complessità.",
-          contexts: ["Aziende", "Scale-up", "Board & C-level"]
+          title: "Coach in percorsi aziendali",
+          desc: "Puoi collaborare con aziende, academy, HR o società di consulenza in percorsi di sviluppo per manager, talenti e persone in cambiamento.",
+          contexts: ["Aziende", "Academy", "Società di consulenza"]
         },
         {
-          title: "Team & Business Coach",
-          desc: "Accompagni team e reparti ad alta performance, gestendo conflitti, allineamento e obiettivi in una logica sistemica.",
-          contexts: ["Team aziendali", "Start-up", "Progetti trasformativi"]
+          title: "Career coach e orientamento professionale",
+          desc: "Puoi accompagnare persone in scelte di carriera, ingresso nel lavoro, riposizionamento, cambi ruolo o passaggi tra università e professione.",
+          contexts: ["Giovani professionisti", "Career transition", "Orientamento"]
         },
         {
-          title: "HR & People Development",
-          desc: "Porti cultura coaching dentro l'organizzazione come HR Business Partner, People Manager o responsabile L&D.",
-          contexts: ["HR & L&D interni", "Talent development", "Change management"]
+          title: "HR, People e Learning Development",
+          desc: "Puoi usare le competenze di coaching in selezione, talent development, formazione, colloqui di sviluppo, engagement e crescita delle persone.",
+          contexts: ["HR", "People management", "Learning & development"]
         },
         {
-          title: "Trainer & Formatore",
-          desc: "Progetti e conduci percorsi formativi d'aula, workshop e programmi di sviluppo competenze per aziende e scuole.",
-          contexts: ["Aziende", "Scuole & università", "Corporate academy"]
+          title: "Formatore con approccio coaching",
+          desc: "Puoi progettare workshop e percorsi esperienziali usando ascolto, domande, feedback, esercitazioni e facilitazione dell'apprendimento.",
+          contexts: ["Workshop", "Formazione aziendale", "Percorsi educativi"]
         },
         {
-          title: "Consulente di sviluppo organizzativo",
-          desc: "Integri coaching, IE e approccio sistemico in interventi di OD, cultura aziendale e trasformazione delle persone.",
-          contexts: ["Società di consulenza", "Studi professionali", "Progetti in autonomia"]
+          title: "Consulente o facilitatore per persone e team",
+          desc: "Puoi integrare coaching, intelligenza emotiva e lettura sistemica in progetti con gruppi, team, organizzazioni o contesti educativi.",
+          contexts: ["Team", "Organizzazioni", "Progetti di sviluppo"]
         }
       ]
     },
