@@ -332,6 +332,29 @@ const commonFaqs = [
   }
 ];
 
+const apcmFaqs = [
+  {
+    q: "Chi può frequentare il Master?",
+    a: "Il Master è aperto a persone con percorsi diversi: può iscriversi chi arriva dall'università e si avvicina per la prima volta al coaching, così come chi lavora e vuole integrare competenze di coaching nella propria professione."
+  },
+  {
+    q: "Che competenze devo avere per iniziare il Master?",
+    a: "Non è richiesta una formazione pregressa nel coaching. Contano soprattutto motivazione, disponibilità a mettersi in gioco e continuità nel seguire lezioni, studio individuale, esercitazioni e report previsti dal percorso."
+  },
+  {
+    q: "In cosa consiste il processo di ammissione?",
+    a: "Il processo prevede la compilazione del form online e un confronto con un Advisor Asterys per chiarire obiettivi, aspettative e coerenza del percorso. È gratuito e senza impegno fino alla firma del contratto di iscrizione."
+  },
+  {
+    q: "Posso seguire il Master mentre lavoro o studio?",
+    a: "Sì. Le lezioni si tengono circa una volta a settimana, secondo il calendario dell'edizione, e le sessioni online sono dalle 18:30 alle 20:00. Tra una lezione e l'altra sono previsti studio, preparazione, esercitazioni e report."
+  },
+  {
+    q: "Posso accedere alle registrazioni se mi perdo una lezione?",
+    a: "No. Le registrazioni non sono disponibili per gli studenti: se alcune sessioni vengono registrate, lo sono esclusivamente per uso interno. Per questo è importante organizzarsi per partecipare alle lezioni in diretta."
+  }
+];
+
 export const coursesContent: Record<string, CourseData> = {
   'apcm': {
     title: "Accredited Professional Coaching Mastery (APCM)",
@@ -351,24 +374,24 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Come funziona il Master",
       intro:
-        "Un percorso strutturato in **modalità part-time**, pensato per chi lavora: alterni **lezioni live**, pratica supervisionata e momenti di studio individuale. Ti guidiamo passo passo fino alle competenze ICF e alla **certificazione**, con un metodo collaudato da Asterys Lab.",
+        "Un percorso strutturato che alterna **lezioni live**, pratica supervisionata, studio individuale e report. Le lezioni sono circa una volta a settimana, secondo il calendario dell'edizione, e ti guidano passo passo fino alle competenze ICF e alla **certificazione**.",
       formazioneTitle: "Formazione",
       formazioneBadge: "Ibrido · 150 ore",
       formazioneIntro:
-        "La prima parte del Master è dedicata alle **lezioni in diretta** (in aula o in videoconferenza), con esercitazioni guidate e feedback dai trainer.",
+        "La prima parte del Master è dedicata alle **lezioni in diretta** (in aula o in videoconferenza), con esercitazioni guidate e feedback dai trainer. Le lezioni online si svolgono dalle 18:30 alle 20:00.",
     },
     scheduleBands: [
       {
         title: "Lezioni in diretta",
-        body: "Segui le lezioni live in aula virtuale o in presenza, interagendo con i trainer e i compagni di corso.",
-        dayLines: ["VENERDÌ SERA E SABATO", "SABATO MATTINA"],
-        timeLines: ["18:30 - 21:30", "9:00 - 13:00"],
+        body: "Segui le lezioni live in aula virtuale o in presenza, interagendo con i trainer e i compagni di corso. Le registrazioni non sono accessibili agli studenti.",
+        dayLines: ["DATE VARIABILI", "SECONDO CALENDARIO"],
+        timeLines: ["ONLINE", "18:30 - 20:00"],
       },
     ],
     studyModeBox: {
-      title: "Modalità di studio ",
-      highlight: "part-time",
-      body: "Un formato che cerca di adattarsi a chi, come te, ha impegni diurni: puoi seguire le sessioni live e integrare con studio individuale, materiali e registrazioni quando ti è più comodo.",
+      title: "Modalità di studio",
+      highlight: "",
+      body: "Il ritmo prevede lezioni circa una volta a settimana, in base al calendario dell'edizione. Tra una sessione e l'altra lo studente lavora su preparazione, studio individuale, esercitazioni e report, con il supporto del team Asterys.",
       linkText: "Scopri il calendario completo",
       linkHref: "#programma",
     },
@@ -423,7 +446,7 @@ export const coursesContent: Record<string, CourseData> = {
       "Imparerai a progettare e condurre percorsi di coaching professionale: dalle fondamenta alle competenze ICF, dall’intelligenza emotiva alla pratica supervisionata, fino al business del coaching e alla certificazione.",
     admissionBox: {
       title: "Requisiti di ammissione al Master",
-      body: "Questo Master richiede maturità professionale e motivazione forte. Il livello è impegnativo e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole intraprendere una carriera da coach strutturata e riconosciuta, non per chi cerca un percorso superficiale o senza pratica.",
+      body: "Non servono requisiti rigidi o una formazione precedente nel coaching. Il Master è adatto sia a chi arriva dall'università e si avvicina per la prima volta a questa disciplina, sia a chi lavora e vuole integrare il coaching nella propria professione.",
     },
     earlyBirdPromo: {
       ribbon: "SCONTO EARLY BIRD",
@@ -514,8 +537,7 @@ export const coursesContent: Record<string, CourseData> = {
       { date: "25 settembre", note: "Termine candidature: 01 settembre" }
     ],
     sessionSchedule: [
-      { days: "Venerdì sera e Sabato", time: "18:30 - 21:30" },
-      { days: "Sabato mattina", time: "9:00 - 13:00" }
+      { days: "Date variabili secondo calendario", time: "Online 18:30 - 20:00" }
     ],
     fees: [
       {
@@ -549,7 +571,7 @@ export const coursesContent: Record<string, CourseData> = {
         footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
       }
     ],
-    faqs: commonFaqs,
+    faqs: apcmFaqs,
     placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
     testimonials: commonTestimonials,
     competenciesAndCareers: {

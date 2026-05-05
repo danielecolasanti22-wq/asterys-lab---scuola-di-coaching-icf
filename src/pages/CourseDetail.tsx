@@ -1324,14 +1324,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="space-y-4">
               <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
               <p className={tBody}>
-                Segui le sessioni live oppure recupera con le registrazioni: un ritmo pensato per chi ha già un lavoro o uno studio impegnativo.
+                Le lezioni seguono le date del calendario e, quando sono online, si svolgono dalle 18:30 alle 20:00: un ritmo compatibile con studio o lavoro, con preparazione e report tra una sessione e l'altra.
               </p>
               <ul className="space-y-3 pt-2">
                 <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Nessun obbligo di presenza assoluta
+                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date definite dal calendario
                 </li>
                 <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e compiti guidati
+                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e report guidati
                 </li>
               </ul>
             </div>
@@ -1950,7 +1950,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                      </h3>
                      <p className={`${id === 'apcm' ? 'relative z-10' : ''} text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md`}>
                        {id === 'apcm'
-                         ? 'Ti sei perso una lezione? Accedi a tutte le registrazioni, con funzionalità AI per poterle seguire più facilmente.'
+                         ? 'Trovi materiali, dispense e strumenti di supporto al percorso. Le eventuali registrazioni sono riservate a uso interno e non sono accessibili agli studenti.'
                          : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
                      <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[244px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
