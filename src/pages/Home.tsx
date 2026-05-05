@@ -118,60 +118,30 @@ const Hero = () => (
 const AccreditamentoBadge = ({
   label,
   logo,
-  title,
-  desc,
   featured = false,
 }: {
   label: string;
   logo?: string;
-  title?: string;
-  desc?: string;
   featured?: boolean;
 }) => {
   const base = import.meta.env.BASE_URL || '/';
   const [showFallback, setShowFallback] = useState(false);
 
   return (
-    <div
-      className={`group h-full rounded-lg border border-white/10 bg-white/[0.06] p-4 sm:p-5 text-white backdrop-blur transition-all hover:bg-white/[0.1] ${
-        featured ? 'flex flex-col justify-between' : ''
-      }`}
-    >
-      <div className={`flex items-center ${featured ? 'gap-5' : 'gap-4'}`}>
-        {logo && !showFallback ? (
-          <span
-            className={`flex shrink-0 items-center justify-center rounded-lg bg-white p-2 ring-1 ring-white/20 ${
-              featured ? 'h-20 w-36 sm:h-24 sm:w-44' : 'h-20 w-20'
-            }`}
-          >
-            <img
-              src={`${base}${logo}`}
-              alt={label}
-              className="max-h-full max-w-full object-contain"
-              onError={() => setShowFallback(true)}
-            />
-          </span>
-        ) : (
-          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#BFD4FF] ring-1 ring-white/15">
-            <Award size={24} strokeWidth={2} />
-          </span>
-        )}
-        <div className="min-w-0">
-          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#78A4FF]">
-            {label}
-          </p>
-          {title ? (
-            <h3 className="mt-1 text-base sm:text-lg font-display font-black leading-tight tracking-tight">
-              {title}
-            </h3>
-          ) : null}
+    <div className="flex items-center justify-center">
+      {logo && !showFallback ? (
+        <img
+          src={`${base}${logo}`}
+          alt={label}
+          className={`w-auto object-contain ${featured ? 'h-14 sm:h-16 md:h-18' : 'h-16 sm:h-20 md:h-24'}`}
+          onError={() => setShowFallback(true)}
+        />
+      ) : (
+        <div className="flex items-center gap-2 text-white/80">
+          <Award size={22} strokeWidth={2} />
+          <span className="font-black tracking-[0.2em]">{label}</span>
         </div>
-      </div>
-      {desc ? (
-        <p className={`mt-4 text-sm font-medium leading-relaxed text-white/68 ${featured ? 'max-w-md' : ''}`}>
-          {desc}
-        </p>
-      ) : null}
+      )}
     </div>
   );
 };
@@ -201,59 +171,34 @@ const Accreditamenti = () => {
   const items = [
     {
       label: 'ICF',
-      title: 'Scuola di coaching accreditata',
-      desc: 'Percorsi costruiti secondo standard internazionali ICF per formare coach professionisti e supportare la crescita delle credenziali.',
       logo: 'brand/icf.png',
       featured: true,
     },
     {
       label: 'Level 1',
-      title: 'ICF Accredited Coaching Education',
-      desc: 'Il primo livello per costruire basi solide e avviare il percorso verso la credenziale ACC.',
       logo: 'brand/icf-level-1.png',
     },
     {
       label: 'Level 2',
-      title: 'ICF Accredited Coaching Education',
-      desc: 'Il percorso avanzato per approfondire pratica, competenze e preparazione verso la credenziale PCC.',
       logo: 'brand/icf-level-2.png',
     },
     {
       label: 'CCE',
-      title: 'Continuing Coach Education',
-      desc: 'Formazione continua per coach che vogliono aggiornare competenze e mantenere vivo il proprio sviluppo professionale.',
       logo: 'brand/icf-cce-new.png',
     },
     {
       label: 'AATC',
-      title: 'Advanced Accreditation in Team Coaching',
-      desc: 'Accreditamento avanzato dedicato al team coaching e ai percorsi per lavorare con gruppi e sistemi organizzativi.',
       logo: 'brand/icf-aatc.png',
     },
   ];
   return (
-    <section className="bg-[#001D4B] text-white">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 lg:py-16">
-        <div className="mb-8 lg:mb-10 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#78A4FF]">
-              Accreditamenti
-            </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[2.6rem] font-display font-black tracking-tight leading-[1.05]">
-              Standard internazionali, percorsi riconosciuti.
-            </h2>
-          </div>
-          <p className="text-sm sm:text-base leading-relaxed text-white/66 lg:max-w-xl">
-            Asterys Lab integra programmi ICF accreditati, formazione continua e percorsi specialistici per accompagnare chi vuole diventare coach o crescere nella professione.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="bg-[#001D4B]">
+      <div className="max-w-[1200px] mx-auto px-6 py-10 lg:py-12">
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-7 lg:gap-x-16">
           {items.map((i) => (
-            <div key={i.label} className={i.featured ? 'lg:col-span-2' : ''}>
+            <div key={i.label}>
               <AccreditamentoBadge
                 label={i.label}
-                title={i.title}
-                desc={i.desc}
                 logo={i.logo}
                 featured={i.featured}
               />
