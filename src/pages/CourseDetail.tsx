@@ -1787,6 +1787,61 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          </div>
       </section>
 
+      {course.pegasusProgram ? (
+        <section id="pegasus" className="py-14 lg:py-20 bg-[#001D4B] text-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+              <div>
+                <div className="inline-flex rounded-2xl bg-white p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)]">
+                  <img
+                    src={course.pegasusProgram.logo}
+                    alt="Pegasus Coaching Program"
+                    className="h-28 sm:h-32 w-auto object-contain"
+                  />
+                </div>
+              </div>
+              <div>
+                {course.pegasusProgram.eyebrow ? (
+                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-3">
+                    {course.pegasusProgram.eyebrow}
+                  </p>
+                ) : null}
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter leading-[1.05] mb-4">
+                  {course.pegasusProgram.title}
+                </h2>
+                <p className="text-sm sm:text-base text-white/68 font-medium leading-relaxed max-w-2xl">
+                  {course.pegasusProgram.intro}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-9 grid md:grid-cols-3 gap-4">
+              {course.pegasusProgram.points.map((point, i) => (
+                <div key={i} className="rounded-2xl bg-white/[0.07] p-5 sm:p-6 ring-1 ring-white/10">
+                  {point.meta ? (
+                    <p className="mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#BFD4FF]">
+                      {point.meta}
+                    </p>
+                  ) : null}
+                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight leading-snug mb-3">
+                    {point.title}
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-white/62 font-medium leading-relaxed">
+                    {point.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {course.pegasusProgram.note ? (
+              <p className="mt-6 text-[11px] font-semibold leading-relaxed text-white/42">
+                {course.pegasusProgram.note}
+              </p>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
       {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
       <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
          <div className="max-w-[941px] mx-auto px-4">

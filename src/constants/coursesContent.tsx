@@ -97,6 +97,14 @@ export interface CourseData {
     content: string;
     points: { title: string; desc: string }[];
   };
+  pegasusProgram?: {
+    eyebrow?: string;
+    title: string;
+    intro: string;
+    logo: string;
+    note?: string;
+    points: { title: string; desc: string; meta?: string }[];
+  };
   fees: CourseFee[];
   faqs: { q: string; a: string }[];
   placementStats?: {
@@ -556,6 +564,31 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Alumni Community", desc: "Accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise." },
         { title: "Formazione Continua", desc: "Masterclass, webinar e workshop esclusivi per approfondire le competenze e restare aggiornato sulle evoluzioni del coaching." },
         { title: "Supporto Carriera", desc: "Sessioni individuali e accompagnamento del coach assegnato per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
+      ]
+    },
+    pegasusProgram: {
+      eyebrow: "Ecosistema Asterys",
+      title: "Pegasus Coaching Program",
+      intro:
+        "Pegasus collega studenti e diplomati APCM: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
+      logo: "/brand/pegasus.png",
+      note: "Il programma è attivo sulle edizioni e sui percorsi in cui è previsto da Asterys Lab.",
+      points: [
+        {
+          title: "Coaching incluso per gli studenti",
+          desc: "Gli studenti APCM possono ricevere da 3 a 15 ore di coaching individuale, erogato da coach formati nelle edizioni precedenti del Master.",
+          meta: "Da 3 a 15 ore"
+        },
+        {
+          title: "Pratica reale per i diplomati",
+          desc: "I graduati selezionati possono lavorare come coach Pegasus, fare pratica supervisionata e accumulare ore utili per la crescita professionale e il percorso ICF.",
+          meta: "Coach selezionati"
+        },
+        {
+          title: "Tutor e supervisione Asterys",
+          desc: "Il programma prevede abbinamento coach/coachee, monitoraggio del percorso e momenti di supervisione con figure esperte della Faculty Asterys Lab.",
+          meta: "Supervisione"
+        }
       ]
     },
     classDates: [
