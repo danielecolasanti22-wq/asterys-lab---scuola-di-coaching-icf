@@ -180,6 +180,7 @@ export const Header = () => {
     { name: 'The Campus', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
     { name: 'Risorse', href: '/blog' },
+    { name: 'Nuova Pagina', href: '/nuova-pagina' },
   ];
 
   const isHome = location.pathname === '/';
@@ -465,6 +466,13 @@ export const Header = () => {
               </Link>
             </div>
             <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
+            <Link
+              to="/nuova-pagina"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/nuova-pagina' ? 'text-brand-accent' : 'text-brand-navy'}`}
+            >
+              Nuova Pagina
+            </Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
               to="/iscriviti"
