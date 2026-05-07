@@ -34,4 +34,18 @@
   .section-padding {
     @apply py-20 lg:py-32 px-6;
   }
+
+  .apcm-full-width section > .max-w-\[920px\],
+  .apcm-full-width section > .max-w-\[941px\],
+  .apcm-full-width section > .max-w-\[1080px\],
+  .apcm-full-width section > .max-w-\[1100px\],
+  .apcm-full-width section > .max-w-\[1200px\],
+  .apcm-full-width section > .max-w-\[1400px\] {
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  .apcm-full-width #site-header > div {
+    max-width: none;
+  }
 }

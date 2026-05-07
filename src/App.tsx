@@ -21,6 +21,7 @@ import Corporate from './pages/Corporate';
 import About from './pages/About';
 import Iscriviti from './pages/Iscriviti';
 import NuovaPagina from './pages/NuovaPagina';
+import NuovaPagina2 from './pages/NuovaPagina2';
 
 // --- Global Scroll Recovery Component ---
 const ScrollToTop = () => {
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/iscriviti" element={<Iscriviti />} />
           <Route path="/nuova-pagina" element={<NuovaPagina />} />
+          <Route path="/nuova-pagina-2" element={<NuovaPagina2 />} />
         </Routes>
       </LayoutWrapper>
     </Router>

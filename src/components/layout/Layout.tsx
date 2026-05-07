@@ -137,7 +137,8 @@ export const Header = () => {
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
-  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
+  const isCourseDetailPage =
+    /^\/corsi\/[^/]+$/.test(location.pathname) || location.pathname === '/nuova-pagina-2';
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -181,6 +182,7 @@ export const Header = () => {
     { name: 'Eventi', href: '/eventi' },
     { name: 'Risorse', href: '/blog' },
     { name: 'Nuova Pagina', href: '/nuova-pagina' },
+    { name: 'Nuova Pagina 2', href: '/nuova-pagina-2' },
   ];
 
   const isHome = location.pathname === '/';
@@ -472,6 +474,13 @@ export const Header = () => {
               className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/nuova-pagina' ? 'text-brand-accent' : 'text-brand-navy'}`}
             >
               Nuova Pagina
+            </Link>
+            <Link
+              to="/nuova-pagina-2"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/nuova-pagina-2' ? 'text-brand-accent' : 'text-brand-navy'}`}
+            >
+              Nuova Pagina 2
             </Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
