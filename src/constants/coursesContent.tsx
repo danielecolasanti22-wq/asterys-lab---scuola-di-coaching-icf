@@ -1120,10 +1120,69 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Team Coaching",
     tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
+    media: {
+      hero: "/course-media/systemic-team-coaching/card.jpg",
+      overview: "/course-media/systemic-team-coaching/card.jpg",
+      brochureDecor: "/course-media/systemic-team-coaching/card.jpg",
+      completePractical: "/course-media/systemic-team-coaching/card.jpg",
+      completePlatform: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      howItWorks: "/course-media/systemic-team-coaching/card.jpg",
+    },
+    howItWorks: {
+      title: "Come si struttura il percorso",
+      intro:
+        "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Live Class e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox ASTC e pratica applicata.",
+      formazioneTitle: "Struttura e trainer",
+      formazioneBadge: "54 ore live · 60 CCE ICF",
+      formazioneIntro:
+        "ASTC 1° livello prevede due giornate in videoconferenza e Live Class da due ore. ASTC 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox ASTC. L'ASTC Expert Exam è opzionale e consente di ottenere il diploma AATC ICF.",
+    },
+    scheduleColumns: [
+      {
+        icon: "monitor",
+        title: "ASTC 1° livello",
+        body: "Corso di due giornate in videoconferenza, Live Class da due ore e homework su progetti di team coaching supportati dalla piattaforma Inner.",
+      },
+      {
+        icon: "users",
+        title: "ASTC 2° livello",
+        body: "Tre giorni in aula a Milano o Roma, con modulo e-learning specifico e ToolBox ASTC per lavorare sui team in modo sistemico.",
+      },
+      {
+        icon: "calendar",
+        title: "ASTC Expert Exam",
+        lines: ["Opzionale e a pagamento", "Valutazione lavori + verifica scritta", "Incontro individuale di chiusura"],
+      },
+    ],
+    studyModeBox: {
+      title: "Piattaforma Inner e",
+      highlight: "ToolBox ASTC",
+      body: "Tra una sessione e l'altra lavori su progetti reali di team coaching, con homework e materiali dedicati. Il percorso integra social learning, e-learning specifico e strumenti operativi per accompagnare team e organizzazioni.",
+      linkText: "Vedi il calendario dell'edizione",
+      linkHref: "#calendario-edizioni",
+    },
+    orientationBanner: {
+      title: "Prerequisito per la credenziale ICF ACTC",
+      body: "Dopo aver superato l'esame ottieni il diploma AATC ICF, utile come prerequisito per accedere alla credenziale Advanced Certification in Team Coaching (ACTC).",
+    },
+    programIntro:
+      "Il percorso ASTC unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Live Class, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox ASTC.",
+    admissionBox: {
+      title: "Requisiti per partecipare",
+      body: "Per l'accesso al corso è richiesto l'invio del CV. Il workshop non tratta i fondamentali di management, coaching o facilitazione: è quindi importante avere una conoscenza di base di queste discipline.",
+    },
+    earlyBirdPromo: {
+      ribbon: "EARLY BIRD",
+      line: "Edizione ASTC 2026/27: sconto attivo fino al 19 agosto 2026 per il 1° livello e fino al 21 novembre 2026 per il 2° livello.",
+      deadline: "19 agosto 2026",
+      ctaHref: "#prezzo",
+      pillDeadlineLabel: "19 AGOSTO",
+      discountAmount: "fino a 174€",
+    },
     heroBenefits: [
       "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
       "Prerequisito per la credenziale ICF ACTC (Advanced Certification in Team Coaching)",
-      "54 ore di formazione sincrona · equivalenti a 60 CCE ICF",
+      "54 ore di formazione live · attestato AATC equivalente a 60 CCE ICF",
       "Edizioni in videoconferenza e in aula a Milano e Roma"
     ],
     summaryBox: {
@@ -1138,20 +1197,21 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Dal singolo al sistema: il modello ASTC",
       content: [
-        "Pier Paolo Colasanti e Stefano Petti hanno sviluppato il modello **ASTC** unendo decenni di esperienza come team coach nelle realtà organizzative più complesse e lo studio dei principali modelli internazionali di team coaching.",
-        "Il modello si occupa delle persone che compongono il team ma soprattutto dei **pattern** in cui sono coinvolte e delle **interazioni** tra di loro. Si passa da *\"i membri lavorano sulle proprie dinamiche\"* a *\"**tutto il team si focalizza sui pattern che condizionano la performance**: cambiando il sistema, cambiano i risultati\"*."
+        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
+        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo ASTC.",
+        "Il modello Asterys Systemic Team Coaching si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: cambiando il sistema, migliorano le dinamiche e cambiano i risultati."
       ]
     },
     target: [
-      { title: "Coach certificati", desc: "Professionisti che vogliono specializzarsi nel team coaching sistemico e puntare alla credenziale ACTC.", icon: <TrendingUp /> },
-      { title: "Manager & Consulenti", desc: "Con una solida formazione di coaching, di supporto a team e organizzazioni per liberarne il massimo potenziale.", icon: <Users /> },
-      { title: "Coach esperti verso ACTC", desc: "Che vogliono ottenere il diploma AATC per impegnarsi nell'ottenimento della credenziale ICF ACTC.", icon: <Award /> }
+      { title: "Coach e facilitatori", desc: "Professionisti con competenze di coaching e/o facilitazione che vogliono migliorare la propria capacità di lavorare a livello sistemico e con i team.", icon: <TrendingUp /> },
+      { title: "Manager & Consulenti", desc: "Persone che supportano team e organizzazioni e desiderano liberarne il pieno potenziale con un approccio sistemico al lavoro di gruppo.", icon: <Users /> },
+      { title: "Coach esperti verso ACTC", desc: "Coach che vogliono ottenere il diploma AATC per poi impegnarsi nell'ottenimento della credenziale ICF ACTC.", icon: <Award /> }
     ],
     learning: {
       cols: [
-        { title: "Modello ASTC", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente"] },
-        { title: "Metodo & Strumenti", items: ["ToolBox ASTC", "Piattaforma Inner di social learning", "Homework su progetti reali"] },
-        { title: "Alta performance", items: ["Ri-pensare le high performing team", "Sostituire convinzioni limitanti", "Facilitare il cambiamento sistemico"] }
+        { title: "Modello ASTC", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente", "Paradigma del team di successo"] },
+        { title: "Metodo & Strumenti", items: ["ToolBox ASTC", "Piattaforma Inner di social learning", "Homework su progetti reali", "Percorso immersivo e team-centrico"] },
+        { title: "Alta performance", items: ["Ri-pensare le high performing team", "Sostituire convinzioni limitanti", "Facilitare il cambiamento sistemico", "Soddisfazione e risultati straordinari"] }
       ],
       softSkills: ["Visione d'insieme", "Neutralità sistemica", "Presenza nei team", "Gestione della complessità"]
     },
@@ -1199,31 +1259,34 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
+        title: "ASTC 1°+2° livello",
+        type: "lump" as const,
+        benefit: "Percorso completo",
+        heading: "ASTC 1°+2° livello",
+        desc: "Percorso completo in due livelli: 5 giornate d'aula divise in 2+3, Live Class, homework, piattaforma Inner, e-learning dedicato e ToolBox ASTC. Include l'accesso all'esame pratico per la certificazione ASTC Expert.",
+        price: "€ 2.900",
+        priceLabel: "",
+        footnote: "Prezzo Early Bird € 2.726. Richiesto CV. Sedi: Milano e a distanza. Durata indicativa: 4-8 mesi. 40 CCE ICF."
+      },
+      {
         title: "ASTC 1° livello",
         type: "lump" as const,
-        benefit: "Live Online",
+        benefit: "16 CCE ICF",
         heading: "1° livello in videoconferenza",
         desc: "Corso di 2 giornate in videoconferenza + Live Class da 2 ore + homework su progetti di team coaching supportati dalla piattaforma Inner.",
-        price: "Su richiesta",
-        priceLabel: "una tantum"
+        price: "€ 1.200",
+        priceLabel: "",
+        footnote: "Prezzo Early Bird € 1.128. Richiesto CV. Sede: corso in videoconferenza. Durata: 2 mesi. Nessun esame. Promo Sconto Alumni e pagamento anche a rate."
       },
       {
         title: "ASTC 2° livello",
         type: "lump" as const,
-        benefit: "In aula · Milano / Roma",
+        benefit: "24 CCE ICF",
         heading: "2° livello in presenza",
         desc: "3 giorni di corso in aula (Milano o Roma), modulo e-learning dedicato e ToolBox ASTC per applicare il modello sul campo.",
-        price: "Su richiesta",
-        priceLabel: "una tantum"
-      },
-      {
-        title: "ASTC Expert Exam",
-        type: "after" as const,
-        benefit: "Opzionale",
-        heading: "Esame di certificazione",
-        desc: "Valutazione del lavoro svolto nei 3 giorni del 2° livello, verifica scritta e incontro individuale di chiusura. Supera l'esame per ottenere il diploma AATC ICF.",
-        price: "Su richiesta",
-        priceLabel: "una tantum"
+        price: "€ 2.100",
+        priceLabel: "",
+        footnote: "Prezzo Early Bird € 1.974. Richiesto CV. Sede: Milano. Durata: 2 mesi. Esame pratico per certificazione ASTC Expert. Promo Sconto Alumni e pagamento anche a rate."
       }
     ],
     editionsSection: {
