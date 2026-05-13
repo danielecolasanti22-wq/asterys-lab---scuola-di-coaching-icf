@@ -1597,6 +1597,14 @@ export const coursesContent: Record<string, CourseData> = {
       price: "90€ + IVA 22%",
       installments: "Pagamento una tantum"
     },
+    earlyBirdPromo: {
+      ribbon: "COACHING CIRCLE",
+      line: "Prenota il tuo posto sullo store: dopo l'acquisto scegli la data più comoda dal calendario",
+      deadline: "",
+      ctaHref: "#prezzo",
+      pillDeadlineLabel: "STORE",
+      discountAmount: "90€"
+    },
     badges: ["Gruppi da 4", "3,30h", "Feedback immediato"],
     overview: {
       title: "Fai pratica di coaching!",

@@ -312,6 +312,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
   const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching';
+  const isCoachingCircle = id === 'coaching-circle';
 
   const isMasterLike =
     /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
@@ -465,7 +466,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
         <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
           {earlyPromo.line}
         </span>
-        <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">Dettagli e date sul Master</span>
+        <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">
+          {isCoachingCircle ? 'Dettagli e date della pratica' : 'Dettagli e date sul Master'}
+        </span>
         <a
           href={earlyPromo.ctaHref}
           className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#BFD4FF] transition-colors whitespace-nowrap"
@@ -757,7 +760,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 3. PROGRAMMA DEL MASTER TABS */}
       <section id="programma" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <h2 className={`${tSection} mb-4`}>Programma del Master</h2>
+            <h2 className={`${tSection} mb-4`}>
+              {isCoachingCircle ? 'Come funziona la pratica' : 'Programma del Master'}
+            </h2>
             <p className={`${tLead} mb-10 lg:mb-12`}>
               {programIntro}
             </p>
@@ -821,12 +826,18 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 lg:p-14 text-white text-center relative overflow-hidden">
                <h2 className={`${tSection} text-white mb-4`}>Scegli tu quando iniziare</h2>
                <p className="text-sm sm:text-base text-white/75 max-w-xl mx-auto mb-10 font-medium leading-relaxed">
-                 Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.
+                 {isCoachingCircle
+                   ? "Prenota il tuo posto: dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+                   : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
                
                <div className="bg-white/5 border border-white/10 rounded-[1.25rem] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8 max-w-3xl mx-auto mb-8 text-left">
                   <div className="text-left w-full">
-                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/45 mb-5">Le classi di questo master partono di continuo: ecco le prossime</p>
+                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/45 mb-5">
+                       {isCoachingCircle
+                         ? 'I gruppi vengono composti in ordine di iscrizione'
+                         : 'Le classi di questo master partono di continuo: ecco le prossime'}
+                     </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-12">
                         {(course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }]).map((cd, i, arr) => (
                           <div key={i} className="contents">
@@ -1774,6 +1785,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
+      {!isCoachingCircle ? (
       <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">
@@ -1801,6 +1813,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
          </div>
       </section>
+      ) : null}
 
       {course.pegasusProgram ? (
         <section id="pegasus" className="py-14 lg:py-20 bg-[#001D4B] text-white">
@@ -1858,6 +1871,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
+      {!isCoachingCircle ? (
       <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-8 lg:mb-10">
@@ -2003,10 +2017,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
          </div>
       </section>
+      ) : null}
 
       <TestimonialsSection />
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
+      {!isCoachingCircle ? (
       <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
@@ -2121,6 +2137,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
          </div>
       </section>
+      ) : null}
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-16 lg:py-20 bg-white">
@@ -2128,11 +2145,23 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="bg-[#1D3BB9] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">
-                    Accelera la tua carriera: <span className="text-[#BFD4FF]">parti da qui</span>
+                    {isCoachingCircle ? (
+                      <>
+                        Fai pratica di coaching: <span className="text-[#BFD4FF]">prenota il tuo posto</span>
+                      </>
+                    ) : (
+                      <>
+                        Accelera la tua carriera: <span className="text-[#BFD4FF]">parti da qui</span>
+                      </>
+                    )}
                   </h2>
-                  <p className="text-sm sm:text-base text-white/55 mb-10 font-medium max-w-md mx-auto leading-relaxed">Inizia il tuo processo di ammissione gratis e senza impegno.</p>
+                  <p className="text-sm sm:text-base text-white/55 mb-10 font-medium max-w-md mx-auto leading-relaxed">
+                    {isCoachingCircle
+                      ? "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+                      : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
+                  </p>
                   <button className="bg-[#BFD4FF] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
-                     INIZIA ORA
+                     {isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
                   </button>
                </div>
             </div>
