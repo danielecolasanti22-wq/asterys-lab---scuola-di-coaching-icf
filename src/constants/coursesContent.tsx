@@ -1121,17 +1121,10 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
     media: {
-<<<<<<< HEAD
       hero: "/course-media/systemic-team-coaching/hero-pier-paolo-colasanti.png",
-      overview: "/course-media/systemic-team-coaching/card.jpg",
-      brochureDecor: "/course-media/systemic-team-coaching/card.jpg",
-      completePractical: "/course-media/systemic-team-coaching/card.jpg",
-=======
-      hero: "/course-media/apcm/hero.png",
       overview: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
       brochureDecor: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
       completePractical: "/course-media/apcm/supervision-mentor.png",
->>>>>>> b99cb3769eba83eab1e6c8e850508108d8528830
       completePlatform: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
