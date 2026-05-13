@@ -1190,7 +1190,7 @@ export const coursesContent: Record<string, CourseData> = {
       dates: "Ottobre 2026 – Febbraio 2027",
       format: "Ibrido (Live Online + In aula)",
       duration: "54 ore sincrone · 60 CCE",
-      price: "Su richiesta",
+      price: "Da 1.200€ + IVA",
       installments: "Rateizzazione disponibile"
     },
     badges: ["ICF Accreditato", "Diploma AATC", "Verso ACTC"],
@@ -1411,34 +1411,34 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "Rateizzazione 24 mesi",
-        type: "installment",
-        benefit: "0% interessi",
-        heading: "Paga in rate mensili",
-        desc: "Dilaziona l'intero importo del Master in rate mensili fino a 24 mesi, senza interessi e senza garanzie. Attivazione semplice e completamente online.",
-        price: "288€",
-        priceLabel: "/mese",
-        footnote: "Simulazione su 24 mesi · Percorso Completo L1+L2: 6.900€ + IVA"
-      },
-      {
-        title: "Pagamento Unico",
+        title: "ASTC 1°+2° livello",
         type: "lump",
-        benefit: "Risparmi 1.000€",
-        heading: "Percorso Completo L1+L2",
-        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul Percorso Completo (Livello 1 + Livello 2). Ideale per chi preferisce saldare tutto subito.",
-        price: "6.900€",
-        priceLabel: "+ IVA una tantum",
-        footnote: "Prezzo pieno: 7.900€ + IVA — con pagamento unico risparmi 1.000€"
+        benefit: "Percorso completo",
+        heading: "ASTC 1°+2° livello",
+        desc: "Percorso completo con ASTC 1° livello a distanza e ASTC 2° livello in aula a Milano o Roma.",
+        price: "2.900€",
+        priceLabel: "+ IVA",
+        footnote: "Prezzo Early Bird € 2.726"
       },
       {
-        title: "Solo Livello 1",
-        type: "after",
-        benefit: "Fondamenti coaching",
-        heading: "Parti dal 1° Livello",
-        desc: "Frequenta solo il Livello 1 (ICF Level 1 ready) e decidi in seguito se proseguire con il 2° Livello. Potrai sempre completare il percorso con una successiva edizione.",
-        price: "3.400€",
-        priceLabel: "+ IVA una tantum",
-        footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
+        title: "ASTC 1° livello",
+        type: "lump",
+        benefit: "Live online",
+        heading: "ASTC 1° livello",
+        desc: "Primo livello ASTC in videoconferenza, con Live Class e corso a distanza.",
+        price: "1.200€",
+        priceLabel: "+ IVA",
+        footnote: "Prezzo Early Bird € 1.128"
+      },
+      {
+        title: "ASTC 2° livello",
+        type: "lump",
+        benefit: "In aula",
+        heading: "ASTC 2° livello",
+        desc: "Secondo livello ASTC con Live Class online e corso in aula a Milano o Roma.",
+        price: "2.100€",
+        priceLabel: "+ IVA",
+        footnote: "Prezzo Early Bird € 1.974"
       }
     ],
     faqs: commonFaqs
