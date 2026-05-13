@@ -1583,6 +1583,9 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Fai pratica di coaching in gruppi da 4, con feedback immediato e supervisione di un mentor-coach professionista.",
     type: "PRATICA SUPERVISIONATA",
     heroKicker: "PER COACH CHE HANNO COMPLETATO UN PERCORSO BASE",
+    media: {
+      hero: "/course-media/coaching-circle/hero-coaching-circle.png",
+    },
     heroBenefits: [
       "3,30h di pratica supervisionata in gruppi da 4 persone",
       "20' nel ruolo di coach + 30' di feedback dedicato per ciascun partecipante",
