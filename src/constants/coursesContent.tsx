@@ -1255,9 +1255,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     classDates: [
       { date: "6 ottobre 2026", badge: "ASTC 1° LIVELLO · Live Online" },
-      { date: "20 gennaio 2027", badge: "ASTC 2° LIVELLO · 1a Live Class" },
-      { date: "4, 5, 6 febbraio 2027", note: "Corso in aula · Milano" },
-      { date: "25, 26, 27 febbraio 2027", note: "Corso in aula · Roma" }
+      { date: "20 gennaio 2027", badge: "ASTC 2° LIVELLO · 1a Live Class" }
     ],
     sessionSchedule: [
       { days: "ASTC 1° livello · Live Class", time: "6 ottobre, 29 ottobre e 10 novembre 2026" },
