@@ -1122,7 +1122,7 @@ export const coursesContent: Record<string, CourseData> = {
     type: "AVANZATO",
     media: {
       hero: "/course-media/systemic-team-coaching/hero-pier-paolo-colasanti.png",
-      overview: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      overview: "/course-media/systemic-team-coaching/astc-modello-pitto.png",
       brochureDecor: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
       completePractical: "/course-media/apcm/supervision-mentor.png",
       completePlatform: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
