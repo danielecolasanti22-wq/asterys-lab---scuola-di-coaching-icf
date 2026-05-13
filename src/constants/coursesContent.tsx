@@ -1121,12 +1121,19 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
     media: {
+<<<<<<< HEAD
       hero: "/course-media/systemic-team-coaching/hero-pier-paolo-colasanti.png",
       overview: "/course-media/systemic-team-coaching/card.jpg",
       brochureDecor: "/course-media/systemic-team-coaching/card.jpg",
       completePractical: "/course-media/systemic-team-coaching/card.jpg",
+=======
+      hero: "/course-media/apcm/hero.png",
+      overview: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      brochureDecor: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      completePractical: "/course-media/apcm/supervision-mentor.png",
+>>>>>>> b99cb3769eba83eab1e6c8e850508108d8528830
       completePlatform: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
-      howItWorks: "/course-media/systemic-team-coaching/card.jpg",
+      howItWorks: "/course-media/apcm/how-master.jpg",
     },
     howItWorks: {
       title: "Come si struttura il percorso",
@@ -1235,8 +1242,13 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     teachers: [
-      { name: "Pier Paolo Colasanti", creds: "Team Coach & Consulente", role: "Co-autore del modello ASTC", bio: "Team coach e consulente nelle realtà organizzative più complesse, con esperienza internazionale.", img: "https://picsum.photos/seed/astc-colasanti/300/300" },
-      { name: "Stefano Petti", creds: "Team Coach & Consulente", role: "Co-autore del modello ASTC", bio: "Team coach e consulente; decine di migliaia di ore di esperienza con clienti italiani e internazionali.", img: "https://picsum.photos/seed/astc-petti/300/300" }
+      {
+        name: "Pier Paolo Colasanti",
+        creds: "PCC",
+        role: "CEO Asterys Lab, Executive e Team Coach ICF & Facilitator",
+        bio: "Executive e Team Coach, facilitator e guida dei percorsi Asterys Lab per lo sviluppo di persone, team e organizzazioni.",
+        img: "/course-media/apcm/trainer-pier-paolo-colasanti.jpg"
+      }
     ],
     career: {
       title: "Dopo il Master ASTC",
@@ -1259,99 +1271,34 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "ASTC 1°+2° livello",
-        type: "lump" as const,
-        benefit: "Percorso completo",
-        heading: "ASTC 1°+2° livello",
-        desc: "Percorso completo in due livelli: 5 giornate d'aula divise in 2+3, Live Class, homework, piattaforma Inner, e-learning dedicato e ToolBox ASTC. Include l'accesso all'esame pratico per la certificazione ASTC Expert.",
-        price: "€ 2.900",
-        priceLabel: "",
-        footnote: "Prezzo Early Bird € 2.726. Richiesto CV. Sedi: Milano e a distanza. Durata indicativa: 4-8 mesi. 40 CCE ICF."
+        title: "Rateizzazione 24 mesi",
+        type: "installment",
+        benefit: "0% interessi",
+        heading: "Paga in rate mensili",
+        desc: "Dilaziona l'intero importo del Master in rate mensili fino a 24 mesi, senza interessi e senza garanzie. Attivazione semplice e completamente online.",
+        price: "288€",
+        priceLabel: "/mese",
+        footnote: "Simulazione su 24 mesi · Percorso Completo L1+L2: 6.900€ + IVA"
       },
       {
-        title: "ASTC 1° livello",
-        type: "lump" as const,
-        benefit: "16 CCE ICF",
-        heading: "1° livello in videoconferenza",
-        desc: "Corso di 2 giornate in videoconferenza + Live Class da 2 ore + homework su progetti di team coaching supportati dalla piattaforma Inner.",
-        price: "€ 1.200",
-        priceLabel: "",
-        footnote: "Prezzo Early Bird € 1.128. Richiesto CV. Sede: corso in videoconferenza. Durata: 2 mesi. Nessun esame. Promo Sconto Alumni e pagamento anche a rate."
+        title: "Pagamento Unico",
+        type: "lump",
+        benefit: "Risparmi 1.000€",
+        heading: "Percorso Completo L1+L2",
+        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul Percorso Completo (Livello 1 + Livello 2). Ideale per chi preferisce saldare tutto subito.",
+        price: "6.900€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Prezzo pieno: 7.900€ + IVA — con pagamento unico risparmi 1.000€"
       },
       {
-        title: "ASTC 2° livello",
-        type: "lump" as const,
-        benefit: "24 CCE ICF",
-        heading: "2° livello in presenza",
-        desc: "3 giorni di corso in aula (Milano o Roma), modulo e-learning dedicato e ToolBox ASTC per applicare il modello sul campo.",
-        price: "€ 2.100",
-        priceLabel: "",
-        footnote: "Prezzo Early Bird € 1.974. Richiesto CV. Sede: Milano. Durata: 2 mesi. Esame pratico per certificazione ASTC Expert. Promo Sconto Alumni e pagamento anche a rate."
-      }
-    ],
-    editionsSection: {
-      eyebrow: "Calendario edizioni",
-      title: "Edizione 2026/2027",
-      intro: "Il percorso si articola in **due livelli + esame opzionale**. Il 1° livello è in **videoconferenza**, il 2° livello si svolge **in aula** a **Milano** o **Roma** a scelta."
-    },
-    editions: [
-      {
-        city: "Online",
-        citySlug: "online",
-        level: "1° Livello",
-        levelSlug: "l1",
-        editionLabel: "ASTC 1° livello 261",
-        editionSlug: "astc-l1-261",
-        subtitle: "Ottobre – Novembre 2026 · In videoconferenza",
-        badge: "Early Bird attivo",
-        earlyBird: { label: "Early Bird", date: "19 agosto 2026" },
-        enrollmentEnd: { label: "Termine iscrizioni", date: "19 settembre 2026" },
-        events: [
-          { label: "Early Bird", date: "19 agosto 2026", type: "deadline-early" },
-          { label: "Termine iscrizioni", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "6 ottobre 2026", type: "live-class" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "In videoconferenza" },
-          { label: "2a Live Class", date: "29 ottobre 2026", type: "live-class" },
-          { label: "3a Live Class", date: "10 novembre 2026", type: "live-class" }
-        ]
-      },
-      {
-        city: "Milano",
-        citySlug: "milano",
-        level: "2° Livello",
-        levelSlug: "l2",
-        editionLabel: "ASTC 2° livello · Milano",
-        editionSlug: "astc-l2-milano",
-        subtitle: "Gennaio – Febbraio 2027 · In aula a Milano",
-        badge: "Iscrizioni aperte",
-        earlyBird: { label: "Early Bird", date: "21 novembre 2026" },
-        enrollmentEnd: { label: "Termine iscrizioni", date: "20 dicembre 2026" },
-        events: [
-          { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
-          { label: "Termine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class" },
-          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "In presenza a Milano" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class" }
-        ]
-      },
-      {
-        city: "Roma",
-        citySlug: "roma",
-        level: "2° Livello",
-        levelSlug: "l2",
-        editionLabel: "ASTC 2° livello · Roma",
-        editionSlug: "astc-l2-roma",
-        subtitle: "Gennaio – Febbraio 2027 · In aula a Roma",
-        badge: "Iscrizioni aperte",
-        earlyBird: { label: "Early Bird", date: "21 novembre 2026" },
-        enrollmentEnd: { label: "Termine iscrizioni", date: "20 dicembre 2026" },
-        events: [
-          { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
-          { label: "Termine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class" },
-          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "In presenza a Roma" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class" }
-        ]
+        title: "Solo Livello 1",
+        type: "after",
+        benefit: "Fondamenti coaching",
+        heading: "Parti dal 1° Livello",
+        desc: "Frequenta solo il Livello 1 (ICF Level 1 ready) e decidi in seguito se proseguire con il 2° Livello. Potrai sempre completare il percorso con una successiva edizione.",
+        price: "3.400€",
+        priceLabel: "+ IVA una tantum",
+        footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
       }
     ],
     faqs: commonFaqs
