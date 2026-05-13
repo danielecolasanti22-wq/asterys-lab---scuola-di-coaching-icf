@@ -1646,6 +1646,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </p>
                   </div>
 
+                  {fee.financing ? (
+                    <div className="mx-auto mb-6 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-4 ring-1 ring-[#008060]/15">
+                      <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[#008060] mb-1.5">
+                        {fee.financing.label}
+                      </p>
+                      <p className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
+                        {fee.financing.amount}
+                      </p>
+                      <p className="mt-1.5 text-xs sm:text-sm font-medium leading-relaxed text-brand-navy/60">
+                        {fee.financing.note}
+                      </p>
+                    </div>
+                  ) : null}
+
                   {fee.footnote ? (
                     <p className="text-brand-navy/55 text-xs sm:text-sm font-medium leading-relaxed mb-10">
                       {fee.footnote}

@@ -17,6 +17,11 @@ export interface CourseFee {
   price: string;
   priceLabel: string;
   footnote?: string;
+  financing?: {
+    label: string;
+    amount: string;
+    note: string;
+  };
   type: 'installment' | 'lump' | 'after' | 'zero-rate';
 }
 
@@ -1418,6 +1423,11 @@ export const coursesContent: Record<string, CourseData> = {
         desc: "Percorso completo con ASTC 1° livello a distanza e ASTC 2° livello in aula a Milano o Roma.",
         price: "2.900€",
         priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "121€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        },
         footnote: "Prezzo Early Bird € 2.726"
       },
       {
@@ -1428,6 +1438,11 @@ export const coursesContent: Record<string, CourseData> = {
         desc: "Primo livello ASTC in videoconferenza, con Live Class e corso a distanza.",
         price: "1.200€",
         priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "50€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        },
         footnote: "Prezzo Early Bird € 1.128"
       },
       {
@@ -1438,6 +1453,11 @@ export const coursesContent: Record<string, CourseData> = {
         desc: "Secondo livello ASTC con Live Class online e corso in aula a Milano o Roma.",
         price: "2.100€",
         priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "88€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        },
         footnote: "Prezzo Early Bird € 1.974"
       }
     ],
