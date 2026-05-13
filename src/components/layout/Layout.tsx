@@ -137,8 +137,7 @@ export const Header = () => {
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
-  const isCourseDetailPage =
-    /^\/corsi\/[^/]+$/.test(location.pathname) || location.pathname === '/nuova-pagina-2';
+  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -181,8 +180,6 @@ export const Header = () => {
     { name: 'The Campus', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
     { name: 'Risorse', href: '/blog' },
-    { name: 'Nuova Pagina', href: '/nuova-pagina' },
-    { name: 'Nuova Pagina 2', href: '/nuova-pagina-2' },
   ];
 
   const isHome = location.pathname === '/';
@@ -468,20 +465,6 @@ export const Header = () => {
               </Link>
             </div>
             <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
-            <Link
-              to="/nuova-pagina"
-              onClick={() => setIsMenuOpen(false)}
-              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/nuova-pagina' ? 'text-brand-accent' : 'text-brand-navy'}`}
-            >
-              Nuova Pagina
-            </Link>
-            <Link
-              to="/nuova-pagina-2"
-              onClick={() => setIsMenuOpen(false)}
-              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/nuova-pagina-2' ? 'text-brand-accent' : 'text-brand-navy'}`}
-            >
-              Nuova Pagina 2
-            </Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
               to="/iscriviti"
