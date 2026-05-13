@@ -1585,6 +1585,8 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER COACH CHE HANNO COMPLETATO UN PERCORSO BASE",
     media: {
       hero: "/course-media/coaching-circle/hero-coaching-circle.png",
+      overview: "/course-media/coaching-circle/overview-coaching-circle.png",
+      howItWorks: "/course-media/coaching-circle/how-coaching-circle.png",
     },
     heroBenefits: [
       "3,30h di pratica supervisionata in gruppi da 4 persone",
