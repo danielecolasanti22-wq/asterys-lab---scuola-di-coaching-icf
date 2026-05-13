@@ -941,7 +941,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             ) : null}
 
             {/* Edition pills */}
-            {editionsForCityLevel.length > 1 ? (
+            {editionsForCityLevel.length > 1 || id === 'systemic-team-coaching' ? (
               <div className="mb-8">
                 <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
                   <Flag size={12} strokeWidth={2.5} /> Edizione
