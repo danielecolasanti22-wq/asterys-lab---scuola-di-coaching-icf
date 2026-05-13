@@ -53,11 +53,11 @@ const coursesData = [
     category: 'Per coach già attivi',
     type: "PRATICA SUPERVISIONATA",
     title: "Coaching Circle",
-    desc: "3,30 ore di pratica di coaching supervisionata da un mentor-coach PCC, in gruppi da 4. Feedback immediato e confronto tra pari.",
+    desc: "3,30 ore di pratica di coaching supervisionata da un mentor-coach professionista, in gruppi da 4. Feedback immediato e confronto tra pari.",
     duration: "3,30 ore - Zoom",
     next: "Data condivisa nel gruppo",
     img: "https://picsum.photos/seed/coaching-circle/600/400",
-    tags: ['Mentor PCC+', 'Gruppi da 4', 'Feedback immediato']
+    tags: ['Mentor coach', 'Gruppi da 4', 'Feedback immediato']
   },
   {
     id: 'public-speaking',

@@ -53,7 +53,7 @@ const megaColumns: MegaColumn[] = [
     caption: 'Approfondisci ambiti chiave del coaching',
     icon: 'specialization',
     items: [
-      { id: 'coaching-circle', title: 'Coaching Circle', kicker: 'Pratica supervisionata · PCC', meta: '3,30 ore · Gruppi da 4 · Zoom' },
+      { id: 'coaching-circle', title: 'Coaching Circle', kicker: 'Pratica supervisionata', meta: '3,30 ore · Gruppi da 4 · Zoom' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
     ],
   },

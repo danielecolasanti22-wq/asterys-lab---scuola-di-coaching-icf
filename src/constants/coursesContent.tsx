@@ -17,6 +17,7 @@ export interface CourseFee {
   price: string;
   priceLabel: string;
   footnote?: string;
+  ctaLabel?: string;
   financing?: {
     label: string;
     amount: string;
@@ -1579,13 +1580,13 @@ export const coursesContent: Record<string, CourseData> = {
   'coaching-circle': {
     title: "Coaching Circle",
     subtitle: "Pratica supervisionata di coaching",
-    tagline: "Uno spazio per fare pratica di coaching in gruppi da 4, con feedback immediato di un mentor-coach PCC.",
+    tagline: "Fai pratica di coaching in gruppi da 4, con feedback immediato e supervisione di un mentor-coach professionista.",
     type: "PRATICA SUPERVISIONATA",
     heroKicker: "PER COACH CHE HANNO COMPLETATO UN PERCORSO BASE",
     heroBenefits: [
       "3,30h di pratica supervisionata in gruppi da 4 persone",
       "20' nel ruolo di coach + 30' di feedback dedicato per ciascun partecipante",
-      "Mentor-coach con credenziale ICF almeno PCC formati in Asterys Lab",
+      "Mentor-coach professionisti con credenziale ICF almeno PCC",
       "Apprendimento dalle tre posizioni: coach, cliente, osservatore"
     ],
     summaryBox: {
@@ -1596,13 +1597,14 @@ export const coursesContent: Record<string, CourseData> = {
       price: "90€ + IVA 22%",
       installments: "Pagamento una tantum"
     },
-    badges: ["Gruppi da 4", "Mentor PCC+", "Feedback immediato"],
+    badges: ["Gruppi da 4", "3,30h", "Feedback immediato"],
     overview: {
-      title: "Fai pratica di coaching",
+      title: "Fai pratica di coaching!",
       content: [
         "Dopo aver terminato un percorso di formazione di coaching, anche dopo aver preso la credenziale, è alto il rischio di **\"viziare\" la propria pratica** con modalità poco efficaci e che si scostino dal coaching secondo ICF, tralasciando le linee guida e il codice etico ma anche adottando modelli di conversazione non specifici del coaching e/o mutuati da altre discipline.",
-        "Sebbene ci si aspetti, da ogni coach, che scopra e adotti un proprio stile — e noi, come scuola, incoraggiamo sempre i nostri studenti a trovare la propria forma di espressione — è importante che il coach faccia attenzione a non concedersi licenze che poco hanno a che fare con il coaching, rischiando di perdere di efficacia.",
-        "Per questa ragione, Asterys Lab propone **uno spazio per fare pratica di coaching, in gruppi da quattro persone, supervisionata da un mentor-coach professionista PCC**. Il mentor coach offre feedback immediato e discute, con i partecipanti, anche le scelte e le possibili strategie nei casi affrontati di volta in volta."
+        "Sebbene ci si aspetti, da ogni coach, che scopra e adotti un proprio stile e noi, come scuola, incoraggiamo sempre i nostri studenti a trovare la propria forma di espressione, è anche importante che il coach faccia attenzione a non concedersi licenze che poco hanno a che fare con il coaching, rischiando così di perdere efficacia.",
+        "Per questa ragione, Asterys Lab propone **uno spazio per fare pratica di coaching, in gruppi da quattro persone, supervisionata da un mentor-coach professionista**. Il mentor coach offre feedback immediato e discute, con i partecipanti, anche le scelte e le possibili strategie nei casi affrontati di volta in volta.",
+        "Dopo l'acquisto verrà inviato un link al calendario dove poter scegliere la data più comoda tra quelle disponibili."
       ]
     },
     target: [
@@ -1659,18 +1661,18 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     programIntro:
-      "Il Coaching Circle è pensato per chi ha già completato un percorso base e vuole continuare a crescere attraverso una pratica supervisionata di qualità.",
+      "Il Coaching Circle è aperto a chi ha già effettuato un percorso base per diventare coach e vuole fare pratica attraverso il feedback diretto di un professionista del settore.",
     studyModeBox: {
       title: "Modalità di svolgimento",
       highlight: "Zoom · Gruppi da 4",
-      body: "Dopo l'acquisto ricevi il link al calendario per scegliere la data disponibile più comoda. L'evento avrà luogo al raggiungimento del numero minimo di partecipanti; altrimenti vieni ricollocato nel circle successivo. Le iscrizioni vengono raccolte in ordine di arrivo e ti verrà proposta l'adesione a un gruppo WhatsApp con mentor e altri iscritti per definire la data utile per tutti.",
+      body: "Dopo l'acquisto ricevi il link al calendario per scegliere la data disponibile più comoda. Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base all'ordine di arrivo. Riceverai una richiesta di adesione a un gruppo WhatsApp nel quale, insieme al mentor coach e agli altri iscritti, sarà definita la data utile per tutti. Iscrivendoti autorizzi Asterys Lab a utilizzare il tuo numero di cellulare e a condividerlo con gli altri partecipanti del gruppo WhatsApp del Coaching Circle.",
     },
     teachers: [
       {
         name: "Mentor Coach Asterys Lab",
-        creds: "ICF PCC+",
+        creds: "ICF PCC/MCC",
         role: "Mentor del Coaching Circle",
-        bio: "Tutti i mentor impegnati nel Coaching Circle sono Coach ICF con credenziale almeno PCC, formati nella scuola di coaching Asterys Lab.",
+        bio: "I mentor coach del Coaching Circle supervisionano la pratica, offrono feedback immediato e stimolano la riflessione del gruppo sulle scelte e sulle strategie emerse nei casi affrontati.",
         img: "https://picsum.photos/seed/coaching-circle-mentor/300/300"
       }
     ],
@@ -1678,7 +1680,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Perché inserirlo nella tua pratica",
       content: "Il Coaching Circle mantiene alta la qualità della tua pratica professionale: feedback immediato, confronto tra pari e aderenza alle linee guida ICF.",
       points: [
-        { title: "Feedback immediato", desc: "Il mentor PCC+ osserva la tua sessione e restituisce un feedback dedicato di 30 minuti." },
+        { title: "Feedback immediato", desc: "Il mentor coach osserva la tua sessione e restituisce un feedback dedicato di 30 minuti." },
         { title: "Allenamento costante", desc: "Uno spazio ricorrente per affinare la pratica tra un corso e l'altro o dopo la credenziale." },
         { title: "Apprendimento di gruppo", desc: "Osservare e ricevere coaching dai pari è parte essenziale della crescita professionale." },
         { title: "Aderenza al metodo ICF", desc: "Mantieni la tua pratica allineata alle linee guida e al codice etico ICF." }
@@ -1690,10 +1692,11 @@ export const coursesContent: Record<string, CourseData> = {
         type: "lump",
         benefit: "Pratica supervisionata",
         heading: "Quota di partecipazione",
-        desc: "Include 3,30h di mentor coaching di gruppo in videocall con un mentor-coach PCC+.",
+        desc: "Include 3,30h di mentor coaching di gruppo in videochiamata, in gruppi da 4 partecipanti.",
         price: "90€",
         priceLabel: "+ IVA 22%",
-        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+        ctaLabel: "Prenota il tuo posto sullo store",
+        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili. Lo sconto Alumni o Associati si cumula con l'Early Bird e sarà calcolato alla cassa."
       }
     ],
     faqs: [
@@ -1707,7 +1710,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Come si definisce la data del Coaching Circle?",
-        a: "Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base all'ordine di arrivo. Riceverai una richiesta di adesione a un gruppo WhatsApp nel quale, insieme al mentor coach e agli altri iscritti, sarà definita la data utile per tutti."
+        a: "Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base all'ordine di arrivo. Riceverai una richiesta di adesione a un gruppo WhatsApp nel quale, insieme al mentor coach e agli altri iscritti, sarà definita la data utile per tutti. Iscrivendoti autorizzi Asterys Lab a utilizzare il tuo numero di cellulare e a condividerlo con gli altri partecipanti del gruppo WhatsApp del Coaching Circle."
       },
       {
         q: "Cosa succede se non si raggiunge il numero minimo?",
@@ -1715,7 +1718,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Chi sono i mentor del Coaching Circle?",
-        a: "Tutti i mentor impegnati nel Coaching Circle sono Coach ICF con credenziale almeno PCC, formati nella scuola di coaching Asterys Lab."
+        a: "I mentor coach del Coaching Circle sono professionisti ICF con credenziali avanzate, formati nella scuola di coaching Asterys Lab."
       },
       {
         q: "Dove si svolge il Coaching Circle?",

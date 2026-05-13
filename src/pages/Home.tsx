@@ -325,7 +325,7 @@ const MasterGrid = () => {
       title: 'Coaching Circle',
       duration: '3,30 ore · Gruppi da 4',
       label: 'Specializzazione',
-      desc: 'Pratica supervisionata di coaching con un mentor-coach PCC: feedback immediato e confronto tra pari.',
+      desc: 'Pratica supervisionata di coaching con un mentor-coach professionista: feedback immediato e confronto tra pari.',
       start: 'Data condivisa nel gruppo',
       lastSeats: false,
       seed: 'coaching-circle'

@@ -1673,7 +1673,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       type="button"
                       className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
                     >
-                      Iscriviti ora
+                      {fee.ctaLabel ?? 'Iscriviti ora'}
                     </button>
                     <button
                       type="button"
