@@ -311,6 +311,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
 
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
+  const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching';
 
   const isMasterLike =
     /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
@@ -2024,9 +2025,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                {/* Row 2 — two cards side by side */}
                <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${id === 'apcm' ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
-                     <h3 className={`${id === 'apcm' ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
-                       {id === 'apcm' ? (
+                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
+                     <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
+                       {usesApcmCompleteSection ? (
                          <>
                            Piattaforma didattica
                            <br />
@@ -2036,13 +2037,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          'Piattaforma didattica con registrazioni'
                        )}
                      </h3>
-                     <p className={`${id === 'apcm' ? 'relative z-10' : ''} text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md`}>
-                       {id === 'apcm'
+                     <p className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md`}>
+                       {usesApcmCompleteSection
                          ? 'Trovi materiali, dispense e strumenti di supporto al percorso. Le eventuali registrazioni sono riservate a uso interno e non sono accessibili agli studenti.'
                          : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
-                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[244px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
-                       {id === 'apcm' ? (
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[244px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                       {usesApcmCompleteSection ? (
                          <img
                            src={media.completePlatform}
                            className="absolute left-1/2 bottom-[-214px] w-[190%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-226px] sm:w-[194%] lg:bottom-[-240px] lg:w-[200%]"
@@ -2060,17 +2061,17 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#BFD4FF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#8FB8FF]/40 ${id === 'apcm' ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                  <div className={`lg:col-span-2 bg-[#BFD4FF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#8FB8FF]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
-                       {id === 'apcm' ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
+                       {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
                      <p className="relative z-10 text-sm text-brand-navy/75 font-medium leading-relaxed">
-                       {id === 'apcm'
+                       {usesApcmCompleteSection
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
-                     <div className={id === 'apcm' ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[238px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
-                       {id === 'apcm' ? (
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[238px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
+                       {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
                            className="absolute left-1/2 bottom-[-66px] w-[184%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"

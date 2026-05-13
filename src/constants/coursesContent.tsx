@@ -1125,7 +1125,7 @@ export const coursesContent: Record<string, CourseData> = {
       overview: "/course-media/systemic-team-coaching/astc-modello-pitto.png",
       brochureDecor: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
       completePractical: "/course-media/apcm/supervision-mentor.png",
-      completePlatform: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      completePlatform: "/course-media/apcm/platform-ui.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
     howItWorks: {
