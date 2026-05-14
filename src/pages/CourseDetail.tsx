@@ -552,6 +552,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ? 'right-[-26%] w-[calc(62vw-80px)] max-w-[920px] min-w-[680px] translate-x-[100px]'
                   : id === 'coaching-circle'
                   ? 'right-[-36%] w-[calc(117vw-135px)] max-w-[1755px] min-w-[1215px] -translate-x-[40px]'
+                  : id === 'voice-dialogue'
+                  ? 'right-[-22%] w-[calc(82vw-80px)] max-w-[1240px] min-w-[860px] translate-x-[20px]'
                   : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
               }`}
             >
