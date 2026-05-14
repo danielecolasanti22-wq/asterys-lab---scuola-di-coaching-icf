@@ -473,7 +473,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           href={earlyPromo.ctaHref}
           className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#BFD4FF] transition-colors whitespace-nowrap"
         >
-          Blocca il tuo sconto →
+          {isCoachingCircle ? 'Prenota il tuo posto →' : 'Blocca il tuo sconto →'}
         </a>
       </div>
 

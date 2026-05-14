@@ -1596,7 +1596,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     summaryBox: {
       nextEdition: "Online · Zoom",
-      dates: "Data condivisa nel gruppo all'iscrizione",
+      dates: "Scegli dal calendario dopo l'acquisto",
       format: "Videochiamata · Gruppi da 4",
       duration: "3,30 ore",
       price: "90€ + IVA 22%",
@@ -1604,11 +1604,9 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "COACHING CIRCLE",
-      line: "Prenota il tuo posto sullo store: dopo l'acquisto scegli la data più comoda dal calendario",
+      line: "Sessione di 3,30h in gruppi da 4 con mentor-coach MCC · Scegli la data dal calendario dopo l'acquisto",
       deadline: "",
       ctaHref: "#prezzo",
-      pillDeadlineLabel: "STORE",
-      discountAmount: "90€"
     },
     badges: ["Gruppi da 4", "3,30h", "Feedback immediato"],
     overview: {
@@ -1672,7 +1670,7 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     programIntro:
-      "3,30 ore di pratica supervisionata in gruppi da 4: a turno coach, cliente e osservatore. Ogni partecipante fa una sessione di 20' nel ruolo di coach e riceve 30' di feedback dedicato dal mentor MCC.",
+      "Tre fasi in 3,30h che si ripetono in ogni Coaching Circle: apertura del setting, sessioni a rotazione nei tre ruoli, feedback finale del mentor.",
     admissionBox: {
       title: "Requisiti per partecipare",
       body: "Aver completato un percorso base per diventare coach. Il Coaching Circle è uno spazio di pratica, non un corso introduttivo.",
@@ -1709,10 +1707,10 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Perché inserirlo nella tua pratica",
       content: "Il Coaching Circle mantiene alta la qualità della tua pratica professionale: feedback immediato da un mentor MCC, confronto tra pari e aderenza alle linee guida ICF.",
       points: [
-        { title: "Feedback immediato", desc: "Il mentor coach MCC osserva la tua sessione e restituisce un feedback dedicato di 30 minuti." },
-        { title: "Allenamento costante", desc: "Uno spazio ricorrente per affinare la pratica tra un corso e l'altro o dopo la credenziale." },
-        { title: "Apprendimento dalle tre posizioni", desc: "Osservare, ricevere e fare coaching nello stesso incontro: ogni ruolo è parte essenziale della crescita professionale." },
-        { title: "Aderenza al metodo ICF", desc: "Mantieni la tua pratica allineata alle linee guida e al codice etico ICF, evitando derive da altre discipline." }
+        { title: "Feedback immediato MCC", desc: "Il mentor coach osserva la tua sessione e restituisce un feedback dedicato sul caso reale." },
+        { title: "Ripetibile a tua scelta", desc: "Acquisti la singola sessione quando ne hai bisogno: puoi tornare nel tempo per consolidare la pratica." },
+        { title: "Le tre posizioni in un incontro", desc: "Coach, cliente e osservatore: ogni ruolo amplia la consapevolezza e affina lo sguardo professionale." },
+        { title: "Allineamento ICF", desc: "Tieni la pratica dentro le linee guida e il codice etico ICF, evitando derive da altre discipline." }
       ]
     },
     fees: [
@@ -1725,7 +1723,7 @@ export const coursesContent: Record<string, CourseData> = {
         price: "90€",
         priceLabel: "+ IVA 22%",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili. Lo sconto Alumni o Associati si cumula con l'Early Bird e sarà calcolato alla cassa."
+        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda. Lo sconto Alumni e Associati è applicato in cassa."
       }
     ],
     faqs: [
