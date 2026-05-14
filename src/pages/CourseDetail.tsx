@@ -313,6 +313,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
   const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching';
   const isCoachingCircle = id === 'coaching-circle';
+  const isVoiceDialogue = id === 'voice-dialogue';
 
   const isMasterLike =
     /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
@@ -763,7 +764,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       <section id="programma" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
-              {isCoachingCircle ? 'Come funziona la pratica' : 'Programma del Master'}
+              {isCoachingCircle
+                ? 'Come funziona la pratica'
+                : isMasterLike
+                ? 'Programma del Master'
+                : 'Programma del corso'}
             </h2>
             <p className={`${tLead} mb-10 lg:mb-12`}>
               {programIntro}
@@ -1395,6 +1400,41 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Apprendimento dalle tre posizioni
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+                </div>
+              </>
+            ) : isVoiceDialogue ? (
+              <>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Full immersion in aula</h3>
+                  <p className={tBody}>
+                    3 giornate concentrate in presenza a Milano (09:00–18:00) per acquisire le tecniche di base e applicarle subito.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> 8 ore di laboratorio al giorno
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Lab Inner online in parallelo
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Allenamento esperienziale</h3>
+                  <p className={tBody}>
+                    Si impara facendo: sperimenti le tecniche in prima persona e ricevi feedback dai trainer su casi reali.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica diretta con i trainer
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Confronto con colleghi su Inner
                     </li>
                   </ul>
                 </div>
