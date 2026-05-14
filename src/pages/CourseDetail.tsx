@@ -1368,39 +1368,78 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           ) : null}
 
           <div className="mt-14 grid md:grid-cols-3 gap-8 lg:gap-10">
-            <div className="space-y-4">
-              <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
-              <p className={tBody}>
-                Le lezioni seguono le date del calendario e, quando sono online, si svolgono dalle 18:30 alle 20:00: un ritmo compatibile con studio o lavoro, con preparazione e report tra una sessione e l'altra.
-              </p>
-              <ul className="space-y-3 pt-2">
-                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date definite dal calendario
-                </li>
-                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e report guidati
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Impegno</h3>
-              <p className={tBody}>
-                Ti diamo strumenti e supporto, ma il risultato dipende dalla costanza: pratica settimanale, feedback e supervisione ti aiutano a
-                consolidare il metodo.
-              </p>
-              <ul className="space-y-3 pt-2">
-                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica supervisionata
-                </li>
-                <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Esame / assessment finale
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
-              <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
-              <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
-            </div>
+            {isCoachingCircle ? (
+              <>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Sessione singola</h3>
+                  <p className={tBody}>
+                    Acquisti la singola sessione di pratica e prenoti la data dal calendario, senza impegni ricorrenti.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Acquisto una tantum
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Data scelta dal calendario
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Formato</h3>
+                  <p className={tBody}>
+                    3,30h in videochiamata, gruppi da 4: alterni i ruoli di coach, cliente e osservatore con supervisione del mentor MCC.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> 20' come coach + 30' di feedback
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Apprendimento dalle tre posizioni
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
+                  <p className={tBody}>
+                    Le lezioni seguono le date del calendario e, quando sono online, si svolgono dalle 18:30 alle 20:00: un ritmo compatibile con studio o lavoro, con preparazione e report tra una sessione e l'altra.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date definite dal calendario
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e report guidati
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Impegno</h3>
+                  <p className={tBody}>
+                    Ti diamo strumenti e supporto, ma il risultato dipende dalla costanza: pratica settimanale, feedback e supervisione ti aiutano a
+                    consolidare il metodo.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica supervisionata
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Esame / assessment finale
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>

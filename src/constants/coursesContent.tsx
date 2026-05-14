@@ -1674,11 +1674,29 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     programIntro:
-      "Il Coaching Circle è aperto a chi ha già effettuato un percorso base per diventare coach e vuole fare pratica di coaching attraverso il feedback diretto di un professionista del settore. 3,30 ore di pratica supervisionata in gruppi da 4: i partecipanti si alternano nel ruolo di coach, cliente e osservatore. A ciascuno è richiesto di fare una sessione di 20' nel ruolo di coach e riceverà 30' di feedback dedicato. Il mentor stimola la riflessione di tutti in modo che ogni partecipante sviluppi apprendimento dalle tre posizioni.",
+      "3,30 ore di pratica supervisionata in gruppi da 4: a turno coach, cliente e osservatore. Ogni partecipante fa una sessione di 20' nel ruolo di coach e riceve 30' di feedback dedicato dal mentor MCC.",
+    admissionBox: {
+      title: "Requisiti per partecipare",
+      body: "Aver completato un percorso base per diventare coach. Il Coaching Circle è uno spazio di pratica, non un corso introduttivo.",
+    },
+    howItWorks: {
+      title: "Come funziona il Coaching Circle",
+      intro:
+        "Una **sessione singola** da 3,30h in videochiamata, in **gruppi da 4 partecipanti** che si alternano nei ruoli di coach, cliente e osservatore con la supervisione di un **mentor-coach MCC**.",
+      formazioneTitle: "Pratica supervisionata",
+      formazioneBadge: "3,30h · Gruppi da 4",
+      formazioneIntro:
+        "Ogni partecipante ha **20' nel ruolo di coach** con un coachee reale, seguiti da **30' di feedback** dedicato dal mentor MCC. Il confronto di gruppo affina le scelte e mantiene la pratica aderente al metodo ICF.",
+    },
+    scheduleColumns: [
+      { icon: 'monitor', title: 'Modalità', body: 'Videochiamata su Zoom — link inviato dopo la definizione della data.' },
+      { icon: 'users', title: 'Gruppo', body: 'Massimo 4 partecipanti per circle, con supervisione di un mentor MCC.' },
+      { icon: 'calendar', title: 'Quando', body: 'Scegli la data dal calendario dopo l\'acquisto; la conferma avviene nel gruppo WhatsApp del circle.' },
+    ],
     studyModeBox: {
       title: "Modalità di svolgimento",
       highlight: "Zoom · Gruppi da 4 · 3,30h",
-      body: "Dopo l'acquisto verrà inviato un link al calendario dove poter scegliere la data più comoda tra quelle disponibili. Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base all'ordine di arrivo. L'evento avrà luogo al raggiungimento del numero minimo di partecipanti per ogni incontro, altrimenti si verrà ricollocati nel Coaching Circle successivo. Riceverai una richiesta di adesione a un gruppo WhatsApp nel quale, insieme al mentor coach e agli altri iscritti, sarà definita la data utile per tutti. Iscrivendoti a questa attività autorizzi Asterys Lab a utilizzare il tuo numero di cellulare e a condividerlo con gli altri partecipanti del gruppo WhatsApp del Coaching Circle.",
+      body: "Dopo l'acquisto ricevi il link al calendario per scegliere la data più comoda. I gruppi si formano in ordine di iscrizione e la data definitiva viene concordata con mentor e partecipanti in un gruppo WhatsApp dedicato. Se non si raggiunge il numero minimo, vieni ricollocato nel Coaching Circle successivo.",
     },
     teachers: [
       {
