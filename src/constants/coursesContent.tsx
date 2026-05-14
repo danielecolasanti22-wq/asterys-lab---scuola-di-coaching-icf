@@ -1778,6 +1778,10 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
     media: {
       hero: "/course-media/voice-dialogue/hero-voice-dialogue.png",
+      overview: "/course-media/voice-dialogue/overview-voice-dialogue.png",
+      howItWorks: "/course-media/apcm/how-master.jpg",
+      completePractical: "/course-media/apcm/supervision-mentor.png",
+      completePlatform: "/course-media/apcm/platform-ui.png",
     },
     heroBenefits: [
       "3 giornate full immersion in aula a Milano",
@@ -1864,11 +1868,36 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Struttura del percorso",
       intro:
-        "Il corso si sviluppa in **3 giorni di full immersion in aula, in presenza**. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci la padronanza per applicarle in un percorso di coaching.",
+        "Il corso si sviluppa in **3 giorni di full immersion in aula, in presenza a Milano**. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci la padronanza per applicarle in un percorso di coaching.",
       formazioneTitle: "Lab su piattaforma Inner",
-      formazioneBadge: "Online · in parallelo all'aula",
       formazioneIntro:
-        "In parallelo alle giornate in aula è allestito un **Lab sulla piattaforma Inner**: uno spazio web dove confrontarti con colleghi e trainer durante tutto il periodo di svolgimento del corso.",
+        "Hai accesso al **Lab sulla piattaforma Inner**, uno spazio digitale dedicato dove trovi materiali, dispense e strumenti di supporto al percorso e ti confronti con colleghi e trainer durante tutto il corso.",
+    },
+    scheduleBands: [
+      {
+        title: "In presenza a Milano",
+        body: "3 giornate full immersion in aula con i trainer e i compagni di corso. Tutte le sessioni si svolgono dalle 09:00 alle 18:00.",
+        dayLines: ["17–18 novembre 2026", "1 dicembre 2026"],
+        timeLines: ["09:00 – 18:00"],
+      },
+    ],
+    classDates: [
+      { date: "17 NOV 2026", badge: "PROSSIMA EDIZIONE", note: "Termine iscrizioni: 31 ott 2026" },
+    ],
+    competenciesAndCareers: {
+      eyebrow: "Competenze",
+      title: "Cosa porterai nella tua pratica",
+      intro:
+        "Il Voice Dialogue è un **arricchimento professionale**: non un percorso che ti fa lavorare di per sé, ma una metodologia che potenzia la tua cassetta degli attrezzi e amplia la qualità della Presenza nel coaching e nelle professioni di supporto alla persona.",
+      competencies: [
+        { title: "Dinamica dei Sé e mappa dei sé", desc: "Riconosci Sé primari e Sé rinnegati, origine e funzione di ciascuno, e usi la mappa come strumento di lettura nelle sessioni." },
+        { title: "Tecniche base del Voice Dialogue", desc: "Pentalogo, Margherita dei sé, Core Quadrant, Ara, Triangolazione: hai un set di strumenti operativi pronti per la pratica." },
+        { title: "Lavoro con il Critico interiore", desc: "Sai riconoscere il Critico e iniziare a gestirlo, in te stesso e nei clienti, usando in modo creativo il Giudizio Negativo." },
+        { title: "Consapevolezza energetica e corporea", desc: "Leggi i sé come schemi energetici e gestisci il tuo campo energetico nei contesti di stress o conflitto." },
+        { title: "Presenza ampliata", desc: "Aumenti la qualità della Presenza attivando sensibilità corporea ed energetica, asset chiave nelle professioni di sviluppo." },
+        { title: "Integrazione con le competenze ICF", desc: "Sai come il Voice Dialogue dialoga con le competenze chiave del coaching ICF e quando il metodo è più utile nelle sessioni." },
+      ],
+      careerPaths: [],
     },
     studyModeBox: {
       title: "Modalità di svolgimento",
@@ -1880,8 +1909,20 @@ export const coursesContent: Record<string, CourseData> = {
       body: "Per partecipare è richiesto l'invio del CV. Il pagamento può essere effettuato anche a rate.",
     },
     teachers: [
-      { name: "Giovanna Giuffredi", creds: "MCC", role: "Trainer", bio: "Coach senior e co-fondatrice Asterys Lab.", img: "https://picsum.photos/seed/voice-giovanna/300/300" },
-      { name: "Team Voice Dialogue", creds: "PCC/MCC", role: "Facilitatori", bio: "Trainer specializzati nelle tecniche di Voice Dialogue.", img: "https://picsum.photos/seed/voice-team/300/300" }
+      {
+        name: "Pier Paolo Colasanti",
+        creds: "PCC",
+        role: "CEO Asterys Lab, Executive e Team Coach ICF & Facilitator",
+        bio: "Executive e Team Coach, facilitator e guida dei percorsi Asterys Lab per lo sviluppo di persone, team e organizzazioni.",
+        img: "/course-media/apcm/trainer-pier-paolo-colasanti.jpg"
+      },
+      {
+        name: "Alessandra Bitelli",
+        creds: "MCC",
+        role: "Trainer & Executive Coach",
+        bio: "Trainer ed Executive Coach MCC, specializzata nell'accompagnare professionisti e leader in percorsi di crescita e trasformazione.",
+        img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg"
+      }
     ],
     career: {
       title: "Perché scegliere il Voice Dialogue",
@@ -1906,25 +1947,35 @@ export const coursesContent: Record<string, CourseData> = {
     },
     fees: [
       {
-        title: "Early Bird",
-        type: "lump",
-        benefit: "Entro il 31 ottobre 2026",
-        heading: "Iscriviti prima e risparmia",
-        desc: "Approfitta del prezzo Early Bird per il corso in presenza a Milano.",
-        price: "1.575€",
-        priceLabel: "+ IVA",
-        footnote: "Termine iscrizioni Early Bird: 31 ottobre 2026. Pagamento anche a rate."
-      },
-      {
         title: "Prezzo pieno",
         type: "lump",
         benefit: "Quota standard",
         heading: "Quota iscrizione",
-        desc: "Include 3 giornate in aula, materiali didattici e accesso al Lab su piattaforma Inner.",
+        desc: "Include **3 giornate full immersion in aula a Milano**, materiali didattici e accesso al **Lab su piattaforma Inner**.",
         price: "1.750€",
         priceLabel: "+ IVA",
-        footnote: "Richiesto invio del CV. Pagamento anche a rate."
-      }
+        financing: {
+          label: "Oppure in rate",
+          amount: "72,92€ / mese",
+          note: "Fino a 24 mesi senza interessi (1.750€ ÷ 24). Richiesto invio del CV.",
+        },
+        footnote: "Pagamento in un'unica soluzione o rateizzato fino a 24 mesi senza interessi.",
+      },
+      {
+        title: "Early Bird",
+        type: "lump",
+        benefit: "Entro il 31 ottobre 2026",
+        heading: "Iscriviti prima e risparmia 175€",
+        desc: "Stesso corso, stessi contenuti: **3 giornate in aula a Milano** + Lab su piattaforma Inner. Tariffa **Early Bird riservata** a chi si iscrive entro il **31 ottobre 2026**.",
+        price: "1.575€",
+        priceLabel: "+ IVA",
+        financing: {
+          label: "Oppure in rate",
+          amount: "65,63€ / mese",
+          note: "Fino a 24 mesi senza interessi (1.575€ ÷ 24). Richiesto invio del CV.",
+        },
+        footnote: "Termine iscrizioni Early Bird: 31 ottobre 2026.",
+      },
     ],
     faqs: [
       {

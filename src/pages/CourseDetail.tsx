@@ -311,7 +311,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
 
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
-  const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching';
+  const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching' || id === 'voice-dialogue';
   const isCoachingCircle = id === 'coaching-circle';
   const isVoiceDialogue = id === 'voice-dialogue';
 
@@ -831,18 +831,28 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 lg:p-14 text-white text-center relative overflow-hidden">
-               <h2 className={`${tSection} text-white mb-4`}>Scegli tu quando iniziare</h2>
+               <h2 className={`${tSection} text-white mb-4`}>
+                 {isCoachingCircle
+                   ? 'Scegli tu quando iniziare'
+                   : isVoiceDialogue
+                   ? 'Prossima edizione'
+                   : 'Scegli tu quando iniziare'}
+               </h2>
                <p className="text-sm sm:text-base text-white/75 max-w-xl mx-auto mb-10 font-medium leading-relaxed">
                  {isCoachingCircle
                    ? "Prenota il tuo posto: dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+                   : isVoiceDialogue
+                   ? "Il corso è in edizione unica annuale: assicurati il posto prima del termine iscrizioni."
                    : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
-               
+
                <div className="bg-white/5 border border-white/10 rounded-[1.25rem] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8 max-w-3xl mx-auto mb-8 text-left">
                   <div className="text-left w-full">
                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/45 mb-5">
                        {isCoachingCircle
                          ? 'I gruppi vengono composti in ordine di iscrizione'
+                         : isVoiceDialogue
+                         ? 'Edizione 2026 · in presenza a Milano'
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-12">
@@ -1866,7 +1876,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
-      {!isCoachingCircle ? (
+      {!isCoachingCircle && !isVoiceDialogue ? (
       <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">
@@ -1992,6 +2002,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
                {/* Tab switcher */}
+               {competenciesAndCareers.careerPaths.length > 0 ? (
                <div className="grid grid-cols-2 gap-2 p-2 bg-[#F4F6FB] border-b border-gray-100">
                   <button
                     type="button"
@@ -2030,11 +2041,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </span>
                   </button>
                </div>
+               ) : null}
 
                {/* List area */}
                <div className="relative">
                   <AnimatePresence mode="wait" initial={false}>
-                    {careerTab === 'competencies' ? (
+                    {careerTab === 'competencies' || competenciesAndCareers.careerPaths.length === 0 ? (
                       <motion.ul
                         key="competencies"
                         initial={{ opacity: 0, y: 6 }}
@@ -2208,10 +2220,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
                   <div className="relative flex-1 min-w-0">
                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-3 tracking-tight">
-                       Community Alumni e opportunità continue
+                       {isVoiceDialogue ? 'Community Alumni Asterys' : 'Community Alumni e opportunità continue'}
                      </h3>
                      <p className="text-sm sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
-                       Alla fine del percorso entri nel network degli alumni Asterys: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con <span className="text-white font-black">oltre 3.000 professionisti</span> in Italia e all'estero.
+                       {isVoiceDialogue ? (
+                         <>Al termine del corso entri in contatto con la <span className="text-white font-black">community degli alumni Asterys</span>: eventi, formazione continua e occasioni di confronto tra professionisti del coaching e dello sviluppo personale.</>
+                       ) : (
+                         <>Alla fine del percorso entri nel network degli alumni Asterys: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con <span className="text-white font-black">oltre 3.000 professionisti</span> in Italia e all'estero.</>
+                       )}
                      </p>
                   </div>
                </div>
