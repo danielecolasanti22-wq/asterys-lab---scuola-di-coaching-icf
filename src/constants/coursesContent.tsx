@@ -1614,10 +1614,8 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Fai Pratica di Coaching!",
       content: [
-        "Dopo aver terminato un percorso di formazione di coaching, anche dopo aver preso la credenziale, è alto il rischio di **\"viziare\" la propria pratica** con modalità poco efficaci e che si scostino dal coaching secondo ICF, tralasciando le linee guida e il codice etico ma anche adottando modelli di conversazione non specifici del coaching e/o mutuati da altre discipline.",
-        "Sebbene ci si aspetti, da ogni coach, che scopra e adotti un proprio stile e noi, come scuola, incoraggiamo, sempre, i nostri studenti a trovare la propria forma di espressione, è anche importante che il coach faccia attenzione a non concedersi licenze che poco hanno a che fare con il coaching rischiando, così, di perdere di efficacia.",
-        "Per questa ragione, Asterys Lab propone **uno spazio per fare pratica di coaching, in gruppi da quattro persone, supervisionata da un mentor-coach professionista MCC**. Il mentor coach offre feedback immediato e discute, con i partecipanti, anche le scelte e le possibili strategie nei casi affrontati di volta in volta.",
-        "Dopo l'acquisto verrà inviato un link al calendario dove poter scegliere la data più comoda tra quelle disponibili."
+        "Dopo aver terminato un percorso di formazione, anche con la credenziale, è alto il rischio di **\"viziare\" la propria pratica** con modalità che si scostino dal coaching ICF.",
+        "Per questa ragione Asterys Lab propone **uno spazio di pratica in gruppi da 4 persone, supervisionato da un mentor-coach MCC** che offre feedback immediato e discute scelte e strategie sui casi reali."
       ]
     },
     target: [
