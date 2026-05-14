@@ -1682,11 +1682,11 @@ export const coursesContent: Record<string, CourseData> = {
     },
     teachers: [
       {
-        name: "Mentor Coach Asterys Lab",
-        creds: "ICF PCC/MCC",
-        role: "Mentor del Coaching Circle",
-        bio: "I mentor coach del Coaching Circle supervisionano la pratica, offrono feedback immediato e stimolano la riflessione del gruppo sulle scelte e sulle strategie emerse nei casi affrontati.",
-        img: "https://picsum.photos/seed/coaching-circle-mentor/300/300"
+        name: "Paola Rulfi",
+        creds: "MCC",
+        role: "Business and Executive Coach, Mentor Coach, Supervisor",
+        bio: "Business ed Executive Coach MCC, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
+        img: "/course-media/apcm/trainer-paola-rulfi.png"
       }
     ],
     career: {
