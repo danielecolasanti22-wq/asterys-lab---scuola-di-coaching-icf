@@ -67,35 +67,35 @@ export default function Events() {
       {/* FEATURED — prossimo evento */}
       <section className="max-w-7xl mx-auto px-6 pt-14">
         <Link to={`/eventi/${eventsData[0].id}`} className="group block">
-          <div className="grid lg:grid-cols-2 rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all bg-white">
-            <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px] overflow-hidden">
+          <div className="grid lg:grid-cols-[1fr_1.15fr] rounded-[2rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all bg-white">
+            <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[260px] overflow-hidden">
               <img
                 src={eventsData[0].img}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 alt={eventsData[0].title}
                 referrerPolicy="no-referrer"
               />
-              <span className="absolute top-5 left-5 bg-brand-accent text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-[0.18em]">
+              <span className="absolute top-4 left-4 bg-brand-accent text-white text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-[0.18em]">
                 Prossimo evento
               </span>
             </div>
-            <div className="p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
-              <span className="bg-brand-blue-soft text-brand-navy text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest leading-none self-start mb-5">
+            <div className="p-6 sm:p-7 lg:p-9 flex flex-col justify-center">
+              <span className="bg-brand-blue-soft text-brand-navy text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest leading-none self-start mb-3">
                 {eventsData[0].category}
               </span>
-              <h2 className="font-display font-black text-3xl lg:text-[2.6rem] leading-[1.05] tracking-tight mb-5 group-hover:text-brand-accent transition-colors">
+              <h2 className="font-display font-black text-xl sm:text-2xl lg:text-[1.9rem] leading-[1.1] tracking-tight mb-3 group-hover:text-brand-accent transition-colors">
                 {eventsData[0].title}
               </h2>
-              <p className="text-brand-navy/60 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+              <p className="text-brand-navy/60 text-sm leading-relaxed mb-5 max-w-md line-clamp-2">
                 {eventsData[0].desc}
               </p>
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-bold text-brand-navy/45 mb-8">
-                <div className="flex items-center gap-1.5"><Calendar size={15} className="text-brand-accent" /> {eventsData[0].date}</div>
-                <div className="flex items-center gap-1.5"><Clock size={15} className="text-brand-accent" /> {eventsData[0].time}</div>
-                <div className="flex items-center gap-1.5"><MapPin size={15} className="text-brand-accent" /> {eventsData[0].modality}</div>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-bold text-brand-navy/45 mb-6">
+                <div className="flex items-center gap-1.5"><Calendar size={14} className="text-brand-accent" /> {eventsData[0].date}</div>
+                <div className="flex items-center gap-1.5"><Clock size={14} className="text-brand-accent" /> {eventsData[0].time}</div>
+                <div className="flex items-center gap-1.5"><MapPin size={14} className="text-brand-accent" /> {eventsData[0].modality}</div>
               </div>
-              <span className="inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] self-start group-hover:bg-brand-accent transition-colors">
-                Scopri &amp; iscriviti <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <span className="inline-flex items-center gap-2 bg-brand-navy text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] self-start group-hover:bg-brand-accent transition-colors">
+                Scopri &amp; iscriviti <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </div>
