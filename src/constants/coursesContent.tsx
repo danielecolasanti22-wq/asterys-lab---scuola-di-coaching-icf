@@ -2068,6 +2068,9 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Continuous Learning",
     tagline: "Sviluppo continuo per il tuo essere coach: un appuntamento mensile in Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
+    media: {
+      overview: "/course-media/continuous-learning/card.jpg"
+    },
     heroKicker: "FORMAZIONE CONTINUA PER COACH",
     heroBenefits: [
       "Struttura circolare: nessun inizio né fine, entri quando vuoi",
