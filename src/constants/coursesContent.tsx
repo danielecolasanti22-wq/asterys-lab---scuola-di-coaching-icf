@@ -1467,101 +1467,137 @@ export const coursesContent: Record<string, CourseData> = {
   'eiw': {
     title: "Emotional Intelligence Workout (EIW)",
     subtitle: "Muscoli Emozionali",
-    tagline: "Un allenamento concreto per sviluppare l'intelligenza emotiva attraverso l'esperienza: non solo teoria, ma pratica consapevole guidata dai coach EIW.",
+    tagline: "Non serve più dire che l'intelligenza emotiva è importante: ormai si sa che è sviluppabile. Come farlo è un'altra storia — e qui si fa, non si ascolta soltanto.",
     type: "WORKOUT EQ",
     heroBenefits: [
-      "Sviluppa l'IE facendo esperienza, non ascoltando teoria",
-      "4 emozioni per Round seguendo il fiore di Plutchik",
+      "L'IE si sviluppa facendo esperienze consapevoli e mirate, non studiando concetti",
+      "Round di 4 Workout da 60 min live · 4 emozioni dal fiore di Plutchik",
       "Modello CSI Asterys: Consapevolezza · Strategia · Interazione",
       "4 CCE ICF per ogni Round · posti limitati"
     ],
     summaryBox: {
-      nextEdition: "Round aperto",
-      dates: "Round in programma",
-      format: "Live Online",
-      duration: "4 CCE ICF per Round",
-      price: "100€ + IVA",
-      installments: "Rateizzazione su richiesta"
+      nextEdition: "Set C · da settembre 2026",
+      dates: "5–6 Round all'anno",
+      format: "Live Online · video conferenza",
+      duration: "4 Workout da 60 min per Round",
+      price: "100€ + IVA per Round",
+      installments: "4 CCE ICF per Round"
     },
     badges: ["Modello CSI Asterys", "Fiore di Plutchik", "4 CCE ICF per Round"],
     overview: {
       title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
-        "Nella maggior parte dei corsi di intelligenza emotiva si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve **\"essere\" diversi**, sviluppando un livello di coscienza specifico che passa per l'esperienza.",
-        "Per questo, accumulati decenni di esperienza sul campo, Asterys Lab ha progettato EIW: **esperienze consapevoli e mirate**, non lezioni frontali. Ci sarà da sudare, ma lavorerai davvero sulla competenza che oggi più che mai fa la differenza.",
-        "EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno anche nei momenti difficili, rendendo l'esperienza **piacevole e appagante**."
+        "Ormai sembra scontato dire che l'intelligenza emotiva è importante per buoni risultati nella vita privata e pubblica: è stata persino sdoganata la \"happiness\" in azienda e tutti concordano sulla possibilità e necessità di svilupparla nei manager e in chiunque voglia aumentare la propria efficacia… ma come farlo? Qui le voci perdono forza, si fanno vaghe, e le soluzioni proposte non sempre sono praticabili.",
+        "Per questo, accumulati decenni di esperienza sul campo e dopo collaborazioni pluriennali con i principali riferimenti internazionali dell'intelligenza emotiva, Asterys Lab ha progettato programmi specificamente destinati al reale sviluppo dell'intelligenza emotiva di tutti.",
+        "Nella maggior parte dei corsi di intelligenza emotiva si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve \"essere\" diversi, sviluppando un livello di coscienza specifico che passa per l'esperienza: vogliamo portarti davvero a sviluppare la tua capacità di stare con le emozioni in modo intelligente. Ci sarà da sudare: sarai coinvolto in esperienze consapevoli, attività progettate allo scopo.",
+        "Se sei tra le persone che vogliono spostarsi veramente da dove sono per andare in un posto migliore, questo è il percorso giusto. EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno aiutandoti a focalizzarti sugli aspetti importanti e a superare i momenti più difficili, rendendo quest'esperienza piacevole e appagante.",
+        "Non perdere altro tempo: lavora seriamente sulla competenza che oggi più che mai può fare la differenza nella tua efficacia in ogni campo."
       ]
     },
     target: [
       { title: "Manager & Leader", desc: "Per una leadership più lucida, empatica ed efficace nei momenti che contano.", icon: <Users /> },
-      { title: "Coach & Counsellor", desc: "E chiunque per professione abbia nella relazione lo strumento principale di lavoro.", icon: <Brain /> },
+      { title: "Coach, counsellor, psicologi", desc: "E chiunque per professione abbia nella relazione lo strumento principale di lavoro.", icon: <Brain /> },
       { title: "Chi vuole crescere", desc: "Ogni persona che vuole sviluppare davvero la propria intelligenza emotiva.", icon: <MessageCircle /> }
     ],
     learning: {
       cols: [
-        { title: "Consapevolezza", items: ["Riconoscere le emozioni", "Dare loro un nome", "Percepirne l'intensità"] },
-        { title: "Strategia", items: ["Anticipare i trigger", "Conoscere i percorsi interiori", "Agire in modo strategico"] },
-        { title: "Interazione", items: ["Emozioni nelle relazioni", "Empatia e percezione", "Scelte & obiettivi"] }
+        { title: "Consapevolezza", items: ["Riconosco e distinguo le emozioni", "So dare loro un nome", "Ne riconosco l'intensità"] },
+        { title: "Strategia", items: ["Prevedo l'evento che attiva l'emozione", "Conosco trigger e percorsi interiori", "Agisco in modo strategico"] },
+        { title: "Interazione", items: ["Le emozioni nel mondo e nelle relazioni", "Scelte, obiettivi e relazioni", "Percepisco cosa provano gli altri"] }
       ],
       softSkills: ["Autoconsapevolezza", "Empatia", "Regolazione emotiva", "Presenza relazionale"]
     },
+    programIntro: "Sviluppa i tuoi \"muscoli\" emozionali. Ogni singola attività del percorso è studiata per offrirti l'opportunità di sviluppare la tua intelligenza emotiva: un percorso di sperimentazione e allenamento, costruito sul modello CSI di Asterys Lab che guida le attività e aiuta a porci le domande giuste su ogni emozione.",
     structure: {
       modules: [
         {
           title: "Round di Workout",
-          desc: "Ogni Round tratta 4 petali del fiore di Plutchik e le 4 rispettive emozioni. Nessuna sequenza obbligata: inizi dal primo Round disponibile o scegli quello con il set di emozioni più interessante per te.",
-          tags: ["4 petali per Round", "Set dedicato", "Nessuna sequenza"]
+          desc: "Ogni Round tratta 4 dei petali del fiore di Plutchik e le 4 rispettive emozioni. Non c'è una sequenza obbligata: puoi iniziare dal primo Round disponibile oppure scegliere quello con il set di emozioni più interessante per te. A distanza di tempo puoi anche ripetere un Round sullo stesso set di emozioni: è un'esperienza sempre nuova e stimolante.",
+          tags: ["4 petali per Round", "Nessuna sequenza obbligata", "Round ripetibile"]
+        },
+        {
+          title: "Struttura del Round",
+          desc: "Ogni Round è composto da 4 Workout (sessioni di allenamento) da 60 minuti, in video conferenza. Con più di 6 partecipanti il tempo di ogni Workout può aumentare fino a 90 minuti. Nell'arco di un anno solare sono programmati 5 o 6 Round, ciascuno su un set di 4 emozioni diverse, pubblicati con largo anticipo per poterli prenotare e mettere in agenda.",
+          tags: ["4 Workout da 60 min", "Fino a 90 min oltre i 6 partecipanti", "5–6 Round all'anno"]
         },
         {
           title: "Modello CSI Asterys",
-          desc: "Tutto il percorso è costruito sul modello CSI di sviluppo dell'IE: Consapevolezza (riconosco le emozioni), Strategia (anticipo trigger e percorsi interiori), Interazione (le emozioni nelle relazioni e nelle scelte).",
+          desc: "Tutto il percorso è costruito sul modello di sviluppo dell'IE \"CSI\" di Asterys Lab. Consapevolezza: riconosco e distinguo le mie emozioni, so dargli un nome e riconoscerne l'intensità. Strategia: prevedo quale evento mi farà provare un'emozione invece di un'altra, conosco i miei trigger e percorsi interiori, agisco in modo strategico considerando le mie emozioni e quelle degli altri. Interazione: cosa faccio nel mondo con le mie emozioni e quelle degli altri, che ruolo hanno nelle mie scelte, obiettivi e relazioni; nelle relazioni riesco a percepire cosa provano gli altri? Mi interessa?",
           tags: ["Consapevolezza", "Strategia", "Interazione"]
         },
         {
-          title: "Ripetere un Round",
-          desc: "A distanza di tempo puoi rifare un Round sullo stesso set di emozioni: un'esperienza sempre nuova, utile per consolidare le consapevolezze acquisite.",
-          tags: ["Ri-partecipare", "Consolidamento", "Nuove letture"]
+          title: "Coach al tuo fianco",
+          desc: "Alla conduzione di ogni Round si alternano i nostri coach più esperti di intelligenza emotiva — Renata Cargnelutti Beltrami, Nicoletta Stellino e Pier Paolo Colasanti — nella facilitazione dei diversi momenti dell'intero percorso. Saranno la tua fonte di ispirazione e sviluppo e ti accompagneranno anche nei momenti più difficili. I posti sono limitati.",
+          tags: ["Coach esperti EQ", "Facilitazione a rotazione", "Posti limitati"]
         }
       ]
+    },
+    howItWorks: {
+      title: "Come funziona ogni Round",
+      intro: "Ogni Round è composto da **4 Workout** (sessioni di allenamento) da 60 minuti, in video conferenza. Con più di 6 partecipanti ogni Workout può arrivare fino a **90 minuti**. Nell'arco di un anno solare sono programmati **5 o 6 Round**, ciascuno su un set di 4 emozioni diverse.",
+      formazioneTitle: "Calendario dei Round 2026",
+      formazioneIntro: "I Round sono programmati con largo anticipo, così puoi prenotarli e metterli in agenda. Alla conduzione si alternano i coach più esperti di intelligenza emotiva. Ecco i prossimi due Set di emozioni in calendario."
+    },
+    scheduleBands: [
+      {
+        title: "Round Set C · Live Online",
+        body: "Interesse (Arancio), Distrazione (Azzurro), Serenità (Giallo), Pensierosità (Blu). 4 Workout da 60 min in video conferenza.",
+        dayLines: ["Mer 9 set – Interesse", "Mar 22 set – Distrazione", "Mer 7 ott – Serenità", "Gio 22 ott – Pensierosità"],
+        timeLines: ["Calendario 2026"]
+      },
+      {
+        title: "Round Set D · Live Online",
+        body: "Estasi (Giallo), Angoscia (Blu), Vigilanza (Arancio), Stupore (Azzurro). 4 Workout da 60 min in video conferenza.",
+        dayLines: ["Mer 11 nov – Estasi", "Lun 23 nov – Angoscia", "Gio 3 dic – Vigilanza", "Gio 17 dic – Stupore"],
+        timeLines: ["Calendario 2026"]
+      }
+    ],
+    studyModeBox: {
+      title: "Lavoro vero, ",
+      highlight: "non teoria",
+      body: "Ci sarà da sudare: non basta pensare, ragionare o imparare concetti. L'intelligenza emotiva si sviluppa facendo esperienze in modo consapevole e mirato — con lo spazio, gli strumenti e i coach che ti accompagnano senza farti perdere nei meandri delle tue distrazioni.",
+      linkText: "Vai al programma",
+      linkHref: "#programma"
     },
     teachers: [
       {
         name: "Renata Cargnelutti Beltrami",
         creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatrice specializzata nell'Intelligenza Emotiva.",
+        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "https://picsum.photos/seed/eiw-renata/600/800"
       },
       {
         name: "Nicoletta Stellino",
         creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatrice specializzata nell'Intelligenza Emotiva.",
+        bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "https://picsum.photos/seed/eiw-nicoletta/600/800"
       },
       {
         name: "Pier Paolo Colasanti",
         creds: "Coach EQ",
         role: "Trainer EIW",
-        bio: "Coach e facilitatore specializzato nell'Intelligenza Emotiva.",
+        bio: "Coach e facilitatore specializzato nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "https://picsum.photos/seed/eiw-colasanti/600/800"
       }
     ],
     career: {
       title: "Cosa ti porti a casa da ogni Round",
-      content: "Un allenamento concreto della tua intelligenza emotiva, crediti ICF riconosciuti e strumenti da applicare subito nelle relazioni di ogni giorno.",
+      content: "Un allenamento concreto della tua intelligenza emotiva, 4 CCE ICF riconosciute e strumenti da applicare subito nelle relazioni di ogni giorno.",
       points: [
-        { title: "4 CCE ICF per Round", desc: "Ogni Round vale 4 CCE ICF, utili per il rinnovo della tua credenziale di coach." },
-        { title: "Modello CSI", desc: "Consapevolezza, Strategia, Interazione: un modello chiaro per porti le domande giuste su ogni emozione." },
+        { title: "4 CCE ICF per Round", desc: "Ogni Round vale 4 CCE ICF, utili per il rinnovo della tua credenziale ICF di coach." },
         { title: "Esperienza, non concetti", desc: "Attività progettate per sviluppare coscienza emotiva attraverso la pratica consapevole." },
-        { title: "Coach al tuo fianco", desc: "I trainer EIW ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
+        { title: "Modello CSI", desc: "Consapevolezza, Strategia, Interazione: le domande giuste su ogni emozione." },
+        { title: "Coach al tuo fianco", desc: "I coach più esperti di IE ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
       ]
     },
     classDates: [
-      { date: "Prossimo Round", badge: "POSTI LIMITATI" }
+      { date: "Set C · Set–Ott 2026", badge: "ISCRIZIONI APERTE", note: "Interesse · Distrazione · Serenità · Pensierosità" },
+      { date: "Set D · Nov–Dic 2026", badge: "PROSSIMO ROUND", note: "Estasi · Angoscia · Vigilanza · Stupore" }
     ],
     sessionSchedule: [
-      { days: "Round di Workout · Live Online", time: "Calendario per Round" }
+      { days: "4 Workout da 60 min · Live Online", time: "Calendario per Round" }
     ],
     fees: [
       {
@@ -1569,7 +1605,7 @@ export const coursesContent: Record<string, CourseData> = {
         type: "lump" as const,
         benefit: "4 CCE ICF",
         heading: "Quota per Round",
-        desc: "Iscrizione a un Round di Workout: 4 emozioni lavorate, esperienze guidate dai coach e 4 CCE ICF riconosciute. Su richiesta è previsto il frazionamento in più rate.",
+        desc: "Iscrizione a un Round di Workout: 4 emozioni lavorate in 4 Workout da 60 min guidati dai coach e 4 CCE ICF riconosciute. Su richiesta è previsto il frazionamento in più rate.",
         price: "100€",
         priceLabel: "+ IVA per Round",
         footnote: "Posti limitati · Rateizzazione disponibile su richiesta"
