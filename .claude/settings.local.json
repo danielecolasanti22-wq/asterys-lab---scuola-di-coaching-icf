@@ -48,7 +48,12 @@
       "Bash(grep *)",
       "Bash(./node_modules/.bin/tsc --noEmit -p tsconfig.json)",
       "Bash(./node_modules/.bin/vite build *)",
-      "Bash(echo \"exit:$?\")"
+      "Bash(echo \"exit:$?\")",
+      "Bash(cp \"/Users/AL/Downloads/images-5.png\" public/press/corriere-della-sera.png)",
+      "Bash(cp \"/Users/AL/Downloads/Il_Sole_24_Ore.svg.png\" public/press/il-sole-24-ore.png)",
+      "Bash(cp \"/Users/AL/Downloads/logo_colored.jpg.png\" public/press/hbr-italia.png)",
+      "Bash(cp \"/Users/AL/Downloads/La_Repubblica_logo.png\" public/press/la-repubblica.png)",
+      "Bash(cp \"/Users/AL/Downloads/Forbes_logo.svg.png\" public/press/forbes.png)"
     ]
   }
 }
