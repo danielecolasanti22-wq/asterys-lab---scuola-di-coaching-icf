@@ -35,7 +35,19 @@
       "Bash(awk 'NR>=2119 && NR<=2245 && /\\\\\\) : null}/ {print NR\": \"$0}' src/pages/CourseDetail.tsx)",
       "Bash(npx vite *)",
       "Bash(cp \"/Users/AL/Downloads/Hero EIW.png\" \"/Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/public/course-media/eiw/hero.png\")",
-      "Bash(cp \"/Users/AL/Downloads/Fiore di plitchik eiw.png\" \"/Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/public/course-media/eiw/plutchik.png\")"
+      "Bash(cp \"/Users/AL/Downloads/Fiore di plitchik eiw.png\" \"/Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/public/course-media/eiw/plutchik.png\")",
+      "Bash(cp \"/Users/AL/Downloads/ACC-e-PCC-cosa-significano-davvero-queste-credenziali-ICF-Presentation.png\" public/blog/credenziali-icf.png)",
+      "Bash(cp \"/Users/AL/Downloads/il-sogno-nl-sett-2025.jpg\" public/blog/serendipita-e-coaching.jpg)",
+      "Bash(cp \"/Users/AL/Downloads/formazione-continuajpg-e1710544131319.jpg\" public/blog/saturazione-formazione.jpg)",
+      "Bash(cp \"/Users/AL/Downloads/Il-potere-della-voce-e1710543554418.jpg\" public/blog/il-potere-della-voce.jpg)",
+      "Bash(cp \"/Users/AL/Downloads/Team-coaching-sistemico.jpg\" public/blog/team-coaching-sistemico.jpg)",
+      "WebFetch(domain:asteryslab.com)",
+      "Bash(curl -ksL --max-time 30 \"https://asteryslab.com/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle/\" -o /tmp/art1.html)",
+      "Bash(echo \"exit=$? size=$\\(wc -c < /tmp/art1.html \\)\")",
+      "Bash(python3 extract.py art1.html)",
+      "Bash(grep *)",
+      "Bash(./node_modules/.bin/tsc --noEmit -p tsconfig.json)",
+      "Bash(./node_modules/.bin/vite build *)"
     ]
   }
 }

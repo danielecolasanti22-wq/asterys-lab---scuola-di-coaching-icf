@@ -1,0 +1,279 @@
+export type BlogBlock =
+  | { type: 'p'; text: string }
+  | { type: 'h2'; text: string }
+  | { type: 'quote'; text: string }
+  | { type: 'list'; items: string[] };
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  author: string;
+  readTime: string;
+  img: string;
+  content: BlogBlock[];
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle',
+    title: 'Credenziali ICF: cosa sono, a cosa servono e come ottenerle',
+    excerpt:
+      'Guida pratica alle credenziali ICF (ACC, PCC, MCC): cosa certificano, quali requisiti servono, come prepararsi all’assessment e all’esame e come funziona il rinnovo.',
+    category: 'Credenziali ICF',
+    date: '15 aprile 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '9 min',
+    img: '/blog/credenziali-icf.png',
+    content: [
+      { type: 'p', text: 'Ottenere una credenziale ICF (International Coaching Federation) non è solo un titolo da aggiungere al curriculum: è un passo concreto per chi vuole esercitare la professione di coach con credibilità, competenza e un riconoscimento valido in tutto il mondo. In questa guida vediamo cosa sono le credenziali ICF, quali livelli esistono, quali requisiti servono e come prepararsi al meglio.' },
+      { type: 'h2', text: 'Cosa sono le credenziali ICF' },
+      { type: 'p', text: 'Le credenziali ICF sono un riconoscimento ufficiale rilasciato dalla più importante associazione mondiale di coaching. Rappresentano una garanzia di professionalità basata su standard rigorosi di formazione, pratica e supervisione, riconosciuti a livello globale. Avere una credenziale significa essere identificati come coach professionista, in Italia e all’estero, e poter operare su una base solida di competenze verificate.' },
+      { type: 'h2', text: 'I tre livelli: ACC, PCC, MCC' },
+      { type: 'p', text: 'ACC – Associate Certified Coach è la prima credenziale ufficiale e certifica un coach competente con una solida base di esperienza. Richiede circa 60 ore di formazione, 100 ore di coaching (di cui almeno 75 a pagamento), 10 ore di mentor coaching, registrazione e trascrizione per l’assessment e il superamento dell’esame ICF.' },
+      { type: 'p', text: 'PCC – Professional Certified Coach è il livello di riferimento per chi lavora stabilmente come coach: circa 125 ore di formazione, 500 ore di coaching (almeno 450 a pagamento), 10 ore di mentor coaching con un PCC o MCC, due sessioni registrate per una valutazione più approfondita ed esame ICF.' },
+      { type: 'p', text: 'MCC – Master Certified Coach è la credenziale più alta e prestigiosa, richiesta in contesti di executive e team coaching di alto livello: circa 200 ore di formazione avanzata, 2.500 ore di coaching con almeno 35 clienti diversi, 10 ore di mentor coaching con un MCC, sessioni audio con trascrizione ed esame ICF.' },
+      { type: 'h2', text: 'Come prepararti al meglio' },
+      { type: 'list', items: [
+        'Scegli un percorso formativo accreditato (Level 1 o Level 2).',
+        'Documenta accuratamente le tue ore di coaching con strumenti di tracciamento dedicati.',
+        'Registra sessioni reali: ti serviranno per l’assessment.',
+        'Trova un mentor coach accreditato (PCC o MCC) per almeno 10 ore distribuite su almeno 3 mesi.',
+        'Preparati all’esame: teorico, ma richiede una conoscenza approfondita delle competenze core, del codice etico e della definizione di coaching secondo ICF.',
+      ] },
+      { type: 'h2', text: 'Dettagli importanti e rinnovo' },
+      { type: 'p', text: 'Le sessioni registrate devono rispettare il codice etico ICF (consenso informato, privacy, qualità audio adeguata). L’esame si svolge online, con domande a risposta multipla, e dura circa tre ore. Le credenziali hanno validità triennale e si rinnovano attraverso la formazione continua (CCE – Continuing Coach Education).' },
+      { type: 'p', text: 'Richiedere una credenziale ICF non è un adempimento burocratico: è un atto di responsabilità verso te stesso e verso chi sceglierà di affidarsi a te. Se vuoi fare del coaching una professione autentica e qualificata, le credenziali ICF sono il passo naturale successivo.' },
+    ],
+  },
+  {
+    slug: 'serendipita-e-coaching-il-segreto-che-arriva-per-caso',
+    title: 'Serendipità e coaching: come allenare la mente preparata',
+    excerpt:
+      'La serendipità non è fortuna: è l’incontro tra il caso e una mente preparata. Cosa insegna ai coach, agli psicologi e ai professionisti che lavorano con le persone.',
+    category: 'Professione coaching',
+    date: '2 aprile 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/serendipita-e-coaching.jpg',
+    content: [
+      { type: 'p', text: 'Quando inizi un percorso nuovo tutto sembra rimandare lì, come se il mondo intero avesse deciso di parlarti nella stessa lingua. È un’esperienza comune a chi entra in una professione che mette al centro le persone, i loro desideri, i loro limiti e le loro possibilità di crescita.' },
+      { type: 'h2', text: 'Che cos’è davvero la serendipità' },
+      { type: 'p', text: 'La serendipità non è semplice fortuna. Non è inciampare per caso in un tesoro nascosto, ma l’incontro tra il caso e una mente preparata. È come camminare sulla spiaggia dopo una mareggiata: la sabbia è piena di conchiglie, alghe e sassi, ma solo chi sa guardare con attenzione riconosce la piccola pietra rara mimetizzata tra mille frammenti. È la capacità di vedere l’opportunità nell’imprevisto.' },
+      { type: 'h2', text: 'Perché riguarda chi lavora con le persone' },
+      { type: 'p', text: 'Anche il coaching funziona così: non offre risposte già pronte, ma crea spazi in cui le persone scoprono da sole nuove possibilità, magari partendo da un inciampo o da un momento difficile. Non temere l’errore e saper osservare le anomalie è esattamente ciò che permette le scoperte. Molte persone sono convinte che un fallimento le definisca per sempre; proprio da lì, con pazienza e ascolto, intravedono una nuova direzione.' },
+      { type: 'p', text: 'La serendipità ama la lentezza: non si lascia catturare da chi corre solo verso il risultato immediato, ma ha bisogno di spazio, tempo e dialogo. In un silenzio improvviso o in una parola inattesa può emergere una rivelazione che nessuno aveva previsto. Non è un dono che arriva dall’esterno: è un terreno fertile che si prepara con ascolto, attenzione e apertura.' },
+      { type: 'quote', text: 'L’imprevisto può essere la porta più grande: il vero segreto, nel coaching come nella vita, è saperci sorprendere ancora.' },
+    ],
+  },
+  {
+    slug: 'non-ce-punto-di-saturazione-nella-formazione',
+    title: 'Non c’è punto di saturazione nella formazione',
+    excerpt:
+      'Il successo professionale dipende dal desiderio di imparare. Perché la formazione continua è una leva strategica per coach, professionisti, HR e organizzazioni.',
+    category: 'Sviluppo personale',
+    date: '20 marzo 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/saturazione-formazione.jpg',
+    content: [
+      { type: 'p', text: 'Il desiderio di imparare cose nuove viene spesso, troppo spesso, frenato dal poco tempo a disposizione. Eppure resta la leva più potente per la crescita professionale e personale.' },
+      { type: 'h2', text: 'Una lezione che attraversa un secolo' },
+      { type: 'p', text: 'Nel 1915 Thomas J. Watson Sr. tenne un discorso a 235 dipendenti della Computing-Tabulating-Recording Company. Con un pezzo di gesso e una lavagna illustrò una sua teoria sull’istruzione: tutti i collaboratori — vendite, assistenza, gestione — sono uguali, i titoli sono irrilevanti. Il successo in qualsiasi ruolo dipende dal desiderio di svilupparsi e di imparare.' },
+      { type: 'p', text: 'Non c’è successo, nel lavoro o nella vita privata, senza il desiderio di crescere, di uscire dal guscio protettivo della propria “ignoranza”, di mettersi in discussione e portare valore nel proprio ambiente. Durante il suo lungo mandato alla guida dell’azienda che sarebbe diventata IBM, Watson promosse sempre di più la formazione, non solo per efficienza, ma per espandere interesse e consapevolezza culturale delle persone.' },
+      { type: 'h2', text: 'Cosa significa per coach, HR e organizzazioni' },
+      { type: 'p', text: 'Nelle organizzazioni dove questa cultura è diffusa e dove esiste un modello di formazione continua, il clima è ispirazionale, in un flusso di condivisione e arricchimento incessante. L’apprendimento non è solo sostenuto e incoraggiato: è celebrato e considerato prioritario.' },
+      { type: 'quote', text: '“Non c’è un punto di saturazione nell’apprendimento.” — Thomas J. Watson Sr.' },
+    ],
+  },
+  {
+    slug: 'il-potere-della-voce',
+    title: 'Il potere della voce nella relazione di aiuto',
+    excerpt:
+      'Tono, timbro e ritmo influenzano emozioni e decisioni di chi ci ascolta. Perché la voce è uno strumento cruciale per coach, counsellor, psicologi e professionisti.',
+    category: 'Professione coaching',
+    date: '8 marzo 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/il-potere-della-voce.jpg',
+    content: [
+      { type: 'p', text: 'Chi lavora a contatto con le persone comprende presto il potere della voce sull’altro: è possibile percepire distintamente le reazioni di chi ascolta di fronte a tonalità vocali diverse.' },
+      { type: 'h2', text: 'La voce come strumento dell’anima' },
+      { type: 'p', text: 'La voce è il nostro principale mezzo di espressione delle emozioni. Ogni tono, ogni timbro, ogni intonazione è una nota nella partitura della nostra vita: trasmettiamo emozioni e sfumature attraverso variazioni di intonazione, timbro e ritmo. Esprimiamo i nostri pensieri attraverso la voce, fornendo a chi ci ascolta un’idea di noi spesso diversa dall’immagine che abbiamo di noi stessi.' },
+      { type: 'h2', text: 'Cosa accade nel cervello di chi ascolta' },
+      { type: 'p', text: 'Le caratteristiche emotive della voce vengono elaborate in regioni cerebrali associate alla percezione emotiva, come l’amigdala e la corteccia prefrontale. Quando ascoltiamo una voce carica di emozione, queste aree si attivano per interpretare e rispondere alle sfumature della comunicazione vocale; l’ascolto di una voce familiare può attivare anche memoria e riconoscimento, rafforzando il legame emotivo.' },
+      { type: 'h2', text: 'Perché allenarla è una competenza professionale' },
+      { type: 'p', text: 'Chi usa la voce come strumento principale dovrebbe sviluppare consapevolezza sul suo utilizzo e imparare a modularla in ogni situazione. Un uso chiaro, ben modulato e appropriato della voce migliora la capacità di trasmettere il messaggio, cattura l’attenzione e crea un legame emotivo coinvolgente. Per chi accompagna e stimola gli altri, saper gestire la voce può fare la differenza tra una relazione di aiuto buona e una straordinaria.' },
+    ],
+  },
+  {
+    slug: 'team-coaching-e-team-coaching-sistemico',
+    title: 'Team coaching e team coaching sistemico: le differenze',
+    excerpt:
+      'Team building, facilitazione, training e team coaching a confronto: cosa li distingue e perché l’approccio sistemico è il più trasformativo per i team.',
+    category: 'Team coaching',
+    date: '24 febbraio 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '8 min',
+    img: '/blog/team-coaching-sistemico.jpg',
+    content: [
+      { type: 'p', text: 'Esistono molte attività a supporto dello sviluppo dei team: team building, facilitazione di team, training di team e team coaching. Hanno obiettivi e modalità molto diversi, ed è utile conoscerne limiti e differenze prima di scegliere come intervenire.' },
+      { type: 'h2', text: 'Team building, facilitazione, training' },
+      { type: 'p', text: 'Il team building usa esercizi ed esperienze, spesso metaforiche, per lavorare su ruoli e collaborazione: utile per conoscenza reciproca, fiducia e spirito di squadra, ma rischia che l’apprendimento metaforico non si trasferisca facilmente al lavoro reale. La facilitazione di team affianca il gruppo con un processo strutturato per raggiungere un obiettivo: il focus è sul processo, ma se resta su un livello solo transazionale non risolve le cause profonde. Il training di team trasferisce modelli e strumenti, ma rischia di mantenere i partecipanti in un atteggiamento passivo, fermandosi a un livello cognitivo individuale.' },
+      { type: 'h2', text: 'Che cos’è il team coaching' },
+      { type: 'p', text: 'Il team coaching è una serie di interventi di affiancamento che supportano il team a lavorare più efficacemente, acquisire consapevolezza delle proprie dinamiche e sperimentare modalità più funzionali. Per la International Coaching Federation è una “partnership in un processo co-creativo e riflessivo con un team, rispetto alle sue dinamiche e relazioni, in modo da ispirare i membri a massimizzare capacità e potenzialità per raggiungere lo scopo comune e gli obiettivi condivisi”. Va distinto dal group coaching, in cui le persone non lavorano abitualmente insieme ma condividono un interesse comune.' },
+      { type: 'h2', text: 'Perché l’approccio sistemico è il più potente' },
+      { type: 'p', text: 'La vera sfida di un programma di sviluppo è accelerare la performance del team e, allo stesso tempo, generare una trasformazione del suo modo di essere nella dimensione sistemica, non solo in quella umana. Il team coaching sistemico affianca il team nei suoi momenti operativi e ne eleva la consapevolezza delle dinamiche di lavoro e collaborazione potenzialmente limitanti, aiutandolo a individuarne di nuove e più efficaci.' },
+      { type: 'p', text: 'Da un punto di vista sistemico un team scambia informazioni con l’esterno e tende a conservare la propria struttura in una ricerca continua di omeostasi: il sistema si auto-regola e protegge la propria struttura intrinseca dalle perturbazioni. Qualsiasi intervento che non consideri questa struttura sarà temporaneo e, in qualche modo, rigettato dal sistema. Un team consapevole della propria dimensione sistemica — scopo, schemi ripetuti, cicli di retroazione — è molto più efficace.' },
+    ],
+  },
+  {
+    slug: 'valori-e-comportamenti',
+    title: 'Valori e comportamenti: la bussola della consapevolezza',
+    excerpt:
+      'I valori guidano scelte, emozioni e relazioni, spesso con il “pilota automatico”. Perché lavorare sui valori è centrale nel coaching e nello sviluppo personale.',
+    category: 'Sviluppo personale',
+    date: '12 febbraio 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '6 min',
+    img: '/blog/valori-e-comportamenti.jpg',
+    content: [
+      { type: 'p', text: 'Uno dei temi che emerge più spesso quando si lavora con le persone è la conoscenza di sé. Quando qualcuno porta una difficoltà — al lavoro o nella vita — sta cercando di entrare in contatto con la parte di sé che deve affrontarla, e ha bisogno di conoscersi più a fondo per trovare le risorse necessarie. Il punto di partenza per cambiare in meglio la propria vita è conoscersi.' },
+      { type: 'h2', text: 'I valori come bussola' },
+      { type: 'p', text: 'Spesso diamo importanza solo alla nostra parte “buona” e socialmente accettabile, trascurando ciò che non ci convince. I valori sono la nostra bussola: guidano tutto ciò che facciamo, danno direzione e significato, ci portano a prendere decisioni e a scartarne altre. Avere una comprensione chiara dei propri valori è quindi fondamentale, perché spesso essi guidano le scelte usando il “pilota automatico”.' },
+      { type: 'h2', text: 'Valori che evolvono' },
+      { type: 'p', text: 'Possiamo avere valori diversi nelle diverse aree della vita — come individui, in famiglia, nei gruppi, nelle comunità — e questi possono sovrapporsi e cambiare nel tempo. Per tenerli in primo piano è importante affermarli e fermarsi a riflettere su come influenzano le scelte. Ostinarsi a restare legati a valori superati, a volte, impedisce di conoscersi più a fondo e di crescere.' },
+      { type: 'h2', text: 'Valori, emozioni e benessere' },
+      { type: 'p', text: 'I valori sono intimamente legati al senso di sé ed essenziali per l’equilibrio mentale: creano felicità, soddisfazione e appagamento, e ci aiutano a costruire relazioni significative. Vivere in linea con i propri valori aumenta fiducia e soddisfazione; le ricerche mostrano che persino il solo pensarli mantiene bassi i livelli di stress. Valori ed emozioni sono strettamente connessi: sintonizzarsi consapevolmente con le proprie emozioni aiuta a sentire i valori “sulla pelle”.' },
+      { type: 'quote', text: 'C’è molto potere nel riconoscere che il nostro comportamento è una scelta.' },
+    ],
+  },
+  {
+    slug: 'il-modello-della-realta',
+    title: 'Il modello della realtà: rendere flessibili le convinzioni',
+    excerpt:
+      'Le convinzioni rigide aumentano stress e conflitti. Come il coaching aiuta a rendere flessibile il “modello di realtà” e a generare consapevolezza.',
+    category: 'Mindset & crescita',
+    date: '28 gennaio 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/il-modello-della-realta.jpeg',
+    content: [
+      { type: 'p', text: 'Capiamo molto di noi stessi quando mettiamo a fuoco il nostro “modello di realtà”: il credo sul mondo che riteniamo vero. È costruito intorno a certi presupposti e, a seconda di come lo usiamo, può bloccarci o darci un’enorme possibilità di crescita.' },
+      { type: 'h2', text: 'Quando la realtà diventa una gabbia' },
+      { type: 'p', text: 'Spesso la realtà di chi accompagniamo è fatta di rigide convinzioni e richieste sulla vita che formano un pensiero dogmatico: non solo aumenta ansia, stress, conflitti e risentimento, ma rende più difficile riprendersi da eventi stressanti. Quante volte sentiamo frasi come “per me non riuscirci sarebbe un fallimento”, “se le cose vanno così, allora io non ce la faccio”.' },
+      { type: 'h2', text: 'Dalle richieste alle preferenze flessibili' },
+      { type: 'p', text: 'Il lavoro di consapevolezza porta la persona a diventare meno rigida: a pensare che le scelte non sono per sempre, a sostituire le richieste con preferenze flessibili, a costruire aspettative più realistiche per sé e per gli altri. Quando la riformulazione diventa “vorrei riuscirci, ma se così non fosse posso tollerare il fallimento”, significa che il modello di realtà è diventato flessibile.' },
+      { type: 'p', text: 'È esattamente ciò che la competenza ICF “Genera Consapevolezza” mette al centro: aiutare la persona a riconoscere il pensiero rigido e a sostituirlo. Non sempre accade nell’immediato: come per ogni semina, una volta gettato il seme bisogna saper aspettare il raccolto — ed essere noi i primi ad avere un modello di realtà flessibile.' },
+    ],
+  },
+  {
+    slug: 'dal-sogno-al-progetto-essere-il-motore-del-proprio-cambiamento',
+    title: 'Dal sogno al progetto: i passi per essere motore del cambiamento',
+    excerpt:
+      'Un esercizio di visualizzazione per trasformare i sogni in progetti: utile a coach, professionisti e a chiunque voglia guidare il proprio cambiamento.',
+    category: 'Mindset & crescita',
+    date: '16 gennaio 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/dal-sogno-al-progetto.jpg',
+    content: [
+      { type: 'p', text: 'Chi lavora sul cambiamento sa quanto la visualizzazione possa essere utile. Ecco un piccolo esercizio di fantasia — concreto nei risultati — ispirato a Consuelo Casula (“I porcospini di Schopenhauer”): puoi sperimentarlo tu o proporlo a chi accompagni. L’obiettivo è trasformare i sogni in progetti e, ancora prima, accorgersi di quanti sogni stiano invecchiando in cassetti che non si vogliono aprire.' },
+      { type: 'h2', text: 'La stanza dei cassetti' },
+      { type: 'p', text: 'Immagina una stanza con tanti cassetti, ognuno con dentro un sogno: piccoli cassetti per piccoli sogni, grandi cassetti per grandi sogni. Disegnali su un foglio, poi apri ogni cassetto per scoprire i sogni rimasti chiusi da tempo e valuta quelli che vale la pena trasformare in progetto.' },
+      { type: 'h2', text: 'I sette saggi (e i sei cappelli)' },
+      { type: 'p', text: 'Nella stanza ci sono sette saggi, ognuno con un cappello che guida un processo di pensiero: il bianco esamina i fatti e i dati, il rosso si lascia guidare dalle emozioni, il nero evidenzia ostacoli e difficoltà, il giallo infonde ottimismo, il verde stimola creatività e innovazione, il blu fa guardare le cose dall’alto per vedere l’essenziale. Il settimo, con i colori dell’arcobaleno, indica quale tipo di pensiero privilegiare a seconda di ciò che stai analizzando.' },
+      { type: 'h2', text: 'La stanza delle scarpe' },
+      { type: 'p', text: 'Poi entra in un’altra stanza piena di scarpe diverse, che indicano i passi da intraprendere: scarpe formali per seguire le procedure, stivali per le emergenze, pantofole per il comfort, scarpe da contadino per tenere i piedi per terra, scarpe eleganti per l’autorità, scarpe da ballo per festeggiare i traguardi. E, ogni tanto, ricordati di andare a piedi nudi: non solo per sentire il terreno, ma per lasciare la tua impronta.' },
+    ],
+  },
+  {
+    slug: 'non-aprite-quella-porta',
+    title: '(Non) aprite quella porta: lavorare con ciò che evitiamo',
+    excerpt:
+      'C’è un luogo dentro di noi che non vogliamo frequentare. Come la rabbia indica la strada e perché attraversare il vuoto porta autenticità ed empatia.',
+    category: 'Sviluppo personale',
+    date: '7 gennaio 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '5 min',
+    img: '/blog/non-aprite-quella-porta.jpg',
+    content: [
+      { type: 'p', text: 'Quasi tutti custodiamo un “tesoro” nascosto: un luogo dentro di noi che non vogliamo frequentare. Lo si può immaginare come una porticina in cantina, chiusa da una catena e più di un lucchetto: un luogo buio e umido dove non è piacevole andare.' },
+      { type: 'h2', text: 'Cosa custodiamo dietro la porta' },
+      { type: 'p', text: 'Di solito c’è un dolore che non abbiamo saputo gestire, spesso perché eravamo troppo piccoli o privi degli strumenti necessari. Per tutta la vita evitiamo di avvicinarci a quello stanzino, e chiunque rischi di farci provare quell’emozione deve fare i conti con la nostra rabbia: aggressività, silenzi, frustrazione.' },
+      { type: 'h2', text: 'Partire dalla rabbia, attraversare il vuoto' },
+      { type: 'p', text: 'Se vogliamo recuperare quella parte di noi, è proprio dalla rabbia che conviene partire. Proviamo a smettere di difenderci e di ostinarci a volere a tutti i costi qualcosa che non arriverà. Chiediamoci, in silenzio: come mi sentirei se smettessi di difendermi? La risposta sarà spesso un angosciante “non lo so”, che apre a un vuoto difficile da guardare. Ed è proprio in quel vuoto che troviamo la risposta.' },
+      { type: 'p', text: 'Stare in quella dimensione significa aprire lo stanzino e lasciare che ciò che c’è dentro ci pervada, fino a riempire quel vuoto. A un certo punto ci accorgiamo che ciò che tanto temevamo ora siamo in grado di gestirlo: smette di farci paura. Non tutte le porte vanno aperte, ma qualcuna ci chiama: è il segnale che siamo pronti. Aprirla ci avvicina a un senso di pienezza che ci fa sentire autentici, empatici e in connessione con gli altri.' },
+    ],
+  },
+  {
+    slug: 'mindset-acceleranti-e-mindset-limitanti',
+    title: 'Mindset acceleranti e mindset limitanti',
+    excerpt:
+      'Mentalità statica e mentalità di crescita secondo Carol Dweck: come il mindset modella risultati e fallimenti e come accompagnare il cambiamento.',
+    category: 'Mindset & crescita',
+    date: '18 dicembre 2025',
+    author: 'Redazione Asterys Lab',
+    readTime: '6 min',
+    img: '/blog/mindset-acceleranti-limitanti.jpg',
+    content: [
+      { type: 'p', text: 'I processi cognitivi che attiviamo in risposta a un compito vengono definiti mindset. Ciò che pensiamo di noi gioca un ruolo fondamentale nel determinare cosa vogliamo e se riusciamo a raggiungerlo, con un forte impatto su successi e fallimenti. Il mindset modella il modo in cui diamo senso al mondo e a noi stessi e influenza come ci sentiamo e ci comportiamo.' },
+      { type: 'h2', text: 'Mentalità statica e mentalità di crescita' },
+      { type: 'p', text: 'Secondo la psicologa Carol Dweck esistono due mentalità di base. Chi ha una mentalità fissa crede che le proprie abilità siano tratti immutabili e che talento e intelligenza, da soli, portino al risultato. Chi ha una mentalità di crescita crede che talenti e abilità si sviluppino nel tempo con impegno e tenacia: tutto può essere imparato e il processo di apprendimento è ciò che soddisfa di più.' },
+      { type: 'h2', text: 'Da dove nasce il mindset' },
+      { type: 'p', text: 'Il mindset si forma nella prima infanzia ed è influenzato da come l’ambiente ci educa ad attribuire significati. Gli esperimenti di Dweck mostrano che i bambini si comportano in modo diverso a seconda del feedback ricevuto: lodare l’“intelligenza” favorisce un mindset fisso, mentre valorizzare lo sforzo e il processo educa alla consapevolezza che le strategie si possono scegliere, perseguire e migliorare. La differenza fondamentale è lodare gli sforzi invece dei risultati.' },
+      { type: 'h2', text: 'Perché conta nel lavoro di crescita' },
+      { type: 'p', text: 'Una mentalità statica genera pigrizia, paura e tendenza a evitare le sfide; una mentalità di crescita nutre la fame di apprendimento, il coraggio di osare, e trasforma errori in apprendimento e critiche in consigli preziosi. I mindset non sono stabili: cambiano con nuove esperienze. Qui il lavoro di chi accompagna è decisivo, perché mette in discussione convinzioni e paradigmi: non si limita all’obiettivo, ma genera consapevolezza, così che la persona veda da sé quando sta perseguendo un obiettivo con un mindset limitante. La più grande soddisfazione è promuovere l’autonomia.' },
+    ],
+  },
+  {
+    slug: 'euristiche-e-bias-cognitivi',
+    title: 'Euristiche e bias cognitivi: quanto contano nella relazione di aiuto',
+    excerpt:
+      'Scorciatoie mentali e pregiudizi influenzano decisioni e ascolto. Come riconoscere bias di conferma, di memoria e di giudizio nel lavoro con le persone.',
+    category: 'Mindset & crescita',
+    date: '3 dicembre 2025',
+    author: 'Redazione Asterys Lab',
+    readTime: '8 min',
+    img: '/blog/euristiche-e-bias-cognitivi.jpg',
+    content: [
+      { type: 'p', text: 'Le euristiche sono procedimenti mentali basati sull’intuizione, piuttosto sbrigativi, che ci permettono di farci un’idea generale senza sforzarci troppo a livello cognitivo. Servono a far risparmiare energia al cervello, organo molto dispendioso. Sono scorciatoie che nella maggior parte dei casi ci proteggono. I bias cognitivi sono, in sostanza, euristiche inappropriate: pregiudizi basati su dati non reali, assimilati a priori.' },
+      { type: 'h2', text: 'Perché un professionista deve conoscerli' },
+      { type: 'p', text: 'Quando si prende una decisione importante, si sceglie quale intuizione seguire o si aiuta qualcuno a definire un obiettivo, è bene saper prendere le distanze dai propri bias. Solo riconoscendoli possiamo cercare di evitarli e poi sviluppare consapevolezza anche nelle persone che accompagniamo. Le domande di partenza: come faccio a non saltare a conclusioni affrettate? Come mi accorgo se sto usando un bias? Come lo condivido senza compromettere la relazione di parità?' },
+      { type: 'p', text: 'Il primo passo è l’accettazione: non siamo pigri, siamo orientati al risparmio energetico. Accettare che il cervello usi scorciatoie per default ci fa percepire i bias non solo come limiti, ma come modi di funzionare. Gli stereotipi, ottimi esempi di bias, organizzano gli schemi con cui comprendiamo ciò che ci circonda.' },
+      { type: 'h2', text: 'I bias a cui prestare più attenzione' },
+      { type: 'list', items: [
+        'Bias di conferma: cerchiamo e ricordiamo solo le informazioni che confermano le nostre convinzioni, ignorando quelle contrarie. Tipico anche delle relazioni familiari.',
+        'Generalizzazione: in presenza di troppe informazioni tendiamo a scartare le specificità; generalizzare i comportamenti di chi accompagniamo gli toglie la possibilità di vedersi unico.',
+        'Bias di memoria: tendiamo a sopravvalutare la memoria, che modifica i ricordi per confermare ciò che ci piace credere e ci rende suggestionabili.',
+      ] },
+      { type: 'p', text: 'Non è richiesto conoscerli tutti — gli studiosi ne hanno individuati centinaia — ma essere consapevoli dei più importanti rende professionisti migliori. Per approfondire resta prezioso “Pensieri lenti e veloci” di Daniel Kahneman: imparare a riconoscere i bias, accettarli e proseguire con consapevolezza.' },
+    ],
+  },
+  {
+    slug: 'tutto-cio-che-ci-irrita-negli-altri-puo-portarci-a-capire-noi-stessi',
+    title: 'Ciò che ci irrita negli altri può aiutarci a capire noi stessi',
+    excerpt:
+      'Le reazioni di forte irritazione sono un campanello d’allarme: proiezioni, ombra e self-kindness nel lavoro di chi accompagna le persone.',
+    category: 'Sviluppo personale',
+    date: '19 novembre 2025',
+    author: 'Redazione Asterys Lab',
+    readTime: '6 min',
+    img: '/blog/tutto-cio-che-ci-irrita.jpg',
+    content: [
+      { type: 'p', text: 'A volte chi accompagniamo ci serve su un piatto d’argento comportamenti che troviamo difficili da digerire. Capita di trovarsi di fronte una persona che irrita persino per il tono di voce. Invece di mollare, conviene fermarsi e farsi alcune domande: qual è il bisogno insoddisfatto dietro quel comportamento? Cosa fa risuonare in me? È anche un mio bisogno che mi sto negando?' },
+      { type: 'h2', text: 'Il campanello d’allarme delle proiezioni' },
+      { type: 'p', text: 'Quando le reazioni emotive sono così forti da farci dire “quella persona proprio non la sopporto”, è un segnale che ci stiamo nascondendo qualcosa. In psicologia si parla di “proiezioni”: meccanismi di difesa che eliminano dalla parte conscia ciò che reputiamo inaccettabile. Trasferiamo sugli altri le parti di cui non siamo consapevoli, così che, nel momento del giudizio lapidario, di fatto stiamo giudicando noi stessi — e ci proteggiamo dal nostro giudice interiore e dalla nostra ombra.' },
+      { type: 'h2', text: 'Accoglienza e non giudizio' },
+      { type: 'p', text: 'Impossibile non giudicare: la mente lo fa in automatico perché ha bisogno di attribuire significati e catalogare ciò che potrebbe percepire come minaccia. È però possibile mettere da parte quel giudizio, soprattutto se ricordiamo il campanello d’allarme e il nostro essere professionisti anche nella vita, non solo “in sessione”. A volte le persone che ci irritano possiedono davvero quelle caratteristiche: è il grado di irritazione e ostilità a fornirci l’elemento introspettivo.' },
+      { type: 'p', text: 'Da qui una chiave preziosa: essere più accoglienti con noi stessi quando notiamo negli altri ciò che ci infastidisce. “Se l’altro lo fa e io riesco a perdonarglielo, forse dovrei perdonarlo anche a me e abbracciare quella parte di me che non sempre mi piace.” La self-kindness ci insegna ad amare e a dare valore alla cosa più preziosa che abbiamo: le relazioni.' },
+      { type: 'quote', text: '“Ciò che accetto finisce nella parte della mia anima a me nota; ciò che rifiuto va nella parte della mia anima che non conosco.” — C. G. Jung' },
+    ],
+  },
+];
+
+export const blogPostsBySlug: Record<string, BlogPost> = Object.fromEntries(
+  blogPosts.map((p) => [p.slug, p]),
+);

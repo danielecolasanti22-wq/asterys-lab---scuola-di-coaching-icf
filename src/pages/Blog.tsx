@@ -10,59 +10,7 @@ import {
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
-
-const blogPosts = [
-  {
-    id: 'diventare-coach-professionista-guida-2026',
-    title: "Come diventare Coach Professionista: la guida definitiva 2026",
-    excerpt: "Dalla scelta della scuola all'accreditamento ICF. Tutto quello che devi sapere per iniziare la tua carriera nel coaching.",
-    category: "Diventare coach professionista",
-    date: "10 Aprile 2026",
-    author: "Giovanna Giuffredi",
-    readTime: "12 min",
-    img: "https://picsum.photos/seed/blog1/800/500"
-  },
-  {
-    id: 'intelligenza-emotiva-misurabile',
-    title: "Perché l'Intelligenza Emotiva misurabile è il futuro del coaching",
-    excerpt: "Oltre la teoria: come i dati e il metodo Six Seconds possono certificare la crescita emotiva di un coachee.",
-    category: "Intelligenza emotiva",
-    date: "5 Aprile 2026",
-    author: "Pietro Monti",
-    readTime: "8 min",
-    img: "https://picsum.photos/seed/blog2/800/500"
-  },
-  {
-    id: 'business-coach-trovare-clienti',
-    title: "Il business del coach: 3 strategie per trovare clienti alto-spendenti",
-    excerpt: "Non basta essere bravi coach, bisogna essere bravi imprenditori. Come posizionarsi sul mercato senza sembrare dei 'guru'.",
-    category: "Business del coach",
-    date: "1 Aprile 2026",
-    author: "Redazione Lab",
-    readTime: "10 min",
-    img: "https://picsum.photos/seed/blog3/800/500"
-  },
-  {
-    id: 'credenziali-icf-novita-2026',
-    title: "Credenziali ICF: le novità su Level 1, 2 e 3 per il rinnovo",
-    excerpt: "Un riassunto completo sui nuovi standard International Coaching Federation per chi deve rinnovare ACC o PCC.",
-    category: "Credenziali ICF",
-    date: "28 Marzo 2026",
-    author: "Giovanna Giuffredi",
-    readTime: "15 min",
-    img: "https://picsum.photos/seed/blog4/800/500"
-  },
-  {
-    id: 'team-coaching-sistemico-aziende',
-    title: "Team Coaching Sistemico: come sbloccare le dinamiche di board difficili",
-    excerpt: "Quando il coaching individuale non basta. L'approccio sistemico applicato ai gruppi di comando in azienda.",
-    category: "Team coaching sistemico",
-    date: "20 Marzo 2026",
-    author: "Pietro Monti",
-    readTime: "11 min",
-    img: "https://picsum.photos/seed/blog5/800/500"
-  }
-];
+import { blogPosts } from '../constants/blogPosts';
 
 export default function Blog() {
   return (
@@ -82,10 +30,10 @@ export default function Blog() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                key={post.id} 
+                key={post.slug}
                 className="group cursor-pointer"
               >
-                <Link to={`/blog/${post.id}`}>
+                <Link to={`/blog/${post.slug}`}>
                   <div className="relative aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl">
                     <img src={post.img} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt={post.title} referrerPolicy="no-referrer" />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
