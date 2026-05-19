@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -7,9 +7,6 @@ import {
   HeartHandshake,
   Users,
   Sparkles,
-  BookOpen,
-  Download,
-  Mail,
   Newspaper,
 } from 'lucide-react';
 
@@ -51,13 +48,32 @@ const values = [
 ];
 
 const pressLogos = [
-  'Corriere della Sera',
-  'Il Sole 24 Ore',
-  'HBR Italia',
-  'La Repubblica',
-  'Forbes',
-  'Wired',
+  { name: 'Corriere della Sera', file: 'corriere-della-sera' },
+  { name: 'Il Sole 24 Ore', file: 'il-sole-24-ore' },
+  { name: 'HBR Italia', file: 'hbr-italia' },
+  { name: 'La Repubblica', file: 'la-repubblica' },
+  { name: 'Forbes', file: 'forbes' },
+  { name: 'Wired', file: 'wired' },
 ];
+
+function PressLogo({ name, file }: { name: string; file: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/40">
+        {name}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={`/press/${file}.png`}
+      alt={name}
+      onError={() => setFailed(true)}
+      className="h-6 sm:h-8 w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all"
+    />
+  );
+}
 
 const pressItems = [
   {
@@ -248,34 +264,22 @@ export default function About() {
       {/* PRESS */}
       <section id="press" className="scroll-mt-28">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
-                Press
-              </span>
-              <h2 className={`${tSection} mt-3`}>Hanno parlato di noi.</h2>
-              <p className="mt-4 text-base text-brand-navy/70 font-medium max-w-[560px]">
-                Ricerche, interviste e racconti sulla nostra scuola, sulla community di coach e
-                sull'impatto del coaching nelle organizzazioni italiane.
-              </p>
-            </div>
-            <a
-              href="mailto:press@asteryslab.com"
-              className="inline-flex items-center gap-2 bg-brand-navy text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors self-start"
-            >
-              <Mail size={14} />
-              Contatta l'ufficio stampa
-            </a>
+          <div className="mb-10">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+              Press
+            </span>
+            <h2 className={`${tSection} mt-3`}>Hanno parlato di noi.</h2>
+            <p className="mt-4 text-base text-brand-navy/70 font-medium max-w-[560px]">
+              Ricerche, interviste e racconti sulla nostra scuola, sulla community di coach e
+              sull'impatto del coaching nelle organizzazioni italiane.
+            </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-4 py-6 border-y border-gray-100 mb-10">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-10 sm:gap-x-14 gap-y-6 py-8 border-y border-gray-100 mb-10">
             {pressLogos.map((l) => (
-              <span
-                key={l}
-                className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/40"
-              >
-                {l}
-              </span>
+              <div key={l.file} className="flex items-center">
+                <PressLogo name={l.name} file={l.file} />
+              </div>
             ))}
           </div>
 
@@ -300,39 +304,6 @@ export default function About() {
                 </p>
               </article>
             ))}
-          </div>
-
-          <div className="mt-10 grid md:grid-cols-2 gap-4">
-            <a
-              href="#"
-              className="flex items-center justify-between gap-4 bg-gray-50 hover:bg-brand-blue-soft/60 transition-colors rounded-2xl p-6 border border-gray-100"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center text-brand-accent border border-gray-100">
-                  <Download size={18} />
-                </div>
-                <div>
-                  <p className="text-sm font-black text-brand-navy tracking-tight">Press kit Asterys Lab</p>
-                  <p className="text-xs font-bold text-brand-navy/60">Logo, brand assets, bio fondatori</p>
-                </div>
-              </div>
-              <ArrowRight size={16} className="text-brand-navy/40" />
-            </a>
-            <a
-              href="#"
-              className="flex items-center justify-between gap-4 bg-gray-50 hover:bg-brand-blue-soft/60 transition-colors rounded-2xl p-6 border border-gray-100"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center text-brand-accent border border-gray-100">
-                  <BookOpen size={18} />
-                </div>
-                <div>
-                  <p className="text-sm font-black text-brand-navy tracking-tight">Rassegna completa</p>
-                  <p className="text-xs font-bold text-brand-navy/60">Tutte le uscite su stampa e media</p>
-                </div>
-              </div>
-              <ArrowRight size={16} className="text-brand-navy/40" />
-            </a>
           </div>
         </div>
       </section>
