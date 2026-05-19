@@ -2,9 +2,8 @@ import {
   Calendar, 
   MapPin, 
   ArrowRight, 
-  Clock, 
-  Users, 
-  Zap,
+  Clock,
+  Users,
   ChevronRight,
   Info
 } from 'lucide-react';
@@ -159,7 +158,6 @@ export default function Events() {
       <section className="max-w-7xl mx-auto px-6 pt-16 lg:pt-20">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8">
           <div className="bg-brand-navy text-white p-10 lg:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-6 opacity-10"><Zap size={64} /></div>
             <h3 className="font-display font-bold text-2xl lg:text-3xl mb-5 relative z-10">Vuoi un incontro individuale?</h3>
             <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10 max-w-md">
               Se preferisci un confronto privato e personalizzato, i nostri counselor sono a disposizione per un colloquio orientativo gratuito via Zoom.
