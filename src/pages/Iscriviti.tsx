@@ -8,9 +8,9 @@ import {
   MessageCircle,
   Phone,
   Star,
-  PlayCircle,
 } from 'lucide-react';
 import { coursesContent } from '../constants/coursesContent';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 const steps = [
   { n: 1, title: 'Compila il form', desc: 'e raccontaci chi sei' },
@@ -19,18 +19,34 @@ const steps = [
 ];
 
 const upcomingClasses = [
-  { course: 'Master APCM · Milano', date: '12 maggio 2026', note: 'ULTIMI POSTI DISPONIBILI', highlight: true },
-  { course: 'Master APCM · Roma', date: '19 maggio 2026', note: 'Termine candidature: 5 maggio' },
-  { course: 'Team Coaching Sistemico', date: '10 giugno 2026', note: 'PROSSIMA EDIZIONE', highlight: true },
-  { course: 'Intelligenza Emotiva (EIW)', date: 'Settembre 2026', note: 'APERTE LE ISCRIZIONI', highlight: true },
-];
-
-const testimonials = [
-  { name: 'Giulia', role: 'APCM · Ed. 2023', img: 'https://picsum.photos/seed/apcm-g/400/500' },
-  { name: 'Marco', role: 'APCM · Ed. 2022', img: 'https://picsum.photos/seed/apcm-m/400/500' },
-  { name: 'Laura', role: 'Team Coach · 2024', img: 'https://picsum.photos/seed/apcm-l/400/500' },
-  { name: 'Andrea', role: 'Prosperous Coach', img: 'https://picsum.photos/seed/apcm-a/400/500' },
-  { name: 'Silvia', role: 'APCM · Ed. 2024', img: 'https://picsum.photos/seed/apcm-s/400/500' },
+  {
+    course: 'Master APCM · Milano',
+    date: '15 maggio 2026',
+    deadline: 'Prossima edizione: 25 settembre 2026 · termine candidature 1 settembre',
+    earlyBird: 'Early Bird −800€ entro il 30 aprile 2026',
+    highlight: true,
+  },
+  {
+    course: 'Team Coaching Sistemico (ASTC)',
+    date: '6 ottobre 2026',
+    deadline: '2° livello dal 20 gennaio 2027',
+    earlyBird: 'Early Bird fino a −174€ entro il 19 agosto 2026',
+    highlight: false,
+  },
+  {
+    course: 'Intelligenza Emotiva (EIW)',
+    date: 'Settembre 2026',
+    deadline: 'Iscrizioni aperte · posti limitati',
+    earlyBird: null,
+    highlight: true,
+  },
+  {
+    course: 'Voice Dialogue · Milano',
+    date: '17–18 nov + 1 dic 2026',
+    deadline: 'Termine iscrizioni: 31 ottobre 2026',
+    earlyBird: 'Early Bird 1.575€ + IVA entro il 31 ottobre 2026',
+    highlight: false,
+  },
 ];
 
 const courseOptions = Object.entries(coursesContent).map(([id, c]) => ({
@@ -82,24 +98,12 @@ export default function Iscriviti() {
             </svg>
           </div>
 
-          {/* segmented toggle */}
-          <div className="max-w-[560px] mx-auto">
-            <div className="bg-white rounded-full p-1 flex items-center shadow-sm">
-              <button className="flex-1 py-2.5 rounded-full text-xs font-black uppercase tracking-[0.18em] text-brand-navy bg-brand-blue-soft">
-                Master
-              </button>
-              <button className="flex-1 py-2.5 rounded-full text-xs font-black uppercase tracking-[0.18em] text-brand-navy/55">
-                Corsi Skill
-              </button>
-            </div>
-          </div>
-
           {/* card */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="max-w-[560px] mx-auto mt-6 bg-white rounded-3xl shadow-[0_30px_80px_-30px_rgba(29,59,185,0.45)] p-7 sm:p-10"
+            className="max-w-[560px] mx-auto bg-white rounded-3xl shadow-[0_30px_80px_-30px_rgba(29,59,185,0.45)] p-7 sm:p-10"
           >
             <h1 className="text-center text-2xl sm:text-[1.75rem] font-display font-black tracking-tighter leading-[1.1]">
               Percorsi formativi completi e
@@ -149,7 +153,7 @@ export default function Iscriviti() {
               <form className="mt-8 flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
                 <div>
                   <label className="block text-xs font-black text-brand-navy tracking-tight mb-1.5">
-                    Quale Master ti interessa? <span className="text-brand-accent">•</span>
+                    Quale percorso ti interessa? <span className="text-brand-accent">•</span>
                   </label>
                   <div className="relative">
                     <select
@@ -279,66 +283,34 @@ export default function Iscriviti() {
             {upcomingClasses.map((c) => (
               <div
                 key={c.course + c.date}
-                className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl border border-white/10 p-5"
+                className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl border border-white/10 p-5 flex flex-col"
               >
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-white/70">
+                <p
+                  className={`text-[11px] font-black uppercase tracking-[0.2em] ${
+                    c.highlight ? 'text-[#BFD4FF]' : 'text-white/70'
+                  }`}
+                >
                   {c.course}
                 </p>
                 <p className="mt-3 flex items-center gap-2 text-2xl font-display font-black tracking-tight">
-                  <ArrowRight size={18} /> {c.date}
+                  <ArrowRight size={18} className="shrink-0" /> {c.date}
                 </p>
-                <p
-                  className={`mt-1 text-[11px] font-black uppercase tracking-[0.18em] ${
-                    c.highlight ? 'text-[#BFD4FF]' : 'text-white/55'
-                  }`}
-                >
-                  {c.note}
+                <p className="mt-2 text-[12px] font-semibold text-white/70 leading-relaxed">
+                  {c.deadline}
                 </p>
+                {c.earlyBird ? (
+                  <span className="mt-3 self-start inline-flex items-center rounded-full bg-[#BFD4FF]/15 text-[#BFD4FF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em]">
+                    {c.earlyBird}
+                  </span>
+                ) : null}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* STUDENT STORIES */}
-      <section className="bg-brand-blue-soft/60">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20">
-          <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tighter text-brand-navy">
-            Un'esperienza che ti cambia la vita
-          </h2>
-          <p className="mt-4 text-base text-brand-navy/75 font-medium max-w-[640px] leading-relaxed">
-            Oltre 3.000 coach ci hanno già scelto — nessuno meglio di loro può raccontarti perché
-            Asterys è il percorso più sicuro se vuoi mettere le basi giuste per una carriera nel coaching.
-          </p>
-
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-3">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer"
-              >
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center text-brand-navy group-hover:bg-white transition-colors">
-                    <PlayCircle size={26} />
-                  </div>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <p className="text-sm font-black tracking-tight">{t.name}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/80">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* STUDENT STORIES — sezione testimonianze condivisa */}
+      <TestimonialsSection />
 
       {/* FINAL CTA BAND */}
       <section className="bg-white">
