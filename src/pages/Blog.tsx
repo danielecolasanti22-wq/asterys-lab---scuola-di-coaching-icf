@@ -1,14 +1,10 @@
-import { useState } from 'react';
-import { 
-  Search, 
-  ArrowRight, 
-  User, 
-  Calendar, 
-  Clock, 
-  Tag, 
+import {
+  ArrowRight,
+  User,
+  Calendar,
+  Clock,
   Download,
   CheckCircle2,
-  ChevronRight,
   Bookmark
 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -68,22 +64,7 @@ const blogPosts = [
   }
 ];
 
-const pillars = [
-  "Tutto",
-  "Diventare coach professionista",
-  "Intelligenza emotiva",
-  "Team coaching sistemico",
-  "Business del coach",
-  "Credenziali ICF"
-];
-
 export default function Blog() {
-  const [activePillar, setActivePillar] = useState("Tutto");
-
-  const filteredPosts = activePillar === "Tutto" 
-    ? blogPosts 
-    : blogPosts.filter(p => p.category === activePillar);
-
   return (
     <div className="pb-20">
       <PageHero
@@ -92,39 +73,11 @@ export default function Blog() {
         subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi scritti dai nostri trainer MCC e PCC."
       />
 
-      <div className="max-w-md mx-auto px-4 sm:px-6 pt-10">
-        <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-navy/30" size={20} />
-          <input
-            type="text"
-            placeholder="Cerca un argomento..."
-            className="w-full pl-12 pr-6 py-4 rounded-2xl bg-brand-blue-soft/30 border-none focus:ring-2 ring-brand-navy/5 outline-none font-medium placeholder:text-brand-navy/30"
-          />
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 pt-12">
-        {/* Categories / Pillars */}
-        <div className="flex flex-wrap gap-3 mb-16 overflow-x-auto pb-4 scrollbar-hide">
-          {pillars.map(p => (
-            <button
-              key={p}
-              onClick={() => setActivePillar(p)}
-              className={`px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest whitespace-nowrap transition-all ${
-                activePillar === p 
-                  ? 'bg-brand-navy text-white shadow-xl translate-y-[-2px]' 
-                  : 'bg-gray-50 text-brand-navy/40 hover:bg-brand-blue-soft/50 hover:text-brand-navy'
-              }`}
-            >
-              {p}
-            </button>
-          ))}
-        </div>
-
+      <div className="max-w-7xl mx-auto px-6 pt-16">
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Posts List */}
           <div className="lg:col-span-8 space-y-20">
-            {filteredPosts.map((post, i) => (
+            {blogPosts.map((post, i) => (
               <motion.article 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -160,9 +113,10 @@ export default function Blog() {
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-4 space-y-12">
-            {/* Lead Magnet Card */}
-            <div className="bg-brand-blue-soft p-10 rounded-[2.5rem] shadow-brand-navy/5 shadow-xl sticky top-32">
+          <aside className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28 space-y-12">
+            {/* Lead Magnet Card — fisso durante lo scroll */}
+            <div className="bg-brand-blue-soft p-10 rounded-[2.5rem] shadow-brand-navy/5 shadow-xl">
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
                 <Bookmark className="text-brand-accent" size={32} />
               </div>
@@ -187,6 +141,7 @@ export default function Blog() {
                   <span key={t} className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest hover:border-brand-accent transition-colors cursor-pointer">{t}</span>
                 ))}
               </div>
+            </div>
             </div>
           </aside>
         </div>
