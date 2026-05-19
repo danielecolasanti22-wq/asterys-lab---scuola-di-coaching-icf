@@ -33,7 +33,9 @@
       "Bash(sed -n '313,323p' src/pages/Home.tsx)",
       "Bash(sed -n '22,28p' src/pages/Iscriviti.tsx)",
       "Bash(awk 'NR>=2119 && NR<=2245 && /\\\\\\) : null}/ {print NR\": \"$0}' src/pages/CourseDetail.tsx)",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(cp \"/Users/AL/Downloads/Hero EIW.png\" \"/Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/public/course-media/eiw/hero.png\")",
+      "Bash(cp \"/Users/AL/Downloads/Fiore di plitchik eiw.png\" \"/Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/public/course-media/eiw/plutchik.png\")"
     ]
   }
 }

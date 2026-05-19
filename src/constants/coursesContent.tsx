@@ -1470,6 +1470,8 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Non serve più dire che l'intelligenza emotiva è importante: ormai si sa che è sviluppabile. Come farlo è un'altra storia — e qui si fa, non si ascolta soltanto.",
     type: "WORKOUT EQ",
     media: {
+      hero: "/course-media/eiw/hero.png",
+      overview: "/course-media/eiw/plutchik.png",
       howItWorks: "/course-media/apcm/how-master.jpg"
     },
     heroBenefits: [
