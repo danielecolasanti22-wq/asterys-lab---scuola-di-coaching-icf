@@ -2069,7 +2069,8 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Sviluppo continuo per il tuo essere coach: un appuntamento mensile in Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
     media: {
-      overview: "/course-media/continuous-learning/card.jpg"
+      overview: "/course-media/continuous-learning/card.jpg",
+      howItWorks: "/course-media/apcm/how-master.jpg"
     },
     heroKicker: "FORMAZIONE CONTINUA PER COACH",
     heroBenefits: [
@@ -2177,7 +2178,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     teachers: [
       { name: "Alessandra Bitelli", creds: "PCC", role: "Titolare del corso", bio: "PCC, formata come coach in Asterys Lab. Executive coach e parte della Faculty di Asterys Lab, con cui collabora allo sviluppo dei programmi di formazione.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
-      { name: "Graziano Nicoli", creds: "Executive Coach", role: "Titolare del corso", bio: "Executive Coach, Trainer, Facilitator and Assessor.", img: "https://picsum.photos/seed/cl-nicoli/300/300" }
+      { name: "Graziano Nicoli", creds: "ICF PCC", role: "Titolare del corso", bio: "Executive Coach ICF PCC, Trainer, Facilitator e Assessor. Executive coach con focus su change management, gestione dell'incertezza e transizioni di carriera.", img: "/course-media/continuous-learning/trainer-graziano-nicoli.jpeg" }
     ],
     career: {
       title: "Perché inserirlo nella tua pratica",
@@ -2188,6 +2189,20 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Facilitazione interattiva", desc: "Ogni partecipante può portare riflessioni e casi: nessuna lezione frontale." },
         { title: "CCE ICF e network", desc: "Ottieni CCE ICF e resti connesso a una community ricca di coach." }
       ]
+    },
+    competenciesAndCareers: {
+      eyebrow: "Competenze",
+      title: "Cosa impari",
+      intro: "Ogni Live Class alimenta competenze concrete per il tuo lavoro di coach, tra sviluppo personale e prospettiva di coaching.",
+      competencies: [
+        { title: "Riflessione guidata su casi reali", desc: "Analizzi situazioni e casi rileggendoli con la prospettiva del coaching." },
+        { title: "Approccio interdisciplinare", desc: "Colleghi spunti da storia, business, filosofia e psicologia al lavoro di coach." },
+        { title: "Lettura di contesti complessi", desc: "Sviluppi consapevolezza per orientarti con clienti e situazioni diverse." },
+        { title: "Postura di facilitazione", desc: "Alleni una modalità interattiva e non frontale, fatta di domande e ascolto." },
+        { title: "Aggiornamento continuo", desc: "Mantieni viva la pratica con stimoli mensili e la possibilità di CCE ICF." },
+        { title: "Network professionale", desc: "Resti connesso a una community ricca e multi-livello di coach." }
+      ],
+      careerPaths: []
     },
     sessionSchedule: [
       { days: "Una volta al mese (gennaio–luglio, settembre–dicembre)", time: "18:30 - 20:00" },

@@ -772,6 +772,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <h2 className={`${tSection} mb-4`}>
               {isCoachingCircle
                 ? 'Come funziona la pratica'
+                : isCL
+                ? 'Programma'
                 : isMasterLike
                 ? 'Programma del Master'
                 : 'Programma del corso'}
@@ -851,6 +853,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                    ? "Il corso è in edizione unica annuale: assicurati il posto prima del termine iscrizioni."
                    : isWorkout
                    ? "I Round sono pubblicati con largo anticipo: scegli quello con il set di emozioni che preferisci e mettilo in agenda. Nessuna sequenza obbligata, i posti sono limitati."
+                   : isCL
+                   ? "Il programma è circolare: non c'è un inizio obbligato, entri quando vuoi. Ecco le prossime Live Class — trovi il calendario completo poco più sotto."
                    : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
 
@@ -863,10 +867,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          ? 'Edizione 2026 · in presenza a Milano'
                          : isWorkout
                          ? 'Prossimi Round in calendario'
+                         : isCL
+                         ? 'Prossime Live Class'
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-12">
-                        {(course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }]).map((cd, i, arr) => (
+                        {(isCL ? (course.classDates ?? []).slice(0, 3) : (course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }])).map((cd, i, arr) => (
                           <div key={i} className="contents">
                             {i > 0 && <div className="h-px w-full md:h-12 md:w-px bg-white/10 shrink-0"></div>}
                             <div className="flex-1">
@@ -1294,7 +1300,32 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
           <p className={`${tBody} max-w-3xl mb-10`}>{richText(how.formazioneIntro)}</p>
 
-          {scheduleColumns.length ? (
+          {isCL ? (
+            <div className="divide-y divide-gray-200 border-t border-gray-200">
+              {(course.classDates ?? []).map((cd, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-[auto_1fr] sm:grid-cols-[140px_1fr_auto] items-start gap-x-4 gap-y-1.5 sm:gap-6 py-5"
+                >
+                  <div className="flex flex-col">
+                    {cd.badge ? (
+                      <span className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent">
+                        {cd.badge}
+                      </span>
+                    ) : null}
+                    <span className="text-sm sm:text-base font-black text-brand-navy">{cd.date}</span>
+                  </div>
+                  <p className="col-span-2 sm:col-span-1 text-sm sm:text-base text-brand-navy/70 font-medium leading-snug">
+                    {cd.note}
+                  </p>
+                  <div className="hidden sm:flex items-center gap-2 text-brand-navy shrink-0 md:justify-end">
+                    <Clock size={16} strokeWidth={2} className="shrink-0" />
+                    <span className="text-xs sm:text-sm font-black">18:30–20:00</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : scheduleColumns.length ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 border-t border-gray-200 py-10">
               {scheduleColumns.map((column, idx) => (
                 <div key={idx} className={`flex gap-4 ${idx === 2 ? 'md:justify-end' : ''}`}>
@@ -1956,7 +1987,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
-      {!isCoachingCircle && !isVoiceDialogue && !isWorkout ? (
+      {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL ? (
       <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">
@@ -2195,7 +2226,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       <TestimonialsSection />
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
-      {!isCoachingCircle && !isWorkout ? (
+      {!isCoachingCircle && !isWorkout && !isCL ? (
       <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
