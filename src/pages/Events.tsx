@@ -59,92 +59,135 @@ export default function Events() {
   return (
     <div className="pb-20">
       <PageHero
-        eyebrow="Eventi & Open Day"
         title="Eventi &"
         highlight="Open Day"
         subtitle="Scopri il mondo Asterys Lab partecipando ai nostri incontri. Webinar gratuiti, sessioni di orientamento e seminari dal vivo per esplorare la tua prossima evoluzione."
       />
 
-      <div className="max-w-7xl mx-auto px-6 pt-14">
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main List */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
-              <h2 className="font-display font-bold text-2xl tracking-tight">Prossimi Appuntamenti</h2>
-              <p className="text-xs font-black text-brand-navy/30 uppercase tracking-widest">{eventsData.length} Eventi programmati</p>
+      {/* FEATURED — prossimo evento */}
+      <section className="max-w-7xl mx-auto px-6 pt-14">
+        <Link to={`/eventi/${eventsData[0].id}`} className="group block">
+          <div className="grid lg:grid-cols-2 rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all bg-white">
+            <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px] overflow-hidden">
+              <img
+                src={eventsData[0].img}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                alt={eventsData[0].title}
+                referrerPolicy="no-referrer"
+              />
+              <span className="absolute top-5 left-5 bg-brand-accent text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-[0.18em]">
+                Prossimo evento
+              </span>
             </div>
+            <div className="p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
+              <span className="bg-brand-blue-soft text-brand-navy text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest leading-none self-start mb-5">
+                {eventsData[0].category}
+              </span>
+              <h2 className="font-display font-black text-3xl lg:text-[2.6rem] leading-[1.05] tracking-tight mb-5 group-hover:text-brand-accent transition-colors">
+                {eventsData[0].title}
+              </h2>
+              <p className="text-brand-navy/60 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+                {eventsData[0].desc}
+              </p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-bold text-brand-navy/45 mb-8">
+                <div className="flex items-center gap-1.5"><Calendar size={15} className="text-brand-accent" /> {eventsData[0].date}</div>
+                <div className="flex items-center gap-1.5"><Clock size={15} className="text-brand-accent" /> {eventsData[0].time}</div>
+                <div className="flex items-center gap-1.5"><MapPin size={15} className="text-brand-accent" /> {eventsData[0].modality}</div>
+              </div>
+              <span className="inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] self-start group-hover:bg-brand-accent transition-colors">
+                Scopri &amp; iscriviti <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </div>
+          </div>
+        </Link>
+      </section>
 
-            {eventsData.map((event, i) => (
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                key={event.id} 
-                className="bg-white rounded-[2rem] p-8 flex flex-col md:flex-row gap-8 shadow-soft hover:shadow-xl transition-all border border-gray-100 group"
+      {/* GRIGLIA — altri appuntamenti */}
+      <section className="max-w-7xl mx-auto px-6 pt-12 lg:pt-16">
+        <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-10">
+          <h2 className="font-display font-bold text-2xl tracking-tight">Tutti gli appuntamenti</h2>
+          <p className="text-xs font-black text-brand-navy/30 uppercase tracking-widest">{eventsData.length} eventi in programma</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {eventsData.slice(1).map((event, i) => (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
+              key={event.id}
+              className="group"
+            >
+              <Link
+                to={`/eventi/${event.id}`}
+                className="flex flex-col h-full bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all"
               >
-                <div className="md:w-1/3 aspect-[4/3] rounded-2xl overflow-hidden shadow-lg shrink-0">
-                  <img src={event.img} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt={event.title} referrerPolicy="no-referrer" />
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={event.img}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={event.title}
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-                <div className="flex-grow flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="bg-brand-blue-soft text-brand-navy text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest leading-none">
-                        {event.category}
-                      </span>
+                <div className="p-7 flex flex-col flex-grow">
+                  <span className="bg-brand-blue-soft text-brand-navy text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest leading-none self-start mb-4">
+                    {event.category}
+                  </span>
+                  <h3 className="font-display font-bold text-xl mb-3 leading-tight group-hover:text-brand-accent transition-colors">
+                    {event.title}
+                  </h3>
+                  <p className="text-brand-navy/55 text-sm leading-relaxed mb-6 line-clamp-2">
+                    {event.desc}
+                  </p>
+                  <div className="mt-auto flex items-center justify-between pt-5 border-t border-gray-50">
+                    <div className="text-xs font-bold text-brand-navy/45 space-y-1">
+                      <div className="flex items-center gap-1.5"><Calendar size={13} className="text-brand-accent" /> {event.date}</div>
+                      <div className="flex items-center gap-1.5"><Clock size={13} className="text-brand-accent" /> {event.time}</div>
                     </div>
-                    <h3 className="font-display font-bold text-2xl mb-4 group-hover:text-brand-accent transition-colors leading-tight">{event.title}</h3>
-                    <p className="text-brand-navy/60 text-sm leading-relaxed mb-6 line-clamp-2">
-                      {event.desc}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-bold text-brand-navy/40 pt-6 border-t border-gray-50">
-                    <div className="flex items-center gap-1.5"><Calendar size={14} className="text-brand-accent" /> {event.date}</div>
-                    <div className="flex items-center gap-1.5"><Clock size={14} className="text-brand-accent" /> {event.time}</div>
-                    <div className="flex items-center gap-1.5"><MapPin size={14} className="text-brand-accent" /> {event.modality}</div>
+                    <span className="w-11 h-11 rounded-full bg-brand-blue-soft flex items-center justify-center text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-all group-hover:rotate-45 shrink-0">
+                      <ArrowRight size={20} />
+                    </span>
                   </div>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <Link to={`/eventi/${event.id}`} className="w-14 h-14 rounded-full bg-brand-blue-soft flex items-center justify-center text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-all transform group-hover:rotate-45">
-                    <ArrowRight size={24} />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* BAND — incontro individuale + info utili */}
+      <section className="max-w-7xl mx-auto px-6 pt-16 lg:pt-20">
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8">
+          <div className="bg-brand-navy text-white p-10 lg:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-10"><Zap size={64} /></div>
+            <h3 className="font-display font-bold text-2xl lg:text-3xl mb-5 relative z-10">Vuoi un incontro individuale?</h3>
+            <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10 max-w-md">
+              Se preferisci un confronto privato e personalizzato, i nostri counselor sono a disposizione per un colloquio orientativo gratuito via Zoom.
+            </p>
+            <button className="btn-primary bg-white text-brand-navy hover:bg-white/90 px-8 py-4 font-bold rounded-xl relative z-10">Prenota ora</button>
           </div>
 
-          {/* Sidebar */}
-          <aside className="lg:col-span-1 space-y-10">
-            <div className="bg-brand-navy text-white p-10 rounded-[2rem] shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10"><Zap size={48} /></div>
-              <h3 className="font-display font-bold text-2xl mb-6 relative z-10">Vuoi un incontro individuale?</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10">
-                Se preferisci un confronto privato e personalizzato, i nostri counselor sono a disposizione per un colloquio orientativo gratuito via Zoom.
-              </p>
-              <button className="w-full btn-primary bg-white text-brand-navy hover:bg-white/90 py-4 font-bold rounded-xl relative z-10">Prenota ora</button>
+          <div className="bg-brand-blue-soft/50 p-10 lg:p-12 rounded-[2.5rem]">
+            <div className="flex items-center gap-3 mb-6">
+              <Info className="text-brand-accent" size={24} />
+              <h3 className="font-display font-bold text-xl">Info utili</h3>
             </div>
-
-            <div className="bg-brand-blue-soft/50 p-10 rounded-[2rem]">
-              <div className="flex items-center gap-3 mb-6">
-                <Info className="text-brand-accent" size={24} />
-                <h3 className="font-display font-bold text-xl">Info utili</h3>
-              </div>
-              <ul className="space-y-4">
-               {[
-                 "Tutti i webinar online vengono registrati.",
-                 "Gli open day in sede hanno posti limitati.",
-                 "Riceverai il link Zoom 2h prima.",
-                 "Possibilità di colloquio post-evento."
-               ].map((item, i) => (
-                 <li key={i} className="flex gap-2 text-xs font-medium text-brand-navy/60 leading-relaxed">
-                   <ChevronRight size={14} className="text-brand-accent shrink-0 mt-0.5" />
-                   {item}
-                 </li>
-               ))}
-              </ul>
-            </div>
-          </aside>
+            <ul className="space-y-4">
+              {[
+                "Tutti i webinar online vengono registrati.",
+                "Gli open day in sede hanno posti limitati.",
+                "Riceverai il link Zoom 2h prima.",
+                "Possibilità di colloquio post-evento."
+              ].map((item, i) => (
+                <li key={i} className="flex gap-2 text-xs font-medium text-brand-navy/60 leading-relaxed">
+                  <ChevronRight size={14} className="text-brand-accent shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

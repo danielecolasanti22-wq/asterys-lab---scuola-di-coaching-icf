@@ -87,7 +87,6 @@ export default function Blog() {
   return (
     <div className="pb-20">
       <PageHero
-        eyebrow="Knowledge Hub"
         title="Risorse &"
         highlight="Blog"
         subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi scritti dai nostri trainer MCC e PCC."
