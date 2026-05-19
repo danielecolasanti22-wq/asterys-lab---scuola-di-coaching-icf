@@ -556,7 +556,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   : id === 'voice-dialogue'
                   ? 'right-[-22%] w-[calc(82vw-65px)] max-w-[1255px] min-w-[875px] translate-x-[20px]'
                   : id === 'eiw'
-                  ? 'right-[-8%] w-[calc(60vw-30px)] max-w-[1180px] min-w-[900px] translate-x-[0px]'
+                  ? 'right-[-8%] w-[calc(60vw+160px)] max-w-[1370px] min-w-[1090px] translate-x-[140px]'
                   : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
               }`}
             >
