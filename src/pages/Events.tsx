@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { PageHero } from '../components/PageHero';
 
 const eventsData = [
   {
@@ -56,20 +57,15 @@ const eventsData = [
 
 export default function Events() {
   return (
-    <div className="pt-32 pb-20">
-      <section className="bg-brand-navy text-white py-20 mb-16 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-96 h-96 bg-brand-accent rounded-full blur-[120px]"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="font-display font-bold text-5xl lg:text-7xl mb-8 tracking-tight">Eventi & Open Day.</h1>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-            Scopri il mondo Asterys Lab partecipando ai nostri incontri. Webinar gratuiti, webinar di orientamento e seminari dal vivo per esplorare la tua prossima evoluzione.
-          </p>
-        </div>
-      </section>
+    <div className="pb-20">
+      <PageHero
+        eyebrow="Eventi & Open Day"
+        title="Eventi &"
+        highlight="Open Day"
+        subtitle="Scopri il mondo Asterys Lab partecipando ai nostri incontri. Webinar gratuiti, sessioni di orientamento e seminari dal vivo per esplorare la tua prossima evoluzione."
+      />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 pt-14">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Main List */}
           <div className="lg:col-span-2 space-y-8">

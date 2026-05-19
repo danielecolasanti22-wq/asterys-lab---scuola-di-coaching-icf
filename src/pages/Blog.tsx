@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { PageHero } from '../components/PageHero';
 
 const blogPosts = [
   {
@@ -84,28 +85,24 @@ export default function Blog() {
     : blogPosts.filter(p => p.category === activePillar);
 
   return (
-    <div className="pt-32 pb-20">
-      <section className="bg-white py-16 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-            <div className="max-w-2xl">
-              <span className="text-brand-accent font-black uppercase text-xs tracking-[0.2em] mb-4 block">Knowledge Hub</span>
-              <h1 className="font-display font-bold text-5xl lg:text-7xl mb-6 tracking-tight text-brand-navy">Risorse & Blog.</h1>
-              <p className="text-xl text-brand-navy/60 leading-relaxed">
-                Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi scritti dai nostri trainer MCC e PCC.
-              </p>
-            </div>
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-navy/30" size={20} />
-              <input 
-                type="text" 
-                placeholder="Cerca un argomento..." 
-                className="w-full pl-12 pr-6 py-4 rounded-2xl bg-brand-blue-soft/30 border-none focus:ring-2 ring-brand-navy/5 outline-none font-medium placeholder:text-brand-navy/30"
-              />
-            </div>
-          </div>
+    <div className="pb-20">
+      <PageHero
+        eyebrow="Knowledge Hub"
+        title="Risorse &"
+        highlight="Blog"
+        subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi scritti dai nostri trainer MCC e PCC."
+      />
+
+      <div className="max-w-md mx-auto px-4 sm:px-6 pt-10">
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-navy/30" size={20} />
+          <input
+            type="text"
+            placeholder="Cerca un argomento..."
+            className="w-full pl-12 pr-6 py-4 rounded-2xl bg-brand-blue-soft/30 border-none focus:ring-2 ring-brand-navy/5 outline-none font-medium placeholder:text-brand-navy/30"
+          />
         </div>
-      </section>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 pt-12">
         {/* Categories / Pillars */}
