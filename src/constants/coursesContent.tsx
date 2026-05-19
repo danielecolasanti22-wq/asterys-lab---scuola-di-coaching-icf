@@ -2066,37 +2066,38 @@ export const coursesContent: Record<string, CourseData> = {
   'continuous-learning': {
     title: "Continuous Learning (CL)",
     subtitle: "Continuous Learning",
-    tagline: "Formazione continua per coach e alumni Asterys Lab: Live Class mensili interattive per tutto l'anno (escluso agosto).",
+    tagline: "Sviluppo continuo per il tuo essere coach: un appuntamento mensile in Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
-    heroKicker: "PER ALUMNI E COACH IN FORMAZIONE",
+    heroKicker: "FORMAZIONE CONTINUA PER COACH",
     heroBenefits: [
-      "Programma circolare: entri quando vuoi, senza punto di inizio obbligato",
-      "Live Class serali mensili in Zoom (18:30–20:00), tutto l'anno tranne agosto",
-      "Approccio di facilitazione: incontri interattivi, non frontali",
-      "Sviluppo personale del coach + approfondimenti pratici di coaching"
+      "Struttura circolare: nessun inizio né fine, entri quando vuoi",
+      "Live Class mensili in Zoom (18:30–20:00), tutto l'anno tranne agosto",
+      "Approccio di facilitazione: incontri interattivi, non lezioni frontali",
+      "Permette di ottenere CCE ICF · ottima occasione di networking"
     ],
     summaryBox: {
       nextEdition: "Online · Zoom",
       dates: "Gennaio – Dicembre 2026 (pausa ad agosto)",
       format: "Live Class mensili",
-      duration: "1 incontro al mese · 18:30–20:00",
+      duration: "1 incontro/mese · 18:30–20:00",
       price: "Da 9€ + IVA a Live Class",
-      installments: "Pacchetti flessibili per numero di incontri"
+      installments: "Pacchetti: più ne acquisti, più risparmi"
     },
-    badges: ["Community Alumni", "Live Class mensili", "Network coaching"],
+    badges: ["Struttura circolare", "CCE ICF", "Network coaching"],
     overview: {
-      title: "Un percorso di apprendimento continuo",
+      title: "Sviluppo senza fine",
       content: [
-        "Il programma Continuous Learning ha uno svolgimento **circolare**: non esiste un punto di inizio obbligato e puoi entrare nel percorso durante tutto l'anno, escluso il mese di agosto.",
-        "Nelle Live Class convivono partecipanti in fasi diverse: chi ha appena iniziato, chi è tra un corso e l'altro e chi ha già concluso il percorso ma desidera restare in contatto con stimoli orientati al coaching.",
-        "Gli incontri alternano temi di sviluppo personale e approfondimenti sull'attività di coaching, con casi presi da business, storia, filosofia, psicologia e altre discipline, sempre riletti con la prospettiva del coach."
+        "Il programma Continuous Learning (CL) ha una struttura circolare che offre sviluppo continuo per il tuo essere coach: senza inizio né fine, è un appuntamento mensile che si svolge durante tutto l'anno tranne ad agosto.",
+        "È rivolto particolarmente a studenti e alumni di Asterys Lab — chi inizia, chi è in pausa tra un livello e l'altro e chi ha finito la formazione ma vuole restare aggiornato e stimolato — ma può partecipare chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola.",
+        "I temi spaziano dallo sviluppo personale del coach agli approfondimenti sul coaching, e ogni Live Class è un'opportunità di crescita e consapevolezza.",
+        "Il corso è condotto da Alessandra Bitelli, PCC, executive coach formata in Asterys Lab e parte della Faculty, e ospita colleghi capaci di offrire stimoli importanti. Le Live Class si tengono una volta al mese, su Zoom, dalle 18:30 alle 20:00."
       ]
     },
     target: [
-      { title: "Alumni Asterys Lab", desc: "Per restare aggiornati, connessi alla community e in allenamento continuo.", icon: <Users /> },
-      { title: "Coach con credenziale", desc: "Per nutrire la pratica professionale con nuovi punti di vista.", icon: <Award /> },
-      { title: "Coach in formazione", desc: "Per integrare il percorso formativo con stimoli continui e networking.", icon: <Target /> },
-      { title: "Professionisti del supporto", desc: "Per ampliare il bagaglio culturale e riflessivo utile alla relazione di aiuto.", icon: <MessageCircle /> },
+      { title: "Alumni e studenti Asterys", desc: "Chi inizia, chi è in pausa tra un livello e l'altro, chi ha concluso e vuole restare stimolato.", icon: <Users /> },
+      { title: "Coach con credenziale", desc: "Per nutrire la pratica con nuovi punti di vista e ottenere CCE ICF.", icon: <Award /> },
+      { title: "Coach in formazione", desc: "Per integrare il percorso con stimoli continui e networking.", icon: <Target /> },
+      { title: "Chiunque faccia coaching", desc: "A qualsiasi livello e di qualsiasi scuola: il programma è aperto a tutti.", icon: <MessageCircle /> },
     ],
     learning: {
       cols: [
@@ -2134,37 +2135,55 @@ export const coursesContent: Record<string, CourseData> = {
       modules: [
         {
           title: "Formato circolare",
-          desc: "Il programma è attivo tutto l'anno (escluso agosto) e permette ingresso continuo: puoi partecipare a una singola Live Class o acquistare pacchetti di incontri."
+          desc: "Il programma è attivo tutto l'anno (escluso agosto) con ingresso continuo: non c'è un punto d'inizio obbligato, entri quando vuoi. Puoi acquistare una singola Live Class o un pacchetto di incontri.",
+          tags: ["Nessun inizio obbligato", "Tutto l'anno tranne agosto", "Singola o pacchetto"]
         },
         {
-          title: "Live Class mensili",
-          desc: "Ogni incontro in Zoom (18:30–20:00) affronta un tema specifico e lo approfondisce con prospettiva coaching, in modalità facilitata e altamente interattiva."
+          title: "Come funziona ogni Live Class",
+          desc: "Ogni incontro tratta un tema, spesso mutuato da altre discipline (storia, business, filosofia, psicologia) e riletto con la prospettiva del coaching. Modalità di facilitazione, non formazione frontale: ogni partecipante può integrare e portare le proprie riflessioni.",
+          tags: ["Tema interdisciplinare", "Prospettiva coaching", "Altamente interattivo"]
         },
         {
-          title: "Community e continuità",
-          desc: "Tra una Live Class e l'altra mantieni il collegamento con la community alumni e con la faculty, alimentando apprendimento costante e network professionale."
+          title: "Iscrizione e partecipazione",
+          desc: "Al momento dell'iscrizione ricevi il calendario con tutte le date successive. Circa 3-4 giorni prima di ogni incontro ricevi il link Zoom e il titolo della sessione: scegli liberamente se partecipare a quella o alla successiva. Attenzione: le Live Class a cui non partecipi non sono recuperabili.",
+          tags: ["Calendario all'iscrizione", "Link 3-4 giorni prima", "Non recuperabili"]
+        },
+        {
+          title: "CCE ICF e network",
+          desc: "Il programma permette di ottenere CCE ICF ed è un'ottima occasione di networking: la platea è ricca e multi-livello, con coach formati e in formazione provenienti da percorsi diversi.",
+          tags: ["CCE ICF", "Network coaching", "Platea multi-livello"]
         }
       ]
     },
     programIntro:
-      "Continuous Learning è uno spazio continuo di crescita professionale e personale: incontri brevi, regolari e ad alto valore riflessivo.",
+      "Continuous Learning è uno spazio continuo di crescita professionale e personale: incontri brevi, mensili e ad alto valore riflessivo, sempre con la prospettiva del coaching.",
+    howItWorks: {
+      title: "Come funziona e a chi è dedicato",
+      intro: "Ogni incontro tratta un tema, spesso proveniente da altre discipline (storia, business, filosofia, psicologia), con una **prospettiva di coaching**. L'approccio è interattivo: i partecipanti condividono riflessioni e sviluppano competenze per supportare i clienti in situazioni diverse.",
+      formazioneTitle: "Iscrizione e calendario",
+      formazioneIntro: "Il programma permette di ottenere **CCE ICF** ed è pensato per coach formati o in formazione, con un'ottima occasione di **networking**. Puoi acquistare singole Live Class o pacchetti, con prezzi ridotti in base al numero di incontri. Dopo l'iscrizione ricevi il calendario e, prima di ogni evento, il link Zoom e il tema della sessione."
+    },
     studyModeBox: {
-      title: "Modalità di fruizione",
-      highlight: "Zoom · 1 volta al mese",
-      body: "Tutte le Live Class si svolgono in videoconferenza Zoom dalle 18:30 alle 20:00. Dopo l'iscrizione ricevi il calendario e, 3-4 giorni prima dell'incontro, link Zoom e titolo della sessione.",
+      title: "Tutto su Zoom, ",
+      highlight: "una volta al mese",
+      body: "Tutte le Live Class si svolgono in videoconferenza Zoom dalle 18:30 alle 20:00. Dopo l'iscrizione ricevi il calendario; 3-4 giorni prima di ogni incontro ricevi link Zoom e titolo della sessione e scegli liberamente se partecipare. **Attenzione: le Live Class a cui non partecipi non sono recuperabili.**",
+    },
+    admissionBox: {
+      title: "A chi è dedicato",
+      body: "Rivolto particolarmente a studenti e alumni Asterys Lab (chi inizia, chi è in pausa, chi ha concluso), ma aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola. Nessun processo di ammissione: scegli le Live Class e iscriviti."
     },
     teachers: [
-      { name: "Alessandra Bitelli", creds: "PCC", role: "Titolare del corso", bio: "Executive Coach, Faculty Asterys Lab, collabora allo sviluppo dei programmi formativi.", img: "https://picsum.photos/seed/cl-bitelli/300/300" },
-      { name: "Graziano Nicoli", creds: "Executive Coach", role: "Titolare del corso", bio: "Trainer, Facilitator and Assessor con esperienza su percorsi di crescita professionale.", img: "https://picsum.photos/seed/cl-nicoli/300/300" }
+      { name: "Alessandra Bitelli", creds: "PCC", role: "Titolare del corso", bio: "PCC, formata come coach in Asterys Lab. Executive coach e parte della Faculty di Asterys Lab, con cui collabora allo sviluppo dei programmi di formazione.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
+      { name: "Graziano Nicoli", creds: "Executive Coach", role: "Titolare del corso", bio: "Executive Coach, Trainer, Facilitator and Assessor.", img: "https://picsum.photos/seed/cl-nicoli/300/300" }
     ],
     career: {
       title: "Perché inserirlo nella tua pratica",
-      content: "Il programma mantiene attive nel tempo riflessione, confronto professionale e aggiornamento continuo, con un network ricco di coach in fasi diverse di sviluppo.",
+      content: "Il programma mantiene attive nel tempo riflessione, confronto e aggiornamento, con un network ricco di coach in fasi diverse e la possibilità di ottenere CCE ICF.",
       points: [
-        { title: "Allenamento costante", desc: "Una Live Class al mese per non interrompere il ritmo di crescita professionale." },
-        { title: "Approccio interdisciplinare", desc: "Temi da storia, business, filosofia e psicologia riletti in chiave coaching." },
-        { title: "Facilitazione interattiva", desc: "Ogni partecipante può contribuire con riflessioni e casi, in un contesto non frontale." },
-        { title: "Network alumni", desc: "Rimani connesso alla community Asterys Lab e ai professionisti del coaching." }
+        { title: "Allenamento costante", desc: "Una Live Class al mese per non interrompere il ritmo di crescita." },
+        { title: "Approccio interdisciplinare", desc: "Temi da storia, business, filosofia e psicologia, riletti in chiave coaching." },
+        { title: "Facilitazione interattiva", desc: "Ogni partecipante può portare riflessioni e casi: nessuna lezione frontale." },
+        { title: "CCE ICF e network", desc: "Ottieni CCE ICF e resti connesso a una community ricca di coach." }
       ]
     },
     sessionSchedule: [
@@ -2172,17 +2191,17 @@ export const coursesContent: Record<string, CourseData> = {
       { days: "Pausa estiva", time: "Agosto" }
     ],
     classDates: [
-      { date: "14 gennaio 2026", badge: "1a Live Class" },
-      { date: "10 febbraio 2026", badge: "2a Live Class" },
-      { date: "10 marzo 2026", badge: "3a Live Class" },
-      { date: "16 aprile 2026", badge: "4a Live Class" },
-      { date: "27 maggio 2026", badge: "5a Live Class" },
-      { date: "16 giugno 2026", badge: "6a Live Class" },
-      { date: "8 luglio 2026", badge: "7a Live Class" },
-      { date: "15 settembre 2026", badge: "8a Live Class" },
-      { date: "20 ottobre 2026", badge: "9a Live Class" },
-      { date: "17 novembre 2026", badge: "10a Live Class" },
-      { date: "15 dicembre 2026", badge: "11a Live Class" }
+      { date: "14 gennaio 2026", badge: "1a Live Class", note: "E se il Cliente non fosse pronto per un percorso di Coaching?" },
+      { date: "10 febbraio 2026", badge: "2a Live Class", note: "L'Automatismo dei sensi: come la percezione guida la nostra attenzione" },
+      { date: "10 marzo 2026", badge: "3a Live Class", note: "Emozioni a colori – un viaggio creativo" },
+      { date: "16 aprile 2026", badge: "4a Live Class", note: "Strumenti a supporto di una sessione" },
+      { date: "27 maggio 2026", badge: "5a Live Class", note: "I Bias Cognitivi: Percezioni, Memoria e Scelte nella Vita Quotidiana" },
+      { date: "16 giugno 2026", badge: "6a Live Class", note: "Ho ottenuto le mie credenziali ACC… e adesso?" },
+      { date: "8 luglio 2026", badge: "7a Live Class", note: "Il declino dei valori: impatto su appartenenza, motivazione e successo di gruppi e organizzazioni" },
+      { date: "15 settembre 2026", badge: "8a Live Class", note: "Essere Coach… con stile" },
+      { date: "20 ottobre 2026", badge: "9a Live Class", note: "Il coraggio di rompere gli schemi: il valore del pensiero non convenzionale" },
+      { date: "17 novembre 2026", badge: "10a Live Class", note: "Il rispetto dei tempi. Il compromesso dell'orologio" },
+      { date: "15 dicembre 2026", badge: "11a Live Class", note: "Il bisogno di esistere: riconoscimento, coaching e strategie di affermazione" }
     ],
     fees: [
       {
@@ -2216,19 +2235,27 @@ export const coursesContent: Record<string, CourseData> = {
     faqs: [
       {
         q: "Devo iniziare da una data specifica?",
-        a: "No. Continuous Learning è un programma circolare: puoi entrare in qualsiasi momento dell'anno, escluso agosto."
+        a: "No. Il Continuous Learning è circolare: non c'è un punto d'inizio obbligato, entri quando vuoi. Si svolge tutto l'anno tranne agosto."
       },
       {
         q: "Quando si svolgono le Live Class?",
-        a: "Le Live Class sono in Zoom, una volta al mese, dalle 18:30 alle 20:00, tutto l'anno tranne agosto."
+        a: "In videoconferenza Zoom, una volta al mese, dalle 18:30 alle 20:00, tutto l'anno tranne agosto."
       },
       {
         q: "Posso acquistare una sola Live Class?",
-        a: "Sì. Puoi acquistare anche un solo incontro oppure scegliere pacchetti multipli con prezzo unitario decrescente."
+        a: "Sì. Puoi acquistare un singolo incontro o un pacchetto: più Live Class acquisti, più il prezzo unitario diminuisce."
       },
       {
-        q: "Chi paga il corso?",
-        a: "L'accesso è riservato agli alumni della scuola: paga solo chi non è alumnus/alumna."
+        q: "Chi può partecipare?",
+        a: "Il programma è rivolto particolarmente a studenti e alumni di Asterys Lab, ma è aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola."
+      },
+      {
+        q: "Le Live Class si possono recuperare?",
+        a: "No: le Live Class a cui non partecipi non sono recuperabili. Prima di ogni incontro ricevi link Zoom e tema, così scegli liberamente se partecipare."
+      },
+      {
+        q: "Il programma dà crediti ICF?",
+        a: "Sì, il programma permette di ottenere CCE ICF."
       }
     ]
   }

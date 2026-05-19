@@ -315,6 +315,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const isCoachingCircle = id === 'coaching-circle';
   const isVoiceDialogue = id === 'voice-dialogue';
   const isWorkout = id === 'eiw';
+  const isCL = id === 'continuous-learning';
 
   const isMasterLike =
     /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
@@ -1454,6 +1455,41 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Confronto con colleghi su Inner
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+                </div>
+              </>
+            ) : isCL ? (
+              <>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Facilitazione, non lezioni frontali</h3>
+                  <p className={tBody}>
+                    Ogni incontro tratta un tema, spesso mutuato da altre discipline, riletto con la prospettiva del coaching. La modalità è interattiva: puoi integrare e portare le tue riflessioni su quanto viene esposto.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Temi da storia, business, filosofia, psicologia
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Partecipazione attiva di tutti
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Iscrizione e calendario</h3>
+                  <p className={tBody}>
+                    All'iscrizione ricevi il calendario completo. 3-4 giorni prima di ogni incontro ricevi link Zoom e titolo: scegli liberamente se partecipare a quella o alla successiva.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Zoom · 18:30–20:00, una volta al mese
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Live Class non recuperabili
                     </li>
                   </ul>
                 </div>
