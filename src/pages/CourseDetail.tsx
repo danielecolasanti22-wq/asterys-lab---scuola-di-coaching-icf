@@ -314,6 +314,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching' || id === 'voice-dialogue';
   const isCoachingCircle = id === 'coaching-circle';
   const isVoiceDialogue = id === 'voice-dialogue';
+  const isWorkout = id === 'eiw';
 
   const isMasterLike =
     /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
@@ -845,6 +846,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                    ? "Prenota il tuo posto: dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
                    : isVoiceDialogue
                    ? "Il corso è in edizione unica annuale: assicurati il posto prima del termine iscrizioni."
+                   : isWorkout
+                   ? "I Round sono pubblicati con largo anticipo: scegli quello con il set di emozioni che preferisci e mettilo in agenda. Nessuna sequenza obbligata, i posti sono limitati."
                    : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
 
@@ -855,6 +858,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          ? 'I gruppi vengono composti in ordine di iscrizione'
                          : isVoiceDialogue
                          ? 'Edizione 2026 · in presenza a Milano'
+                         : isWorkout
+                         ? 'Prossimi Round in calendario'
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-12">
@@ -1455,6 +1460,41 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
                 </div>
               </>
+            ) : isWorkout ? (
+              <>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Allenamento, non teoria</h3>
+                  <p className={tBody}>
+                    Ogni Workout è un'esperienza guidata: si impara facendo, non ascoltando. Lo spazio, gli strumenti e i coach ti accompagnano anche nei momenti più difficili, senza farti perdere nelle distrazioni.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> 4 Workout da 60 min per Round
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esperienze consapevoli e mirate
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Ritmo e impegno</h3>
+                  <p className={tBody}>
+                    I Round seguono il calendario e ogni Workout è live in video conferenza dalle 18:30 alle 19:30. Nessuna sequenza obbligata: scegli il set di emozioni e quando iniziare.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Live dalle 18:30 alle 19:30
+                    </li>
+                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Round ripetibile sullo stesso set
+                    </li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
+                  <h3 className="text-sm sm:text-base font-black text-brand-navy uppercase tracking-tight leading-snug">{admissionBox.title}</h3>
+                  <p className="text-[#0F766E] text-sm leading-relaxed font-semibold">{admissionBox.body}</p>
+                </div>
+              </>
             ) : (
               <>
                 <div className="space-y-4">
@@ -1878,7 +1918,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
-      {!isCoachingCircle && !isVoiceDialogue ? (
+      {!isCoachingCircle && !isVoiceDialogue && !isWorkout ? (
       <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">
@@ -2117,7 +2157,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       <TestimonialsSection />
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
-      {!isCoachingCircle ? (
+      {!isCoachingCircle && !isWorkout ? (
       <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
@@ -2257,6 +2297,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <p className="text-sm sm:text-base text-white/55 mb-10 font-medium max-w-md mx-auto leading-relaxed">
                     {isCoachingCircle
                       ? "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
+                      : isWorkout
+                      ? 'Prenota il tuo Round: posti limitati. Scegli il set di emozioni e mettilo in agenda.'
                       : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
                   </p>
                   <button className="bg-[#BFD4FF] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">

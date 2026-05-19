@@ -1466,9 +1466,12 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Emotional Intelligence Workout (EIW)",
-    subtitle: "Muscoli Emozionali",
+    subtitle: "Intelligenza Emotiva",
     tagline: "Non serve più dire che l'intelligenza emotiva è importante: ormai si sa che è sviluppabile. Come farlo è un'altra storia — e qui si fa, non si ascolta soltanto.",
     type: "WORKOUT EQ",
+    media: {
+      howItWorks: "/course-media/apcm/how-master.jpg"
+    },
     heroBenefits: [
       "L'IE si sviluppa facendo esperienze consapevoli e mirate, non studiando concetti",
       "Round di 4 Workout da 60 min live · 4 emozioni dal fiore di Plutchik",
@@ -1476,7 +1479,7 @@ export const coursesContent: Record<string, CourseData> = {
       "4 CCE ICF per ogni Round · posti limitati"
     ],
     summaryBox: {
-      nextEdition: "Set C · da settembre 2026",
+      nextEdition: "Da settembre 2026",
       dates: "5–6 Round all'anno",
       format: "Live Online · video conferenza",
       duration: "4 Workout da 60 min per Round",
@@ -1535,21 +1538,21 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Come funziona ogni Round",
       intro: "Ogni Round è composto da **4 Workout** (sessioni di allenamento) da 60 minuti, in video conferenza. Con più di 6 partecipanti ogni Workout può arrivare fino a **90 minuti**. Nell'arco di un anno solare sono programmati **5 o 6 Round**, ciascuno su un set di 4 emozioni diverse.",
-      formazioneTitle: "Calendario dei Round 2026",
-      formazioneIntro: "I Round sono programmati con largo anticipo, così puoi prenotarli e metterli in agenda. Alla conduzione si alternano i coach più esperti di intelligenza emotiva. Ecco i prossimi due Set di emozioni in calendario."
+      formazioneTitle: "Calendario",
+      formazioneIntro: "I Round sono programmati con largo anticipo, così puoi prenotarli e metterli in agenda. Alla conduzione si alternano i coach più esperti di intelligenza emotiva. Ecco i prossimi Round in calendario."
     },
     scheduleBands: [
       {
-        title: "Round Set C · Live Online",
-        body: "Interesse (Arancio), Distrazione (Azzurro), Serenità (Giallo), Pensierosità (Blu). 4 Workout da 60 min in video conferenza.",
+        title: "Round · Settembre–Ottobre 2026",
+        body: "Emozioni di questo Round: Interesse (Arancio), Distrazione (Azzurro), Serenità (Giallo), Pensierosità (Blu). 4 Workout live in video conferenza.",
         dayLines: ["Mer 9 set – Interesse", "Mar 22 set – Distrazione", "Mer 7 ott – Serenità", "Gio 22 ott – Pensierosità"],
-        timeLines: ["Calendario 2026"]
+        timeLines: ["18:30 - 19:30"]
       },
       {
-        title: "Round Set D · Live Online",
-        body: "Estasi (Giallo), Angoscia (Blu), Vigilanza (Arancio), Stupore (Azzurro). 4 Workout da 60 min in video conferenza.",
+        title: "Round · Novembre–Dicembre 2026",
+        body: "Emozioni di questo Round: Estasi (Giallo), Angoscia (Blu), Vigilanza (Arancio), Stupore (Azzurro). 4 Workout live in video conferenza.",
         dayLines: ["Mer 11 nov – Estasi", "Lun 23 nov – Angoscia", "Gio 3 dic – Vigilanza", "Gio 17 dic – Stupore"],
-        timeLines: ["Calendario 2026"]
+        timeLines: ["18:30 - 19:30"]
       }
     ],
     studyModeBox: {
@@ -1559,27 +1562,31 @@ export const coursesContent: Record<string, CourseData> = {
       linkText: "Vai al programma",
       linkHref: "#programma"
     },
+    admissionBox: {
+      title: "Per chi è EIW",
+      body: "Adatto a chiunque voglia sviluppare davvero la propria intelligenza emotiva. Particolarmente utile per manager e leader e per coach, counsellor, psicologi e chi nella relazione ha lo strumento principale di lavoro. Nessun processo di ammissione: scegli un Round e iscriviti, i posti sono limitati."
+    },
     teachers: [
       {
         name: "Renata Cargnelutti Beltrami",
         creds: "Coach EQ",
         role: "Trainer EIW",
         bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
-        img: "https://picsum.photos/seed/eiw-renata/600/800"
+        img: "/course-media/apcm/trainer-renata-cargnelutti-beltrami.png"
       },
       {
         name: "Nicoletta Stellino",
         creds: "Coach EQ",
         role: "Trainer EIW",
         bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
-        img: "https://picsum.photos/seed/eiw-nicoletta/600/800"
+        img: "/course-media/apcm/trainer-nicoletta-stellino.jpg"
       },
       {
         name: "Pier Paolo Colasanti",
         creds: "Coach EQ",
         role: "Trainer EIW",
         bio: "Coach e facilitatore specializzato nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
-        img: "https://picsum.photos/seed/eiw-colasanti/600/800"
+        img: "/course-media/apcm/trainer-pier-paolo-colasanti.jpg"
       }
     ],
     career: {
@@ -1592,9 +1599,23 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Coach al tuo fianco", desc: "I coach più esperti di IE ti guidano anche nei momenti più difficili, senza farti perdere per strada." }
       ]
     },
+    competenciesAndCareers: {
+      eyebrow: "Competenze",
+      title: "Le competenze che alleni",
+      intro: "Ogni Round allena competenze emotive concrete, secondo il modello **CSI** di Asterys Lab: Consapevolezza, Strategia, Interazione.",
+      competencies: [
+        { title: "Riconoscere e nominare le emozioni", desc: "Distingui le tue emozioni, dai loro un nome e ne riconosci l'intensità." },
+        { title: "Anticipare trigger e percorsi interiori", desc: "Prevedi quale evento ti farà provare un'emozione e conosci i tuoi percorsi interiori." },
+        { title: "Agire in modo strategico", desc: "Consideri le tue emozioni, quelle degli altri e il loro sviluppo nel tempo." },
+        { title: "Empatia e percezione dell'altro", desc: "Nelle relazioni percepisci cosa provano gli altri e te ne prendi cura." },
+        { title: "Regolazione emotiva", desc: "Stai con le emozioni in modo intelligente, anche nei momenti più difficili." },
+        { title: "Presenza relazionale", desc: "Porti consapevolezza emotiva nelle scelte, negli obiettivi e nelle relazioni." }
+      ],
+      careerPaths: []
+    },
     classDates: [
-      { date: "Set C · Set–Ott 2026", badge: "ISCRIZIONI APERTE", note: "Interesse · Distrazione · Serenità · Pensierosità" },
-      { date: "Set D · Nov–Dic 2026", badge: "PROSSIMO ROUND", note: "Estasi · Angoscia · Vigilanza · Stupore" }
+      { date: "Settembre 2026", badge: "ISCRIZIONI APERTE", note: "Interesse · Distrazione · Serenità · Pensierosità" },
+      { date: "Novembre 2026", badge: "PROSSIMO ROUND", note: "Estasi · Angoscia · Vigilanza · Stupore" }
     ],
     sessionSchedule: [
       { days: "4 Workout da 60 min · Live Online", time: "Calendario per Round" }
