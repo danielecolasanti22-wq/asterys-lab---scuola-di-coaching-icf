@@ -190,13 +190,9 @@ const Accreditamenti = () => {
   return (
     <section className="bg-[#001D4B] text-white">
       <div className="max-w-[1200px] mx-auto px-6 py-14 lg:py-16">
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF] text-center mb-10">
-          Accreditamenti ICF
-        </p>
-
-        <div className="grid lg:grid-cols-[240px_1fr] items-center gap-10 lg:gap-16">
+        <div className="grid lg:grid-cols-[240px_1fr] items-center gap-10 lg:gap-16 min-h-[280px] lg:min-h-[240px]">
           {/* Logo */}
-          <div className="flex items-center justify-center lg:justify-start min-h-[140px]">
+          <div className="flex items-center justify-center lg:justify-start h-[160px] lg:h-[180px]">
             <AnimatePresence mode="wait">
               <motion.img
                 key={current.logo}
@@ -212,7 +208,7 @@ const Accreditamenti = () => {
           </div>
 
           {/* Descrizione */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left min-h-[180px] lg:min-h-[200px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.label}
@@ -221,9 +217,6 @@ const Accreditamenti = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
               >
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF] mb-3">
-                  {current.label}
-                </p>
                 <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-4">
                   {current.title}
                 </h3>
