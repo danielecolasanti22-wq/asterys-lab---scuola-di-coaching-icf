@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { useLocation } from 'react-router-dom';
 import {
-  ArrowRight,
   Compass,
   HeartHandshake,
   Users,
@@ -18,33 +16,33 @@ const pillars = [
     icon: <HeartHandshake size={22} />,
     title: 'Persone al centro',
     body:
-      'Crediamo che il cambiamento sostenibile parta dalla relazione: prima di qualsiasi tecnica, viene la qualità dell\'incontro tra coach e cliente.',
+      'Il cambiamento sostenibile parte dalla relazione: prima di qualsiasi tecnica viene la qualità dell\'incontro tra coach e cliente.',
   },
   {
     icon: <Compass size={22} />,
     title: 'Metodo evidence-based',
     body:
-      'Uniamo intelligenza emotiva misurabile, approccio sistemico e standard ICF: un metodo collaudato su migliaia di professionisti.',
+      'Intelligenza emotiva misurabile, approccio sistemico e standard ICF: un metodo solido, validato su migliaia di professionisti.',
   },
   {
     icon: <Users size={22} />,
     title: 'Apprendimento in community',
     body:
-      'Si impara dentro una comunità viva: trainer certificati, compagni di classe, alumni in tutto il mondo e pratica supervisionata.',
+      'Si cresce dentro una comunità viva: trainer certificati, compagni di aula e alumni in tutta Europa, con pratica supervisionata.',
   },
   {
     icon: <Sparkles size={22} />,
     title: 'Alta formazione accessibile',
     body:
-      'Formazione di livello internazionale, con format pensati per chi lavora: lezioni live, rate agevolate e percorsi modulari.',
+      'Formazione di livello internazionale pensata per chi lavora: lezioni live, percorsi modulari e rateizzazioni su misura.',
   },
 ];
 
 const values = [
-  { label: 'Rigore', body: 'Standard ICF, supervisione, valutazione continua.' },
+  { label: 'Rigore', body: 'Standard ICF, supervisione e valutazione continua.' },
   { label: 'Umanità', body: 'La relazione prima della performance.' },
-  { label: 'Impatto', body: 'Strumenti concreti, misurabili, replicabili.' },
-  { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del percorso.' },
+  { label: 'Impatto', body: 'Strumenti concreti, misurabili e replicabili nella tua pratica.' },
+  { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del tuo percorso.' },
 ];
 
 type PressLogoEntry = { name: string; file: string; tall?: boolean };
@@ -121,8 +119,8 @@ export default function About() {
     <div className="bg-white text-brand-navy">
       {/* HERO */}
       <section className="relative overflow-hidden bg-brand-blue-soft/60">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
-          <div>
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+          <div className="max-w-3xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
               About · Asterys Lab
             </span>
@@ -134,44 +132,42 @@ export default function About() {
               </span>{' '}
               del coaching.
             </h1>
-            <p className="mt-6 text-lg text-brand-navy/75 font-medium max-w-[560px] leading-relaxed">
-              Siamo la prima Coaching School ICF accreditata in Italia. Da più di vent'anni formiamo
-              coach, manager e HR a stare davvero dentro le relazioni, con rigore e umanità.
+            <p className="mt-6 text-lg text-brand-navy/75 font-medium max-w-[640px] leading-relaxed">
+              Asterys Lab è la prima Coaching School ICF accreditata in Italia. Da venticinque anni
+              accompagniamo coach, manager, HR e professionisti della relazione a stare nelle relazioni
+              con rigore, intelligenza emotiva misurabile e un'umanità che si vede.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="#filosofia"
-                className="inline-flex items-center gap-2 bg-brand-navy text-white px-6 py-3 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors"
-              >
-                Scopri la filosofia
-                <ArrowRight size={14} />
-              </a>
-              <Link
-                to="/iscriviti"
-                className="inline-flex items-center gap-2 text-brand-navy text-xs font-black uppercase tracking-[0.18em] border-b-2 border-brand-navy/15 hover:border-brand-accent hover:text-brand-accent transition-colors pb-1"
-              >
-                Candidati al Master
-                <ArrowRight size={14} />
-              </Link>
-            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-white/80">
-              <p className="text-4xl font-display font-black tracking-tight text-brand-navy">20+</p>
-              <p className="text-xs font-bold text-brand-navy/60 mt-1 leading-tight">anni di ricerca e pratica sul coaching</p>
+      {/* STATS COUNTER */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10 lg:py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
+            <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
+              <p className="text-5xl lg:text-6xl font-display font-black tracking-tighter text-brand-navy leading-none">
+                25+
+              </p>
+              <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
+                Anni di ricerca e pratica nel coaching
+              </p>
             </div>
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-white/80">
-              <p className="text-4xl font-display font-black tracking-tight text-brand-navy">3.000+</p>
-              <p className="text-xs font-bold text-brand-navy/60 mt-1 leading-tight">coach formati in Italia e nel mondo</p>
+            <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
+              <p className="text-5xl lg:text-6xl font-display font-black tracking-tighter text-brand-navy leading-none">
+                3.000+
+              </p>
+              <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
+                Coach formati in Italia e nel mondo
+              </p>
             </div>
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-white/80">
-              <p className="text-4xl font-display font-black tracking-tight text-brand-navy">ICF</p>
-              <p className="text-xs font-bold text-brand-navy/60 mt-1 leading-tight">Level 1 · Level 2 · CCE · ACTC · Mentor</p>
-            </div>
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-white/80">
-              <p className="text-4xl font-display font-black tracking-tight text-brand-navy">+40</p>
-              <p className="text-xs font-bold text-brand-navy/60 mt-1 leading-tight">trainer e supervisor certificati</p>
+            <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
+              <p className="text-2xl lg:text-3xl font-display font-black tracking-tighter text-brand-navy leading-tight">
+                Scuola accreditata <span className="text-brand-accent">ICF</span>
+              </p>
+              <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
+                Level 1 · Level 2 · CCE · ACTC · Mentor
+              </p>
             </div>
           </div>
         </div>
@@ -196,40 +192,36 @@ export default function About() {
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
               <p>
                 Per noi il coaching non è una moda né una tecnica: è una <strong>scelta di metodo</strong>
-                {' '}e di <strong>postura</strong>. Significa scegliere di stare con le persone senza sostituirsi
-                a loro, aiutandole a trovare risorse, direzione e voce.
+                {' '}e di <strong>postura</strong>. Significa stare accanto alle persone — senza sostituirsi
+                a loro — per aiutarle a trovare risorse, direzione e voce.
               </p>
               <p>
-                Da oltre vent'anni portiamo in aula ricerca internazionale, standard ICF,
-                intelligenza emotiva misurabile e lettura sistemica. Ma partiamo sempre dalla domanda
-                più difficile: <em>chi vogliamo essere, quando siamo accanto a un'altra persona?</em>
+                Da un quarto di secolo portiamo in aula ricerca internazionale, standard <strong>ICF</strong>,
+                intelligenza emotiva misurabile e lettura sistemica. Ma partiamo sempre dalla domanda più
+                difficile: <em>chi vogliamo essere, quando siamo accanto a un'altra persona?</em>
               </p>
               <p>
                 È da questa domanda che è nato Asterys Lab. Ed è per questa domanda che continuiamo,
-                edizione dopo edizione, a formare coach, manager e HR che vogliono fare la differenza —
-                davvero, con rigore e con cuore.
+                edizione dopo edizione, a formare coach, counsellor, psicologi, manager e HR che vogliono
+                fare la differenza — davvero, con rigore e con cuore.
               </p>
             </div>
           </div>
 
-          <div className="mt-16 grid sm:grid-cols-2 gap-5">
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
             {pillars.map((p) => (
-              <motion.div
+              <div
                 key={p.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="bg-gray-50 rounded-2xl p-6 border border-gray-100"
+                className="px-0 lg:px-7 py-8 lg:py-2 first:lg:pl-0 last:lg:pr-0"
               >
-                <div className="w-11 h-11 rounded-xl bg-white text-brand-accent flex items-center justify-center border border-gray-100">
+                <div className="w-10 h-10 rounded-xl bg-brand-blue-soft/60 text-brand-accent flex items-center justify-center mb-4">
                   {p.icon}
                 </div>
-                <h3 className="mt-5 text-xl font-display font-black tracking-tight text-brand-navy">
+                <h3 className="text-base font-display font-black tracking-tight text-brand-navy mb-2 leading-snug">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm text-brand-navy/70 font-medium leading-relaxed">{p.body}</p>
-              </motion.div>
+                <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{p.body}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -272,8 +264,8 @@ export default function About() {
             </span>
             <h2 className={`${tSection} mt-3`}>Hanno parlato di noi.</h2>
             <p className="mt-4 text-base text-brand-navy/70 font-medium max-w-[560px]">
-              Ricerche, interviste e racconti sulla nostra scuola, sulla community di coach e
-              sull'impatto del coaching nelle organizzazioni italiane.
+              Ricerche, interviste e racconti sulla nostra Coaching School ICF, sulla community di coach
+              e sull'impatto del coaching nelle organizzazioni italiane.
             </p>
           </div>
 
