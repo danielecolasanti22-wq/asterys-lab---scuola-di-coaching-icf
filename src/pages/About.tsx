@@ -162,8 +162,8 @@ export default function About() {
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
-              <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight">
-                Scuola accreditata <span className="text-brand-accent">ICF</span>
+              <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight whitespace-nowrap">
+                Accreditamento <span className="text-brand-accent">ICF</span>
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
                 Level 1 · Level 2 · CCE · ACTC · Mentor
