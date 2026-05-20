@@ -47,16 +47,17 @@ const values = [
   { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del percorso.' },
 ];
 
-const pressLogos = [
+type PressLogoEntry = { name: string; file: string; tall?: boolean };
+const pressLogos: PressLogoEntry[] = [
   { name: 'Corriere della Sera', file: 'corriere-della-sera' },
   { name: 'Il Sole 24 Ore', file: 'il-sole-24-ore' },
-  { name: 'HBR Italia', file: 'hbr-italia' },
+  { name: 'HBR Italia', file: 'hbr-italia', tall: true },
   { name: 'La Repubblica', file: 'la-repubblica' },
   { name: 'Forbes', file: 'forbes' },
   { name: 'Wired', file: 'wired' },
 ];
 
-function PressLogo({ name, file }: { name: string; file: string }) {
+function PressLogo({ name, file, tall }: { name: string; file: string; tall?: boolean }) {
   const [failed, setFailed] = useState(false);
   if (failed) {
     return (
@@ -65,12 +66,13 @@ function PressLogo({ name, file }: { name: string; file: string }) {
       </span>
     );
   }
+  const sizeClasses = tall ? 'h-12 sm:h-14' : 'h-6 sm:h-8';
   return (
     <img
       src={`/press/${file}.png`}
       alt={name}
       onError={() => setFailed(true)}
-      className="h-6 sm:h-8 w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all"
+      className={`${sizeClasses} w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all`}
     />
   );
 }
@@ -278,7 +280,7 @@ export default function About() {
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-10 sm:gap-x-14 gap-y-6 py-8 border-y border-gray-100 mb-10">
             {pressLogos.map((l) => (
               <div key={l.file} className="flex items-center">
-                <PressLogo name={l.name} file={l.file} />
+                <PressLogo name={l.name} file={l.file} tall={l.tall} />
               </div>
             ))}
           </div>
