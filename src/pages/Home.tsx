@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowUpRight,
   Calendar,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   MapPin,
-  Award,
   GraduationCap,
   Sparkles,
   MessageCircle,
@@ -115,36 +117,38 @@ const Hero = () => (
 );
 
 /* 2. ACCREDITAMENTI ICF */
-const AccreditamentoBadge = ({
-  label,
-  logo,
-  featured = false,
-}: {
-  label: string;
-  logo?: string;
-  featured?: boolean;
-}) => {
-  const base = import.meta.env.BASE_URL || '/';
-  const [showFallback, setShowFallback] = useState(false);
-
-  return (
-    <div className="flex items-center justify-center">
-      {logo && !showFallback ? (
-        <img
-          src={`${base}${logo}`}
-          alt={label}
-          className={`w-auto object-contain ${featured ? 'h-14 sm:h-16 md:h-18' : 'h-16 sm:h-20 md:h-24'}`}
-          onError={() => setShowFallback(true)}
-        />
-      ) : (
-        <div className="flex items-center gap-2 text-white/80">
-          <Award size={22} strokeWidth={2} />
-          <span className="font-black tracking-[0.2em]">{label}</span>
-        </div>
-      )}
-    </div>
-  );
-};
+const accreditamentiItems = [
+  {
+    label: 'ICF',
+    title: 'International Coaching Federation',
+    logo: 'brand/icf.png',
+    desc: "La più importante associazione mondiale del coaching: definisce competenze chiave, codice etico e standard professionali riconosciuti a livello globale. Essere accreditati ICF significa aderire a un metodo verificato e a una comunità internazionale di coach.",
+  },
+  {
+    label: 'Level 1',
+    title: 'ICF Level 1 — Accredited Coaching Education',
+    logo: 'brand/icf-level-1.png',
+    desc: "L'accreditamento ICF di base per le scuole di coaching: certifica un programma con ore di formazione, pratica e mentor coaching, propedeutico alla credenziale ACC (Associate Certified Coach). Il primo passo per diventare coach professionista riconosciuto.",
+  },
+  {
+    label: 'Level 2',
+    title: 'ICF Level 2 — Accredited Coaching Education',
+    logo: 'brand/icf-level-2.png',
+    desc: "L'accreditamento ICF avanzato: prepara alla credenziale PCC (Professional Certified Coach), con più ore di formazione, pratica supervisionata e mentor coaching. Il livello dedicato a chi vuole esercitare il coaching come professione stabile e qualificata.",
+  },
+  {
+    label: 'CCE',
+    title: 'Continuing Coach Education',
+    logo: 'brand/icf-cce-new.png',
+    desc: "I crediti di formazione continua ICF necessari per rinnovare le credenziali: ogni coach accreditato matura CCE partecipando a corsi e workshop qualificati. Sono lo strumento per tenere viva, aggiornata e in evoluzione la propria pratica.",
+  },
+  {
+    label: 'AATC',
+    title: 'Advanced Accreditation in Team Coaching',
+    logo: 'brand/icf-aatc.png',
+    desc: "L'accreditamento ICF dedicato al team coaching: certifica programmi formativi che preparano coach a lavorare con team e organizzazioni secondo gli standard internazionali specifici per il coaching di squadra.",
+  },
+];
 
 const MobileQuickNav = () => (
   <div className="lg:hidden sticky top-14 z-30 bg-white/95 backdrop-blur border-y border-brand-navy/10">
@@ -168,42 +172,100 @@ const MobileQuickNav = () => (
 );
 
 const Accreditamenti = () => {
-  const items = [
-    {
-      label: 'ICF',
-      logo: 'brand/icf.png',
-      featured: true,
-    },
-    {
-      label: 'Level 1',
-      logo: 'brand/icf-level-1.png',
-    },
-    {
-      label: 'Level 2',
-      logo: 'brand/icf-level-2.png',
-    },
-    {
-      label: 'CCE',
-      logo: 'brand/icf-cce-new.png',
-    },
-    {
-      label: 'AATC',
-      logo: 'brand/icf-aatc.png',
-    },
-  ];
+  const items = accreditamentiItems;
+  const [active, setActive] = useState(0);
+  const base = import.meta.env.BASE_URL || '/';
+
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      setActive((a) => (a + 1) % items.length);
+    }, 6500);
+    return () => window.clearInterval(t);
+  }, [items.length]);
+
+  const current = items[active];
+  const go = (d: number) =>
+    setActive((a) => (a + d + items.length) % items.length);
+
   return (
-    <section className="bg-[#001D4B]">
-      <div className="max-w-[1200px] mx-auto px-6 py-10 lg:py-12">
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-7 lg:gap-x-16">
-          {items.map((i) => (
-            <div key={i.label}>
-              <AccreditamentoBadge
-                label={i.label}
-                logo={i.logo}
-                featured={i.featured}
+    <section className="bg-[#001D4B] text-white">
+      <div className="max-w-[1200px] mx-auto px-6 py-14 lg:py-16">
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF] text-center mb-10">
+          Accreditamenti ICF
+        </p>
+
+        <div className="grid lg:grid-cols-[240px_1fr] items-center gap-10 lg:gap-16">
+          {/* Logo */}
+          <div className="flex items-center justify-center lg:justify-start min-h-[140px]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={current.logo}
+                src={`${base}${current.logo}`}
+                alt={current.label}
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.35 }}
+                className="h-28 sm:h-32 lg:h-40 w-auto object-contain"
               />
-            </div>
-          ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Descrizione */}
+          <div className="text-center lg:text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35 }}
+              >
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#BFD4FF] mb-3">
+                  {current.label}
+                </p>
+                <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-4">
+                  {current.title}
+                </h3>
+                <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  {current.desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            aria-label="Accreditamento precedente"
+            onClick={() => go(-1)}
+            className="w-9 h-9 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 flex items-center justify-center transition-colors"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <div className="flex items-center gap-2">
+            {items.map((it, i) => (
+              <button
+                key={it.label}
+                type="button"
+                aria-label={`Vai a ${it.label}`}
+                onClick={() => setActive(i)}
+                className={`h-2 rounded-full transition-all ${
+                  active === i ? 'w-8 bg-[#BFD4FF]' : 'w-2 bg-white/20 hover:bg-white/35'
+                }`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            aria-label="Accreditamento successivo"
+            onClick={() => go(1)}
+            className="w-9 h-9 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 flex items-center justify-center transition-colors"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
       </div>
     </section>
