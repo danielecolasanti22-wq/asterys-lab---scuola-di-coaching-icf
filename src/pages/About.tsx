@@ -146,7 +146,7 @@ export default function About() {
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10 lg:py-14">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
-              <p className="text-5xl lg:text-6xl font-display font-black tracking-tighter text-brand-navy leading-none">
+              <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight">
                 25+
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
@@ -154,7 +154,7 @@ export default function About() {
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
-              <p className="text-5xl lg:text-6xl font-display font-black tracking-tighter text-brand-navy leading-none">
+              <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight">
                 3.000+
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
@@ -162,7 +162,7 @@ export default function About() {
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
-              <p className="text-2xl lg:text-3xl font-display font-black tracking-tighter text-brand-navy leading-tight">
+              <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight">
                 Scuola accreditata <span className="text-brand-accent">ICF</span>
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
