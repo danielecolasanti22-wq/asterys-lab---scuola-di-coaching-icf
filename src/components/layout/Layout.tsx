@@ -484,10 +484,10 @@ const CorporateHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
-    { label: 'AI Adoption', href: '#ai-adoption' },
-    { label: 'Formazione', href: '#formazione-tech' },
-    { label: 'Recruiting', href: '#recruiting-tech' },
-    { label: 'Hiring Platform', href: '#hiring-platform' },
+    { label: 'Perché un coach', href: '#perche' },
+    { label: 'Ambiti', href: '#ambiti' },
+    { label: 'Vantaggi', href: '#vantaggi' },
+    { label: 'Come operiamo', href: '#come-operiamo' },
   ];
 
   return (
