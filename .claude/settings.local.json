@@ -59,7 +59,9 @@
       "Bash(echo \"started vite pid $!\")",
       "Bash(curl -s --retry 30 --retry-delay 1 --retry-all-errors -o /dev/null -w \"server ready: HTTP %{http_code}\\\\n\" \"http://localhost:3000/aziende\" --max-time 60)",
       "Bash(pkill -f \"vite --port=3000\")",
-      "Bash(rm -f /tmp/cand_*.jpg /tmp/corporate-*.png /tmp/vite-dev.log)"
+      "Bash(rm -f /tmp/cand_*.jpg /tmp/corporate-*.png /tmp/vite-dev.log)",
+      "Bash(curl -s --retry 40 --retry-delay 1 --retry-all-errors -o /dev/null -w \"ready: HTTP %{http_code}\\\\n\" \"http://localhost:3000/corsi/coaching-circle\" --max-time 60)",
+      "Bash(echo \"BUILD_EXIT=$?\")"
     ]
   }
 }

@@ -33,7 +33,7 @@ const Hero = () => (
         <img
           src="/home/hero-people.png"
           alt="Coach Asterys"
-          className="w-full h-auto object-contain aspect-[16/10] object-bottom"
+          className="w-full h-auto object-contain aspect-[1512/608] object-bottom"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
@@ -103,7 +103,7 @@ const Hero = () => (
       </div>
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-        <div className="absolute right-[-36%] bottom-0 w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]">
+        <div className="absolute right-[-36%] bottom-0 w-[calc(117vw-135px)] max-w-[1755px] min-w-[1215px] -translate-x-[40px]">
           <img
             src="/home/hero-people.png"
             alt="Coach Asterys"

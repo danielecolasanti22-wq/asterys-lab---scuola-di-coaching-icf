@@ -315,6 +315,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const isCoachingCircle = id === 'coaching-circle';
   const isVoiceDialogue = id === 'voice-dialogue';
   const isWorkout = id === 'eiw';
+  // Heroes using the new full-bleed 1512x608 cutout layout (people composed on the right).
+  const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw'].includes(id ?? '');
   const isCL = id === 'continuous-learning';
 
   const isMasterLike =
@@ -487,7 +489,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <CourseImage
               src={media.hero}
               fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
-              className="w-full h-auto object-contain aspect-[16/10] object-bottom"
+              className={`w-full h-auto object-contain object-bottom ${fullBleedHero ? 'aspect-[1512/608]' : 'aspect-[16/10]'}`}
               alt={course.title}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
@@ -550,14 +552,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
             <div
               className={`absolute bottom-0 ${
-                id === 'apcm'
-                  ? 'right-[-26%] w-[calc(62vw-80px)] max-w-[920px] min-w-[680px] translate-x-[100px]'
-                  : id === 'coaching-circle'
+                fullBleedHero
                   ? 'right-[-36%] w-[calc(117vw-135px)] max-w-[1755px] min-w-[1215px] -translate-x-[40px]'
-                  : id === 'voice-dialogue'
-                  ? 'right-[-22%] w-[calc(82vw-65px)] max-w-[1255px] min-w-[875px] translate-x-[20px]'
-                  : id === 'eiw'
-                  ? 'right-[-8%] w-[calc(60vw+160px)] max-w-[1370px] min-w-[1090px] translate-x-[140px]'
                   : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
               }`}
             >
