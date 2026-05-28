@@ -316,7 +316,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const isVoiceDialogue = id === 'voice-dialogue';
   const isWorkout = id === 'eiw';
   // Heroes using the new full-bleed 1512x608 cutout layout (people composed on the right).
-  const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw'].includes(id ?? '');
+  const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw', 'continuous-learning', 'public-speaking'].includes(id ?? '');
   const isCL = id === 'continuous-learning';
 
   const isMasterLike =
@@ -553,7 +553,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div
               className={`absolute bottom-0 ${
                 fullBleedHero
-                  ? 'right-[-36%] w-[calc(117vw-135px)] max-w-[1755px] min-w-[1215px] -translate-x-[40px]'
+                  ? 'right-[-36%] w-[calc(113vw-135px)] max-w-[1690px] min-w-[1170px] translate-x-[15px]'
                   : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
               }`}
             >

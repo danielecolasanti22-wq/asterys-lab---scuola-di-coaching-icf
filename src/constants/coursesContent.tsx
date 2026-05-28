@@ -1817,6 +1817,7 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Parla con Presenza",
     tagline: "Supera la paura e comunica il tuo valore con carisma, struttura e intelligenza emotiva.",
     type: "COMUNICAZIONE",
+    media: { hero: "/course-media/public-speaking/hero-public-speaking.png" },
     heroBenefits: ["Gestisci l'ansia da palcoscenico", "Struttura messaggi memorabili", "Usa il corpo e la voce con intenzione", "Allenamento pratico con riprese video"],
     summaryBox: { nextEdition: "Online", dates: "Novembre 2026", format: "Live Online", duration: "16 ore", price: "450€", installments: "2 rate" },
     badges: ["Pratico", "Feedback Immediato"],
@@ -2069,6 +2070,7 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Sviluppo continuo per il tuo essere coach: un appuntamento mensile in Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
     media: {
+      hero: "/course-media/continuous-learning/hero-continuous-learning.png",
       overview: "/course-media/continuous-learning/card.jpg",
       howItWorks: "/course-media/apcm/how-master.jpg"
     },
