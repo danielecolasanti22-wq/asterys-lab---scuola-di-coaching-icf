@@ -63,7 +63,10 @@
       "Bash(curl -s --retry 40 --retry-delay 1 --retry-all-errors -o /dev/null -w \"ready: HTTP %{http_code}\\\\n\" \"http://localhost:3000/corsi/coaching-circle\" --max-time 60)",
       "Bash(echo \"BUILD_EXIT=$?\")",
       "Bash(magick 10.png -alpha set -fuzz 10% -fill none -draw 'alpha 0,0 floodfill' -draw 'alpha 1511,0 floodfill' -draw 'alpha 0,607 floodfill' -draw 'alpha 1511,607 floodfill' /tmp/cl-trans.png)",
-      "Bash(magick 11.png -alpha set -fuzz 10% -fill none -draw 'alpha 0,0 floodfill' -draw 'alpha 1511,0 floodfill' -draw 'alpha 0,607 floodfill' -draw 'alpha 1511,607 floodfill' /tmp/ps-trans.png)"
+      "Bash(magick 11.png -alpha set -fuzz 10% -fill none -draw 'alpha 0,0 floodfill' -draw 'alpha 1511,0 floodfill' -draw 'alpha 0,607 floodfill' -draw 'alpha 1511,607 floodfill' /tmp/ps-trans.png)",
+      "Bash(git restore *)",
+      "Bash(sed -i '' 's/#F2F7FF/#B3C8EC/g' src/components/PageHero.tsx src/pages/CourseDetail.tsx src/pages/Courses.tsx src/pages/Home.tsx)",
+      "Bash(sed -i '' 's/#BED5FF/#6E90CE/g' src/pages/Home.tsx src/components/PageHero.tsx)"
     ]
   }
 }
