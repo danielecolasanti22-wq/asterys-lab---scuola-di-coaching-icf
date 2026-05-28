@@ -297,7 +297,7 @@ export const Header = () => {
         <div className="hidden lg:flex items-center gap-6">
           <Link
             to="/iscriviti"
-            className="bg-[#1D3BB9] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
+            className="bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
           >
             Iscriviti
           </Link>
@@ -469,7 +469,7 @@ export const Header = () => {
             <Link
               to="/iscriviti"
               onClick={() => setIsMenuOpen(false)}
-              className="bg-[#1D3BB9] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
+              className="bg-[#2A56A8] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
             >
               Iscriviti
             </Link>
@@ -507,7 +507,7 @@ const CorporateHeader = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-[#001D4B] font-black text-[15px] tracking-tight hover:text-[#1D3BB9] transition-colors"
+              className="text-[#001D4B] font-black text-[15px] tracking-tight hover:text-[#2A56A8] transition-colors"
             >
               {link.label}
             </a>
@@ -517,7 +517,7 @@ const CorporateHeader = () => {
         <div className="hidden lg:flex items-center">
           <a
             href="#contatti-aziende"
-            className="bg-[#3752D7] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.08em] hover:bg-[#2b45c6] transition-colors"
+            className="bg-[#2A56A8] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.08em] hover:bg-[#2b45c6] transition-colors"
           >
             Parla con noi
           </a>
@@ -550,7 +550,7 @@ const CorporateHeader = () => {
               <a
                 href="#contatti-aziende"
                 onClick={() => setIsMenuOpen(false)}
-                className="mt-2 bg-[#3752D7] text-white rounded-full py-3 text-center text-xs font-black uppercase tracking-[0.08em]"
+                className="mt-2 bg-[#2A56A8] text-white rounded-full py-3 text-center text-xs font-black uppercase tracking-[0.08em]"
               >
                 Parla con noi
               </a>
@@ -933,7 +933,7 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
         <button className="bg-[#25D366] text-white px-8 py-5 rounded-full shadow-3xl font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:scale-110 active:scale-95 transition-all shadow-green-500/30 group">
           <div className="relative">
             <MessageCircle size={24} fill="currentColor" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#78A4FF] rounded-full border-2 border-[#25D366] animate-pulse"></span>
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#5E8AD0] rounded-full border-2 border-[#25D366] animate-pulse"></span>
           </div>
           <span>Advisor Asterys</span>
         </button>

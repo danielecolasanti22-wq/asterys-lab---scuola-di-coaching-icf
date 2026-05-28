@@ -5,9 +5,12 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-navy: #001533;
-  --color-brand-accent: #0047FF;
-  --color-brand-blue-soft: #E6EFFF;
+  /* Blue palette — lightest → darkest (balanced, non-electric) */
+  --color-brand-blue-50: #EEF4FC;   /* section/card washes */
+  --color-brand-blue-soft: #CFE0F5; /* hero, soft panels, chips */
+  --color-brand-blue: #5E8AD0;      /* medium accents, icons, borders */
+  --color-brand-accent: #2A56A8;    /* CTA, buttons, links (was electric #0047FF) */
+  --color-brand-navy: #001D4B;      /* text, footer, dark sections */
 
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;

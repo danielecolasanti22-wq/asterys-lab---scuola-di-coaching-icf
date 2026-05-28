@@ -74,7 +74,7 @@ export default function Iscriviti() {
   return (
     <div className="bg-white text-brand-navy">
       {/* FORM HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-blue-soft/70 via-brand-blue-soft/60 to-[#1D3BB9]">
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-blue-soft/70 via-brand-blue-soft/60 to-[#2A56A8]">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 lg:py-20 relative">
           {/* left hand-drawn note */}
           <div className="hidden lg:flex absolute left-6 top-28 flex-col items-center text-brand-navy/70 text-[11px] font-black uppercase tracking-[0.18em] italic leading-tight">
@@ -266,7 +266,7 @@ export default function Iscriviti() {
       </section>
 
       {/* UPCOMING CLASSES */}
-      <section className="bg-[#1D3BB9] text-white">
+      <section className="bg-[#2A56A8] text-white">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20">
           <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tighter">
             Puoi iniziare quando vuoi
@@ -287,7 +287,7 @@ export default function Iscriviti() {
               >
                 <p
                   className={`text-[11px] font-black uppercase tracking-[0.2em] ${
-                    c.highlight ? 'text-[#BFD4FF]' : 'text-white/70'
+                    c.highlight ? 'text-[#CFE0F5]' : 'text-white/70'
                   }`}
                 >
                   {c.course}
@@ -299,7 +299,7 @@ export default function Iscriviti() {
                   {c.deadline}
                 </p>
                 {c.earlyBird ? (
-                  <span className="mt-3 self-start inline-flex items-center rounded-full bg-[#BFD4FF]/15 text-[#BFD4FF] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em]">
+                  <span className="mt-3 self-start inline-flex items-center rounded-full bg-[#CFE0F5]/15 text-[#CFE0F5] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em]">
                     {c.earlyBird}
                   </span>
                 ) : null}

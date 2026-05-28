@@ -134,9 +134,9 @@ const EDITION_EVENT_STYLES: Record<
     ring: 'ring-[#008060]/25',
   },
   'deadline-final': {
-    dot: 'bg-[#1D62E8]',
-    label: 'text-[#1D62E8]',
-    ring: 'ring-[#1D62E8]/25',
+    dot: 'bg-[#2A56A8]',
+    label: 'text-[#2A56A8]',
+    ring: 'ring-[#2A56A8]/25',
   },
   'live-class': {
     dot: 'bg-brand-accent',
@@ -144,19 +144,19 @@ const EDITION_EVENT_STYLES: Record<
     ring: 'ring-brand-accent/20',
   },
   'live-lab': {
-    dot: 'bg-[#1D3BB9]',
-    label: 'text-[#1D3BB9]',
-    ring: 'ring-[#1D3BB9]/25',
+    dot: 'bg-[#2A56A8]',
+    label: 'text-[#2A56A8]',
+    ring: 'ring-[#2A56A8]/25',
   },
   corso: {
-    dot: 'bg-[#3752D7]',
-    label: 'text-[#3752D7]',
-    ring: 'ring-[#3752D7]/25',
+    dot: 'bg-[#2A56A8]',
+    label: 'text-[#2A56A8]',
+    ring: 'ring-[#2A56A8]/25',
   },
   orientamento: {
-    dot: 'bg-[#4A6CF7]',
-    label: 'text-[#4A6CF7]',
-    ring: 'ring-[#4A6CF7]/25',
+    dot: 'bg-[#2A56A8]',
+    label: 'text-[#2A56A8]',
+    ring: 'ring-[#2A56A8]/25',
   },
   milestone: {
     dot: 'bg-brand-navy/40',
@@ -476,14 +476,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
         </span>
         <a
           href={earlyPromo.ctaHref}
-          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#BFD4FF] transition-colors whitespace-nowrap"
+          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#CFE0F5] transition-colors whitespace-nowrap"
         >
           {isCoachingCircle ? 'Prenota il tuo posto →' : 'Blocca il tuo sconto →'}
         </a>
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#6CA0DC] overflow-hidden pb-6 lg:pb-0">
+      <section className="relative bg-[#CFE0F5] overflow-hidden pb-6 lg:pb-0">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative lg:hidden -mx-4 sm:-mx-6">
             <CourseImage
@@ -495,7 +495,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
           </div>
 
-          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#6CA0DC] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
+          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#CFE0F5] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
             <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               {(course.heroKicker ?? course.type).toUpperCase()}
@@ -512,7 +512,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
               <a
                 href="#prezzo"
-                className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
+                className="inline-flex items-center justify-center bg-[#2A56A8] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
               >
                 Iscriviti
               </a>
@@ -538,7 +538,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <img
                     key={src}
                     src={src}
-                    className="w-9 h-9 rounded-full border-2 border-[#6CA0DC] object-cover"
+                    className="w-9 h-9 rounded-full border-2 border-[#CFE0F5] object-cover"
                     alt="Alumni Asterys Lab"
                   />
                 ))}
@@ -675,10 +675,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       return (
                         <article
                           key={card.title}
-                          className="group relative min-h-[250px] rounded-[1.5rem] border border-brand-navy/10 bg-[#F6F8FC] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/25 hover:bg-white hover:shadow-xl"
+                          className="group relative min-h-[250px] rounded-[1.5rem] border border-brand-navy/10 bg-[#EEF4FC] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/25 hover:bg-white hover:shadow-xl"
                         >
                           <div className="mb-7 flex items-start justify-between gap-4">
-                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-accent ring-1 ring-brand-navy/10 transition-colors group-hover:bg-[#EAF0FF]">
+                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-accent ring-1 ring-brand-navy/10 transition-colors group-hover:bg-[#EEF4FC]">
                               <Icon size={22} strokeWidth={1.9} />
                             </span>
                             <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/28">
@@ -700,7 +700,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           </section>
         ) : (
-          <section className="py-16 lg:py-24 bg-[#F6F8FC]">
+          <section className="py-16 lg:py-24 bg-[#EEF4FC]">
             <div className="max-w-[941px] mx-auto px-4">
               <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
                 <div className="max-w-xl">
@@ -736,14 +736,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   return (
                     <article
                       key={i}
-                      className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#FBFCFF]"
+                      className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#EEF4FC]"
                     >
                       <div className="absolute inset-x-0 top-0 h-1 bg-brand-accent/0 transition-colors group-hover:bg-brand-accent" />
                       <div className="mb-8 flex items-start justify-between gap-4">
                         <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/35">
                           {String(i + 1).padStart(2, '0')}
                         </span>
-                        <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#F6F8FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#E6EFFF]">
+                        <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#EEF4FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#EEF4FC]">
                           <Icon size={20} strokeWidth={1.9} />
                         </span>
                       </div>
@@ -1055,7 +1055,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         ) : null}
                       </div>
                       {activeEdition.badge ? (
-                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#BFD4FF]">
+                        <span className="self-start sm:self-auto rounded-full bg-brand-accent/20 border border-brand-accent/30 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
                           {activeEdition.badge}
                         </span>
                       ) : null}
@@ -1064,7 +1064,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2">
                         {activeEdition.earlyBird ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
-                            <Hourglass size={12} strokeWidth={2.5} className="text-[#78A4FF]" />
+                            <Hourglass size={12} strokeWidth={2.5} className="text-[#5E8AD0]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
                               {activeEdition.earlyBird.label}
                             </span>
@@ -1075,7 +1075,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         ) : null}
                         {activeEdition.enrollmentEnd ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
-                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#BFD4FF]" />
+                            <CalendarCheck size={12} strokeWidth={2.5} className="text-[#CFE0F5]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
                               {activeEdition.enrollmentEnd.label}
                             </span>
@@ -1215,19 +1215,19 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
                 <div>
                   {course.scholarship.eyebrow ? (
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-4">
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-4">
                       {course.scholarship.eyebrow}
                     </p>
                   ) : null}
                   <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
                     {course.scholarship.title}
                   </h2>
-                  <p className="text-sm sm:text-base text-[#DDEBFF] leading-relaxed mb-6 max-w-xl">
+                  <p className="text-sm sm:text-base text-[#EEF4FC] leading-relaxed mb-6 max-w-xl">
                     {course.scholarship.body}
                   </p>
                   {course.scholarship.availability ? (
-                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#78A4FF]/30 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#DDEBFF] mb-6">
-                      Solo <span className="text-[#78A4FF] text-sm">2</span> borse di studio rimaste
+                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#5E8AD0]/30 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EEF4FC] mb-6">
+                      Solo <span className="text-[#5E8AD0] text-sm">2</span> borse di studio rimaste
                     </p>
                   ) : null}
                   <div className="flex flex-col sm:flex-row gap-3">
@@ -1243,15 +1243,15 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-6 backdrop-blur-sm">
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-2">Importo borsa</p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-2">Importo borsa</p>
                     <p className="text-4xl sm:text-5xl font-display font-black tracking-tight leading-none mb-4">
                       {course.scholarship.amount}
                     </p>
-                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] mb-3">Requisiti</p>
+                    <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] mb-3">Requisiti</p>
                     <ul className="space-y-2">
                       {course.scholarship.eligibility.map((e, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-[#EAF1FF] leading-snug">
-                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#78A4FF]" strokeWidth={2.25} />
+                        <li key={i} className="flex items-start gap-2 text-sm text-[#EEF4FC] leading-snug">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#5E8AD0]" strokeWidth={2.25} />
                           <span>{e}</span>
                         </li>
                       ))}
@@ -1289,7 +1289,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               {how.formazioneTitle}
             </h3>
             {how.formazioneBadge ? (
-              <span className="inline-flex items-center rounded-full bg-[#E6EFFF] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-brand-navy ring-1 ring-brand-accent/15">
+              <span className="inline-flex items-center rounded-full bg-[#EEF4FC] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-brand-navy ring-1 ring-brand-accent/15">
                 {how.formazioneBadge}
               </span>
             ) : null}
@@ -1389,7 +1389,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           )}
 
-          <div className="mt-12 rounded-2xl bg-[#EBF2FF] px-6 py-8 sm:px-10 sm:py-10">
+          <div className="mt-12 rounded-2xl bg-[#EEF4FC] px-6 py-8 sm:px-10 sm:py-10">
             <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy mb-4 tracking-tight">
               {studyMode.title}
               {studyMode.highlight ? (
@@ -1794,7 +1794,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
       <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#C6D3FF_0%,#B8C8FF_55%,#AEBEFF_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-4 normal-case max-w-3xl mx-auto">
             La migliore formazione professionale, accessibile
@@ -1880,7 +1880,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <button
                       type="button"
-                      className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#1D3BB9] active:scale-[0.98]"
+                      className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
                     >
                       {fee.ctaLabel ?? 'Iscriviti ora'}
                     </button>
@@ -1902,7 +1902,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {course.guarantee30Hours ? (
         <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="rounded-[1.75rem] bg-[#F6F8FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
+            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
               <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
                 <div>
                   {course.guarantee30Hours.eyebrow ? (
@@ -1962,7 +1962,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#E6EFFF] rounded-[1.75rem] p-8 sm:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
+            <div className="bg-[#EEF4FC] rounded-[1.75rem] p-8 sm:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
                 <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
                    <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-[6px] border-white shadow-lg">
                       <CourseImage
@@ -2028,7 +2028,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               </div>
               <div>
                 {course.pegasusProgram.eyebrow ? (
-                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#78A4FF] mb-3">
+                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-3">
                     {course.pegasusProgram.eyebrow}
                   </p>
                 ) : null}
@@ -2045,7 +2045,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               {course.pegasusProgram.points.map((point, i) => (
                 <div key={i} className="rounded-2xl bg-white/[0.07] p-5 sm:p-6 ring-1 ring-white/10">
                   {point.meta ? (
-                    <p className="mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#BFD4FF]">
+                    <p className="mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
                       {point.meta}
                     </p>
                   ) : null}
@@ -2110,7 +2110,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
                {/* Tab switcher */}
                {competenciesAndCareers.careerPaths.length > 0 ? (
-               <div className="grid grid-cols-2 gap-2 p-2 bg-[#F4F6FB] border-b border-gray-100">
+               <div className="grid grid-cols-2 gap-2 p-2 bg-[#EEF4FC] border-b border-gray-100">
                   <button
                     type="button"
                     onClick={() => setCareerTab('competencies')}
@@ -2124,7 +2124,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     <TargetIcon size={16} strokeWidth={2.25} className={careerTab === 'competencies' ? 'text-brand-accent' : ''} />
                     <span>Competenze</span>
                     <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
-                      careerTab === 'competencies' ? 'bg-[#E6EFFF] text-brand-accent' : 'bg-brand-navy/5 text-brand-navy/50'
+                      careerTab === 'competencies' ? 'bg-[#EEF4FC] text-brand-accent' : 'bg-brand-navy/5 text-brand-navy/50'
                     }`}>
                       {competenciesAndCareers.competencies.length}
                     </span>
@@ -2139,10 +2139,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         : 'text-brand-navy/55 hover:text-brand-navy'
                     }`}
                   >
-                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#BFD4FF]' : ''} />
+                    <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#CFE0F5]' : ''} />
                     <span>Sbocchi professionali</span>
                     <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
-                      careerTab === 'careers' ? 'bg-[#BFD4FF] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
+                      careerTab === 'careers' ? 'bg-[#CFE0F5] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
                     }`}>
                       {competenciesAndCareers.careerPaths.length}
                     </span>
@@ -2228,7 +2228,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <h2 className={`${tSection} mb-4`}>
               Un percorso formativo{' '}
               <span className="relative inline-block">
-                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#BFD4FF] -z-10 rounded-sm" aria-hidden="true" />
+                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#CFE0F5] -z-10 rounded-sm" aria-hidden="true" />
                 <span className="relative">completo</span>
               </span>
             </h2>
@@ -2238,7 +2238,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             <div className="space-y-4 lg:space-y-6">
                {/* Card 1 — full width, periwinkle, icon + text */}
-               <div className="bg-[#D5DCFB] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 border border-white/40">
+               <div className="bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 border border-white/40">
                   <div className="shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
                      <Sparkles size={30} strokeWidth={2} className="text-brand-navy" />
                   </div>
@@ -2255,7 +2255,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                {/* Row 2 — two cards side by side */}
                <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#DDEBFF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
+                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
                      <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
                        {usesApcmCompleteSection ? (
                          <>
@@ -2291,7 +2291,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#BFD4FF] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#8FB8FF]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                  <div className={`lg:col-span-2 bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
@@ -2346,16 +2346,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="bg-[#1D3BB9] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
+            <div className="bg-[#2A56A8] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">
                     {isCoachingCircle ? (
                       <>
-                        Fai pratica di coaching: <span className="text-[#BFD4FF]">prenota il tuo posto</span>
+                        Fai pratica di coaching: <span className="text-[#CFE0F5]">prenota il tuo posto</span>
                       </>
                     ) : (
                       <>
-                        Accelera la tua carriera: <span className="text-[#BFD4FF]">parti da qui</span>
+                        Accelera la tua carriera: <span className="text-[#CFE0F5]">parti da qui</span>
                       </>
                     )}
                   </h2>
@@ -2366,7 +2366,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       ? 'Prenota il tuo Round: posti limitati. Scegli il set di emozioni e mettilo in agenda.'
                       : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
                   </p>
-                  <button className="bg-[#BFD4FF] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
+                  <button className="bg-[#CFE0F5] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
                      {isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
                   </button>
                </div>

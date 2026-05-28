@@ -27,7 +27,7 @@ const tSection =
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="relative bg-[#6CA0DC] overflow-hidden pb-6 lg:pb-0">
+  <section className="relative bg-[#CFE0F5] overflow-hidden pb-6 lg:pb-0">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
@@ -38,14 +38,14 @@ const Hero = () => (
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
-          <div className="inline-flex items-center gap-2 bg-[#BFD4FF] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
+          <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
             <span className="w-2 h-2 bg-brand-accent rounded-full" />
             ICF Accreditato
           </div>
         </div>
       </div>
 
-      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#6CA0DC] lg:bg-transparent -mt-8 lg:mt-0">
+      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#CFE0F5] lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           Formazione professionale accreditata ICF
@@ -54,7 +54,7 @@ const Hero = () => (
           Dai forma alla tua{' '}
           <span className="relative inline-block">
             <span className="relative z-10">crescita professionale</span>
-            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2E5E9E] -z-0 rounded-none" />
+            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2A56A8] -z-0 rounded-none" />
           </span>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
@@ -63,7 +63,7 @@ const Hero = () => (
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
           <a
             href="#contatti"
-            className="inline-flex items-center justify-center bg-[#0F2E9D] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
+            className="inline-flex items-center justify-center bg-[#2A56A8] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
           >
             SCOPRI I CORSI
           </a>
@@ -91,7 +91,7 @@ const Hero = () => (
               <img
                 key={src}
                 src={src}
-                className="w-9 h-9 rounded-full border-2 border-[#6CA0DC] object-cover"
+                className="w-9 h-9 rounded-full border-2 border-[#CFE0F5] object-cover"
                 alt="Alumni Asterys Lab"
               />
             ))}
@@ -246,7 +246,7 @@ const Accreditamenti = () => {
                 aria-label={`Vai a ${it.label}`}
                 onClick={() => setActive(i)}
                 className={`h-2 rounded-full transition-all ${
-                  active === i ? 'w-8 bg-[#BFD4FF]' : 'w-2 bg-white/20 hover:bg-white/35'
+                  active === i ? 'w-8 bg-[#CFE0F5]' : 'w-2 bg-white/20 hover:bg-white/35'
                 }`}
               />
             ))}
@@ -285,7 +285,7 @@ const ScegliPercorso = () => {
           {features.map((f) => (
             <div
               key={f.title}
-              className="flex flex-row sm:flex-col items-center sm:text-center gap-3 p-4 rounded-2xl bg-[#F5F8FF] sm:bg-transparent"
+              className="flex flex-row sm:flex-col items-center sm:text-center gap-3 p-4 rounded-2xl bg-[#EEF4FC] sm:bg-transparent"
             >
               <div className="w-12 h-12 rounded-xl bg-brand-blue-soft flex items-center justify-center">
                 <f.icon className="text-brand-accent" size={22} strokeWidth={2} />
@@ -314,7 +314,7 @@ const MasterFeatured = () => (
               alt="Master Professione Coach"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <span className="absolute top-4 left-4 bg-[#BFD4FF] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
+            <span className="absolute top-4 left-4 bg-[#CFE0F5] text-brand-navy px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.22em] shadow-sm">
               Master
             </span>
           </div>
@@ -452,14 +452,14 @@ const MasterGrid = () => {
                         {m.start}
                       </span>
                       {m.lastSeats && (
-                        <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#1D62E8]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#1D62E8] animate-pulse" />
+                        <span className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#2A56A8]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#2A56A8] animate-pulse" />
                           Ultimi posti
                         </span>
                       )}
                     </div>
                   </div>
-                  <span className="inline-flex items-center justify-center rounded-full bg-[#142E9F] text-white px-4 py-2 text-[10px] uppercase tracking-[0.18em] font-black gap-1 group-hover:brightness-110 transition-all pb-0.5">
+                  <span className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-4 py-2 text-[10px] uppercase tracking-[0.18em] font-black gap-1 group-hover:brightness-110 transition-all pb-0.5">
                     Scopri <ArrowUpRight size={13} strokeWidth={2.5} />
                   </span>
                 </div>
@@ -468,9 +468,9 @@ const MasterGrid = () => {
           ))}
           <Link
             to="/corsi"
-            className="group rounded-[1.4rem] sm:rounded-[2rem] bg-[linear-gradient(135deg,#1D3BB9_0%,#0047FF_100%)] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden"
+            className="group rounded-[1.4rem] sm:rounded-[2rem] bg-[linear-gradient(135deg,#2A56A8_0%,#2A56A8_100%)] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden"
           >
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] mb-3">
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] mb-3">
               Nuove competenze in poche settimane
             </p>
             <h3 className="text-2xl lg:text-[1.75rem] font-display font-black leading-tight mb-3">
@@ -479,7 +479,7 @@ const MasterGrid = () => {
             <p className="text-sm text-white/80 mb-5 leading-relaxed max-w-sm">
               Scopri i corsi brevi, pratici, in diretta con chi ti può guidare passo dopo passo.
             </p>
-            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#BFD4FF] group-hover:gap-3 transition-all">
+            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] group-hover:gap-3 transition-all">
               Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
             </span>
           </Link>
@@ -491,7 +491,7 @@ const MasterGrid = () => {
 
 /* 6. ADVISOR BAND */
 const AdvisorBand = () => (
-  <section className="py-12 lg:py-14 bg-[#D5DCFB]">
+  <section className="py-12 lg:py-14 bg-[#CFE0F5]">
     <div className="max-w-[1200px] mx-auto px-6 text-center">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
         <h2 className="text-2xl sm:text-3xl font-display font-black text-brand-navy tracking-tight">
@@ -615,7 +615,7 @@ const CorsiCta = () => {
               <li key={id}>
                 <Link
                   to={`/corsi/${id}`}
-                  className="flex items-center justify-between gap-4 bg-[#F4F6FB] hover:bg-brand-blue-soft rounded-2xl pl-4 pr-5 py-3 transition-colors group"
+                  className="flex items-center justify-between gap-4 bg-[#EEF4FC] hover:bg-brand-blue-soft rounded-2xl pl-4 pr-5 py-3 transition-colors group"
                 >
                   <div className="flex items-center gap-4 min-w-0">
                     <div className="shrink-0 w-10 h-10 rounded-xl bg-white flex items-center justify-center">

@@ -51,7 +51,7 @@ export function TestimonialsSection({
   }, [slides.length]);
 
   return (
-    <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F6FB] to-white">
+    <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#EEF4FC] to-white">
       <div className="max-w-[941px] mx-auto px-4">
         <div className="max-w-2xl mb-10 lg:mb-12">
           <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
@@ -154,7 +154,7 @@ export function TestimonialsSection({
                             className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
                           />
                         ) : (
-                          <div className="h-10 w-10 rounded-full bg-[#E6EFFF] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
+                          <div className="h-10 w-10 rounded-full bg-[#EEF4FC] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
                             {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                           </div>
                         )}

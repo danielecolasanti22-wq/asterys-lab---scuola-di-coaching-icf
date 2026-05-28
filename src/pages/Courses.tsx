@@ -89,12 +89,12 @@ export default function Courses() {
 
   return (
     <div className="pb-20 bg-white">
-      <section className="bg-[#6CA0DC] py-16 lg:py-20 mb-10 relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-[#1D3BB9]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#0047FF]/10 blur-3xl" />
+      <section className="bg-[#CFE0F5] py-16 lg:py-20 mb-10 relative overflow-hidden">
+        <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-[#2A56A8]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#2A56A8]/10 blur-3xl" />
         <div className="max-w-[941px] mx-auto px-4 relative z-10">
-          <div className="flex items-center gap-2 mb-6 text-[#1D3BB9] uppercase text-[10px] font-black tracking-[0.25em]">
-            <span className="w-8 h-px bg-[#1D3BB9]/40"></span>
+          <div className="flex items-center gap-2 mb-6 text-[#2A56A8] uppercase text-[10px] font-black tracking-[0.25em]">
+            <span className="w-8 h-px bg-[#2A56A8]/40"></span>
             Asterys Lab · Academy
           </div>
           <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-7xl mb-6 tracking-tighter text-brand-navy uppercase italic leading-[0.95]">
@@ -176,7 +176,7 @@ export default function Courses() {
                 
                 <Link
                   to={`/corsi/${c.id}`}
-                  className="w-full py-4 text-[11px] font-black uppercase tracking-[0.22em] rounded-full bg-[#001D4B] text-white hover:bg-[#1D3BB9] transition-colors flex justify-center items-center gap-2"
+                  className="w-full py-4 text-[11px] font-black uppercase tracking-[0.22em] rounded-full bg-[#001D4B] text-white hover:bg-[#2A56A8] transition-colors flex justify-center items-center gap-2"
                 >
                   Dettagli corso <ArrowRight size={18} />
                 </Link>

@@ -82,12 +82,12 @@ const beneficiPersonali = [
 
 export default function Corporate() {
   return (
-    <div className="bg-[#F8FAFF] text-brand-navy">
+    <div className="bg-[#EEF4FC] text-brand-navy">
       {/* HERO */}
       <section className="bg-[#001D4B] text-white">
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#9DC0FF] mb-5">
+            <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#5E8AD0] mb-5">
               Asterys Lab · Business Coaching
             </p>
             <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.6rem] leading-[0.95] tracking-tight max-w-[640px]">
@@ -100,7 +100,7 @@ export default function Corporate() {
             </p>
             <a
               href="#contatti-aziende"
-              className="mt-8 inline-flex items-center gap-2 bg-[#1D3BB9] hover:bg-[#2748d1] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors"
+              className="mt-8 inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors"
             >
               Parla con noi
               <ArrowRight size={15} />
@@ -125,7 +125,7 @@ export default function Corporate() {
       </section>
 
       {/* SIAMO IMPRENDITORI ANCHE NOI */}
-      <section id="perche" className="bg-white py-14 lg:py-20 border-b border-[#E5ECFF]">
+      <section id="perche" className="bg-white py-14 lg:py-20 border-b border-[#EEF4FC]">
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
@@ -145,7 +145,7 @@ export default function Corporate() {
           </div>
 
           <div className="bg-[#001D4B] text-white rounded-[2rem] p-8 lg:p-9 shadow-[0_30px_60px_-35px_rgba(0,29,75,0.7)]">
-            <span className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-[#9DC0FF]">
+            <span className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-[#5E8AD0]">
               <Handshake size={20} />
             </span>
             <p className="mt-6 text-6xl font-display font-black tracking-tight">2014</p>
@@ -165,7 +165,7 @@ export default function Corporate() {
       </section>
 
       {/* RISULTATI */}
-      <section className="bg-[#EAF1FF] py-14 lg:py-20 border-b border-[#D9E6FF]">
+      <section className="bg-[#EEF4FC] py-14 lg:py-20 border-b border-[#EEF4FC]">
         <div className="max-w-[860px] mx-auto px-4 sm:px-6 text-center">
           <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-accent mb-5">
             I risultati
@@ -199,9 +199,9 @@ export default function Corporate() {
             {ambiti.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="bg-[#F8FAFF] border border-[#E5ECFF] rounded-3xl p-7 hover:shadow-[0_24px_50px_-34px_rgba(0,29,75,0.5)] hover:-translate-y-0.5 transition-all"
+                className="bg-[#EEF4FC] border border-[#EEF4FC] rounded-3xl p-7 hover:shadow-[0_24px_50px_-34px_rgba(0,29,75,0.5)] hover:-translate-y-0.5 transition-all"
               >
-                <span className="w-12 h-12 rounded-2xl bg-[#E9F1FF] text-[#1D3BB9] flex items-center justify-center">
+                <span className="w-12 h-12 rounded-2xl bg-[#EEF4FC] text-[#2A56A8] flex items-center justify-center">
                   <Icon size={22} />
                 </span>
                 <h3 className="mt-5 text-lg font-display font-black tracking-tight leading-snug">{title}</h3>
@@ -213,7 +213,7 @@ export default function Corporate() {
       </section>
 
       {/* BUSINESS COACHING — AVVIAMENTO E SVILUPPO */}
-      <section className="bg-[#F8FAFF] py-12 lg:py-16">
+      <section className="bg-[#EEF4FC] py-12 lg:py-16">
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
             <img
@@ -282,7 +282,7 @@ export default function Corporate() {
       </section>
 
       {/* VANTAGGI + BENEFICI PERSONALI */}
-      <section id="vantaggi" className="bg-[#EAF1FF] py-14 lg:py-20 border-y border-[#D9E6FF]">
+      <section id="vantaggi" className="bg-[#EEF4FC] py-14 lg:py-20 border-y border-[#EEF4FC]">
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_24px_60px_-40px_rgba(0,29,75,0.4)]">
             <h3 className="text-2xl sm:text-[1.75rem] font-display font-black tracking-tight leading-snug">
@@ -291,7 +291,7 @@ export default function Corporate() {
             <ul className="mt-6 space-y-4">
               {vantaggiBusiness.map((v) => (
                 <li key={v} className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-lg bg-[#1D3BB9] text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-lg bg-[#2A56A8] text-white flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={14} strokeWidth={3} />
                   </span>
                   <span className="text-brand-navy/85 leading-snug font-medium">{v}</span>
@@ -310,7 +310,7 @@ export default function Corporate() {
             <ul className="mt-7 space-y-5">
               {beneficiPersonali.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-3.5">
-                  <span className="w-10 h-10 rounded-2xl bg-white/10 text-[#9DC0FF] flex items-center justify-center shrink-0">
+                  <span className="w-10 h-10 rounded-2xl bg-white/10 text-[#5E8AD0] flex items-center justify-center shrink-0">
                     <Icon size={18} />
                   </span>
                   <span className="text-white/90 leading-snug font-medium pt-1.5">{text}</span>
@@ -369,7 +369,7 @@ export default function Corporate() {
       </section>
 
       {/* CONTACT */}
-      <section id="contatti-aziende" className="bg-[#CFE0FF] py-14 lg:py-16 border-t border-[#B7CDF7]">
+      <section id="contatti-aziende" className="bg-[#CFE0F5] py-14 lg:py-16 border-t border-[#CFE0F5]">
         <div className="max-w-[820px] mx-auto px-4 sm:px-6">
           <h3 className="text-4xl font-display font-black tracking-tight text-center">Parliamo della tua impresa</h3>
           <p className="text-center text-brand-navy/75 mt-2">
@@ -378,23 +378,23 @@ export default function Corporate() {
 
           <form className="mt-8 space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div className="grid sm:grid-cols-2 gap-4">
-              <input className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none" placeholder="Nome" />
-              <input className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none" placeholder="Cognome" />
-              <input className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none" placeholder="Azienda" />
-              <input className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none" placeholder="Area di interesse" />
-              <input className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none sm:col-span-1" placeholder="Email" />
-              <div className="h-12 px-4 rounded-lg border border-[#AFC5ED] bg-white/90 flex items-center gap-2">
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Nome" />
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Cognome" />
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Azienda" />
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Area di interesse" />
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none sm:col-span-1" placeholder="Email" />
+              <div className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 flex items-center gap-2">
                 <span className="text-sm">🇮🇹 +39</span>
                 <input className="w-full outline-none bg-transparent" placeholder="Telefono" />
               </div>
             </div>
-            <textarea className="w-full h-28 p-4 rounded-lg border border-[#AFC5ED] bg-white/90 outline-none" placeholder="Raccontaci la tua sfida" />
+            <textarea className="w-full h-28 p-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Raccontaci la tua sfida" />
             <label className="flex items-center gap-2 text-sm text-brand-navy/70">
               <input type="checkbox" className="rounded border-gray-300" />
               Accetto la Privacy Policy
             </label>
             <div className="flex justify-center pt-2">
-              <button className="inline-flex items-center gap-2 bg-[#1D3BB9] hover:bg-[#2748d1] text-white rounded-full px-7 py-3 text-xs font-black uppercase tracking-[0.14em] transition-colors">
+              <button className="inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-7 py-3 text-xs font-black uppercase tracking-[0.14em] transition-colors">
                 Invia messaggio
               </button>
             </div>
