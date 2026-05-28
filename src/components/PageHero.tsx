@@ -11,7 +11,7 @@ type PageHeroProps = {
  */
 export function PageHero({ title, highlight, subtitle }: PageHeroProps) {
   return (
-    <section className="bg-[#B3C8EC]">
+    <section className="bg-[#6FA8D6]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-12 lg:pt-16 lg:pb-16 text-center">
         <h1 className="text-[2.3rem] sm:text-[2.9rem] lg:text-[3.3rem] font-display font-black leading-[0.98] tracking-tighter text-brand-navy mb-5">
           {title}
@@ -20,7 +20,7 @@ export function PageHero({ title, highlight, subtitle }: PageHeroProps) {
               {' '}
               <span className="relative inline-block">
                 <span className="relative z-10">{highlight}</span>
-                <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#6E90CE] -z-0 rounded-none" />
+                <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2E6FA6] -z-0 rounded-none" />
               </span>
             </>
           ) : null}

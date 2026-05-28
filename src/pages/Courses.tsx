@@ -89,7 +89,7 @@ export default function Courses() {
 
   return (
     <div className="pb-20 bg-white">
-      <section className="bg-[#B3C8EC] py-16 lg:py-20 mb-10 relative overflow-hidden">
+      <section className="bg-[#6FA8D6] py-16 lg:py-20 mb-10 relative overflow-hidden">
         <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-[#1D3BB9]/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#0047FF]/10 blur-3xl" />
         <div className="max-w-[941px] mx-auto px-4 relative z-10">

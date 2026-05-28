@@ -27,7 +27,7 @@ const tSection =
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="relative bg-[#B3C8EC] overflow-hidden pb-6 lg:pb-0">
+  <section className="relative bg-[#6FA8D6] overflow-hidden pb-6 lg:pb-0">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
@@ -45,7 +45,7 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#B3C8EC] lg:bg-transparent -mt-8 lg:mt-0">
+      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#6FA8D6] lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           Formazione professionale accreditata ICF
@@ -54,7 +54,7 @@ const Hero = () => (
           Dai forma alla tua{' '}
           <span className="relative inline-block">
             <span className="relative z-10">crescita professionale</span>
-            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#6E90CE] -z-0 rounded-none" />
+            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2E6FA6] -z-0 rounded-none" />
           </span>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
@@ -91,7 +91,7 @@ const Hero = () => (
               <img
                 key={src}
                 src={src}
-                className="w-9 h-9 rounded-full border-2 border-[#B3C8EC] object-cover"
+                className="w-9 h-9 rounded-full border-2 border-[#6FA8D6] object-cover"
                 alt="Alumni Asterys Lab"
               />
             ))}
