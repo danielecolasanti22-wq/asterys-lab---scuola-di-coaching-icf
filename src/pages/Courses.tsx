@@ -89,18 +89,18 @@ export default function Courses() {
 
   return (
     <div className="pb-20 bg-white">
-      <section className="bg-[#F2F7FF] py-16 lg:py-20 mb-10 relative overflow-hidden">
+      <section className="bg-[#001D4B] py-16 lg:py-20 mb-10 relative overflow-hidden">
         <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-[#1D3BB9]/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#0047FF]/10 blur-3xl" />
         <div className="max-w-[941px] mx-auto px-4 relative z-10">
-          <div className="flex items-center gap-2 mb-6 text-[#1D3BB9] uppercase text-[10px] font-black tracking-[0.25em]">
-            <span className="w-8 h-px bg-[#1D3BB9]/40"></span>
+          <div className="flex items-center gap-2 mb-6 text-[#78A4FF] uppercase text-[10px] font-black tracking-[0.25em]">
+            <span className="w-8 h-px bg-[#78A4FF]/50"></span>
             Asterys Lab · Academy
           </div>
-          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-7xl mb-6 tracking-tighter text-brand-navy uppercase italic leading-[0.95]">
+          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-7xl mb-6 tracking-tighter text-white uppercase italic leading-[0.95]">
             Tutti i percorsi
           </h1>
-          <p className="text-lg text-brand-navy/65 max-w-2xl leading-relaxed font-medium">
+          <p className="text-lg text-white/70 max-w-2xl leading-relaxed font-medium">
             Dalla formazione di base per aspiranti coach alle specializzazioni avanzate per professionisti e aziende. Trova il programma adatto ai tuoi obiettivi.
           </p>
         </div>

@@ -483,7 +483,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#F2F7FF] overflow-hidden pb-6 lg:pb-0">
+      <section className="relative bg-[#001D4B] overflow-hidden pb-6 lg:pb-0">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative lg:hidden -mx-4 sm:-mx-6">
             <CourseImage
@@ -495,17 +495,17 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
           </div>
 
-          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#F2F7FF] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
-            <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
+          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#001D4B] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
+            <div className="hidden lg:inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white border border-white/20 mb-4 w-full sm:w-auto justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               {(course.heroKicker ?? course.type).toUpperCase()}
             </div>
 
-            <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
+            <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
               {course.subtitle}
             </h1>
 
-            <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
+            <p className="text-[12px] text-center lg:text-left lg:text-base text-white/75 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
               {course.tagline}
             </p>
 
@@ -518,10 +518,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               </a>
             </div>
 
-            <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-brand-navy">
+            <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white/90">
               {course.heroBenefits.slice(0, 3).map((benefit) => (
                 <li key={benefit} className="flex items-start gap-2">
-                  <span className="text-brand-accent font-black mt-0.5">→</span>
+                  <span className="text-[#78A4FF] font-black mt-0.5">→</span>
                   {benefit}
                 </li>
               ))}
@@ -538,13 +538,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <img
                     key={src}
                     src={src}
-                    className="w-9 h-9 rounded-full border-2 border-[#F2F7FF] object-cover"
+                    className="w-9 h-9 rounded-full border-2 border-[#001D4B] object-cover"
                     alt="Alumni Asterys Lab"
                   />
                 ))}
               </div>
-              <p className="text-[12px] text-brand-navy">
-                <span className="font-black">+3.000 persone</span> già formate
+              <p className="text-[12px] text-white/85">
+                <span className="font-black text-white">+3.000 persone</span> già formate
               </p>
             </div>
           </div>
