@@ -16,7 +16,15 @@ import {
   Target,
   Handshake,
   BriefcaseBusiness,
-  BadgeCheck
+  BadgeCheck,
+  Dumbbell,
+  Radio,
+  Wallet,
+  Brain,
+  Mic,
+  AudioLines,
+  RefreshCw,
+  MessagesSquare
 } from 'lucide-react';
 import { coursesContent } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
@@ -188,11 +196,29 @@ const Accreditamenti = () => {
     setActive((a) => (a + d + items.length) % items.length);
 
   return (
-    <section className="bg-[#001D4B] text-white">
-      <div className="max-w-[1200px] mx-auto px-6 py-14 lg:py-16">
-        <div className="grid lg:grid-cols-[240px_1fr] items-center gap-10 lg:gap-16 min-h-[280px] lg:min-h-[240px]">
+    <section className="relative bg-[#EEF4FC] text-brand-navy">
+      <div className="relative max-w-[1200px] mx-auto px-6 py-12 lg:py-14">
+        {/* Arrows on the sides */}
+        <button
+          type="button"
+          aria-label="Accreditamento precedente"
+          onClick={() => go(-1)}
+          className="absolute left-1 sm:left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full border border-brand-navy/15 text-brand-navy/55 hover:text-brand-navy hover:border-brand-navy/40 hover:bg-white flex items-center justify-center transition-colors"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <button
+          type="button"
+          aria-label="Accreditamento successivo"
+          onClick={() => go(1)}
+          className="absolute right-1 sm:right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full border border-brand-navy/15 text-brand-navy/55 hover:text-brand-navy hover:border-brand-navy/40 hover:bg-white flex items-center justify-center transition-colors"
+        >
+          <ChevronRight size={16} />
+        </button>
+
+        <div className="grid lg:grid-cols-[200px_1fr] items-center gap-8 lg:gap-14 min-h-[200px] lg:min-h-[170px] px-9 sm:px-12">
           {/* Logo */}
-          <div className="flex items-center justify-center lg:justify-start h-[160px] lg:h-[180px]">
+          <div className="flex items-center justify-center lg:justify-start h-[130px] lg:h-[150px]">
             <AnimatePresence mode="wait">
               <motion.img
                 key={current.logo}
@@ -202,13 +228,13 @@ const Accreditamenti = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.35 }}
-                className="h-28 sm:h-32 lg:h-40 w-auto object-contain"
+                className="h-24 sm:h-28 lg:h-32 w-auto object-contain"
               />
             </AnimatePresence>
           </div>
 
           {/* Descrizione */}
-          <div className="text-center lg:text-left min-h-[180px] lg:min-h-[200px]">
+          <div className="text-center lg:text-left min-h-[140px] lg:min-h-[120px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.label}
@@ -217,10 +243,10 @@ const Accreditamenti = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
               >
-                <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-4">
+                <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-3">
                   {current.title}
                 </h3>
-                <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   {current.desc}
                 </p>
               </motion.div>
@@ -228,37 +254,19 @@ const Accreditamenti = () => {
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="mt-10 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            aria-label="Accreditamento precedente"
-            onClick={() => go(-1)}
-            className="w-9 h-9 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 flex items-center justify-center transition-colors"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <div className="flex items-center gap-2">
-            {items.map((it, i) => (
-              <button
-                key={it.label}
-                type="button"
-                aria-label={`Vai a ${it.label}`}
-                onClick={() => setActive(i)}
-                className={`h-2 rounded-full transition-all ${
-                  active === i ? 'w-8 bg-[#CFE0F5]' : 'w-2 bg-white/20 hover:bg-white/35'
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            type="button"
-            aria-label="Accreditamento successivo"
-            onClick={() => go(1)}
-            className="w-9 h-9 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 flex items-center justify-center transition-colors"
-          >
-            <ChevronRight size={16} />
-          </button>
+        {/* Dots */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {items.map((it, i) => (
+            <button
+              key={it.label}
+              type="button"
+              aria-label={`Vai a ${it.label}`}
+              onClick={() => setActive(i)}
+              className={`h-2 rounded-full transition-all ${
+                active === i ? 'w-8 bg-[#2A56A8]' : 'w-2 bg-brand-navy/20 hover:bg-brand-navy/35'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -459,7 +467,7 @@ const MasterGrid = () => {
                       )}
                     </div>
                   </div>
-                  <span className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-4 py-2 text-[10px] uppercase tracking-[0.18em] font-black gap-1 group-hover:brightness-110 transition-all pb-0.5">
+                  <span className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-4 py-2.5 text-[10px] uppercase tracking-[0.14em] font-black gap-1.5 leading-none group-hover:brightness-110 transition-all">
                     Scopri <ArrowUpRight size={13} strokeWidth={2.5} />
                   </span>
                 </div>
@@ -537,22 +545,22 @@ const AdvisorBand = () => (
 const PercheNoi = () => {
   const reasons = [
     {
-      icon: Sparkles,
+      icon: Dumbbell,
       title: 'Metodo pratico e aggiornato',
       desc: 'Ogni percorso è costruito su casi reali: eserciti le competenze su situazioni concrete per arrivare preparato al primo cliente.'
     },
     {
-      icon: PlayCircle,
+      icon: Radio,
       title: 'Lezioni in diretta e interattive',
       desc: 'Niente corsi pre-registrati. Fai parte di una classe: interagisci con i docenti, chiedi feedback, metti in pratica subito.'
     },
     {
-      icon: Users,
+      icon: BadgeCheck,
       title: 'Docenti certificati ICF',
       desc: 'I tuoi trainer sono Master Coach attivi sul campo: condividono conoscenze pratiche e il loro modo di lavorare.'
     },
     {
-      icon: GraduationCap,
+      icon: Wallet,
       title: 'Alta formazione accessibile',
       desc: 'Scegli come investire: rateizzazione fino a 24 mesi e piani pensati per chi vuole crescere senza compromessi.'
     }
@@ -597,6 +605,15 @@ const StatsBand = () => (
 /* 10. COSA STAI ASPETTANDO */
 const CorsiCta = () => {
   const ids = Object.keys(coursesContent);
+  const courseIcon: Record<string, typeof GraduationCap> = {
+    apcm: GraduationCap,
+    'systemic-team-coaching': Users,
+    eiw: Brain,
+    'coaching-circle': MessagesSquare,
+    'public-speaking': Mic,
+    'voice-dialogue': AudioLines,
+    'continuous-learning': RefreshCw,
+  };
   return (
     <section id="catalogo" className="py-20 lg:py-24 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
@@ -610,7 +627,7 @@ const CorsiCta = () => {
         <ul className="space-y-3">
           {ids.map((id) => {
             const c = coursesContent[id];
-            const isMaster = c.type.toLowerCase().includes('master') || c.type.toLowerCase().includes('level');
+            const Icon = courseIcon[id] ?? Sparkles;
             return (
               <li key={id}>
                 <Link
@@ -619,11 +636,7 @@ const CorsiCta = () => {
                 >
                   <div className="flex items-center gap-4 min-w-0">
                     <div className="shrink-0 w-10 h-10 rounded-xl bg-white flex items-center justify-center">
-                      {isMaster ? (
-                        <GraduationCap className="text-brand-accent" size={18} strokeWidth={2} />
-                      ) : (
-                        <Sparkles className="text-brand-accent" size={18} strokeWidth={2} />
-                      )}
+                      <Icon className="text-brand-accent" size={18} strokeWidth={2} />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[15px] font-black text-brand-navy leading-tight truncate">

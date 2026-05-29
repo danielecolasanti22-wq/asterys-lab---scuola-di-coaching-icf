@@ -69,7 +69,12 @@
       "Bash(sed -i '' 's/#BED5FF/#6E90CE/g' src/pages/Home.tsx src/components/PageHero.tsx)",
       "Bash(echo \"BUILD=$?\")",
       "Bash(rm -f /tmp/lbb-home.png /tmp/named-candidates.png /tmp/sw-*.png /tmp/hm-*.png /tmp/vite-dev.log /tmp/build.log)",
-      "Bash(echo \"TSC=$?\")"
+      "Bash(echo \"TSC=$?\")",
+      "Bash(magick home-full.png -crop 1440x170+0+2430 +repage /tmp/btn-row.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /tmp/btn-row.png)",
+      "Bash(echo \"done $\\(sips -g pixelWidth -g pixelHeight /tmp/btn-row.png)",
+      "Bash(magick home-full.png -crop 1440x230+700+2280 +repage /tmp/btn2.png)",
+      "Bash(magick home-full.png -crop 1440x230+700+2520 +repage /tmp/btn3.png)"
     ]
   }
 }

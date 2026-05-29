@@ -584,13 +584,15 @@ const socialChannels = [
 ];
 
 const certifications = [
-  { label: 'ICF Level 1', sub: 'Accredited Coaching Education · 63 ore', badge: 'L1' },
-  { label: 'ICF Level 2', sub: 'Accredited Coaching Education · 130.5 ore', badge: 'L2' },
-  { label: 'ICF AATC', sub: 'Advanced Accreditation Team Coaching', badge: 'AATC' },
-  { label: 'ISO 9001:2015', sub: 'Cert. n. 655Q · Formazione & Coaching', badge: 'ISO' },
+  { label: 'ICF', src: 'brand/icf.png' },
+  { label: 'ICF Level 1', src: 'brand/icf-level-1.png' },
+  { label: 'ICF Level 2', src: 'brand/icf-level-2.png' },
+  { label: 'ICF CCE', src: 'brand/icf-cce-new.png' },
+  { label: 'ICF AATC', src: 'brand/icf-aatc.png' },
 ];
 
 export const Footer = () => {
+  const base = import.meta.env.BASE_URL || '/';
   return (
     <footer className="bg-brand-navy text-white relative overflow-hidden">
       {/* soft decorative glow */}
@@ -648,60 +650,74 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Social */}
+          {/* Contatti */}
           <div className="flex flex-col">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-              Social
+              Contatti
             </span>
             <h3 className="mt-4 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
-              Vieni a conoscerci.
+              Parla con noi.
             </h3>
-            <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed">
-              Backstage delle aule, live con i docenti, storie di alumni.
-            </p>
-
-            <div className="mt-6 flex flex-col gap-3">
-              {socialChannels.map((s) => (
-                <a
-                  key={s.name}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-2xl p-3.5 transition-colors"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-white text-brand-navy flex items-center justify-center shrink-0">
-                    {s.icon}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-black tracking-tight truncate">{s.name}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45 truncate">
-                      {s.handle}
-                    </p>
-                  </div>
-                  <ArrowUpRight
-                    size={14}
-                    className="ml-auto text-white/30 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
-                  />
-                </a>
-              ))}
+            <div className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-6">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock size={14} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Segreteria</span>
+                </div>
+                <p className="text-sm text-white/80 font-medium leading-relaxed">
+                  <span className="font-black text-white">Lun – Ven</span>
+                  <br />
+                  9:00–13:00 · 15:00–17:00
+                </p>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Phone size={14} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Telefono</span>
+                </div>
+                <a href="tel:+390280016434" className="block text-sm font-black text-white">+39 02 8001 6434</a>
+                <a href="tel:+390687165254" className="block text-sm font-black text-white mt-0.5">+39 06 8716 5254</a>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Mail size={14} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Scrivici</span>
+                </div>
+                <a href="mailto:info@asteryslab.com" className="text-sm font-black text-white break-all">info@asteryslab.com</a>
+              </div>
             </div>
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
+                <MessageCircle size={18} fill="currentColor" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Chat diretta</p>
+                <p className="text-sm font-black text-white">Parla con un advisor</p>
+              </div>
+              <ArrowUpRight size={14} className="ml-auto text-white/40 group-hover:text-white transition-colors" />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* BAND 2 — CONTACTS (logo, sedi, orari, telefono) */}
+      {/* BAND 2 — LOGO + SEDI + SOCIAL */}
       <section className="border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 grid lg:grid-cols-[1.1fr_1fr_1fr] gap-10">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
           {/* Logo + sedi */}
           <div>
-            <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rotate-45 flex items-center justify-center">
-                <div className="absolute inset-0 bg-white rounded-sm transform scale-90" />
-                <div className="absolute inset-0 bg-brand-navy rounded-sm transform scale-50 -translate-x-1 -translate-y-1" />
+            <div className="inline-flex items-center bg-white rounded-2xl px-4 py-3">
+              <div className="h-9 w-[168px] overflow-hidden flex items-center">
+                <img
+                  src={`${base}brand/asterys-lab-logo.png`}
+                  alt="Asterys Lab"
+                  className="h-full w-full object-contain object-left origin-left scale-[2.35]"
+                />
               </div>
-              <span className="font-sans font-black text-2xl tracking-tighter text-white lowercase">
-                asteryslab
-              </span>
             </div>
             <p className="mt-5 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
               Transforming people, expanding results. La 1° Coaching School ICF accreditata in Italia.
@@ -722,81 +738,34 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Orari + Telefono */}
-          <div className="space-y-7">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Clock size={14} className="text-white" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
-                  Segreteria
-                </span>
-              </div>
-              <p className="text-sm text-white/80 font-medium leading-relaxed">
-                <span className="font-black text-white">Lunedì – Venerdì</span>
-                <br />
-                9:00 – 13:00 · 15:00 – 17:00
-              </p>
+          {/* Social */}
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+              Social
+            </span>
+            <h3 className="mt-4 text-2xl lg:text-3xl font-display font-black tracking-tighter leading-[1.05]">
+              Vieni a conoscerci.
+            </h3>
+            <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed">
+              Backstage delle aule, live con i docenti, storie di alumni.
+            </p>
+            <div className="mt-5 grid sm:grid-cols-3 gap-3">
+              {socialChannels.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-2xl p-3.5 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-white text-brand-navy flex items-center justify-center shrink-0">
+                    {s.icon}
+                  </div>
+                  <p className="text-sm font-black tracking-tight truncate">{s.name}</p>
+                </a>
+              ))}
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Phone size={14} className="text-white" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
-                  Telefono
-                </span>
-              </div>
-              <a
-                href="tel:+390280016434"
-                className="block text-sm font-black text-white hover:text-white transition-colors"
-              >
-                +39 02 8001 6434
-              </a>
-              <a
-                href="tel:+390687165254"
-                className="block text-sm font-black text-white hover:text-white transition-colors mt-1"
-              >
-                +39 06 8716 5254
-              </a>
-            </div>
-          </div>
-
-          {/* Email + WhatsApp + Mappa links */}
-          <div className="space-y-7">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Mail size={14} className="text-white" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
-                  Scrivici
-                </span>
-              </div>
-              <a
-                href="mailto:info@asteryslab.com"
-                className="text-sm font-black text-white hover:text-white transition-colors"
-              >
-                info@asteryslab.com
-              </a>
-            </div>
-            <a
-              href="https://wa.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
-                <MessageCircle size={18} fill="currentColor" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
-                  Chat diretta
-                </p>
-                <p className="text-sm font-black text-white">Parla con un advisor</p>
-              </div>
-              <ArrowUpRight
-                size={14}
-                className="ml-auto text-white/40 group-hover:text-white transition-colors"
-              />
-            </a>
-
-            <div className="flex items-center gap-3 pt-1">
+            <div className="flex items-center gap-3 pt-6 mt-auto">
               <div className="flex text-white gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={11} fill="currentColor" />
@@ -870,22 +839,17 @@ export const Footer = () => {
               Accreditamenti & Certificazioni
             </span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {certifications.map((c) => (
               <div
                 key={c.label}
-                className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 flex items-center gap-3"
+                className="bg-white rounded-2xl p-4 h-24 flex items-center justify-center"
               >
-                <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-[11px] font-black text-white tracking-tight shrink-0">
-                  {c.badge}
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-black text-white tracking-tight">{c.label}</p>
-                  <p className="text-[10px] text-white/50 font-medium leading-tight mt-0.5">
-                    {c.sub}
-                  </p>
-                </div>
-                <ShieldCheck size={14} className="ml-auto text-white/30" />
+                <img
+                  src={`${base}${c.src}`}
+                  alt={c.label}
+                  className="max-h-14 w-auto object-contain"
+                />
               </div>
             ))}
           </div>
