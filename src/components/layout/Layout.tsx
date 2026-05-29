@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   Star,
   ChevronDown,
+  ChevronRight,
   Clock,
   Calendar,
   Send,
@@ -75,6 +76,27 @@ const aboutMenu = [
   { label: 'Press', hash: '#press' },
 ];
 
+const megaPromos = [
+  {
+    kicker: 'Prossimo evento',
+    title: 'Open Day Online: Master APCM',
+    meta: '15 Maggio 2026 · Online',
+    to: '/eventi/open-day-master-apcm',
+  },
+  {
+    kicker: 'Risorsa',
+    title: 'Come diventare coach ICF',
+    meta: 'Leggi la guida sul blog',
+    to: '/blog',
+  },
+  {
+    kicker: 'Borsa di studio',
+    title: 'Borsa di studio · Sede di Roma',
+    meta: 'Candidature aperte',
+    to: '/iscriviti',
+  },
+];
+
 const BrandLogo = () => {
   const base = import.meta.env.BASE_URL || '/';
   const [logoSrc, setLogoSrc] = useState(`${base}brand/asterys-lab-logo.png`);
@@ -134,6 +156,7 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [activeMega, setActiveMega] = useState(0);
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
@@ -149,6 +172,11 @@ export const Header = () => {
     setIsMegaOpen(false);
     setIsAboutOpen(false);
   }, [location.pathname]);
+
+  // All'apertura del mega menu mostra sempre la prima categoria.
+  useEffect(() => {
+    if (isMegaOpen) setActiveMega(0);
+  }, [isMegaOpen]);
 
   const openMega = () => {
     if (closeTimer.current) {
@@ -208,7 +236,7 @@ export const Header = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
+                    className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
                       location.pathname.startsWith('/corsi') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                     }`}
                     aria-haspopup="true"
@@ -225,8 +253,8 @@ export const Header = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
-                    location.pathname === link.href ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
+                  className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                    location.pathname === link.href ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'
                   }`}
                 >
                   {link.name}
@@ -242,7 +270,7 @@ export const Header = () => {
             >
               <Link
                 to="/about"
-                className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
+                className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
                   location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                 }`}
                 aria-haspopup="true"
@@ -282,7 +310,7 @@ export const Header = () => {
             <div className="h-4 w-px bg-gray-200"></div>
             <Link
               to="/aziende"
-              className={`text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${location.pathname === '/aziende' ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'}`}
+              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
             >
               Per Aziende
             </Link>
@@ -319,40 +347,81 @@ export const Header = () => {
             <div className="max-w-[920px] mx-auto px-4">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
                 <div className="grid grid-cols-3 gap-0 p-6">
-                  {megaColumns.map((col, idx) => (
-                    <div
-                      key={col.label}
-                      className={`flex flex-col gap-3 px-4 ${idx < megaColumns.length - 1 ? 'border-r border-gray-100' : ''}`}
-                    >
-                      <div className="pb-2.5 border-b border-gray-200">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.26em] text-brand-navy">{col.label}</span>
-                      </div>
-                      <p className="text-xs text-brand-navy/55 font-medium leading-snug">{col.caption}</p>
-                      <div className="flex flex-col gap-1 mt-1">
-                        {col.items.map((item) => (
-                          <Link
-                            key={item.id}
-                            to={`/corsi/${item.id}`}
-                            className="group/item flex flex-col gap-0.5 rounded-lg px-3 py-2.5 -mx-1 hover:bg-gray-50 transition-colors"
+                  {/* Colonna 1 — categorie */}
+                  <div className="flex flex-col gap-1 px-4 border-r border-gray-100">
+                    {megaColumns.map((col, idx) => (
+                      <button
+                        key={col.label}
+                        type="button"
+                        onMouseEnter={() => setActiveMega(idx)}
+                        onFocus={() => setActiveMega(idx)}
+                        className={`flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 -mx-1 text-left transition-colors ${
+                          activeMega === idx ? 'bg-gray-50' : 'hover:bg-gray-50'
+                        }`}
+                      >
+                        <span className="flex flex-col gap-0.5">
+                          <span
+                            className={`text-[10px] font-bold uppercase tracking-[0.26em] transition-colors ${
+                              activeMega === idx ? 'text-brand-accent' : 'text-brand-navy'
+                            }`}
                           >
-                            <div className="flex items-center justify-between gap-2">
-                              <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/item:text-brand-accent transition-colors">
-                                {item.title}
-                              </span>
-                              <ArrowUpRight
-                                size={14}
-                                className="text-brand-navy/20 group-hover/item:text-brand-accent group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 transition-all"
-                              />
-                            </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
-                              {item.kicker}
-                            </span>
-                            <span className="text-[11px] text-brand-navy/55 font-medium">{item.meta}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                            {col.label}
+                          </span>
+                          <span className="text-xs text-brand-navy/55 font-medium leading-snug">{col.caption}</span>
+                        </span>
+                        <ChevronRight
+                          size={14}
+                          className={`shrink-0 transition-colors ${
+                            activeMega === idx ? 'text-brand-accent' : 'text-brand-navy/20'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Colonna 2 — corsi della categoria selezionata */}
+                  <div className="flex flex-col gap-1 px-4 border-r border-gray-100">
+                    {megaColumns[activeMega].items.map((item) => (
+                      <Link
+                        key={item.id}
+                        to={`/corsi/${item.id}`}
+                        className="group/item flex flex-col gap-0.5 rounded-lg px-3 py-2.5 -mx-1 hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/item:text-brand-accent transition-colors">
+                            {item.title}
+                          </span>
+                          <ArrowUpRight
+                            size={14}
+                            className="text-brand-navy/20 group-hover/item:text-brand-accent group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 transition-all"
+                          />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
+                          {item.kicker}
+                        </span>
+                        <span className="text-[11px] text-brand-navy/55 font-medium">{item.meta}</span>
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Colonna 3 — card in evidenza */}
+                  <div className="flex flex-col gap-3 px-4">
+                    {megaPromos.map((promo) => (
+                      <Link
+                        key={promo.title}
+                        to={promo.to}
+                        className="group/promo flex flex-col gap-1 rounded-lg border border-gray-100 px-3 py-2.5 hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
+                          {promo.kicker}
+                        </span>
+                        <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/promo:text-brand-accent transition-colors">
+                          {promo.title}
+                        </span>
+                        <span className="text-[11px] text-brand-navy/55 font-medium">{promo.meta}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between gap-4 px-8 py-4 bg-gray-50 border-t border-gray-100">
