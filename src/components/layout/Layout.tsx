@@ -78,7 +78,7 @@ const aboutMenu = [
 
 const megaPromos = [
   {
-    kicker: 'Prossimo evento',
+    kicker: 'Evento in evidenza',
     title: 'Open Day Online: Master APCM',
     cta: "Scopri l'evento",
     img: '/course-media/apcm/card.png',
@@ -93,9 +93,9 @@ const megaPromos = [
   },
   {
     kicker: 'Borsa di studio',
-    title: 'Borsa di studio · Sede di Roma',
+    title: 'Fino a 1.500€ · Sede di Roma',
     cta: 'Candidati ora',
-    img: '/blog/dal-sogno-al-progetto.jpg',
+    img: '/promo/borsa-di-studio-roma.png',
     to: '/iscriviti',
   },
 ];
@@ -347,9 +347,9 @@ export const Header = () => {
             onMouseEnter={openMega}
             onMouseLeave={scheduleCloseMega}
           >
-            <div className="max-w-[1160px] mx-auto px-4">
+            <div className="max-w-[1140px] mx-auto px-4">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
-                <div className="grid grid-cols-3 gap-0 p-6">
+                <div className="grid grid-cols-3 gap-0 px-6 pt-6 pb-[69px]">
                   {/* Colonna 1 — categorie */}
                   <div className="flex flex-col gap-1 px-4 border-r border-gray-100">
                     {megaColumns.map((col, idx) => (
