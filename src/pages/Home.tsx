@@ -667,12 +667,12 @@ export default function Home() {
     <>
       <Hero />
       <MobileQuickNav />
-      <Accreditamenti />
       <ScegliPercorso />
       <MasterFeatured />
       <MasterGrid />
       <AdvisorBand />
       <TestimonialsSection />
+      <Accreditamenti />
       <PercheNoi />
       <StatsBand />
       <CorsiCta />

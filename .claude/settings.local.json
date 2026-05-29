@@ -74,7 +74,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight /tmp/btn-row.png)",
       "Bash(echo \"done $\\(sips -g pixelWidth -g pixelHeight /tmp/btn-row.png)",
       "Bash(magick home-full.png -crop 1440x230+700+2280 +repage /tmp/btn2.png)",
-      "Bash(magick home-full.png -crop 1440x230+700+2520 +repage /tmp/btn3.png)"
+      "Bash(magick home-full.png -crop 1440x230+700+2520 +repage /tmp/btn3.png)",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }

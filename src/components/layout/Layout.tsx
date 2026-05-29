@@ -658,6 +658,21 @@ export const Footer = () => {
             <h3 className="mt-4 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
               Parla con noi.
             </h3>
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
+                <MessageCircle size={18} fill="currentColor" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Chat diretta</p>
+                <p className="text-sm font-black text-white">Parla con un advisor</p>
+              </div>
+              <ArrowUpRight size={14} className="ml-auto text-white/40 group-hover:text-white transition-colors" />
+            </a>
             <div className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -686,21 +701,6 @@ export const Footer = () => {
                 <a href="mailto:info@asteryslab.com" className="text-sm font-black text-white break-all">info@asteryslab.com</a>
               </div>
             </div>
-            <a
-              href="https://wa.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-6 flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
-                <MessageCircle size={18} fill="currentColor" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Chat diretta</p>
-                <p className="text-sm font-black text-white">Parla con un advisor</p>
-              </div>
-              <ArrowUpRight size={14} className="ml-auto text-white/40 group-hover:text-white transition-colors" />
-            </a>
           </div>
         </div>
       </section>
