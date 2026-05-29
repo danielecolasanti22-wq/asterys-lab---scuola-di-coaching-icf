@@ -80,19 +80,22 @@ const megaPromos = [
   {
     kicker: 'Prossimo evento',
     title: 'Open Day Online: Master APCM',
-    meta: '15 Maggio 2026 · Online',
+    cta: "Scopri l'evento",
+    img: '/course-media/apcm/card.png',
     to: '/eventi/open-day-master-apcm',
   },
   {
     kicker: 'Risorsa',
     title: 'Come diventare coach ICF',
-    meta: 'Leggi la guida sul blog',
+    cta: 'Leggi la guida',
+    img: '/blog/credenziali-icf.png',
     to: '/blog',
   },
   {
     kicker: 'Borsa di studio',
     title: 'Borsa di studio · Sede di Roma',
-    meta: 'Candidature aperte',
+    cta: 'Candidati ora',
+    img: '/blog/dal-sogno-al-progetto.jpg',
     to: '/iscriviti',
   },
 ];
@@ -344,7 +347,7 @@ export const Header = () => {
             onMouseEnter={openMega}
             onMouseLeave={scheduleCloseMega}
           >
-            <div className="max-w-[920px] mx-auto px-4">
+            <div className="max-w-[1040px] mx-auto px-4">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
                 <div className="grid grid-cols-3 gap-0 p-6">
                   {/* Colonna 1 — categorie */}
@@ -404,21 +407,34 @@ export const Header = () => {
                     ))}
                   </div>
 
-                  {/* Colonna 3 — card in evidenza */}
-                  <div className="flex flex-col gap-3 px-4">
+                  {/* Colonna 3 — card in evidenza con immagine */}
+                  <div className="flex flex-col gap-2.5 px-4">
                     {megaPromos.map((promo) => (
                       <Link
                         key={promo.title}
                         to={promo.to}
-                        className="group/promo flex flex-col gap-1 rounded-lg border border-gray-100 px-3 py-2.5 hover:bg-gray-50 transition-colors"
+                        className="group/promo flex items-center gap-3 rounded-xl border border-gray-100 p-2.5 hover:bg-gray-50 transition-colors"
                       >
-                        <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
-                          {promo.kicker}
-                        </span>
-                        <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/promo:text-brand-accent transition-colors">
-                          {promo.title}
-                        </span>
-                        <span className="text-[11px] text-brand-navy/55 font-medium">{promo.meta}</span>
+                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                          <img
+                            src={promo.img}
+                            alt=""
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
+                            {promo.kicker}
+                          </span>
+                          <span className="block text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/promo:text-brand-accent transition-colors">
+                            {promo.title}
+                          </span>
+                          <span className="mt-0.5 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent">
+                            {promo.cta}
+                            <ArrowRight size={11} className="group-hover/promo:translate-x-0.5 transition-transform" />
+                          </span>
+                        </div>
                       </Link>
                     ))}
                   </div>
