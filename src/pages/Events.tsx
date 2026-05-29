@@ -1,58 +1,15 @@
 import { 
   Calendar, 
   MapPin, 
-  ArrowRight, 
+  ArrowRight,
   Clock,
-  Users,
   ChevronRight,
   Info
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
-
-const eventsData = [
-  {
-    id: 'open-day-master-apcm',
-    title: "Open Day Online: Master APCM",
-    date: "15 Maggio 2026",
-    time: "18:30 - 20:00",
-    modality: "Online (Zoom)",
-    category: "Orientamento",
-    desc: "Incontra i docenti, scopri il metodo sistemico e ricevi tutte le informazioni sul Master per diventare coach professionista.",
-    img: "https://picsum.photos/seed/event1/800/600"
-  },
-  {
-    id: 'webinar-cominciare-coaching',
-    title: "Webinar: Come diventare coach nel 2026",
-    date: "22 Maggio 2026",
-    time: "14:00 - 15:30",
-    modality: "Webinar Gratuito",
-    category: "Webinar",
-    desc: "Una panoramica sul mercato del coaching in Italia, le credenziali ICF e i primi passi per avviare la professione.",
-    img: "https://picsum.photos/seed/event2/800/600"
-  },
-  {
-    id: 'serata-orientamento-roma',
-    title: "Serata di Orientamento: Coaching & Leadership",
-    date: "5 Giugno 2026",
-    time: "19:00 - 21:00",
-    modality: "Presenza (Roma)",
-    category: "Orientamento",
-    desc: "Un incontro esperienziale nella nostra sede di Roma dedicato a Manager e HR che vogliono scoprire il coaching.",
-    img: "https://picsum.photos/seed/event3/800/600"
-  },
-  {
-    id: 'hr-summit-systemic',
-    title: "HR Executive Summit: Systemic Team Coaching",
-    date: "12 Giugno 2026",
-    time: "09:30 - 13:00",
-    modality: "Presenza (Milano)",
-    category: "Per Aziende",
-    desc: "Evento esclusivo per decision maker: come il team coaching sistemico accelera i risultati aziendali.",
-    img: "https://picsum.photos/seed/event4/800/600"
-  }
-];
+import { eventsData } from '../constants/events';
 
 export default function Events() {
   return (

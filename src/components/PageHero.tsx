@@ -1,3 +1,5 @@
+import { Highlight } from './Highlight';
+
 type PageHeroProps = {
   title: string;
   /** Parola/e finali evidenziate con il sottolineato azzurro (stile home) */
@@ -18,10 +20,7 @@ export function PageHero({ title, highlight, subtitle }: PageHeroProps) {
           {highlight ? (
             <>
               {' '}
-              <span className="relative inline-block">
-                <span className="relative z-10">{highlight}</span>
-                <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2A56A8] -z-0 rounded-none" />
-              </span>
+              <Highlight color="bg-[#2A56A8]">{highlight}</Highlight>
             </>
           ) : null}
         </h1>

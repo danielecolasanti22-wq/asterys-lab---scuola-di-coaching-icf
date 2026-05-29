@@ -29,6 +29,7 @@ import {
 import { coursesContent } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { Highlight } from '../components/Highlight';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -60,10 +61,7 @@ const Hero = () => (
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
           Dai forma alla tua{' '}
-          <span className="relative inline-block">
-            <span className="relative z-10">crescita professionale</span>
-            <span className="absolute inset-x-[-0.06em] bottom-[0.07em] h-[0.26em] bg-[#2A56A8] -z-0 rounded-none" />
-          </span>
+          <Highlight color="bg-[#2A56A8]">crescita professionale</Highlight>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Percorsi in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master accreditati, scegli il passo giusto per evolvere.

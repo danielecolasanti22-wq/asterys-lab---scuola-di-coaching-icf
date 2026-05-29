@@ -1,92 +1,166 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Users, 
-  ArrowRight, 
-  Share2, 
-  Download,
-  CheckCircle2
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  Ticket,
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { eventsBySlug } from '../constants/events';
 
 export default function EventDetail() {
   const { id } = useParams<{ id: string }>();
+  const event = id ? eventsBySlug[id] : undefined;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [id]);
+
+  if (!event) {
+    return (
+      <div className="pt-24 pb-32 min-h-screen text-center px-6">
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent mb-4">
+          Evento non trovato
+        </p>
+        <h1 className="font-display font-black text-3xl sm:text-4xl text-brand-navy mb-6 tracking-tight">
+          Questo evento non esiste o è già passato
+        </h1>
+        <Link
+          to="/eventi"
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-brand-accent hover:underline"
+        >
+          <ArrowLeft size={16} /> Tutti gli eventi
+        </Link>
+      </div>
+    );
+  }
+
+  const meta = [
+    { icon: Calendar, label: event.date },
+    { icon: Clock, label: event.time },
+    { icon: MapPin, label: event.location },
+  ];
 
   return (
-    <div className="pt-24 min-h-screen">
-      <section className="bg-white border-b border-gray-100 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <Link to="/eventi" className="flex items-center gap-2 text-brand-navy/30 mb-12 hover:text-brand-accent transition-colors text-xs font-black uppercase tracking-widest">
-            <ArrowRight size={16} className="rotate-180" /> Tutti gli eventi
+    <div className="bg-white">
+      {/* HERO */}
+      <section className="bg-[#CFE0F5]">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-10 lg:py-14">
+          <Link
+            to="/eventi"
+            className="inline-flex items-center gap-2 text-brand-navy/60 hover:text-brand-accent transition-colors text-[11px] font-black uppercase tracking-[0.18em]"
+          >
+            <ArrowLeft size={15} /> Tutti gli eventi
           </Link>
-          
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+          <div className="mt-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-brand-blue-soft text-brand-navy px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.2em] mb-8 border border-brand-navy/5 uppercase">
-                Evento Gratuito
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="bg-white text-brand-navy px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em]">
+                  {event.category}
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-brand-navy text-white px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em]">
+                  <Ticket size={12} /> {event.price}
+                </span>
               </div>
-              <h1 className="font-display font-bold text-4xl lg:text-6xl mb-8 tracking-tight leading-tight">
-                Dettaglio Evento: {id?.split('-').join(' ').toUpperCase()}
+              <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[3rem] font-display font-black tracking-tighter leading-[1.04] text-brand-navy">
+                {event.title}
               </h1>
-              <div className="grid grid-cols-2 gap-8 mb-10">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-brand-accent"><Calendar size={24} /></div>
-                  <div>
-                    <p className="text-[10px] uppercase font-black text-brand-navy/30">Data</p>
-                    <p className="font-bold text-brand-navy uppercase tracking-tight">15 Maggio 2026</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-brand-accent"><Clock size={24} /></div>
-                  <div>
-                    <p className="text-[10px] uppercase font-black text-brand-navy/30">Ora</p>
-                    <p className="font-bold text-brand-navy uppercase tracking-tight">18:30 - 20:00</p>
-                  </div>
-                </div>
-              </div>
-              <p className="text-lg text-brand-navy/60 leading-relaxed max-w-xl">
-                Un incontro dedicato a chi desidera approfondire il metodo Asterys Lab, conoscere i trainer e porre domande dirette sulla carriera da coach.
+              <p className="mt-5 text-base lg:text-lg text-brand-navy/70 font-medium leading-relaxed max-w-xl">
+                {event.desc}
               </p>
+              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3">
+                {meta.map((m) => (
+                  <div key={m.label} className="flex items-center gap-2 text-sm font-bold text-brand-navy">
+                    <m.icon size={16} className="text-brand-accent shrink-0" />
+                    {m.label}
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#registrati"
+                className="mt-8 inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-3.5 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors"
+              >
+                Riserva il posto <ArrowRight size={15} />
+              </a>
             </div>
+
             <div className="relative">
-              <div className="rounded-[4rem] overflow-hidden shadow-2xl">
-                <img src="https://picsum.photos/seed/eventdetail/800/1000" className="w-full h-full object-cover" alt="Evento" referrerPolicy="no-referrer" />
+              <div className="rounded-[1.75rem] lg:rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)] aspect-[4/3]">
+                <img
+                  src={event.img}
+                  className="w-full h-full object-cover"
+                  alt={event.title}
+                  referrerPolicy="no-referrer"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-20">
-          <div className="lg:col-span-8 space-y-16">
-            <div>
-              <h2 className="font-display font-bold text-3xl mb-8">Informazioni sull'incontro</h2>
-              <div className="prose prose-brand text-brand-navy/70 leading-relaxed">
-                <p>Durante questo incontro online scopriremo insieme:</p>
-                <ul className="space-y-4 mt-8">
-                  <li className="flex gap-3"><CheckCircle2 className="text-brand-accent shrink-0" size={20} /> La struttura del Master APCM e i suoi riconoscimenti.</li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-brand-accent shrink-0" size={20} /> Una demo live di coaching sistemico.</li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-brand-accent shrink-0" size={20} /> Case studies di successo dei nostri alumni.</li>
-                </ul>
-              </div>
-            </div>
+      {/* CONTENT + REGISTRATION */}
+      <section className="max-w-[1100px] mx-auto px-4 sm:px-6 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 lg:gap-16">
+        <div className="lg:col-span-7">
+          <h2 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy mb-6">
+            Di cosa parleremo
+          </h2>
+          <div className="space-y-5 text-base sm:text-lg text-brand-navy/75 leading-relaxed">
+            {event.long.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
-          
-          <aside className="lg:col-span-4">
-            <div className="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-100 sticky top-32">
-              <h3 className="font-display font-bold text-2xl mb-8">Registrati ora</h3>
-              <form className="space-y-4">
-                <input type="text" placeholder="Nome & Cognome" className="w-full px-6 py-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 ring-brand-navy/5 font-medium" />
-                <input type="email" placeholder="Email" className="w-full px-6 py-4 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 ring-brand-navy/5 font-medium" />
-                <button className="btn-primary w-full py-4 uppercase text-xs font-black tracking-widest mt-4">Riserva il mio posto</button>
-              </form>
-              <p className="text-[10px] text-gray-400 text-center mt-6">Riceverai il link di accesso Zoom via email.</p>
-            </div>
-          </aside>
+
+          <h3 className="mt-12 text-lg font-display font-black uppercase tracking-[0.16em] text-brand-navy">
+            Durante l'incontro
+          </h3>
+          <ul className="mt-6 space-y-4">
+            {event.highlights.map((h) => (
+              <li key={h} className="flex gap-3 text-base text-brand-navy/80 leading-relaxed">
+                <CheckCircle2 className="text-brand-accent shrink-0 mt-0.5" size={20} />
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <aside id="registrati" className="lg:col-span-5 scroll-mt-28">
+          <div className="lg:sticky lg:top-28 bg-white border border-gray-100 rounded-[2rem] shadow-[0_24px_70px_-40px_rgba(0,21,51,0.35)] p-8 lg:p-10">
+            <span className="text-[10px] font-black uppercase tracking-[0.26em] text-brand-accent">
+              Partecipazione · {event.price}
+            </span>
+            <h3 className="mt-3 text-2xl font-display font-black tracking-tight text-brand-navy">
+              Registrati ora
+            </h3>
+            <p className="mt-2 text-sm text-brand-navy/60 leading-relaxed">
+              {event.date} · {event.time} — {event.location}
+            </p>
+            <form className="mt-6 space-y-3" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="text"
+                placeholder="Nome e cognome"
+                className="w-full px-5 py-3.5 rounded-xl bg-gray-50 border border-gray-100 outline-none focus:border-brand-accent transition-colors font-medium text-sm"
+              />
+              <input
+                type="email"
+                placeholder="La tua email"
+                className="w-full px-5 py-3.5 rounded-xl bg-gray-50 border border-gray-100 outline-none focus:border-brand-accent transition-colors font-medium text-sm"
+              />
+              <button
+                type="submit"
+                className="w-full bg-brand-navy text-white py-4 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-brand-accent transition-colors"
+              >
+                Riserva il mio posto
+              </button>
+            </form>
+            <p className="mt-4 text-[11px] text-brand-navy/45 text-center leading-relaxed">
+              Riceverai via email la conferma e le istruzioni per partecipare.
+            </p>
+          </div>
+        </aside>
       </section>
     </div>
   );

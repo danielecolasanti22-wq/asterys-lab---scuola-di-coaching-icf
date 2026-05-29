@@ -7,8 +7,6 @@ import {
   ArrowUpRight,
   Star,
   ChevronDown,
-  GraduationCap,
-  Sparkles,
   Clock,
   Calendar,
   Send,
@@ -18,11 +16,11 @@ import {
   MapPin,
   Phone,
   Mail,
-  ShieldCheck,
   Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
+import { Highlight } from '../Highlight';
 
 type MegaCourseItem = {
   id: string;
@@ -69,11 +67,14 @@ const megaColumns: MegaColumn[] = [
   },
 ];
 
-const megaIconFor = (icon: MegaColumn['icon']) => {
-  if (icon === 'master') return <GraduationCap size={16} />;
-  if (icon === 'specialization') return <Sparkles size={16} />;
-  return <Clock size={16} />;
-};
+const aboutMenu = [
+  { label: 'Chi siamo', hash: '#chi-siamo' },
+  { label: 'Filosofia', hash: '#filosofia' },
+  { label: 'I trainer', hash: '#trainer' },
+  { label: 'Accreditamenti', hash: '#accreditamenti' },
+  { label: 'La community', hash: '#community' },
+  { label: 'Press', hash: '#press' },
+];
 
 const BrandLogo = () => {
   const base = import.meta.env.BASE_URL || '/';
@@ -208,7 +209,7 @@ export const Header = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                    className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
                       location.pathname.startsWith('/corsi') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                     }`}
                     aria-haspopup="true"
@@ -225,8 +226,8 @@ export const Header = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
-                    location.pathname === link.href ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'
+                  className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
+                    location.pathname === link.href ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                   }`}
                 >
                   {link.name}
@@ -242,7 +243,7 @@ export const Header = () => {
             >
               <Link
                 to="/about"
-                className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${
                   location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                 }`}
                 aria-haspopup="true"
@@ -263,22 +264,17 @@ export const Header = () => {
                     transition={{ duration: 0.15, ease: 'easeOut' }}
                     className="absolute top-full right-0 pt-3"
                   >
-                    <div className="w-48 bg-white border border-gray-100 rounded-xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
-                      <Link
-                        to="/about#filosofia"
-                        className="flex items-center justify-between px-4 py-3 text-sm font-black text-brand-navy hover:bg-gray-50 hover:text-brand-accent transition-colors"
-                      >
-                        Filosofia
-                        <ArrowUpRight size={14} className="opacity-40" />
-                      </Link>
-                      <div className="h-px bg-gray-100 mx-4" />
-                      <Link
-                        to="/about#press"
-                        className="flex items-center justify-between px-4 py-3 text-sm font-black text-brand-navy hover:bg-gray-50 hover:text-brand-accent transition-colors"
-                      >
-                        Press
-                        <ArrowUpRight size={14} className="opacity-40" />
-                      </Link>
+                    <div className="w-56 bg-white border border-gray-100 rounded-xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden divide-y divide-gray-100">
+                      {aboutMenu.map((item) => (
+                        <Link
+                          key={item.hash}
+                          to={`/about${item.hash}`}
+                          className="flex items-center justify-between px-4 py-3 text-sm font-bold text-brand-navy hover:bg-gray-50 hover:text-brand-accent transition-colors"
+                        >
+                          {item.label}
+                          <ArrowUpRight size={14} className="opacity-40" />
+                        </Link>
+                      ))}
                     </div>
                   </motion.div>
                 )}
@@ -287,7 +283,7 @@ export const Header = () => {
             <div className="h-4 w-px bg-gray-200"></div>
             <Link
               to="/aziende"
-              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+              className={`text-[11px] font-bold uppercase tracking-[0.16em] transition-colors ${location.pathname === '/aziende' ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'}`}
             >
               Per Aziende
             </Link>
@@ -297,7 +293,7 @@ export const Header = () => {
         <div className="hidden lg:flex items-center gap-6">
           <Link
             to="/iscriviti"
-            className="bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
+            className="bg-brand-navy text-white px-7 py-3 rounded-[3px] font-sans font-bold text-[11px] uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors active:scale-[0.98]"
           >
             Iscriviti
           </Link>
@@ -329,13 +325,10 @@ export const Header = () => {
                       key={col.label}
                       className={`flex flex-col gap-3 px-4 ${idx < megaColumns.length - 1 ? 'border-r border-gray-100' : ''}`}
                     >
-                      <div className="flex items-center gap-2 text-brand-accent">
-                        <span className="w-7 h-7 rounded-lg bg-brand-blue-soft/60 text-brand-accent flex items-center justify-center">
-                          {megaIconFor(col.icon)}
-                        </span>
-                        <span className="text-[10px] font-black uppercase tracking-[0.22em]">{col.label}</span>
+                      <div className="pb-2.5 border-b border-gray-200">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.26em] text-brand-navy">{col.label}</span>
                       </div>
-                      <p className="text-xs text-brand-navy/60 font-medium leading-snug -mt-1">{col.caption}</p>
+                      <p className="text-xs text-brand-navy/55 font-medium leading-snug">{col.caption}</p>
                       <div className="flex flex-col gap-1 mt-1">
                         {col.items.map((item) => (
                           <Link
@@ -405,13 +398,10 @@ export const Header = () => {
           >
             {megaColumns.map((col) => (
               <div key={col.label} className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 text-brand-accent">
-                  <span className="w-7 h-7 rounded-lg bg-brand-blue-soft/60 flex items-center justify-center">
-                    {megaIconFor(col.icon)}
-                  </span>
-                  <span className="text-[10px] font-black uppercase tracking-[0.22em]">{col.label}</span>
+                <div className="pb-2 border-b border-gray-100">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-navy">{col.label}</span>
                 </div>
-                <div className="flex flex-col pl-9">
+                <div className="flex flex-col pl-1">
                   {col.items.map((item) => (
                     <Link
                       key={item.id}
@@ -449,27 +439,23 @@ export const Header = () => {
             </Link>
             <div className="flex flex-col gap-2">
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/50">About</span>
-              <Link
-                to="/about#filosofia"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-base font-black text-brand-navy tracking-tight pl-1"
-              >
-                Filosofia
-              </Link>
-              <Link
-                to="/about#press"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-base font-black text-brand-navy tracking-tight pl-1"
-              >
-                Press
-              </Link>
+              {aboutMenu.map((item) => (
+                <Link
+                  key={item.hash}
+                  to={`/about${item.hash}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-base font-black text-brand-navy tracking-tight pl-1"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
             <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
             <hr className="my-2 border-brand-blue-soft" />
             <Link
               to="/iscriviti"
               onClick={() => setIsMenuOpen(false)}
-              className="bg-[#2A56A8] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
+              className="bg-brand-navy text-white py-4 rounded-[3px] font-bold text-xs uppercase tracking-[0.18em] text-center"
             >
               Iscriviti
             </Link>
@@ -614,10 +600,9 @@ export const Footer = () => {
             </div>
             <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
               Entra in{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-brand-navy">Asterys Letters</span>
-                <span className="absolute inset-x-[-0.08em] bottom-[-0.04em] top-[-0.02em] bg-white -z-0 rounded-sm" />
-              </span>
+              <Highlight color="bg-white" variant="marker" className="text-brand-navy">
+                Asterys Letters
+              </Highlight>
               .
             </h3>
             <p className="mt-3 text-sm text-white/70 font-medium max-w-[440px] leading-relaxed">

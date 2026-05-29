@@ -44,6 +44,7 @@ import {
 } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { Highlight } from '../components/Highlight';
 
 function richText(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -2227,10 +2228,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
               Un percorso formativo{' '}
-              <span className="relative inline-block">
-                <span className="absolute inset-x-[-0.15em] bottom-[0.1em] h-[0.45em] bg-[#CFE0F5] -z-10 rounded-sm" aria-hidden="true" />
-                <span className="relative">completo</span>
-              </span>
+              <Highlight color="bg-[#CFE0F5]">completo</Highlight>
             </h2>
             <p className={`${tLead} mb-12 lg:mb-14 max-w-2xl`}>
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.

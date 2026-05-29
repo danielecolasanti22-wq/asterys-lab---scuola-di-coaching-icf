@@ -6,7 +6,11 @@ import {
   Users,
   Sparkles,
   Newspaper,
+  Calendar,
+  RefreshCw,
+  MessagesSquare,
 } from 'lucide-react';
+import { Highlight } from '../components/Highlight';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -43,6 +47,62 @@ const values = [
   { label: 'Umanità', body: 'La relazione prima della performance.' },
   { label: 'Impatto', body: 'Strumenti concreti, misurabili e replicabili nella tua pratica.' },
   { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del tuo percorso.' },
+];
+
+// NB: nomi e bio dei trainer sono segnaposto — sostituire con il corpo docente reale.
+const trainers = [
+  {
+    name: 'Giovanna Giuffredi',
+    role: 'Founder & Master Coach',
+    credential: 'MCC ICF',
+    bio: 'Guida la ricerca e il metodo della scuola da oltre vent’anni, con un focus su intelligenza emotiva e approccio sistemico.',
+    img: '/advisors/advisor-1.png',
+  },
+  {
+    name: 'Marco De Santis',
+    role: 'Senior Trainer & Mentor Coach',
+    credential: 'PCC ICF',
+    bio: 'Accompagna i partecipanti nella pratica supervisionata e nel passaggio dalla formazione alla professione.',
+    img: '/advisors/advisor-2.png',
+  },
+  {
+    name: 'Elena Marchetti',
+    role: 'Team & Systemic Coach',
+    credential: 'PCC ICF · ACTC',
+    bio: 'Porta in aula il team coaching sistemico e il lavoro con le organizzazioni secondo il modello ASTC.',
+    img: '/advisors/advisor-3.jpeg',
+  },
+];
+
+const accreditations = [
+  { file: 'icf', label: 'ICF', desc: 'International Coaching Federation: l’ente di riferimento mondiale.' },
+  { file: 'icf-level-1', label: 'Level 1', desc: 'Accredited Coaching Education — verso la credenziale ACC.' },
+  { file: 'icf-level-2', label: 'Level 2', desc: 'Accredited Coaching Education — verso la credenziale PCC.' },
+  { file: 'icf-cce-new', label: 'CCE', desc: 'Continuing Coach Education: crediti per il rinnovo.' },
+  { file: 'icf-aatc', label: 'AATC', desc: 'Advanced Accreditation in Team Coaching.' },
+];
+
+const communityPillars = [
+  {
+    icon: <Users size={20} />,
+    title: 'Alumni network',
+    body: '3.000+ professionisti in Italia e in Europa per referral, collaborazioni e crescita condivisa.',
+  },
+  {
+    icon: <RefreshCw size={20} />,
+    title: 'Continuous Learning',
+    body: 'Live class mensili in Zoom per restare aggiornato tutto l’anno, anche dopo il diploma.',
+  },
+  {
+    icon: <Calendar size={20} />,
+    title: 'Eventi & incontri',
+    body: 'Workshop, open day e momenti di confronto dal vivo e online con docenti e coach.',
+  },
+  {
+    icon: <MessagesSquare size={20} />,
+    title: 'Mentoring tra pari',
+    body: 'Coaching circle e pratica supervisionata per continuare ad allenarti con gli altri coach.',
+  },
 ];
 
 type PressLogoEntry = { name: string; file: string; tall?: boolean };
@@ -126,10 +186,7 @@ export default function About() {
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02]">
               La nostra{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10">filosofia</span>
-                <span className="absolute inset-x-[-0.1em] bottom-[0.08em] h-[0.35em] bg-[#CFE0F5] -z-0 rounded-sm" />
-              </span>{' '}
+              <Highlight color="bg-[#CFE0F5]">filosofia</Highlight>{' '}
               del coaching.
             </h1>
             <p className="mt-6 text-lg text-brand-navy/75 font-medium max-w-[640px] leading-relaxed">
@@ -173,6 +230,41 @@ export default function About() {
         </div>
       </section>
 
+      {/* CHI SIAMO */}
+      <section id="chi-siamo" className="scroll-mt-28 border-b border-gray-100">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+                Chi siamo
+              </span>
+              <h2 className={`${tSection} mt-3`}>
+                La prima Coaching School{' '}
+                <Highlight color="bg-[#CFE0F5]">ICF accreditata</Highlight> in Italia.
+              </h2>
+            </div>
+            <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
+              <p>
+                Asterys Lab nasce oltre venticinque anni fa con un'idea precisa: portare in Italia un
+                coaching <strong>rigoroso, misurabile e profondamente umano</strong>, allineato agli
+                standard internazionali della International Coaching Federation.
+              </p>
+              <p>
+                Da allora siamo cresciuti come <strong>scuola, metodo e comunità</strong>. Abbiamo
+                formato più di 3.000 tra coach, manager, HR e professionisti della relazione, in Italia
+                e in Europa, e siamo diventati un punto di riferimento riconosciuto dalla stampa e dal
+                mondo delle organizzazioni.
+              </p>
+              <p>
+                Oggi Asterys Lab è un team di trainer e mentor coach certificati ICF: nessuna formula
+                preconfezionata, ma persone che fanno coaching ogni giorno e lo insegnano stando
+                accanto a chi cresce.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FILOSOFIA */}
       <section id="filosofia" className="scroll-mt-28">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
@@ -183,10 +275,7 @@ export default function About() {
               </span>
               <h2 className={`${tSection} mt-3`}>
                 Il coaching come atto di{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10">responsabilità</span>
-                  <span className="absolute inset-x-[-0.08em] bottom-[0.06em] h-[0.3em] bg-[#CFE0F5] -z-0 rounded-sm" />
-                </span>.
+                <Highlight color="bg-[#CFE0F5]">responsabilità</Highlight>.
               </h2>
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
@@ -227,6 +316,101 @@ export default function About() {
         </div>
       </section>
 
+      {/* I TRAINER */}
+      <section id="trainer" className="scroll-mt-28 bg-[#EEF4FC]">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+          <div className="max-w-2xl mb-12">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+              I trainer
+            </span>
+            <h2 className={`${tSection} mt-3`}>
+              Un corpo docente di coach{' '}
+              <Highlight color="bg-[#CFE0F5]">certificati ICF</Highlight>.
+            </h2>
+            <p className="mt-4 text-base text-brand-navy/70 font-medium leading-relaxed">
+              L'autorevolezza di Asterys Lab è distribuita su un team di Master Coach, mentor e trainer
+              attivi sul campo — non su un singolo nome. Ogni aula è guidata da professionisti con
+              credenziali ICF e anni di pratica reale.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {trainers.map((t) => (
+              <div
+                key={t.name}
+                className="bg-white rounded-[1.5rem] border border-gray-100 overflow-hidden shadow-[0_18px_50px_-34px_rgba(0,21,51,0.25)]"
+              >
+                <div className="aspect-[4/5] overflow-hidden bg-gray-100">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-accent">
+                    {t.credential}
+                  </span>
+                  <h3 className="mt-1.5 text-lg font-display font-black tracking-tight text-brand-navy">
+                    {t.name}
+                  </h3>
+                  <p className="text-sm font-bold text-brand-navy/55">{t.role}</p>
+                  <p className="mt-3 text-sm text-brand-navy/65 leading-relaxed">{t.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-sm text-brand-navy/60 font-medium">
+            E un team di oltre 20 trainer e mentor coach certificati ICF in tutta Italia.
+          </p>
+        </div>
+      </section>
+
+      {/* ACCREDITAMENTI */}
+      <section id="accreditamenti" className="scroll-mt-28 border-b border-gray-100">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+          <div className="max-w-2xl mb-12">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+              Accreditamenti
+            </span>
+            <h2 className={`${tSection} mt-3`}>
+              Credenziali riconosciute in tutto il mondo.
+            </h2>
+            <p className="mt-4 text-base text-brand-navy/70 font-medium leading-relaxed">
+              Tutti i nostri percorsi rispondono agli standard della International Coaching Federation.
+              Gli accreditamenti ICF garantiscono metodo verificato, ore certificate e credenziali
+              spendibili a livello internazionale.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+            {accreditations.map((a) => (
+              <div
+                key={a.file}
+                className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center"
+              >
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src={`/brand/${a.file}.png`}
+                    alt={a.label}
+                    className="max-h-16 w-auto object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">
+                  {a.label}
+                </p>
+                <p className="mt-2 text-xs text-brand-navy/60 font-medium leading-relaxed">
+                  {a.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VALORI / MANIFESTO */}
       <section className="bg-brand-navy text-white">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-24">
@@ -248,6 +432,45 @@ export default function About() {
                   <p className="mt-2 text-lg font-display font-black tracking-tight leading-tight">
                     {v.body}
                   </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LA COMMUNITY */}
+      <section id="community" className="scroll-mt-28 bg-[#CFE0F5]">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+                La community
+              </span>
+              <h2 className={`${tSection} mt-3`}>
+                Una rete viva di{' '}
+                <Highlight color="bg-white">3.000+ coach</Highlight>.
+              </h2>
+              <p className="mt-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
+                Formarsi con Asterys Lab significa entrare in una comunità che non si esaurisce con il
+                diploma: alumni, trainer e advisor continuano a sostenersi, a fare pratica insieme e a
+                crescere, in Italia e in tutta Europa.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {communityPillars.map((p) => (
+                <div
+                  key={p.title}
+                  className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/60"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue-soft text-brand-accent flex items-center justify-center mb-4">
+                    {p.icon}
+                  </div>
+                  <h3 className="text-base font-display font-black tracking-tight text-brand-navy mb-2">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{p.body}</p>
                 </div>
               ))}
             </div>

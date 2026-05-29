@@ -1,215 +1,237 @@
-import { useState } from 'react';
-import { 
-  Search, 
-  Filter, 
-  ArrowRight, 
-  Calendar, 
-  Layout, 
-  ChevronRight,
-  Target,
-  Zap,
-  Users,
-  Brain
-} from 'lucide-react';
-import { motion } from 'motion/react';
+import { Calendar, MapPin, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { CourseImage } from '../components/CourseImage';
+import { Highlight } from '../components/Highlight';
 
-const coursesData = [
+type Course = {
+  id: string;
+  title: string;
+  badge: string;
+  duration: string;
+  modality: string;
+  desc: string;
+  img: string;
+};
+
+type CourseGroup = {
+  label: string;
+  caption: string;
+  courses: Course[];
+};
+
+const courseGroups: CourseGroup[] = [
   {
-    id: 'apcm',
-    category: 'Diventare coach professionista',
-    type: "MASTER",
-    title: "Accredited Professional Coaching Mastery (APCM)",
-    desc: "Il percorso definitivo per chi vuole ottenere credenziali ICF Level 1 e Level 2. Un viaggio trasformativo dal metodo alla professione.",
-    duration: "150 ore - Online/Presenza",
-    next: "Maggio 2026",
-    img: "https://picsum.photos/seed/master/600/400",
-    tags: ['ICF L1', 'ICF L2', 'Pratica Supervisionata']
+    label: 'Master',
+    caption: 'Percorsi completi per diventare coach professionista ICF.',
+    courses: [
+      {
+        id: 'apcm',
+        title: 'Professione Coach (APCM)',
+        badge: 'Master',
+        duration: '3–8 mesi',
+        modality: 'Online + Aula',
+        desc:
+          'Il percorso completo per diventare coach professionista con credenziali ICF Level 1 & 2: metodo, pratica supervisionata e intelligenza emotiva misurabile.',
+        img: '/course-media/apcm/card.png',
+      },
+      {
+        id: 'systemic-team-coaching',
+        title: 'Team Coaching Sistemico (ASTC)',
+        badge: 'Master',
+        duration: '54 ore · 60 CCE',
+        modality: 'Online + Milano/Roma',
+        desc:
+          'Il modello ASTC accreditato ICF per il coaching sistemico di team e organizzazioni. Prerequisito per la credenziale ACTC.',
+        img: '/course-media/systemic-team-coaching/card.jpg',
+      },
+    ],
   },
   {
-    id: 'systemic-team-coaching',
-    category: 'Per coach già attivi',
-    type: "AVANZATO",
-    title: "Asterys Systemic Team Coaching (ASTC)",
-    desc: "Il modello ASTC accreditato ICF per il coaching sistemico dei team. Prerequisito per la credenziale ACTC, 54 ore sincrone equivalenti a 60 CCE.",
-    duration: "54 ore - Online + Aula",
-    next: "Ottobre 2026",
-    img: "https://picsum.photos/seed/team/600/400",
-    tags: ['ICF AATC', 'Sistemico', 'Milano / Roma']
+    label: 'Specializzazioni',
+    caption: 'Approfondisci ambiti chiave della pratica di coaching.',
+    courses: [
+      {
+        id: 'coaching-circle',
+        title: 'Coaching Circle',
+        badge: 'Specializzazione',
+        duration: '3,30 ore',
+        modality: 'Zoom · Gruppi da 4',
+        desc:
+          'Pratica di coaching supervisionata in gruppi da 4, con feedback immediato e un mentor-coach professionista MCC.',
+        img: '/course-media/coaching-circle/card.png',
+      },
+      {
+        id: 'voice-dialogue',
+        title: 'Voice Dialogue Skills',
+        badge: 'Specializzazione',
+        duration: '3 giornate',
+        modality: 'In presenza · Milano',
+        desc:
+          'Un laboratorio in presenza per integrare il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.',
+        img: '/course-media/voice-dialogue/card.png',
+      },
+    ],
   },
   {
-    id: 'eiw',
-    category: 'Intelligenza emotiva',
-    type: "WORKOUT EQ",
-    title: "Emotional Intelligence Workout (EIW)",
-    desc: "Allena la tua intelligenza emotiva con esperienze consapevoli guidate dai coach EIW. Modello CSI, fiore di Plutchik, 4 CCE ICF per Round.",
-    duration: "Round da 4 CCE ICF",
-    next: "Prossimo Round",
-    img: "https://picsum.photos/seed/ei/600/400",
-    tags: ['Modello CSI', 'Plutchik', 'CCE ICF']
+    label: 'Corsi brevi',
+    caption: 'Competenze pratiche, in tempi ridotti.',
+    courses: [
+      {
+        id: 'eiw',
+        title: 'Emotional Intelligence Workout',
+        badge: 'Corso Breve',
+        duration: 'Round · 4 CCE',
+        modality: 'Live Online',
+        desc:
+          "Allena l'intelligenza emotiva con esperienze guidate: modello CSI, fiore di Plutchik e coach dedicati. 4 CCE ICF per Round.",
+        img: '/course-media/eiw/card.png',
+      },
+      {
+        id: 'continuous-learning',
+        title: 'Continuous Learning',
+        badge: 'Corso Breve',
+        duration: '1 live class/mese',
+        modality: 'Zoom · 18:30–20:00',
+        desc:
+          'Sviluppo continuo per coach e alumni: una live class al mese in Zoom, tutto l’anno tranne agosto. Entri quando vuoi.',
+        img: '/course-media/continuous-learning/card.jpg',
+      },
+      {
+        id: 'public-speaking',
+        title: 'Public Speaking Pro',
+        badge: 'Corso Breve',
+        duration: '16 ore',
+        modality: 'Live Online',
+        desc:
+          'Supera la paura del palco e comunica il tuo valore con struttura, presenza e intelligenza emotiva.',
+        img: '/course-media/public-speaking/hero-public-speaking.png',
+      },
+    ],
   },
-  {
-    id: 'coaching-circle',
-    category: 'Per coach già attivi',
-    type: "PRATICA SUPERVISIONATA",
-    title: "Coaching Circle",
-    desc: "3,30 ore di pratica di coaching supervisionata da un mentor-coach professionista, in gruppi da 4. Feedback immediato e confronto tra pari.",
-    duration: "3,30 ore - Zoom",
-    next: "Data condivisa nel gruppo",
-    img: "https://picsum.photos/seed/coaching-circle/600/400",
-    tags: ['Mentor coach', 'Gruppi da 4', 'Feedback immediato']
-  },
-  {
-    id: 'public-speaking',
-    category: 'Per HR/manager',
-    type: "COMUNICAZIONE",
-    title: "Public Speaking Pro",
-    desc: "Gestisci l'ansia, struttura discorsi d'impatto e ispira la tua platea con presenza e storytelling.",
-    duration: "16 ore - Online",
-    next: "Novembre 2026",
-    img: "https://picsum.photos/seed/speaking/600/400",
-    tags: ['Soft Skills', 'Comunicazione']
-  }
 ];
 
-const categories = [
-  "Tutti i corsi",
-  "Diventare coach professionista",
-  "Per coach già attivi",
-  "Per HR/manager",
-  "Intelligenza emotiva"
+const corporatePrograms = [
+  {
+    title: 'Coaching per Manager',
+    desc: 'Allena la leadership quotidiana con un coach dedicato.',
+  },
+  {
+    title: 'Leadership Development',
+    desc: 'Programmi strutturati per far crescere chi guida le persone.',
+  },
+  {
+    title: 'Team Coaching Sistemico',
+    desc: 'Il modello ASTC per allineare e accelerare i team.',
+  },
 ];
 
 export default function Courses() {
-  const [activeCategory, setActiveCategory] = useState("Tutti i corsi");
-
-  const filteredCourses = activeCategory === "Tutti i corsi" 
-    ? coursesData 
-    : coursesData.filter(c => c.category === activeCategory);
-
   return (
     <div className="pb-20 bg-white">
-      <section className="bg-[#CFE0F5] py-16 lg:py-20 mb-10 relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-[#2A56A8]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#2A56A8]/10 blur-3xl" />
-        <div className="max-w-[941px] mx-auto px-4 relative z-10">
-          <div className="flex items-center gap-2 mb-6 text-[#2A56A8] uppercase text-[10px] font-black tracking-[0.25em]">
-            <span className="w-8 h-px bg-[#2A56A8]/40"></span>
-            Asterys Lab · Academy
-          </div>
-          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-7xl mb-6 tracking-tighter text-brand-navy uppercase italic leading-[0.95]">
-            Tutti i percorsi
+      {/* HERO */}
+      <section className="bg-[#CFE0F5]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-12 lg:pt-16 lg:pb-16 text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+            Academy
+          </span>
+          <h1 className="mt-4 text-[2.3rem] sm:text-[2.9rem] lg:text-[3.3rem] font-display font-black leading-[0.98] tracking-tighter text-brand-navy mb-5">
+            Tutti i <Highlight color="bg-[#2A56A8]">percorsi</Highlight>
           </h1>
-          <p className="text-lg text-brand-navy/65 max-w-2xl leading-relaxed font-medium">
-            Dalla formazione di base per aspiranti coach alle specializzazioni avanzate per professionisti e aziende. Trova il programma adatto ai tuoi obiettivi.
+          <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl mx-auto">
+            Dalla formazione di base per aspiranti coach alle specializzazioni avanzate per
+            professionisti e aziende. Trova il programma adatto ai tuoi obiettivi.
           </p>
         </div>
       </section>
 
+      {/* GROUPED COURSES */}
       <div className="max-w-[941px] mx-auto px-4">
-        {/* Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 border-b border-gray-100 pb-8">
-          <div className="flex items-center gap-2 text-brand-navy mr-6 font-bold text-sm">
-            <Filter size={18} className="text-brand-accent" /> Filtra per:
-          </div>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-[0.12em] transition-all ${
-                activeCategory === cat 
-                  ? 'bg-[#001D4B] text-white shadow-[0_14px_40px_-18px_rgba(0,21,51,0.45)]' 
-                  : 'bg-[#F9FAFB] text-brand-navy/55 hover:bg-white hover:text-brand-navy ring-1 ring-black/5'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Results Info */}
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-sm font-bold text-brand-navy/40">
-            Mostrando <span className="text-brand-navy">{filteredCourses.length}</span> percorsi formativi
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCourses.map((c, i) => (
-            <motion.div 
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              key={c.id} 
-              className="bg-white rounded-[2rem] overflow-hidden flex flex-col shadow-[0_22px_60px_-32px_rgba(0,21,51,0.18)] hover:shadow-[0_28px_80px_-34px_rgba(0,21,51,0.22)] transition-all border border-gray-100 group"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img 
-                  src={c.img} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                  referrerPolicy="no-referrer" 
-                  alt={c.title} 
-                />
-                <div className="absolute top-4 left-4 inline-block px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-[10px] font-black tracking-widest text-brand-navy ring-1 ring-black/5">
-                  {c.type}
-                </div>
-              </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex gap-2 mb-4 flex-wrap">
-                  {c.tags.slice(0, 2).map(t => (
-                    <span key={t} className="text-[10px] bg-[#F9FAFB] px-2 py-1 rounded-md font-black text-brand-navy/45 uppercase tracking-wider ring-1 ring-black/5">{t}</span>
-                  ))}
-                </div>
-                <h3 className="font-display font-black text-lg mb-4 leading-snug group-hover:text-brand-accent transition-colors uppercase italic tracking-tight">{c.title}</h3>
-                <p className="text-sm text-brand-navy/60 mb-8 flex-grow leading-relaxed line-clamp-3">{c.desc}</p>
-                
-                <div className="space-y-3 mb-8 text-xs font-bold pt-6 border-t border-gray-50">
-                  <div className="flex items-center gap-2 text-brand-navy/40">
-                    <Calendar size={14} className="text-brand-accent" /> <span>Prossima edizione: {c.next}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-brand-navy/40">
-                    <Layout size={14} className="text-brand-accent" /> <span>{c.duration}</span>
-                  </div>
-                </div>
-                
+        {courseGroups.map((group, gi) => (
+          <section key={group.label} className={gi === 0 ? 'pt-14 lg:pt-16' : 'pt-16 lg:pt-20'}>
+            <div className="mb-8 pb-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+              <h2 className="text-2xl lg:text-[2rem] font-display font-black tracking-tight text-brand-navy">
+                {group.label}
+              </h2>
+              <p className="text-sm text-brand-navy/55 font-medium">{group.caption}</p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {group.courses.map((c) => (
                 <Link
+                  key={c.id}
                   to={`/corsi/${c.id}`}
-                  className="w-full py-4 text-[11px] font-black uppercase tracking-[0.22em] rounded-full bg-[#001D4B] text-white hover:bg-[#2A56A8] transition-colors flex justify-center items-center gap-2"
+                  className="group bg-white border border-gray-100 rounded-[1.4rem] sm:rounded-[2rem] p-3.5 sm:p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
                 >
-                  Dettagli corso <ArrowRight size={18} />
+                  <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
+                    <CourseImage
+                      src={c.img}
+                      fallbackSrc={`https://picsum.photos/seed/${c.id}/700/400`}
+                      alt={c.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <span className="absolute top-3 left-3 bg-brand-accent text-white px-3 py-1.5 rounded-md text-[9px] font-black uppercase tracking-[0.2em] shadow-sm">
+                      {c.badge}
+                    </span>
+                  </div>
+                  <div className="px-2 sm:px-3 pt-5 pb-3 flex flex-col gap-3 flex-1">
+                    <h3 className="text-lg lg:text-2xl font-display font-black text-brand-accent leading-tight">
+                      {c.title}
+                    </h3>
+                    <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.16em]">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar size={12} /> {c.duration}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={12} /> {c.modality}
+                      </span>
+                    </div>
+                    <p className="text-sm text-brand-navy/75 leading-relaxed">{c.desc}</p>
+                    <div className="flex items-center justify-end mt-auto pt-4">
+                      <span className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-4 py-2.5 text-[10px] uppercase tracking-[0.14em] font-black gap-1.5 leading-none group-hover:brightness-110 transition-all">
+                        Scopri <ArrowUpRight size={13} strokeWidth={2.5} />
+                      </span>
+                    </div>
+                  </div>
                 </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
 
-      {/* Corporate Bridge */}
-      <section className="mt-32 section-padding bg-brand-blue-soft/30">
-        <div className="max-w-[941px] mx-auto px-4 bg-brand-navy rounded-[3rem] p-12 lg:p-20 text-white relative overflow-hidden shadow-2xl">
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-accent rounded-full opacity-10"></div>
-          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-display font-bold text-4xl mb-6">Cerchi formazione per il tuo team?</h2>
-              <p className="text-white/60 text-lg mb-8 leading-relaxed">
-                Asterys Lab collabora direttamente con la divisione Corporate per offrire programmi su misura: Coaching per Manager, Leadership Development e Team Coaching Sistemico.
-              </p>
-              <Link to="/aziende" className="btn-primary bg-white text-brand-navy hover:bg-white/90">Area Corporate & HR</Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: <Zap />, label: 'Agilità' },
-                { icon: <Users />, label: 'Team Building' },
-                { icon: <Brain />, label: 'IE in Azienda' },
-                { icon: <Target />, label: 'Strategia' },
-              ].map((item, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex flex-col items-center">
-                  <div className="text-brand-accent mb-3">{item.icon}</div>
-                  <p className="font-bold text-xs uppercase tracking-widest">{item.label}</p>
-                </div>
-              ))}
+      {/* CORPORATE BRIDGE — redesigned */}
+      <section className="mt-20 lg:mt-28">
+        <div className="max-w-[941px] mx-auto px-4">
+          <div className="bg-brand-navy rounded-[1.75rem] lg:rounded-[2.5rem] overflow-hidden">
+            <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="p-8 sm:p-12 lg:p-14 text-white">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#CFE0F5]">
+                  Per le aziende
+                </span>
+                <h2 className="mt-4 text-3xl lg:text-[2.5rem] font-display font-black tracking-tighter leading-[1.05]">
+                  Cerchi formazione per il tuo team?
+                </h2>
+                <p className="mt-5 text-white/70 leading-relaxed max-w-md">
+                  Progettiamo percorsi su misura per le organizzazioni, con la stessa qualità ICF dei
+                  nostri Master: dal coaching per manager allo sviluppo della leadership, fino al team
+                  coaching sistemico.
+                </p>
+                <Link
+                  to="/aziende"
+                  className="mt-8 inline-flex items-center gap-2 bg-white text-brand-navy px-7 py-3.5 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors"
+                >
+                  Area Corporate &amp; HR <ArrowRight size={15} />
+                </Link>
+              </div>
+              <div className="bg-white/[0.04] border-t lg:border-t-0 lg:border-l border-white/10 p-8 sm:p-12 lg:p-14 flex flex-col justify-center divide-y divide-white/10">
+                {corporatePrograms.map((p) => (
+                  <div key={p.title} className="py-4 first:pt-0 last:pb-0">
+                    <p className="text-white font-display font-black tracking-tight text-lg">
+                      {p.title}
+                    </p>
+                    <p className="text-sm text-white/55 mt-1 leading-relaxed">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

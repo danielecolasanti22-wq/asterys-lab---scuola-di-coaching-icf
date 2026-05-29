@@ -33,7 +33,7 @@ export default function BlogPostDetail() {
 
   return (
     <div className="min-h-screen">
-      <article className="pb-32">
+      <article>
         {/* Post Hero — immagine articolo visibile, velo leggero */}
         <section className="relative bg-brand-navy text-white overflow-hidden">
           <img
@@ -129,16 +129,16 @@ export default function BlogPostDetail() {
         </section>
 
         {/* Footer CTA */}
-        <section className="bg-brand-navy py-20 lg:py-24 text-center text-white">
+        <section className="bg-brand-blue-soft py-20 lg:py-24 text-center text-brand-navy">
           <div className="max-w-2xl mx-auto px-6">
             <MessageCircle className="mx-auto mb-8 text-brand-accent" size={48} />
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-6">Hai trovato utile questo articolo?</h2>
-            <p className="text-white/50 mb-10 leading-relaxed">
+            <h2 className="font-display font-black text-3xl sm:text-4xl mb-6 tracking-tight">Hai trovato utile questo articolo?</h2>
+            <p className="text-brand-navy/65 mb-10 leading-relaxed">
               Iscriviti alla newsletter per ricevere nuovi approfondimenti su coaching, intelligenza emotiva e crescita professionale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input type="email" placeholder="La tua email..." className="flex-grow px-6 py-4 rounded-xl bg-white/5 border border-white/10 outline-none focus:border-brand-accent font-medium" />
-              <button className="btn-primary bg-brand-accent text-white border-brand-accent whitespace-nowrap">Iscriviti</button>
+              <input type="email" placeholder="La tua email..." className="flex-grow px-6 py-4 rounded-xl bg-white border border-brand-navy/10 outline-none focus:border-brand-accent font-medium" />
+              <button className="btn-primary bg-brand-navy text-white whitespace-nowrap">Iscriviti</button>
             </div>
           </div>
         </section>
