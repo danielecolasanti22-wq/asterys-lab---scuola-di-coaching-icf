@@ -347,7 +347,7 @@ export const Header = () => {
             onMouseEnter={openMega}
             onMouseLeave={scheduleCloseMega}
           >
-            <div className="max-w-[1040px] mx-auto px-4">
+            <div className="max-w-[1160px] mx-auto px-4">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
                 <div className="grid grid-cols-3 gap-0 p-6">
                   {/* Colonna 1 — categorie */}
