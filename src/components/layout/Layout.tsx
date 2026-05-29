@@ -70,7 +70,6 @@ const megaColumns: MegaColumn[] = [
 const aboutMenu = [
   { label: 'Chi siamo', hash: '#chi-siamo' },
   { label: 'Filosofia', hash: '#filosofia' },
-  { label: 'I trainer', hash: '#trainer' },
   { label: 'Accreditamenti', hash: '#accreditamenti' },
   { label: 'La community', hash: '#community' },
   { label: 'Press', hash: '#press' },
@@ -293,7 +292,7 @@ export const Header = () => {
         <div className="hidden lg:flex items-center gap-6">
           <Link
             to="/iscriviti"
-            className="bg-brand-navy text-white px-7 py-3 rounded-[3px] font-sans font-bold text-[11px] uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors active:scale-[0.98]"
+            className="bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
           >
             Iscriviti
           </Link>
@@ -455,7 +454,7 @@ export const Header = () => {
             <Link
               to="/iscriviti"
               onClick={() => setIsMenuOpen(false)}
-              className="bg-brand-navy text-white py-4 rounded-[3px] font-bold text-xs uppercase tracking-[0.18em] text-center"
+              className="bg-[#2A56A8] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
             >
               Iscriviti
             </Link>

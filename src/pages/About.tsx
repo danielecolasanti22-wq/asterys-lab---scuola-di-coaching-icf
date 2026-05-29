@@ -49,31 +49,6 @@ const values = [
   { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del tuo percorso.' },
 ];
 
-// NB: nomi e bio dei trainer sono segnaposto — sostituire con il corpo docente reale.
-const trainers = [
-  {
-    name: 'Giovanna Giuffredi',
-    role: 'Founder & Master Coach',
-    credential: 'MCC ICF',
-    bio: 'Guida la ricerca e il metodo della scuola da oltre vent’anni, con un focus su intelligenza emotiva e approccio sistemico.',
-    img: '/advisors/advisor-1.png',
-  },
-  {
-    name: 'Marco De Santis',
-    role: 'Senior Trainer & Mentor Coach',
-    credential: 'PCC ICF',
-    bio: 'Accompagna i partecipanti nella pratica supervisionata e nel passaggio dalla formazione alla professione.',
-    img: '/advisors/advisor-2.png',
-  },
-  {
-    name: 'Elena Marchetti',
-    role: 'Team & Systemic Coach',
-    credential: 'PCC ICF · ACTC',
-    bio: 'Porta in aula il team coaching sistemico e il lavoro con le organizzazioni secondo il modello ASTC.',
-    img: '/advisors/advisor-3.jpeg',
-  },
-];
-
 const accreditations = [
   { file: 'icf', label: 'ICF', desc: 'International Coaching Federation: l’ente di riferimento mondiale.' },
   { file: 'icf-level-1', label: 'Level 1', desc: 'Accredited Coaching Education — verso la credenziale ACC.' },
@@ -313,58 +288,6 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* I TRAINER */}
-      <section id="trainer" className="scroll-mt-28 bg-[#EEF4FC]">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
-          <div className="max-w-2xl mb-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
-              I trainer
-            </span>
-            <h2 className={`${tSection} mt-3`}>
-              Un corpo docente di coach{' '}
-              <Highlight color="bg-[#CFE0F5]">certificati ICF</Highlight>.
-            </h2>
-            <p className="mt-4 text-base text-brand-navy/70 font-medium leading-relaxed">
-              L'autorevolezza di Asterys Lab è distribuita su un team di Master Coach, mentor e trainer
-              attivi sul campo — non su un singolo nome. Ogni aula è guidata da professionisti con
-              credenziali ICF e anni di pratica reale.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {trainers.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-[1.5rem] border border-gray-100 overflow-hidden shadow-[0_18px_50px_-34px_rgba(0,21,51,0.25)]"
-              >
-                <div className="aspect-[4/5] overflow-hidden bg-gray-100">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-accent">
-                    {t.credential}
-                  </span>
-                  <h3 className="mt-1.5 text-lg font-display font-black tracking-tight text-brand-navy">
-                    {t.name}
-                  </h3>
-                  <p className="text-sm font-bold text-brand-navy/55">{t.role}</p>
-                  <p className="mt-3 text-sm text-brand-navy/65 leading-relaxed">{t.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-8 text-sm text-brand-navy/60 font-medium">
-            E un team di oltre 20 trainer e mentor coach certificati ICF in tutta Italia.
-          </p>
         </div>
       </section>
 

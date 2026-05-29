@@ -82,7 +82,7 @@ export default function EventDetail() {
               </div>
               <a
                 href="#registrati"
-                className="mt-8 inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-3.5 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors"
+                className="mt-8 inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors"
               >
                 Riserva il posto <ArrowRight size={15} />
               </a>
@@ -151,7 +151,7 @@ export default function EventDetail() {
               />
               <button
                 type="submit"
-                className="w-full bg-brand-navy text-white py-4 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-brand-accent transition-colors"
+                className="btn-primary w-full py-4 uppercase text-xs font-black tracking-widest"
               >
                 Riserva il mio posto
               </button>

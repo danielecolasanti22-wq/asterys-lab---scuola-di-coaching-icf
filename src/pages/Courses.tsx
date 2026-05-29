@@ -1,4 +1,4 @@
-import { Calendar, MapPin, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CourseImage } from '../components/CourseImage';
 import { Highlight } from '../components/Highlight';
@@ -217,9 +217,9 @@ export default function Courses() {
                 </p>
                 <Link
                   to="/aziende"
-                  className="mt-8 inline-flex items-center gap-2 bg-white text-brand-navy px-7 py-3.5 rounded-[3px] text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors"
+                  className="btn-primary bg-white text-brand-navy hover:bg-white/90 w-fit mt-8"
                 >
-                  Area Corporate &amp; HR <ArrowRight size={15} />
+                  Area Corporate &amp; HR
                 </Link>
               </div>
               <div className="bg-white/[0.04] border-t lg:border-t-0 lg:border-l border-white/10 p-8 sm:p-12 lg:p-14 flex flex-col justify-center divide-y divide-white/10">
