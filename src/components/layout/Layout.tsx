@@ -349,31 +349,31 @@ export const Header = () => {
           >
             <div className="max-w-[1140px] mx-auto px-4">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
-                <div className="grid grid-cols-3 gap-0 px-6 pt-6 pb-[69px]">
+                <div className="grid grid-cols-3 gap-0 p-6">
                   {/* Colonna 1 — categorie */}
-                  <div className="flex flex-col gap-1 px-4 border-r border-gray-100">
+                  <div className="flex flex-col justify-center gap-1 px-4 border-r border-gray-100">
                     {megaColumns.map((col, idx) => (
                       <button
                         key={col.label}
                         type="button"
                         onMouseEnter={() => setActiveMega(idx)}
                         onFocus={() => setActiveMega(idx)}
-                        className={`flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 -mx-1 text-left transition-colors ${
+                        className={`flex items-center justify-between gap-2 rounded-lg px-3 py-3.5 -mx-1 text-left transition-colors ${
                           activeMega === idx ? 'bg-gray-50' : 'hover:bg-gray-50'
                         }`}
                       >
                         <span className="flex flex-col gap-0.5">
                           <span
-                            className={`text-[10px] font-bold uppercase tracking-[0.26em] transition-colors ${
+                            className={`text-[11px] font-bold uppercase tracking-[0.26em] transition-colors ${
                               activeMega === idx ? 'text-brand-accent' : 'text-brand-navy'
                             }`}
                           >
                             {col.label}
                           </span>
-                          <span className="text-xs text-brand-navy/55 font-medium leading-snug">{col.caption}</span>
+                          <span className="text-[13px] text-brand-navy/55 font-medium leading-snug">{col.caption}</span>
                         </span>
                         <ChevronRight
-                          size={14}
+                          size={15}
                           className={`shrink-0 transition-colors ${
                             activeMega === idx ? 'text-brand-accent' : 'text-brand-navy/20'
                           }`}
@@ -383,39 +383,39 @@ export const Header = () => {
                   </div>
 
                   {/* Colonna 2 — corsi della categoria selezionata */}
-                  <div className="flex flex-col gap-1 px-4 border-r border-gray-100">
+                  <div className="flex flex-col justify-center gap-1 px-4 border-r border-gray-100">
                     {megaColumns[activeMega].items.map((item) => (
                       <Link
                         key={item.id}
                         to={`/corsi/${item.id}`}
-                        className="group/item flex flex-col gap-0.5 rounded-lg px-3 py-2.5 -mx-1 hover:bg-gray-50 transition-colors"
+                        className="group/item flex flex-col gap-0.5 rounded-lg px-3 py-3 -mx-1 hover:bg-gray-50 transition-colors"
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/item:text-brand-accent transition-colors">
+                          <span className="text-sm font-black text-brand-navy tracking-tight leading-tight group-hover/item:text-brand-accent transition-colors">
                             {item.title}
                           </span>
                           <ArrowUpRight
-                            size={14}
+                            size={15}
                             className="text-brand-navy/20 group-hover/item:text-brand-accent group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 transition-all"
                           />
                         </div>
                         <span className="text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
                           {item.kicker}
                         </span>
-                        <span className="text-[11px] text-brand-navy/55 font-medium">{item.meta}</span>
+                        <span className="text-[12px] text-brand-navy/55 font-medium">{item.meta}</span>
                       </Link>
                     ))}
                   </div>
 
                   {/* Colonna 3 — card in evidenza con immagine */}
-                  <div className="flex flex-col gap-2.5 px-4">
+                  <div className="flex flex-col gap-3.5 px-4">
                     {megaPromos.map((promo) => (
                       <Link
                         key={promo.title}
                         to={promo.to}
-                        className="group/promo flex items-center gap-3 rounded-xl border border-gray-100 p-2.5 hover:bg-gray-50 transition-colors"
+                        className="group/promo flex items-center gap-4 rounded-xl border border-gray-100 p-3 hover:bg-gray-50 transition-colors"
                       >
-                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                        <div className="w-[88px] h-[88px] rounded-lg overflow-hidden bg-gray-100 shrink-0">
                           <img
                             src={promo.img}
                             alt=""
@@ -424,15 +424,15 @@ export const Header = () => {
                           />
                         </div>
                         <div className="min-w-0">
-                          <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
+                          <span className="block text-[11px] font-black uppercase tracking-[0.14em] text-brand-accent/80">
                             {promo.kicker}
                           </span>
-                          <span className="block text-[13px] font-black text-brand-navy tracking-tight leading-tight group-hover/promo:text-brand-accent transition-colors">
+                          <span className="block mt-0.5 text-[15px] font-black text-brand-navy tracking-tight leading-tight group-hover/promo:text-brand-accent transition-colors">
                             {promo.title}
                           </span>
-                          <span className="mt-0.5 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.14em] text-brand-accent">
+                          <span className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.14em] text-brand-accent">
                             {promo.cta}
-                            <ArrowRight size={11} className="group-hover/promo:translate-x-0.5 transition-transform" />
+                            <ArrowRight size={12} className="group-hover/promo:translate-x-0.5 transition-transform" />
                           </span>
                         </div>
                       </Link>
