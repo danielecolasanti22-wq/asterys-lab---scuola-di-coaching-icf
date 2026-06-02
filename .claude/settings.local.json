@@ -75,7 +75,29 @@
       "Bash(echo \"done $\\(sips -g pixelWidth -g pixelHeight /tmp/btn-row.png)",
       "Bash(magick home-full.png -crop 1440x230+700+2280 +repage /tmp/btn2.png)",
       "Bash(magick home-full.png -crop 1440x230+700+2520 +repage /tmp/btn3.png)",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(python3 -c \"import PIL; print\\('PIL ok'\\)\")",
+      "Bash(sips -g all icf-aatc.png)",
+      "Bash(magick asterys-lab-logo.png -trim info:)",
+      "Bash(magick asterys-lab-logo.png -alpha extract -resize 1x40! -depth 8 txt:-)",
+      "Bash(identify -format \"advisor-1 %wx%h\\\\n\" ../advisors/advisor-1.png)",
+      "Bash(magick asterys-lab-logo.png -alpha extract -resize 1x20! txt:-)",
+      "Bash(magick asterys-lab-logo.png -crop 788x180+106+388 +repage /tmp/wordmark_test.png)",
+      "Bash(magick /tmp/wordmark_test.png -trim info:)",
+      "Bash(magick asterys-lab-logo.png -crop 788x150+106+408 +repage -trim +repage /tmp/wordmark_only.png)",
+      "Bash(identify -format \"%wx%h\\\\n\" /tmp/wordmark_only.png)",
+      "Bash(magick /tmp/wordmark_only.png -channel RGB -evaluate set 100% +channel asterys-lab-logo-white.png)",
+      "Bash(identify -format \"%wx%h  alpha_mean=%[fx:mean.a*255]\\\\n\" asterys-lab-logo-white.png)",
+      "Bash(magick -size 760x180 xc:'#001D4B' asterys-lab-logo-white.png -gravity center -geometry +0+0 -composite /tmp/footer_logo_preview.png)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('scripts:', json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\); print\\('tsconfig noUnused:', \\)\")",
+      "Bash(magick advisor-1.png -resize 128x128^ -gravity north -extent 128x128 '\\(' -size 128x128 xc:none -fill white -draw 'circle 64,64 64,4' '\\)' -alpha set -compose DstIn -composite /tmp/luciana_avatar.png)",
+      "Bash(magick -size 360x96 'xc:#2A56A8' '\\(' /tmp/luciana_avatar.png -resize 80x80 '\\)' -gravity west -geometry +8+0 -composite -gravity west -fill white -font Helvetica-Bold -pointsize 24 -annotate +100+0 'Contattaci\\\\nsu WhatsApp' /tmp/footer_pill_preview.png)",
+      "Bash(gh auth *)",
+      "Bash(git ls-remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Restyle hero, contatti WhatsApp e footer *)",
+      "Bash(git push *)",
+      "Bash(echo \"=== push exit: $? ===\")"
     ]
   }
 }
