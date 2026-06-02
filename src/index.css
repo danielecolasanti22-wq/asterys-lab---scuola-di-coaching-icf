@@ -7,7 +7,8 @@
 
   /* Blue palette — lightest → darkest (balanced, non-electric) */
   --color-brand-blue-50: #EEF4FC;   /* section/card washes */
-  --color-brand-blue-soft: #CFE0F5; /* hero, soft panels, chips */
+  --color-brand-blue-soft: #CFE0F5; /* soft panels, chips, badges */
+  --color-brand-hero: #AECBF1;      /* sfondo hero: blu brand vivo ma chiaro */
   --color-brand-blue: #5E8AD0;      /* medium accents, icons, borders */
   --color-brand-accent: #2A56A8;    /* CTA, buttons, links (was electric #0047FF) */
   --color-brand-navy: #001D4B;      /* text, footer, dark sections */

@@ -9,11 +9,36 @@ import {
   Calendar,
   RefreshCw,
   MessagesSquare,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { Highlight } from '../components/Highlight';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
+
+/**
+ * Immagine di sezione. Passando `src` mostra la foto; altrimenti un placeholder
+ * pulito. Per inserire l'immagine definitiva basta mettere il file in /public
+ * e passare il relativo percorso a `src`.
+ */
+function SectionImage({ src, alt, note }: { src?: string; alt: string; note?: string }) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className="mt-8 w-full aspect-[4/3] object-cover rounded-2xl shadow-soft"
+      />
+    );
+  }
+  return (
+    <div className="mt-8 w-full aspect-[4/3] rounded-2xl bg-brand-blue-soft/50 border border-dashed border-brand-navy/20 flex flex-col items-center justify-center gap-2 text-brand-navy/40">
+      <ImageIcon size={30} />
+      <span className="text-[11px] font-black uppercase tracking-[0.22em]">Immagine</span>
+      {note && <span className="text-[10px] font-medium text-brand-navy/35">{note}</span>}
+    </div>
+  );
+}
 
 const pillars = [
   {
@@ -153,7 +178,7 @@ export default function About() {
   return (
     <div className="bg-white text-brand-navy">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-brand-blue-soft/60">
+      <section className="relative overflow-hidden bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
@@ -161,7 +186,7 @@ export default function About() {
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02]">
               La nostra{' '}
-              <Highlight color="bg-[#CFE0F5]">filosofia</Highlight>{' '}
+              <Highlight>filosofia</Highlight>{' '}
               del coaching.
             </h1>
             <p className="mt-6 text-lg text-brand-navy/75 font-medium max-w-[640px] leading-relaxed">
@@ -208,15 +233,16 @@ export default function About() {
       {/* CHI SIAMO */}
       <section id="chi-siamo" className="scroll-mt-28 border-b border-gray-100">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
                 Chi siamo
               </span>
               <h2 className={`${tSection} mt-3`}>
                 La prima Coaching School{' '}
-                <Highlight color="bg-[#CFE0F5]">ICF accreditata</Highlight> in Italia.
+                <Highlight>ICF accreditata</Highlight> in Italia.
               </h2>
+              <SectionImage alt="Asterys Lab, la scuola" note="Sostituibile · es. /about/chi-siamo.jpg" />
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
               <p>
@@ -243,17 +269,18 @@ export default function About() {
       {/* FILOSOFIA */}
       <section id="filosofia" className="scroll-mt-28">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="lg:order-2">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
                 Filosofia
               </span>
               <h2 className={`${tSection} mt-3`}>
                 Il coaching come atto di{' '}
-                <Highlight color="bg-[#CFE0F5]">responsabilità</Highlight>.
+                <Highlight>responsabilità</Highlight>.
               </h2>
+              <SectionImage alt="Il coaching come relazione" note="Sostituibile · es. /about/filosofia.jpg" />
             </div>
-            <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
+            <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed lg:order-1">
               <p>
                 Per noi il coaching non è una moda né una tecnica: è una <strong>scelta di metodo</strong>
                 {' '}e di <strong>postura</strong>. Significa stare accanto alle persone — senza sostituirsi
@@ -363,7 +390,7 @@ export default function About() {
       </section>
 
       {/* LA COMMUNITY */}
-      <section id="community" className="scroll-mt-28 bg-[#CFE0F5]">
+      <section id="community" className="scroll-mt-28 bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
             <div>
@@ -372,7 +399,7 @@ export default function About() {
               </span>
               <h2 className={`${tSection} mt-3`}>
                 Una rete viva di{' '}
-                <Highlight color="bg-white">3.000+ coach</Highlight>.
+                <Highlight>3.000+ coach</Highlight>.
               </h2>
               <p className="mt-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
                 Formarsi con Asterys Lab significa entrare in una comunità che non si esaurisce con il

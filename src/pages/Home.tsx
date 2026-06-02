@@ -36,7 +36,7 @@ const tSection =
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="relative bg-[#CFE0F5] overflow-hidden pb-6 lg:pb-0">
+  <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
@@ -54,14 +54,14 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#CFE0F5] lg:bg-transparent -mt-8 lg:mt-0">
+      <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           Formazione professionale accreditata ICF
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
           Dai forma alla tua{' '}
-          <Highlight color="bg-[#2A56A8]">crescita professionale</Highlight>
+          <Highlight>crescita professionale</Highlight>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Percorsi in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master accreditati, scegli il passo giusto per evolvere.
@@ -97,7 +97,7 @@ const Hero = () => (
               <img
                 key={src}
                 src={src}
-                className="w-9 h-9 rounded-full border-2 border-[#CFE0F5] object-cover"
+                className="w-9 h-9 rounded-full border-2 border-brand-hero object-cover"
                 alt="Alumni Asterys Lab"
               />
             ))}
@@ -497,7 +497,7 @@ const MasterGrid = () => {
 
 /* 6. ADVISOR BAND */
 const AdvisorBand = () => (
-  <section className="py-12 lg:py-14 bg-[#CFE0F5]">
+  <section className="py-12 lg:py-14 bg-brand-hero">
     <div className="max-w-[1200px] mx-auto px-6 text-center">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
         <h2 className="text-2xl sm:text-3xl font-display font-black text-brand-navy tracking-tight">

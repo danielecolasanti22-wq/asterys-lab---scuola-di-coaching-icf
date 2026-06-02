@@ -129,13 +129,13 @@ export default function Courses() {
   return (
     <div className="pb-20 bg-white">
       {/* HERO */}
-      <section className="bg-[#CFE0F5]">
+      <section className="bg-brand-hero">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-12 lg:pt-16 lg:pb-16 text-center">
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
             Academy
           </span>
           <h1 className="mt-4 text-[2.3rem] sm:text-[2.9rem] lg:text-[3.3rem] font-display font-black leading-[0.98] tracking-tighter text-brand-navy mb-5">
-            Tutti i <Highlight color="bg-[#2A56A8]">percorsi</Highlight>
+            Tutti i <Highlight>percorsi</Highlight>
           </h1>
           <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl mx-auto">
             Dalla formazione di base per aspiranti coach alle specializzazioni avanzate per

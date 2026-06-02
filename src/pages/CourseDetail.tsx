@@ -484,7 +484,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#CFE0F5] overflow-hidden pb-6 lg:pb-0">
+      <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative lg:hidden -mx-4 sm:-mx-6">
             <CourseImage
@@ -496,7 +496,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
           </div>
 
-          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-[#CFE0F5] lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
+          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
             <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               {(course.heroKicker ?? course.type).toUpperCase()}
@@ -539,7 +539,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <img
                     key={src}
                     src={src}
-                    className="w-9 h-9 rounded-full border-2 border-[#CFE0F5] object-cover"
+                    className="w-9 h-9 rounded-full border-2 border-brand-hero object-cover"
                     alt="Alumni Asterys Lab"
                   />
                 ))}
@@ -2228,7 +2228,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
               Un percorso formativo{' '}
-              <Highlight color="bg-[#CFE0F5]">completo</Highlight>
+              <Highlight>completo</Highlight>
             </h2>
             <p className={`${tLead} mb-12 lg:mb-14 max-w-2xl`}>
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.

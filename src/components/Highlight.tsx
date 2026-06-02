@@ -2,42 +2,21 @@ import { ReactNode } from 'react';
 
 type HighlightProps = {
   children: ReactNode;
-  /** Background utility class for the bar, e.g. 'bg-[#2A56A8]' or 'bg-[#CFE0F5]'. */
-  color?: string;
   /**
-   * 'underline' → barra bassa stile evidenziatore (default).
-   * 'marker'    → blocco pieno dietro l'intera parola.
+   * Classe di colore testo (Tailwind) per le parole in evidenza.
+   * Default: blu brand (accent), pensato per sfondi chiari.
+   * Su sfondi scuri passare un colore chiaro, es. `text-brand-blue`.
    */
-  variant?: 'underline' | 'marker';
   className?: string;
 };
 
 /**
- * Evidenziazione testuale unificata.
+ * Evidenziazione del titolo tramite semplice cambio di colore del testo.
  *
- * La barra è sempre DIETRO al testo (`isolate` crea un nuovo stacking context,
- * la barra usa `-z-10`, il testo resta sopra) e lascia un piccolo padding
- * inferiore così non taglia i discendenti delle lettere (p, g, y…).
+ * In precedenza disegnava una barra/marker dietro alle parole (stile
+ * evidenziatore): è stata rimossa in favore di un'emfasi più pulita.
  * Modificando questo componente si aggiorna l'evidenziazione in tutto il sito.
  */
-export function Highlight({
-  children,
-  color = 'bg-[#CFE0F5]',
-  variant = 'underline',
-  className = '',
-}: HighlightProps) {
-  const bar =
-    variant === 'marker'
-      ? 'inset-x-[-0.12em] top-[0.06em] bottom-[0.16em]'
-      : 'inset-x-[-0.08em] bottom-[0.08em] h-[0.26em]';
-
-  return (
-    <span className={`relative inline-block isolate ${className}`}>
-      <span
-        aria-hidden="true"
-        className={`pointer-events-none absolute -z-10 rounded-[3px] ${bar} ${color}`}
-      />
-      <span className="relative">{children}</span>
-    </span>
-  );
+export function Highlight({ children, className = 'text-brand-accent' }: HighlightProps) {
+  return <span className={className}>{children}</span>;
 }

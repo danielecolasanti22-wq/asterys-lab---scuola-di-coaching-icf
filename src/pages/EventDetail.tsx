@@ -47,7 +47,7 @@ export default function EventDetail() {
   return (
     <div className="bg-white">
       {/* HERO */}
-      <section className="bg-[#CFE0F5]">
+      <section className="bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-10 lg:py-14">
           <Link
             to="/eventi"

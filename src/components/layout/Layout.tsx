@@ -23,6 +23,19 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 import { Highlight } from '../Highlight';
 
+/** Contatto WhatsApp (numero in formato internazionale senza "+"). */
+const WHATSAPP_NUMBER = '393498864895';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+/** Foto di Luciana (advisor) usata nei contatti WhatsApp. */
+const ADVISOR_PHOTO = '/advisors/advisor-1.png';
+
+/** Logo ufficiale WhatsApp. */
+const WhatsAppIcon = ({ size = 22, className = '' }: { size?: number; className?: string }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" aria-hidden="true">
+    <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.595 5.298l-.999 3.648 3.893-1.021zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+);
+
 type MegaCourseItem = {
   id: string;
   title: string;
@@ -653,8 +666,9 @@ const socialChannels = [
   },
 ];
 
-const certifications = [
-  { label: 'ICF', src: 'brand/icf.png' },
+const certifications: { label: string; src: string; invert?: boolean }[] = [
+  // icf.png è un logo scuro su trasparente: lo rendiamo bianco per leggerlo sul navy.
+  { label: 'ICF', src: 'brand/icf.png', invert: true },
   { label: 'ICF Level 1', src: 'brand/icf-level-1.png' },
   { label: 'ICF Level 2', src: 'brand/icf-level-2.png' },
   { label: 'ICF CCE', src: 'brand/icf-cce-new.png' },
@@ -684,10 +698,7 @@ export const Footer = () => {
             </div>
             <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
               Entra in{' '}
-              <Highlight color="bg-white" variant="marker" className="text-brand-navy">
-                Asterys Letters
-              </Highlight>
-              .
+              <Highlight className="text-brand-blue">Asterys Letters</Highlight>.
             </h3>
             <p className="mt-3 text-sm text-white/70 font-medium max-w-[440px] leading-relaxed">
               Ogni mese, approfondimenti su coaching, intelligenza emotiva e leadership.
@@ -728,19 +739,27 @@ export const Footer = () => {
               Parla con noi.
             </h3>
             <a
-              href="https://wa.me/"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-6 flex items-center gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-2xl p-4 transition-colors"
+              aria-label="Contattaci su WhatsApp"
+              className="group mt-6 inline-flex items-center gap-4 self-start bg-brand-accent hover:bg-[#2748d1] rounded-full p-2 pr-7 transition-colors active:scale-[0.98]"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
-                <MessageCircle size={18} fill="currentColor" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Chat diretta</p>
-                <p className="text-sm font-black text-white">Parla con un advisor</p>
-              </div>
-              <ArrowUpRight size={14} className="ml-auto text-white/40 group-hover:text-white transition-colors" />
+              <span className="relative shrink-0">
+                <img
+                  src={ADVISOR_PHOTO}
+                  alt="Luciana — advisor Asterys Lab"
+                  className="w-16 h-16 rounded-full object-cover object-top bg-brand-blue-soft"
+                />
+                <span className="absolute -bottom-0.5 -right-0.5 w-7 h-7 rounded-full bg-[#25D366] border-2 border-brand-accent flex items-center justify-center">
+                  <WhatsAppIcon size={15} className="text-white" />
+                </span>
+              </span>
+              <span className="text-white font-display font-black text-xl lg:text-2xl leading-[1.1] tracking-tight">
+                Contattaci
+                <br />
+                su WhatsApp
+              </span>
             </a>
             <div className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-6">
               <div>
@@ -779,15 +798,11 @@ export const Footer = () => {
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
           {/* Logo + sedi */}
           <div>
-            <div className="inline-flex items-center bg-white rounded-2xl px-4 py-3">
-              <div className="h-9 w-[168px] overflow-hidden flex items-center">
-                <img
-                  src={`${base}brand/asterys-lab-logo.png`}
-                  alt="Asterys Lab"
-                  className="h-full w-full object-contain object-left origin-left scale-[2.35]"
-                />
-              </div>
-            </div>
+            <img
+              src={`${base}brand/asterys-lab-logo-white.png`}
+              alt="Asterys Lab"
+              className="h-10 w-auto"
+            />
             <p className="mt-5 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
               Transforming people, expanding results. La 1° Coaching School ICF accreditata in Italia.
             </p>
@@ -908,18 +923,16 @@ export const Footer = () => {
               Accreditamenti & Certificazioni
             </span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-6 gap-y-8 items-center justify-items-center">
             {certifications.map((c) => (
-              <div
+              <img
                 key={c.label}
-                className="bg-white rounded-2xl p-4 h-24 flex items-center justify-center"
-              >
-                <img
-                  src={`${base}${c.src}`}
-                  alt={c.label}
-                  className="max-h-14 w-auto object-contain"
-                />
-              </div>
+                src={`${base}${c.src}`}
+                alt={c.label}
+                className={`max-h-16 w-auto max-w-full object-contain ${
+                  c.invert ? 'brightness-0 invert opacity-90' : ''
+                }`}
+              />
             ))}
           </div>
         </div>
@@ -937,6 +950,76 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
+  );
+};
+
+/** Widget WhatsApp flottante: bolla compatta che si apre in una card con la foto dell'advisor. */
+const FloatingWhatsApp = () => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      <AnimatePresence mode="wait">
+        {open ? (
+          <motion.div
+            key="card"
+            initial={{ opacity: 0, y: 14, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 14, scale: 0.96 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            className="relative w-[300px] max-w-[calc(100vw-3rem)] bg-white rounded-[1.75rem] shadow-[0_24px_70px_-12px_rgba(0,29,75,0.45)] border border-brand-navy/5 p-5"
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Chiudi"
+              className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+            >
+              <X size={16} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <img
+                src={ADVISOR_PHOTO}
+                alt="Luciana — advisor Asterys Lab"
+                className="w-11 h-11 rounded-full object-cover object-top bg-brand-blue-soft shrink-0"
+              />
+              <div className="min-w-0">
+                <p className="text-base font-display font-black text-brand-navy leading-tight tracking-tight">
+                  Vuoi parlare con noi?
+                </p>
+                <p className="text-xs text-brand-navy/55 font-medium">Rispondiamo su WhatsApp</p>
+              </div>
+            </div>
+
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center justify-center gap-2.5 w-full bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-2xl py-3.5 font-display font-black text-[15px] tracking-tight transition-colors active:scale-[0.98]"
+            >
+              <WhatsAppIcon size={20} className="text-white" />
+              Contattaci su WhatsApp
+            </a>
+          </motion.div>
+        ) : (
+          <motion.button
+            key="bubble"
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Apri chat WhatsApp"
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+            className="relative w-16 h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_14px_34px_-6px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-transform"
+          >
+            <WhatsAppIcon size={32} className="text-white" />
+            <span className="absolute top-0 right-0 w-4 h-4 bg-brand-blue rounded-full border-2 border-white animate-pulse" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
@@ -961,16 +1044,8 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
       </main>
       <Footer />
       
-      {/* Floating Button */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <button className="bg-[#25D366] text-white px-8 py-5 rounded-full shadow-3xl font-black text-xs uppercase tracking-widest flex items-center gap-4 hover:scale-110 active:scale-95 transition-all shadow-green-500/30 group">
-          <div className="relative">
-            <MessageCircle size={24} fill="currentColor" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#5E8AD0] rounded-full border-2 border-[#25D366] animate-pulse"></span>
-          </div>
-          <span>Advisor Asterys</span>
-        </button>
-      </div>
+      {/* Floating WhatsApp widget */}
+      <FloatingWhatsApp />
     </div>
   );
 };
