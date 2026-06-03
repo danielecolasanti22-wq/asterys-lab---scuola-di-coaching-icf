@@ -86,6 +86,12 @@ export interface CourseData {
     line: string;
     deadline: string;
     ctaHref: string;
+    /** Codice sconto mostrato nel banner; si applica da solo al checkout via `couponUrl`. */
+    code?: string;
+    /** URL checkout Woo che applica il coupon in automatico (es. ...?coupon-code=EARLYBIRD). */
+    couponUrl?: string;
+    /** Scadenza ISO: passata la data, codice/EB spariscono dal banner in automatico. */
+    deadlineISO?: string;
     /** Es. "30 APRILE" per la pill pricing (Boolean-style) */
     pillDeadlineLabel?: string;
     /** Es. "800€" — il layout aggiunge "di sconto" come nel reference Boolean */
@@ -495,6 +501,9 @@ export const coursesContent: Record<string, CourseData> = {
       ctaHref: "#prezzo",
       pillDeadlineLabel: "30 APRILE",
       discountAmount: "800€",
+      code: "EARLYBIRD",
+      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
+      // couponUrl: "https://<woo>/checkout/?add-to-cart=<ID>&coupon-code=EARLYBIRD" // ← attiva l'auto-apply
     },
     structure: {
       modules: [
@@ -1200,6 +1209,8 @@ export const coursesContent: Record<string, CourseData> = {
       ctaHref: "#prezzo",
       pillDeadlineLabel: "19 AGOSTO",
       discountAmount: "fino a 174€",
+      code: "EARLYBIRD",
+      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
     },
     heroBenefits: [
       "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
@@ -2020,6 +2031,8 @@ export const coursesContent: Record<string, CourseData> = {
       line: "Iscriviti entro il 31 ottobre 2026 e blocca il prezzo Early Bird a 1.575€ + IVA",
       deadline: "31 ottobre 2026",
       ctaHref: "#prezzo",
+      code: "EARLYBIRD",
+      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
     },
     fees: [
       {

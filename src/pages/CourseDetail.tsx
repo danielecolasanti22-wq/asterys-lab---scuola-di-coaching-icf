@@ -300,12 +300,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     body: 'Questo Master richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
   };
 
-  const earlyPromo = course.earlyBirdPromo ?? {
+  const earlyPromo: NonNullable<CourseData['earlyBirdPromo']> = course.earlyBirdPromo ?? {
     ribbon: 'PROMO',
     line: `Scopri condizioni dedicate al Master in ${course.subtitle} | Contattaci per i dettagli`,
     deadline: '',
     ctaHref: '#prezzo',
   };
+  // Early Bird attivo finché oggi ≤ deadline; passata la data, codice/EB spariscono dal banner.
+  const promoActive = !earlyPromo.deadlineISO || Date.now() <= Date.parse(earlyPromo.deadlineISO);
+  // Il CTA punta al checkout Woo che applica il coupon in automatico (se configurato), altrimenti al prezzo.
+  const promoCtaHref = promoActive && earlyPromo.couponUrl ? earlyPromo.couponUrl : earlyPromo.ctaHref;
 
   const activeModuleData = course.structure.modules[activeModule];
   const moduleTags =
@@ -468,18 +472,23 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
       {/* 0. ANNOUNCEMENT BAR */}
       <div className="fixed top-0 left-0 right-0 h-12 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
-        <span className="text-[#008060] shrink-0">{earlyPromo.ribbon}</span>
+        <span className="text-[#008060] shrink-0">{promoActive ? earlyPromo.ribbon : 'Iscrizioni aperte'}</span>
         <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
-          {earlyPromo.line}
+          {promoActive ? earlyPromo.line : 'Scopri date, edizioni e condizioni di iscrizione.'}
         </span>
         <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">
           {isCoachingCircle ? 'Dettagli e date della pratica' : 'Dettagli e date sul Master'}
         </span>
+        {promoActive && earlyPromo.code ? (
+          <span className="shrink-0 rounded-full bg-white/15 px-2.5 py-0.5 text-white ring-1 ring-white/25 whitespace-nowrap">
+            Codice {earlyPromo.code}
+          </span>
+        ) : null}
         <a
-          href={earlyPromo.ctaHref}
+          href={promoCtaHref}
           className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#CFE0F5] transition-colors whitespace-nowrap"
         >
-          {isCoachingCircle ? 'Prenota il tuo posto →' : 'Blocca il tuo sconto →'}
+          {isCoachingCircle ? 'Prenota il tuo posto →' : promoActive ? 'Blocca il tuo sconto →' : 'Scopri di più →'}
         </a>
       </div>
 
