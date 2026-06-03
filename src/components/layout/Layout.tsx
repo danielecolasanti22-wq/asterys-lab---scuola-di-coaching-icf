@@ -576,10 +576,12 @@ const CorporateHeader = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
       <div className="max-w-[1200px] mx-auto px-4 w-full flex items-center justify-between gap-4">
-        <Link to="/aziende" className="flex items-center gap-3 shrink-0">
-          <BrandLogo />
-          <span className="h-6 w-px bg-brand-navy/15" />
-          <span className="text-sm font-bold text-brand-navy/60 whitespace-nowrap">per aziende</span>
+        <Link to="/aziende" className="shrink-0">
+          <img
+            src="/brand/asterys-for-business.png"
+            alt="Asterys Lab for business"
+            className="h-9 lg:h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-10">
