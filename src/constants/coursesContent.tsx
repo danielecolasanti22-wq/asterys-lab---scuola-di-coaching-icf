@@ -604,36 +604,52 @@ export const coursesContent: Record<string, CourseData> = {
     sessionSchedule: [
       { days: "Calendario definito in base all'edizione scelta", time: "" }
     ],
+    // Sezione pagamento sul modello ASTC: una scheda per livello, ognuna con
+    // prezzo intero + simulazione rate 24 mesi. La scelta intero/rate avviene
+    // al checkout; qui è solo simulazione. (Early Bird: gestito a parte.)
     fees: [
       {
-        title: "Rateizzazione 24 mesi",
-        type: "installment",
-        benefit: "0% interessi",
-        heading: "Paga in rate mensili",
-        desc: "Dilaziona l'intero importo del Master in rate mensili fino a 24 mesi, senza interessi e senza garanzie. Attivazione semplice e completamente online.",
-        price: "288€",
-        priceLabel: "/mese",
-        footnote: "Simulazione su 24 mesi · Percorso Completo L1+L2: 6.900€ + IVA"
-      },
-      {
-        title: "Pagamento Unico",
+        title: "Percorso Completo",
         type: "lump",
         benefit: "Risparmi 1.000€",
-        heading: "Percorso Completo L1+L2",
-        desc: "Con il Pagamento Unico ottieni il massimo risparmio sul Percorso Completo (Livello 1 + Livello 2). Ideale per chi preferisce saldare tutto subito.",
+        heading: "Percorso Completo · L1 + L2",
+        desc: "Livello 1 e Livello 2 in un unico percorso: metodo ICF integrale, coach di riferimento e il miglior risparmio. Abilita alla credenziale ICF PCC.",
         price: "6.900€",
-        priceLabel: "+ IVA una tantum",
-        footnote: "Prezzo pieno: 7.900€ + IVA — con pagamento unico risparmi 1.000€"
+        priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "288€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        },
+        footnote: "Prezzo pieno 7.900€ — con il Percorso Completo risparmi 1.000€"
       },
       {
         title: "Solo Livello 1",
-        type: "after",
+        type: "lump",
         benefit: "Fondamenti coaching",
-        heading: "Parti dal 1° Livello",
-        desc: "Frequenta solo il Livello 1 (ICF Level 1 ready) e decidi in seguito se proseguire con il 2° Livello. Potrai sempre completare il percorso con una successiva edizione.",
+        heading: "Livello 1 · ICF Level 1 Ready",
+        desc: "Parti dal 1° livello (60 ore accademiche): fondamenti del coaching ICF, abilita alla credenziale ACC. Potrai completare il 2° livello in una successiva edizione.",
         price: "3.400€",
-        priceLabel: "+ IVA una tantum",
-        footnote: "Include 60 ore accademiche · Abilita il percorso verso la credenziale ICF ACC"
+        priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "142€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        }
+      },
+      {
+        title: "Solo Livello 2",
+        type: "lump",
+        benefit: "Prerequisito: Livello 1",
+        heading: "Livello 2 · ICF Level 2 Advanced",
+        desc: "Il 2° livello (90 ore accademiche) per chi ha già completato il Livello 1: intelligenza emotiva avanzata, sistemi complessi, mentor coaching e supervisione. Abilita alla credenziale PCC.",
+        price: "4.500€",
+        priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "188€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        }
       }
     ],
     faqs: apcmFaqs,
