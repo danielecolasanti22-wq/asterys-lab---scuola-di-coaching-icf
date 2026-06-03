@@ -97,7 +97,17 @@
       "Bash(git add *)",
       "Bash(git commit -q -m 'Restyle hero, contatti WhatsApp e footer *)",
       "Bash(git push *)",
-      "Bash(echo \"=== push exit: $? ===\")"
+      "Bash(echo \"=== push exit: $? ===\")",
+      "Bash(git reset *)",
+      "Bash(git --no-pager show --stat HEAD)",
+      "Bash(git --no-pager diff --name-only cc0b8fd HEAD)",
+      "Bash(git --no-pager diff 3d37054 fe1e379 -- ':!.claude')",
+      "Read(//Users/AL/**)",
+      "Bash(/usr/bin/find ~/Downloads ~/Desktop ~/Pictures -maxdepth 4 \\\\\\( -iname \"*Sole24*\" -o -iname \"*vertice*\" -o -iname \"*EFI in Tour*\" -o -iname \"*Etiopia LAB*\" \\\\\\))",
+      "Bash(/usr/bin/find ~/Downloads -maxdepth 3 -iname \"*.jpg\" -mtime -3)",
+      "Bash(/usr/bin/find /Users/AL /private/var/folders /tmp -iname \"*Sole24*\" -o -iname \"*Etiopia*\" -o -iname \"*EFI in Tour*\")",
+      "Bash(/usr/bin/find /private/var/folders -path \"*TemporaryItems*\" \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\))",
+      "Bash(/usr/bin/find /Users/AL -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\) -mmin -15)"
     ]
   }
 }
