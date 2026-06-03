@@ -46,6 +46,20 @@ import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
 
+/** Early Bird attivo se oggi ≤ deadline (la verità sull'addebito resta a WooCommerce). */
+function isEarlyBirdActive(eb?: { deadlineISO: string }): boolean {
+  if (!eb) return false;
+  const t = Date.parse(eb.deadlineISO);
+  return Number.isFinite(t) && Date.now() <= t;
+}
+
+function formatDeadline(iso: string): string {
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? ''
+    : d.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
 function richText(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
@@ -1833,7 +1847,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             {course.fees.map((fee, idx) => {
               if (paymentTab !== fee.title.toLowerCase()) return null;
               const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
-              const priceLabel = isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
+              const eb = isEarlyBirdActive(fee.earlyBird) ? fee.earlyBird! : null;
+              const priceLabel = eb ? 'Prezzo Early Bird' : isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
+              const financing =
+                eb && eb.monthly
+                  ? {
+                      label: 'Rateizzazione fino a 24 mesi senza interessi',
+                      amount: eb.monthly,
+                      note: 'Simulazione su 24 mesi sul prezzo Early Bird, IVA esclusa.',
+                    }
+                  : fee.financing;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
                   <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-navy mb-5 normal-case tracking-tight leading-tight">
@@ -1843,31 +1866,49 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {richText(fee.desc)}
                   </p>
 
+                  {eb ? (
+                    <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-[#008060] px-4 py-1.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.16em] text-white">
+                      Early Bird{eb.save ? ` · ${eb.save}` : ''} · fino al {formatDeadline(eb.deadlineISO)}
+                    </div>
+                  ) : null}
+
                   <p className="text-sm sm:text-base font-semibold text-brand-navy/75 mb-4 normal-case tracking-normal">
                     {priceLabel}
                   </p>
 
                   <div className="mx-auto mb-8 inline-block rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
+                    {eb ? (
+                      <p className="text-base sm:text-lg font-display font-black text-white/55 line-through leading-none mb-1">
+                        {fee.price}
+                        {fee.priceLabel ? <span className="text-sm font-black"> {fee.priceLabel}</span> : null}
+                      </p>
+                    ) : null}
                     <p className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight leading-none">
-                      {fee.price}
+                      {eb ? eb.price : fee.price}
                       {fee.priceLabel ? (
                         <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
                       ) : null}
                     </p>
                   </div>
 
-                  {fee.financing ? (
+                  {financing ? (
                     <div className="mx-auto mb-6 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-4 ring-1 ring-[#008060]/15">
                       <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[#008060] mb-1.5">
-                        {fee.financing.label}
+                        {financing.label}
                       </p>
                       <p className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
-                        {fee.financing.amount}
+                        {financing.amount}
                       </p>
                       <p className="mt-1.5 text-xs sm:text-sm font-medium leading-relaxed text-brand-navy/60">
-                        {fee.financing.note}
+                        {financing.note}
                       </p>
                     </div>
+                  ) : null}
+
+                  {eb ? (
+                    <p className="text-[#008060] text-xs sm:text-sm font-semibold mb-4">
+                      Sconto già attivo — nessun codice necessario.
+                    </p>
                   ) : null}
 
                   {fee.footnote ? (
