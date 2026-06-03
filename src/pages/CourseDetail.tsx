@@ -1879,8 +1879,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               const priceLabel = isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
               // Deep-link al checkout Woo: scelta edizione → variazione (+ codice EB se attivo).
               const wooProduct = getWooProduct(id, fee.wooKey);
-              const wooEditions = wooProduct ? upcomingEditions(wooProduct.editions) : [];
-              const selectedVariation = editionByLevel[fee.wooKey ?? ''] ?? wooEditions[0]?.variationId;
+              const upcomingWoo = wooProduct ? upcomingEditions(wooProduct.editions) : [];
+              const selectedVariation = editionByLevel[fee.wooKey ?? ''] ?? upcomingWoo[0]?.variationId;
+              // Mostra le edizioni in arrivo; se la preselezione (dalla sezione date) punta a
+              // un'edizione passata, la includo comunque così il menu la mostra selezionata.
+              const wooEditions =
+                !wooProduct || upcomingWoo.some((e) => e.variationId === selectedVariation)
+                  ? upcomingWoo
+                  : [...wooProduct.editions.filter((e) => e.variationId === selectedVariation), ...upcomingWoo];
               const checkoutHref = selectedVariation
                 ? wooAddToCartUrl(selectedVariation, promoActive && earlyPromo.code ? { coupon: earlyPromo.code } : {})
                 : undefined;
