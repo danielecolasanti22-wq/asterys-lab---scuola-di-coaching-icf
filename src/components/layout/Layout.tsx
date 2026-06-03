@@ -577,12 +577,9 @@ const CorporateHeader = () => {
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
       <div className="max-w-[1200px] mx-auto px-4 w-full flex items-center justify-between gap-4">
         <Link to="/aziende" className="flex items-center gap-3 shrink-0">
-          <div className="relative w-8 h-8 rotate-45 flex items-center justify-center">
-            <div className="absolute inset-0 bg-[#008060] rounded-sm transform scale-90"></div>
-            <div className="absolute inset-0 bg-[#001D4B] rounded-sm transform scale-50 -translate-x-1 -translate-y-1"></div>
-          </div>
-          <span className="font-display font-black text-2xl tracking-tight text-[#001D4B] leading-none">asterys</span>
-          <span className="text-sm font-bold text-[#001D4B]/70 -ml-1 mt-1">for business</span>
+          <BrandLogo />
+          <span className="h-6 w-px bg-brand-navy/15" />
+          <span className="text-sm font-bold text-brand-navy/60 whitespace-nowrap">per aziende</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-10">

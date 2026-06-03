@@ -54,3 +54,10 @@
     max-width: none;
   }
 }
+
+/* Banner loghi scorrevole (pagina Per Aziende). Il track contiene 2 metà
+   identiche: traslando del -50% l'animazione risulta continua/senza salti. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
