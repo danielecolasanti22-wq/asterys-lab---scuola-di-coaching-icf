@@ -181,15 +181,15 @@ export default function About() {
       <section className="relative overflow-hidden bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-sky">
               About · Asterys Lab
             </span>
-            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02]">
+            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02] text-white">
               La nostra{' '}
-              <Highlight>filosofia</Highlight>{' '}
+              <Highlight className="text-brand-sky">filosofia</Highlight>{' '}
               del coaching.
             </h1>
-            <p className="mt-6 text-lg text-brand-navy/75 font-medium max-w-[640px] leading-relaxed">
+            <p className="mt-6 text-lg text-white/75 font-medium max-w-[640px] leading-relaxed">
               Asterys Lab è la prima Coaching School ICF accreditata in Italia. Da venticinque anni
               accompagniamo coach, manager, HR e professionisti della relazione a stare nelle relazioni
               con rigore, intelligenza emotiva misurabile e un'umanità che si vede.
@@ -390,7 +390,7 @@ export default function About() {
       </section>
 
       {/* LA COMMUNITY */}
-      <section id="community" className="scroll-mt-28 bg-brand-hero">
+      <section id="community" className="scroll-mt-28 bg-brand-blue-soft">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
             <div>

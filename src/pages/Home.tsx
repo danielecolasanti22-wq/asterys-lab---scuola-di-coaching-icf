@@ -59,11 +59,11 @@ const Hero = () => (
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           Formazione professionale accreditata ICF
         </div>
-        <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
+        <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
           Dai forma alla tua{' '}
-          <Highlight>crescita professionale</Highlight>
+          <Highlight className="text-brand-sky">crescita professionale</Highlight>
         </h1>
-        <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
+        <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Percorsi in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master accreditati, scegli il passo giusto per evolvere.
         </p>
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
@@ -74,14 +74,14 @@ const Hero = () => (
             SCOPRI I CORSI
           </a>
         </div>
-        <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-brand-navy">
+        <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
           {[
             'Master, corsi brevi e formazione continua per professionisti',
             'Lezioni live, pratica guidata e confronto con trainer esperti',
             'Metodo Asterys Lab: concreto, sistemico e orientato alla crescita'
           ].map((b) => (
             <li key={b} className="flex items-start gap-2">
-              <span className="text-brand-accent font-black mt-0.5">→</span>
+              <span className="text-brand-sky font-black mt-0.5">→</span>
               {b}
             </li>
           ))}
@@ -102,7 +102,7 @@ const Hero = () => (
               />
             ))}
           </div>
-          <p className="text-[12px] text-brand-navy">
+          <p className="text-[12px] text-white">
             <span className="font-black">+3.000 persone</span> già formate
           </p>
         </div>
@@ -497,7 +497,7 @@ const MasterGrid = () => {
 
 /* 6. ADVISOR BAND */
 const AdvisorBand = () => (
-  <section className="py-12 lg:py-14 bg-brand-hero">
+  <section className="py-12 lg:py-14 bg-brand-blue-soft">
     <div className="max-w-[1200px] mx-auto px-6 text-center">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
         <h2 className="text-2xl sm:text-3xl font-display font-black text-brand-navy tracking-tight">

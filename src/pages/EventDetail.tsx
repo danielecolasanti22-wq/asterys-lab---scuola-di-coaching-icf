@@ -51,7 +51,7 @@ export default function EventDetail() {
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-10 lg:py-14">
           <Link
             to="/eventi"
-            className="inline-flex items-center gap-2 text-brand-navy/60 hover:text-brand-accent transition-colors text-[11px] font-black uppercase tracking-[0.18em]"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[11px] font-black uppercase tracking-[0.18em]"
           >
             <ArrowLeft size={15} /> Tutti gli eventi
           </Link>
@@ -62,27 +62,27 @@ export default function EventDetail() {
                 <span className="bg-white text-brand-navy px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em]">
                   {event.category}
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-brand-navy text-white px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em]">
+                <span className="inline-flex items-center gap-1.5 bg-white/15 text-white px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em]">
                   <Ticket size={12} /> {event.price}
                 </span>
               </div>
-              <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[3rem] font-display font-black tracking-tighter leading-[1.04] text-brand-navy">
+              <h1 className="mt-5 text-3xl sm:text-4xl lg:text-[3rem] font-display font-black tracking-tighter leading-[1.04] text-white">
                 {event.title}
               </h1>
-              <p className="mt-5 text-base lg:text-lg text-brand-navy/70 font-medium leading-relaxed max-w-xl">
+              <p className="mt-5 text-base lg:text-lg text-white/70 font-medium leading-relaxed max-w-xl">
                 {event.desc}
               </p>
               <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3">
                 {meta.map((m) => (
-                  <div key={m.label} className="flex items-center gap-2 text-sm font-bold text-brand-navy">
-                    <m.icon size={16} className="text-brand-accent shrink-0" />
+                  <div key={m.label} className="flex items-center gap-2 text-sm font-bold text-white">
+                    <m.icon size={16} className="text-brand-sky shrink-0" />
                     {m.label}
                   </div>
                 ))}
               </div>
               <a
                 href="#registrati"
-                className="mt-8 inline-flex items-center gap-2 bg-brand-navy text-white px-7 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] hover:bg-brand-accent transition-colors"
+                className="mt-8 inline-flex items-center gap-2 bg-[#2A56A8] text-white px-7 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.18em] hover:bg-[#2748d1] transition-colors"
               >
                 Riserva il posto <ArrowRight size={15} />
               </a>

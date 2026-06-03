@@ -502,11 +502,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               {(course.heroKicker ?? course.type).toUpperCase()}
             </div>
 
-            <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-brand-navy">
+            <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
               {course.subtitle}
             </h1>
 
-            <p className="text-[12px] text-center lg:text-left lg:text-base text-brand-navy/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
+            <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
               {course.tagline}
             </p>
 
@@ -519,10 +519,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               </a>
             </div>
 
-            <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-brand-navy">
+            <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
               {course.heroBenefits.slice(0, 3).map((benefit) => (
                 <li key={benefit} className="flex items-start gap-2">
-                  <span className="text-brand-accent font-black mt-0.5">→</span>
+                  <span className="text-brand-sky font-black mt-0.5">→</span>
                   {benefit}
                 </li>
               ))}
@@ -544,7 +544,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   />
                 ))}
               </div>
-              <p className="text-[12px] text-brand-navy">
+              <p className="text-[12px] text-white">
                 <span className="font-black">+3.000 persone</span> già formate
               </p>
             </div>
