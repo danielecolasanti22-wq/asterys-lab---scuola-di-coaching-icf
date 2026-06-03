@@ -107,7 +107,9 @@
       "Bash(/usr/bin/find ~/Downloads -maxdepth 3 -iname \"*.jpg\" -mtime -3)",
       "Bash(/usr/bin/find /Users/AL /private/var/folders /tmp -iname \"*Sole24*\" -o -iname \"*Etiopia*\" -o -iname \"*EFI in Tour*\")",
       "Bash(/usr/bin/find /private/var/folders -path \"*TemporaryItems*\" \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\))",
-      "Bash(/usr/bin/find /Users/AL -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\) -mmin -15)"
+      "Bash(/usr/bin/find /Users/AL -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" \\\\\\) -mmin -15)",
+      "Bash(/usr/bin/find /Users/AL/Cloud-ia /Users/AL/XCLOUDIA /Users/AL/Downloads -iname \"*logo*Per*Aziend*\" -o -iname \"*for business*\")",
+      "Bash(/usr/bin/find /Users/AL/.claude/image-cache -type f -mmin -10)"
     ]
   }
 }
