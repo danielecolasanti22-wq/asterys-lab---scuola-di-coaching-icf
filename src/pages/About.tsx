@@ -5,7 +5,6 @@ import {
   HeartHandshake,
   Users,
   Sparkles,
-  Newspaper,
   Calendar,
   RefreshCw,
   MessagesSquare,
@@ -151,30 +150,6 @@ function PressLogo({ name, file, tall }: { name: string; file: string; tall?: bo
     />
   );
 }
-
-const pressItems = [
-  {
-    outlet: 'Il Sole 24 Ore',
-    date: 'Marzo 2026',
-    title: 'Coaching, la formazione che cambia la leadership italiana',
-    excerpt:
-      'Intervista a Giovanna Giuffredi sul ruolo della formazione continua e dell\'intelligenza emotiva nelle aziende che crescono.',
-  },
-  {
-    outlet: 'HBR Italia',
-    date: 'Gennaio 2026',
-    title: 'Dal manager al coach: perché sempre più leader scelgono il coaching',
-    excerpt:
-      'Il nuovo ruolo del leader come facilitatore di talento: strumenti, metodo e limiti del coaching dentro le organizzazioni.',
-  },
-  {
-    outlet: 'Forbes',
-    date: 'Ottobre 2025',
-    title: 'Asterys Lab, la scuola italiana che forma coach nel mondo',
-    excerpt:
-      'Un focus sulla prima Coaching School ICF accreditata in Italia e sulla sua rete di alumni in tutta Europa.',
-  },
-];
 
 export default function About() {
   const { hash } = useLocation();
@@ -466,34 +441,11 @@ export default function About() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-10 sm:gap-x-14 gap-y-6 py-8 border-y border-gray-100 mb-10">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-10 sm:gap-x-14 gap-y-6 py-8 border-y border-gray-100">
             {pressLogos.map((l) => (
               <div key={l.file} className="flex items-center">
                 <PressLogo name={l.name} file={l.file} tall={l.tall} />
               </div>
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {pressItems.map((item) => (
-              <article
-                key={item.title}
-                className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-brand-accent/40 hover:shadow-[0_20px_60px_-30px_rgba(29,59,185,0.3)] transition-all"
-              >
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent">
-                  <Newspaper size={12} />
-                  {item.outlet}
-                </div>
-                <p className="mt-1 text-[10px] font-bold text-brand-navy/50 uppercase tracking-[0.18em]">
-                  {item.date}
-                </p>
-                <h3 className="mt-4 text-lg font-display font-black tracking-tight text-brand-navy leading-tight">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm text-brand-navy/70 font-medium leading-relaxed">
-                  {item.excerpt}
-                </p>
-              </article>
             ))}
           </div>
         </div>
