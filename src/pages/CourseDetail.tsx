@@ -482,7 +482,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       : null);
 
   /** Tipografia compatta (reference: PDF Asterys) — migliora leggibilità sotto la piega */
-  const tSection = 'text-3xl sm:text-4xl lg:text-[2.3rem] font-display font-black uppercase tracking-tighter text-brand-navy';
+  const tSection = 'text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter text-brand-navy';
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
   const tModuleSide = 'text-[11px] sm:text-xs font-black uppercase tracking-tight';
   const tModuleTitle = 'text-xl sm:text-2xl lg:text-[1.75rem] font-display font-black uppercase tracking-tight text-brand-navy';
@@ -629,7 +629,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 2b. WHY CHOOSE */}
       {course.whyChoose ? (
         id === 'apcm' ? (
-          <section className="py-12 lg:py-16 bg-white">
+          <section className="py-16 lg:py-24 bg-white">
             <div className="max-w-[1080px] mx-auto px-4">
               <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-end mb-10 lg:mb-14">
                 <div className="max-w-xl">
@@ -730,7 +730,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           </section>
         ) : (
-          <section className="py-12 lg:py-16 bg-[#EEF4FC]">
+          <section className="py-16 lg:py-24 bg-[#EEF4FC]">
             <div className="max-w-[941px] mx-auto px-4">
               <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
                 <div className="max-w-xl">
@@ -793,7 +793,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 3. PROGRAMMA DEL MASTER TABS */}
-      <section id="programma" className="py-12 lg:py-16 bg-white">
+      <section id="programma" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
               {isCoachingCircle
@@ -862,7 +862,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 4. SCEGLI TU QUANDO INIZIARE SECTION */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 lg:p-14 text-white text-center relative overflow-hidden">
                <h2 className={`${tSection} text-white mb-4`}>
@@ -919,7 +919,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 4b. CALENDARIO EDIZIONI */}
       {editions.length > 0 && activeEdition ? (
-        <section id="calendario-edizioni" className="py-12 lg:py-16 bg-[#F9FAFB]/70">
+        <section id="calendario-edizioni" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
           <div className="max-w-[941px] mx-auto px-4">
             {editionsSection.eyebrow ? (
               <p className="text-lg font-display font-black text-brand-accent mb-3">
@@ -1263,7 +1263,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       {course.scholarship.eyebrow}
                     </p>
                   ) : null}
-                  <h2 className="text-3xl sm:text-4xl lg:text-[2.2rem] font-display font-black tracking-tight leading-[1.05] mb-5">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
                     {course.scholarship.title}
                   </h2>
                   <p className="text-sm sm:text-base text-[#EEF4FC] leading-relaxed mb-6 max-w-xl">
@@ -1309,7 +1309,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
-      <section id="metodo" className="py-12 lg:py-16 bg-white">
+      <section id="metodo" className="py-16 lg:py-24 bg-white">
         <div className="max-w-[941px] mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start mb-14 lg:mb-16">
             <div>
@@ -1647,7 +1647,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 5c. LEVELS COMPARISON */}
       {course.levelsComparison ? (
-        <section className="py-12 lg:py-16 bg-white">
+        <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-[1100px] mx-auto px-4">
             <div className="text-center mb-10 lg:mb-12">
               {course.levelsComparison.eyebrow ? (
@@ -1757,7 +1757,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 5b. DOCENTI DEL CORSO */}
       {course.teachers?.length ? (
-        <section id="docenti" className="relative py-12 lg:py-16 bg-brand-navy overflow-hidden">
+        <section id="docenti" className="relative py-16 lg:py-24 bg-brand-navy overflow-hidden">
           <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-accent/10 blur-3xl" />
           <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
           <div className="relative max-w-[941px] mx-auto px-4">
@@ -1766,7 +1766,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 <p className="text-brand-accent text-[11px] font-display font-black uppercase tracking-[0.18em] mb-3">
                   Docenti del corso
                 </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-[2.3rem] font-display font-black text-white tracking-tight leading-[1.05]">
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-white tracking-tight leading-[1.05]">
                   Impara dai migliori del settore!
                 </h2>
               </div>
@@ -1993,7 +1993,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 6b. GUARANTEE 30 HOURS */}
       {course.guarantee30Hours ? (
-        <section className="py-12 lg:py-16 bg-white">
+        <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
             <div className="rounded-[1.75rem] bg-[#EEF4FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
               <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
@@ -2053,7 +2053,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 7. TROVIAMO INSIEME SECTION */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#EEF4FC] rounded-[1.75rem] p-8 sm:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
                 <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
@@ -2077,7 +2077,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 8. CAREER CENTER SECTION */}
       {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL ? (
-      <section id="career" className="py-12 lg:py-16 bg-white">
+      <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">
                <h2 className={`${tSection} mb-4`}>
@@ -2107,7 +2107,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {course.pegasusProgram ? (
-        <section id="pegasus" className="py-12 lg:py-16 bg-[#001D4B] text-white">
+        <section id="pegasus" className="py-14 lg:py-20 bg-[#001D4B] text-white">
           <div className="max-w-[941px] mx-auto px-4">
             <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
@@ -2125,7 +2125,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {course.pegasusProgram.eyebrow}
                   </p>
                 ) : null}
-                <h2 className="text-3xl sm:text-4xl lg:text-[2.3rem] font-display font-black uppercase tracking-tighter leading-[1.05] mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter leading-[1.05] mb-4">
                   {course.pegasusProgram.title}
                 </h2>
                 <p className="text-sm sm:text-base text-white/68 font-medium leading-relaxed max-w-2xl">
@@ -2163,7 +2163,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
       {!isCoachingCircle ? (
-      <section id="competenze-sbocchi" className="py-12 lg:py-16 bg-[#F9FAFB]/70">
+      <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-8 lg:mb-10">
               <div className="max-w-2xl">
@@ -2316,7 +2316,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       {!isCoachingCircle && !isWorkout && !isCL ? (
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-16 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
               Un percorso formativo{' '}
@@ -2434,7 +2434,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="bg-[#2A56A8] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
                <div className="relative z-10">
@@ -2465,7 +2465,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 11. FAQs SECTION */}
-      <section className="py-12 lg:py-16 bg-[#F9FAFB]/80">
+      <section className="py-16 lg:py-20 bg-[#F9FAFB]/80">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-10 lg:mb-12`}>FAQs</h2>
             <div className="space-y-4">
