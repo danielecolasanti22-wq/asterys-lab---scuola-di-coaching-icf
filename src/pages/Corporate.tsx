@@ -18,19 +18,20 @@ import {
   Users,
 } from 'lucide-react';
 
-// On-theme business / coaching photos (verified Unsplash assets)
+// Foto reali della pagina aziende (in /public/aziende)
 const IMG = {
-  heroMain:
-    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=720&h=520&fit=crop&q=80&auto=format',
-  heroSide:
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=440&h=320&fit=crop&q=80&auto=format',
-  avviamento:
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=760&h=560&fit=crop&q=80&auto=format',
-  coach:
-    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=760&h=560&fit=crop&q=80&auto=format',
-  operiamo:
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=760&h=560&fit=crop&q=80&auto=format',
+  heroMain: '/aziende/4.jpg',
+  heroSide: '/aziende/1.jpg',
+  avviamento: '/aziende/3.jpg',
+  coach: '/aziende/2.jpg',
+  operiamo: '/aziende/5.jpg',
 };
+
+// Loghi dei clienti per il banner scorrevole (altri verranno aggiunti)
+const clients = [
+  { name: 'Buildo', src: '/clients/buildo.svg' },
+  { name: 'Kuehne + Nagel', src: '/clients/kuehne-nagel.png' },
+];
 
 const ambiti = [
   {
@@ -88,7 +89,7 @@ export default function Corporate() {
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#5E8AD0] mb-5">
-              Asterys Lab · Business Coaching
+              Business Coaching
             </p>
             <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.6rem] leading-[0.95] tracking-tight max-w-[640px]">
               Quando il tuo lavoro è la tua vita
@@ -120,6 +121,27 @@ export default function Corporate() {
               className="absolute bottom-10 right-0 w-[160px] sm:w-[190px] rounded-xl shadow-2xl object-cover border-4 border-[#001D4B]"
               referrerPolicy="no-referrer"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENTI — LOGHI SCORREVOLI */}
+      <section className="bg-white py-10 lg:py-12 border-b border-[#EEF4FC]">
+        <p className="text-center text-[11px] font-black uppercase tracking-[0.28em] text-brand-navy/45 mb-8">
+          Aziende con cui abbiamo lavorato
+        </p>
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
+          <div className="flex w-max items-center animate-[marquee_28s_linear_infinite] group-hover:[animation-play-state:paused]">
+            {Array.from({ length: 12 })
+              .flatMap(() => clients)
+              .map((c, i) => (
+                <img
+                  key={i}
+                  src={c.src}
+                  alt={c.name}
+                  className="h-8 lg:h-9 w-auto object-contain mr-16 lg:mr-24 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition"
+                />
+              ))}
           </div>
         </div>
       </section>
