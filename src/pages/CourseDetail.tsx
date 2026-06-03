@@ -1806,13 +1806,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
-      <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
+      <section id="prezzo" className="relative py-12 lg:py-16 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-4 normal-case max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-3 normal-case max-w-3xl mx-auto">
             La migliore formazione professionale, accessibile
           </h2>
-          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-10 sm:mb-12">
+          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-6 sm:mb-7">
             {isMasterLike
               ? `Scegli il metodo di pagamento per il tuo Master in ${course.subtitle}`
               : `Scegli il metodo di pagamento per ${course.title}`}
@@ -1841,7 +1841,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           </div>
 
-          <div className="mt-5 sm:mt-6 rounded-[1.5rem] sm:rounded-[1.75rem] bg-white px-5 py-10 sm:px-10 sm:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
+          <div className="mt-4 sm:mt-5 rounded-[1.5rem] sm:rounded-[1.75rem] bg-white px-5 py-8 sm:px-10 sm:py-10 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
             {course.fees.map((fee, idx) => {
               if (paymentTab !== fee.title.toLowerCase()) return null;
               const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
@@ -1855,46 +1855,46 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
-                  <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-navy mb-5 normal-case tracking-tight leading-tight">
+                  <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy mb-2.5 normal-case tracking-tight leading-tight">
                     {fee.heading}
                   </h3>
-                  <p className="text-sm sm:text-base text-brand-navy/80 font-medium leading-relaxed mb-10">
+                  <p className="text-sm text-brand-navy/80 font-medium leading-relaxed mb-5 max-w-lg mx-auto">
                     {richText(fee.desc)}
                   </p>
 
-                  <p className="text-sm sm:text-base font-semibold text-brand-navy/75 mb-4 normal-case tracking-normal">
+                  <p className="text-xs sm:text-sm font-semibold text-brand-navy/70 mb-2 normal-case tracking-normal">
                     {priceLabel}
                   </p>
 
-                  <div className="mx-auto mb-8 inline-block rounded-2xl bg-brand-accent px-8 py-4 sm:px-10 sm:py-5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
-                    <p className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight leading-none">
+                  <div className="mx-auto mb-5 inline-block rounded-2xl bg-brand-accent px-7 py-3 sm:px-8 sm:py-3.5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
+                    <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight leading-none">
                       {fee.price}
                       {fee.priceLabel ? (
-                        <span className="text-xl sm:text-2xl font-black">{fee.priceLabel}</span>
+                        <span className="text-lg sm:text-xl font-black">{fee.priceLabel}</span>
                       ) : null}
                     </p>
                   </div>
 
                   {fee.financing ? (
-                    <div className="mx-auto mb-6 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-4 ring-1 ring-[#008060]/15">
-                      <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[#008060] mb-1.5">
+                    <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-3 ring-1 ring-[#008060]/15">
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#008060] mb-1">
                         {fee.financing.label}
                       </p>
-                      <p className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy">
+                      <p className="text-xl sm:text-2xl font-display font-black tracking-tight text-brand-navy">
                         {fee.financing.amount}
                       </p>
-                      <p className="mt-1.5 text-xs sm:text-sm font-medium leading-relaxed text-brand-navy/60">
+                      <p className="mt-1 text-xs font-medium leading-relaxed text-brand-navy/60">
                         {fee.financing.note}
                       </p>
                     </div>
                   ) : null}
 
                   {fee.footnote ? (
-                    <p className="text-brand-navy/55 text-xs sm:text-sm font-medium leading-relaxed mb-10">
+                    <p className="text-brand-navy/55 text-[11px] sm:text-xs font-medium leading-relaxed mb-5">
                       {fee.footnote}
                     </p>
                   ) : (
-                    <div className="mb-10" />
+                    <div className="mb-5" />
                   )}
 
                   {wooProduct && wooEditions.length ? (
