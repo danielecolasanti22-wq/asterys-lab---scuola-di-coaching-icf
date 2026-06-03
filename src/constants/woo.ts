@@ -88,3 +88,30 @@ export function upcomingEditions(editions: WooEdition[]): WooEdition[] {
   const future = sorted.filter((e) => e.startISO >= today);
   return future.length ? future : sorted;
 }
+
+const IT_MONTHS: Record<string, number> = {
+  gennaio: 1, febbraio: 2, marzo: 3, aprile: 4, maggio: 5, giugno: 6,
+  luglio: 7, agosto: 8, settembre: 9, ottobre: 10, novembre: 11, dicembre: 12,
+};
+
+/** Data italiana → ISO. Es. "12 maggio 2026" o "19, 20, 21 marzo 2026" → "2026-05-12" / "2026-03-19". */
+export function parseItDateToISO(s: string): string | null {
+  const m = s.toLowerCase().match(/(\d{1,2})(?:\s*,\s*\d{1,2})*\s+([a-zàèéìòù]+)\s+(\d{4})/);
+  if (!m) return null;
+  const mon = IT_MONTHS[m[2]];
+  if (!mon) return null;
+  return `${m[3]}-${String(mon).padStart(2, '0')}-${String(Number(m[1])).padStart(2, '0')}`;
+}
+
+/** Variazione della città (citySlug roma/milano) che inizia in quella data ISO; undefined se nessun match. */
+export function findWooVariationByStart(
+  product: WooProductMap,
+  citySlug: string,
+  startISO: string | null,
+): number | undefined {
+  if (!startISO) return undefined;
+  const ed = product.editions.find(
+    (e) => e.city.toLowerCase() === citySlug.toLowerCase() && e.startISO === startISO,
+  );
+  return ed?.variationId;
+}

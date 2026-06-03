@@ -42,10 +42,27 @@ import {
   CourseEdition,
   CourseEditionEventType,
 } from '../constants/coursesContent';
-import { getWooProduct, wooAddToCartUrl, upcomingEditions } from '../constants/woo';
+import {
+  getWooProduct,
+  wooAddToCartUrl,
+  upcomingEditions,
+  parseItDateToISO,
+  findWooVariationByStart,
+} from '../constants/woo';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
+
+/** Data d'inizio (ISO) di un'edizione vetrina: prima Live Class / Corso / Live Lab. */
+function editionStartISO(ed: CourseEdition | undefined): string | null {
+  if (!ed) return null;
+  const starts = ed.events
+    .filter((e) => e.type === 'live-class' || e.type === 'corso' || e.type === 'live-lab')
+    .map((e) => parseItDateToISO(e.date))
+    .filter((x): x is string => Boolean(x))
+    .sort();
+  return starts[0] ?? null;
+}
 
 function richText(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -1201,6 +1218,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
                       href="#prezzo"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        // Preseleziona livello (TAB) ed edizione (variazione) nella sezione prezzi, poi scrolla.
+                        const wk =
+                          effectiveLevelSlug === APCM_COMPLETE_LEVEL_SLUG ? 'completo' : effectiveLevelSlug;
+                        const fee = course.fees.find((f) => f.wooKey === wk);
+                        if (fee) setPaymentTab(fee.title.toLowerCase());
+                        const prod = getWooProduct(id, wk);
+                        const varId = prod
+                          ? findWooVariationByStart(prod, effectiveCitySlug, editionStartISO(activeEdition))
+                          : undefined;
+                        if (varId && wk) setEditionByLevel((s) => ({ ...s, [wk]: varId }));
+                        document.getElementById('prezzo')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
                       className="rounded-full bg-brand-navy px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-white shadow-lg hover:bg-brand-accent transition-colors text-center"
                     >
                       {activeEdition.ctaLabel ?? 'Iscriviti a questa edizione'}
