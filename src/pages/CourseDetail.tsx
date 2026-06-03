@@ -824,7 +824,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                </div>
                
                {/* Right Content */}
-               <div className="lg:w-[62%] p-6 sm:p-8 lg:p-10 bg-white relative overflow-hidden">
+               <div className="lg:w-[62%] p-5 sm:p-6 lg:p-8 bg-white relative overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeModule}
@@ -864,7 +864,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 4. SCEGLI TU QUANDO INIZIARE SECTION */}
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#001D4B] rounded-[1.75rem] p-8 sm:p-10 lg:p-14 text-white text-center relative overflow-hidden">
+            <div className="bg-[#001D4B] rounded-[1.75rem] p-6 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
                <h2 className={`${tSection} text-white mb-4`}>
                  {isCoachingCircle
                    ? 'Scegli tu quando iniziare'
@@ -1837,7 +1837,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
-      <section id="prezzo" className="relative py-12 lg:py-16 overflow-hidden">
+      <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-3 normal-case max-w-3xl mx-auto">
@@ -1995,7 +1995,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {course.guarantee30Hours ? (
         <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-8 sm:p-10 lg:p-12 ring-1 ring-black/5">
+            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-6 sm:p-7 lg:p-9 ring-1 ring-black/5">
               <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
                 <div>
                   {course.guarantee30Hours.eyebrow ? (
@@ -2055,7 +2055,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#EEF4FC] rounded-[1.75rem] p-8 sm:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
+            <div className="bg-[#EEF4FC] rounded-[1.75rem] p-6 sm:p-7 lg:p-9 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
                 <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
                    <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-[6px] border-white shadow-lg">
                       <CourseImage
@@ -2345,7 +2345,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                {/* Row 2 — two cards side by side */}
                <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
+                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.75rem] lg:rounded-[2rem] p-6 sm:p-7 lg:p-8 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
                      <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
                        {usesApcmCompleteSection ? (
                          <>
@@ -2381,7 +2381,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-10 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                  <div className={`lg:col-span-2 bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-6 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
                      <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
