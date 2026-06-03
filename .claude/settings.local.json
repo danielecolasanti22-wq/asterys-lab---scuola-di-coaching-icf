@@ -111,7 +111,8 @@
       "Bash(/usr/bin/find /Users/AL/Cloud-ia /Users/AL/XCLOUDIA /Users/AL/Downloads -iname \"*logo*Per*Aziend*\" -o -iname \"*for business*\")",
       "Bash(/usr/bin/find /Users/AL/.claude/image-cache -type f -mmin -10)",
       "Bash(sed -n '800,835p' src/constants/coursesContent.tsx)",
-      "Bash(awk ' *)"
+      "Bash(awk ' *)",
+      "Bash(cd *)"
     ]
   }
 }
