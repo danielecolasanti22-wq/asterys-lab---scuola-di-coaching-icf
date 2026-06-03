@@ -24,17 +24,6 @@ export interface CourseFee {
     note: string;
   };
   type: 'installment' | 'lump' | 'after' | 'zero-rate';
-  /**
-   * Early Bird "già applicato" (come l'offerta WooCommerce): prezzo scontato +
-   * scadenza ISO. Mentre è attivo la card mostra il prezzo pieno barrato e l'EB;
-   * dopo `deadlineISO` torna da solo al prezzo pieno. Fonte di verità: WooCommerce.
-   */
-  earlyBird?: {
-    price: string;
-    save?: string;
-    monthly?: string;
-    deadlineISO: string;
-  };
 }
 
 /** Fascia oraria / riga “calendar + clock” (layout Boolean) */
@@ -615,10 +604,9 @@ export const coursesContent: Record<string, CourseData> = {
     sessionSchedule: [
       { days: "Calendario definito in base all'edizione scelta", time: "" }
     ],
-    // Sezione pagamento sul modello ASTC: una scheda per livello (prezzo intero
-    // + simulazione rate 24 mesi). Early Bird "già applicato" via `earlyBird`:
-    // mentre è attivo mostra il prezzo scontato e si nasconde da solo alla scadenza.
-    // Valori EB e deadline sono PLACEHOLDER — da allineare a WooCommerce per edizione.
+    // Sezione pagamento sul modello ASTC: una scheda per livello, ognuna con
+    // prezzo intero + simulazione rate 24 mesi. La scelta intero/rate avviene
+    // al checkout; qui è solo simulazione. (Early Bird: gestito a parte.)
     fees: [
       {
         title: "Percorso Completo",
@@ -632,12 +620,6 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "288€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        earlyBird: {
-          price: "6.348€",
-          save: "risparmi 552€",
-          monthly: "265€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00" // PLACEHOLDER — deadline EB reale per edizione
         },
         footnote: "Prezzo pieno 7.900€ — con il Percorso Completo risparmi 1.000€"
       },
@@ -653,12 +635,6 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "142€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        earlyBird: {
-          price: "3.128€",
-          save: "risparmi 272€",
-          monthly: "130€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00"
         }
       },
       {
@@ -673,12 +649,6 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "188€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        earlyBird: {
-          price: "4.140€",
-          save: "risparmi 360€",
-          monthly: "173€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00"
         }
       }
     ],
@@ -1475,12 +1445,7 @@ export const coursesContent: Record<string, CourseData> = {
           amount: "121€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
         },
-        earlyBird: {
-          price: "2.726€",
-          save: "risparmi 174€",
-          monthly: "114€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00" // PLACEHOLDER — deadline EB reale per edizione
-        }
+        footnote: "Prezzo Early Bird € 2.726"
       },
       {
         title: "ASTC 1° livello",
@@ -1495,12 +1460,7 @@ export const coursesContent: Record<string, CourseData> = {
           amount: "50€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
         },
-        earlyBird: {
-          price: "1.128€",
-          save: "risparmi 72€",
-          monthly: "47€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00"
-        }
+        footnote: "Prezzo Early Bird € 1.128"
       },
       {
         title: "ASTC 2° livello",
@@ -1515,12 +1475,7 @@ export const coursesContent: Record<string, CourseData> = {
           amount: "88€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
         },
-        earlyBird: {
-          price: "1.974€",
-          save: "risparmi 126€",
-          monthly: "82€/mese",
-          deadlineISO: "2026-07-03T23:59:59+02:00"
-        }
+        footnote: "Prezzo Early Bird € 1.974"
       }
     ],
     faqs: commonFaqs
