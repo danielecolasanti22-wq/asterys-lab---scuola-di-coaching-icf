@@ -112,7 +112,8 @@
       "Bash(/usr/bin/find /Users/AL/.claude/image-cache -type f -mmin -10)",
       "Bash(sed -n '800,835p' src/constants/coursesContent.tsx)",
       "Bash(awk ' *)",
-      "Bash(cd *)"
+      "Bash(cd *)",
+      "Bash(awk 'NR>=860 && NR<=1000 && /city:|citySlug:|level:|levelSlug:|editionLabel:|editionSlug:|date:.*\\(marzo|maggio|settembre|ottobre|aprile|gennaio\\)/' src/constants/coursesContent.tsx)"
     ]
   }
 }
