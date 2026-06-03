@@ -70,6 +70,28 @@ export const APCM_WOO: Record<'l1' | 'l2' | 'completo', WooProductMap> = {
   },
 };
 
+/**
+ * Altri corsi → prodotto Woo (ID verificati via Store API).
+ * `single: true` = prodotto semplice → link diretto `?add-to-cart=<productId>`.
+ * I variabili hanno bisogno della mappatura variazioni (come APCM) prima di collegarli.
+ */
+export const COURSE_WOO: Record<
+  string,
+  { productId: number; sku?: string; single?: boolean; note?: string }
+> = {
+  'voice-dialogue': { productId: 77327, sku: 'VDS-24-1', single: true },
+  'coaching-circle': { productId: 56604, sku: 'CCircle-2', single: true },
+  'continuous-learning': { productId: 55762, sku: 'CL', single: true },
+  // Variabili — mappatura variazioni da rifinire:
+  'systemic-team-coaching': {
+    productId: 56029,
+    sku: 'ASTC',
+    note: 'matrice Ed.1°/Ed.2°(Rm/Mi)/Esame: 1°+2° Rm #79434 / Mi #79436, solo 1° #79433, solo 2° Rm #79379 / Mi #79381',
+  },
+  eiw: { productId: 55749, sku: 'EIW20', note: 'per Round: #79602 mag, #79603 set, #79604 nov 2026' },
+  'public-speaking': { productId: 78354, note: 'variabile; variazioni non esposte dalla Store API' },
+};
+
 /** Prodotto Woo per (corso, livello). Per ora solo APCM è mappato. */
 export function getWooProduct(
   courseId: string | undefined,
