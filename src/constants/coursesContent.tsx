@@ -24,6 +24,8 @@ export interface CourseFee {
     note: string;
   };
   type: 'installment' | 'lump' | 'after' | 'zero-rate';
+  /** Chiave livello per il deep-link al checkout Woo (es. 'l1' | 'l2' | 'completo'). Vedi src/constants/woo.ts */
+  wooKey?: string;
 }
 
 /** Fascia oraria / riga “calendar + clock” (layout Boolean) */
@@ -620,6 +622,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Percorso Completo",
         type: "lump",
+        wooKey: "completo",
         benefit: "Risparmi 1.000€",
         heading: "Percorso Completo · L1 + L2",
         desc: "Livello 1 e Livello 2 in un unico percorso: metodo ICF integrale, coach di riferimento e il miglior risparmio. Abilita alla credenziale ICF PCC.",
@@ -635,6 +638,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Solo Livello 1",
         type: "lump",
+        wooKey: "l1",
         benefit: "Fondamenti coaching",
         heading: "Livello 1 · ICF Level 1 Ready",
         desc: "Parti dal 1° livello (60 ore accademiche): fondamenti del coaching ICF, abilita alla credenziale ACC. Potrai completare il 2° livello in una successiva edizione.",
@@ -649,6 +653,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Solo Livello 2",
         type: "lump",
+        wooKey: "l2",
         benefit: "Prerequisito: Livello 1",
         heading: "Livello 2 · ICF Level 2 Advanced",
         desc: "Il 2° livello (90 ore accademiche) per chi ha già completato il Livello 1: intelligenza emotiva avanzata, sistemi complessi, mentor coaching e supervisione. Abilita alla credenziale PCC.",

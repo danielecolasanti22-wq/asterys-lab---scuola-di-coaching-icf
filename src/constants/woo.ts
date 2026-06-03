@@ -28,39 +28,63 @@ export function wooAddToCartUrl(
   return `${WOO.checkout}?${params.toString()}`;
 }
 
-export type WooEdition = { city: 'Roma' | 'Milano'; label: string; variationId: number };
+export type WooEdition = {
+  city: 'Roma' | 'Milano';
+  label: string;
+  startISO: string;
+  variationId: number;
+};
 export type WooProductMap = { productId: number; sku: string; editions: WooEdition[] };
 
-/** APCM: livello → prodotto Woo + variazioni per edizione (verificati via Store API). */
+/** APCM: livello → prodotto Woo + variazioni per edizione (ID verificati via Store API). */
 export const APCM_WOO: Record<'l1' | 'l2' | 'completo', WooProductMap> = {
   l1: {
     productId: 79769,
     sku: 'APCM1-1-1',
     editions: [
-      { city: 'Roma', label: 'Ed.2 — 12 maggio 2026', variationId: 79851 },
-      { city: 'Roma', label: 'Ed.3 — 27 ottobre 2026', variationId: 79852 },
-      { city: 'Milano', label: 'Ed.2 — 12 maggio 2026', variationId: 79790 },
-      { city: 'Milano', label: 'Ed.3 — 27 ottobre 2026', variationId: 79791 },
+      { city: 'Roma', label: 'Ed.2 — 12 maggio 2026', startISO: '2026-05-12', variationId: 79851 },
+      { city: 'Roma', label: 'Ed.3 — 27 ottobre 2026', startISO: '2026-10-27', variationId: 79852 },
+      { city: 'Milano', label: 'Ed.2 — 12 maggio 2026', startISO: '2026-05-12', variationId: 79790 },
+      { city: 'Milano', label: 'Ed.3 — 27 ottobre 2026', startISO: '2026-10-27', variationId: 79791 },
     ],
   },
   l2: {
     productId: 79792,
     sku: 'APCM2-1-1',
     editions: [
-      { city: 'Milano', label: '21 aprile 2026', variationId: 79815 },
-      { city: 'Roma', label: '17 settembre 2026', variationId: 79853 },
-      { city: 'Roma', label: '10 marzo 2027', variationId: 79854 },
-      { city: 'Milano', label: '10 marzo 2027', variationId: 79816 },
+      { city: 'Milano', label: '21 aprile 2026', startISO: '2026-04-21', variationId: 79815 },
+      { city: 'Roma', label: '17 settembre 2026', startISO: '2026-09-17', variationId: 79853 },
+      { city: 'Roma', label: '10 marzo 2027', startISO: '2027-03-10', variationId: 79854 },
+      { city: 'Milano', label: '10 marzo 2027', startISO: '2027-03-10', variationId: 79816 },
     ],
   },
   completo: {
     productId: 79817,
     sku: 'APCM2-3',
     editions: [
-      { city: 'Roma', label: 'Ed.2 — 12 maggio 2026', variationId: 79856 },
-      { city: 'Roma', label: 'Ed.3 — 27 ottobre 2026', variationId: 79857 },
-      { city: 'Milano', label: 'Ed.2 — 12 maggio 2026', variationId: 79848 },
-      { city: 'Milano', label: 'Ed.3 — 27 ottobre 2026', variationId: 79849 },
+      { city: 'Roma', label: 'Ed.2 — 12 maggio 2026', startISO: '2026-05-12', variationId: 79856 },
+      { city: 'Roma', label: 'Ed.3 — 27 ottobre 2026', startISO: '2026-10-27', variationId: 79857 },
+      { city: 'Milano', label: 'Ed.2 — 12 maggio 2026', startISO: '2026-05-12', variationId: 79848 },
+      { city: 'Milano', label: 'Ed.3 — 27 ottobre 2026', startISO: '2026-10-27', variationId: 79849 },
     ],
   },
 };
+
+/** Prodotto Woo per (corso, livello). Per ora solo APCM è mappato. */
+export function getWooProduct(
+  courseId: string | undefined,
+  wooKey: string | undefined,
+): WooProductMap | null {
+  if (courseId === 'apcm' && wooKey && wooKey in APCM_WOO) {
+    return APCM_WOO[wooKey as keyof typeof APCM_WOO];
+  }
+  return null;
+}
+
+/** Edizioni future (data ≥ oggi) ordinate per data; se nessuna è futura, le restituisce tutte ordinate. */
+export function upcomingEditions(editions: WooEdition[]): WooEdition[] {
+  const today = new Date().toISOString().slice(0, 10);
+  const sorted = [...editions].sort((a, b) => a.startISO.localeCompare(b.startISO));
+  const future = sorted.filter((e) => e.startISO >= today);
+  return future.length ? future : sorted;
+}

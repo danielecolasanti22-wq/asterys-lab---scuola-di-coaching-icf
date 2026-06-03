@@ -42,6 +42,7 @@ import {
   CourseEdition,
   CourseEditionEventType,
 } from '../constants/coursesContent';
+import { getWooProduct, wooAddToCartUrl, upcomingEditions } from '../constants/woo';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
@@ -251,6 +252,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const [activeModule, setActiveModule] = useState(0);
   const course: CourseData | undefined = courseData ?? (id ? coursesContent[id] : undefined);
   const [paymentTab, setPaymentTab] = useState('');
+  // Edizione scelta per livello (wooKey → variationId) per il deep-link al checkout.
+  const [editionByLevel, setEditionByLevel] = useState<Record<string, number>>({});
   const [activeCitySlug, setActiveCitySlug] = useState<string>('');
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
@@ -1843,6 +1846,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               if (paymentTab !== fee.title.toLowerCase()) return null;
               const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
               const priceLabel = isInstallmentLike ? 'a partire da' : 'Prezzo del corso';
+              // Deep-link al checkout Woo: scelta edizione → variazione (+ codice EB se attivo).
+              const wooProduct = getWooProduct(id, fee.wooKey);
+              const wooEditions = wooProduct ? upcomingEditions(wooProduct.editions) : [];
+              const selectedVariation = editionByLevel[fee.wooKey ?? ''] ?? wooEditions[0]?.variationId;
+              const checkoutHref = selectedVariation
+                ? wooAddToCartUrl(selectedVariation, promoActive && earlyPromo.code ? { coupon: earlyPromo.code } : {})
+                : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
                   <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-navy mb-5 normal-case tracking-tight leading-tight">
@@ -1887,13 +1897,49 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     <div className="mb-10" />
                   )}
 
+                  {wooProduct && wooEditions.length ? (
+                    <div className="mx-auto mb-6 max-w-xs text-left">
+                      <label
+                        htmlFor={`edition-${fee.wooKey}`}
+                        className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
+                      >
+                        Scegli l'edizione
+                      </label>
+                      <select
+                        id={`edition-${fee.wooKey}`}
+                        value={selectedVariation}
+                        onChange={(e) =>
+                          setEditionByLevel((s) => ({ ...s, [fee.wooKey ?? '']: Number(e.target.value) }))
+                        }
+                        className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
+                      >
+                        {wooEditions.map((ed) => (
+                          <option key={ed.variationId} value={ed.variationId}>
+                            {ed.city} · {ed.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  ) : null}
+
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-                    <button
-                      type="button"
-                      className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
-                    >
-                      {fee.ctaLabel ?? 'Iscriviti ora'}
-                    </button>
+                    {checkoutHref ? (
+                      <a
+                        href={checkoutHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                      >
+                        {fee.ctaLabel ?? 'Iscriviti ora'}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                      >
+                        {fee.ctaLabel ?? 'Iscriviti ora'}
+                      </button>
+                    )}
                     <button
                       type="button"
                       className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
