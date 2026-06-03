@@ -21,9 +21,26 @@ const tSection =
  * pulito. Per inserire l'immagine definitiva basta mettere il file in /public
  * e passare il relativo percorso a `src`.
  */
-function SectionImage({ src, alt, note }: { src?: string; alt: string; note?: string }) {
+function SectionImage({
+  src,
+  alt,
+  note,
+  contain,
+}: {
+  src?: string;
+  alt: string;
+  note?: string;
+  /** true → mostra l'immagine intera (es. ritaglio stampa), senza ritaglio 4:3. */
+  contain?: boolean;
+}) {
   if (src) {
-    return (
+    return contain ? (
+      <img
+        src={src}
+        alt={alt}
+        className="mt-8 w-full h-auto rounded-2xl shadow-soft border border-gray-100"
+      />
+    ) : (
       <img
         src={src}
         alt={alt}
@@ -242,7 +259,11 @@ export default function About() {
                 La prima Coaching School{' '}
                 <Highlight>ICF accreditata</Highlight> in Italia.
               </h2>
-              <SectionImage alt="Asterys Lab, la scuola" note="Sostituibile · es. /about/chi-siamo.jpg" />
+              <SectionImage
+                src="/about/chi-siamo.jpg"
+                alt="Il Sole 24 Ore: «Un'italiana al vertice del coaching», su Giovanna D'Alessio"
+                contain
+              />
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
               <p>
@@ -278,7 +299,10 @@ export default function About() {
                 Il coaching come atto di{' '}
                 <Highlight>responsabilità</Highlight>.
               </h2>
-              <SectionImage alt="Il coaching come relazione" note="Sostituibile · es. /about/filosofia.jpg" />
+              <SectionImage
+                src="/about/filosofia.jpg"
+                alt="Trainer Asterys Lab durante un intervento dal vivo"
+              />
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed lg:order-1">
               <p>
