@@ -2135,11 +2135,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="bg-[#EEF4FC] rounded-[1.75rem] p-6 sm:p-7 lg:p-9 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
                 <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
                    <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-[6px] border-white shadow-lg">
-                      <CourseImage
-                        src={media.advisor}
-                        fallbackSrc={defaultCourseMedia(id ?? 'corso').advisor}
-                        className="w-full h-full object-cover"
-                        alt="Advisor"
+                      <img
+                        src="/advisors/advisor-3.jpeg"
+                        className="w-full h-full object-cover object-top"
+                        alt="Advisor Asterys Lab"
                       />
                    </div>
                    <div>
