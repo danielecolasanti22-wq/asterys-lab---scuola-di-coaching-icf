@@ -122,7 +122,10 @@
       "Bash(awk 'NR>=1500 && NR<=1560 && /fees:|title:|type:|wooKey|price:|Round/' src/constants/coursesContent.tsx)",
       "Bash(awk 'NR>=1500 && NR<=1600 && /fees:/{print NR\": \"$0}' src/constants/coursesContent.tsx)",
       "Bash(awk -F: '$1>1500 && $1<1700')",
-      "Bash(awk 'NR>=1560 && NR<=1700 && /fees:|Round EIW|wooKey|title:.*Round|price:.*100/{print NR\": \"$0}' src/constants/coursesContent.tsx)"
+      "Bash(awk 'NR>=1560 && NR<=1700 && /fees:|Round EIW|wooKey|title:.*Round|price:.*100/{print NR\": \"$0}' src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=1740 && NR<=2034 && /fees:/{print NR}' src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=2089 && NR<=2260 && /fees:/{print NR\": fees\"}' src/constants/coursesContent.tsx)",
+      "Bash(awk -F: '$1>2089 && $1<2280')"
     ]
   }
 }

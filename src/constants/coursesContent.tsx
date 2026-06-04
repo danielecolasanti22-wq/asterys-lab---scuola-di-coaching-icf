@@ -26,6 +26,10 @@ export interface CourseFee {
   type: 'installment' | 'lump' | 'after' | 'zero-rate';
   /** Chiave livello per il deep-link al checkout Woo (es. 'l1' | 'l2' | 'completo'). Vedi src/constants/woo.ts */
   wooKey?: string;
+  /** Quantità da aggiungere al carrello per questa opzione (corsi con sconto quantità, es. Continuous). Default 1. */
+  wooQuantity?: number;
+  /** Mostra un selettore di quantità libero (sconto volume): la quantità scelta finisce nel link al checkout. */
+  wooQuantitySelector?: boolean;
 }
 
 /** Fascia oraria / riga “calendar + clock” (layout Boolean) */
@@ -498,7 +502,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "SCONTO EARLY BIRD",
-      line: "Early Bird: 10% di sconto sul Master APCM, già applicato al checkout | Iscriviti entro il 27/08/2026",
+      line: "Early Bird: fino a 690€ di sconto sul Master APCM, già applicato al checkout | Iscriviti entro il 27/08/2026",
       deadline: "27/08/2026",
       ctaHref: "#prezzo",
       pillDeadlineLabel: "10% EARLY BIRD",
@@ -1209,7 +1213,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "EARLY BIRD",
-      line: "Early Bird ASTC 2026/27: −6% già applicato al checkout · 1° livello entro il 19/08/2026, 2° livello entro il 21/11/2026.",
+      line: "Early Bird ASTC 2026/27: fino a 174€ di sconto già applicato al checkout · 1° livello entro il 19/08/2026, 2° livello entro il 21/11/2026.",
       deadline: "21/11/2026",
       ctaHref: "#prezzo",
       pillDeadlineLabel: "EARLY BIRD −6%",
@@ -2034,7 +2038,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     earlyBirdPromo: {
       ribbon: "EARLY BIRD",
-      line: "Early Bird: 10% di sconto su Voice Dialogue, già applicato al checkout | Iscriviti entro il 31/10/2026",
+      line: "Early Bird: 175€ di sconto su Voice Dialogue, già applicato al checkout | Iscriviti entro il 31/10/2026",
       deadline: "31/10/2026",
       ctaHref: "#prezzo",
       // Sconto programmato sul prodotto Woo (no coupon). Disclaimer per corso in woo.ts → EARLY_BIRD.
@@ -2245,30 +2249,13 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "1–2 Live Class",
+        title: "Live Class",
         type: "lump",
-        benefit: "Ingresso flessibile",
-        heading: "Pacchetto base",
-        desc: "Ideale per chi vuole iniziare o partecipare a pochi incontri.",
-        price: "16€",
-        priceLabel: "+ IVA / Live Class"
-      },
-      {
-        title: "3–7 Live Class",
-        type: "lump",
-        benefit: "Prezzo ridotto",
-        heading: "Pacchetto intermedio",
-        desc: "Più incontri, maggiore continuità e costo unitario ridotto.",
-        price: "12€",
-        priceLabel: "+ IVA / Live Class"
-      },
-      {
-        title: "Da 8 Live Class",
-        type: "lump",
-        benefit: "Miglior valore",
-        heading: "Pacchetto continuo",
-        desc: "Per chi vuole presidiare l'intero anno formativo con apprendimento costante.",
-        price: "9€",
+        wooQuantitySelector: true,
+        benefit: "Sconto sul volume",
+        heading: "Scegli quante Live Class",
+        desc: "Acquisti singole Live Class o un pacchetto: **più ne prendi, meno costa ognuna**. 16€ (1–2) · 12€ (3–7) · 9€ (da 8), + IVA a Live Class. La fascia giusta si applica da sola nel carrello in base alla quantità.",
+        price: "da 9€",
         priceLabel: "+ IVA / Live Class"
       }
     ],

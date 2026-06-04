@@ -164,9 +164,10 @@ export type WooEarlyBird = { discountLabel?: string; deadlineISO: string; deadli
  * - l2            → ed. Roma (partenza settembre) — EB entro 17/07/2026
  */
 export const APCM_EARLY_BIRD: Record<'l1' | 'l2' | 'completo', WooEarlyBird> = {
-  l1: { discountLabel: '10%', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
-  completo: { discountLabel: '10%', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
-  l2: { discountLabel: '10%', deadlineISO: '2026-07-17T23:59:59+02:00', deadlineLabel: '17/07/2026' },
+  // discountLabel = cifra risparmiata (10% del prezzo): L1 340 · L2 450 · Completo 690.
+  l1: { discountLabel: '340€', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
+  completo: { discountLabel: '690€', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
+  l2: { discountLabel: '450€', deadlineISO: '2026-07-17T23:59:59+02:00', deadlineLabel: '17/07/2026' },
 };
 
 /**
@@ -178,12 +179,12 @@ const EARLY_BIRD: Record<string, WooEarlyBird> = {
   'apcm:l1': APCM_EARLY_BIRD.l1,
   'apcm:l2': APCM_EARLY_BIRD.l2,
   'apcm:completo': APCM_EARLY_BIRD.completo,
-  // Voice Dialogue: prodotto semplice, EB a livello di corso (−10% fino al 31/10/2026).
-  'voice-dialogue': { discountLabel: '10%', deadlineISO: '2026-10-31T23:59:59+01:00', deadlineLabel: '31/10/2026' },
-  // ASTC: −6% (da footnote prezzi). 1° e completo → 19/08/2026; 2° livello → 21/11/2026.
-  'systemic-team-coaching:completo': { discountLabel: '6%', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
-  'systemic-team-coaching:l1': { discountLabel: '6%', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
-  'systemic-team-coaching:l2': { discountLabel: '6%', deadlineISO: '2026-11-21T23:59:59+01:00', deadlineLabel: '21/11/2026' },
+  // Voice Dialogue: prodotto semplice, EB a livello di corso (10% di 1.750 = 175€, fino al 31/10/2026).
+  'voice-dialogue': { discountLabel: '175€', deadlineISO: '2026-10-31T23:59:59+01:00', deadlineLabel: '31/10/2026' },
+  // ASTC: 6% (da footnote prezzi) → Completo 174 · 1° 72 · 2° 126. 1°/Completo 19/08; 2° 21/11/2026.
+  'systemic-team-coaching:completo': { discountLabel: '174€', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
+  'systemic-team-coaching:l1': { discountLabel: '72€', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
+  'systemic-team-coaching:l2': { discountLabel: '126€', deadlineISO: '2026-11-21T23:59:59+01:00', deadlineLabel: '21/11/2026' },
 };
 
 export function getEarlyBird(

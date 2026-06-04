@@ -273,6 +273,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const [paymentTab, setPaymentTab] = useState('');
   // Edizione scelta per livello (wooKey → variationId) per il deep-link al checkout.
   const [editionByLevel, setEditionByLevel] = useState<Record<string, number>>({});
+  // Quantità scelta per le opzioni con sconto-volume (es. Continuous Learning).
+  const [qtyByFee, setQtyByFee] = useState<Record<string, number>>({});
   const [activeCitySlug, setActiveCitySlug] = useState<string>('');
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
@@ -1897,10 +1899,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               // Variabile (APCM…): variazione scelta dal menu. Semplice (Voice Dialogue, Continuous):
               // ID prodotto diretto. Draft/non collegabili (Coaching Circle, Public Speaking): nessun link.
               const simpleProductId = wooProduct ? null : getWooSimpleProductId(id);
+              // Corsi con sconto quantità (es. Continuous): selettore libero, oppure quantità fissa di fascia.
+              const qty = fee.wooQuantitySelector
+                ? Math.max(1, qtyByFee[fee.title] ?? 1)
+                : fee.wooQuantity ?? 1;
               const checkoutHref = selectedVariation
-                ? wooAddToCartUrl(selectedVariation)
+                ? wooAddToCartUrl(selectedVariation, { quantity: qty })
                 : simpleProductId
-                  ? wooAddToCartUrl(simpleProductId)
+                  ? wooAddToCartUrl(simpleProductId, { quantity: qty })
                   : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
@@ -1976,6 +1982,30 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                           </option>
                         ))}
                       </select>
+                    </div>
+                  ) : null}
+
+                  {fee.wooQuantitySelector ? (
+                    <div className="mx-auto mb-6 max-w-xs text-left">
+                      <label
+                        htmlFor={`qty-${idx}`}
+                        className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
+                      >
+                        Quante Live Class
+                      </label>
+                      <input
+                        id={`qty-${idx}`}
+                        type="number"
+                        min={1}
+                        value={qtyByFee[fee.title] ?? 1}
+                        onChange={(e) =>
+                          setQtyByFee((s) => ({ ...s, [fee.title]: Math.max(1, Number(e.target.value) || 1) }))
+                        }
+                        className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
+                      />
+                      <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-brand-navy/55">
+                        Il prezzo per Live Class cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.
+                      </p>
                     </div>
                   ) : null}
 
