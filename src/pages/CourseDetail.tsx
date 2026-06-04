@@ -50,6 +50,7 @@ import {
   upcomingEditions,
   parseItDateToISO,
   findWooVariationByStart,
+  ASTC_EXAM_PRICE_LABEL,
 } from '../constants/woo';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
@@ -275,6 +276,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const [editionByLevel, setEditionByLevel] = useState<Record<string, number>>({});
   // Quantità scelta per le opzioni con sconto-volume (es. Continuous Learning).
   const [qtyByFee, setQtyByFee] = useState<Record<string, number>>({});
+  // Esame ASTC Expert aggiunto (per fee): switcha alla variazione "con esame".
+  const [examByFee, setExamByFee] = useState<Record<string, boolean>>({});
   const [activeCitySlug, setActiveCitySlug] = useState<string>('');
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
@@ -1903,8 +1906,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               const qty = fee.wooQuantitySelector
                 ? Math.max(1, qtyByFee[fee.title] ?? 1)
                 : fee.wooQuantity ?? 1;
-              const checkoutHref = selectedVariation
-                ? wooAddToCartUrl(selectedVariation, { quantity: qty })
+              // Esame ASTC: se l'edizione scelta ha una variazione "con esame" e la checkbox è attiva,
+              // il link punta a quella (stesso corso + esame, +450€).
+              const selectedEd = wooEditions.find((e) => e.variationId === selectedVariation);
+              const examAvailable = !!selectedEd?.examVariationId;
+              const examOn = examAvailable && !!examByFee[fee.title];
+              const cartVariation = examOn ? selectedEd!.examVariationId! : selectedVariation;
+              const checkoutHref = cartVariation
+                ? wooAddToCartUrl(cartVariation, { quantity: qty })
                 : simpleProductId
                   ? wooAddToCartUrl(simpleProductId, { quantity: qty })
                   : undefined;
@@ -1983,6 +1992,24 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         ))}
                       </select>
                     </div>
+                  ) : null}
+
+                  {examAvailable ? (
+                    <label className="mx-auto mb-6 flex max-w-xs cursor-pointer items-start gap-2.5 rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-left">
+                      <input
+                        type="checkbox"
+                        checked={!!examByFee[fee.title]}
+                        onChange={(e) => setExamByFee((s) => ({ ...s, [fee.title]: e.target.checked }))}
+                        className="mt-0.5 h-4 w-4 accent-brand-accent"
+                      />
+                      <span className="text-xs font-semibold leading-snug text-brand-navy">
+                        Aggiungi esame ASTC Expert{' '}
+                        <span className="font-black text-[#008060]">+{ASTC_EXAM_PRICE_LABEL}</span>
+                        <span className="mt-0.5 block text-[11px] font-medium text-brand-navy/55">
+                          Certificazione finale · richiede il percorso 1° + 2° livello
+                        </span>
+                      </span>
+                    </label>
                   ) : null}
 
                   {fee.wooQuantitySelector ? (

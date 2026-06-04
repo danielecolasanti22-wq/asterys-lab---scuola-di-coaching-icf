@@ -34,6 +34,7 @@ export type WooEdition = {
   label: string;
   startISO: string;
   variationId: number;
+  examVariationId?: number; // variazione gemella "con esame ASTC Expert" (stessa ed./città, +450€)
 };
 export type WooProductMap = { productId: number; sku: string; editions: WooEdition[] };
 
@@ -114,8 +115,8 @@ export const ASTC_WOO: Record<'completo' | 'l1' | 'l2', WooProductMap> = {
     productId: 56029,
     sku: 'ASTC',
     editions: [
-      { city: 'Roma', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79434 },
-      { city: 'Milano', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79436 },
+      { city: 'Roma', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79434, examVariationId: 79435 },
+      { city: 'Milano', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79436, examVariationId: 79437 },
     ],
   },
   l1: {
@@ -127,11 +128,14 @@ export const ASTC_WOO: Record<'completo' | 'l1' | 'l2', WooProductMap> = {
     productId: 56029,
     sku: 'ASTC',
     editions: [
-      { city: 'Roma', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79379 },
-      { city: 'Milano', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79381 },
+      { city: 'Roma', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79379, examVariationId: 79378 },
+      { city: 'Milano', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79381, examVariationId: 79380 },
     ],
   },
 };
+
+/** Prezzo dell'esame ASTC Expert (add-on: passa alla variazione "con esame"). */
+export const ASTC_EXAM_PRICE_LABEL = '450€';
 
 /**
  * EIW (Emotional Intelligence Workout): prodotto variabile (55749) per Round, sconto quantità.
