@@ -30,7 +30,7 @@ export function wooAddToCartUrl(
 }
 
 export type WooEdition = {
-  city: 'Roma' | 'Milano';
+  city?: 'Roma' | 'Milano'; // assente per opzioni senza città (es. ASTC 1° livello online, round EIW)
   label: string;
   startISO: string;
   variationId: number;
@@ -78,10 +78,10 @@ export const APCM_WOO: Record<'l1' | 'l2' | 'completo', WooProductMap> = {
  */
 export const COURSE_WOO: Record<
   string,
-  { productId: number; sku?: string; single?: boolean; note?: string }
+  { productId: number; sku?: string; single?: boolean; draft?: boolean; note?: string }
 > = {
   'voice-dialogue': { productId: 77327, sku: 'VDS-24-1', single: true },
-  'coaching-circle': { productId: 56604, sku: 'CCircle-2', single: true },
+  'coaching-circle': { productId: 56604, sku: 'CCircle-2', single: true, draft: true }, // in modifica → non collegare
   'continuous-learning': { productId: 55762, sku: 'CL', single: true },
   // Variabili — mappatura variazioni da rifinire:
   'systemic-team-coaching': {
@@ -90,10 +90,66 @@ export const COURSE_WOO: Record<
     note: 'matrice Ed.1°/Ed.2°(Rm/Mi)/Esame: 1°+2° Rm #79434 / Mi #79436, solo 1° #79433, solo 2° Rm #79379 / Mi #79381',
   },
   eiw: { productId: 55749, sku: 'EIW20', note: 'per Round: #79602 mag, #79603 set, #79604 nov 2026' },
-  'public-speaking': { productId: 78354, note: 'variabile; variazioni non esposte dalla Store API' },
+  'public-speaking': { productId: 78354, draft: true, note: 'variabile; nessuna edizione attiva → non collegare' },
 };
 
-export type WooEarlyBird = { discountLabel: string; deadlineISO: string; deadlineLabel: string };
+/** ID prodotto Woo per i corsi a prodotto SEMPLICE → link diretto `?add-to-cart=<id>`.
+ *  Esclude i `draft` (in lavorazione) e i variabili (che usano la mappatura variazioni). */
+export function getWooSimpleProductId(courseId: string | undefined): number | null {
+  if (!courseId) return null;
+  const c = COURSE_WOO[courseId];
+  return c && c.single && !c.draft ? c.productId : null;
+}
+
+/**
+ * ASTC (Team Coaching): prodotto variabile unico (56029) con attributi 1° ed. × 2° ed. × exam.
+ * Qui mappo solo le variazioni "pulite" (senza exam) dell'edizione in corso (1° Ott 2026 / 2° Gen 2027):
+ *  - completo (1°+2°): per città del 2° livello (Roma #79434 / Milano #79436)
+ *  - l1 (solo 1°, online): #79433 (senza città)
+ *  - l2 (solo 2°, in aula): Roma #79379 / Milano #79381
+ * NB: exam e sconto quantità si gestiscono nel carrello (il link aggiunge la variazione base, qtà 1).
+ */
+export const ASTC_WOO: Record<'completo' | 'l1' | 'l2', WooProductMap> = {
+  completo: {
+    productId: 56029,
+    sku: 'ASTC',
+    editions: [
+      { city: 'Roma', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79434 },
+      { city: 'Milano', label: 'Ott 2026 – Feb 2027', startISO: '2026-10-01', variationId: 79436 },
+    ],
+  },
+  l1: {
+    productId: 56029,
+    sku: 'ASTC',
+    editions: [{ label: 'Ottobre 2026 · online', startISO: '2026-10-01', variationId: 79433 }],
+  },
+  l2: {
+    productId: 56029,
+    sku: 'ASTC',
+    editions: [
+      { city: 'Roma', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79379 },
+      { city: 'Milano', label: 'Gennaio 2027', startISO: '2027-01-01', variationId: 79381 },
+    ],
+  },
+};
+
+/**
+ * EIW (Emotional Intelligence Workout): prodotto variabile (55749) per Round, sconto quantità.
+ * Tab unico; il menù sceglie il round. Date a livello di mese (da confermare il giorno esatto).
+ */
+export const EIW_WOO: Record<'round', WooProductMap> = {
+  round: {
+    productId: 55749,
+    sku: 'EIW20',
+    editions: [
+      { label: 'Maggio–Giugno 2026', startISO: '2026-05-01', variationId: 79602 },
+      { label: 'Settembre–Ottobre 2026', startISO: '2026-09-01', variationId: 79603 },
+      { label: 'Novembre–Dicembre 2026', startISO: '2026-11-01', variationId: 79604 },
+    ],
+  },
+};
+
+export type WooEarlyBird = { discountLabel?: string; deadlineISO: string; deadlineLabel: string };
 
 /**
  * Early Bird APCM per livello — modello "prezzo in offerta sulla variazione" (NON coupon):
@@ -113,26 +169,47 @@ export const APCM_EARLY_BIRD: Record<'l1' | 'l2' | 'completo', WooEarlyBird> = {
   l2: { discountLabel: '10%', deadlineISO: '2026-07-17T23:59:59+02:00', deadlineLabel: '17/07/2026' },
 };
 
-/** Early Bird Woo per (corso, livello). Per ora solo APCM. null = nessun EB per quel livello. */
-export function getApcmEarlyBird(
+/**
+ * Early Bird per corso. Chiave `courseId:wooKey` per il per-livello (es. APCM), oppure `courseId`
+ * per il corso intero (prodotti senza livelli). null = nessun EB per quell'opzione.
+ * NB: l'EB NON si applica a Continuous Learning, Coaching Circle ed EIW.
+ */
+const EARLY_BIRD: Record<string, WooEarlyBird> = {
+  'apcm:l1': APCM_EARLY_BIRD.l1,
+  'apcm:l2': APCM_EARLY_BIRD.l2,
+  'apcm:completo': APCM_EARLY_BIRD.completo,
+  // Voice Dialogue: prodotto semplice, EB a livello di corso (−10% fino al 31/10/2026).
+  'voice-dialogue': { discountLabel: '10%', deadlineISO: '2026-10-31T23:59:59+01:00', deadlineLabel: '31/10/2026' },
+  // ASTC: −6% (da footnote prezzi). 1° e completo → 19/08/2026; 2° livello → 21/11/2026.
+  'systemic-team-coaching:completo': { discountLabel: '6%', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
+  'systemic-team-coaching:l1': { discountLabel: '6%', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
+  'systemic-team-coaching:l2': { discountLabel: '6%', deadlineISO: '2026-11-21T23:59:59+01:00', deadlineLabel: '21/11/2026' },
+};
+
+export function getEarlyBird(
   courseId: string | undefined,
   wooKey: string | undefined,
 ): WooEarlyBird | null {
-  if (courseId === 'apcm' && wooKey && wooKey in APCM_EARLY_BIRD) {
-    return APCM_EARLY_BIRD[wooKey as keyof typeof APCM_EARLY_BIRD];
-  }
-  return null;
+  if (!courseId) return null;
+  if (wooKey && EARLY_BIRD[`${courseId}:${wooKey}`]) return EARLY_BIRD[`${courseId}:${wooKey}`];
+  return EARLY_BIRD[courseId] ?? null;
 }
 
-/** Prodotto Woo per (corso, livello). Per ora solo APCM è mappato. */
+/** Registro dei prodotti variabili mappati per corso → (wooKey → prodotto/variazioni). */
+const WOO_PRODUCTS: Record<string, Record<string, WooProductMap>> = {
+  apcm: APCM_WOO,
+  'systemic-team-coaching': ASTC_WOO,
+  eiw: EIW_WOO,
+};
+
+/** Prodotto Woo per (corso, wooKey). Solo i corsi a prodotto VARIABILE mappati qui. */
 export function getWooProduct(
   courseId: string | undefined,
   wooKey: string | undefined,
 ): WooProductMap | null {
-  if (courseId === 'apcm' && wooKey && wooKey in APCM_WOO) {
-    return APCM_WOO[wooKey as keyof typeof APCM_WOO];
-  }
-  return null;
+  if (!courseId || !wooKey) return null;
+  const byKey = WOO_PRODUCTS[courseId];
+  return byKey && wooKey in byKey ? byKey[wooKey] : null;
 }
 
 /** Edizioni future (data ≥ oggi) ordinate per data; se nessuna è futura, le restituisce tutte ordinate. */
@@ -165,7 +242,7 @@ export function findWooVariationByStart(
 ): number | undefined {
   if (!startISO) return undefined;
   const ed = product.editions.find(
-    (e) => e.city.toLowerCase() === citySlug.toLowerCase() && e.startISO === startISO,
+    (e) => e.city?.toLowerCase() === citySlug.toLowerCase() && e.startISO === startISO,
   );
   return ed?.variationId;
 }

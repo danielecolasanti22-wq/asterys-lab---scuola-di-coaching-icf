@@ -116,7 +116,13 @@
       "Bash(awk 'NR>=860 && NR<=1000 && /city:|citySlug:|level:|levelSlug:|editionLabel:|editionSlug:|date:.*\\(marzo|maggio|settembre|ottobre|aprile|gennaio\\)/' src/constants/coursesContent.tsx)",
       "Bash(git revert *)",
       "Bash(gh pr *)",
-      "Bash(awk \"/^  'voice-dialogue': \\\\{/,/^  '[a-z-]*': \\\\{/\" /Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/src/constants/coursesContent.tsx)"
+      "Bash(awk \"/^  'voice-dialogue': \\\\{/,/^  '[a-z-]*': \\\\{/\" /Users/AL/Documents/GitHub/asterys-lab---scuola-di-coaching-icf/src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=1380 && NR<=1700 && \\(/fees:|wooKey|title:|price:|editions:|citySlug|levelSlug|editionSlug|subtitle:|startISO|earlyBird|date:/\\)' src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=1154 && NR<=1499 && /fees:/{print NR\": \"$0; f=NR} END{}' src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=1500 && NR<=1560 && /fees:|title:|type:|wooKey|price:|Round/' src/constants/coursesContent.tsx)",
+      "Bash(awk 'NR>=1500 && NR<=1600 && /fees:/{print NR\": \"$0}' src/constants/coursesContent.tsx)",
+      "Bash(awk -F: '$1>1500 && $1<1700')",
+      "Bash(awk 'NR>=1560 && NR<=1700 && /fees:|Round EIW|wooKey|title:.*Round|price:.*100/{print NR\": \"$0}' src/constants/coursesContent.tsx)"
     ]
   }
 }

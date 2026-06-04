@@ -1209,13 +1209,13 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "EARLY BIRD",
-      line: "Edizione ASTC 2026/27: sconto attivo fino al 19 agosto 2026 per il 1° livello e fino al 21 novembre 2026 per il 2° livello.",
-      deadline: "19 agosto 2026",
+      line: "Early Bird ASTC 2026/27: −6% già applicato al checkout · 1° livello entro il 19/08/2026, 2° livello entro il 21/11/2026.",
+      deadline: "21/11/2026",
       ctaHref: "#prezzo",
-      pillDeadlineLabel: "19 AGOSTO",
-      discountAmount: "fino a 174€",
-      code: "EARLYBIRD",
-      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
+      pillDeadlineLabel: "EARLY BIRD −6%",
+      discountAmount: "6%",
+      // Sconto programmato sui prodotti Woo (no coupon). Disclaimer per livello in woo.ts → EARLY_BIRD.
+      deadlineISO: "2026-11-21T23:59:59+01:00", // banner attivo fino alla EB più lunga (2° livello)
     },
     heroBenefits: [
       "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
@@ -1451,6 +1451,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "ASTC 1°+2° livello",
         type: "lump",
+        wooKey: "completo",
         benefit: "Percorso completo",
         heading: "ASTC 1°+2° livello",
         desc: "Percorso completo con ASTC 1° livello a distanza e ASTC 2° livello in aula a Milano o Roma.",
@@ -1460,12 +1461,12 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "121€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        footnote: "Prezzo Early Bird € 2.726"
+        }
       },
       {
         title: "ASTC 1° livello",
         type: "lump",
+        wooKey: "l1",
         benefit: "Live online",
         heading: "ASTC 1° livello",
         desc: "Primo livello ASTC in videoconferenza, con Live Class e corso a distanza.",
@@ -1475,12 +1476,12 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "50€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        footnote: "Prezzo Early Bird € 1.128"
+        }
       },
       {
         title: "ASTC 2° livello",
         type: "lump",
+        wooKey: "l2",
         benefit: "In aula",
         heading: "ASTC 2° livello",
         desc: "Secondo livello ASTC con Live Class online e corso in aula a Milano o Roma.",
@@ -1490,8 +1491,7 @@ export const coursesContent: Record<string, CourseData> = {
           label: "Rateizzazione fino a 24 mesi senza interessi",
           amount: "88€/mese",
           note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        },
-        footnote: "Prezzo Early Bird € 1.974"
+        }
       }
     ],
     faqs: commonFaqs
@@ -1658,6 +1658,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Round EIW",
         type: "lump" as const,
+        wooKey: "round",
         benefit: "4 CCE ICF",
         heading: "Quota per Round",
         desc: "Iscrizione a un Round di Workout: 4 emozioni lavorate in 4 Workout da 60 min guidati dai coach e 4 CCE ICF riconosciute. Su richiesta è previsto il frazionamento in più rate.",
@@ -2033,11 +2034,11 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     earlyBirdPromo: {
       ribbon: "EARLY BIRD",
-      line: "Iscriviti entro il 31 ottobre 2026 e blocca il prezzo Early Bird a 1.575€ + IVA",
-      deadline: "31 ottobre 2026",
+      line: "Early Bird: 10% di sconto su Voice Dialogue, già applicato al checkout | Iscriviti entro il 31/10/2026",
+      deadline: "31/10/2026",
       ctaHref: "#prezzo",
-      code: "EARLYBIRD",
-      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
+      // Sconto programmato sul prodotto Woo (no coupon). Disclaimer per corso in woo.ts → EARLY_BIRD.
+      deadlineISO: "2026-10-31T23:59:59+01:00",
     },
     fees: [
       {
@@ -2054,21 +2055,6 @@ export const coursesContent: Record<string, CourseData> = {
           note: "Fino a 24 mesi senza interessi (1.750€ ÷ 24). Richiesto invio del CV.",
         },
         footnote: "Pagamento in un'unica soluzione o rateizzato fino a 24 mesi senza interessi.",
-      },
-      {
-        title: "Early Bird",
-        type: "lump",
-        benefit: "Entro il 31 ottobre 2026",
-        heading: "Iscriviti prima e risparmia 175€",
-        desc: "Stesso corso, stessi contenuti: **3 giornate in aula a Milano** + Lab su piattaforma Inner. Tariffa **Early Bird riservata** a chi si iscrive entro il **31 ottobre 2026**.",
-        price: "1.575€",
-        priceLabel: "+ IVA",
-        financing: {
-          label: "Oppure in rate",
-          amount: "65,63€ / mese",
-          note: "Fino a 24 mesi senza interessi (1.575€ ÷ 24). Richiesto invio del CV.",
-        },
-        footnote: "Termine iscrizioni Early Bird: 31 ottobre 2026.",
       },
     ],
     faqs: [

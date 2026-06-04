@@ -44,7 +44,8 @@ import {
 } from '../constants/coursesContent';
 import {
   getWooProduct,
-  getApcmEarlyBird,
+  getWooSimpleProductId,
+  getEarlyBird,
   wooAddToCartUrl,
   upcomingEditions,
   parseItDateToISO,
@@ -1891,9 +1892,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               // Early Bird: lo sconto è già nel prezzo della variazione (offerta programmata su Woo),
               // quindi il carrello lo applica da solo — niente coupon nel link. `eb` serve solo a
               // mostrare il disclaimer "già applicato" con la scadenza giusta per livello.
-              const eb = getApcmEarlyBird(id, fee.wooKey);
+              const eb = getEarlyBird(id, fee.wooKey);
               const ebActive = !!eb && Date.now() <= Date.parse(eb.deadlineISO);
-              const checkoutHref = selectedVariation ? wooAddToCartUrl(selectedVariation) : undefined;
+              // Variabile (APCM…): variazione scelta dal menu. Semplice (Voice Dialogue, Continuous):
+              // ID prodotto diretto. Draft/non collegabili (Coaching Circle, Public Speaking): nessun link.
+              const simpleProductId = wooProduct ? null : getWooSimpleProductId(id);
+              const checkoutHref = selectedVariation
+                ? wooAddToCartUrl(selectedVariation)
+                : simpleProductId
+                  ? wooAddToCartUrl(simpleProductId)
+                  : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
                   <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy mb-2.5 normal-case tracking-tight leading-tight">
@@ -1918,7 +1926,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
                   {ebActive && eb ? (
                     <p className="text-brand-navy/55 text-[11px] sm:text-xs font-medium leading-relaxed mb-4">
-                      Early Bird −{eb.discountLabel} valido fino al {eb.deadlineLabel} — applicato al checkout
+                      <span className="font-bold text-[#008060]">Early Bird</span>
+                      {eb.discountLabel ? ` −${eb.discountLabel}` : ''} valido fino al {eb.deadlineLabel} —
+                      applicato al checkout
                     </p>
                   ) : null}
 
@@ -1962,7 +1972,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       >
                         {wooEditions.map((ed) => (
                           <option key={ed.variationId} value={ed.variationId}>
-                            {ed.city} · {ed.label}
+                            {ed.city ? `${ed.city} · ${ed.label}` : ed.label}
                           </option>
                         ))}
                       </select>
