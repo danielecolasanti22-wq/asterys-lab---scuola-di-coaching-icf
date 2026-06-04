@@ -475,9 +475,8 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Perché questo Master in Coaching Professionale",
       content: [
-        "L'APCM è il percorso di Asterys Lab per chi vuole diventare **coach professionista** e operare con credenziali ICF riconosciute in tutto il mondo. Non è solo formazione tecnica: è un viaggio di trasformazione che integra **metodo**, **intelligenza emotiva** e **approccio sistemico**.",
-        "Impari a condurre sessioni di coaching con rigore etico, a leggere le dinamiche relazionali oltre il singolo individuo e a costruire un business sostenibile. Tutto questo accanto a **trainer MCC & PCC** con 20+ anni di esperienza e una community di 3.000+ alumni attivi.",
-        "Che tu provenga dal mondo HR, dalla consulenza, dal management o dalla psicologia, APCM ti porta da professionista curioso a coach competente, riconosciuto e preparato a entrare sul mercato con metodo."
+        "L'APCM è il percorso di Asterys Lab per diventare **coach professionista** con credenziali ICF riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra **metodo, intelligenza emotiva e approccio sistemico**.",
+        "Impari a condurre sessioni con rigore etico e a costruire un business sostenibile, accanto a **trainer MCC & PCC** con 20+ anni di esperienza e 3.000+ alumni. Che tu venga da HR, consulenza, management o psicologia, ti porta da professionista curioso a coach pronto per il mercato."
       ]
     },
     target: [
