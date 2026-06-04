@@ -6,7 +6,8 @@
 // NOTE:
 //  - Oggi l'add-to-cart redirige al CARRELLO (impostazione Woo "redirect to cart"); per andare
 //    dritti al checkout va disattivata quella opzione o aggiunto un redirect lato Woo.
-//  - `coupon-code` viene applicato solo con snippet/plugin lato Woo (Early Bird via codice).
+//  - Early Bird: nessun coupon: lo sconto è un "prezzo in offerta" programmato sulla variazione,
+//    quindi il carrello lo applica da solo. La vetrina mostra solo un disclaimer (vedi APCM_EARLY_BIRD).
 //  - Rate: gateway Sequra (fino a 24 mesi).
 
 export const WOO = {
@@ -91,6 +92,37 @@ export const COURSE_WOO: Record<
   eiw: { productId: 55749, sku: 'EIW20', note: 'per Round: #79602 mag, #79603 set, #79604 nov 2026' },
   'public-speaking': { productId: 78354, note: 'variabile; variazioni non esposte dalla Store API' },
 };
+
+export type WooEarlyBird = { discountLabel: string; deadlineISO: string; deadlineLabel: string };
+
+/**
+ * Early Bird APCM per livello — modello "prezzo in offerta sulla variazione" (NON coupon):
+ * ogni variazione (edizione) su Woo ha un prezzo scontato con data di fine programmata, quindi il
+ * carrello applica lo sconto DA SOLO durante la finestra. Niente codice promozionale, niente snippet.
+ *
+ * Questi dati servono SOLO alla vetrina per mostrare il disclaimer "Early Bird già applicato" e la
+ * scadenza corretta per livello. La fonte di verità di sconto e data resta su Woo (sulla variazione):
+ * aggiorna QUI la data solo quando rinnovi la finestra EB di un'edizione, per tenerla allineata.
+ *
+ * - l1 + completo → 3ª ed. (partenza ottobre) — EB entro 27/08/2026
+ * - l2            → ed. Roma (partenza settembre) — EB entro 17/07/2026
+ */
+export const APCM_EARLY_BIRD: Record<'l1' | 'l2' | 'completo', WooEarlyBird> = {
+  l1: { discountLabel: '10%', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
+  completo: { discountLabel: '10%', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
+  l2: { discountLabel: '10%', deadlineISO: '2026-07-17T23:59:59+02:00', deadlineLabel: '17/07/2026' },
+};
+
+/** Early Bird Woo per (corso, livello). Per ora solo APCM. null = nessun EB per quel livello. */
+export function getApcmEarlyBird(
+  courseId: string | undefined,
+  wooKey: string | undefined,
+): WooEarlyBird | null {
+  if (courseId === 'apcm' && wooKey && wooKey in APCM_EARLY_BIRD) {
+    return APCM_EARLY_BIRD[wooKey as keyof typeof APCM_EARLY_BIRD];
+  }
+  return null;
+}
 
 /** Prodotto Woo per (corso, livello). Per ora solo APCM è mappato. */
 export function getWooProduct(

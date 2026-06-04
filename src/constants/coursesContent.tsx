@@ -498,14 +498,14 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "SCONTO EARLY BIRD",
-      line: "Ottieni 800€ di sconto sul Master APCM | Iscriviti entro il 30/04/2026",
-      deadline: "30/04/2026",
+      line: "Early Bird: 10% di sconto sul Master APCM, già applicato al checkout | Iscriviti entro il 27/08/2026",
+      deadline: "27/08/2026",
       ctaHref: "#prezzo",
-      pillDeadlineLabel: "30 APRILE",
-      discountAmount: "800€",
-      code: "EARLYBIRD",
-      deadlineISO: "2026-07-03T23:59:59+02:00", // PLACEHOLDER — data EB reale per edizione
-      // couponUrl: "https://<woo>/checkout/?add-to-cart=<ID>&coupon-code=EARLYBIRD" // ← attiva l'auto-apply
+      pillDeadlineLabel: "10% EARLY BIRD",
+      discountAmount: "10%",
+      // I codici reali sono per livello in woo.ts → APCM_EARLY_BIRD (L1/Completo: EBAPCM10, L2: EBAPCM10L2).
+      // Si applicano da soli al checkout via snippet Woo, quindi il banner non mostra un codice unico.
+      deadlineISO: "2026-08-27T23:59:59+02:00", // banner attivo fino alla EB più lunga (L1/Completo, 3ª ed.)
     },
     structure: {
       modules: [

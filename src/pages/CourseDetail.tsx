@@ -44,6 +44,7 @@ import {
 } from '../constants/coursesContent';
 import {
   getWooProduct,
+  getApcmEarlyBird,
   wooAddToCartUrl,
   upcomingEditions,
   parseItDateToISO,
@@ -1887,9 +1888,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 !wooProduct || upcomingWoo.some((e) => e.variationId === selectedVariation)
                   ? upcomingWoo
                   : [...wooProduct.editions.filter((e) => e.variationId === selectedVariation), ...upcomingWoo];
-              const checkoutHref = selectedVariation
-                ? wooAddToCartUrl(selectedVariation, promoActive && earlyPromo.code ? { coupon: earlyPromo.code } : {})
-                : undefined;
+              // Early Bird: lo sconto è già nel prezzo della variazione (offerta programmata su Woo),
+              // quindi il carrello lo applica da solo — niente coupon nel link. `eb` serve solo a
+              // mostrare il disclaimer "già applicato" con la scadenza giusta per livello.
+              const eb = getApcmEarlyBird(id, fee.wooKey);
+              const ebActive = !!eb && Date.now() <= Date.parse(eb.deadlineISO);
+              const checkoutHref = selectedVariation ? wooAddToCartUrl(selectedVariation) : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
                   <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy mb-2.5 normal-case tracking-tight leading-tight">
@@ -1911,6 +1915,15 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       ) : null}
                     </p>
                   </div>
+
+                  {ebActive && eb ? (
+                    <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-2.5 ring-1 ring-[#008060]/20">
+                      <p className="text-[11px] sm:text-xs font-semibold leading-relaxed text-[#00674F]">
+                        <span className="font-black">Early Bird −{eb.discountLabel} già applicato</span> al
+                        checkout per questa edizione, fino al {eb.deadlineLabel}.
+                      </p>
+                    </div>
+                  ) : null}
 
                   {fee.financing ? (
                     <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-3 ring-1 ring-[#008060]/15">
