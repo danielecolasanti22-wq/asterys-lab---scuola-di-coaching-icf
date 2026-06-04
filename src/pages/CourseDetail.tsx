@@ -1917,12 +1917,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {ebActive && eb ? (
-                    <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-2.5 ring-1 ring-[#008060]/20">
-                      <p className="text-[11px] sm:text-xs font-semibold leading-relaxed text-[#00674F]">
-                        <span className="font-black">Early Bird −{eb.discountLabel} già applicato</span> al
-                        checkout per questa edizione, fino al {eb.deadlineLabel}.
-                      </p>
-                    </div>
+                    <p className="text-brand-navy/55 text-[11px] sm:text-xs font-medium leading-relaxed mb-4">
+                      Early Bird −{eb.discountLabel} valido fino al {eb.deadlineLabel} — applicato al checkout
+                    </p>
                   ) : null}
 
                   {fee.financing ? (
