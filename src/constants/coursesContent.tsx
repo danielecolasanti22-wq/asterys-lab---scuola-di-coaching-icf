@@ -1684,8 +1684,8 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
       hero: "/course-media/coaching-circle/hero-coaching-circle.png",
-      overview: "/course-media/coaching-circle/overview-coaching-circle.png",
-      howItWorks: "/course-media/coaching-circle/how-coaching-circle.png",
+      overview: "/course-media/coaching-circle/how-coaching-circle.png",
+      howItWorks: "/course-media/apcm/how-master.jpg",
     },
     heroBenefits: [
       "Per il rinnovo della credenziale ICF servono 10 ore di mentor coaching",
