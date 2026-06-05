@@ -30,6 +30,10 @@ export interface CourseFee {
   wooQuantity?: number;
   /** Mostra un selettore di quantità libero (sconto volume): la quantità scelta finisce nel link al checkout. */
   wooQuantitySelector?: boolean;
+  /** Etichetta del selettore quantità (default "Quante Live Class"). */
+  wooQuantityLabel?: string;
+  /** Testo esplicativo sotto il selettore quantità. */
+  wooQuantityHint?: string;
 }
 
 /** Fascia oraria / riga “calendar + clock” (layout Boolean) */
@@ -1674,8 +1678,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
-    subtitle: "Mentoring per il rinnovo delle credenziali",
-    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching. Le maturi con il Mentoring di Gruppo (già Coaching Circle) o con il Mentoring Individuale, supervisionato da Paola Rulfi, Mentor Coach MCC.",
+    subtitle: "Mentoring di gruppo ed individuale",
+    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching: le maturi con il mentor coaching di gruppo (già Coaching Circle) o individuale, con un Mentor Coach MCC.",
     type: "MENTORING ICF",
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
@@ -1685,16 +1689,16 @@ export const coursesContent: Record<string, CourseData> = {
     },
     heroBenefits: [
       "Per il rinnovo della credenziale ICF servono 10 ore di mentor coaching",
-      "Mentoring di Gruppo: 2 incontri da 3,5h (7 ore) in gruppi da 4 — 17:00–20:30",
-      "Mentoring Individuale: 3 ore one-to-one da concordare",
-      "Insieme arrivi alle 10 ore, con Paola Rulfi, Mentor Coach MCC"
+      "Mentor coaching di gruppo: pratica supervisionata in piccoli gruppi",
+      "Mentor coaching individuale: percorso one-to-one a costo orario",
+      "Gruppo e individuale ti portano alle 10 ore, con un Mentor Coach MCC"
     ],
     summaryBox: {
-      nextEdition: "Prossima edizione di gruppo · online (Zoom)",
-      dates: "29 set e 10 dic 2026 · 17:00–20:30",
-      format: "Gruppo (da 4) o individuale · Zoom",
-      duration: "Gruppo 7h · Individuale 3h · Insieme 10h",
-      price: "Da ~200€ (in definizione)",
+      nextEdition: "Online · Zoom",
+      dates: "Gruppo: 2 date a edizione · Individuale: on-demand",
+      format: "Mentor coaching di gruppo o individuale",
+      duration: "10 ore per il rinnovo (gruppo 7h + individuale 3h)",
+      price: "Gruppo 180€ · Individuale 300€/h · Entrambi 480€",
       installments: "Sconto Alumni applicato in cassa"
     },
     earlyBirdPromo: {
@@ -1751,33 +1755,33 @@ export const coursesContent: Record<string, CourseData> = {
     structure: {
       modules: [
         {
-          title: "1° incontro (3,5h · 17:00–20:30)",
-          desc: "Apertura del setting e contratto di gruppo, poi pratica a rotazione nei ruoli di coach, cliente e osservatore, con feedback del Mentor Coach MCC."
+          title: "Mentor coaching di gruppo (7 ore)",
+          desc: "Un'edizione = 2 incontri da 3,5h (17:00–20:30) in gruppi da 4: pratichi a rotazione nei ruoli di coach, cliente e osservatore, con feedback del Mentor Coach MCC. Le date di gruppo sono fisse (le trovi qui sotto)."
         },
         {
-          title: "2° incontro (3,5h · 17:00–20:30)",
-          desc: "Si continua la pratica supervisionata sui casi reali, consolidando scelte e stile dentro la cornice ICF. I due incontri compongono l'edizione: 7 ore in totale."
+          title: "Mentor coaching individuale (a costo orario)",
+          desc: "Percorso one-to-one con il Mentor Coach MCC: scegli quante ore ti servono (con sconto quantità) e prenoti le date direttamente con lui/lei, in base alle tue esigenze e al livello di credenziale."
         },
         {
-          title: "Opzione +3h individuale (10 ore)",
-          desc: "Chi punta al rinnovo della credenziale aggiunge 3 ore di mentoring individuale con il Mentor Coach MCC, arrivando alle 10 ore totali."
+          title: "Entrambi (10 ore complete)",
+          desc: "Gruppo (7h) + individuale (3h) = le 10 ore di mentor coaching richieste per il rinnovo della credenziale ICF, nel modo più completo."
         }
       ]
     },
     programIntro:
-      "Un'edizione di Mentoring di Gruppo sono 2 incontri da 3,5h (7 ore) in gruppi da 4, supervisionati da un Mentor Coach MCC. Con +3h di mentoring individuale arrivi a 10 ore.",
+      "Per le 10 ore di mentor coaching del rinnovo ICF scegli mentor coaching di gruppo, individuale o entrambi: il gruppo ha date fisse, l'individuale lo concordi con il Mentor Coach in base alle ore che ti servono.",
     admissionBox: {
       title: "Requisiti per partecipare",
       body: "Aver completato un percorso base per diventare coach. Il Mentoring di Gruppo è uno spazio di pratica supervisionata, non un corso introduttivo.",
     },
     howItWorks: {
-      title: "Come funziona il Mentoring di Gruppo",
+      title: "Come funziona il mentor coaching",
       intro:
-        "Un'**edizione da 2 incontri (3,5h ciascuno, 7 ore)** in videochiamata, in **gruppi da 4** che si alternano nei ruoli di coach, cliente e osservatore con la supervisione di un **Mentor Coach MCC**. Orario 17:00–20:30.",
-      formazioneTitle: "Pratica supervisionata",
-      formazioneBadge: "2×3,5h · Gruppi da 4",
+        "Il **mentor coaching di gruppo** è pratica supervisionata in **gruppi da 4** che si alternano nei ruoli di coach, cliente e osservatore, con un **Mentor Coach MCC**. Il **mentor coaching individuale** è one-to-one, a costo orario, con date concordate direttamente con il mentor.",
+      formazioneTitle: "Pratica supervisionata · date di gruppo",
+      formazioneBadge: "17:00–20:30 · Zoom",
       formazioneIntro:
-        "In ogni incontro pratichi nel ruolo di coach su un caso reale e ricevi **feedback dedicato dal Mentor Coach MCC**. Il confronto di gruppo affina le scelte e mantiene la pratica aderente al metodo ICF. Con +3h individuali raggiungi le **10 ore** utili al rinnovo della credenziale.",
+        "Edizione di gruppo in corso (Set–Dic 2026): **29 settembre 2026** e **10 dicembre 2026**, ore **17:00–20:30**, online su Zoom. In ogni incontro pratichi come coach su un caso reale e ricevi feedback dedicato dal Mentor Coach MCC. Per il mentor coaching individuale concordi le date direttamente con il mentor.",
     },
     scheduleColumns: [
       { icon: 'monitor', title: 'Modalità', body: 'Videochiamata su Zoom — link inviato prima dell\'incontro. Orario 17:00–20:30.' },
@@ -1812,31 +1816,37 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Entrambi",
         type: "lump",
+        wooQuantitySelector: true,
+        wooQuantityLabel: "Ore di mentoring individuale",
+        wooQuantityHint: "Le 7 ore di gruppo sono fisse; scegli le ore individuali (sconto quantità: 300€/h, 267€ da 3, 261€ da 7). Si applica nel carrello.",
         benefit: "10 ore · rinnovo completo",
         heading: "Gruppo + Individuale (10 ore)",
-        desc: "Le 7 ore di Mentoring di Gruppo + 3 ore di Mentoring Individuale: 10 ore totali, l'intero monte ore richiesto per il rinnovo della credenziale ICF.",
+        desc: "Le 7 ore di mentor coaching di gruppo + 3 ore individuali: 10 ore totali, l'intero monte ore richiesto per il rinnovo della credenziale ICF.",
         price: "480€",
         priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "Pacchetto rinnovo: 180€ Mentoring di Gruppo (7h) + 300€ Mentoring Individuale (3h) = 10 ore. Sconto Alumni applicato in cassa."
+        footnote: "180€ gruppo (7h) + 300€ individuale (3h) = 10 ore. Date di gruppo: 29 set e 10 dic 2026, 17:00–20:30. Sconto Alumni applicato in cassa."
       },
       {
         title: "Di gruppo",
         type: "lump",
         benefit: "7 ore (2 incontri)",
-        heading: "Mentoring di Gruppo",
-        desc: "Un'edizione = 2 incontri da 3,5h (7 ore) in gruppi da 4, con Paola Rulfi, Mentor Coach MCC. Orario 17:00–20:30.",
+        heading: "Mentor coaching di gruppo",
+        desc: "Un'edizione = 2 incontri da 3,5h (7 ore) in gruppi da 4, con un Mentor Coach MCC. Orario 17:00–20:30.",
         price: "180€",
         priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "Edizione in corso: 29 set e 10 dic 2026. Sconto Alumni applicato in cassa."
+        footnote: "Edizione in corso: 29 set e 10 dic 2026, 17:00–20:30. Sconto Alumni applicato in cassa."
       },
       {
         title: "Individuale",
         type: "lump",
-        benefit: "3 ore one-to-one",
-        heading: "Mentoring Individuale",
-        desc: "3 ore di mentoring individuale con il Mentor Coach MCC, da concordare. Ideale per completare le ore che ti mancano al rinnovo.",
+        wooQuantitySelector: true,
+        wooQuantityLabel: "Quante ore di mentoring",
+        wooQuantityHint: "Costo orario con sconto quantità: 300€/h, 267€ da 3 ore, 261€ da 7 ore (livello MCC). Si applica nel carrello.",
+        benefit: "one-to-one · a costo orario",
+        heading: "Mentor coaching individuale",
+        desc: "Percorso individuale con il Mentor Coach MCC: scegli le ore che ti servono per completare il rinnovo. Date concordate direttamente con il mentor.",
         price: "300€",
         priceLabel: "/ ora (MCC) + IVA",
         ctaLabel: "Prenota il tuo posto sullo store",

@@ -869,7 +869,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          </div>
       </section>
 
-      {/* 4. SCEGLI TU QUANDO INIZIARE SECTION */}
+      {/* 4. SCEGLI TU QUANDO INIZIARE SECTION — nascosta per il Mentoring (date esposte nella pratica) */}
+      {!isCoachingCircle && (
       <section className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.75rem] p-6 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
@@ -924,6 +925,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
          </div>
       </section>
+      )}
 
       {/* 4b. CALENDARIO EDIZIONI */}
       {editions.length > 0 && activeEdition ? (
@@ -2019,7 +2021,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         htmlFor={`qty-${idx}`}
                         className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
                       >
-                        Quante Live Class
+                        {fee.wooQuantityLabel ?? 'Quante Live Class'}
                       </label>
                       <input
                         id={`qty-${idx}`}
@@ -2032,7 +2034,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
                       />
                       <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-brand-navy/55">
-                        Il prezzo per Live Class cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.
+                        {fee.wooQuantityHint ?? 'Il prezzo per Live Class cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.'}
                       </p>
                     </div>
                   ) : null}
