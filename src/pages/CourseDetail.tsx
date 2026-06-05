@@ -276,7 +276,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const [editionByLevel, setEditionByLevel] = useState<Record<string, number>>({});
   // Quantità scelta per le opzioni con sconto-volume (es. Continuous Learning).
   const [qtyByFee, setQtyByFee] = useState<Record<string, number>>({});
-  // Esame ASTC Expert aggiunto (per fee): switcha alla variazione "con esame".
+  // Esame Expert aggiunto (per fee): switcha alla variazione "con esame".
   const [examByFee, setExamByFee] = useState<Record<string, boolean>>({});
   const [activeCitySlug, setActiveCitySlug] = useState<string>('');
   const [activeLevelSlug, setActiveLevelSlug] = useState<string>('');
@@ -2005,7 +2005,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         className="mt-0.5 h-4 w-4 accent-brand-accent"
                       />
                       <span className="text-xs font-semibold leading-snug text-brand-navy">
-                        Aggiungi esame ASTC Expert{' '}
+                        Aggiungi esame Expert{' '}
                         <span className="font-black text-[#008060]">+{ASTC_EXAM_PRICE_LABEL}</span>
                         <span className="mt-0.5 block text-[11px] font-medium text-brand-navy/55">
                           Certificazione finale · richiede il percorso 1° + 2° livello

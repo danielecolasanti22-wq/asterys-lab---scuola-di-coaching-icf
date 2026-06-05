@@ -26,7 +26,7 @@ const courseGroups: CourseGroup[] = [
     courses: [
       {
         id: 'apcm',
-        title: 'Professione Coach (APCM)',
+        title: 'Professione Coach',
         badge: 'Master',
         duration: '3–8 mesi',
         modality: 'Online + Aula',
@@ -36,12 +36,12 @@ const courseGroups: CourseGroup[] = [
       },
       {
         id: 'systemic-team-coaching',
-        title: 'Team Coaching Sistemico (ASTC)',
+        title: 'Team Coaching Sistemico',
         badge: 'Master',
         duration: '54 ore · 60 CCE',
         modality: 'Online + Milano/Roma',
         desc:
-          'Il modello ASTC accreditato ICF per il coaching sistemico di team e organizzazioni. Prerequisito per la credenziale ACTC.',
+          'Il modello sistemico accreditato ICF per il coaching sistemico di team e organizzazioni. Prerequisito per la credenziale ACTC.',
         img: '/course-media/systemic-team-coaching/card.jpg',
       },
     ],
@@ -121,7 +121,7 @@ const corporatePrograms = [
   },
   {
     title: 'Team Coaching Sistemico',
-    desc: 'Il modello ASTC per allineare e accelerare i team.',
+    desc: 'Il modello sistemico per allineare e accelerare i team.',
   },
 ];
 

@@ -1,10 +1,7 @@
-import CourseDetail from '../CourseDetail';
-import { coursesContent, type CourseData } from '../../constants/coursesContent';
+import CourseDetail from "../CourseDetail";
+import { coursesContent } from "../../constants/coursesContent";
 
-const course = {
-  ...coursesContent.apcm,
-} satisfies CourseData;
-
+// Dati letti a render-time (non a livello di modulo) per compatibilità con il prerender SSR.
 export default function ApcmCourse() {
-  return <CourseDetail courseId="apcm" courseData={course} />;
+  return <CourseDetail courseId="apcm" courseData={coursesContent["apcm"]} />;
 }

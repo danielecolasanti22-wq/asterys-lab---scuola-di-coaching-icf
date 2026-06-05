@@ -1,10 +1,7 @@
-import CourseDetail from '../CourseDetail';
-import { coursesContent, type CourseData } from '../../constants/coursesContent';
+import CourseDetail from "../CourseDetail";
+import { coursesContent } from "../../constants/coursesContent";
 
-const course = {
-  ...coursesContent['systemic-team-coaching'],
-} satisfies CourseData;
-
+// Dati letti a render-time (non a livello di modulo) per compatibilità con il prerender SSR.
 export default function SystemicTeamCoachingCourse() {
-  return <CourseDetail courseId="systemic-team-coaching" courseData={course} />;
+  return <CourseDetail courseId="systemic-team-coaching" courseData={coursesContent["systemic-team-coaching"]} />;
 }

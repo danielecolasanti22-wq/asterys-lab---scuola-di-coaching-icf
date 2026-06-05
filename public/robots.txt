@@ -1,0 +1,32 @@
+# Asterys Lab — robots.txt
+User-agent: *
+Allow: /
+Disallow: /nuova-pagina
+Disallow: /nuova-pagina-2
+
+# Motori AI / answer engines — vogliamo essere indicizzati e citati (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.asteryslab.com/sitemap.xml

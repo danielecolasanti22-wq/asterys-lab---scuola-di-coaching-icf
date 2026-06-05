@@ -46,7 +46,7 @@ export default function NuovaPagina() {
         <div className="mx-auto grid max-w-[1120px] gap-10 px-6 py-14 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-20">
           <div>
             <p className={`${smallCaps} mb-5 border-b-2 border-[#8AD0E2] pb-3`}>
-              The Campus · Master APCM
+              The Campus · Master in Coaching Professionale
             </p>
             <h1 className="font-display text-[3rem] font-black leading-[0.92] tracking-tight text-[#9B9DA9] sm:text-[3.45rem] md:text-[5.4rem]">
               Professione:
@@ -105,7 +105,7 @@ export default function NuovaPagina() {
               Una formazione professionale, personale e riconosciuta.
             </h2>
             <p className={`${bodyText} mx-auto mt-5 max-w-2xl`}>
-              APCM segue il flow della pagina Master attuale: orientamento, programma,
+              Il Master in Coaching Professionale segue il flow della pagina Master attuale: orientamento, programma,
               livelli, faculty, community, prezzi e candidatura. Cambia il vestito:
               più Asterys storico, meno template.
             </p>
@@ -131,7 +131,7 @@ export default function NuovaPagina() {
         <div className="mx-auto grid max-w-[1080px] gap-12 px-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <img
             src="/course-media/apcm/overview-master.jpg"
-            alt="Aula Master APCM"
+            alt="Aula Master in Coaching Professionale"
             className="h-[420px] w-full object-cover md:h-[560px]"
           />
           <div>
@@ -358,7 +358,7 @@ export default function NuovaPagina() {
             <p className={`${bodyText} mt-5`}>
               {firstOpenEdition ? `${firstOpenEdition.city} · ${firstOpenEdition.level} · ${firstOpenEdition.subtitle}` : course.summaryBox.dates}
               <br />
-              Compila il form per ricevere informazioni sul Master APCM più adatto a te.
+              Compila il form per ricevere informazioni sul Master in Coaching Professionale più adatto a te.
             </p>
             <form className="mt-8 space-y-3">
               <div className="grid gap-3 sm:grid-cols-2">

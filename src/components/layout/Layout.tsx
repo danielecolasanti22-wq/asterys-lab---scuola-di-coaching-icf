@@ -56,8 +56,8 @@ const megaColumns: MegaColumn[] = [
     caption: 'Percorsi completi per diventare coach ICF',
     icon: 'master',
     items: [
-      { id: 'apcm', title: 'Professione Coach', kicker: 'APCM · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
-      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'ASTC · Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
+      { id: 'apcm', title: 'Professione Coach', kicker: 'Master in Coaching Professionale · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
+      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
     ],
   },
   {
@@ -74,7 +74,7 @@ const megaColumns: MegaColumn[] = [
     caption: 'Skill pratiche, tempi ridotti',
     icon: 'short',
     items: [
-      { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'EIW · Modello CSI', meta: '4 Workout · Live Online' },
+      { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'Modello CSI', meta: '4 Workout · Live Online' },
       { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Live Class mensili', meta: 'Annuale · Zoom 18:30–20:00' },
       { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '16 ore · Live Online' },
     ],
@@ -92,7 +92,7 @@ const aboutMenu = [
 const megaPromos = [
   {
     kicker: 'Evento in evidenza',
-    title: 'Open Day Online: Master APCM',
+    title: 'Open Day Online: Master in Coaching Professionale',
     cta: "Scopri l'evento",
     img: '/course-media/apcm/card.png',
     to: '/eventi/open-day-master-apcm',
@@ -870,7 +870,7 @@ export const Footer = () => {
               The Campus
             </h4>
             <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/corsi/apcm" className="hover:text-white transition-colors">Master APCM</Link></li>
+              <li><Link to="/corsi/apcm" className="hover:text-white transition-colors">Master in Coaching Professionale</Link></li>
               <li><Link to="/corsi/systemic-team-coaching" className="hover:text-white transition-colors">Team Coaching</Link></li>
               <li><Link to="/corsi/eiw" className="hover:text-white transition-colors">Intelligenza Emotiva</Link></li>
               <li><Link to="/corsi/coaching-circle" className="hover:text-white transition-colors">Mentoring per le credenziali</Link></li>

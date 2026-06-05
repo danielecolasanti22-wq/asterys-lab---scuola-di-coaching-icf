@@ -20,21 +20,21 @@ const steps = [
 
 const upcomingClasses = [
   {
-    course: 'Master APCM · Milano',
+    course: 'Master in Coaching Professionale · Milano',
     date: '15 maggio 2026',
     deadline: 'Prossima edizione: 25 settembre 2026 · termine candidature 1 settembre',
     earlyBird: 'Early Bird −800€ entro il 30 aprile 2026',
     highlight: true,
   },
   {
-    course: 'Team Coaching Sistemico (ASTC)',
+    course: 'Team Coaching Sistemico',
     date: '6 ottobre 2026',
     deadline: '2° livello dal 20 gennaio 2027',
     earlyBird: 'Early Bird fino a −174€ entro il 19 agosto 2026',
     highlight: false,
   },
   {
-    course: 'Intelligenza Emotiva (EIW)',
+    course: 'Intelligenza Emotiva',
     date: 'Settembre 2026',
     deadline: 'Iscrizioni aperte · posti limitati',
     earlyBird: null,

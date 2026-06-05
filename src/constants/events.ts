@@ -21,7 +21,7 @@ export type EventItem = {
 export const eventsData: EventItem[] = [
   {
     id: 'open-day-master-apcm',
-    title: 'Open Day Online: Master APCM',
+    title: 'Open Day Online: Master in Coaching Professionale',
     date: '15 Maggio 2026',
     time: '18:30 – 20:00',
     modality: 'Online (Zoom)',
@@ -31,11 +31,11 @@ export const eventsData: EventItem[] = [
     desc:
       'Incontra i docenti, scopri il metodo sistemico e ricevi tutte le informazioni sul Master per diventare coach professionista.',
     long: [
-      'Un incontro online dedicato a chi vuole capire se la professione di coach fa per sé. Conosci i trainer, il metodo Asterys Lab e ricevi tutte le informazioni sul Master APCM, accreditato ICF Level 1 & 2.',
+      'Un incontro online dedicato a chi vuole capire se la professione di coach fa per sé. Conosci i trainer, il metodo Asterys Lab e ricevi tutte le informazioni sul Master in Coaching Professionale, accreditato ICF Level 1 & 2.',
       'È l’occasione per fare domande dirette su programma, calendario, modalità di studio e sbocchi professionali, e per vedere il coaching all’opera con una dimostrazione pratica.',
     ],
     highlights: [
-      'La struttura del Master APCM e i suoi riconoscimenti ICF',
+      'La struttura del Master in Coaching Professionale e i suoi riconoscimenti ICF',
       'Una dimostrazione live di coaching',
       'Il percorso dalla formazione alla professione',
       'Spazio per domande dirette con i trainer',
@@ -101,10 +101,10 @@ export const eventsData: EventItem[] = [
       'Evento esclusivo per decision maker: come il team coaching sistemico accelera i risultati aziendali.',
     long: [
       'Un summit riservato a decision maker e leader HR che vogliono capire come il team coaching sistemico accelera i risultati delle organizzazioni.',
-      'Attraverso casi reali e il modello ASTC accreditato ICF, esploreremo come allineare i team, sciogliere le dinamiche bloccanti e tradurre la coesione in performance.',
+      'Attraverso casi reali e il modello sistemico accreditato ICF, esploreremo come allineare i team, sciogliere le dinamiche bloccanti e tradurre la coesione in performance.',
     ],
     highlights: [
-      'Il modello ASTC di team coaching sistemico',
+      'Il modello di team coaching sistemico',
       'Casi reali di trasformazione organizzativa',
       'Come misurare l’impatto del coaching sui team',
       'Tavola rotonda con HR director e coach senior',

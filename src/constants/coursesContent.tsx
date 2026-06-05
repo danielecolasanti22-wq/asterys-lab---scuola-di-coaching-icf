@@ -305,7 +305,7 @@ export function defaultCourseMedia(slug: string): CourseMedia {
 export const commonTestimonials: CourseTestimonial[] = [
   {
     name: "Marco Guadagnuolo",
-    role: "HR · Master in Coaching APCM",
+    role: "HR · Master in Coaching",
     cohort: "Video testimonianza",
     quote:
       "Video testimonianza in arrivo: qui comparirà il contributo di Marco Guadagnuolo appena caricato.",
@@ -316,7 +316,7 @@ export const commonTestimonials: CourseTestimonial[] = [
   },
   {
     name: "Damiano Zanotti",
-    role: "COO · APCM 1+2",
+    role: "COO · Master in Coaching",
     quote:
       "Oltre ad aiutarmi a diventare coach, questo percorso mi sta aiutando a cambiare come persona: ad essere più sensibile, ad ascoltare di più. Mi sta aiutando sia nella vita lavorativa che personale. Il clima, sia con i formatori che con gli altri partecipanti, è stato di profonda condivisione. Mi sono sentito libero di esprimere i miei pensieri e le mie emozioni e di essere ascoltato.",
     rating: 5,
@@ -396,9 +396,9 @@ const apcmFaqs = [
 
 export const coursesContent: Record<string, CourseData> = {
   'apcm': {
-    title: "Accredited Professional Coaching Mastery (APCM)",
+    title: "Master in Coaching Professionale",
     subtitle: "Professione Coach",
-    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: APCM è il Master d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
+    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: il Master in Coaching Professionale è il percorso d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "PER PROFESSIONISTI",
     media: {
@@ -479,7 +479,7 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Perché questo Master in Coaching Professionale",
       content: [
-        "L'APCM è il percorso di Asterys Lab per diventare **coach professionista** con credenziali ICF riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra **metodo, intelligenza emotiva e approccio sistemico**.",
+        "Il Master in Coaching Professionale è il percorso di Asterys Lab per diventare **coach professionista** con credenziali ICF riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra **metodo, intelligenza emotiva e approccio sistemico**.",
         "Impari a condurre sessioni con rigore etico e a costruire un business sostenibile, accanto a **trainer MCC & PCC** con 20+ anni di esperienza e 3.000+ alumni. Che tu venga da HR, consulenza, management o psicologia, ti porta da professionista curioso a coach pronto per il mercato."
       ]
     },
@@ -505,7 +505,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "SCONTO EARLY BIRD",
-      line: "Early Bird: fino a 690€ di sconto sul Master APCM, già applicato al checkout | Iscriviti entro il 27/08/2026",
+      line: "Early Bird: fino a 690€ di sconto sul Master in Coaching Professionale, già applicato al checkout | Iscriviti entro il 27/08/2026",
       deadline: "27/08/2026",
       ctaHref: "#prezzo",
       pillDeadlineLabel: "10% EARLY BIRD",
@@ -594,13 +594,13 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Ecosistema Asterys",
       title: "Pegasus Coaching Program",
       intro:
-        "Pegasus collega studenti e diplomati APCM: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
+        "Pegasus collega studenti e diplomati del Master in Coaching Professionale: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
       logo: "/brand/pegasus.png",
       note: "Il programma è attivo sulle edizioni e sui percorsi in cui è previsto da Asterys Lab.",
       points: [
         {
           title: "Coaching incluso per gli studenti",
-          desc: "Gli studenti APCM possono ricevere da 3 a 15 ore di coaching individuale, erogato da coach formati nelle edizioni precedenti del Master.",
+          desc: "Gli studenti del Master in Coaching Professionale possono ricevere da 3 a 15 ore di coaching individuale, erogato da coach formati nelle edizioni precedenti del Master.",
           meta: "Da 3 a 15 ore"
         },
         {
@@ -622,7 +622,7 @@ export const coursesContent: Record<string, CourseData> = {
     sessionSchedule: [
       { days: "Calendario definito in base all'edizione scelta", time: "" }
     ],
-    // Sezione pagamento sul modello ASTC: una scheda per livello, ognuna con
+    // Sezione pagamento sul modello sistemico: una scheda per livello, ognuna con
     // prezzo intero + simulazione rate 24 mesi. La scelta intero/rate avviene
     // al checkout; qui è solo simulazione. (Early Bird: gestito a parte.)
     fees: [
@@ -752,10 +752,10 @@ export const coursesContent: Record<string, CourseData> = {
         "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri Online, i Live Lab, i Corsi intensivi e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
     },
     whyChoose: {
-      eyebrow: "Perché scegliere APCM",
+      eyebrow: "Perché scegliere il Master in Coaching Professionale",
       title: "Un Master che unisce rigore, umanità e mercato",
       intro:
-        "APCM è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
+        "Il Master in Coaching Professionale è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
       bullets: [
         {
           title: "Accreditamento ICF Level 1 & 2",
@@ -795,7 +795,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Struttura del percorso",
       title: "Scegli come affrontare il Master",
       intro:
-        "APCM è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio. Il **2° livello** è accessibile dopo aver completato il **1° livello**.",
+        "Il Master in Coaching Professionale è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio. Il **2° livello** è accessibile dopo aver completato il **1° livello**.",
       levels: [
         {
           label: "Livello 1",
@@ -1159,7 +1159,7 @@ export const coursesContent: Record<string, CourseData> = {
     ]
   },
   'systemic-team-coaching': {
-    title: "Asterys Systemic Team Coaching (ASTC)",
+    title: "Master in Team Coaching Sistemico",
     subtitle: "Team Coaching",
     tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
     type: "AVANZATO",
@@ -1174,32 +1174,32 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Come si struttura il percorso",
       intro:
-        "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Live Class e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox ASTC e pratica applicata.",
+        "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Live Class e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox e pratica applicata.",
       formazioneTitle: "Struttura e trainer",
       formazioneBadge: "54 ore live · 60 CCE ICF",
       formazioneIntro:
-        "ASTC 1° livello prevede due giornate in videoconferenza e Live Class da due ore. ASTC 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox ASTC. L'ASTC Expert Exam è opzionale e consente di ottenere il diploma AATC ICF.",
+        "Team Coaching Sistemico 1° livello prevede due giornate in videoconferenza e Live Class da due ore. Team Coaching Sistemico 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox. L'Esame Expert è opzionale e consente di ottenere il diploma AATC ICF.",
     },
     scheduleColumns: [
       {
         icon: "monitor",
-        title: "ASTC 1° livello",
+        title: "Team Coaching Sistemico 1° livello",
         body: "Corso di due giornate in videoconferenza, Live Class da due ore e homework su progetti di team coaching supportati dalla piattaforma Inner.",
       },
       {
         icon: "users",
-        title: "ASTC 2° livello",
-        body: "Tre giorni in aula a Milano o Roma, con modulo e-learning specifico e ToolBox ASTC per lavorare sui team in modo sistemico.",
+        title: "Team Coaching Sistemico 2° livello",
+        body: "Tre giorni in aula a Milano o Roma, con modulo e-learning specifico e ToolBox per lavorare sui team in modo sistemico.",
       },
       {
         icon: "calendar",
-        title: "ASTC Expert Exam",
+        title: "Esame Expert",
         lines: ["Opzionale e a pagamento", "Valutazione lavori + verifica scritta", "Incontro individuale di chiusura"],
       },
     ],
     studyModeBox: {
       title: "Piattaforma Inner e",
-      highlight: "ToolBox ASTC",
+      highlight: "ToolBox",
       body: "Tra una sessione e l'altra lavori su progetti reali di team coaching, con homework e materiali dedicati. Il percorso integra social learning, e-learning specifico e strumenti operativi per accompagnare team e organizzazioni.",
       linkText: "Vedi il calendario dell'edizione",
       linkHref: "#calendario-edizioni",
@@ -1209,14 +1209,14 @@ export const coursesContent: Record<string, CourseData> = {
       body: "Dopo aver superato l'esame ottieni il diploma AATC ICF, utile come prerequisito per accedere alla credenziale Advanced Certification in Team Coaching (ACTC).",
     },
     programIntro:
-      "Il percorso ASTC unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Live Class, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox ASTC.",
+      "Il percorso di Team Coaching Sistemico unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Live Class, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox.",
     admissionBox: {
       title: "Requisiti per partecipare",
       body: "Per l'accesso al corso è richiesto l'invio del CV. Il workshop non tratta i fondamentali di management, coaching o facilitazione: è quindi importante avere una conoscenza di base di queste discipline.",
     },
     earlyBirdPromo: {
       ribbon: "EARLY BIRD",
-      line: "Early Bird ASTC 2026/27: fino a 174€ di sconto già applicato al checkout · 1° livello entro il 19/08/2026, 2° livello entro il 21/11/2026.",
+      line: "Early Bird 2026/27: fino a 174€ di sconto già applicato al checkout · 1° livello entro il 19/08/2026, 2° livello entro il 21/11/2026.",
       deadline: "21/11/2026",
       ctaHref: "#prezzo",
       pillDeadlineLabel: "EARLY BIRD −6%",
@@ -1225,7 +1225,7 @@ export const coursesContent: Record<string, CourseData> = {
       deadlineISO: "2026-11-21T23:59:59+01:00", // banner attivo fino alla EB più lunga (2° livello)
     },
     heroBenefits: [
-      "Apprendi l'esclusivo modello ASTC di coaching sistemico per i team",
+      "Apprendi l'esclusivo modello sistemico di coaching per i team",
       "Prerequisito per la credenziale ICF ACTC (Advanced Certification in Team Coaching)",
       "54 ore di formazione live · attestato AATC equivalente a 60 CCE ICF",
       "Edizioni in videoconferenza e in aula a Milano e Roma"
@@ -1240,10 +1240,10 @@ export const coursesContent: Record<string, CourseData> = {
     },
     badges: ["ICF Accreditato", "Diploma AATC", "Verso ACTC"],
     overview: {
-      title: "Dal singolo al sistema: il modello ASTC",
+      title: "Dal singolo al sistema: il modello sistemico",
       content: [
         "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
-        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo ASTC.",
+        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo di Team Coaching Sistemico.",
         "Il modello Asterys Systemic Team Coaching si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: cambiando il sistema, migliorano le dinamiche e cambiano i risultati."
       ]
     },
@@ -1254,8 +1254,8 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     learning: {
       cols: [
-        { title: "Modello ASTC", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente", "Paradigma del team di successo"] },
-        { title: "Metodo & Strumenti", items: ["ToolBox ASTC", "Piattaforma Inner di social learning", "Homework su progetti reali", "Percorso immersivo e team-centrico"] },
+        { title: "Modello sistemico", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente", "Paradigma del team di successo"] },
+        { title: "Metodo & Strumenti", items: ["ToolBox", "Piattaforma Inner di social learning", "Homework su progetti reali", "Percorso immersivo e team-centrico"] },
         { title: "Alta performance", items: ["Ri-pensare le high performing team", "Sostituire convinzioni limitanti", "Facilitare il cambiamento sistemico", "Soddisfazione e risultati straordinari"] }
       ],
       softSkills: ["Visione d'insieme", "Neutralità sistemica", "Presenza nei team", "Gestione della complessità"]
@@ -1263,18 +1263,18 @@ export const coursesContent: Record<string, CourseData> = {
     structure: {
       modules: [
         {
-          title: "ASTC 1° livello",
+          title: "Team Coaching Sistemico 1° livello",
           desc: "Corso di due giornate in videoconferenza più alcune Live Class da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra piattaforma di social learning Inner.",
           tags: ["Live Online", "Live Class 2h", "Piattaforma Inner", "Homework"]
         },
         {
-          title: "ASTC 2° livello",
-          desc: "Corso della durata di 3 giorni in aula (Milano o Roma), modulo di e-learning specifico e ToolBox ASTC per applicare il modello nei contesti reali.",
-          tags: ["In aula · Milano/Roma", "E-learning", "ToolBox ASTC"]
+          title: "Team Coaching Sistemico 2° livello",
+          desc: "Corso della durata di 3 giorni in aula (Milano o Roma), modulo di e-learning specifico e ToolBox per applicare il modello nei contesti reali.",
+          tags: ["In aula · Milano/Roma", "E-learning", "ToolBox"]
         },
         {
-          title: "ASTC Expert Exam",
-          desc: "Opzionale e a pagamento, per chi vuole certificarsi come ASTC Expert: valutazione di quanto prodotto nei tre giorni del 2° livello, verifica scritta e incontro individuale di chiusura.",
+          title: "Esame Expert",
+          desc: "Opzionale e a pagamento, per chi vuole certificarsi come Expert: valutazione di quanto prodotto nei tre giorni del 2° livello, verifica scritta e incontro individuale di chiusura.",
           tags: ["Opzionale", "Certificazione Expert", "Colloquio finale"]
         }
       ]
@@ -1289,38 +1289,38 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ],
     career: {
-      title: "Dopo il Master ASTC",
-      content: "Al termine del percorso potrai operare come team coach sistemico e, superando l'esame ASTC Expert, accedere al diploma AATC — prerequisito ICF per ottenere la credenziale Advanced Certification in Team Coaching (ACTC).",
+      title: "Dopo il Master in Team Coaching Sistemico",
+      content: "Al termine del percorso potrai operare come team coach sistemico e, superando l'esame Expert, accedere al diploma AATC — prerequisito ICF per ottenere la credenziale Advanced Certification in Team Coaching (ACTC).",
       points: [
-        { title: "Diploma AATC ICF", desc: "Rilasciato dopo il superamento dell'esame ASTC Expert. Utile come prerequisito per la credenziale ICF ACTC." },
+        { title: "Diploma AATC ICF", desc: "Rilasciato dopo il superamento dell'esame Expert. Utile come prerequisito per la credenziale ICF ACTC." },
         { title: "Attestato di partecipazione", desc: "Per chi non sostiene o non supera l'esame: 54 ore di formazione sincrona certificate." },
         { title: "60 CCE ICF", desc: "L'attestato AATC equivale a 60 CCE, utili per il rinnovo della tua credenziale di Coach ICF." },
-        { title: "Metodologia ASTC", desc: "Imparerai a condurre percorsi di team coaching immersivi e team-centrici grazie alle procedure e alla metodologia ASTC." }
+        { title: "Metodologia sistemica", desc: "Imparerai a condurre percorsi di team coaching immersivi e team-centrici grazie alle procedure e alla metodologia sistemica." }
       ]
     },
     classDates: [
-      { date: "6 ottobre 2026", badge: "ASTC 1° LIVELLO · Live Online" },
-      { date: "20 gennaio 2027", badge: "ASTC 2° LIVELLO · 1a Live Class" }
+      { date: "6 ottobre 2026", badge: "TEAM COACHING SISTEMICO 1° LIVELLO · Live Online" },
+      { date: "20 gennaio 2027", badge: "TEAM COACHING SISTEMICO 2° LIVELLO · 1a Live Class" }
     ],
     sessionSchedule: [
-      { days: "ASTC 1° livello · Live Class", time: "6 ottobre, 29 ottobre e 10 novembre 2026" },
-      { days: "ASTC 1° livello · Corso a distanza", time: "16, 17 ottobre 2026" },
-      { days: "ASTC 2° livello · Live Class", time: "20 gennaio e 15 febbraio 2027" },
-      { days: "ASTC 2° livello · Corso in aula", time: "Milano 4, 5, 6 febbraio · Roma 25, 26, 27 febbraio 2027" }
+      { days: "Team Coaching Sistemico 1° livello · Live Class", time: "6 ottobre, 29 ottobre e 10 novembre 2026" },
+      { days: "Team Coaching Sistemico 1° livello · Corso a distanza", time: "16, 17 ottobre 2026" },
+      { days: "Team Coaching Sistemico 2° livello · Live Class", time: "20 gennaio e 15 febbraio 2027" },
+      { days: "Team Coaching Sistemico 2° livello · Corso in aula", time: "Milano 4, 5, 6 febbraio · Roma 25, 26, 27 febbraio 2027" }
     ],
     editionsSection: {
       eyebrow: "Calendario edizioni",
       title: "Scegli città, livello ed edizione",
       intro:
-        "Seleziona la **città** per il 2° livello, il **livello ASTC** e l'**edizione** per vedere scadenze, formato e date principali del percorso.",
+        "Seleziona la **città** per il 2° livello, il **livello di Team Coaching Sistemico** e l'**edizione** per vedere scadenze, formato e date principali del percorso.",
     },
     editions: [
       {
         city: "Milano",
         citySlug: "milano",
-        level: "ASTC 1°+2° livello",
+        level: "Team Coaching Sistemico 1°+2° livello",
         levelSlug: "l1-l2",
-        editionLabel: "ASTC 2026/27 · Milano",
+        editionLabel: "2026/27 · Milano",
         editionSlug: "astc-completo-milano-2026-27",
         subtitle: "Ottobre 2026 – Febbraio 2027",
         badge: "Early Bird attivo",
@@ -1330,24 +1330,24 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird 1° livello", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 1° livello", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "ASTC 1° livello" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
+          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Team Coaching Sistemico 1° livello" },
+          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
           { label: "Early Bird 2° livello", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 2° livello", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "ASTC 2° livello · Online" },
-          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "ASTC 2° livello" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "ASTC 2° livello · Online" },
-          { label: "ASTC Expert Exam", date: "Opzionale", type: "milestone" },
+          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "Team Coaching Sistemico 2° livello" },
+          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
       {
         city: "Milano",
         citySlug: "milano",
-        level: "ASTC 1° livello",
+        level: "Team Coaching Sistemico 1° livello",
         levelSlug: "l1",
-        editionLabel: "ASTC 1° livello 261",
+        editionLabel: "Team Coaching Sistemico 1° livello 261",
         editionSlug: "astc-l1-261-2026",
         subtitle: "Ottobre – Novembre 2026",
         badge: "Live Online",
@@ -1366,9 +1366,9 @@ export const coursesContent: Record<string, CourseData> = {
       {
         city: "Milano",
         citySlug: "milano",
-        level: "ASTC 2° livello",
+        level: "Team Coaching Sistemico 2° livello",
         levelSlug: "l2",
-        editionLabel: "ASTC 2° livello · Milano",
+        editionLabel: "Team Coaching Sistemico 2° livello · Milano",
         editionSlug: "astc-l2-milano-2027",
         subtitle: "Gennaio – Febbraio 2027",
         badge: "In aula",
@@ -1381,15 +1381,15 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Online" },
           { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "Milano" },
           { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Online" },
-          { label: "ASTC Expert Exam", date: "Opzionale", type: "milestone" },
+          { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
       {
         city: "Roma",
         citySlug: "roma",
-        level: "ASTC 1°+2° livello",
+        level: "Team Coaching Sistemico 1°+2° livello",
         levelSlug: "l1-l2",
-        editionLabel: "ASTC 2026/27 · Roma",
+        editionLabel: "2026/27 · Roma",
         editionSlug: "astc-completo-roma-2026-27",
         subtitle: "Ottobre 2026 – Febbraio 2027",
         badge: "Early Bird attivo",
@@ -1399,24 +1399,24 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird 1° livello", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 1° livello", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "ASTC 1° livello" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "ASTC 1° livello · Online" },
+          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Team Coaching Sistemico 1° livello" },
+          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
           { label: "Early Bird 2° livello", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 2° livello", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "ASTC 2° livello · Online" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "ASTC 2° livello · Online" },
-          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "ASTC 2° livello" },
-          { label: "ASTC Expert Exam", date: "Opzionale", type: "milestone" },
+          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "Team Coaching Sistemico 2° livello" },
+          { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
       {
         city: "Roma",
         citySlug: "roma",
-        level: "ASTC 1° livello",
+        level: "Team Coaching Sistemico 1° livello",
         levelSlug: "l1",
-        editionLabel: "ASTC 1° livello 261",
+        editionLabel: "Team Coaching Sistemico 1° livello 261",
         editionSlug: "astc-l1-261-2026-roma",
         subtitle: "Ottobre – Novembre 2026",
         badge: "Live Online",
@@ -1435,9 +1435,9 @@ export const coursesContent: Record<string, CourseData> = {
       {
         city: "Roma",
         citySlug: "roma",
-        level: "ASTC 2° livello",
+        level: "Team Coaching Sistemico 2° livello",
         levelSlug: "l2",
-        editionLabel: "ASTC 2° livello · Roma",
+        editionLabel: "Team Coaching Sistemico 2° livello · Roma",
         editionSlug: "astc-l2-roma-2027",
         subtitle: "Gennaio – Febbraio 2027",
         badge: "In aula",
@@ -1450,18 +1450,18 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Online" },
           { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Online" },
           { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "Roma" },
-          { label: "ASTC Expert Exam", date: "Opzionale", type: "milestone" },
+          { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
     ],
     fees: [
       {
-        title: "ASTC 1°+2° livello",
+        title: "Team Coaching Sistemico 1°+2° livello",
         type: "lump",
         wooKey: "completo",
         benefit: "Percorso completo",
-        heading: "ASTC 1°+2° livello",
-        desc: "Percorso completo con ASTC 1° livello a distanza e ASTC 2° livello in aula a Milano o Roma.",
+        heading: "Team Coaching Sistemico 1°+2° livello",
+        desc: "Percorso completo con Team Coaching Sistemico 1° livello a distanza e Team Coaching Sistemico 2° livello in aula a Milano o Roma.",
         price: "2.900€",
         priceLabel: "+ IVA",
         financing: {
@@ -1471,12 +1471,12 @@ export const coursesContent: Record<string, CourseData> = {
         }
       },
       {
-        title: "ASTC 1° livello",
+        title: "Team Coaching Sistemico 1° livello",
         type: "lump",
         wooKey: "l1",
         benefit: "Live online",
-        heading: "ASTC 1° livello",
-        desc: "Primo livello ASTC in videoconferenza, con Live Class e corso a distanza.",
+        heading: "Team Coaching Sistemico 1° livello",
+        desc: "Primo livello di Team Coaching Sistemico in videoconferenza, con Live Class e corso a distanza.",
         price: "1.200€",
         priceLabel: "+ IVA",
         financing: {
@@ -1486,12 +1486,12 @@ export const coursesContent: Record<string, CourseData> = {
         }
       },
       {
-        title: "ASTC 2° livello",
+        title: "Team Coaching Sistemico 2° livello",
         type: "lump",
         wooKey: "l2",
         benefit: "In aula",
-        heading: "ASTC 2° livello",
-        desc: "Secondo livello ASTC con Live Class online e corso in aula a Milano o Roma.",
+        heading: "Team Coaching Sistemico 2° livello",
+        desc: "Secondo livello di Team Coaching Sistemico con Live Class online e corso in aula a Milano o Roma.",
         price: "2.100€",
         priceLabel: "+ IVA",
         financing: {
@@ -1504,7 +1504,7 @@ export const coursesContent: Record<string, CourseData> = {
     faqs: commonFaqs
   },
   'eiw': {
-    title: "Emotional Intelligence Workout (EIW)",
+    title: "Intelligenza Emotiva",
     subtitle: "Intelligenza Emotiva",
     tagline: "Non serve più dire che l'intelligenza emotiva è importante: ormai si sa che è sviluppabile. Come farlo è un'altra storia — e qui si fa, non si ascolta soltanto.",
     type: "WORKOUT EQ",
@@ -1534,7 +1534,7 @@ export const coursesContent: Record<string, CourseData> = {
         "Ormai sembra scontato dire che l'intelligenza emotiva è importante per buoni risultati nella vita privata e pubblica: è stata persino sdoganata la \"happiness\" in azienda e tutti concordano sulla possibilità e necessità di svilupparla nei manager e in chiunque voglia aumentare la propria efficacia… ma come farlo? Qui le voci perdono forza, si fanno vaghe, e le soluzioni proposte non sempre sono praticabili.",
         "Per questo, accumulati decenni di esperienza sul campo e dopo collaborazioni pluriennali con i principali riferimenti internazionali dell'intelligenza emotiva, Asterys Lab ha progettato programmi specificamente destinati al reale sviluppo dell'intelligenza emotiva di tutti.",
         "Nella maggior parte dei corsi di intelligenza emotiva si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve \"essere\" diversi, sviluppando un livello di coscienza specifico che passa per l'esperienza: vogliamo portarti davvero a sviluppare la tua capacità di stare con le emozioni in modo intelligente. Ci sarà da sudare: sarai coinvolto in esperienze consapevoli, attività progettate allo scopo.",
-        "Se sei tra le persone che vogliono spostarsi veramente da dove sono per andare in un posto migliore, questo è il percorso giusto. EIW offre lo spazio, gli strumenti e i coach che ti accompagneranno aiutandoti a focalizzarti sugli aspetti importanti e a superare i momenti più difficili, rendendo quest'esperienza piacevole e appagante.",
+        "Se sei tra le persone che vogliono spostarsi veramente da dove sono per andare in un posto migliore, questo è il percorso giusto. Il percorso di Intelligenza Emotiva offre lo spazio, gli strumenti e i coach che ti accompagneranno aiutandoti a focalizzarti sugli aspetti importanti e a superare i momenti più difficili, rendendo quest'esperienza piacevole e appagante.",
         "Non perdere altro tempo: lavora seriamente sulla competenza che oggi più che mai può fare la differenza nella tua efficacia in ogni campo."
       ]
     },
@@ -1604,28 +1604,28 @@ export const coursesContent: Record<string, CourseData> = {
       linkHref: "#programma"
     },
     admissionBox: {
-      title: "Per chi è EIW",
+      title: "Per chi è il percorso di Intelligenza Emotiva",
       body: "Adatto a chiunque voglia sviluppare davvero la propria intelligenza emotiva. Particolarmente utile per manager e leader e per coach, counsellor, psicologi e chi nella relazione ha lo strumento principale di lavoro. Nessun processo di ammissione: scegli un Round e iscriviti, i posti sono limitati."
     },
     teachers: [
       {
         name: "Renata Cargnelutti Beltrami",
         creds: "Coach EQ",
-        role: "Trainer EIW",
+        role: "Trainer",
         bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "/course-media/apcm/trainer-renata-cargnelutti-beltrami.png"
       },
       {
         name: "Nicoletta Stellino",
         creds: "Coach EQ",
-        role: "Trainer EIW",
+        role: "Trainer",
         bio: "Coach e facilitatrice specializzata nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "/course-media/apcm/trainer-nicoletta-stellino.jpg"
       },
       {
         name: "Pier Paolo Colasanti",
         creds: "Coach EQ",
-        role: "Trainer EIW",
+        role: "Trainer",
         bio: "Coach e facilitatore specializzato nel campo dell'Intelligenza Emotiva. Si alterna nella facilitazione dei diversi momenti dell'intero percorso.",
         img: "/course-media/apcm/trainer-pier-paolo-colasanti.jpg"
       }
@@ -1663,7 +1663,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "Round EIW",
+        title: "Round di Intelligenza Emotiva",
         type: "lump" as const,
         wooKey: "round",
         benefit: "4 CCE ICF",

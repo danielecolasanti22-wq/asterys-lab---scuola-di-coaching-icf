@@ -1,10 +1,7 @@
-import CourseDetail from '../CourseDetail';
-import { coursesContent, type CourseData } from '../../constants/coursesContent';
+import CourseDetail from "../CourseDetail";
+import { coursesContent } from "../../constants/coursesContent";
 
-const course = {
-  ...coursesContent['continuous-learning'],
-} satisfies CourseData;
-
+// Dati letti a render-time (non a livello di modulo) per compatibilità con il prerender SSR.
 export default function ContinuousLearningCourse() {
-  return <CourseDetail courseId="continuous-learning" courseData={course} />;
+  return <CourseDetail courseId="continuous-learning" courseData={coursesContent["continuous-learning"]} />;
 }

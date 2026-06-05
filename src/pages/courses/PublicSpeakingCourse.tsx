@@ -1,10 +1,7 @@
-import CourseDetail from '../CourseDetail';
-import { coursesContent, type CourseData } from '../../constants/coursesContent';
+import CourseDetail from "../CourseDetail";
+import { coursesContent } from "../../constants/coursesContent";
 
-const course = {
-  ...coursesContent['public-speaking'],
-} satisfies CourseData;
-
+// Dati letti a render-time (non a livello di modulo) per compatibilità con il prerender SSR.
 export default function PublicSpeakingCourse() {
-  return <CourseDetail courseId="public-speaking" courseData={course} />;
+  return <CourseDetail courseId="public-speaking" courseData={coursesContent["public-speaking"]} />;
 }
