@@ -52,12 +52,12 @@ const courseGroups: CourseGroup[] = [
     courses: [
       {
         id: 'coaching-circle',
-        title: 'Coaching Circle',
+        title: 'Mentoring per il rinnovo delle credenziali',
         badge: 'Specializzazione',
-        duration: '3,30 ore',
-        modality: 'Zoom · Gruppi da 4',
+        duration: '10 ore per il rinnovo',
+        modality: 'Zoom · gruppo o individuale',
         desc:
-          'Pratica di coaching supervisionata in gruppi da 4, con feedback immediato e un mentor-coach professionista MCC.',
+          'Matura le 10 ore di mentor coaching per il rinnovo ICF: Mentoring di Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
         img: '/course-media/coaching-circle/card.png',
       },
       {

@@ -383,11 +383,11 @@ const MasterGrid = () => {
     },
     {
       id: 'coaching-circle',
-      title: 'Coaching Circle',
-      duration: '3,30 ore · Gruppi da 4',
+      title: 'Mentoring per il rinnovo delle credenziali',
+      duration: '10 ore per il rinnovo · gruppo o individuale',
       label: 'Specializzazione',
-      desc: 'Pratica supervisionata di coaching con un mentor-coach professionista: feedback immediato e confronto tra pari.',
-      start: 'Data condivisa nel gruppo',
+      desc: 'Matura le 10 ore di mentor coaching per il rinnovo ICF: Mentoring di Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
+      start: 'Edizione di gruppo: 29 set e 10 dic 2026',
       lastSeats: false,
       seed: 'coaching-circle'
     },

@@ -65,7 +65,7 @@ const megaColumns: MegaColumn[] = [
     caption: 'Approfondisci ambiti chiave del coaching',
     icon: 'specialization',
     items: [
-      { id: 'coaching-circle', title: 'Coaching Circle', kicker: 'Pratica supervisionata', meta: '3,30 ore · Gruppi da 4 · Zoom' },
+      { id: 'coaching-circle', title: 'Mentoring per il rinnovo delle credenziali', kicker: 'Per la credenziale ICF', meta: '10 ore · gruppo o individuale · Zoom' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
     ],
   },
@@ -873,7 +873,7 @@ export const Footer = () => {
               <li><Link to="/corsi/apcm" className="hover:text-white transition-colors">Master APCM</Link></li>
               <li><Link to="/corsi/systemic-team-coaching" className="hover:text-white transition-colors">Team Coaching</Link></li>
               <li><Link to="/corsi/eiw" className="hover:text-white transition-colors">Intelligenza Emotiva</Link></li>
-              <li><Link to="/corsi/coaching-circle" className="hover:text-white transition-colors">Coaching Circle</Link></li>
+              <li><Link to="/corsi/coaching-circle" className="hover:text-white transition-colors">Mentoring per le credenziali</Link></li>
               <li><Link to="/corsi" className="hover:text-white transition-colors">Tutti i corsi</Link></li>
             </ul>
           </div>

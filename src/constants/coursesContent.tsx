@@ -1673,42 +1673,42 @@ export const coursesContent: Record<string, CourseData> = {
     faqs: commonFaqs
   },
   'coaching-circle': {
-    title: "Coaching Circle",
-    subtitle: "Pratica supervisionata di coaching",
-    tagline: "Fai pratica di coaching in gruppi da 4, con feedback immediato e supervisione di un mentor-coach professionista MCC.",
-    type: "PRATICA SUPERVISIONATA",
-    heroKicker: "PER COACH CHE HANNO COMPLETATO UN PERCORSO BASE",
+    title: "Mentoring per il rinnovo delle credenziali",
+    subtitle: "Mentoring per il rinnovo delle credenziali",
+    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching. Le maturi con il Mentoring di Gruppo (già Coaching Circle) o con il Mentoring Individuale, supervisionato da Paola Rulfi, Mentor Coach MCC.",
+    type: "MENTORING ICF",
+    heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
       hero: "/course-media/coaching-circle/hero-coaching-circle.png",
       overview: "/course-media/coaching-circle/overview-coaching-circle.png",
       howItWorks: "/course-media/coaching-circle/how-coaching-circle.png",
     },
     heroBenefits: [
-      "3,30h di mentor coaching di gruppo in videochiamata",
-      "20' nel ruolo di coach + 30' di feedback dedicato per ciascun partecipante",
-      "Supervisione di un mentor-coach professionista MCC",
-      "Apprendimento dalle tre posizioni: coach, cliente, osservatore"
+      "Per il rinnovo della credenziale ICF servono 10 ore di mentor coaching",
+      "Mentoring di Gruppo: 2 incontri da 3,5h (7 ore) in gruppi da 4 — 17:00–20:30",
+      "Mentoring Individuale: 3 ore one-to-one da concordare",
+      "Insieme arrivi alle 10 ore, con Paola Rulfi, Mentor Coach MCC"
     ],
     summaryBox: {
-      nextEdition: "Online · Zoom",
-      dates: "Scegli dal calendario dopo l'acquisto",
-      format: "Videochiamata · Gruppi da 4",
-      duration: "3,30 ore",
-      price: "90€ + IVA 22%",
-      installments: "Pagamento una tantum"
+      nextEdition: "Prossima edizione di gruppo · online (Zoom)",
+      dates: "29 set e 10 dic 2026 · 17:00–20:30",
+      format: "Gruppo (da 4) o individuale · Zoom",
+      duration: "Gruppo 7h · Individuale 3h · Insieme 10h",
+      price: "Da ~200€ (in definizione)",
+      installments: "Sconto Alumni applicato in cassa"
     },
     earlyBirdPromo: {
-      ribbon: "COACHING CIRCLE",
-      line: "Sessione di 3,30h in gruppi da 4 con mentor-coach MCC · Scegli la data dal calendario dopo l'acquisto",
+      ribbon: "MENTORING ICF",
+      line: "Rinnovo credenziale ICF: matura le 10 ore di mentor coaching · in gruppo (7h), individuale (3h) o entrambi (10h)",
       deadline: "",
       ctaHref: "#prezzo",
     },
-    badges: ["Gruppi da 4", "3,30h", "Feedback immediato"],
+    badges: ["10 ore per il rinnovo", "Gruppo o individuale", "Mentor Coach MCC"],
     overview: {
-      title: "Fai Pratica di Coaching!",
+      title: "Mentoring per rinnovare la tua credenziale ICF",
       content: [
-        "Dopo aver terminato un percorso di formazione, anche con la credenziale, è alto il rischio di **\"viziare\" la propria pratica** con modalità che si scostino dal coaching ICF.",
-        "Per questa ragione Asterys Lab propone **uno spazio di pratica in gruppi da 4 persone, supervisionato da un mentor-coach MCC** che offre feedback immediato e discute scelte e strategie sui casi reali."
+        "Per **rinnovare la credenziale ICF** servono **10 ore di mentor coaching**. Asterys Lab te le fa maturare con un **Mentor Coach MCC**, in due modalità anche combinabili: **Mentoring di Gruppo** e **Mentoring Individuale**.",
+        "Il **Mentoring di Gruppo** (già *Coaching Circle*) è un'edizione di 2 incontri da 3,5h in gruppi da 4 (**7 ore**). Il **Mentoring Individuale** sono **3 ore** one-to-one. **Insieme arrivi alle 10 ore** richieste per il rinnovo."
       ]
     },
     target: [
@@ -1751,43 +1751,43 @@ export const coursesContent: Record<string, CourseData> = {
     structure: {
       modules: [
         {
-          title: "Apertura e setting",
-          desc: "Il mentor coach imposta il lavoro del gruppo, chiarisce i ruoli (coach, cliente, osservatore) e il contratto del circle."
+          title: "1° incontro (3,5h · 17:00–20:30)",
+          desc: "Apertura del setting e contratto di gruppo, poi pratica a rotazione nei ruoli di coach, cliente e osservatore, con feedback del Mentor Coach MCC."
         },
         {
-          title: "Sessioni a rotazione",
-          desc: "Ogni partecipante fa una sessione di 20' nel ruolo di coach; gli altri si alternano come cliente e osservatori, in gruppi da 4."
+          title: "2° incontro (3,5h · 17:00–20:30)",
+          desc: "Si continua la pratica supervisionata sui casi reali, consolidando scelte e stile dentro la cornice ICF. I due incontri compongono l'edizione: 7 ore in totale."
         },
         {
-          title: "Feedback e riflessione",
-          desc: "Dopo ogni sessione, 30' di feedback dedicato dal mentor MCC e confronto di gruppo su scelte, strategie e aderenza al metodo ICF."
+          title: "Opzione +3h individuale (10 ore)",
+          desc: "Chi punta al rinnovo della credenziale aggiunge 3 ore di mentoring individuale con il Mentor Coach MCC, arrivando alle 10 ore totali."
         }
       ]
     },
     programIntro:
-      "Tre fasi in 3,30h che si ripetono in ogni Coaching Circle: apertura del setting, sessioni a rotazione nei tre ruoli, feedback finale del mentor.",
+      "Un'edizione di Mentoring di Gruppo sono 2 incontri da 3,5h (7 ore) in gruppi da 4, supervisionati da un Mentor Coach MCC. Con +3h di mentoring individuale arrivi a 10 ore.",
     admissionBox: {
       title: "Requisiti per partecipare",
-      body: "Aver completato un percorso base per diventare coach. Il Coaching Circle è uno spazio di pratica, non un corso introduttivo.",
+      body: "Aver completato un percorso base per diventare coach. Il Mentoring di Gruppo è uno spazio di pratica supervisionata, non un corso introduttivo.",
     },
     howItWorks: {
-      title: "Come funziona il Coaching Circle",
+      title: "Come funziona il Mentoring di Gruppo",
       intro:
-        "Una **sessione singola** da 3,30h in videochiamata, in **gruppi da 4 partecipanti** che si alternano nei ruoli di coach, cliente e osservatore con la supervisione di un **mentor-coach MCC**.",
+        "Un'**edizione da 2 incontri (3,5h ciascuno, 7 ore)** in videochiamata, in **gruppi da 4** che si alternano nei ruoli di coach, cliente e osservatore con la supervisione di un **Mentor Coach MCC**. Orario 17:00–20:30.",
       formazioneTitle: "Pratica supervisionata",
-      formazioneBadge: "3,30h · Gruppi da 4",
+      formazioneBadge: "2×3,5h · Gruppi da 4",
       formazioneIntro:
-        "Ogni partecipante ha **20' nel ruolo di coach** con un coachee reale, seguiti da **30' di feedback** dedicato dal mentor MCC. Il confronto di gruppo affina le scelte e mantiene la pratica aderente al metodo ICF.",
+        "In ogni incontro pratichi nel ruolo di coach su un caso reale e ricevi **feedback dedicato dal Mentor Coach MCC**. Il confronto di gruppo affina le scelte e mantiene la pratica aderente al metodo ICF. Con +3h individuali raggiungi le **10 ore** utili al rinnovo della credenziale.",
     },
     scheduleColumns: [
-      { icon: 'monitor', title: 'Modalità', body: 'Videochiamata su Zoom — link inviato dopo la definizione della data.' },
-      { icon: 'users', title: 'Gruppo', body: 'Massimo 4 partecipanti per circle, con supervisione di un mentor MCC.' },
-      { icon: 'calendar', title: 'Quando', body: 'Scegli la data dal calendario dopo l\'acquisto; la conferma avviene nel gruppo WhatsApp del circle.' },
+      { icon: 'monitor', title: 'Modalità', body: 'Videochiamata su Zoom — link inviato prima dell\'incontro. Orario 17:00–20:30.' },
+      { icon: 'users', title: 'Gruppo', body: 'Gruppi da 4 partecipanti, con supervisione di Paola Rulfi, Mentor Coach MCC.' },
+      { icon: 'calendar', title: 'Quando', body: '3 edizioni l\'anno (Gen–Mar, Apr–Giu, Set–Dic). Ogni edizione ha 2 date, acquistabili insieme; vengono comunicate di volta in volta.' },
     ],
     studyModeBox: {
-      title: "Modalità di svolgimento",
-      highlight: "Zoom · Gruppi da 4 · 3,30h",
-      body: "Dopo l'acquisto ricevi il link al calendario per scegliere la data più comoda. I gruppi si formano in ordine di iscrizione e la data definitiva viene concordata con mentor e partecipanti in un gruppo WhatsApp dedicato. Se non si raggiunge il numero minimo, vieni ricollocato nel Coaching Circle successivo.",
+      title: "Come si acquista",
+      highlight: "1 edizione = 2 incontri (7h) · +3h individuale = 10h",
+      body: "Acquisti un'edizione: 2 sessioni insieme, non separate. Le 2 date vengono comunicate di volta in volta. Se annulli una sessione, la perdi. Se l'edizione non parte (sotto il numero minimo di partecipanti) ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo. [Regole d'acquisto in via di conferma]",
     },
     teachers: [
       {
@@ -1800,51 +1800,73 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     career: {
       title: "Perché inserirlo nella tua pratica",
-      content: "Il Coaching Circle mantiene alta la qualità della tua pratica professionale: feedback immediato da un mentor MCC, confronto tra pari e aderenza alle linee guida ICF.",
+      content: "Il Mentoring di Gruppo mantiene alta la qualità della tua pratica e ti fa maturare le ore di mentoring utili per la credenziale ICF: feedback da un Mentor Coach MCC, confronto tra pari e aderenza alle linee guida.",
       points: [
-        { title: "Feedback immediato MCC", desc: "Il mentor coach osserva la tua sessione e restituisce un feedback dedicato sul caso reale." },
-        { title: "Ripetibile a tua scelta", desc: "Acquisti la singola sessione quando ne hai bisogno: puoi tornare nel tempo per consolidare la pratica." },
-        { title: "Le tre posizioni in un incontro", desc: "Coach, cliente e osservatore: ogni ruolo amplia la consapevolezza e affina lo sguardo professionale." },
+        { title: "Ore per la credenziale", desc: "7 ore con l'edizione di gruppo; con +3h di mentoring individuale arrivi alle 10 ore utili al rinnovo." },
+        { title: "Feedback di un Mentor MCC", desc: "Paola Rulfi osserva la tua pratica e restituisce un feedback dedicato sul caso reale." },
+        { title: "Le tre posizioni", desc: "Coach, cliente e osservatore: ogni ruolo amplia la consapevolezza e affina lo sguardo professionale." },
         { title: "Allineamento ICF", desc: "Tieni la pratica dentro le linee guida e il codice etico ICF, evitando derive da altre discipline." }
       ]
     },
     fees: [
       {
-        title: "Coaching Circle",
+        title: "Entrambi",
         type: "lump",
-        benefit: "Pratica supervisionata",
-        heading: "Quota di partecipazione",
-        desc: "Include 3,30h di mentor coaching di gruppo in videochiamata, in gruppi da 4 partecipanti, con supervisione di un mentor-coach MCC.",
-        price: "90€",
-        priceLabel: "+ IVA 22%",
+        benefit: "10 ore · rinnovo completo",
+        heading: "Gruppo + Individuale (10 ore)",
+        desc: "Le 7 ore di Mentoring di Gruppo + 3 ore di Mentoring Individuale: 10 ore totali, l'intero monte ore richiesto per il rinnovo della credenziale ICF.",
+        price: "480€",
+        priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda. Lo sconto Alumni e Associati è applicato in cassa."
+        footnote: "Pacchetto rinnovo: 180€ Mentoring di Gruppo (7h) + 300€ Mentoring Individuale (3h) = 10 ore. Sconto Alumni applicato in cassa."
+      },
+      {
+        title: "Di gruppo",
+        type: "lump",
+        benefit: "7 ore (2 incontri)",
+        heading: "Mentoring di Gruppo",
+        desc: "Un'edizione = 2 incontri da 3,5h (7 ore) in gruppi da 4, con Paola Rulfi, Mentor Coach MCC. Orario 17:00–20:30.",
+        price: "180€",
+        priceLabel: "+ IVA",
+        ctaLabel: "Prenota il tuo posto sullo store",
+        footnote: "Edizione in corso: 29 set e 10 dic 2026. Sconto Alumni applicato in cassa."
+      },
+      {
+        title: "Individuale",
+        type: "lump",
+        benefit: "3 ore one-to-one",
+        heading: "Mentoring Individuale",
+        desc: "3 ore di mentoring individuale con il Mentor Coach MCC, da concordare. Ideale per completare le ore che ti mancano al rinnovo.",
+        price: "300€",
+        priceLabel: "/ ora (MCC) + IVA",
+        ctaLabel: "Prenota il tuo posto sullo store",
+        footnote: "Costo orario per livello credenziale (ACC/PCC/MCC, 150–300€/h). Sconto quantità: 267€/h da 3 ore, 261€/h da 7 ore. Sconto Alumni applicato in cassa."
       }
     ],
     faqs: [
       {
-        q: "A chi è rivolto il Coaching Circle?",
-        a: "A chi ha già effettuato un percorso base per diventare coach e vuole fare pratica di coaching attraverso il feedback diretto di un professionista del settore."
+        q: "Cos'è il Mentoring di Gruppo?",
+        a: "È la nuova formula del Coaching Circle: pratica supervisionata di coaching in gruppi da 4, con feedback immediato di un Mentor Coach MCC. Un'edizione è composta da 2 incontri da 3,5h, per un totale di 7 ore."
       },
       {
-        q: "Come si svolge l'incontro?",
-        a: "3,30 ore di pratica supervisionata in gruppi da 4 persone, in videoconferenza. I partecipanti si alternano nei ruoli di coach, cliente e osservatore. A ognuno è richiesto di fare una sessione di 20' nel ruolo di coach e riceverà 30' di feedback dedicato dal mentor. Il mentor stimola la riflessione di tutti in modo che ogni partecipante sviluppi apprendimento dalle tre posizioni prendendo in considerazione tutti i punti di vista."
+        q: "Come arrivo alle 10 ore per il rinnovo della credenziale?",
+        a: "Aggiungendo 3 ore di mentoring individuale alle 7 ore di gruppo: 7 + 3 = 10 ore. L'opzione 'Gruppo + Individuale' è pensata proprio per chi deve maturare le ore di mentoring per la credenziale ICF."
       },
       {
-        q: "Come si definisce la data del Coaching Circle?",
-        a: "Dopo l'acquisto verrà inviato un link al calendario dove poter scegliere la data più comoda tra quelle disponibili. Raccogliamo tutte le iscrizioni e componiamo i gruppi di lavoro in base al loro ordine di arrivo. Riceverai una richiesta di adesione ad un gruppo WhatsApp nel quale, insieme al mentor coach e all'altro/a iscritto/a, sarà definita la data utile per tutti. Iscrivendoti a questa attività stai autorizzandoci a utilizzare il tuo numero di telefono cellulare e a condividerlo con gli altri nel gruppo WhatsApp del Coaching Circle."
+        q: "Quante edizioni di gruppo ci sono e quando?",
+        a: "3 edizioni l'anno: Gen–Mar, Apr–Giu, Set–Dic. Ogni edizione ha 2 date (orario 17:00–20:30), acquistabili insieme. L'edizione in corso (Set–Dic 2026) si tiene il 29 settembre e il 10 dicembre 2026."
       },
       {
-        q: "Cosa succede se non si raggiunge il numero minimo?",
-        a: "L'evento avrà luogo al raggiungimento del numero minimo di partecipanti per ogni incontro; altrimenti verrai ricollocato in quello successivo."
+        q: "Come funziona l'acquisto?",
+        a: "Acquisti un'edizione, cioè le 2 sessioni insieme (non separatamente). Se annulli una sessione, la perdi. Se l'edizione non parte per numero insufficiente di partecipanti, ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo. [Regole in via di conferma]"
       },
       {
-        q: "Chi è il mentor del Coaching Circle?",
-        a: "Il Coaching Circle è supervisionato da un mentor-coach professionista MCC di Asterys Lab, che offre feedback immediato e discute con i partecipanti le scelte e le possibili strategie nei casi affrontati di volta in volta."
+        q: "Chi è il Mentor Coach?",
+        a: "Paola Rulfi, Mentor Coach MCC di Asterys Lab: Business ed Executive Coach, Mentor Coach e Supervisor. Offre feedback immediato e discute con i partecipanti scelte e strategie sui casi reali."
       },
       {
-        q: "Dove si svolge il Coaching Circle?",
-        a: "In videochiamata. Dopo la definizione della data nel gruppo WhatsApp riceverai il link per partecipare."
+        q: "Dove si svolge?",
+        a: "Online, in videochiamata su Zoom. Il link viene inviato prima di ogni incontro."
       }
     ]
   },

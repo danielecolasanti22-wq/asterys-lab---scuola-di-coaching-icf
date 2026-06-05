@@ -323,13 +323,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     'Imparerai un percorso strutturato e professionale: teoria, pratica supervisionata e strumenti concreti per portare valore alle persone e alle organizzazioni.';
 
   const admissionBox = course.admissionBox ?? {
-    title: 'Requisiti di ammissione al Master',
-    body: 'Questo Master richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
+    title: 'Requisiti di ammissione al corso',
+    body: 'Questo corso richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
   };
 
   const earlyPromo: NonNullable<CourseData['earlyBirdPromo']> = course.earlyBirdPromo ?? {
     ribbon: 'PROMO',
-    line: `Scopri condizioni dedicate al Master in ${course.subtitle} | Contattaci per i dettagli`,
+    line: `Scopri condizioni dedicate a ${course.title} | Contattaci per i dettagli`,
     deadline: '',
     ctaHref: '#prezzo',
   };
@@ -351,8 +351,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw', 'continuous-learning', 'public-speaking'].includes(id ?? '');
   const isCL = id === 'continuous-learning';
 
-  const isMasterLike =
-    /master|level|icf/i.test(course.type) || course.title.toLowerCase().includes('master');
+  // "Master" deve comparire solo per APCM e ASTC (Team Coaching); per gli altri corsi si dice "corso".
+  const isMasterLike = id === 'apcm' || id === 'systemic-team-coaching';
 
   const howDefaults = {
     title: isMasterLike ? 'Come funziona il Master' : 'Come funziona il corso',
@@ -504,7 +504,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           {promoActive ? earlyPromo.line : 'Scopri date, edizioni e condizioni di iscrizione.'}
         </span>
         <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">
-          {isCoachingCircle ? 'Dettagli e date della pratica' : 'Dettagli e date sul Master'}
+          {isCoachingCircle ? 'Dettagli e date della pratica' : isMasterLike ? 'Dettagli e date sul Master' : 'Dettagli e date del corso'}
         </span>
         {promoActive && earlyPromo.code ? (
           <span className="shrink-0 rounded-full bg-white/15 px-2.5 py-0.5 text-white ring-1 ring-white/25 whitespace-nowrap">
