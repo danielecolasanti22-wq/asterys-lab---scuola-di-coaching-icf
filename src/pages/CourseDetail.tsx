@@ -607,8 +607,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 2. LA FIGURA CENTRALE SECTION */}
       <section className="py-24 bg-white">
-        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 lg:items-stretch">
-          <div className="order-2 lg:order-1 lg:self-center">
+        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
+          <div className="order-2 lg:order-1">
              <h2 className={`${tSection} mb-8 leading-tight`}>
                 {course.overview.title}
              </h2>
@@ -620,13 +620,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                ))}
              </div>
           </div>
-          {/* Immagine a tutta altezza della colonna testo (min ~quadrata): niente vuoto quando il testo è lungo. */}
-          <div className="relative order-1 lg:order-2 lg:min-h-[26rem]">
-             <div className="rounded-[3rem] overflow-hidden shadow-2xl lg:h-full">
+          <div className="relative order-1 lg:order-2">
+             <div className="rounded-[3rem] overflow-hidden shadow-2xl">
                 <CourseImage
                   src={media.overview}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
-                  className="w-full h-full object-cover aspect-video lg:aspect-auto"
+                  className="w-full h-full object-cover aspect-video lg:aspect-square"
                   alt={course.overview.title}
                 />
              </div>
