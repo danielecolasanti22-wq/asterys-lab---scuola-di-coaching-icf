@@ -31,7 +31,15 @@ const IMG = {
 const clients = [
   { name: 'Buildo', src: '/clients/buildo.svg' },
   { name: 'Kuehne + Nagel', src: '/clients/kuehne-nagel.png' },
+  { name: 'Crédit Agricole', src: '/clients/credit-agricole.png' },
+  { name: 'Cittalia — Fondazione ANCI', src: '/clients/cittalia.png' },
 ];
+
+// Una "metà" del carosello: i loghi ripetuti quanto basta a riempire la larghezza.
+// In pagina ne renderizziamo DUE identiche e animiamo il contenitore a -50%: quando
+// la prima metà esce a sinistra, la seconda (già caricata e identica) è esattamente
+// al suo posto → scorrimento continuo, infinito, senza stacchi.
+const marqueeHalf = Array.from({ length: 4 }).flatMap(() => clients);
 
 const ambiti = [
   {
@@ -133,16 +141,23 @@ export default function Corporate() {
         </p>
         <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
           <div className="flex w-max items-center animate-[marquee_28s_linear_infinite] group-hover:[animation-play-state:paused]">
-            {Array.from({ length: 12 })
-              .flatMap(() => clients)
-              .map((c, i) => (
-                <img
-                  key={i}
-                  src={c.src}
-                  alt={c.name}
-                  className="h-8 lg:h-9 w-auto object-contain mr-16 lg:mr-24 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition"
-                />
-              ))}
+            {[0, 1].map((half) => (
+              <ul
+                key={half}
+                aria-hidden={half === 1 || undefined}
+                className="m-0 flex shrink-0 list-none items-center p-0"
+              >
+                {marqueeHalf.map((c, i) => (
+                  <li key={`${half}-${i}`} className="mr-16 shrink-0 lg:mr-24">
+                    <img
+                      src={c.src}
+                      alt={c.name}
+                      className="h-8 lg:h-9 w-auto object-contain opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
+                    />
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
       </section>
