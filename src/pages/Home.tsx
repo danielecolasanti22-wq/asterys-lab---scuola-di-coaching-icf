@@ -37,6 +37,12 @@ const tSection =
 /* 1. HERO */
 const Hero = () => (
   <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
+    {/* Opzione "aggancio soggetto": glow azzurro morbido dietro le persone per
+        staccarle dal navy ed evitare l'effetto incollato (solo desktop). */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0 hidden lg:block bg-[radial-gradient(46%_62%_at_72%_72%,rgba(94,138,208,0.30),rgba(94,138,208,0.08)_46%,transparent_72%)]"
+    />
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
@@ -113,7 +119,7 @@ const Hero = () => (
           <img
             src="/home/hero-people.png"
             alt="Coach Asterys"
-            className="block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
+            className="block w-full h-auto object-contain object-bottom lg:origin-bottom-right lg:drop-shadow-[0_18px_45px_rgba(0,0,0,0.55)]"
             referrerPolicy="no-referrer"
           />
         </div>
