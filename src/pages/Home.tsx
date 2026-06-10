@@ -41,7 +41,7 @@ const Hero = () => (
         staccarle dal navy ed evitare l'effetto incollato (solo desktop). */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 hidden lg:block bg-[radial-gradient(52%_70%_at_71%_68%,rgba(126,176,240,0.62),rgba(94,138,208,0.30)_44%,transparent_74%)]"
+      className="pointer-events-none absolute inset-0 z-0 hidden lg:block bg-[radial-gradient(66%_84%_at_80%_64%,rgba(126,176,240,0.78),rgba(94,138,208,0.40)_46%,transparent_80%)]"
     />
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
