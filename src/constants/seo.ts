@@ -1,7 +1,7 @@
 // SEO/GEO — meta per pagina + dati strutturati JSON-LD.
 // ⚠️ SITE_URL = dominio canonico della vetrina. DA CONFERMARE (www vs non-www, e che la vetrina
 // stia su questo dominio). È l'unica costante da cambiare se il dominio è diverso.
-export const SITE_URL = 'https://www.asteryslab.com';
+export const SITE_URL = 'https://asteryslab.com';
 const DEFAULT_OG = '/course-media/apcm/hero-apcm.png';
 
 export type PageSeo = { title: string; description: string; ogImage?: string; noindex?: boolean };
