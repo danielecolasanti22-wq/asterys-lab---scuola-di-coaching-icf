@@ -1971,7 +1971,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     <div className="mb-5" />
                   )}
 
-                  {wooProduct && wooEditions.length ? (
+                  {wooProduct && wooEditions.length > 1 ? (
                     <div className="mx-auto mb-6 max-w-xs text-left">
                       <label
                         htmlFor={`edition-${fee.wooKey}`}

@@ -1855,24 +1855,23 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Entrambi",
         type: "lump",
-        wooQuantitySelector: true,
-        wooQuantityLabel: "Ore di mentoring individuale",
-        wooQuantityHint: "Le 7 ore di gruppo sono fisse; scegli le ore individuali (sconto quantità: 300€/h, 267€ da 3, 261€ da 7). Si applica nel carrello.",
+        wooKey: "completo",
         benefit: "10 ore · rinnovo completo",
         heading: "Gruppo + Individuale (10 ore)",
         desc: "Le 7 ore di mentor coaching di gruppo + 3 ore individuali: 10 ore totali, l'intero monte ore richiesto per il rinnovo della credenziale ICF.",
-        price: "480€",
+        price: "499€",
         priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "180€ gruppo (7h) + 300€ individuale (3h) = 10 ore. Date di gruppo: 29 set e 10 dic 2026, 17:00–20:30. Sconto Alumni applicato in cassa."
+        footnote: "179€ gruppo (7h) + 319€ individuale (3h). Date di gruppo: 29 set e 10 dic 2026, 17:00–20:30. Sconto Alumni applicato in cassa."
       },
       {
         title: "Di gruppo",
         type: "lump",
+        wooKey: "gruppo",
         benefit: "7 ore (2 incontri)",
         heading: "Mentor coaching di gruppo",
         desc: "Un'edizione = 2 incontri da 3,5h (7 ore) in gruppi da 4, con un Mentor Coach MCC. Orario 17:00–20:30.",
-        price: "180€",
+        price: "179€",
         priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
         footnote: "Edizione in corso: 29 set e 10 dic 2026, 17:00–20:30. Sconto Alumni applicato in cassa."
@@ -1880,16 +1879,14 @@ export const coursesContent: Record<string, CourseData> = {
       {
         title: "Individuale",
         type: "lump",
-        wooQuantitySelector: true,
-        wooQuantityLabel: "Quante ore di mentoring",
-        wooQuantityHint: "Costo orario con sconto quantità: 300€/h, 267€ da 3 ore, 261€ da 7 ore (livello MCC). Si applica nel carrello.",
-        benefit: "one-to-one · a costo orario",
+        wooKey: "individuale",
+        benefit: "3 ore · one-to-one",
         heading: "Mentor coaching individuale",
-        desc: "Percorso individuale con il Mentor Coach MCC: scegli le ore che ti servono per completare il rinnovo. Date concordate direttamente con il mentor.",
-        price: "300€",
-        priceLabel: "/ ora (MCC) + IVA",
+        desc: "3 ore di mentor coaching one-to-one con un Mentor Coach MCC, da affiancare alle 7 ore di gruppo per completare il monte ore del rinnovo. Date concordate direttamente con il mentor.",
+        price: "319€",
+        priceLabel: "+ IVA",
         ctaLabel: "Prenota il tuo posto sullo store",
-        footnote: "Costo orario per livello credenziale (ACC/PCC/MCC, 150–300€/h). Sconto quantità: 267€/h da 3 ore, 261€/h da 7 ore. Sconto Alumni applicato in cassa."
+        footnote: "3 ore individuali con Mentor Coach MCC. Sconto Alumni applicato in cassa."
       }
     ],
     faqs: [
@@ -1911,7 +1908,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Quanto costa e come si paga?",
-        a: "Il Mentoring di Gruppo (edizione completa, 7 ore) è 180€; il mentoring individuale è 300€/ora con sconto sulla quantità di ore; la formula 'Gruppo + Individuale' (10 ore per il rinnovo della credenziale) è 480€. Il pagamento avviene online; trovi le condizioni aggiornate nella sezione Prezzi."
+        a: "Il Mentoring di Gruppo (7 ore) è 179€; il Mentoring Individuale (3 ore one-to-one) è 319€; la formula 'Gruppo + Individuale' (10 ore, l'intero monte ore per il rinnovo della credenziale) è 499€. Tutti i prezzi sono + IVA. Il pagamento avviene online sullo store; lo sconto Alumni viene applicato in cassa."
       },
       {
         q: "Chi è il Mentor Coach?",

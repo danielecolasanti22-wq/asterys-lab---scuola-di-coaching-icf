@@ -82,7 +82,7 @@ export const COURSE_WOO: Record<
   { productId: number; sku?: string; single?: boolean; draft?: boolean; note?: string }
 > = {
   'voice-dialogue': { productId: 77327, sku: 'VDS-24-1', single: true },
-  'coaching-circle': { productId: 56604, sku: 'CCircle-2', single: true, draft: true }, // in modifica → non collegare
+  'coaching-circle': { productId: 80393, sku: 'MENT', note: 'variabile → mappato in MENTORING_WOO (gruppo/individuale/completo)' },
   'continuous-learning': { productId: 55762, sku: 'CL', single: true },
   // Variabili — mappatura variazioni da rifinire:
   'systemic-team-coaching': {
@@ -153,6 +153,32 @@ export const EIW_WOO: Record<'round', WooProductMap> = {
   },
 };
 
+/**
+ * Mentoring per il rinnovo delle credenziali ICF (ex Coaching Circle): prodotto VARIABILE 80393,
+ * attributo unico `mentoring` con 3 opzioni a prezzo fisso (verificati su store, giu 2026):
+ *  - Gruppo (7 ore)      → #80394 · 179€ · SKU MENT-GRP-7H
+ *  - Individuale (3 ore) → #80395 · 319€ · SKU MENT-IND-3H
+ *  - Completo (10 ore)   → #80396 · 499€ · SKU MENT-CMP-10H
+ * Ogni opzione = una sola "edizione" (la variazione): il CTA aggiunge quella variazione, qtà 1.
+ */
+export const MENTORING_WOO: Record<'gruppo' | 'individuale' | 'completo', WooProductMap> = {
+  gruppo: {
+    productId: 80393,
+    sku: 'MENT-GRP-7H',
+    editions: [{ label: 'Gruppo · 7 ore', startISO: '2026-09-29', variationId: 80394 }],
+  },
+  individuale: {
+    productId: 80393,
+    sku: 'MENT-IND-3H',
+    editions: [{ label: 'Individuale · 3 ore', startISO: '2026-09-29', variationId: 80395 }],
+  },
+  completo: {
+    productId: 80393,
+    sku: 'MENT-CMP-10H',
+    editions: [{ label: 'Completo · 10 ore', startISO: '2026-09-29', variationId: 80396 }],
+  },
+};
+
 export type WooEarlyBird = { discountLabel?: string; deadlineISO: string; deadlineLabel: string };
 
 /**
@@ -205,6 +231,7 @@ const WOO_PRODUCTS: Record<string, Record<string, WooProductMap>> = {
   apcm: APCM_WOO,
   'systemic-team-coaching': ASTC_WOO,
   eiw: EIW_WOO,
+  'coaching-circle': MENTORING_WOO,
 };
 
 /** Prodotto Woo per (corso, wooKey). Solo i corsi a prodotto VARIABILE mappati qui. */
