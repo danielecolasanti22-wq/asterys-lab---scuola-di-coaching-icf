@@ -362,7 +362,7 @@ const MasterGrid = () => {
   const masters = [
     {
       id: 'systemic-team-coaching',
-      title: 'Asterys Systemic Team Coaching',
+      title: 'Team Coaching Sistemico',
       duration: '54 ore · 60 CCE',
       label: 'Master',
       desc: "Master ICF per apprendere il modello sistemico di coaching dei team. Prerequisito per la credenziale ACTC.",
@@ -373,7 +373,7 @@ const MasterGrid = () => {
     },
     {
       id: 'eiw',
-      title: 'Emotional Intelligence Workout',
+      title: 'Intelligenza Emotiva',
       duration: 'Round · 4 CCE',
       label: 'Corso Breve',
       desc: "Allena l'IE con esperienze consapevoli: modello CSI, fiore di Plutchik, coach dedicati.",

@@ -78,7 +78,7 @@ const courseGroups: CourseGroup[] = [
     courses: [
       {
         id: 'eiw',
-        title: 'Emotional Intelligence Workout',
+        title: 'Intelligenza Emotiva',
         badge: 'Corso Breve',
         duration: 'Round · 4 CCE',
         modality: 'Live Online',

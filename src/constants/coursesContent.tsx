@@ -1244,7 +1244,7 @@ export const coursesContent: Record<string, CourseData> = {
       content: [
         "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
         "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo di Team Coaching Sistemico.",
-        "Il modello Asterys Systemic Team Coaching si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: cambiando il sistema, migliorano le dinamiche e cambiano i risultati."
+        "Il modello di Team Coaching Sistemico si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: cambiando il sistema, migliorano le dinamiche e cambiano i risultati."
       ]
     },
     target: [
