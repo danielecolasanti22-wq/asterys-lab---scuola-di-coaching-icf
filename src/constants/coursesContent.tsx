@@ -1235,9 +1235,9 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Dal singolo al sistema: il modello sistemico",
       content: [
-        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come team coach e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
-        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo di Team Coaching Sistemico.",
-        "Il modello di Team Coaching Sistemico si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: cambiando il sistema, migliorano le dinamiche e cambiano i risultati."
+        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come **team coach** e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
+        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il **modello innovativo di Team Coaching Sistemico**.",
+        "Il modello si occupa delle persone che compongono il team, ma soprattutto dei pattern in cui sono coinvolte e delle interazioni tra di loro: **cambiando il sistema, migliorano le dinamiche e cambiano i risultati**."
       ]
     },
     target: [
@@ -1549,11 +1549,9 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
-        "Ormai sembra scontato dire che l'intelligenza emotiva è importante per buoni risultati nella vita privata e pubblica: è stata persino sdoganata la \"happiness\" in azienda e tutti concordano sulla possibilità e necessità di svilupparla nei manager e in chiunque voglia aumentare la propria efficacia… ma come farlo? Qui le voci perdono forza, si fanno vaghe, e le soluzioni proposte non sempre sono praticabili.",
-        "Per questo, accumulati decenni di esperienza sul campo e dopo collaborazioni pluriennali con i principali riferimenti internazionali dell'intelligenza emotiva, Asterys Lab ha progettato programmi specificamente destinati al reale sviluppo dell'intelligenza emotiva di tutti.",
-        "Nella maggior parte dei corsi di intelligenza emotiva si parla, si studia, come fosse un'altra materia da \"sapere\". Ma oltre a questo si deve \"essere\" diversi, sviluppando un livello di coscienza specifico che passa per l'esperienza: vogliamo portarti davvero a sviluppare la tua capacità di stare con le emozioni in modo intelligente. Ci sarà da sudare: sarai coinvolto in esperienze consapevoli, attività progettate allo scopo.",
-        "Se sei tra le persone che vogliono spostarsi veramente da dove sono per andare in un posto migliore, questo è il percorso giusto. Il percorso di Intelligenza Emotiva offre lo spazio, gli strumenti e i coach che ti accompagneranno aiutandoti a focalizzarti sugli aspetti importanti e a superare i momenti più difficili, rendendo quest'esperienza piacevole e appagante.",
-        "Non perdere altro tempo: lavora seriamente sulla competenza che oggi più che mai può fare la differenza nella tua efficacia in ogni campo."
+        "Che l'intelligenza emotiva sia importante ormai lo sanno tutti. La vera domanda è un'altra: **come si sviluppa davvero?** Qui le risposte si fanno vaghe, e spesso poco praticabili.",
+        "Dopo anni sul campo e collaborazioni internazionali, Asterys Lab ha costruito un percorso che non spiega soltanto l'intelligenza emotiva: **te la fa allenare**. Negli altri corsi se ne parla come di una materia da \"sapere\"; qui si \"diventa\", con esperienze pratiche progettate apposta. C'è da mettersi in gioco.",
+        "Se vuoi spostarti sul serio da dove sei oggi, questo è il percorso giusto: spazio, strumenti e coach che ti accompagnano sulla competenza che, più di ogni altra, **fa la differenza in ogni campo**."
       ]
     },
     target: [
@@ -1932,8 +1930,8 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Comunicare è servire",
       content: [
-        "Non si tratta di te, si tratta del tuo pubblico. Il corso di public speaking di Asterys Lab parte da qui: imparare a parlare in pubblico non per apparire, ma per far arrivare un messaggio che resta.",
-        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a gestire l'ansia da palco con strumenti di intelligenza emotiva. Niente teoria fine a se stessa: esercitazioni, feedback immediato e riprese video per vederti migliorare lezione dopo lezione."
+        "**Non si tratta di te, si tratta del tuo pubblico.** Il corso di public speaking di Asterys Lab parte da qui: imparare a parlare in pubblico non per apparire, ma per **far arrivare un messaggio che resta**.",
+        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a **gestire l'ansia da palco** con strumenti di intelligenza emotiva. Niente teoria fine a se stessa: esercitazioni, feedback immediato e riprese video per migliorare lezione dopo lezione."
       ]
     },
     target: [{ title: "Professionisti", desc: "Chi deve presentare idee o progetti.", icon: <Users /> }],
@@ -2215,10 +2213,9 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Sviluppo senza fine",
       content: [
-        "Il programma Continuous Learning (CL) ha una struttura circolare che offre sviluppo continuo per il tuo essere coach: senza inizio né fine, è un appuntamento mensile che si svolge durante tutto l'anno tranne ad agosto.",
-        "È rivolto particolarmente a studenti e alumni di Asterys Lab — chi inizia, chi è in pausa tra un livello e l'altro e chi ha finito la formazione ma vuole restare aggiornato e stimolato — ma può partecipare chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola.",
-        "I temi spaziano dallo sviluppo personale del coach agli approfondimenti sul coaching, e ogni Live Class è un'opportunità di crescita e consapevolezza.",
-        "Il corso è condotto da Alessandra Bitelli, PCC, executive coach formata in Asterys Lab e parte della Faculty, e ospita colleghi capaci di offrire stimoli importanti. Le Live Class si tengono una volta al mese, su Zoom, dalle 18:30 alle 20:00."
+        "Il Continuous Learning è **formazione continua per coach**: una struttura circolare, senza inizio né fine, con un appuntamento mensile tutto l'anno tranne agosto. **Entri quando vuoi.**",
+        "È pensato per studenti e alumni di Asterys Lab — chi inizia, chi è tra un livello e l'altro, chi vuole restare aggiornato — ma è **aperto a chiunque faccia coaching**, di qualsiasi livello e scuola. Ogni Live Class, dallo sviluppo personale agli approfondimenti sulla pratica, è un'occasione di crescita.",
+        "Le sessioni sono condotte da **Alessandra Bitelli, PCC**, executive coach della Faculty di Asterys Lab, con ospiti che portano stimoli sempre nuovi. Una volta al mese, su Zoom, dalle 18:30 alle 20:00."
       ]
     },
     target: [

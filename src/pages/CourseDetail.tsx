@@ -73,7 +73,7 @@ function richText(text: string): ReactNode {
     const m = part.match(/^\*\*([^*]+)\*\*$/);
     if (m) {
       return (
-        <strong key={i} className="font-bold text-brand-navy">
+        <strong key={i} className="font-semibold text-brand-accent">
           {m[1]}
         </strong>
       );
@@ -138,7 +138,7 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
           className="overflow-hidden"
         >
           <div className="pb-6 text-brand-navy/60 leading-relaxed text-sm font-medium">
-            {content}
+            {richText(content)}
           </div>
         </motion.div>
       )}
@@ -641,7 +641,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
              <div className="space-y-6">
                {course.overview.content.map((p, i) => (
                  <p key={i} className={tBody}>
-                    {p}
+                    {richText(p)}
                  </p>
                ))}
              </div>
