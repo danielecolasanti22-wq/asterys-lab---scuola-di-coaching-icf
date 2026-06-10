@@ -43,7 +43,7 @@ const Hero = () => (
         non si vede un "faro" d'origine. */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001235_22%,#001D4B_40%,#143f7a_64%,#2c63a8_84%,#4079c4_100%)]"
+      className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
     />
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
