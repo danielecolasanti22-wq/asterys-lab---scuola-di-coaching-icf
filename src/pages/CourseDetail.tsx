@@ -73,7 +73,7 @@ function richText(text: string): ReactNode {
     const m = part.match(/^\*\*([^*]+)\*\*$/);
     if (m) {
       return (
-        <strong key={i} className="font-semibold text-brand-accent">
+        <strong key={i} className="text-hl font-semibold">
           {m[1]}
         </strong>
       );
