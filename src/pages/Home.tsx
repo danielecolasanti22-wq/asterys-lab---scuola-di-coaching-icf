@@ -37,11 +37,13 @@ const tSection =
 /* 1. HERO */
 const Hero = () => (
   <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
-    {/* Opzione "aggancio soggetto": glow azzurro morbido dietro le persone per
-        staccarle dal navy ed evitare l'effetto incollato (solo desktop). */}
+    {/* Gradiente metallico sul fondo hero: spazzata diagonale dal blu scuro (alto-sx)
+        all'acciaio più chiaro (basso-dx, dietro le persone). Bande nette = effetto
+        metallico, non nuvoloso; il punto di massima luce resta sull'angolo, quindi
+        non si vede un "faro" d'origine. */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 hidden lg:block bg-[radial-gradient(66%_84%_at_80%_64%,rgba(126,176,240,0.78),rgba(94,138,208,0.40)_46%,transparent_80%)]"
+      className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001235_22%,#001D4B_40%,#143f7a_64%,#2c63a8_84%,#4079c4_100%)]"
     />
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
