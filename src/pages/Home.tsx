@@ -531,7 +531,7 @@ const AdvisorBand = () => (
         </div>
       </div>
       <p className="text-sm text-brand-navy/75 mb-5">
-        I nostri advisor risponderanno a tutte le tue domande.
+        Dietro Asterys Lab ci sono persone: i nostri advisor rispondono a ogni tua domanda, con calma e senza impegno.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a

@@ -23,16 +23,15 @@ export function richText(text: string): ReactNode {
 }
 
 /**
- * Dizionario curato di parole/locuzioni chiave del settore coaching.
- * Ordine: dalle locuzioni più lunghe/specifiche alle più corte, così la regex
- * (alternanza leftmost di JS) cattura "team coaching sistemico" prima di
- * "team coaching" prima di "coaching".
+ * Dizionario curato: SOLO concetti distintivi (locuzioni), non parole singole
+ * ubique come "coach"/"coaching"/"ICF" — quelle si ripeterebbero ovunque.
+ * Ordine: dai concetti più lunghi/specifici ai più corti, così l'alternanza
+ * leftmost di JS cattura "team coaching sistemico" prima di "team coaching".
  */
 const KEYWORDS = [
   'Master in Coaching Professionale',
-  'coach professionista',
   'team coaching sistemico',
-  'team coaching',
+  'coach professionista',
   'business coaching',
   'executive coaching',
   'coaching aziendale',
@@ -41,31 +40,20 @@ const KEYWORDS = [
   'credenziali internazionali',
   'credenziali ICF',
   'credenziale ICF',
+  'rinnovo della credenziale',
   'coaching professionale',
   'mentor coaching',
-  'public speaking',
-  'voice dialogue',
-  'continuous learning',
+  'mentor coach',
   'pratica supervisionata',
   'approccio sistemico',
   'ascolto attivo',
   'domande potenti',
   'lezioni in diretta',
   'crescita professionale',
-  'rinnovo della credenziale',
-  'coaching',
-  'coach',
-  'mentoring',
-  'leadership',
-  'community',
-  'feedback',
-  'credenziale',
-  'ICF',
-  'ACC',
-  'PCC',
-  'MCC',
-  'ACTC',
-  'CCE',
+  'public speaking',
+  'voice dialogue',
+  'continuous learning',
+  'team coaching',
 ];
 
 const ESCAPED = KEYWORDS.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));

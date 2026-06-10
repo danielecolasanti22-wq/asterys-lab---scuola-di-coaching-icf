@@ -1550,7 +1550,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
         "Che l'**intelligenza emotiva** sia importante ormai lo sanno tutti. La vera domanda è un'altra: come si sviluppa davvero? Qui le risposte si fanno vaghe, e spesso poco praticabili.",
-        "Dopo anni sul campo e collaborazioni internazionali, Asterys Lab ha costruito un percorso che non spiega soltanto l'intelligenza emotiva: te la fa **allenare**. Negli altri corsi se ne parla come di una materia da \"sapere\"; qui si **\"diventa\"**, con **esperienze pratiche** progettate apposta. C'è da mettersi in gioco.",
+        "Dopo anni sul campo e collaborazioni internazionali, Asterys Lab ha costruito un percorso che non spiega soltanto l'intelligenza emotiva: te la fa **allenare**. Negli altri corsi se ne parla come di una materia da \"sapere\"; qui si \"diventa\", con **esperienze pratiche** progettate apposta. C'è da mettersi in gioco.",
         "Se vuoi spostarti sul serio da dove sei oggi, questo è il percorso giusto: spazio, strumenti e coach che ti accompagnano sulla competenza che, più di ogni altra, **fa la differenza**."
       ]
     },
@@ -1716,7 +1716,7 @@ export const coursesContent: Record<string, CourseData> = {
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
     subtitle: "Mentoring di gruppo ed individuale",
-    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching: le maturi con il mentor coaching di gruppo (già Coaching Circle) o individuale, con un Mentor Coach MCC.",
+    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching: le maturi con il mentoring di gruppo o individuale, accompagnato da un Mentor Coach MCC.",
     type: "MENTORING ICF",
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
@@ -1931,7 +1931,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Comunicare è servire",
       content: [
         "Non si tratta di te, si tratta del **tuo pubblico**. Il corso di public speaking di Asterys Lab parte da qui: imparare a **parlare in pubblico** non per apparire, ma per far arrivare un **messaggio che resta**.",
-        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a gestire l'**ansia da palco** con strumenti di intelligenza emotiva. Niente teoria fine a se stessa: **esercitazioni**, **feedback immediato** e **riprese video** per migliorare lezione dopo lezione."
+        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a gestire l'**ansia da palco** con strumenti di intelligenza emotiva. Niente teoria fine a sé stessa: esercitazioni, **feedback immediato** e riprese video per migliorare lezione dopo lezione."
       ]
     },
     target: [{ title: "Professionisti", desc: "Chi deve presentare idee o progetti.", icon: <Users /> }],
@@ -2187,7 +2187,7 @@ export const coursesContent: Record<string, CourseData> = {
   'continuous-learning': {
     title: "Continuous Learning (CL)",
     subtitle: "Continuous Learning",
-    tagline: "Sviluppo continuo per il tuo essere coach: un appuntamento mensile in Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
+    tagline: "Sviluppo continuo per la tua crescita come coach: un appuntamento mensile su Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
     media: {
       hero: "/course-media/continuous-learning/hero-continuous-learning.png",
