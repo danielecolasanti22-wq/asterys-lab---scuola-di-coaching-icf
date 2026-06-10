@@ -57,14 +57,14 @@ const Hero = () => (
       <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-          Formazione professionale accreditata ICF
+          Scuola di coaching accreditata ICF
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
           Dai forma alla tua{' '}
           <Highlight className="text-brand-sky">crescita professionale</Highlight>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
-          Percorsi in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master accreditati, scegli il passo giusto per evolvere.
+          Percorsi di coaching in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master in coaching accreditati ICF, scegli il passo giusto per diventare coach professionista.
         </p>
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
           <a
@@ -76,8 +76,8 @@ const Hero = () => (
         </div>
         <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
           {[
-            'Master, corsi brevi e formazione continua per professionisti',
-            'Lezioni live, pratica guidata e confronto con trainer esperti',
+            'Master in coaching, corsi brevi e formazione continua per professionisti',
+            'Lezioni live, pratica guidata e confronto con coach e trainer certificati ICF',
             'Metodo Asterys Lab: concreto, sistemico e orientato alla crescita'
           ].map((b) => (
             <li key={b} className="flex items-start gap-2">
@@ -284,7 +284,7 @@ const ScegliPercorso = () => {
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className={`${tSection} mb-4`}>Scegli il percorso giusto per te</h2>
           <p className="text-brand-navy/70 text-base leading-relaxed">
-            Master professionalizzanti 100% blended, completi e in diretta per imparare da zero tutto ciò di cui hai bisogno per evolvere la tua carriera.
+            Master in coaching professionalizzanti, 100% blended e in diretta, per imparare da zero tutto ciò che serve a diventare coach e a far evolvere la tua carriera. Lezioni online e in presenza a Milano e Roma.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-[900px] mx-auto">

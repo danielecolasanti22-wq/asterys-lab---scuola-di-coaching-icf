@@ -117,7 +117,7 @@ const communityPillars = [
   {
     icon: <MessagesSquare size={20} />,
     title: 'Mentoring tra pari',
-    body: 'Coaching circle e pratica supervisionata per continuare ad allenarti con gli altri coach.',
+    body: 'Mentoring di gruppo e pratica supervisionata per continuare ad allenarti con gli altri coach e maturare le ore per il rinnovo della credenziale ICF.',
   },
 ];
 

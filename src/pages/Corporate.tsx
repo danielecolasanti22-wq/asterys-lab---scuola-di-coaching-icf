@@ -97,7 +97,8 @@ export default function Corporate() {
             <p className="mt-6 text-white/75 text-base sm:text-lg max-w-[540px] leading-relaxed">
               Non esiste un orario che ti permetta di «staccare»: sei così coinvolto nel tuo business che
               un coach può davvero fare la differenza tra il successo e il fallimento. Dal 2014 affianchiamo
-              imprenditori e imprese che vogliono guardare avanti.
+              imprenditori e imprese con percorsi di business e executive coaching su misura, per chi vuole
+              guardare avanti.
             </p>
             <a
               href="#contatti-aziende"
@@ -212,8 +213,9 @@ export default function Corporate() {
               Verifichiamo i bisogni reali della tua impresa
             </h2>
             <p className="mt-4 text-brand-navy/75 leading-relaxed">
-              Insieme individuiamo le priorità su cui lavorare, una dopo l'altra. Ecco gli ambiti in cui
-              possiamo intervenire al tuo fianco.
+              Insieme individuiamo le priorità su cui lavorare, una dopo l'altra. Ecco gli ambiti del
+              coaching aziendale in cui possiamo intervenire al tuo fianco, dal business coaching al team
+              coaching, dalla leadership al cambiamento organizzativo.
             </p>
           </div>
 

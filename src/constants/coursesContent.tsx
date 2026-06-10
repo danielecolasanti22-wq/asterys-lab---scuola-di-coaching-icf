@@ -348,49 +348,42 @@ export const commonTestimonials: CourseTestimonial[] = [
   }
 ];
 
-const commonFaqs = [
-  {
-    q: "Chi può frequentare il corso?",
-    a: "Il corso è aperto a professionisti di qualsiasi settore con esperienza lavorativa consolidata. Non è richiesta una laurea specifica: valutiamo la motivazione, la maturità personale e l'esperienza professionale attraverso un colloquio di ammissione dedicato."
-  },
-  {
-    q: "Che competenze devo avere per iniziare il corso?",
-    a: "Non è richiesta alcuna formazione pregressa nel coaching. Sono richieste buone capacità comunicative, curiosità intellettuale e un'esperienza professionale di almeno 3 anni che ti permetta di portare casi reali durante il percorso."
-  },
-  {
-    q: "In cosa consiste il processo di ammissione?",
-    a: "Il processo si svolge in 3 fasi: compilazione del form online, colloquio motivazionale con un nostro Advisor e, se idonei, sottoscrizione del contratto di iscrizione. L'intero processo è gratuito e senza impegno fino alla firma."
-  },
-  {
-    q: "Posso seguire il corso mentre lavoro o studio?",
-    a: "Assolutamente sì. Il nostro percorso è progettato per professionisti in attività: le sessioni si svolgono in orari serali e nel weekend per compatibilità con gli impegni lavorativi. Potrai gestire il tuo carico con flessibilità."
-  },
-  {
-    q: "Cosa succede se mi perdo una sessione?",
-    a: "Nessun problema: tutte le sessioni sono registrate e disponibili in piattaforma entro 48 ore. Potrai recuperarle a tuo ritmo, con accesso ai materiali e alle dispense delle esercitazioni pratiche."
-  }
-];
-
 const apcmFaqs = [
   {
-    q: "Chi può frequentare il Master?",
-    a: "Il Master è aperto a persone con percorsi diversi: può iscriversi chi arriva dall'università e si avvicina per la prima volta al coaching, così come chi lavora e vuole integrare competenze di coaching nella propria professione."
+    q: "Serve la laurea per diventare coach?",
+    a: "No, non serve una laurea specifica. Al Master in Coaching Professionale può iscriversi chi arriva dall'università e si avvicina per la prima volta al coaching, così come chi già lavora (in HR, consulenza, management o psicologia) e vuole integrare il coaching nella propria professione. Contano motivazione, maturità professionale e voglia di mettersi in gioco."
   },
   {
-    q: "Che competenze devo avere per iniziare il Master?",
-    a: "Non è richiesta una formazione pregressa nel coaching. Contano soprattutto motivazione, disponibilità a mettersi in gioco e continuità nel seguire lezioni, studio individuale, esercitazioni e report previsti dal percorso."
+    q: "Quanto dura il Master in Coaching Professionale?",
+    a: "Il Master si sviluppa nell'arco di alcuni mesi, in base al livello scelto (Livello 1, Livello 2 o Percorso Completo) e al calendario dell'edizione. Le lezioni si tengono in genere una volta a settimana; le sessioni online sono dalle 18:30 alle 20:00, con studio, esercitazioni e report tra una lezione e l'altra."
   },
   {
-    q: "In cosa consiste il processo di ammissione?",
-    a: "Il processo prevede la compilazione del form online e un confronto con un Advisor Asterys per chiarire obiettivi, aspettative e coerenza del percorso. È gratuito e senza impegno fino alla firma del contratto di iscrizione."
+    q: "Quanto costa il Master in Coaching Professionale?",
+    a: "Il Livello 1 parte da 3.400€ + IVA, il Livello 2 da 4.500€ + IVA e il Percorso Completo (Livello 1 + 2, il più scelto) è 6.900€ + IVA. È prevista la rateizzazione fino a 24 mesi senza interessi. Prezzi aggiornati ed eventuali condizioni Early Bird sono nella sezione Prezzi."
   },
   {
-    q: "Posso seguire il Master mentre lavoro o studio?",
-    a: "Sì. Le lezioni si tengono circa una volta a settimana, secondo il calendario dell'edizione, e le sessioni online sono dalle 18:30 alle 20:00. Tra una lezione e l'altra sono previsti studio, preparazione, esercitazioni e report."
+    q: "Si può pagare a rate il Master in Coaching Professionale?",
+    a: "Sì. Puoi pagare in un'unica soluzione oppure rateizzare fino a 24 mesi senza interessi, per distribuire l'investimento nel tempo. Le modalità di pagamento e le eventuali condizioni Early Bird sono indicate nella sezione Prezzi."
+  },
+  {
+    q: "Quale credenziale ICF si ottiene con il Master?",
+    a: "Il Master è accreditato ICF Level 1 & 2. Il Livello 1 abilita alla credenziale ACC (Associate Certified Coach); il Percorso Completo (Livello 1 + 2) prepara alla PCC (Professional Certified Coach), le credenziali internazionali di riferimento per esercitare come coach professionista."
+  },
+  {
+    q: "Le lezioni sono online o in presenza, a Milano e Roma?",
+    a: "Entrambe le modalità, a seconda dell'edizione: il Master si svolge in aula a Milano e a Roma e online in videoconferenza. Le sessioni live, con pratica guidata e feedback dei trainer, sono il cuore del percorso."
+  },
+  {
+    q: "Si può fare il Master mentre si lavora?",
+    a: "Sì. Il percorso è pensato per professionisti in attività: lezioni circa una volta a settimana e sessioni online in orario serale (18:30–20:00). Gestisci con flessibilità studio, preparazione, esercitazioni e report tra una lezione e l'altra."
+  },
+  {
+    q: "Come funziona l'ammissione al Master?",
+    a: "Non è richiesta una formazione pregressa nel coaching. Il processo prevede la compilazione del form online e un confronto con un Advisor Asterys per chiarire obiettivi, aspettative e coerenza del percorso. È gratuito e senza impegno fino alla firma del contratto di iscrizione."
   },
   {
     q: "Posso accedere alle registrazioni se mi perdo una lezione?",
-    a: "No. Le registrazioni non sono disponibili per gli studenti: se alcune sessioni vengono registrate, lo sono esclusivamente per uso interno. Per questo è importante organizzarsi per partecipare alle lezioni in diretta."
+    a: "Le lezioni sono pensate per la partecipazione in diretta: le registrazioni non sono disponibili per gli studenti (se alcune sessioni vengono registrate, è solo per uso interno). Per questo è importante organizzarsi per seguire le lezioni live."
   }
 ];
 
@@ -1161,7 +1154,7 @@ export const coursesContent: Record<string, CourseData> = {
   'systemic-team-coaching': {
     title: "Master in Team Coaching Sistemico",
     subtitle: "Team Coaching",
-    tagline: "Il corso di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Coaching Sistemico dedicato a team e organizzazioni.",
+    tagline: "Il Master di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Team Coaching Sistemico dedicato a team e organizzazioni, e prepararti alla credenziale ICF di team coaching (ACTC).",
     type: "AVANZATO",
     media: {
       hero: "/course-media/systemic-team-coaching/hero-astc.png",
@@ -1501,12 +1494,37 @@ export const coursesContent: Record<string, CourseData> = {
         }
       }
     ],
-    faqs: commonFaqs
+    faqs: [
+      {
+        q: "Cos'è il team coaching sistemico?",
+        a: "Il team coaching sistemico è un percorso di coaching rivolto ai team: non lavora solo sulle singole persone, ma sui pattern, le relazioni e le dinamiche dell'intero sistema-team. Aiuta il gruppo a prendere consapevolezza dei propri schemi e ad adottare modalità di collaborazione più efficaci, migliorando performance e risultati."
+      },
+      {
+        q: "A chi serve il Master in Team Coaching Sistemico?",
+        a: "A coach, manager, HR e consulenti che vogliono lavorare con team e organizzazioni con un metodo strutturato e accreditato. È pensato sia per chi fa già coaching individuale e vuole estenderlo ai gruppi, sia per chi guida o accompagna team in azienda."
+      },
+      {
+        q: "Cosa serve per la credenziale ICF di team coaching (ACTC)?",
+        a: "Il percorso è accreditato ICF ed è prerequisito per la credenziale ACTC (Advanced Certification in Team Coaching). Completando il 1° e il 2° livello — e, in opzione, l'esame finale di certificazione — maturi i requisiti formativi per accedere all'ACTC."
+      },
+      {
+        q: "Quanto costa il Master in Team Coaching Sistemico?",
+        a: "Il Livello 1 parte da 1.200€ + IVA, il Livello 2 da 2.100€ + IVA e il percorso completo (1° + 2° livello) è 2.900€ + IVA. L'esame di certificazione è un'opzione aggiuntiva. Sono previste condizioni Early Bird per chi si iscrive in anticipo."
+      },
+      {
+        q: "Le lezioni sono online o in presenza?",
+        a: "Il 1° livello si svolge a distanza, in videoconferenza con Live Class; il 2° livello è in aula a Milano o a Roma. Unisci così la flessibilità dell'online alla profondità della pratica in presenza."
+      },
+      {
+        q: "Si può pagare a rate?",
+        a: "Sì. È prevista la rateizzazione fino a 24 mesi senza interessi, per distribuire l'investimento nel tempo. Trovi i dettagli nella sezione Prezzi."
+      }
+    ]
   },
   'eiw': {
     title: "Intelligenza Emotiva",
     subtitle: "Intelligenza Emotiva",
-    tagline: "Non serve più dire che l'intelligenza emotiva è importante: ormai si sa che è sviluppabile. Come farlo è un'altra storia — e qui si fa, non si ascolta soltanto.",
+    tagline: "Il corso di intelligenza emotiva di Asterys Lab: non serve più dire che è importante, ormai si sa che è sviluppabile. Qui la alleni con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
     type: "WORKOUT EQ",
     media: {
       hero: "/course-media/eiw/hero.png",
@@ -1674,7 +1692,28 @@ export const coursesContent: Record<string, CourseData> = {
         footnote: "Posti limitati · Rateizzazione disponibile su richiesta"
       }
     ],
-    faqs: commonFaqs
+    faqs: [
+      {
+        q: "Cos'è l'intelligenza emotiva nel coaching?",
+        a: "L'intelligenza emotiva è la capacità di riconoscere, comprendere e gestire le proprie emozioni e quelle degli altri. Nel coaching è una competenza centrale: allena presenza, ascolto e consapevolezza e migliora la qualità della relazione con chi accompagni."
+      },
+      {
+        q: "Come funziona un Round di Intelligenza Emotiva?",
+        a: "Un Round è composto da 4 Workout da 60 minuti in diretta online, ciascuno dedicato a un'emozione del fiore di Plutchik, con il modello CSI di Asterys. Si lavora in modo esperienziale e pratico, non solo teorico."
+      },
+      {
+        q: "Quanti CCE ICF si ottengono?",
+        a: "Ogni Round vale 4 CCE ICF (Continuing Coach Education), utili per il rinnovo della credenziale ICF: un modo concreto per maturare crediti formativi allenando una competenza chiave del coaching."
+      },
+      {
+        q: "Quanto costa e come si paga?",
+        a: "Il costo è di 100€ + IVA per Round, con sconto quantità per chi acquista più Round. Su richiesta è possibile il frazionamento in più rate. I Workout si tengono online su Zoom."
+      },
+      {
+        q: "A chi è rivolto?",
+        a: "A coach, professionisti della relazione di aiuto, HR e manager che vogliono allenare l'intelligenza emotiva e, se accreditati ICF, maturare CCE per il rinnovo. Non servono prerequisiti particolari."
+      }
+    ]
   },
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
@@ -1871,6 +1910,10 @@ export const coursesContent: Record<string, CourseData> = {
         a: "Acquisti un'edizione, cioè le 2 sessioni insieme (non separatamente). Se annulli una sessione, la perdi. Se l'edizione non parte per numero insufficiente di partecipanti, ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo. [Regole in via di conferma]"
       },
       {
+        q: "Quanto costa e come si paga?",
+        a: "Il Mentoring di Gruppo (edizione completa, 7 ore) è 180€; il mentoring individuale è 300€/ora con sconto sulla quantità di ore; la formula 'Gruppo + Individuale' (10 ore per il rinnovo della credenziale) è 480€. Il pagamento avviene online; trovi le condizioni aggiornate nella sezione Prezzi."
+      },
+      {
         q: "Chi è il Mentor Coach?",
         a: "Paola Rulfi, Mentor Coach MCC di Asterys Lab: Business ed Executive Coach, Mentor Coach e Supervisor. Offre feedback immediato e discute con i partecipanti scelte e strategie sui casi reali."
       },
@@ -1883,20 +1926,47 @@ export const coursesContent: Record<string, CourseData> = {
   'public-speaking': {
     title: "Public Speaking Pro",
     subtitle: "Parla con Presenza",
-    tagline: "Supera la paura e comunica il tuo valore con carisma, struttura e intelligenza emotiva.",
+    tagline: "Il corso di public speaking di Asterys Lab: supera la paura di parlare in pubblico e comunica il tuo valore con carisma, struttura e intelligenza emotiva.",
     type: "COMUNICAZIONE",
     media: { hero: "/course-media/public-speaking/hero-public-speaking.png" },
     heroBenefits: ["Gestisci l'ansia da palcoscenico", "Struttura messaggi memorabili", "Usa il corpo e la voce con intenzione", "Allenamento pratico con riprese video"],
     summaryBox: { nextEdition: "Online", dates: "Novembre 2026", format: "Live Online", duration: "16 ore", price: "450€", installments: "2 rate" },
     badges: ["Pratico", "Feedback Immediato"],
-    overview: { title: "Comunicare è servire", content: ["Non si tratta di te, si tratta del tuo pubblico."] },
+    overview: {
+      title: "Comunicare è servire",
+      content: [
+        "Non si tratta di te, si tratta del tuo pubblico. Il corso di public speaking di Asterys Lab parte da qui: imparare a parlare in pubblico non per apparire, ma per far arrivare un messaggio che resta.",
+        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a gestire l'ansia da palco con strumenti di intelligenza emotiva. Niente teoria fine a se stessa: esercitazioni, feedback immediato e riprese video per vederti migliorare lezione dopo lezione."
+      ]
+    },
     target: [{ title: "Professionisti", desc: "Chi deve presentare idee o progetti.", icon: <Users /> }],
     learning: { cols: [{ title: "Content & Presence", items: ["Storytelling", "Voce", "Postura"] }], softSkills: ["Autostima", "Chiarezza"] },
     structure: { modules: [{ title: "Dalla Paura al Coraggio", desc: "Tecniche di centratura." }] },
     teachers: [{ name: "Esperti Lab", creds: "Pro Speakers", role: "Speakers", bio: "Comunicatori di professione.", img: "https://picsum.photos/seed/spk/300/300" }],
     career: { title: "Datti Voce", content: "Migliora la tua visibilità interna ed esterna.", points: [] },
     fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "450€", priceLabel: "una tantum" }],
-    faqs: commonFaqs
+    faqs: [
+      {
+        q: "A chi serve un corso di public speaking?",
+        a: "A chiunque debba parlare in pubblico con efficacia: professionisti, manager, coach, formatori, imprenditori. Aiuta a gestire l'ansia, strutturare un discorso e comunicare con presenza e impatto davanti a un pubblico."
+      },
+      {
+        q: "Quanto dura il corso di public speaking?",
+        a: "Il corso dura 16 ore, in diretta online. È un percorso pratico, con esercitazioni e feedback, pensato per ottenere risultati concreti in tempi rapidi."
+      },
+      {
+        q: "È online o in presenza?",
+        a: "Il corso si svolge online, in diretta (Live Online): puoi seguirlo ovunque ti trovi mantenendo l'interazione con il docente e il gruppo."
+      },
+      {
+        q: "Cosa si impara?",
+        a: "A preparare e strutturare un intervento, gestire voce, corpo ed emozioni, catturare l'attenzione e comunicare il messaggio con chiarezza e sicurezza, anche in situazioni di stress."
+      },
+      {
+        q: "Quanto costa e come si paga?",
+        a: "Il corso ha un costo di 450€, una tantum. Trovi le condizioni aggiornate e le modalità di pagamento nella sezione Prezzi."
+      }
+    ]
   },
   'voice-dialogue': {
     title: "Voice Dialogue Skills",
@@ -2306,6 +2376,10 @@ export const coursesContent: Record<string, CourseData> = {
       {
         q: "Chi può partecipare?",
         a: "Il programma è rivolto particolarmente a studenti e alumni di Asterys Lab, ma è aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola."
+      },
+      {
+        q: "Quanto costa e come si paga?",
+        a: "Il prezzo è per Live Class, con sconto sulla quantità: più incontri acquisti, più il costo unitario diminuisce. Il pagamento avviene online al momento dell'acquisto; trovi i prezzi aggiornati nella sezione Prezzi."
       },
       {
         q: "Le Live Class si possono recuperare?",
