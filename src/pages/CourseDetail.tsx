@@ -521,30 +521,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 1. HERO SECTION */}
       <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
-        {/* Gradiente metallico sul fondo hero: spazzata diagonale dal blu scuro (alto-sx)
-            all'acciaio più chiaro (basso-dx). Bande nette = effetto metallico, non
-            nuvoloso; il punto di massima luce resta sull'angolo (no "faro" d'origine). */}
-        {(id === 'apcm' || id === 'systemic-team-coaching') && (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
-          />
-        )}
-        {/* ESPERIMENTO (solo ASTC, desktop): niente scontorno. Il gradiente si interrompe
-            su una diagonale e parte l'immagine CON il suo sfondo originale, clippata in
-            obliquo. Risolve il problema dei bordi del ritaglio. */}
-        {id === 'systemic-team-coaching' && (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[5] hidden lg:block [clip-path:polygon(56%_0,100%_0,100%_100%,46%_100%)]"
-          >
-            <img
-              src="/course-media/systemic-team-coaching/hero-astc-full.png"
-              alt=""
-              className="h-full w-full object-cover object-[62%_center]"
-            />
-          </div>
-        )}
+        {/* Gradiente metallico sul fondo hero (TUTTI i corsi, come Home): spazzata
+            diagonale dal blu scuro (alto-sx) all'acciaio più chiaro (basso-dx).
+            Bande nette = effetto metallico; massima luce sull'angolo (no "faro"). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
+        />
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative lg:hidden -mx-4 sm:-mx-6">
             <CourseImage
@@ -610,7 +593,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           </div>
           
-          <div className={`relative self-end h-full items-end justify-center lg:justify-end ${id === 'systemic-team-coaching' ? 'hidden' : 'hidden lg:flex'}`}>
+          <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
             <div
               className={`absolute bottom-0 ${
                 fullBleedHero
@@ -621,9 +604,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               <CourseImage
                 src={media.hero}
                 fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
-                className={`block w-full h-auto object-contain object-bottom lg:origin-bottom-right ${
-                  id === 'apcm' ? 'lg:drop-shadow-[0_18px_45px_rgba(0,0,0,0.55)]' : ''
-                }`}
+                className="hero-figure block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
                 alt={course.title}
               />
             </div>

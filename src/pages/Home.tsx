@@ -76,12 +76,12 @@ const Hero = () => (
           Percorsi di coaching in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master in coaching accreditati ICF, scegli il passo giusto per diventare coach professionista.
         </p>
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
-          <a
-            href="#contatti"
+          <Link
+            to="/corsi"
             className="inline-flex items-center justify-center bg-[#2A56A8] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
           >
             SCOPRI I CORSI
-          </a>
+          </Link>
         </div>
         <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
           {[
@@ -122,7 +122,7 @@ const Hero = () => (
           <img
             src="/home/hero-people.png"
             alt="Coach Asterys"
-            className="block w-full h-auto object-contain object-bottom lg:origin-bottom-right lg:drop-shadow-[0_18px_45px_rgba(0,0,0,0.55)]"
+            className="hero-figure block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -535,7 +535,9 @@ const AdvisorBand = () => (
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href="#contatti"
+          href="https://wa.me/393498864895?text=Ciao!%20Vorrei%20informazioni%20sui%20percorsi%20di%20Asterys%20Lab."
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-[0.22em] shadow-md hover:brightness-110 transition-all"
         >
           <MessageCircle size={16} /> Scrivici

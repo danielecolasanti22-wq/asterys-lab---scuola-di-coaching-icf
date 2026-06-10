@@ -12,6 +12,8 @@ type TestimonialsSectionProps = {
   titleUppercase?: boolean;
 };
 
+type Slide = { video?: CourseTestimonial; cards: CourseTestimonial[] };
+
 export function TestimonialsSection({
   testimonials = homeTestimonials,
   titleUppercase = true,
@@ -21,22 +23,23 @@ export function TestimonialsSection({
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
   const videoTestimonials = useMemo(() => testimonials.filter((t) => t.video), [testimonials]);
   const textTestimonials = useMemo(() => testimonials.filter((t) => !t.video), [testimonials]);
-  const slides = useMemo(
-    () =>
-      textTestimonials.reduce<Array<{ video: CourseTestimonial; cards: CourseTestimonial[] }>>(
-        (acc, testimonial, i) => {
-          if (!videoTestimonials.length) return acc;
-          if (i % 2 === 0) {
-            acc.push({ video: videoTestimonials[Math.min(acc.length, videoTestimonials.length - 1)], cards: [testimonial] });
-          } else {
-            acc[acc.length - 1].cards.push(testimonial);
-          }
-          return acc;
-        },
-        [],
-      ),
-    [textTestimonials, videoTestimonials],
-  );
+
+  // Pagine del carosello:
+  //  - una pagina per ogni VIDEO (video + max 2 card testo a fianco)
+  //  - le restanti testimonianze testuali in pagine SOLO-TESTO da 3 card (max 4)
+  // Ogni testimonianza compare una sola volta → niente ripetizioni tra pagine.
+  const slides = useMemo<Slide[]>(() => {
+    const result: Slide[] = [];
+    const pool = [...textTestimonials];
+    videoTestimonials.forEach((video) => {
+      result.push({ video, cards: pool.splice(0, 2) });
+    });
+    while (pool.length) {
+      result.push({ cards: pool.splice(0, 3) });
+    }
+    return result;
+  }, [textTestimonials, videoTestimonials]);
+
   const goToSlide = (index: number) => {
     if (!slides.length) return;
     setActiveSlide((index + slides.length) % slides.length);
@@ -49,6 +52,90 @@ export function TestimonialsSection({
     }, 7000);
     return () => window.clearInterval(interval);
   }, [slides.length]);
+
+  const renderVideoCard = (video: CourseTestimonial) => (
+    <button
+      type="button"
+      onClick={() => setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === video.name))}
+      className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[420px]"
+    >
+      <img
+        src={video.video?.poster}
+        alt={video.name}
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
+        <Video size={11} strokeWidth={2.75} />
+        Video
+      </div>
+      {video.video?.duration ? (
+        <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
+          {video.video?.duration}
+        </div>
+      ) : null}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
+          <Play size={28} strokeWidth={2.5} className="ml-1" fill="currentColor" />
+        </span>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
+        <p className="font-display font-black leading-tight mb-0.5 text-lg lg:text-xl">{video.name}</p>
+        <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{video.role}</p>
+        {video.cohort ? (
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
+            {video.cohort}
+          </p>
+        ) : null}
+      </div>
+    </button>
+  );
+
+  const renderTextCard = (t: CourseTestimonial, idx: number) => (
+    <div
+      key={`${t.name}-${idx}`}
+      className="relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden"
+    >
+      <div className="flex items-start justify-between mb-3 gap-3">
+        <div>
+          <p className="text-base font-black text-brand-navy leading-tight">{t.name}</p>
+          <p className="text-xs font-semibold text-brand-navy/60 mt-1">{t.role}</p>
+        </div>
+        {t.rating ? (
+          <div className="flex text-[#008060] gap-0.5 shrink-0">
+            {Array.from({ length: t.rating }).map((_, s) => (
+              <Star key={s} size={12} fill="currentColor" />
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-4 line-clamp-5 min-h-0">
+        “{t.quote}”
+      </p>
+      <div className="flex items-center justify-between pt-3 border-t border-gray-100 shrink-0">
+        {t.cohort ? (
+          <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent truncate">
+            {t.cohort}
+          </p>
+        ) : (
+          <span />
+        )}
+        {t.img ? (
+          <img
+            src={t.img}
+            alt={t.name}
+            className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
+          />
+        ) : (
+          <div className="h-10 w-10 rounded-full bg-[#EEF4FC] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
+            {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  const slide = slides[activeSlide];
 
   return (
     <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#EEF4FC] to-white">
@@ -63,7 +150,7 @@ export function TestimonialsSection({
           </p>
         </div>
 
-        {slides.length > 0 ? (
+        {slide ? (
           <div className="relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -79,89 +166,22 @@ export function TestimonialsSection({
                   if (info.offset.x < -70) goToSlide(activeSlide + 1);
                   if (info.offset.x > 70) goToSlide(activeSlide - 1);
                 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${activeSlide % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}
+                className={
+                  slide.video
+                    ? `grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${
+                        activeSlide % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
+                      }`
+                    : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 items-stretch'
+                }
               >
-                <button
-                  type="button"
-                  onClick={() => setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === slides[activeSlide].video.name))}
-                  className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[420px]"
-                >
-                  <img
-                    src={slides[activeSlide].video.video?.poster}
-                    alt={slides[activeSlide].video.name}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
-                    <Video size={11} strokeWidth={2.75} />
-                    Video
-                  </div>
-                  {slides[activeSlide].video.video?.duration ? (
-                    <div className="absolute top-4 right-4 rounded-full bg-black/55 backdrop-blur px-2.5 py-1 text-[10px] font-black text-white tracking-wide">
-                      {slides[activeSlide].video.video?.duration}
-                    </div>
-                  ) : null}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-white/95 text-brand-navy shadow-[0_16px_40px_-10px_rgba(0,0,0,0.6)] ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white">
-                      <Play size={28} strokeWidth={2.5} className="ml-1" fill="currentColor" />
-                    </span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
-                    <p className="font-display font-black leading-tight mb-0.5 text-lg lg:text-xl">{slides[activeSlide].video.name}</p>
-                    <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{slides[activeSlide].video.role}</p>
-                    {slides[activeSlide].video.cohort ? (
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
-                        {slides[activeSlide].video.cohort}
-                      </p>
-                    ) : null}
-                  </div>
-                </button>
-
-                <div className="grid grid-cols-1 gap-4">
-                  {slides[activeSlide].cards.map((t, idx) => (
-                    <div
-                      key={`${t.name}-${idx}`}
-                      className="relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden"
-                    >
-                      <div className="flex items-start justify-between mb-3 gap-3">
-                        <div>
-                          <p className="text-base font-black text-brand-navy leading-tight">{t.name}</p>
-                          <p className="text-xs font-semibold text-brand-navy/60 mt-1">{t.role}</p>
-                        </div>
-                        {t.rating ? (
-                          <div className="flex text-[#008060] gap-0.5 shrink-0">
-                            {Array.from({ length: t.rating }).map((_, s) => (
-                              <Star key={s} size={12} fill="currentColor" />
-                            ))}
-                          </div>
-                        ) : null}
-                      </div>
-                      <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-4 line-clamp-4 min-h-0">
-                        “{t.quote}”
-                      </p>
-                      <div className="flex items-center justify-between pt-3 border-t border-gray-100 shrink-0">
-                        {t.cohort ? (
-                          <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent truncate">
-                            {t.cohort}
-                          </p>
-                        ) : (
-                          <span />
-                        )}
-                        {t.img ? (
-                          <img
-                            src={t.img}
-                            alt={t.name}
-                            className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
-                          />
-                        ) : (
-                          <div className="h-10 w-10 rounded-full bg-[#EEF4FC] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
-                            {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {slide.video ? (
+                  <>
+                    {renderVideoCard(slide.video)}
+                    <div className="grid grid-cols-1 gap-4">{slide.cards.map(renderTextCard)}</div>
+                  </>
+                ) : (
+                  slide.cards.map(renderTextCard)
+                )}
               </motion.div>
             </AnimatePresence>
 
