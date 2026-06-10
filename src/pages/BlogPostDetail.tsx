@@ -7,6 +7,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { blogPosts, blogPostsBySlug } from '../constants/blogPosts';
+import { autoHighlight } from '../utils/highlight';
 
 export default function BlogPostDetail() {
   const { id } = useParams<{ id: string }>();
@@ -70,10 +71,15 @@ export default function BlogPostDetail() {
           {/* Article Body */}
           <div className="lg:col-span-8 text-brand-navy/80 leading-relaxed">
             <p className="text-xl sm:text-2xl font-display font-bold text-brand-navy leading-snug mb-12">
-              {post.excerpt}
+              {autoHighlight(post.excerpt, new Set<string>())}
             </p>
-            {post.content.map((block, i) => {
+            {(() => {
+              // Set condiviso per evidenziare la PRIMA occorrenza di ogni keyword;
+              // si azzera a ogni H2 così ogni sezione può rievidenziare i suoi termini.
+              const seen = new Set<string>();
+              return post.content.map((block, i) => {
               if (block.type === 'h2') {
+                seen.clear();
                 return (
                   <h2 key={i} className="text-2xl sm:text-3xl font-display font-bold text-brand-navy mt-12 mb-6 tracking-tight">
                     {block.text}
@@ -93,7 +99,7 @@ export default function BlogPostDetail() {
                     {block.items.map((it, j) => (
                       <li key={j} className="flex gap-3 text-base sm:text-lg leading-relaxed">
                         <span className="text-brand-accent font-black mt-1 shrink-0">→</span>
-                        <span>{it}</span>
+                        <span>{autoHighlight(it, seen)}</span>
                       </li>
                     ))}
                   </ul>
@@ -101,10 +107,11 @@ export default function BlogPostDetail() {
               }
               return (
                 <p key={i} className="text-base sm:text-lg leading-relaxed mb-6">
-                  {block.text}
+                  {autoHighlight(block.text, seen)}
                 </p>
               );
-            })}
+            });
+            })()}
           </div>
 
           {/* Sidebar */}

@@ -1,3 +1,4 @@
+import { autoHighlight } from '../utils/highlight';
 import {
   ArrowRight,
   Briefcase,
@@ -90,6 +91,7 @@ const beneficiPersonali = [
 ];
 
 export default function Corporate() {
+  const seen = new Set<string>();
   return (
     <div className="bg-[#EEF4FC] text-brand-navy">
       {/* HERO */}
@@ -175,10 +177,10 @@ export default function Corporate() {
               nessuno può sapere meglio di te come funzionano i tuoi affari.
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
-              Un coach è al tuo fianco per offrirti un interlocutore equilibrato e creativo, esterno alle
-              dinamiche aziendali o societarie. La nostra esperienza di consulenti, facilitatori e coach è da
-              anni dedicata alle grandi aziende, spesso multinazionali. Dal 2014 abbiamo deciso di metterci anche
-              a disposizione delle imprese e degli imprenditori italiani.
+              {autoHighlight(
+                "Un coach è al tuo fianco per offrirti un interlocutore equilibrato e creativo, esterno alle dinamiche aziendali o societarie. La nostra esperienza di consulenti, facilitatori e coach è da anni dedicata alle grandi aziende, spesso multinazionali. Dal 2014 abbiamo deciso di metterci anche a disposizione delle imprese e degli imprenditori italiani.",
+                seen,
+              )}
             </p>
           </div>
 
@@ -271,10 +273,10 @@ export default function Corporate() {
               Dall'avviamento allo sviluppo
             </h3>
             <p className="mt-5 text-brand-navy/80 leading-relaxed">
-              Il business coaching aiuta imprenditori e imprese sia in fase di avviamento — partendo da visione,
-              missione e obiettivi — sia in fase di sviluppo, riconsiderando l'attività alla luce di nuove sfide
-              e scenari, per anticipare i tempi e restare un passo avanti alla concorrenza e alla complessità che
-              avanza.
+              {autoHighlight(
+                "Il business coaching aiuta imprenditori e imprese sia in fase di avviamento — partendo da visione, missione e obiettivi — sia in fase di sviluppo, riconsiderando l'attività alla luce di nuove sfide e scenari, per anticipare i tempi e restare un passo avanti alla concorrenza e alla complessità che avanza.",
+                seen,
+              )}
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
               I nostri programmi sono rivolti a imprenditori e manager di PMI che vogliono fare tutto il possibile
@@ -385,9 +387,10 @@ export default function Corporate() {
               collaboratori verso un cambio di approccio a volte radicale.
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
-              Operiamo con coach professionisti che, oltre a un background manageriale e imprenditoriale, si sono
-              formati nella nostra scuola di coaching, acquisendo il know-how per supportare manager e
-              professionisti in ambito aziendale.
+              {autoHighlight(
+                "Operiamo con coach professionisti che, oltre a un background manageriale e imprenditoriale, si sono formati nella nostra scuola di coaching, acquisendo il know-how per supportare manager e professionisti in ambito aziendale.",
+                seen,
+              )}
             </p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3">
               <span className="inline-flex items-center gap-2 text-sm font-black text-brand-navy">

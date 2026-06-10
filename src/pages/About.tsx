@@ -11,6 +11,7 @@ import {
   Image as ImageIcon,
 } from 'lucide-react';
 import { Highlight } from '../components/Highlight';
+import { autoHighlight } from '../utils/highlight';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -167,6 +168,8 @@ export default function About() {
     }
   }, [hash]);
 
+  const seenPillars = new Set<string>();
+  const seenValues = new Set<string>();
   return (
     <div className="bg-white text-brand-navy">
       {/* HERO */}
@@ -243,11 +246,11 @@ export default function About() {
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
               <p>
                 Asterys Lab nasce oltre venticinque anni fa con un'idea precisa: portare in Italia un
-                coaching <strong>rigoroso, misurabile e profondamente umano</strong>, allineato agli
+                coaching <Highlight>rigoroso, misurabile e profondamente umano</Highlight>, allineato agli
                 standard internazionali della International Coaching Federation.
               </p>
               <p>
-                Da allora siamo cresciuti come <strong>scuola, metodo e comunità</strong>. Abbiamo
+                Da allora siamo cresciuti come <Highlight>scuola, metodo e comunità</Highlight>. Abbiamo
                 formato più di 3.000 tra coach, manager, HR e professionisti della relazione, in Italia
                 e in Europa, e siamo diventati un punto di riferimento riconosciuto dalla stampa e dal
                 mondo delle organizzazioni.
@@ -281,12 +284,12 @@ export default function About() {
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed lg:order-1">
               <p>
-                Per noi il coaching non è una moda né una tecnica: è una <strong>scelta di metodo</strong>
-                {' '}e di <strong>postura</strong>. Significa stare accanto alle persone — senza sostituirsi
+                Per noi il coaching non è una moda né una tecnica: è una <Highlight>scelta di metodo</Highlight>
+                {' '}e di <Highlight>postura</Highlight>. Significa stare accanto alle persone — senza sostituirsi
                 a loro — per aiutarle a trovare risorse, direzione e voce.
               </p>
               <p>
-                Da un quarto di secolo portiamo in aula ricerca internazionale, standard <strong>ICF</strong>,
+                Da un quarto di secolo portiamo in aula ricerca internazionale, standard <Highlight>ICF</Highlight>,
                 intelligenza emotiva misurabile e lettura sistemica. Ma partiamo sempre dalla domanda più
                 difficile: <em>chi vogliamo essere, quando siamo accanto a un'altra persona?</em>
               </p>
@@ -310,7 +313,7 @@ export default function About() {
                 <h3 className="text-base font-display font-black tracking-tight text-brand-navy mb-2 leading-snug">
                   {p.title}
                 </h3>
-                <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{p.body}</p>
+                <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{autoHighlight(p.body, seenPillars)}</p>
               </div>
             ))}
           </div>
@@ -379,7 +382,7 @@ export default function About() {
                     {v.label}
                   </p>
                   <p className="mt-2 text-lg font-display font-black tracking-tight leading-tight">
-                    {v.body}
+                    {autoHighlight(v.body, seenValues)}
                   </p>
                 </div>
               ))}
@@ -419,7 +422,7 @@ export default function About() {
                   <h3 className="text-base font-display font-black tracking-tight text-brand-navy mb-2">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{p.body}</p>
+                  <p className="text-sm text-brand-navy/65 font-medium leading-relaxed">{autoHighlight(p.body, seenPillars)}</p>
                 </div>
               ))}
             </div>

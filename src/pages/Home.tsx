@@ -30,6 +30,7 @@ import { coursesContent } from '../constants/coursesContent';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
+import { autoHighlight } from '../utils/highlight';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -292,7 +293,10 @@ const ScegliPercorso = () => {
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className={`${tSection} mb-4`}>Scegli il percorso giusto per te</h2>
           <p className="text-brand-navy/70 text-base leading-relaxed">
-            Master in coaching professionalizzanti, 100% blended e in diretta, per imparare da zero tutto ciò che serve a diventare coach e a far evolvere la tua carriera. Lezioni online e in presenza a Milano e Roma.
+            {autoHighlight(
+              'Master in coaching professionalizzanti, 100% blended e in diretta, per imparare da zero tutto ciò che serve a diventare coach e a far evolvere la tua carriera. Lezioni online e in presenza a Milano e Roma.',
+              new Set<string>(),
+            )}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 max-w-[900px] mx-auto">
@@ -571,6 +575,7 @@ const PercheNoi = () => {
       desc: 'Scegli come investire: rateizzazione fino a 24 mesi e piani pensati per chi vuole crescere senza compromessi.'
     }
   ];
+  const seen = new Set<string>();
   return (
     <section id="perche-noi" className="py-16 lg:py-20 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
@@ -583,7 +588,7 @@ const PercheNoi = () => {
               </div>
               <div>
                 <h3 className="text-base font-black text-brand-navy mb-2">{r.title}</h3>
-                <p className="text-sm text-brand-navy/70 leading-relaxed">{r.desc}</p>
+                <p className="text-sm text-brand-navy/70 leading-relaxed">{autoHighlight(r.desc, seen)}</p>
               </div>
             </div>
           ))}
