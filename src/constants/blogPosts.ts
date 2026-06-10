@@ -326,6 +326,57 @@ export const blogPosts: BlogPost[] = [
       { type: 'p', text: 'Il modo migliore per rendere sostenibile l’investimento è scegliere un percorso che ti porti fino alla credenziale e ti dia pratica reale: il Master in Coaching Professionale di Asterys Lab è accreditato ICF (Level 1 & 2) e prepara alle credenziali ACC e PCC, con rateizzazione fino a 24 mesi.' },
     ],
   },
+  {
+    slug: 'come-scegliere-una-scuola-di-coaching-accreditata-icf',
+    title: 'Come scegliere una scuola di coaching accreditata ICF',
+    excerpt:
+      'Accreditamento, trainer, pratica supervisionata, metodo: i criteri concreti per scegliere una scuola di coaching seria ed evitare i percorsi “lampo”.',
+    category: 'Diventare coach',
+    date: '3 giugno 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '7 min',
+    img: '/blog/credenziali-icf.png',
+    content: [
+      { type: 'p', text: 'Per scegliere una buona scuola di coaching conta soprattutto una cosa: l’accreditamento. In Italia la professione non ha un albo, quindi la qualità la certificano gli enti riconosciuti — in primis ICF (International Coaching Federation), lo standard internazionale. Una scuola accreditata ICF (Level 1 o Level 2) garantisce ore di formazione, pratica e mentor coaching verificate e un percorso che porta a credenziali spendibili in tutto il mondo. Oltre all’accreditamento, però, ci sono altri criteri da valutare.' },
+      { type: 'h2', text: 'Verifica l’accreditamento (Level 1 o Level 2)' },
+      { type: 'p', text: 'Il Level 1 prepara alla prima credenziale (ACC), il Level 2 a quella professionale (PCC). Controlla che la scuola sia nell’elenco ufficiale delle scuole accreditate ICF: è il primo filtro di affidabilità. Diffida di chi promette di “diventare coach” senza un percorso accreditato e senza pratica reale.' },
+      { type: 'h2', text: 'Guarda il livello dei trainer' },
+      { type: 'p', text: 'Chi insegna fa la differenza. Cerca trainer con credenziali alte (PCC e MCC) e anni di esperienza reale sul campo, non solo teorica. Un corpo docente con credenziali Master Certified Coach è un segnale forte di qualità del metodo.' },
+      { type: 'h2', text: 'Quanta pratica supervisionata offre' },
+      { type: 'p', text: 'Il coaching si impara facendolo. Una scuola seria prevede molta pratica supervisionata, feedback puntuale e mentor coaching: sono le ore che ti formano davvero e che ti servono anche per la credenziale. Valuta quanta pratica è inclusa rispetto alle ore di sola teoria.' },
+      { type: 'h2', text: 'Metodo, etica e community' },
+      { type: 'list', items: [
+        'Un metodo chiaro e riconoscibile, allineato alle competenze chiave e al codice etico ICF.',
+        'Attenzione all’intelligenza emotiva e, se ti interessano i team, all’approccio sistemico.',
+        'Una community di alumni e occasioni di confronto che restano accessibili anche dopo il corso.',
+        'Trasparenza su programma, durata, costi e accompagnamento alla credenziale.',
+      ] },
+      { type: 'h2', text: 'Online, in aula o ibrido?' },
+      { type: 'p', text: 'Non esiste un formato “migliore” in assoluto: conta la qualità dell’interazione. I percorsi in diretta (in aula o in videoconferenza) con pratica guidata e feedback dei trainer offrono il miglior equilibrio tra flessibilità e profondità. Valuta anche la presenza di sedi (es. Milano e Roma) se preferisci momenti in presenza.' },
+      { type: 'p', text: 'Asterys Lab è una scuola di coaching accreditata ICF (Level 1 & 2): il Master in Coaching Professionale forma coach certificati con metodo, intelligenza emotiva, approccio sistemico e pratica supervisionata, a Milano, Roma e online.' },
+    ],
+  },
+  {
+    slug: 'rinnovo-credenziale-icf-cce-e-mentor-coaching',
+    title: 'Rinnovo della credenziale ICF: come funziona (CCE e mentor coaching)',
+    excerpt:
+      'Le credenziali ICF si rinnovano ogni 3 anni con 40 CCE. Cosa contano, quante ore di mentor coaching servono e come maturarle in gruppo o individuale.',
+    category: 'Credenziali ICF',
+    date: '2 giugno 2026',
+    author: 'Redazione Asterys Lab',
+    readTime: '6 min',
+    img: '/blog/credenziali-icf.png',
+    content: [
+      { type: 'p', text: 'Le credenziali ICF (ACC, PCC, MCC) hanno validità triennale e si rinnovano accumulando 40 unità di formazione continua (CCE – Continuing Coach Education) ogni tre anni. Le CCE si dividono in due tipi: almeno 24 di “Core Competency” (sulle competenze chiave del coaching) e fino a 13 di “Resource Development”, più 3 ore obbligatorie di etica. Vediamo nel dettaglio cosa serve e dove rientra il mentor coaching.' },
+      { type: 'h2', text: 'Quante CCE servono e di che tipo' },
+      { type: 'p', text: 'Il totale è 40 CCE ogni tre anni: 24 Core Competency, fino a 13 Resource Development e 3 di Ethics. Le maturi partecipando a corsi, workshop e attività formative qualificate. Tenere viva e aggiornata la propria pratica non è un adempimento burocratico: è ciò che mantiene alta la qualità del lavoro con i clienti.' },
+      { type: 'h2', text: 'Il ruolo del mentor coaching' },
+      { type: 'p', text: 'Per chi ha la credenziale ACC il rinnovo richiede 10 ore di mentor coaching, di cui almeno 3 individuali; per PCC e MCC il mentor coaching non è obbligatorio al rinnovo, ma fino a 10 ore possono comunque contare come CCE Core Competency. In tutti i casi, il mentor coaching è un’occasione preziosa di crescita: ricevi feedback da un mentor accreditato sulla tua pratica reale.' },
+      { type: 'h2', text: 'Come maturare le ore: gruppo o individuale' },
+      { type: 'p', text: 'Le ore di mentor coaching si possono fare in gruppo o individualmente. Il mentor coaching di gruppo è pratica supervisionata in piccoli gruppi, con feedback di un Mentor Coach; quello individuale è un percorso one-to-one. Spesso la soluzione più efficiente per arrivare alle 10 ore è combinarli: una parte in gruppo e una parte individuale.' },
+      { type: 'p', text: 'Se devi rinnovare la tua credenziale o maturare le ore di mentor coaching, Asterys Lab offre percorsi di mentoring di gruppo e individuale con un Mentor Coach MCC, pensati proprio per arrivare alle 10 ore richieste dal rinnovo ICF.' },
+    ],
+  },
 ];
 
 export const blogPostsBySlug: Record<string, BlogPost> = Object.fromEntries(
