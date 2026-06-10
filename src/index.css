@@ -31,10 +31,10 @@
    Fallback a tinta unita scura se il browser non supporta background-clip:text.
    Cambiando qui si aggiorna l'evidenziazione in tutto il sito. */
 .text-hl {
-  background-image: linear-gradient(100deg, #001233 0%, #0c2d63 50%, #214f99 100%);
+  background-image: linear-gradient(100deg, #0b54e8 0%, #1f6bff 45%, #3a8dff 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: #0c2d63;
+  color: #1f6bff;
   -webkit-text-fill-color: transparent;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
