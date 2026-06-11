@@ -792,7 +792,7 @@ export const coursesContent: Record<string, CourseData> = {
       levels: [
         {
           label: "Livello 1",
-          name: "ICF Level 1 Ready",
+          name: "ICF Level 1",
           price: "3.400€",
           priceLabel: "+ IVA",
           hours: "60 ore accademiche",
@@ -802,8 +802,7 @@ export const coursesContent: Record<string, CourseData> = {
             "Etica, alleanza e accordo di coaching",
             "Basi di Intelligenza Emotiva",
             "Sessioni pratiche con feedback",
-            "Abilita alla credenziale ICF ACC",
-            "Modulo Prosperous Coach incluso"
+            "Abilita alla credenziale ICF ACC"
           ]
         },
         {
@@ -829,7 +828,7 @@ export const coursesContent: Record<string, CourseData> = {
         },
         {
           label: "Livello 2",
-          name: "ICF Level 2 Advanced",
+          name: "ICF Level 2",
           price: "4.500€",
           priceLabel: "+ IVA",
           hours: "90 ore accademiche",
@@ -841,7 +840,8 @@ export const coursesContent: Record<string, CourseData> = {
             "Mentor coaching ICF (7+3 ore)",
             "Supervisione individuale",
             "Abilita alla credenziale ICF PCC",
-            "Personal Coaching individuale"
+            "Personal Coaching individuale",
+            "Corso Marketing per Coach incluso"
           ]
         }
       ],
