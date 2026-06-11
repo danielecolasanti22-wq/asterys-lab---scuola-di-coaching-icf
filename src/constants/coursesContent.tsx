@@ -1921,7 +1921,7 @@ export const coursesContent: Record<string, CourseData> = {
   'public-speaking': {
     title: "Public Speaking Pro",
     subtitle: "Parla con Presenza",
-    tagline: "Il corso di public speaking di Asterys Lab: supera la paura di parlare in pubblico e comunica il tuo valore con carisma, struttura e intelligenza emotiva.",
+    tagline: "Rendi memorabile la tua presenza in pubblico: 3 giornate di full immersion in presenza più follow up online per padroneggiare l'arte del parlare in pubblico, con corpo, voce ed emozioni.",
     type: "COMUNICAZIONE",
     media: {
       hero: "/course-media/public-speaking/hero-public-speaking.png",
@@ -1930,20 +1930,45 @@ export const coursesContent: Record<string, CourseData> = {
       completePractical: "/course-media/apcm/supervision-mentor.png",
       completePlatform: "/course-media/apcm/platform-ui.png",
     },
-    heroBenefits: ["Gestisci l'ansia da palcoscenico", "Struttura messaggi memorabili", "Usa il corpo e la voce con intenzione", "Allenamento pratico con riprese video"],
-    summaryBox: { nextEdition: "Online", dates: "Novembre 2026", format: "Live Online", duration: "16 ore", price: "--", installments: "" },
+    heroBenefits: ["Pianifica uno speech memorabile", "Comunica con il corpo", "Usa la voce come tua alleata", "Accogli le emozioni con presenza"],
+    summaryBox: { nextEdition: "Da definire", dates: "Da definire", format: "Aula + Online", duration: "3 giornate + 2 follow up", price: "--", installments: "" },
     badges: ["Pratico", "Feedback Immediato"],
     overview: {
       title: "Comunicare è servire",
       content: [
-        "Non si tratta di te, si tratta del **tuo pubblico**. Il corso di public speaking di Asterys Lab parte da qui: imparare a **parlare in pubblico** non per apparire, ma per far arrivare un **messaggio che resta**.",
-        "In 16 ore di pratica dal vivo alleni voce, corpo ed emozioni, impari a strutturare un discorso che cattura l'attenzione e a gestire l'**ansia da palco** con strumenti di intelligenza emotiva. Niente teoria fine a sé stessa: esercitazioni, **feedback immediato** e riprese video per migliorare lezione dopo lezione."
+        "Se desideri padroneggiare l'arte del **parlare in pubblico** e rendere i tuoi interventi memorabili, questo è il corso per te. Public Speaking PRO non è solo formazione: è una vera **esperienza di trasformazione** che ti dà le competenze per eccellere in tutte le situazioni **one to many**.",
+        "Immagina di interagire con il pubblico con maestria e disinvoltura, veicolando i tuoi messaggi e **catturando l'attenzione della platea**. Immagina di avere tutti gli strumenti per **superare la paura di parlare in pubblico** e agire con piena consapevolezza, trasmettendo competenza e professionalità.",
+        "Non si tratta solo di parlare in pubblico, ma di **essere serenamente chi sei mentre lo fai**."
       ]
     },
-    target: [{ title: "Professionisti", desc: "Chi deve presentare idee o progetti.", icon: <Users /> }],
-    learning: { cols: [{ title: "Content & Presence", items: ["Storytelling", "Voce", "Postura"] }], softSkills: ["Autostima", "Chiarezza"] },
-    structure: { modules: [{ title: "Dalla Paura al Coraggio", desc: "Tecniche di centratura." }] },
-    teachers: [{ name: "Alessandra Bitelli", creds: "PCC", role: "Trainer", bio: "Executive coach e formatrice, parte della Faculty di Asterys Lab.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" }],
+    target: [
+      { title: "Professionisti one-to-many", desc: "Chi interagisce spesso con il pubblico ed è un riferimento per i propri interlocutori.", icon: <Users /> },
+      { title: "Chi punta all'eccellenza", desc: "Professionisti per cui, dalla capacità di presentare, dipende il destino di un progetto.", icon: <Target /> },
+      { title: "Trainer e formatori", desc: "Chi vuole rendere più efficaci i propri interventi e liberare tutto il potenziale di formatore.", icon: <MessageCircle /> },
+      { title: "Manager", desc: "Chi vuole migliorare l'esposizione nei consigli di amministrazione e nelle riunioni.", icon: <TrendingUp /> }
+    ],
+    learning: {
+      cols: [
+        { title: "Struttura", items: ["Pianificare e organizzare uno speech memorabile"] },
+        { title: "Corpo", items: ["Trasmettere chi sei e il tuo messaggio con l'uso consapevole del corpo"] },
+        { title: "Voce", items: ["Usare la voce come tua potente alleata"] },
+        { title: "Emozioni", items: ["Accogliere le emozioni per una presenza professionale ed efficace"] }
+      ],
+      softSkills: ["Presenza scenica", "Carisma", "Gestione dell'ansia", "Storytelling"]
+    },
+    structure: {
+      modules: [
+        { title: "Public Speaking PRO", desc: "Il cuore del percorso: 3 giornate di full immersion in presenza, più 2 follow up online da 1,5h.", tags: ["3 giornate in aula", "2 follow up online"] },
+        { title: "Opzione Élite", desc: "Un'estensione su misura: 3 sessioni one-to-one personalizzate con il trainer.", tags: ["One-to-one", "Personalizzato"] },
+        { title: "Diploma", desc: "Al termine ricevi un diploma che attesta la partecipazione e le ore di formazione svolte.", tags: ["Attestato ore"] }
+      ]
+    },
+    teachers: [
+      { name: "Alessandra Bitelli", creds: "Executive Coach", role: "Trainer", bio: "Executive coach, formatrice e facilitatrice, specializzata in comunicazione efficace, crescita professionale e dinamiche relazionali, con esperienza internazionale. Laureata in Pedagogia.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
+      { name: "Renata Beltrami", creds: "Coach PCC", role: "Trainer", bio: "Coach PCC, trainer e facilitatrice certificata di Intelligenza Emotiva. Dopo quasi 20 anni all'estero, aiuta le persone a sviluppare consapevolezza di sé, obiettivi ed emozioni.", img: "/course-media/public-speaking/renata-beltrami.png" },
+      { name: "Laura Jacobbi", creds: "Actor Coach", role: "Presenza scenica", bio: "Regista, attrice e actor coach, formata all'Accademia d'Arte Drammatica «Silvio D'Amico». Dal 1993 insegna recitazione e dizione ed è coach di molti attori professionisti.", img: "/course-media/public-speaking/laura-jacobbi.png" },
+      { name: "Nuna Shoesmith", creds: "Coach ACC ICF", role: "Vocal Coach", bio: "Diplomata al Conservatorio, vocal coach con esperienza decennale: aiuta a trovare la propria voce autentica con un approccio olistico al benessere vocale.", img: "/course-media/public-speaking/nuna-shoesmith.png" }
+    ],
     career: { title: "Datti Voce", content: "Migliora la tua visibilità interna ed esterna.", points: [] },
     fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "--", priceLabel: "prezzo in definizione" }],
     faqs: [
@@ -1953,19 +1978,19 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Quanto dura il corso di public speaking?",
-        a: "Il corso dura 16 ore, in diretta online. È un percorso pratico, con esercitazioni e feedback, pensato per ottenere risultati concreti in tempi rapidi."
+        a: "Public Speaking PRO è una full immersion di 3 giornate in presenza, più 2 follow up online da 1,5 ore. È un percorso intensivo e pratico, fatto di esercitazioni e feedback."
       },
       {
         q: "È online o in presenza?",
-        a: "Il corso si svolge online, in diretta (Live Online): puoi seguirlo ovunque ti trovi mantenendo l'interazione con il docente e il gruppo."
+        a: "Le 3 giornate principali si svolgono in presenza; a seguire ci sono 2 follow up online da 1,5 ore. È disponibile anche un'opzione Élite con 3 sessioni individuali personalizzate."
       },
       {
         q: "Cosa si impara?",
         a: "A preparare e strutturare un intervento, gestire voce, corpo ed emozioni, catturare l'attenzione e comunicare il messaggio con chiarezza e sicurezza, anche in situazioni di stress."
       },
       {
-        q: "Quanto costa e come si paga?",
-        a: "Il corso ha un costo di 450€, una tantum. Trovi le condizioni aggiornate e le modalità di pagamento nella sezione Prezzi."
+        q: "Quanto costa e quando parte la prossima edizione?",
+        a: "Data e prezzo della prossima edizione sono in via di definizione. Lascia i tuoi contatti e ti avvisiamo appena aprono le iscrizioni, con tutte le condizioni aggiornate."
       }
     ]
   },
