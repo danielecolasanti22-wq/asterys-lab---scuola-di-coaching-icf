@@ -343,7 +343,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     activeModuleData.tags ?? course.learning.softSkills.slice(0, 8);
 
   const media = { ...defaultCourseMedia(id ?? 'corso'), ...course.media };
-  const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching' || id === 'voice-dialogue';
+  const usesApcmCompleteSection = id === 'apcm' || id === 'systemic-team-coaching' || id === 'voice-dialogue' || id === 'public-speaking';
   const isCoachingCircle = id === 'coaching-circle';
   const isVoiceDialogue = id === 'voice-dialogue';
   const isWorkout = id === 'eiw';
@@ -2161,7 +2161,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
-      {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL ? (
+      {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL && id !== 'public-speaking' ? (
       <section id="career" className="py-16 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-14 lg:mb-16">

@@ -1923,9 +1923,15 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Parla con Presenza",
     tagline: "Il corso di public speaking di Asterys Lab: supera la paura di parlare in pubblico e comunica il tuo valore con carisma, struttura e intelligenza emotiva.",
     type: "COMUNICAZIONE",
-    media: { hero: "/course-media/public-speaking/hero-public-speaking.png" },
+    media: {
+      hero: "/course-media/public-speaking/hero-public-speaking.png",
+      overview: "/course-media/public-speaking/overview-psp.jpg",
+      howItWorks: "/course-media/apcm/how-master.jpg",
+      completePractical: "/course-media/apcm/supervision-mentor.png",
+      completePlatform: "/course-media/apcm/platform-ui.png",
+    },
     heroBenefits: ["Gestisci l'ansia da palcoscenico", "Struttura messaggi memorabili", "Usa il corpo e la voce con intenzione", "Allenamento pratico con riprese video"],
-    summaryBox: { nextEdition: "Online", dates: "Novembre 2026", format: "Live Online", duration: "16 ore", price: "450€", installments: "2 rate" },
+    summaryBox: { nextEdition: "Online", dates: "Novembre 2026", format: "Live Online", duration: "16 ore", price: "--", installments: "" },
     badges: ["Pratico", "Feedback Immediato"],
     overview: {
       title: "Comunicare è servire",
@@ -1937,9 +1943,9 @@ export const coursesContent: Record<string, CourseData> = {
     target: [{ title: "Professionisti", desc: "Chi deve presentare idee o progetti.", icon: <Users /> }],
     learning: { cols: [{ title: "Content & Presence", items: ["Storytelling", "Voce", "Postura"] }], softSkills: ["Autostima", "Chiarezza"] },
     structure: { modules: [{ title: "Dalla Paura al Coraggio", desc: "Tecniche di centratura." }] },
-    teachers: [{ name: "Esperti Lab", creds: "Pro Speakers", role: "Speakers", bio: "Comunicatori di professione.", img: "https://picsum.photos/seed/spk/300/300" }],
+    teachers: [{ name: "Alessandra Bitelli", creds: "PCC", role: "Trainer", bio: "Executive coach e formatrice, parte della Faculty di Asterys Lab.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" }],
     career: { title: "Datti Voce", content: "Migliora la tua visibilità interna ed esterna.", points: [] },
-    fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "450€", priceLabel: "una tantum" }],
+    fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "--", priceLabel: "prezzo in definizione" }],
     faqs: [
       {
         q: "A chi serve un corso di public speaking?",
