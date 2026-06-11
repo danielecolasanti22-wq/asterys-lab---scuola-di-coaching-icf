@@ -713,29 +713,26 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 ];
 
                 return (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {includedCards.map((card, index) => {
+                  <div className="grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 border-t border-brand-navy/12">
+                    {includedCards.map((card) => {
                       const Icon = card.icon;
                       return (
-                        <article
+                        <div
                           key={card.title}
-                          className="group relative min-h-[250px] rounded-[1.5rem] border border-brand-navy/10 bg-[#EEF4FC] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/25 hover:bg-white hover:shadow-xl"
+                          className="flex items-start gap-4 py-6 border-b border-brand-navy/12"
                         >
-                          <div className="mb-7 flex items-start justify-between gap-4">
-                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-accent ring-1 ring-brand-navy/10 transition-colors group-hover:bg-[#EEF4FC]">
-                              <Icon size={22} strokeWidth={1.9} />
-                            </span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/28">
-                              {String(index + 1).padStart(2, '0')}
-                            </span>
+                          <span className="shrink-0 mt-0.5 text-brand-accent">
+                            <Icon size={24} strokeWidth={1.9} />
+                          </span>
+                          <div className="min-w-0">
+                            <h3 className="font-display text-base sm:text-lg font-black tracking-tight leading-snug text-brand-navy mb-1.5">
+                              {card.title}
+                            </h3>
+                            <p className="text-sm leading-relaxed text-brand-navy/65 font-medium">
+                              {card.desc}
+                            </p>
                           </div>
-                          <h3 className="font-display text-xl sm:text-[22px] font-black tracking-tight leading-[1.05] text-brand-navy mb-3">
-                            {card.title}
-                          </h3>
-                          <p className="text-sm leading-relaxed text-brand-navy/64 font-medium">
-                            {card.desc}
-                          </p>
-                        </article>
+                        </div>
                       );
                     })}
                   </div>
