@@ -1965,7 +1965,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     teachers: [
       { name: "Alessandra Bitelli", creds: "Executive Coach", role: "Trainer", bio: "Executive coach, formatrice e facilitatrice, specializzata in comunicazione efficace, crescita professionale e dinamiche relazionali, con esperienza internazionale. Laureata in Pedagogia.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
-      { name: "Renata Beltrami", creds: "Coach PCC", role: "Trainer", bio: "Coach PCC, trainer e facilitatrice certificata di Intelligenza Emotiva. Dopo quasi 20 anni all'estero, aiuta le persone a sviluppare consapevolezza di sé, obiettivi ed emozioni.", img: "/course-media/public-speaking/renata-beltrami.png" },
+      { name: "Renata Beltrami", creds: "Coach PCC", role: "Trainer", bio: "Coach PCC, trainer e facilitatrice certificata di Intelligenza Emotiva. Dopo quasi 20 anni all'estero, aiuta le persone a sviluppare consapevolezza di sé, obiettivi ed emozioni.", img: "/course-media/apcm/trainer-renata-cargnelutti-beltrami.png" },
       { name: "Laura Jacobbi", creds: "Actor Coach", role: "Presenza scenica", bio: "Regista, attrice e actor coach, formata all'Accademia d'Arte Drammatica «Silvio D'Amico». Dal 1993 insegna recitazione e dizione ed è coach di molti attori professionisti.", img: "/course-media/public-speaking/laura-jacobbi.png" },
       { name: "Nuna Shoesmith", creds: "Coach ACC ICF", role: "Vocal Coach", bio: "Diplomata al Conservatorio, vocal coach con esperienza decennale: aiuta a trovare la propria voce autentica con un approccio olistico al benessere vocale.", img: "/course-media/public-speaking/nuna-shoesmith.png" }
     ],
