@@ -424,7 +424,17 @@ const MasterGrid = () => {
       seed: 'continuous-learning',
       image: 'card.jpg'
     },
-    
+    {
+      id: 'public-speaking',
+      title: 'Public Speaking Pro',
+      duration: '3 giornate + 2 online',
+      label: 'Corso Breve',
+      desc: 'Rendi memorabile la tua presenza in pubblico: voce, corpo ed emozioni in una full immersion pratica.',
+      start: 'Da definire',
+      lastSeats: false,
+      seed: 'public-speaking',
+      image: 'card.jpg'
+    },
   ];
   return (
     <section className="bg-white pt-3 pb-16">
@@ -484,23 +494,6 @@ const MasterGrid = () => {
               </div>
             </Link>
           ))}
-          <Link
-            to="/corsi"
-            className="group rounded-[1.4rem] sm:rounded-[2rem] bg-[linear-gradient(135deg,#2A56A8_0%,#2A56A8_100%)] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden"
-          >
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] mb-3">
-              Nuove competenze in poche settimane
-            </p>
-            <h3 className="text-2xl lg:text-[1.75rem] font-display font-black leading-tight mb-3">
-              Cerchi un corso breve?
-            </h3>
-            <p className="text-sm text-white/80 mb-5 leading-relaxed max-w-sm">
-              Scopri i corsi brevi, pratici, in diretta con chi ti può guidare passo dopo passo.
-            </p>
-            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] group-hover:gap-3 transition-all">
-              Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
-            </span>
-          </Link>
         </div>
       </div>
     </section>

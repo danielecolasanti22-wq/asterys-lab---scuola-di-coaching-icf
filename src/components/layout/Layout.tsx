@@ -76,7 +76,7 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'Modello CSI', meta: '4 Workout · Live Online' },
       { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Live Class mensili', meta: 'Annuale · Zoom 18:30–20:00' },
-      { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '16 ore · Live Online' },
+      { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '3 giornate · Aula + Online' },
     ],
   },
 ];
