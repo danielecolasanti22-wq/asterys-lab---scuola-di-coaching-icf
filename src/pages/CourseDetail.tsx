@@ -1729,29 +1729,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       </li>
                     ))}
                   </ul>
-                  {lvl.ctaHref ? (
-                    <Link
-                      to={lvl.ctaHref}
-                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
-                        lvl.highlight
-                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
-                          : 'bg-brand-navy text-white hover:bg-brand-accent'
-                      }`}
-                    >
-                      {lvl.ctaLabel ?? 'Iscriviti ora'}
-                    </Link>
-                  ) : (
-                    <a
-                      href="#prezzo"
-                      className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
-                        lvl.highlight
-                          ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
-                          : 'border-2 border-brand-navy/20 text-brand-navy hover:bg-gray-50'
-                      }`}
-                    >
-                      Scopri i dettagli
-                    </a>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (lvl.feeTab) setPaymentTab(lvl.feeTab.toLowerCase());
+                      document.getElementById('prezzo')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                      lvl.highlight
+                        ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
+                        : 'bg-brand-navy text-white hover:bg-brand-accent'
+                    }`}
+                  >
+                    Iscriviti
+                  </button>
                 </div>
               ))}
             </div>

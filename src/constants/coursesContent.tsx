@@ -200,6 +200,8 @@ export interface CourseData {
       features: string[];
       ctaLabel?: string;
       ctaHref?: string;
+      /** Titolo della fee/tab nella sezione prezzi da attivare al click su "Iscriviti". */
+      feeTab?: string;
     }[];
     footnote?: string;
   };
@@ -803,7 +805,8 @@ export const coursesContent: Record<string, CourseData> = {
             "Basi di Intelligenza Emotiva",
             "Sessioni pratiche con feedback",
             "Abilita alla credenziale ICF ACC"
-          ]
+          ],
+          feeTab: "Solo Livello 1"
         },
         {
           label: "Percorso Completo",
@@ -823,8 +826,7 @@ export const coursesContent: Record<string, CourseData> = {
             "Accesso alla Community Alumni Asterys",
             "Percorso di Personal Coaching individuale"
           ],
-          ctaLabel: "Iscriviti al Percorso Completo",
-          ctaHref: "/iscriviti"
+          feeTab: "Percorso Completo"
         },
         {
           label: "Livello 2",
@@ -842,7 +844,8 @@ export const coursesContent: Record<string, CourseData> = {
             "Abilita alla credenziale ICF PCC",
             "Personal Coaching individuale",
             "Corso Marketing per Coach incluso"
-          ]
+          ],
+          feeTab: "Solo Livello 2"
         }
       ],
       footnote: "Tutti i livelli sono rateizzabili fino a 24 mesi senza interessi. Prezzi IVA esclusa."
