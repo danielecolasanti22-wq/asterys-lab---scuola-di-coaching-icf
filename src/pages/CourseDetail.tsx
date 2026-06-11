@@ -764,7 +764,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 ) : null}
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden border border-brand-navy/10 bg-brand-navy/10">
+              <div className="grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 border-t border-brand-navy/12">
                 {course.whyChoose.bullets.map((b, i) => {
                   const benefitIcons = [
                     ShieldCheck,
@@ -778,26 +778,22 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ];
                   const Icon = benefitIcons[i % benefitIcons.length];
                   return (
-                    <article
+                    <div
                       key={i}
-                      className="group relative min-h-[270px] bg-white px-6 py-7 sm:px-7 sm:py-8 transition-colors hover:bg-[#EEF4FC]"
+                      className="flex items-start gap-4 py-6 border-b border-brand-navy/12"
                     >
-                      <div className="absolute inset-x-0 top-0 h-1 bg-brand-accent/0 transition-colors group-hover:bg-brand-accent" />
-                      <div className="mb-8 flex items-start justify-between gap-4">
-                        <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-navy/35">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <span className="inline-flex h-11 w-11 items-center justify-center border border-brand-navy/10 bg-[#EEF4FC] text-brand-accent transition-colors group-hover:border-brand-accent/25 group-hover:bg-[#EEF4FC]">
-                          <Icon size={20} strokeWidth={1.9} />
-                        </span>
+                      <span className="shrink-0 mt-0.5 text-brand-accent">
+                        <Icon size={24} strokeWidth={1.9} />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-base sm:text-lg font-display font-black text-brand-navy tracking-tight leading-snug mb-1.5">
+                          {b.title}
+                        </h3>
+                        <p className="text-sm text-brand-navy/65 leading-relaxed font-medium">
+                          {b.desc}
+                        </p>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-4">
-                        {b.title}
-                      </h3>
-                      <p className="text-sm text-brand-navy/68 leading-relaxed font-medium">
-                        {b.desc}
-                      </p>
-                    </article>
+                    </div>
                   );
                 })}
               </div>
