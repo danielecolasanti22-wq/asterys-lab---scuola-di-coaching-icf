@@ -141,8 +141,8 @@ export default function Corporate() {
         <p className="text-center text-[11px] font-black uppercase tracking-[0.28em] text-brand-navy/45 mb-8">
           Aziende con cui abbiamo lavorato
         </p>
-        <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
-          <div className="flex w-max items-center animate-[marquee_28s_linear_infinite] group-hover:[animation-play-state:paused]">
+        <div className="marquee-mask group relative overflow-hidden">
+          <div className="marquee-track flex w-max items-center animate-[marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]">
             {[0, 1].map((half) => (
               <ul
                 key={half}
