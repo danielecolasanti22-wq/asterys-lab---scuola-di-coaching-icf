@@ -116,13 +116,13 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
   <div className="border-b border-gray-100 last:border-b-0">
     <button 
       onClick={onClick}
-      className="w-full py-6 text-left flex items-center justify-between group gap-6"
+      className="w-full py-4 sm:py-6 text-left flex items-center justify-between group gap-4 sm:gap-6"
     >
       <span className="text-[15px] sm:text-base font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight">
         {title}
       </span>
       <span
-        className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
+        className={`inline-flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
           isOpen ? 'bg-brand-navy text-white border-brand-navy' : ''
         }`}
       >
@@ -137,7 +137,7 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
           exit={{ height: 0, opacity: 0 }}
           className="overflow-hidden"
         >
-          <div className="pb-6 text-brand-navy/60 leading-relaxed text-sm font-medium">
+          <div className="pb-4 sm:pb-6 text-brand-navy/60 leading-relaxed text-sm font-medium">
             {richText(content)}
           </div>
         </motion.div>
@@ -284,6 +284,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
   const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
   const teachersScrollerRef = useRef<HTMLDivElement>(null);
+  const levelsScrollerRef = useRef<HTMLDivElement>(null);
 
   const scrollTeachers = (dir: 'left' | 'right') => {
     const el = teachersScrollerRef.current;
@@ -308,6 +309,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
   useEffect(() => {
     setTimelineOpenMobile(false);
   }, [activeCitySlug, activeLevelSlug, activeEditionSlug]);
+
+  useEffect(() => {
+    const el = levelsScrollerRef.current;
+    if (!el || !window.matchMedia('(max-width: 767px)').matches) return;
+    const highlighted = el.querySelector<HTMLElement>('[data-level-highlight="true"]');
+    highlighted?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
+  }, [id]);
 
   if (!course) {
     return (
@@ -520,7 +528,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
+      <section className="relative bg-brand-hero overflow-hidden pb-0">
         {/* Gradiente metallico sul fondo hero (TUTTI i corsi, come Home): spazzata
             diagonale dal blu scuro (alto-sx) all'acciaio più chiaro (basso-dx).
             Bande nette = effetto metallico; massima luce sull'angolo (no "faro"). */}
@@ -529,7 +537,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
         />
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
-          <div className="relative lg:hidden -mx-4 sm:-mx-6">
+          <div className="relative hidden -mx-4 sm:-mx-6">
             <CourseImage
               src={media.hero}
               fallbackSrc={defaultCourseMedia(id ?? 'corso').hero}
@@ -539,7 +547,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
           </div>
 
-          <div className="pt-12 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0 lg:self-start">
+          <div className="pt-10 lg:pt-14 pb-8 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-none lg:rounded-none bg-brand-hero lg:bg-transparent mt-0 lg:self-start">
             <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
               <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
               {(course.heroKicker ?? course.type).toUpperCase()}
@@ -613,8 +621,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 2. LA FIGURA CENTRALE SECTION */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
+      <section className="py-0 lg:py-24 bg-white">
+        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
              <h2 className={`${tSection} mb-8 leading-tight`}>
                 {course.overview.title}
@@ -627,12 +635,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                ))}
              </div>
           </div>
-          <div className="relative order-1 lg:order-2">
-             <div className="rounded-[3rem] overflow-hidden shadow-2xl">
+          <div className="relative order-1 lg:order-2 -mx-4 lg:mx-0">
+             <div className="rounded-none lg:rounded-[3rem] overflow-hidden shadow-none lg:shadow-2xl">
                 <CourseImage
                   src={media.overview}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
-                  className="w-full h-full object-cover aspect-video lg:aspect-square"
+                  className="w-full h-full object-cover aspect-[16/10] lg:aspect-square"
                   alt={course.overview.title}
                 />
              </div>
@@ -870,17 +878,17 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 4. SCEGLI TU QUANDO INIZIARE SECTION — nascosta per il Mentoring (date esposte nella pratica) */}
       {!isCoachingCircle && (
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-10 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#001D4B] rounded-[1.75rem] p-6 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
-               <h2 className={`${tSection} text-white mb-4`}>
+            <div className="bg-[#001D4B] rounded-[1.5rem] lg:rounded-[1.75rem] p-5 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
+               <h2 className={`${tSection} text-white mb-3 lg:mb-4`}>
                  {isCoachingCircle
                    ? 'Scegli tu quando iniziare'
                    : isVoiceDialogue
                    ? 'Prossima edizione'
                    : 'Scegli tu quando iniziare'}
                </h2>
-               <p className="text-sm sm:text-base text-white/75 max-w-xl mx-auto mb-10 font-medium leading-relaxed">
+               <p className="text-sm sm:text-base text-white/75 max-w-xl mx-auto mb-5 lg:mb-10 font-medium leading-relaxed">
                  {isCoachingCircle
                    ? "Prenota il tuo posto: dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
                    : isVoiceDialogue
@@ -892,9 +900,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                    : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
 
-               <div className="bg-white/5 border border-white/10 rounded-[1.25rem] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8 max-w-3xl mx-auto mb-8 text-left">
+               <div className="bg-white/5 border border-white/10 rounded-[1.25rem] p-4 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-8 max-w-3xl mx-auto mb-5 lg:mb-8 text-left">
                   <div className="text-left w-full">
-                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/45 mb-5">
+                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/45 mb-3 lg:mb-5">
                        {isCoachingCircle
                          ? 'I gruppi vengono composti in ordine di iscrizione'
                          : isVoiceDialogue
@@ -905,12 +913,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          ? 'Prossime Live Class'
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
-                     <div className="flex flex-col md:flex-row md:items-center gap-12">
+                     <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
                         {(isCL ? (course.classDates ?? []).slice(0, 3) : (course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }])).map((cd, i, arr) => (
                           <div key={i} className="contents">
                             {i > 0 && <div className="h-px w-full md:h-12 md:w-px bg-white/10 shrink-0"></div>}
                             <div className="flex-1">
-                              <p className={`text-2xl sm:text-3xl font-black uppercase tracking-tighter ${i > 0 ? 'opacity-55' : ''}`}>{cd.date}</p>
+                              <p className={`text-xl sm:text-3xl font-black uppercase tracking-tighter ${i > 0 ? 'opacity-55' : ''}`}>{cd.date}</p>
                               {cd.badge && <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent mt-2">{cd.badge}</p>}
                               {cd.note && <p className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40 mt-2 italic">{cd.note}</p>}
                             </div>
@@ -928,26 +936,26 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 4b. CALENDARIO EDIZIONI */}
       {editions.length > 0 && activeEdition ? (
-        <section id="calendario-edizioni" className="py-16 lg:py-24 bg-[#F9FAFB]/70">
+        <section id="calendario-edizioni" className="py-10 lg:py-24 bg-[#F9FAFB]/70">
           <div className="max-w-[941px] mx-auto px-4">
             {editionsSection.eyebrow ? (
-              <p className="text-lg font-display font-black text-brand-accent mb-3">
+              <p className="text-sm lg:text-lg font-display font-black text-brand-accent mb-2 lg:mb-3">
                 {editionsSection.eyebrow}
               </p>
             ) : null}
-            <h2 className={`${tSection} mb-4`}>
+            <h2 className={`${tSection} mb-3 lg:mb-4`}>
               {editionsSection.title ?? 'Scegli sede, livello ed edizione'}
             </h2>
             {editionsSection.intro ? (
-              <p className={`${tLead} mb-10`}>{richText(editionsSection.intro)}</p>
+              <p className={`${tLead} mb-6 lg:mb-10`}>{richText(editionsSection.intro)}</p>
             ) : null}
 
             {/* City tabs */}
-            <div className="mb-5">
-              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+            <div className="mb-4 lg:mb-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                 <MapPin size={12} strokeWidth={2.5} /> Sede
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
                 {editionCities.map((c) => {
                   const active = c.slug === effectiveCitySlug;
                   return (
@@ -969,7 +977,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                           setActiveEditionSlug(firstOfCity.editionSlug);
                         }
                       }}
-                      className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                      className={`shrink-0 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
                         active
                           ? 'bg-brand-navy text-white ring-brand-navy shadow-md'
                           : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
@@ -984,11 +992,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             {/* Level tabs */}
             {editionLevelsForCity.length > 1 ? (
-              <div className="mb-5">
-                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+              <div className="mb-4 lg:mb-5">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                   <GraduationCap size={12} strokeWidth={2.5} /> Livello
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
                   {editionLevelsForCity.map((l) => {
                     const active = l.slug === effectiveLevelSlug;
                     return (
@@ -1005,7 +1013,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                                 );
                           if (firstOfLevel) setActiveEditionSlug(firstOfLevel.editionSlug);
                         }}
-                        className={`rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                        className={`shrink-0 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
                           active
                             ? 'bg-brand-accent text-white ring-brand-accent shadow-md'
                             : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
@@ -1021,11 +1029,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             {/* Edition pills */}
             {editionsForCityLevel.length > 1 || id === 'systemic-team-coaching' ? (
-              <div className="mb-8">
-                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3 flex items-center gap-2">
+              <div className="mb-5 lg:mb-8">
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                   <Flag size={12} strokeWidth={2.5} /> Edizione
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
                   {editionsForCityLevel.map((e) => {
                     const active = e.editionSlug === activeEdition.editionSlug;
                     return (
@@ -1033,7 +1041,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         key={e.editionSlug}
                         type="button"
                         onClick={() => setActiveEditionSlug(e.editionSlug)}
-                        className={`text-left rounded-2xl px-4 py-3 transition-all ring-1 ${
+                        className={`shrink-0 max-w-[78vw] text-left rounded-2xl px-4 py-2.5 sm:py-3 transition-all ring-1 ${
                           active
                             ? 'bg-white ring-brand-accent shadow-[0_18px_40px_-28px_rgba(29,59,185,0.5)]'
                             : 'bg-white/60 ring-brand-navy/10 hover:bg-white hover:ring-brand-navy/25'
@@ -1072,10 +1080,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25 }}
-                className="rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
+                className="rounded-[1.4rem] lg:rounded-[1.75rem] bg-white border border-gray-100 shadow-[0_22px_60px_-38px_rgba(0,21,51,0.22)] overflow-hidden"
               >
                 {/* Header */}
-                <div className="p-5 sm:p-7 bg-[#001D4B] text-white relative overflow-hidden">
+                <div className="p-4 sm:p-7 bg-[#001D4B] text-white relative overflow-hidden">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-accent/25 blur-3xl" />
                   <div className="relative z-10">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -1084,7 +1092,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                           <MapPin size={12} strokeWidth={2.5} />
                           {activeEdition.city} · {activeEdition.level}
                         </p>
-                        <h3 className="text-xl sm:text-2xl font-display font-black tracking-tight leading-tight">
+                        <h3 className="text-lg sm:text-2xl font-display font-black tracking-tight leading-tight">
                           {activeEdition.editionLabel}
                         </h3>
                         {activeEdition.subtitle ? (
@@ -1130,7 +1138,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
                 {/* Summary stats (mobile + desktop) */}
                 {editionStats ? (
-                  <div className="px-5 sm:px-9 pt-5 sm:pt-7">
+                  <div className="px-4 sm:px-9 pt-4 sm:pt-7">
                     <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-3">
                       Cosa include il percorso
                     </p>
@@ -1154,7 +1162,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 ) : null}
 
                 {/* Timeline */}
-                <div className="px-5 pt-5 pb-5 sm:px-9 sm:pt-7 sm:pb-9">
+                <div className="px-4 pt-4 pb-4 sm:px-9 sm:pt-7 sm:pb-9">
                   <button
                     type="button"
                     onClick={() => setTimelineOpenMobile((v) => !v)}
@@ -1171,7 +1179,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </button>
                   <div
                     id="edition-timeline"
-                    className={`${timelineOpenMobile ? 'block mt-6' : 'hidden'}`}
+                    className={`${timelineOpenMobile ? 'block mt-4 sm:mt-6' : 'hidden'}`}
                   >
                   <ol className="relative">
                     {activeEdition.events.map((ev, i) => {
@@ -1220,7 +1228,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 </div>
 
                 {/* CTA */}
-                <div className="px-5 pb-5 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-5 sm:pt-6">
+                <div className="px-4 pb-4 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-4 sm:pt-6">
                   <p className="text-xs sm:text-sm text-brand-navy/55 font-semibold">
                     Vuoi approfondire questa edizione? Prenota una call con un Advisor.
                   </p>
@@ -1261,25 +1269,25 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 4c. SCHOLARSHIP */}
       {course.scholarship ? (
-        <section className="py-14 lg:py-16 bg-white">
+        <section className="py-10 lg:py-16 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="relative overflow-hidden rounded-[1.75rem] bg-brand-navy text-white px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
+            <div className="relative overflow-hidden rounded-[1.4rem] lg:rounded-[1.75rem] bg-brand-navy text-white px-5 py-6 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
               <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-accent/30 blur-3xl" />
-              <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center">
+              <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-5 lg:gap-10 items-center">
                 <div>
                   {course.scholarship.eyebrow ? (
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-4">
+                    <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-3 lg:mb-4">
                       {course.scholarship.eyebrow}
                     </p>
                   ) : null}
-                  <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-5">
+                  <h2 className="text-2xl sm:text-4xl lg:text-[2.5rem] font-display font-black tracking-tight leading-[1.05] mb-3 lg:mb-5">
                     {course.scholarship.title}
                   </h2>
-                  <p className="text-sm sm:text-base text-[#EEF4FC] leading-relaxed mb-6 max-w-xl">
+                  <p className="text-sm sm:text-base text-[#EEF4FC] leading-relaxed mb-4 lg:mb-6 max-w-xl">
                     {course.scholarship.body}
                   </p>
                   {course.scholarship.availability ? (
-                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#5E8AD0]/30 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EEF4FC] mb-6">
+                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#5E8AD0]/30 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-[#EEF4FC] mb-4 lg:mb-6">
                       Solo <span className="text-[#5E8AD0] text-sm">2</span> borse di studio rimaste
                     </p>
                   ) : null}
@@ -1287,7 +1295,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {course.scholarship.ctaHref ? (
                       <Link
                         to={course.scholarship.ctaHref}
-                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-8 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
+                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-7 py-3 text-[10px] sm:px-8 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
                       >
                         {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
                       </Link>
@@ -1295,13 +1303,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-6 backdrop-blur-sm">
+                  <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-4 sm:p-6 backdrop-blur-sm">
                     <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-2">Importo borsa</p>
-                    <p className="text-4xl sm:text-5xl font-display font-black tracking-tight leading-none mb-4">
+                    <p className="text-3xl sm:text-5xl font-display font-black tracking-tight leading-none mb-3 sm:mb-4">
                       {course.scholarship.amount}
                     </p>
                     <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#CFE0F5] mb-3">Requisiti</p>
-                    <ul className="space-y-2">
+                    <ul className="grid gap-2 sm:block sm:space-y-2">
                       {course.scholarship.eligibility.map((e, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-[#EEF4FC] leading-snug">
                           <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#5E8AD0]" strokeWidth={2.25} />
@@ -1656,9 +1664,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 5c. LEVELS COMPARISON */}
       {course.levelsComparison ? (
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-12 lg:py-20 bg-white">
           <div className="max-w-[1100px] mx-auto px-4">
-            <div className="text-center mb-10 lg:mb-12">
+            <div className="text-center mb-7 lg:mb-12">
               {course.levelsComparison.eyebrow ? (
                 <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
                   {course.levelsComparison.eyebrow}
@@ -1674,11 +1682,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               ) : null}
             </div>
 
-            <div className="grid md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+            <div
+              ref={levelsScrollerRef}
+              className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-smooth md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:gap-6 items-stretch"
+              style={{ scrollbarWidth: 'none' }}
+            >
               {course.levelsComparison.levels.map((lvl, i) => (
                 <div
                   key={i}
-                  className={`relative flex flex-col rounded-[1.5rem] p-6 lg:p-7 ring-1 ${
+                  data-level-highlight={lvl.highlight ? 'true' : undefined}
+                  className={`relative flex min-h-[520px] w-[82vw] shrink-0 snap-center flex-col rounded-[1.5rem] p-5 md:min-h-0 md:w-auto md:shrink md:p-6 lg:p-7 ring-1 ${
                     lvl.highlight
                       ? 'bg-brand-navy text-white ring-brand-navy shadow-[0_30px_80px_-40px_rgba(0,21,51,0.55)] lg:scale-[1.03]'
                       : 'bg-white text-brand-navy ring-black/8 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.22)]'
@@ -1692,7 +1705,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <p className={`text-[11px] font-black uppercase tracking-[0.22em] mb-2 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}>
                     {lvl.label}
                   </p>
-                  <h3 className={`text-xl sm:text-2xl font-display font-black tracking-tight leading-tight mb-3 ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                  <h3 className={`text-lg sm:text-2xl font-display font-black tracking-tight leading-tight mb-3 ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
                     {lvl.name}
                   </h3>
                   {lvl.hours ? (
@@ -1717,7 +1730,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       {lvl.benefit}
                     </p>
                   ) : null}
-                  <ul className="space-y-2.5 mb-6 flex-1">
+                  <ul className="space-y-2 mb-5 flex-1">
                     {lvl.features.map((f, j) => (
                       <li key={j} className={`flex items-start gap-2 text-sm leading-snug ${lvl.highlight ? 'text-white/85' : 'text-brand-navy/75'}`}>
                         <CheckCircle2
@@ -1757,16 +1770,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 5b. DOCENTI DEL CORSO */}
       {course.teachers?.length ? (
-        <section id="docenti" className="relative py-16 lg:py-24 bg-brand-navy overflow-hidden">
+        <section id="docenti" className="relative py-12 lg:py-24 bg-brand-navy overflow-hidden">
           <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-accent/10 blur-3xl" />
           <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
           <div className="relative max-w-[941px] mx-auto px-4">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-10">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-7 lg:mb-10">
               <div className="max-w-2xl">
                 <p className="text-brand-accent text-[11px] font-display font-black uppercase tracking-[0.18em] mb-3">
                   Docenti del corso
                 </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-white tracking-tight leading-[1.05]">
+                <h2 className="text-2xl sm:text-4xl lg:text-[2.65rem] font-display font-black text-white tracking-tight leading-[1.05]">
                   Impara dai migliori del settore!
                 </h2>
               </div>
@@ -1800,7 +1813,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               {course.teachers.map((t, i) => (
                 <article
                   key={`${t.name}-${i}`}
-                  className="snap-start shrink-0 w-[260px] sm:w-[280px] rounded-[1.5rem] overflow-hidden relative aspect-[3/4] bg-brand-navy/80 group"
+                  className="snap-start shrink-0 w-[220px] sm:w-[280px] rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden relative aspect-[3/4] bg-brand-navy/80 group"
                 >
                   <img
                     src={t.img}
@@ -1812,16 +1825,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <span className="absolute top-4 left-4 bg-white text-brand-navy text-[10px] font-display font-black uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
                     Faculty
                   </span>
-                  <div className="absolute left-5 right-5 bottom-5 text-white">
-                    <h3 className="font-display font-black text-2xl leading-[1.05] tracking-tight mb-2">
+                  <div className="absolute left-4 right-4 bottom-4 sm:left-5 sm:right-5 sm:bottom-5 text-white">
+                    <h3 className="font-display font-black text-xl sm:text-2xl leading-[1.05] tracking-tight mb-2">
                       {t.name}
                     </h3>
-                    <p className="text-[13px] font-medium text-white/85 leading-snug mb-4">
+                    <p className="text-[12px] sm:text-[13px] font-medium text-white/85 leading-snug mb-3 sm:mb-4">
                       {t.role}
                       {t.creds ? <span className="text-white/60"> · {t.creds}</span> : null}
                     </p>
                     {t.bio ? (
-                      <p className="text-[12px] text-white/70 leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-[11px] sm:text-[12px] text-white/70 leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
                         {t.bio}
                       </p>
                     ) : null}
@@ -1837,20 +1850,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
-      <section id="prezzo" className="relative py-16 lg:py-24 overflow-hidden">
+      <section id="prezzo" className="relative py-10 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-3 normal-case max-w-3xl mx-auto">
+          <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-2 lg:mb-3 normal-case max-w-3xl mx-auto">
             La migliore formazione professionale, accessibile
           </h2>
-          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-6 sm:mb-7">
+          <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-4 sm:mb-7">
             {isMasterLike
               ? `Scegli il metodo di pagamento per il tuo Master in ${course.subtitle}`
               : `Scegli il metodo di pagamento per ${course.title}`}
           </p>
 
-          <div className="mx-auto max-w-[840px] rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
-            <div className="flex overflow-x-auto gap-1">
+          <div className="mx-auto max-w-[840px] rounded-2xl sm:rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
+            <div className="grid grid-cols-2 gap-1 sm:flex sm:overflow-x-auto">
               {course.fees.map((fee, idx) => {
                 const key = fee.title.toLowerCase();
                 const active = paymentTab === key;
@@ -1859,7 +1872,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     key={idx}
                     type="button"
                     onClick={() => setPaymentTab(key)}
-                    className={`min-w-[140px] flex-1 whitespace-nowrap rounded-full px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-display font-black uppercase tracking-wide transition-all ${
+                    className={`min-w-0 sm:min-w-[140px] flex-1 rounded-full px-3 py-2.5 sm:px-4 sm:py-3.5 text-[10px] sm:text-sm font-display font-black uppercase tracking-wide leading-tight transition-all ${
                       active
                         ? 'bg-white text-brand-navy shadow-[0_10px_24px_-14px_rgba(0,21,51,0.35)]'
                         : 'text-brand-navy/75 hover:text-brand-navy'
@@ -1872,7 +1885,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             </div>
           </div>
 
-          <div className="mt-4 sm:mt-5 rounded-[1.5rem] sm:rounded-[1.75rem] bg-white px-5 py-8 sm:px-10 sm:py-10 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
+          <div className="mt-3 sm:mt-5 rounded-[1.35rem] sm:rounded-[1.75rem] bg-white px-4 py-5 sm:px-10 sm:py-10 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.4)] ring-1 ring-black/5">
             {course.fees.map((fee, idx) => {
               if (paymentTab !== fee.title.toLowerCase()) return null;
               const isInstallmentLike = fee.type === 'installment' || fee.type === 'zero-rate' || fee.type === 'after';
@@ -1912,10 +1925,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   : undefined;
               return (
                 <div key={idx} className="mx-auto max-w-xl text-center">
-                  <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy mb-2.5 normal-case tracking-tight leading-tight">
+                  <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy mb-2 sm:mb-2.5 normal-case tracking-tight leading-tight">
                     {fee.heading}
                   </h3>
-                  <p className="text-sm text-brand-navy/80 font-medium leading-relaxed mb-5 max-w-lg mx-auto">
+                  <p className="text-xs sm:text-sm text-brand-navy/80 font-medium leading-relaxed mb-4 sm:mb-5 max-w-lg mx-auto">
                     {richText(fee.desc)}
                   </p>
 
@@ -1923,7 +1936,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {priceLabel}
                   </p>
 
-                  <div className="mx-auto mb-5 inline-block rounded-2xl bg-brand-accent px-7 py-3 sm:px-8 sm:py-3.5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
+                  <div className="mx-auto mb-4 sm:mb-5 inline-block rounded-2xl bg-brand-accent px-6 py-2.5 sm:px-8 sm:py-3.5 shadow-[0_14px_40px_-16px_rgba(29,59,185,0.7)]">
                     <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight leading-none">
                       {fee.price}
                       {fee.priceLabel ? (
@@ -1941,11 +1954,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ) : null}
 
                   {fee.financing ? (
-                    <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-5 py-3 ring-1 ring-[#008060]/15">
+                    <div className="mx-auto mb-4 max-w-md rounded-2xl bg-[#EAF7F1] px-4 py-2.5 sm:px-5 sm:py-3 ring-1 ring-[#008060]/15">
                       <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#008060] mb-1">
                         {fee.financing.label}
                       </p>
-                      <p className="text-xl sm:text-2xl font-display font-black tracking-tight text-brand-navy">
+                      <p className="text-lg sm:text-2xl font-display font-black tracking-tight text-brand-navy">
                         {fee.financing.amount}
                       </p>
                       <p className="mt-1 text-xs font-medium leading-relaxed text-brand-navy/60">
@@ -1963,7 +1976,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   )}
 
                   {wooProduct && wooEditions.length > 1 ? (
-                    <div className="mx-auto mb-6 max-w-xs text-left">
+                    <div className="mx-auto mb-4 sm:mb-6 max-w-xs text-left">
                       <label
                         htmlFor={`edition-${fee.wooKey}`}
                         className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
@@ -1976,7 +1989,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         onChange={(e) =>
                           setEditionByLevel((s) => ({ ...s, [fee.wooKey ?? '']: Number(e.target.value) }))
                         }
-                        className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
+                        className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-2.5 sm:py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
                       >
                         {wooEditions.map((ed) => (
                           <option key={ed.variationId} value={ed.variationId}>
@@ -1988,7 +2001,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ) : null}
 
                   {examAvailable ? (
-                    <label className="mx-auto mb-6 flex max-w-xs cursor-pointer items-start gap-2.5 rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-left">
+                    <label className="mx-auto mb-4 sm:mb-6 flex max-w-xs cursor-pointer items-start gap-2.5 rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-left">
                       <input
                         type="checkbox"
                         checked={!!examByFee[fee.title]}
@@ -2006,7 +2019,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ) : null}
 
                   {fee.wooQuantitySelector ? (
-                    <div className="mx-auto mb-6 max-w-xs text-left">
+                    <div className="mx-auto mb-4 sm:mb-6 max-w-xs text-left">
                       <label
                         htmlFor={`qty-${idx}`}
                         className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
@@ -2029,27 +2042,27 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </div>
                   ) : null}
 
-                  <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                  <div className="flex flex-col gap-2.5 sm:gap-4 sm:flex-row sm:justify-center">
                     {checkoutHref ? (
                       <a
                         href={checkoutHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                        className="rounded-full bg-[#001D4B] px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
                       >
                         {fee.ctaLabel ?? 'Iscriviti ora'}
                       </a>
                     ) : (
                       <button
                         type="button"
-                        className="rounded-full bg-[#001D4B] px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                        className="rounded-full bg-[#001D4B] px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
                       >
                         {fee.ctaLabel ?? 'Iscriviti ora'}
                       </button>
                     )}
                     <button
                       type="button"
-                      className="rounded-full border-2 border-brand-navy/25 bg-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                      className="rounded-full border-2 border-brand-navy/25 bg-white px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
                     >
                       Parla con noi
                     </button>
@@ -2063,31 +2076,31 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 6b. GUARANTEE 30 HOURS */}
       {course.guarantee30Hours ? (
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-10 lg:py-20 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-6 sm:p-7 lg:p-9 ring-1 ring-black/5">
-              <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
+            <div className="rounded-[1.35rem] lg:rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-7 lg:p-9 ring-1 ring-black/5">
+              <div className="grid lg:grid-cols-[1fr_1.1fr] gap-5 lg:gap-10 items-start">
                 <div>
                   {course.guarantee30Hours.eyebrow ? (
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
+                    <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3 lg:mb-4">
                       {course.guarantee30Hours.eyebrow}
                     </p>
                   ) : null}
-                  <div className="inline-flex items-center gap-3 mb-5">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-white">
-                      <Hourglass size={20} strokeWidth={2.25} />
+                  <div className="inline-flex items-center gap-3 mb-3 lg:mb-5">
+                    <span className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-brand-navy text-white">
+                      <Hourglass size={18} strokeWidth={2.25} />
                     </span>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-5">
+                  <h2 className="text-2xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.05] mb-3 lg:mb-5">
                     {course.guarantee30Hours.title}
                   </h2>
-                  <p className="text-sm sm:text-base text-brand-navy/75 leading-relaxed mb-6">
+                  <p className="text-sm sm:text-base text-brand-navy/75 leading-relaxed mb-4 lg:mb-6">
                     {richText(course.guarantee30Hours.body)}
                   </p>
                   {course.guarantee30Hours.refunds?.length ? (
-                    <div className="grid sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
                       {course.guarantee30Hours.refunds.map((r, i) => (
-                        <div key={i} className="rounded-xl bg-white ring-1 ring-black/5 p-4">
+                        <div key={i} className="rounded-xl bg-white ring-1 ring-black/5 p-3 sm:p-4">
                           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/50 mb-1">
                             {r.label}
                           </p>
@@ -2103,13 +2116,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   ) : null}
                 </div>
                 {course.guarantee30Hours.steps?.length ? (
-                  <div className="space-y-4">
+                  <div className="grid gap-3 sm:space-y-4 sm:block">
                     {course.guarantee30Hours.steps.map((s, i) => (
-                      <div key={i} className="rounded-2xl bg-white ring-1 ring-black/5 p-5 sm:p-6 shadow-[0_8px_30px_-22px_rgba(0,21,51,0.2)]">
+                      <div key={i} className="rounded-2xl bg-white ring-1 ring-black/5 p-4 sm:p-6 shadow-[0_8px_30px_-22px_rgba(0,21,51,0.2)]">
                         <h3 className="text-sm sm:text-base font-display font-black text-brand-navy tracking-tight leading-tight mb-2">
                           {s.title}
                         </h3>
-                        <p className="text-sm text-brand-navy/70 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-brand-navy/70 leading-relaxed">
                           {s.desc}
                         </p>
                       </div>
@@ -2123,11 +2136,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 7. TROVIAMO INSIEME SECTION */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-8 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#EEF4FC] rounded-[1.75rem] p-6 sm:p-7 lg:p-9 flex flex-col md:flex-row items-center justify-between gap-8 border border-brand-accent/5">
-                <div className="flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
-                   <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-[6px] border-white shadow-lg">
+            <div className="bg-[#EEF4FC] rounded-[1.35rem] lg:rounded-[1.75rem] p-4 sm:p-7 lg:p-9 flex flex-col sm:flex-row md:flex-row items-center justify-between gap-4 lg:gap-8 border border-brand-accent/5">
+                <div className="flex flex-row items-center gap-4 sm:gap-8 text-left">
+                   <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-4 sm:border-[6px] border-white shadow-lg">
                       <img
                         src="/advisors/advisor-3.jpeg"
                         className="w-full h-full object-cover object-top"
@@ -2135,21 +2148,21 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       />
                    </div>
                    <div>
-                      <h3 className="text-lg sm:text-xl font-display font-black text-brand-navy uppercase tracking-tight mb-2 leading-snug">Troviamo insieme la soluzione giusta per te</h3>
-                      <p className={`${tBody} max-w-md`}>Scopri i dettagli del percorso e parla con un Advisor Asterys Lab.</p>
+                      <h3 className="text-base sm:text-xl font-display font-black text-brand-navy uppercase tracking-tight mb-1 sm:mb-2 leading-snug">Troviamo insieme la soluzione giusta per te</h3>
+                      <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Scopri i dettagli del percorso e parla con un Advisor Asterys Lab.</p>
                    </div>
                 </div>
-                <button className="bg-brand-navy text-white px-8 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</button>
+                <button className="bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-md font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</button>
             </div>
          </div>
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
       {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL && id !== 'public-speaking' ? (
-      <section id="career" className="py-16 lg:py-20 bg-white">
+      <section id="career" className="py-10 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
-            <div className="mb-14 lg:mb-16">
-               <h2 className={`${tSection} mb-4`}>
+            <div className="mb-7 lg:mb-16">
+               <h2 className={`${tSection} mb-3 lg:mb-4`}>
                   Career Center Asterys:{' '}
                   <span className="bg-brand-accent text-white px-3 py-1.5 inline-block -rotate-1 text-[0.85em] sm:text-[0.9em]">
                     la tua carriera al centro
@@ -2160,14 +2173,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                {course.career.points.map((p, i) => (
-                 <div key={i} className="flex flex-col items-start p-6 sm:p-7 bg-white rounded-[1.25rem] shadow-[0_16px_44px_-30px_rgba(0,21,51,0.2)] border border-gray-100 h-full group hover:shadow-[0_22px_55px_-32px_rgba(0,21,51,0.22)] transition-all text-left">
-                    <div className="w-11 h-11 bg-[#F9FAFB] rounded-full flex items-center justify-center text-brand-accent mb-6 ring-1 ring-black/5 group-hover:bg-brand-navy group-hover:text-white transition-colors">
-                       {i === 0 ? <UserCheck size={22} strokeWidth={2} /> : i === 1 ? <Briefcase size={22} strokeWidth={2} /> : i === 2 ? <TrendingUp size={22} strokeWidth={2} /> : <Users size={22} strokeWidth={2} />}
+                 <div key={i} className="flex flex-col items-start p-4 sm:p-7 bg-white rounded-[1.15rem] sm:rounded-[1.25rem] shadow-[0_16px_44px_-30px_rgba(0,21,51,0.2)] border border-gray-100 h-full group hover:shadow-[0_22px_55px_-32px_rgba(0,21,51,0.22)] transition-all text-left">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#F9FAFB] rounded-full flex items-center justify-center text-brand-accent mb-3 sm:mb-6 ring-1 ring-black/5 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                       {i === 0 ? <UserCheck size={18} strokeWidth={2} /> : i === 1 ? <Briefcase size={18} strokeWidth={2} /> : i === 2 ? <TrendingUp size={18} strokeWidth={2} /> : <Users size={18} strokeWidth={2} />}
                     </div>
-                    <h3 className="text-sm sm:text-base font-black uppercase tracking-tight mb-3 leading-snug">{p.title}</h3>
-                    <p className="text-brand-navy/50 text-xs font-medium leading-relaxed">{p.desc}</p>
+                    <h3 className="text-[12px] sm:text-base font-black uppercase tracking-tight mb-2 sm:mb-3 leading-snug">{p.title}</h3>
+                    <p className="text-brand-navy/50 text-[11px] sm:text-xs font-medium leading-relaxed">{p.desc}</p>
                  </div>
                ))}
             </div>
@@ -2176,15 +2189,15 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {course.pegasusProgram ? (
-        <section id="pegasus" className="py-14 lg:py-20 bg-[#001D4B] text-white">
+        <section id="pegasus" className="py-10 lg:py-20 bg-[#001D4B] text-white">
           <div className="max-w-[941px] mx-auto px-4">
-            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
-                <div className="inline-flex rounded-2xl bg-white p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)]">
+                <div className="inline-flex rounded-2xl bg-white p-2.5 sm:p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)]">
                   <img
                     src={course.pegasusProgram.logo}
                     alt="Pegasus Coaching Program"
-                    className="h-28 sm:h-32 w-auto object-contain"
+                    className="h-16 sm:h-32 w-auto object-contain"
                   />
                 </div>
               </div>
@@ -2194,24 +2207,24 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {course.pegasusProgram.eyebrow}
                   </p>
                 ) : null}
-                <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter leading-[1.05] mb-4">
+                <h2 className="text-xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter leading-[1.05] mb-2 sm:mb-4">
                   {course.pegasusProgram.title}
                 </h2>
-                <p className="text-sm sm:text-base text-white/68 font-medium leading-relaxed max-w-2xl">
+                <p className="text-xs sm:text-base text-white/68 font-medium leading-relaxed max-w-2xl">
                   {course.pegasusProgram.intro}
                 </p>
               </div>
             </div>
 
-            <div className="mt-9 grid md:grid-cols-3 gap-4">
+            <div className="mt-5 lg:mt-9 grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
               {course.pegasusProgram.points.map((point, i) => (
-                <div key={i} className="rounded-2xl bg-white/[0.07] p-5 sm:p-6 ring-1 ring-white/10">
+                <div key={i} className="rounded-2xl bg-white/[0.07] p-4 sm:p-6 ring-1 ring-white/10">
                   {point.meta ? (
-                    <p className="mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
+                    <p className="mb-2 sm:mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
                       {point.meta}
                     </p>
                   ) : null}
-                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight leading-snug mb-3">
+                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight leading-snug mb-2 sm:mb-3">
                     {point.title}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-white/62 font-medium leading-relaxed">
@@ -2385,37 +2398,37 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       {!isCoachingCircle && !isWorkout && !isCL ? (
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-10 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
-            <h2 className={`${tSection} mb-4`}>
+            <h2 className={`${tSection} mb-3 lg:mb-4`}>
               Un percorso formativo{' '}
               <Highlight>completo</Highlight>
             </h2>
-            <p className={`${tLead} mb-12 lg:mb-14 max-w-2xl`}>
+            <p className={`${tLead} mb-6 lg:mb-14 max-w-2xl`}>
               Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.
             </p>
 
-            <div className="space-y-4 lg:space-y-6">
+            <div className="space-y-3 lg:space-y-6">
                {/* Card 1 — full width, periwinkle, icon + text */}
-               <div className="bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 border border-white/40">
-                  <div className="shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
-                     <Sparkles size={30} strokeWidth={2} className="text-brand-navy" />
+               <div className="bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-9 lg:p-11 flex flex-row sm:flex-row items-start gap-4 sm:gap-7 lg:gap-10 border border-white/40">
+                  <div className="shrink-0 h-11 w-11 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
+                     <Sparkles size={22} strokeWidth={2} className="text-brand-navy" />
                   </div>
                   <div className="flex-1 min-w-0">
-                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                     <h3 className="text-lg sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
                        Mindset ICF e presenza del coach
                      </h3>
-                     <p className="text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl">
+                     <p className="text-xs sm:text-base text-brand-navy/70 font-medium leading-relaxed max-w-2xl">
                        Il coaching parte da chi sei. Alleni presenza, ascolto e capacità di generare consapevolezza prima degli strumenti — un metodo ICF integrato con intelligenza emotiva e approccio sistemico.
                      </p>
                   </div>
                </div>
 
                {/* Row 2 — two cards side by side */}
-               <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
+               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                   {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.75rem] lg:rounded-[2rem] p-6 sm:p-7 lg:p-8 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
-                     <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xl sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight`}>
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[260px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
+                     <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-lg sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight`}>
                        {usesApcmCompleteSection ? (
                          <>
                            Piattaforma didattica
@@ -2426,16 +2439,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          'Piattaforma didattica con registrazioni'
                        )}
                      </h3>
-                     <p className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-sm sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-6 max-w-md`}>
+                     <p className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xs sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-4 sm:mb-6 max-w-md`}>
                        {usesApcmCompleteSection
                          ? 'Trovi materiali, dispense e strumenti di supporto al percorso. Le eventuali registrazioni sono riservate a uso interno e non sono accessibili agli studenti.'
                          : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[244px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[145px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePlatform}
-                           className="absolute left-1/2 bottom-[-214px] w-[190%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-226px] sm:w-[194%] lg:bottom-[-240px] lg:w-[200%]"
+                           className="absolute left-1/2 bottom-[-120px] w-[178%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-226px] sm:w-[194%] lg:bottom-[-240px] lg:w-[200%]"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2450,20 +2463,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`lg:col-span-2 bg-[#CFE0F5] rounded-[1.75rem] lg:rounded-[2rem] p-6 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[420px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
-                     <h3 className="text-xl sm:text-2xl font-display font-black text-brand-navy leading-tight mb-3 tracking-tight">
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[260px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                     <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
-                     <p className="relative z-10 text-sm text-brand-navy/75 font-medium leading-relaxed">
+                     <p className="relative z-10 text-xs sm:text-sm text-brand-navy/75 font-medium leading-relaxed">
                        {usesApcmCompleteSection
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[238px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[145px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-66px] w-[184%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
+                           className="absolute left-1/2 bottom-[-42px] w-[170%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
                            alt="Supervisione 1:1"
                          />
                        ) : (
@@ -2479,16 +2492,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                </div>
 
                {/* Card 4 — full width, brand-accent blue, icon + text */}
-               <div className="bg-brand-accent rounded-[1.75rem] lg:rounded-[2rem] p-7 sm:p-9 lg:p-11 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 lg:gap-10 text-white relative overflow-hidden">
+               <div className="bg-brand-accent rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-9 lg:p-11 flex flex-row sm:flex-row items-start gap-4 sm:gap-7 lg:gap-10 text-white relative overflow-hidden">
                   <div className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-                  <div className="relative shrink-0 h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/15 flex items-center justify-center ring-1 ring-white/25">
-                     <Briefcase size={30} strokeWidth={2} />
+                  <div className="relative shrink-0 h-11 w-11 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/15 flex items-center justify-center ring-1 ring-white/25">
+                     <Briefcase size={22} strokeWidth={2} />
                   </div>
                   <div className="relative flex-1 min-w-0">
-                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-3 tracking-tight">
+                     <h3 className="text-lg sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-2 sm:mb-3 tracking-tight">
                        {isVoiceDialogue ? 'Community Alumni Asterys' : 'Community Alumni e opportunità continue'}
                      </h3>
-                     <p className="text-sm sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
+                     <p className="text-xs sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
                        {isVoiceDialogue ? (
                          <>Al termine del corso entri in contatto con la <span className="text-white font-black">community degli alumni Asterys</span>: eventi, formazione continua e occasioni di confronto tra professionisti del coaching e dello sviluppo personale.</>
                        ) : (
@@ -2503,11 +2516,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-8 lg:py-20 bg-white">
          <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="bg-[#2A56A8] rounded-[1.75rem] p-10 sm:p-12 lg:p-16 text-center text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
-               <div className="relative z-10">
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase mb-6 tracking-tight leading-[1.05]">
+            <div className="bg-[#2A56A8] rounded-[1.35rem] lg:rounded-[1.75rem] p-5 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
+               <div className="relative z-10 flex flex-col gap-4 sm:block text-left sm:text-center">
+                  <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black uppercase sm:mb-6 tracking-tight leading-[1.05]">
                     {isCoachingCircle ? (
                       <>
                         Fai pratica di coaching: <span className="text-[#CFE0F5]">prenota il tuo posto</span>
@@ -2518,14 +2531,14 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       </>
                     )}
                   </h2>
-                  <p className="text-sm sm:text-base text-white/55 mb-10 font-medium max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 sm:text-white/55 sm:mb-10 font-medium max-w-md sm:mx-auto leading-relaxed">
                     {isCoachingCircle
                       ? "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
                       : isWorkout
                       ? 'Prenota il tuo Round: posti limitati. Scegli il set di emozioni e mettilo in agenda.'
                       : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
                   </p>
-                  <button className="bg-[#CFE0F5] text-brand-navy px-10 py-4 rounded-md font-display font-black text-[11px] uppercase tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98]">
+                  <button className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-md font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto">
                      {isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
                   </button>
                </div>
@@ -2534,12 +2547,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 11. FAQs SECTION */}
-      <section className="py-16 lg:py-20 bg-[#F9FAFB]/80">
+      <section className="py-10 lg:py-20 bg-[#F9FAFB]/80">
          <div className="max-w-[941px] mx-auto px-4">
-            <h2 className={`${tSection} mb-10 lg:mb-12`}>FAQs</h2>
-            <div className="space-y-4">
+            <h2 className={`${tSection} mb-6 lg:mb-12`}>FAQs</h2>
+            <div className="space-y-2.5 sm:space-y-4">
                {course.faqs.map((faq, i) => (
-                 <div key={i} className="bg-white rounded-3xl px-6 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">
+                 <div key={i} className="bg-white rounded-2xl sm:rounded-3xl px-4 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">
                     <Accordion 
                      title={faq.q}
                      content={faq.a}
