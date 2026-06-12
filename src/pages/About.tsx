@@ -173,7 +173,7 @@ export default function About() {
   return (
     <div className="bg-white text-brand-navy">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-brand-hero">
+      <section className="no-reveal relative overflow-hidden bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-sky">
@@ -359,10 +359,9 @@ export default function About() {
               ))}
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="h-16 flex items-center justify-center mb-2">
+              <div className="h-16 flex items-center justify-center">
                 <img src={`/brand/${accreditations[0].file}.png`} alt={accreditations[0].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
               </div>
-              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{accreditations[0].label}</p>
             </div>
           </div>
         </div>

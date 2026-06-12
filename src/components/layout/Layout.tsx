@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useSectionReveal } from '../../hooks/useSectionReveal';
 import {
   Menu,
   X,
@@ -295,26 +296,33 @@ export const Header = () => {
               )
             )}
             <div
-              className="relative"
+              className="relative flex items-center gap-0.5"
               onMouseEnter={openAbout}
               onMouseLeave={scheduleCloseAbout}
-              onFocus={openAbout}
-              onBlur={scheduleCloseAbout}
             >
               <Link
                 to="/about"
-                className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                className={`font-bold text-sm tracking-tight transition-colors ${
                   location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                 }`}
-                aria-haspopup="true"
-                aria-expanded={isAboutOpen}
               >
                 About
+              </Link>
+              <button
+                type="button"
+                aria-label="Apri sottomenu About"
+                aria-expanded={isAboutOpen}
+                className={`p-1 rounded-md transition-colors ${
+                  location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy/60 hover:text-brand-accent'
+                }`}
+                onMouseEnter={openAbout}
+                onFocus={openAbout}
+              >
                 <ChevronDown
                   size={14}
-                  className={`mt-0.5 opacity-60 transition-transform ${isAboutOpen ? 'rotate-180' : ''}`}
+                  className={`transition-transform ${isAboutOpen ? 'rotate-180' : ''}`}
                 />
-              </Link>
+              </button>
               <AnimatePresence>
                 {isAboutOpen && (
                   <motion.div
@@ -615,19 +623,28 @@ export const Header = () => {
                 Risorse
               </Link>
 
-              <button
-                type="button"
-                onClick={() => setMobileAboutOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-5 py-5 border-b border-gray-100 text-left"
-              >
-                <span className={`text-[17px] font-display font-black tracking-tight ${mobileAboutOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+              <div className="flex items-stretch border-b border-gray-100">
+                <Link
+                  to="/about"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`flex-1 flex items-center px-5 py-5 text-[17px] font-display font-black tracking-tight ${
+                    location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy'
+                  }`}
+                >
                   About
-                </span>
-                <ChevronDown
-                  size={18}
-                  className={`shrink-0 text-brand-navy/40 transition-transform ${mobileAboutOpen ? 'rotate-180 text-brand-accent' : ''}`}
-                />
-              </button>
+                </Link>
+                <button
+                  type="button"
+                  aria-label="Apri sottomenu About"
+                  onClick={() => setMobileAboutOpen((v) => !v)}
+                  className="flex items-center justify-center px-5 border-l border-gray-100 text-brand-navy/45"
+                >
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform ${mobileAboutOpen ? 'rotate-180 text-brand-accent' : ''}`}
+                  />
+                </button>
+              </div>
               {mobileAboutOpen ? (
                 <div className="mx-3 mb-3 rounded-xl bg-brand-blue-soft/35 border-b border-gray-100 divide-y divide-brand-navy/8 overflow-hidden">
                   {aboutMenu.map((item) => (
@@ -1119,6 +1136,7 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
   const isCorporatePage = location.pathname === '/aziende';
+  useSectionReveal();
 
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-hidden w-full max-w-[100vw]">

@@ -33,6 +33,25 @@
   }
 }
 
+/* Animazioni istituzionali al scroll (attivate da useSectionReveal) */
+@media (prefers-reduced-motion: no-preference) {
+  main section:not(.no-reveal):not(.section-in-view) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  main section:not(.no-reveal) {
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  main section.section-in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Trattamento della persona scontornata nelle hero (su fondo gradiente scuro).
    Immagini già ritagliate bene a mano → niente sfumatura inferiore (creava
    un'"ombra chiara" sul bordo basso) e niente alone: solo un'ombra scura
