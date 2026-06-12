@@ -5,7 +5,6 @@ import {
   MessageCircle,
   ArrowRight,
   ArrowUpRight,
-  Star,
   ChevronDown,
   ChevronRight,
   Clock,
@@ -173,6 +172,9 @@ export const Header = () => {
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [activeMega, setActiveMega] = useState(0);
+  const [mobileCampusOpen, setMobileCampusOpen] = useState(true);
+  const [mobileMegaIdx, setMobileMegaIdx] = useState(0);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
@@ -187,7 +189,22 @@ export const Header = () => {
   useEffect(() => {
     setIsMegaOpen(false);
     setIsAboutOpen(false);
+    setIsMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      setMobileCampusOpen(true);
+      setMobileMegaIdx(0);
+      setMobileAboutOpen(false);
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   // All'apertura del mega menu mostra sempre la prima categoria.
   useEffect(() => {
@@ -484,78 +501,168 @@ export const Header = () => {
         )}
       </AnimatePresence>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — stile Talent Garden (solo mobile) */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t lg:hidden flex flex-col p-6 gap-4 max-h-[85vh] overflow-y-auto"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
           >
-            {megaColumns.map((col) => (
-              <div key={col.label} className="flex flex-col gap-2">
-                <div className="pb-2 border-b border-gray-100">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-navy">{col.label}</span>
+            <div className="flex-1 overflow-y-auto overscroll-contain">
+              {/* The Campus */}
+              <button
+                type="button"
+                onClick={() => setMobileCampusOpen((v) => !v)}
+                className="w-full flex items-center justify-between px-5 py-4 border-b border-gray-100 text-left"
+              >
+                <span className={`text-lg font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                  The Campus
+                </span>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 text-brand-navy/40 transition-transform ${mobileCampusOpen ? 'rotate-180 text-brand-accent' : ''}`}
+                />
+              </button>
+
+              {mobileCampusOpen ? (
+                <div className="border-b border-gray-100">
+                  {megaColumns.map((col, idx) => (
+                    <div key={col.label}>
+                      <button
+                        type="button"
+                        onClick={() => setMobileMegaIdx((prev) => (prev === idx ? -1 : idx))}
+                        className="w-full flex items-center justify-between px-5 py-3.5 text-left"
+                      >
+                        <span className={`text-base font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                          {col.label}
+                        </span>
+                        <ChevronDown
+                          size={16}
+                          className={`shrink-0 text-brand-navy/35 transition-transform ${mobileMegaIdx === idx ? 'rotate-180 text-brand-accent' : ''}`}
+                        />
+                      </button>
+
+                      {mobileMegaIdx === idx ? (
+                        <div className="bg-brand-blue-soft/40 px-5 pb-4">
+                          <p className="text-xs text-brand-navy/55 font-medium mb-3">{col.caption}</p>
+                          <div className="divide-y divide-brand-navy/8">
+                            {col.items.map((item) => (
+                              <Link
+                                key={item.id}
+                                to={`/corsi/${item.id}`}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block py-3.5 group"
+                              >
+                                <span className="block text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors">
+                                  {item.title}
+                                </span>
+                                <span className="block mt-0.5 text-[11px] font-black uppercase tracking-[0.12em] text-brand-accent/80">
+                                  {item.kicker}
+                                </span>
+                                <span className="block mt-0.5 text-xs text-brand-navy/55 font-medium">{item.meta}</span>
+                              </Link>
+                            ))}
+                          </div>
+                          <Link
+                            to="/corsi"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-brand-accent"
+                          >
+                            Tutti i corsi <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+
+                  <div className="px-5 py-4 space-y-3 bg-gray-50/80">
+                    {megaPromos.map((promo) => (
+                      <Link
+                        key={promo.title}
+                        to={promo.to}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-3 rounded-xl bg-white border border-gray-100 p-3"
+                      >
+                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                          <img src={promo.img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        </div>
+                        <div className="min-w-0">
+                          <span className="block text-[10px] font-black uppercase tracking-[0.12em] text-brand-accent/80">{promo.kicker}</span>
+                          <span className="block mt-0.5 text-sm font-black text-brand-navy leading-tight">{promo.title}</span>
+                          <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.1em] text-brand-accent">
+                            {promo.cta} <ArrowRight size={11} />
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-col pl-1">
-                  {col.items.map((item) => (
+              ) : null}
+
+              <Link
+                to="/eventi"
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center justify-between px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight ${location.pathname === '/eventi' ? 'text-brand-accent' : 'text-brand-navy'}`}
+              >
+                Eventi
+              </Link>
+              <Link
+                to="/blog"
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center justify-between px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
+              >
+                Risorse
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setMobileAboutOpen((v) => !v)}
+                className="w-full flex items-center justify-between px-5 py-4 border-b border-gray-100 text-left"
+              >
+                <span className={`text-lg font-display font-black tracking-tight ${mobileAboutOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                  About
+                </span>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 text-brand-navy/40 transition-transform ${mobileAboutOpen ? 'rotate-180 text-brand-accent' : ''}`}
+                />
+              </button>
+              {mobileAboutOpen ? (
+                <div className="bg-brand-blue-soft/40 border-b border-gray-100 divide-y divide-brand-navy/8">
+                  {aboutMenu.map((item) => (
                     <Link
-                      key={item.id}
-                      to={`/corsi/${item.id}`}
+                      key={item.hash}
+                      to={`/about${item.hash}`}
                       onClick={() => setIsMenuOpen(false)}
-                      className="py-2 text-sm font-black text-brand-navy hover:text-brand-accent tracking-tight"
+                      className="block px-5 py-3.5 text-[15px] font-black text-brand-navy hover:text-brand-accent transition-colors"
                     >
-                      {item.title}
+                      {item.label}
                     </Link>
                   ))}
                 </div>
-              </div>
-            ))}
-            <Link
-              to="/corsi"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-xs font-black uppercase tracking-[0.2em] text-brand-accent flex items-center gap-2"
-            >
-              The Campus · Tutti i corsi <ArrowRight size={14} />
-            </Link>
-            <hr className="my-1 border-brand-blue-soft" />
-            <Link
-              to="/eventi"
-              onClick={() => setIsMenuOpen(false)}
-              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/eventi' ? 'text-brand-accent' : 'text-brand-navy'}`}
-            >
-              Eventi
-            </Link>
-            <Link
-              to="/blog"
-              onClick={() => setIsMenuOpen(false)}
-              className={`text-lg font-black uppercase tracking-widest ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
-            >
-              Risorse
-            </Link>
-            <div className="flex flex-col gap-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/50">About</span>
-              {aboutMenu.map((item) => (
-                <Link
-                  key={item.hash}
-                  to={`/about${item.hash}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-base font-black text-brand-navy tracking-tight pl-1"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              ) : null}
+
+              <Link
+                to="/aziende"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight text-brand-navy"
+              >
+                Per Aziende
+              </Link>
             </div>
-            <Link to="/aziende" className="text-lg font-black uppercase tracking-widest text-brand-navy" onClick={() => setIsMenuOpen(false)}>Per Aziende</Link>
-            <hr className="my-2 border-brand-blue-soft" />
-            <Link
-              to="/iscriviti"
-              onClick={() => setIsMenuOpen(false)}
-              className="bg-[#2A56A8] text-white py-4 rounded-md font-black text-xs uppercase tracking-widest text-center"
-            >
-              Iscriviti
-            </Link>
+
+            <div className="shrink-0 p-5 border-t border-gray-100 bg-white">
+              <Link
+                to="/iscriviti"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full bg-[#2A56A8] text-white py-3.5 rounded-full font-black text-xs uppercase tracking-[0.14em] text-center"
+              >
+                Iscriviti
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -674,67 +781,126 @@ const certifications: { label: string; src: string; invert?: boolean }[] = [
   { label: 'ICF AATC', src: 'brand/icf-aatc.png' },
 ];
 
+const footerNavGroups = [
+  {
+    title: 'The Campus',
+    links: [
+      { label: 'Master in Coaching Professionale', to: '/corsi/apcm' },
+      { label: 'Team Coaching', to: '/corsi/systemic-team-coaching' },
+      { label: 'Intelligenza Emotiva', to: '/corsi/eiw' },
+      { label: 'Mentoring per le credenziali', to: '/corsi/coaching-circle' },
+      { label: 'Tutti i corsi', to: '/corsi' },
+    ],
+  },
+  {
+    title: 'Scopri',
+    links: [
+      { label: 'Eventi', to: '/eventi' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Filosofia', to: '/about#filosofia' },
+      { label: 'Press', to: '/about#press' },
+    ],
+  },
+  {
+    title: 'Per le aziende',
+    links: [
+      { label: 'Corporate', to: '/aziende' },
+      { label: 'Team Coaching', to: '/corsi/systemic-team-coaching' },
+      { label: 'Leadership programs', to: '/aziende' },
+      { label: 'Finanzia il corso', to: '/iscriviti' },
+    ],
+  },
+  {
+    title: 'Candidati',
+    links: [
+      { label: 'Iscriviti', to: '/iscriviti' },
+      { label: 'Parla con advisor', to: '/iscriviti' },
+      { label: 'Scarica brochure', to: '/iscriviti' },
+      { label: 'Calendario edizioni', to: '/corsi/apcm' },
+    ],
+  },
+];
+
+const FooterNavToggle = ({
+  title,
+  links,
+  defaultOpen = false,
+}: {
+  title: string;
+  links: { label: string; to: string }[];
+  defaultOpen?: boolean;
+}) => {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="border-b border-white/10">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between py-3.5 text-left"
+      >
+        <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/55">{title}</span>
+        <ChevronDown size={14} className={`text-white/40 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open ? (
+        <ul className="pb-3 space-y-2.5 text-sm font-bold text-white/75">
+          {links.map((link) => (
+            <li key={link.label}>
+              <Link to={link.to} className="hover:text-white transition-colors">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+};
+
 export const Footer = () => {
   const base = import.meta.env.BASE_URL || '/';
   return (
     <footer className="bg-brand-navy text-white relative overflow-hidden">
-      {/* soft decorative glow */}
       <div className="pointer-events-none absolute -top-40 -left-20 w-[500px] h-[500px] rounded-full bg-white/5 blur-[120px]" />
       <div className="pointer-events-none absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-white/[0.04] blur-[120px]" />
 
-      {/* BAND 1 — NEWSLETTER + SOCIAL (highlighted) */}
+      {/* BAND 1 — NEWSLETTER + CONTATTI */}
       <section className="relative border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20 grid lg:grid-cols-[1.15fr_1fr] gap-8">
-          {/* Newsletter */}
-          <div className="bg-white/[0.04] border border-white/10 rounded-3xl p-8 lg:p-10 backdrop-blur-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white text-brand-navy flex items-center justify-center">
-                <Send size={18} />
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10 lg:py-12 grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-8">
+          <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-white text-brand-navy flex items-center justify-center">
+                <Send size={15} />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-                Newsletter
-              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/60">Newsletter</span>
             </div>
-            <h3 className="mt-5 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
-              Entra in{' '}
-              <Highlight className="text-brand-blue">Asterys Letters</Highlight>.
+            <h3 className="mt-3 text-xl sm:text-2xl font-display font-black tracking-tighter leading-[1.08]">
+              Entra in <Highlight className="text-brand-blue">Asterys Letters</Highlight>.
             </h3>
-            <p className="mt-3 text-sm text-white/70 font-medium max-w-[440px] leading-relaxed">
-              Ogni mese, approfondimenti su coaching, intelligenza emotiva e leadership.
-              Storie di alumni, strumenti pratici, eventi. Senza spam.
+            <p className="mt-2 text-xs sm:text-sm text-white/65 font-medium leading-relaxed">
+              Coaching, intelligenza emotiva e leadership. Senza spam.
             </p>
-
-            <form
-              className="mt-6 flex flex-col sm:flex-row gap-3"
-              onSubmit={(e) => e.preventDefault()}
-            >
+            <form className="mt-4 flex flex-col sm:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="la-tua@email.com"
-                className="flex-1 bg-white/10 border border-white/15 rounded-full px-5 py-3.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                className="flex-1 bg-white/10 border border-white/15 rounded-full px-4 py-2.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
               />
               <button
                 type="submit"
-                className="bg-white text-brand-navy px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.2em] hover:bg-brand-blue-soft transition-colors whitespace-nowrap"
+                className="bg-white text-brand-navy px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors whitespace-nowrap"
               >
                 Iscriviti
               </button>
             </form>
-            <p className="mt-3 text-[10px] text-white/40 font-medium">
+            <p className="mt-2 text-[10px] text-white/40 font-medium">
               Iscrivendoti accetti l'
-              <a href="#" className="underline decoration-white/30 hover:text-white">
-                informativa privacy
-              </a>
-              .
+              <a href="#" className="underline decoration-white/30 hover:text-white">informativa privacy</a>.
             </p>
           </div>
 
-          {/* Contatti */}
           <div className="flex flex-col">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-              Contatti
-            </span>
-            <h3 className="mt-4 text-3xl lg:text-4xl font-display font-black tracking-tighter leading-[1.05]">
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/60">Contatti</span>
+            <h3 className="mt-2 text-xl sm:text-2xl font-display font-black tracking-tighter leading-[1.08]">
               Parla con noi.
             </h3>
             <a
@@ -742,51 +908,46 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contattaci su WhatsApp"
-              className="group mt-6 inline-flex items-center gap-4 self-start bg-brand-accent hover:bg-[#2748d1] rounded-full p-2 pr-7 transition-colors active:scale-[0.98]"
+              className="group mt-4 inline-flex items-center gap-3 self-start bg-brand-accent hover:bg-[#2748d1] rounded-full p-1.5 pr-5 transition-colors active:scale-[0.98]"
             >
               <span className="relative shrink-0">
                 <img
                   src={ADVISOR_PHOTO}
                   alt="Luciana — advisor Asterys Lab"
-                  className="w-16 h-16 rounded-full object-cover object-top bg-brand-blue-soft"
+                  className="w-12 h-12 rounded-full object-cover object-top bg-brand-blue-soft"
                 />
-                <span className="absolute -bottom-0.5 -right-0.5 w-7 h-7 rounded-full bg-[#25D366] border-2 border-brand-accent flex items-center justify-center">
-                  <WhatsAppIcon size={15} className="text-white" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-6 h-6 rounded-full bg-[#25D366] border-2 border-brand-accent flex items-center justify-center">
+                  <WhatsAppIcon size={13} className="text-white" />
                 </span>
               </span>
-              <span className="text-white font-display font-black text-xl lg:text-2xl leading-[1.1] tracking-tight">
-                Contattaci
-                <br />
-                su WhatsApp
+              <span className="text-white font-display font-black text-base leading-tight tracking-tight">
+                Contattaci su WhatsApp
               </span>
             </a>
-            <div className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-6">
+            <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Clock size={14} className="text-white" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Segreteria</span>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Phone size={13} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Telefono</span>
                 </div>
-                <p className="text-sm text-white/80 font-medium leading-relaxed">
-                  <span className="font-black text-white">Lun – Ven</span>
-                  <br />
-                  9:00–13:00 · 15:00–17:00
-                </p>
+                <a href="tel:+390687165254" className="text-sm font-black text-white">+39 06 8716 5254</a>
               </div>
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Phone size={14} className="text-white" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Telefono</span>
-                </div>
-                <a href="tel:+390280016434" className="block text-sm font-black text-white">+39 02 8001 6434</a>
-                <a href="tel:+390687165254" className="block text-sm font-black text-white mt-0.5">+39 06 8716 5254</a>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Mail size={14} className="text-white" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55">Scrivici</span>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Mail size={13} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Scrivici</span>
                 </div>
                 <a href="mailto:info@asteryslab.com" className="text-sm font-black text-white break-all">info@asteryslab.com</a>
               </div>
+            </div>
+            <div className="mt-3">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Clock size={13} className="text-white" />
+                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Segreteria</span>
+              </div>
+              <p className="text-sm text-white/80 font-medium">
+                <span className="font-black text-white">Lun – Ven</span> · 9:00–13:00 · 15:00–17:00
+              </p>
             </div>
           </div>
         </div>
@@ -794,24 +955,16 @@ export const Footer = () => {
 
       {/* BAND 2 — LOGO + SEDI + SOCIAL */}
       <section className="border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
-          {/* Logo + sedi */}
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-8 lg:py-10 grid lg:grid-cols-[1.05fr_1fr] gap-8">
           <div>
-            <img
-              src={`${base}brand/asterys-lab-logo-white.png`}
-              alt="Asterys Lab"
-              className="h-10 w-auto"
-            />
-            <p className="mt-5 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
+            <img src={`${base}brand/asterys-lab-logo-white.png`} alt="Asterys Lab" className="h-9 w-auto" />
+            <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
               Transforming people, expanding results. La 1° Coaching School ICF accreditata in Italia.
             </p>
-
-            <div className="mt-7">
-              <div className="flex items-center gap-2 mb-3">
-                <MapPin size={14} className="text-white" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/55">
-                  Sedi
-                </span>
+            <div className="mt-5">
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin size={13} className="text-white" />
+                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/55">Sedi</span>
               </div>
               <p className="text-sm text-white/80 font-medium leading-relaxed">
                 <span className="font-black text-white">Milano</span> · via Conservatorio, 22 — 20122
@@ -821,116 +974,51 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Social */}
-          <div className="flex flex-col">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-              Social
-            </span>
-            <h3 className="mt-4 text-2xl lg:text-3xl font-display font-black tracking-tighter leading-[1.05]">
-              Vieni a conoscerci.
-            </h3>
-            <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed">
-              Backstage delle aule, live con i docenti, storie di alumni.
-            </p>
-            <div className="mt-5 grid sm:grid-cols-3 gap-3">
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/60">Social</span>
+            <div className="mt-3 flex items-center gap-3">
               {socialChannels.map((s) => (
                 <a
                   key={s.name}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-2xl p-3.5 transition-colors"
+                  aria-label={s.name}
+                  className="w-10 h-10 rounded-xl bg-white text-brand-navy flex items-center justify-center hover:bg-brand-blue-soft transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white text-brand-navy flex items-center justify-center shrink-0">
-                    {s.icon}
-                  </div>
-                  <p className="text-sm font-black tracking-tight truncate">{s.name}</p>
+                  {s.icon}
                 </a>
               ))}
-            </div>
-            <div className="flex items-center gap-3 pt-6 mt-auto">
-              <div className="flex text-white gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={11} fill="currentColor" />
-                ))}
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">
-                Trustpilot 4.7 · +3.000 alumni
-              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BAND 3 — NAV LINKS */}
+      {/* BAND 3 — NAV LINKS (toggle) */}
       <section className="border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
-              The Campus
-            </h4>
-            <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/corsi/apcm" className="hover:text-white transition-colors">Master in Coaching Professionale</Link></li>
-              <li><Link to="/corsi/systemic-team-coaching" className="hover:text-white transition-colors">Team Coaching</Link></li>
-              <li><Link to="/corsi/eiw" className="hover:text-white transition-colors">Intelligenza Emotiva</Link></li>
-              <li><Link to="/corsi/coaching-circle" className="hover:text-white transition-colors">Mentoring per le credenziali</Link></li>
-              <li><Link to="/corsi" className="hover:text-white transition-colors">Tutti i corsi</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
-              Scopri
-            </h4>
-            <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/eventi" className="hover:text-white transition-colors">Eventi</Link></li>
-              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="/about#filosofia" className="hover:text-white transition-colors">Filosofia</Link></li>
-              <li><Link to="/about#press" className="hover:text-white transition-colors">Press</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
-              Per le aziende
-            </h4>
-            <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/aziende" className="hover:text-white transition-colors">Corporate</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Team Coaching</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Leadership programs</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Finanzia il corso</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-5">
-              Candidati
-            </h4>
-            <ul className="space-y-3 text-sm font-bold text-white/80">
-              <li><Link to="/iscriviti" className="hover:text-white transition-colors">Iscriviti</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Parla con advisor</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Scarica brochure</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Calendario edizioni</a></li>
-            </ul>
-          </div>
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
+          {footerNavGroups.map((group) => (
+            <FooterNavToggle key={group.title} title={group.title} links={group.links} />
+          ))}
         </div>
       </section>
 
       {/* BAND 4 — CERTIFICATIONS */}
       <section className="border-b border-white/10 bg-black/20">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10">
-          <div className="flex items-center gap-2 justify-center mb-7">
-            <Award size={14} className="text-white" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-7">
+          <div className="flex items-center gap-2 justify-center mb-5">
+            <Award size={13} className="text-white" />
+            <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/50">
               Accreditamenti & Certificazioni
             </span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-6 gap-y-8 items-center justify-items-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 max-h-[5.5rem] overflow-hidden">
             {certifications.map((c) => (
               <img
                 key={c.label}
                 src={`${base}${c.src}`}
                 alt={c.label}
-                className={`max-h-16 w-auto max-w-full object-contain ${
-                  c.invert ? 'brightness-0 invert opacity-90' : ''
-                }`}
+                className={`h-10 sm:h-11 w-auto object-contain ${c.invert ? 'brightness-0 invert opacity-90' : ''}`}
               />
             ))}
           </div>

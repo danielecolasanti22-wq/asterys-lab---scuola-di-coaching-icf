@@ -11,6 +11,8 @@ import { ReactNode } from 'react';
 
 export interface CourseFee {
   title: string;
+  /** Etichetta breve per i tab della sezione prezzi (se assente usa title). */
+  tabLabel?: string;
   benefit: string;
   heading: string;
   desc: string;
@@ -34,6 +36,8 @@ export interface CourseFee {
   wooQuantityLabel?: string;
   /** Testo esplicativo sotto il selettore quantità. */
   wooQuantityHint?: string;
+  /** Opzioni del menu a tendina quantità (se wooQuantitySelector). */
+  wooQuantityOptions?: { value: number; label: string }[];
 }
 
 /** Fascia oraria / riga “calendar + clock” (layout Boolean) */
@@ -1452,22 +1456,8 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     fees: [
       {
-        title: "Team Coaching Sistemico 1°+2° livello",
-        type: "lump",
-        wooKey: "completo",
-        benefit: "Percorso completo",
-        heading: "Team Coaching Sistemico 1°+2° livello",
-        desc: "Percorso completo con Team Coaching Sistemico 1° livello a distanza e Team Coaching Sistemico 2° livello in aula a Milano o Roma.",
-        price: "2.900€",
-        priceLabel: "+ IVA",
-        financing: {
-          label: "Rateizzazione fino a 24 mesi senza interessi",
-          amount: "121€/mese",
-          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
-        }
-      },
-      {
         title: "Team Coaching Sistemico 1° livello",
+        tabLabel: "Livello 1",
         type: "lump",
         wooKey: "l1",
         benefit: "Live online",
@@ -1482,7 +1472,24 @@ export const coursesContent: Record<string, CourseData> = {
         }
       },
       {
+        title: "Team Coaching Sistemico 1°+2° livello",
+        tabLabel: "Percorso completo",
+        type: "lump",
+        wooKey: "completo",
+        benefit: "Percorso completo",
+        heading: "Team Coaching Sistemico 1°+2° livello",
+        desc: "Percorso completo con Team Coaching Sistemico 1° livello a distanza e Team Coaching Sistemico 2° livello in aula a Milano o Roma.",
+        price: "2.900€",
+        priceLabel: "+ IVA",
+        financing: {
+          label: "Rateizzazione fino a 24 mesi senza interessi",
+          amount: "121€/mese",
+          note: "Simulazione su 24 mesi sul prezzo intero, IVA esclusa."
+        }
+      },
+      {
         title: "Team Coaching Sistemico 2° livello",
+        tabLabel: "Livello 2",
         type: "lump",
         wooKey: "l2",
         benefit: "In aula",

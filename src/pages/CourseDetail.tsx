@@ -876,8 +876,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          </div>
       </section>
 
-      {/* 4. SCEGLI TU QUANDO INIZIARE SECTION — nascosta per il Mentoring (date esposte nella pratica) */}
-      {!isCoachingCircle && (
+      {/* 4. SCEGLI TU QUANDO INIZIARE — solo Master in Coaching e Team Coaching */}
+      {(id === 'apcm' || id === 'systemic-team-coaching') && (
       <section className="py-10 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.5rem] lg:rounded-[1.75rem] p-5 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
@@ -1664,8 +1664,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
       {/* 5c. LEVELS COMPARISON */}
       {course.levelsComparison ? (
-        <section className="py-12 lg:py-20 bg-white">
-          <div className="max-w-[1100px] mx-auto px-4">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white overflow-visible">
+          <div className="max-w-[1100px] mx-auto px-4 overflow-visible">
             <div className="text-center mb-7 lg:mb-12">
               {course.levelsComparison.eyebrow ? (
                 <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
@@ -1684,7 +1684,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             <div
               ref={levelsScrollerRef}
-              className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-[13vw] pb-2 scroll-smooth md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:gap-6 items-stretch"
+              className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-visible px-[13vw] pt-5 pb-2 scroll-smooth md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pt-6 md:pb-0 lg:gap-6 items-stretch"
               style={{ scrollbarWidth: 'none' }}
             >
               {course.levelsComparison.levels.map((lvl, i) => (
@@ -1700,7 +1700,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   }`}
                 >
                   {lvl.highlight ? (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center rounded-full bg-brand-accent px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-white shadow-lg">
+                    <span className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 inline-flex items-center rounded-full bg-brand-accent px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-white shadow-lg whitespace-nowrap">
                       Più scelto
                     </span>
                   ) : null}
@@ -1880,7 +1880,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         : 'text-brand-navy/75 hover:text-brand-navy'
                     }`}
                   >
-                    {fee.title}
+                    {fee.tabLabel ?? fee.title}
                   </button>
                 );
               })}
@@ -2028,16 +2028,32 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       >
                         {fee.wooQuantityLabel ?? 'Quante Live Class'}
                       </label>
-                      <input
+                      <select
                         id={`qty-${idx}`}
-                        type="number"
-                        min={1}
                         value={qtyByFee[fee.title] ?? 1}
                         onChange={(e) =>
-                          setQtyByFee((s) => ({ ...s, [fee.title]: Math.max(1, Number(e.target.value) || 1) }))
+                          setQtyByFee((s) => ({ ...s, [fee.title]: Number(e.target.value) }))
                         }
                         className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
-                      />
+                      >
+                        {(fee.wooQuantityOptions ?? [
+                          { value: 1, label: '1 Live Class — 16€ + IVA' },
+                          { value: 2, label: '2 Live Class — 16€ + IVA cad.' },
+                          { value: 3, label: '3 Live Class — 12€ + IVA cad.' },
+                          { value: 4, label: '4 Live Class — 12€ + IVA cad.' },
+                          { value: 5, label: '5 Live Class — 12€ + IVA cad.' },
+                          { value: 6, label: '6 Live Class — 12€ + IVA cad.' },
+                          { value: 7, label: '7 Live Class — 12€ + IVA cad.' },
+                          { value: 8, label: '8 Live Class — 9€ + IVA cad.' },
+                          { value: 9, label: '9 Live Class — 9€ + IVA cad.' },
+                          { value: 10, label: '10 Live Class — 9€ + IVA cad.' },
+                          { value: 12, label: '12 Live Class — 9€ + IVA cad.' },
+                        ]).map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
                       <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-brand-navy/55">
                         {fee.wooQuantityHint ?? 'Il prezzo per Live Class cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.'}
                       </p>

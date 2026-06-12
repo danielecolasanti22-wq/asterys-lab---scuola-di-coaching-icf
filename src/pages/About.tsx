@@ -337,28 +337,33 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-            {accreditations.map((a) => (
-              <div
-                key={a.file}
-                className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center"
-              >
-                <div className="h-16 flex items-center justify-center mb-4">
-                  <img
-                    src={`/brand/${a.file}.png`}
-                    alt={a.label}
-                    className="max-h-16 w-auto object-contain"
-                    referrerPolicy="no-referrer"
-                  />
+          <div className="flex flex-col items-center gap-6 max-w-xl mx-auto">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
+              {accreditations.slice(0, 2).map((a) => (
+                <div key={a.file} className="flex flex-col items-center text-center">
+                  <div className="h-16 flex items-center justify-center mb-2">
+                    <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
+                  </div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{a.label}</p>
                 </div>
-                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">
-                  {a.label}
-                </p>
-                <p className="mt-2 text-xs text-brand-navy/60 font-medium leading-relaxed">
-                  {a.desc}
-                </p>
+              ))}
+            </div>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
+              {accreditations.slice(2, 4).map((a) => (
+                <div key={a.file} className="flex flex-col items-center text-center">
+                  <div className="h-16 flex items-center justify-center mb-2">
+                    <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
+                  </div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{a.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="h-16 flex items-center justify-center mb-2">
+                <img src={`/brand/${accreditations[4].file}.png`} alt={accreditations[4].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
               </div>
-            ))}
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{accreditations[4].label}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -410,13 +415,10 @@ export default function About() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8">
               {communityPillars.map((p) => (
-                <div
-                  key={p.title}
-                  className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/60"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-brand-blue-soft text-brand-accent flex items-center justify-center mb-4">
+                <div key={p.title} className="flex flex-col">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue-soft text-brand-accent flex items-center justify-center mb-3">
                     {p.icon}
                   </div>
                   <h3 className="text-base font-display font-black tracking-tight text-brand-navy mb-2">
