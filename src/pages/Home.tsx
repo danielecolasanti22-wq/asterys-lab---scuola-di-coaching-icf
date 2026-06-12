@@ -49,9 +49,9 @@ const Hero = () => (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
-          src="/home/hero-people.png"
-          alt="Coach Asterys"
-          className="w-full h-auto object-contain aspect-[1512/608] object-bottom"
+          src="/home/hero-mobile.jpg"
+          alt="Community di coach Asterys Lab"
+          className="w-full aspect-[16/10] object-cover object-center"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
@@ -373,6 +373,17 @@ const MasterFeatured = () => (
 const MasterGrid = () => {
   const masters = [
     {
+      id: 'apcm',
+      title: 'Master in Coaching',
+      duration: '3-8 mesi',
+      label: 'Master',
+      desc: 'Lancia una nuova carriera da zero con supporto costante e una full-immersion nelle competenze di coaching ICF Level 1 & 2.',
+      start: 'Più edizioni 2026',
+      lastSeats: false,
+      seed: 'apcm-master',
+      image: 'card.png'
+    },
+    {
       id: 'systemic-team-coaching',
       title: 'Team Coaching Sistemico',
       duration: '54 ore · 60 CCE',
@@ -672,9 +683,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <MobileQuickNav />
       <ScegliPercorso />
-      <MasterFeatured />
       <MasterGrid />
       <AdvisorBand />
       <TestimonialsSection />
