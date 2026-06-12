@@ -568,7 +568,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="no-reveal relative bg-brand-hero overflow-hidden pb-0">
+      <section className="relative bg-brand-hero overflow-hidden pb-0">
         {/* Gradiente metallico sul fondo hero (TUTTI i corsi, come Home): spazzata
             diagonale dal blu scuro (alto-sx) all'acciaio più chiaro (basso-dx).
             Bande nette = effetto metallico; massima luce sull'angolo (no "faro"). */}
@@ -2531,8 +2531,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[220px] pb-0 sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
-                     <h3 className="relative z-10 text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[220px] pb-[80px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
+                     <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
                      <p className="relative z-10 text-xs sm:text-sm text-brand-navy/75 font-medium leading-relaxed">
@@ -2540,11 +2540,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center overflow-hidden h-[88px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[72px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="w-[72%] max-w-none object-contain object-bottom sm:w-[188%] lg:w-[190%]"
+                           className="absolute left-1/2 bottom-[-8px] w-[85%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
                            alt="Supervisione 1:1"
                          />
                        ) : (

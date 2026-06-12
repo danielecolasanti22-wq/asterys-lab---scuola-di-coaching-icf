@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
-import { useSectionReveal } from '../../hooks/useSectionReveal';
 import {
   Menu,
   X,
@@ -1136,7 +1135,6 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
   const isCorporatePage = location.pathname === '/aziende';
-  useSectionReveal();
 
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-hidden w-full max-w-[100vw]">

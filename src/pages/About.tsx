@@ -173,7 +173,7 @@ export default function About() {
   return (
     <div className="bg-white text-brand-navy">
       {/* HERO */}
-      <section className="no-reveal relative overflow-hidden bg-brand-hero">
+      <section className="relative overflow-hidden bg-brand-hero">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-sky">

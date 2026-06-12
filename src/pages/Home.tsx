@@ -37,68 +37,33 @@ const tSection =
 
 /* 1. HERO */
 const Hero = () => (
-  <section className="no-reveal relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
+  <section className="relative bg-brand-hero overflow-hidden pb-6 lg:pb-0">
+    {/* Gradiente metallico sul fondo hero: spazzata diagonale dal blu scuro (alto-sx)
+        all'acciaio più chiaro (basso-dx, dietro le persone). Bande nette = effetto
+        metallico, non nuvoloso; il punto di massima luce resta sull'angolo, quindi
+        non si vede un "faro" d'origine. */}
     <div
       aria-hidden
       className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
     />
-
-    {/* Mobile: immagine fissa (sticky) + pannello blu che scorre sopra */}
-    <div className="lg:hidden relative">
-      <div className="sticky top-[74px] z-0 w-full aspect-[16/10] max-h-[min(56vw,360px)] overflow-hidden">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
+      <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
           src="/home/hero-mobile.jpg"
           alt="Community di coach Asterys Lab"
-          className="w-full h-full object-cover object-center"
+          className="w-full aspect-[16/10] object-cover object-center"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001D4B]/50 via-[#001D4B]/10 to-transparent" />
-      </div>
-      <div className="relative z-10 -mt-10 rounded-t-[2.6rem] bg-brand-hero px-4 sm:px-6 pt-12 pb-6 shadow-[0_-28px_56px_-8px_rgba(0,29,75,0.55)]">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-        >
-          <div className="flex justify-center mb-5">
-            <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.1em] text-brand-navy whitespace-nowrap">
-              <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-              La 1ª scuola di coaching accreditata ICF
-            </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
+          <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.1em] text-brand-navy whitespace-nowrap">
+            <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
+            La 1ª scuola di coaching accreditata ICF
           </div>
-          <h1 className="text-[2.85rem] text-center sm:text-[3.7rem] font-display font-black leading-[0.94] tracking-tighter mb-4 text-white">
-            Dai forma alla tua{' '}
-            <Highlight className="text-brand-sky">crescita professionale</Highlight>
-          </h1>
-          <p className="text-[12px] text-center text-white/80 mb-5 max-w-[520px] leading-relaxed mx-auto">
-            Percorsi di coaching in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master in coaching accreditati ICF, scegli il passo giusto per diventare coach professionista.
-          </p>
-          <div className="flex mb-8 justify-center">
-            <Link
-              to="/corsi"
-              className="inline-flex items-center justify-center bg-[#2A56A8] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
-            >
-              SCOPRI I CORSI
-            </Link>
-          </div>
-          <ul className="space-y-2 mb-5 text-[12px] font-medium text-white">
-            {[
-              'Master in coaching, corsi brevi e formazione continua per professionisti',
-              'Lezioni live, pratica guidata e confronto con coach e trainer certificati ICF',
-              'Metodo Asterys Lab: concreto, sistemico e orientato alla crescita',
-            ].map((b) => (
-              <li key={b} className="flex items-start gap-2">
-                <span className="text-brand-sky font-black mt-0.5">→</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+        </div>
       </div>
-    </div>
 
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 hidden lg:grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
-      <div className="pt-16 lg:pt-14 pb-0 lg:pb-10 relative z-10 lg:rounded-none bg-brand-hero lg:bg-transparent">
+      <div className="pt-16 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
           Scuola di coaching accreditata ICF
@@ -110,6 +75,14 @@ const Hero = () => (
         <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Percorsi di coaching in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master in coaching accreditati ICF, scegli il passo giusto per diventare coach professionista.
         </p>
+        <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
+          <Link
+            to="/corsi"
+            className="inline-flex items-center justify-center bg-[#2A56A8] text-white rounded-full px-8 py-4 text-[11px] font-black uppercase tracking-[0.1em]"
+          >
+            SCOPRI I CORSI
+          </Link>
+        </div>
         <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
           {[
             'Master in coaching, corsi brevi e formazione continua per professionisti',
