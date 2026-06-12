@@ -260,6 +260,43 @@ function levelSortWeight(slug: string): number {
   return 3;
 }
 
+function shortLevelLabel(level: string, levelSlug?: string): string {
+  if (levelSlug === 'l1') return 'Livello 1';
+  if (levelSlug === 'l2') return 'Livello 2';
+  if (levelSlug === APCM_COMPLETE_LEVEL_SLUG || levelSlug === 'l1-l2') return 'Percorso completo';
+  const lower = level.toLowerCase();
+  if (lower.includes('1°+2°') || lower.includes('percorso completo')) return 'Percorso completo';
+  if (lower.includes('2° livello') || lower.includes('level 2') || lower === '2° livello') return 'Livello 2';
+  if (lower.includes('1° livello') || lower.includes('level 1') || lower === '1° livello') return 'Livello 1';
+  return level;
+}
+
+function shortEditionPillLabel(edition: CourseEdition, siblingsCount = 1): string {
+  const short = shortLevelLabel(edition.level, edition.levelSlug);
+  if (siblingsCount > 1) {
+    if (edition.editionLabel.includes(' · ')) {
+      const parts = edition.editionLabel.split(' · ');
+      return parts[parts.length - 1];
+    }
+    return edition.subtitle ?? edition.city;
+  }
+  if (edition.level.toLowerCase().includes('team coaching sistemico')) return short;
+  return edition.editionLabel;
+}
+
+function shortEditionHeading(edition: CourseEdition): string {
+  const label = edition.editionLabel;
+  if (label.includes(` · ${edition.city}`)) return label.replace(` · ${edition.city}`, '').trim();
+  if (label.toLowerCase().includes('team coaching sistemico')) {
+    return edition.subtitle ?? label.replace(/Team Coaching Sistemico\s*/gi, '').trim();
+  }
+  return label;
+}
+
+function shortModuleTitle(title: string): string {
+  return shortLevelLabel(title);
+}
+
 type CourseDetailProps = {
   courseId?: string;
   courseData?: CourseData;
@@ -426,9 +463,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     ).values(),
   );
   const editionLevelsForCity = [
-    ...baseEditionLevelsForCity,
+    ...baseEditionLevelsForCity.map((l) => ({
+      ...l,
+      name: shortLevelLabel(l.name, l.slug),
+    })),
     ...(apcmCompleteEditionsForCity.length
-      ? [{ slug: APCM_COMPLETE_LEVEL_SLUG, name: 'Percorso Completo' }]
+      ? [{ slug: APCM_COMPLETE_LEVEL_SLUG, name: 'Percorso completo' }]
       : []),
   ].sort((a, b) => levelSortWeight(a.slug) - levelSortWeight(b.slug));
   const effectiveLevelSlug =
@@ -832,7 +872,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       onClick={() => setActiveModule(i)}
                       className={`w-full text-left px-4 py-3.5 rounded-xl ${tModuleSide} transition-all flex items-center justify-between gap-3 group ${activeModule === i ? 'bg-brand-navy text-white shadow-md' : 'text-brand-navy/45 hover:bg-white hover:text-brand-navy ring-1 ring-transparent hover:ring-black/5'}`}
                     >
-                      <span className="leading-snug">{m.title}</span>
+                      <span className="leading-snug">{shortModuleTitle(m.title)}</span>
                       <ArrowRight size={16} className={`shrink-0 transition-transform ${activeModule === i ? 'translate-x-0.5 opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
                     </button>
                   ))}
@@ -1052,9 +1092,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                             active ? 'text-brand-accent' : 'text-brand-navy/55'
                           }`}
                         >
-                          {e.editionLabel}
+                          {shortEditionPillLabel(e, editionsForCityLevel.length)}
                         </p>
-                        {e.subtitle ? (
+                        {e.subtitle && !e.level.toLowerCase().includes('team coaching sistemico') ? (
                           <p
                             className={`mt-1 text-[11px] font-semibold ${
                               active ? 'text-brand-navy' : 'text-brand-navy/45'
@@ -1090,10 +1130,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       <div>
                         <p className="text-[10px] font-black uppercase tracking-[0.26em] text-white/55 mb-2 flex items-center gap-2">
                           <MapPin size={12} strokeWidth={2.5} />
-                          {activeEdition.city} · {activeEdition.level}
+                          {activeEdition.city} · {shortLevelLabel(activeEdition.level, activeEdition.levelSlug)}
                         </p>
                         <h3 className="text-lg sm:text-2xl font-display font-black tracking-tight leading-tight">
-                          {activeEdition.editionLabel}
+                          {shortEditionHeading(activeEdition)}
                         </h3>
                         {activeEdition.subtitle ? (
                           <p className="mt-1 text-base sm:text-lg text-white/65 font-medium">
@@ -2478,7 +2518,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[260px] pb-[150px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[220px] pb-[80px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
                      <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
@@ -2487,11 +2527,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[145px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[72px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-42px] w-[170%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
+                           className="absolute left-1/2 bottom-[-8px] w-[85%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
                            alt="Supervisione 1:1"
                          />
                        ) : (

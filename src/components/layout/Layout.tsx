@@ -248,7 +248,7 @@ export const Header = () => {
   return (
     <header
       id="site-header"
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-hidden ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
       <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
@@ -511,14 +511,13 @@ export const Header = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
           >
-            <div className="flex-1 overflow-y-auto overscroll-contain">
-              {/* The Campus */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-1">
               <button
                 type="button"
                 onClick={() => setMobileCampusOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-5 py-4 border-b border-gray-100 text-left"
+                className="w-full flex items-center justify-between px-5 py-5 border-b border-gray-100 text-left"
               >
-                <span className={`text-lg font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                <span className={`text-[17px] font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
                   The Campus
                 </span>
                 <ChevronDown
@@ -528,48 +527,48 @@ export const Header = () => {
               </button>
 
               {mobileCampusOpen ? (
-                <div className="border-b border-gray-100">
+                <div className="border-b border-gray-100 pb-2">
                   {megaColumns.map((col, idx) => (
-                    <div key={col.label}>
+                    <div key={col.label} className="border-t border-gray-50 first:border-t-0">
                       <button
                         type="button"
                         onClick={() => setMobileMegaIdx((prev) => (prev === idx ? -1 : idx))}
-                        className="w-full flex items-center justify-between px-5 py-3.5 text-left"
+                        className="w-full flex items-center justify-between px-5 py-4 text-left"
                       >
-                        <span className={`text-base font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                        <span className={`text-[15px] font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
                           {col.label}
                         </span>
                         <ChevronDown
-                          size={16}
+                          size={15}
                           className={`shrink-0 text-brand-navy/35 transition-transform ${mobileMegaIdx === idx ? 'rotate-180 text-brand-accent' : ''}`}
                         />
                       </button>
 
                       {mobileMegaIdx === idx ? (
-                        <div className="bg-brand-blue-soft/40 px-5 pb-4">
-                          <p className="text-xs text-brand-navy/55 font-medium mb-3">{col.caption}</p>
-                          <div className="divide-y divide-brand-navy/8">
+                        <div className="mx-3 mb-3 rounded-xl bg-brand-blue-soft/35 px-4 py-3">
+                          <p className="text-[11px] text-brand-navy/50 font-medium mb-3 leading-relaxed">{col.caption}</p>
+                          <div className="space-y-1">
                             {col.items.map((item) => (
                               <Link
                                 key={item.id}
                                 to={`/corsi/${item.id}`}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="block py-3.5 group"
+                                className="block rounded-lg px-2 py-3 group hover:bg-white/70 transition-colors"
                               >
-                                <span className="block text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors">
+                                <span className="block text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors leading-snug">
                                   {item.title}
                                 </span>
-                                <span className="block mt-0.5 text-[11px] font-black uppercase tracking-[0.12em] text-brand-accent/80">
+                                <span className="block mt-1 text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/75">
                                   {item.kicker}
                                 </span>
-                                <span className="block mt-0.5 text-xs text-brand-navy/55 font-medium">{item.meta}</span>
+                                <span className="block mt-0.5 text-xs text-brand-navy/50 font-medium">{item.meta}</span>
                               </Link>
                             ))}
                           </div>
                           <Link
                             to="/corsi"
                             onClick={() => setIsMenuOpen(false)}
-                            className="mt-3 inline-flex items-center gap-1.5 text-sm font-black text-brand-accent"
+                            className="mt-2 inline-flex items-center gap-1.5 px-2 py-2 text-sm font-black text-brand-accent"
                           >
                             Tutti i corsi <ArrowRight size={14} />
                           </Link>
@@ -578,24 +577,23 @@ export const Header = () => {
                     </div>
                   ))}
 
-                  <div className="px-5 py-4 space-y-3 bg-gray-50/80">
+                  <div className="mx-3 mt-3 pt-4 border-t border-gray-100 space-y-2.5">
+                    <p className="px-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/40">In evidenza</p>
                     {megaPromos.map((promo) => (
                       <Link
                         key={promo.title}
                         to={promo.to}
                         onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 rounded-xl bg-white border border-gray-100 p-3"
+                        className="flex items-center gap-3 rounded-xl bg-gray-50 border border-gray-100 p-3"
                       >
-                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                        <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 shrink-0">
                           <img src={promo.img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                         </div>
-                        <div className="min-w-0">
-                          <span className="block text-[10px] font-black uppercase tracking-[0.12em] text-brand-accent/80">{promo.kicker}</span>
-                          <span className="block mt-0.5 text-sm font-black text-brand-navy leading-tight">{promo.title}</span>
-                          <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.1em] text-brand-accent">
-                            {promo.cta} <ArrowRight size={11} />
-                          </span>
+                        <div className="min-w-0 flex-1">
+                          <span className="block text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/80">{promo.kicker}</span>
+                          <span className="block mt-0.5 text-sm font-black text-brand-navy leading-snug">{promo.title}</span>
                         </div>
+                        <ArrowRight size={14} className="shrink-0 text-brand-accent/60" />
                       </Link>
                     ))}
                   </div>
@@ -605,14 +603,14 @@ export const Header = () => {
               <Link
                 to="/eventi"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center justify-between px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight ${location.pathname === '/eventi' ? 'text-brand-accent' : 'text-brand-navy'}`}
+                className={`flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight ${location.pathname === '/eventi' ? 'text-brand-accent' : 'text-brand-navy'}`}
               >
                 Eventi
               </Link>
               <Link
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center justify-between px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
+                className={`flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight ${location.pathname === '/blog' ? 'text-brand-accent' : 'text-brand-navy'}`}
               >
                 Risorse
               </Link>
@@ -620,9 +618,9 @@ export const Header = () => {
               <button
                 type="button"
                 onClick={() => setMobileAboutOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-5 py-4 border-b border-gray-100 text-left"
+                className="w-full flex items-center justify-between px-5 py-5 border-b border-gray-100 text-left"
               >
-                <span className={`text-lg font-display font-black tracking-tight ${mobileAboutOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                <span className={`text-[17px] font-display font-black tracking-tight ${mobileAboutOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
                   About
                 </span>
                 <ChevronDown
@@ -631,13 +629,13 @@ export const Header = () => {
                 />
               </button>
               {mobileAboutOpen ? (
-                <div className="bg-brand-blue-soft/40 border-b border-gray-100 divide-y divide-brand-navy/8">
+                <div className="mx-3 mb-3 rounded-xl bg-brand-blue-soft/35 border-b border-gray-100 divide-y divide-brand-navy/8 overflow-hidden">
                   {aboutMenu.map((item) => (
                     <Link
                       key={item.hash}
                       to={`/about${item.hash}`}
                       onClick={() => setIsMenuOpen(false)}
-                      className="block px-5 py-3.5 text-[15px] font-black text-brand-navy hover:text-brand-accent transition-colors"
+                      className="block px-4 py-3.5 text-[15px] font-bold text-brand-navy hover:text-brand-accent hover:bg-white/60 transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -648,13 +646,13 @@ export const Header = () => {
               <Link
                 to="/aziende"
                 onClick={() => setIsMenuOpen(false)}
-                className="flex items-center px-5 py-4 border-b border-gray-100 text-lg font-display font-black tracking-tight text-brand-navy"
+                className="flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight text-brand-navy"
               >
                 Per Aziende
               </Link>
             </div>
 
-            <div className="shrink-0 p-5 border-t border-gray-100 bg-white">
+            <div className="shrink-0 px-5 py-4 border-t border-gray-100 bg-white">
               <Link
                 to="/iscriviti"
                 onClick={() => setIsMenuOpen(false)}
@@ -1012,15 +1010,22 @@ export const Footer = () => {
               Accreditamenti & Certificazioni
             </span>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 max-h-[5.5rem] overflow-hidden">
-            {certifications.map((c) => (
-              <img
-                key={c.label}
-                src={`${base}${c.src}`}
-                alt={c.label}
-                className={`h-10 sm:h-11 w-auto object-contain ${c.invert ? 'brightness-0 invert opacity-90' : ''}`}
-              />
-            ))}
+          <div className="flex flex-col items-center gap-5">
+            <img
+              src={`${base}${certifications[0].src}`}
+              alt={certifications[0].label}
+              className="h-11 sm:h-12 w-auto object-contain brightness-0 invert opacity-90"
+            />
+            <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-3">
+              {certifications.slice(1).map((c) => (
+                <img
+                  key={c.label}
+                  src={`${base}${c.src}`}
+                  alt={c.label}
+                  className="h-10 sm:h-11 w-auto object-contain"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1116,10 +1121,10 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const isCorporatePage = location.pathname === '/aziende';
 
   return (
-    <div className="font-sans text-brand-navy min-h-screen flex flex-col">
+    <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-hidden w-full max-w-[100vw]">
       {isCorporatePage ? <CorporateHeader /> : <Header />}
       <main
-        className={`flex-grow ${
+        className={`flex-grow overflow-x-hidden w-full ${
           isCourseDetailPage
             ? 'pt-[120px] max-[939px]:pt-[122px]'
             : isCorporatePage

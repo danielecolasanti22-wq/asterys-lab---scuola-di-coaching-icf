@@ -339,7 +339,7 @@ export default function About() {
 
           <div className="flex flex-col items-center gap-6 max-w-xl mx-auto">
             <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
-              {accreditations.slice(0, 2).map((a) => (
+              {[accreditations[4], accreditations[1]].map((a) => (
                 <div key={a.file} className="flex flex-col items-center text-center">
                   <div className="h-16 flex items-center justify-center mb-2">
                     <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
@@ -360,9 +360,9 @@ export default function About() {
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="h-16 flex items-center justify-center mb-2">
-                <img src={`/brand/${accreditations[4].file}.png`} alt={accreditations[4].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
+                <img src={`/brand/${accreditations[0].file}.png`} alt={accreditations[0].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
               </div>
-              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{accreditations[4].label}</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{accreditations[0].label}</p>
             </div>
           </div>
         </div>

@@ -21,8 +21,15 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body {
     @apply bg-white text-brand-navy font-sans antialiased;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 }
 
