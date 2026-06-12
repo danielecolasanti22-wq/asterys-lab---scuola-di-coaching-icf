@@ -56,9 +56,9 @@ const Hero = () => (
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/25 via-transparent to-transparent" />
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
-          <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.12em] text-brand-navy whitespace-nowrap">
-            <span className="w-2 h-2 bg-brand-accent rounded-full" />
-            ICF Accreditato
+          <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.1em] text-brand-navy whitespace-nowrap">
+            <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
+            La 1ª scuola di coaching accreditata ICF
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ const Accreditamenti = () => {
           <ChevronRight size={16} />
         </button>
 
-        <div className="grid lg:grid-cols-[200px_1fr] items-center gap-8 lg:gap-14 min-h-[200px] lg:min-h-[170px] px-9 sm:px-12">
+        <div className="grid lg:grid-cols-[200px_1fr] items-center gap-8 lg:gap-14 min-h-[400px] lg:min-h-[170px] px-9 sm:px-12">
           {/* Logo */}
           <div className="flex items-center justify-center lg:justify-start h-[130px] lg:h-[150px]">
             <AnimatePresence mode="wait">
@@ -241,7 +241,7 @@ const Accreditamenti = () => {
           </div>
 
           {/* Descrizione */}
-          <div className="text-center lg:text-left min-h-[140px] lg:min-h-[120px]">
+          <div className="text-center lg:text-left min-h-[230px] lg:min-h-[120px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.label}
@@ -583,10 +583,10 @@ const PercheNoi = () => {
   ];
   const seen = new Set<string>();
   return (
-    <section id="perche-noi" className="py-16 lg:py-20 bg-white">
+    <section id="perche-noi" className="py-12 lg:py-20 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <h2 className={`${tSection} mb-12 max-w-2xl`}>Perché scegliere i nostri percorsi?</h2>
-        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+        <h2 className={`${tSection} mb-8 lg:mb-12 max-w-2xl`}>Perché scegliere i nostri percorsi?</h2>
+        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-12">
           {reasons.map((r) => (
             <div key={r.title} className="flex gap-4">
               <div className="shrink-0 w-11 h-11 rounded-full bg-brand-blue-soft flex items-center justify-center">
@@ -632,7 +632,7 @@ const CorsiCta = () => {
     'continuous-learning': RefreshCw,
   };
   return (
-    <section id="catalogo" className="py-20 lg:py-24 bg-white">
+    <section id="catalogo" className="py-14 lg:py-24 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
         <div className="lg:sticky lg:top-24">
           <h2 className={`${tSection} mb-5`}>

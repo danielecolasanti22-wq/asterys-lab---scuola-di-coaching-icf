@@ -57,7 +57,7 @@ export function TestimonialsSection({
     <button
       type="button"
       onClick={() => setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === video.name))}
-      className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] min-h-[340px] sm:min-h-[420px]"
+      className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] h-full min-h-[200px] sm:min-h-[380px] lg:min-h-[420px]"
     >
       <img
         src={video.video?.poster}
@@ -94,7 +94,7 @@ export function TestimonialsSection({
   const renderTextCard = (t: CourseTestimonial, idx: number) => (
     <div
       key={`${t.name}-${idx}`}
-      className="relative flex flex-col bg-white rounded-[1.5rem] lg:rounded-[1.75rem] p-5 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden"
+      className="relative flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.75rem] p-4 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden"
     >
       <div className="flex items-start justify-between mb-3 gap-3">
         <div>
@@ -109,7 +109,7 @@ export function TestimonialsSection({
           </div>
         ) : null}
       </div>
-      <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-4 line-clamp-5 min-h-0">
+      <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-4 line-clamp-3 lg:line-clamp-5 min-h-0">
         “{t.quote}”
       </p>
       <div className="flex items-center justify-between pt-3 border-t border-gray-100 shrink-0">
@@ -138,9 +138,9 @@ export function TestimonialsSection({
   const slide = slides[activeSlide];
 
   return (
-    <section id="testimonianze" className="py-16 lg:py-24 bg-gradient-to-b from-white via-[#EEF4FC] to-white">
+    <section id="testimonianze" className="py-12 lg:py-24 bg-gradient-to-b from-white via-[#EEF4FC] to-white">
       <div className="max-w-[941px] mx-auto px-4">
-        <div className="max-w-2xl mb-10 lg:mb-12">
+        <div className="max-w-2xl mb-6 lg:mb-12">
           <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
           <h2 className={`${tSection} ${titleUppercase ? 'uppercase' : ''} mb-4`}>
             Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
@@ -151,14 +151,14 @@ export function TestimonialsSection({
         </div>
 
         {slide ? (
-          <div className="relative overflow-hidden">
-            <AnimatePresence mode="wait">
+          <div className="relative overflow-hidden min-h-[560px] sm:min-h-0">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activeSlide}
-                initial={{ opacity: 0, x: 36 }}
+                initial={{ opacity: 0, x: 22 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -36 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
+                exit={{ opacity: 0, x: -22 }}
+                transition={{ duration: 0.28, ease: 'easeInOut' }}
                 drag={slides.length > 1 ? 'x' : false}
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.08}
