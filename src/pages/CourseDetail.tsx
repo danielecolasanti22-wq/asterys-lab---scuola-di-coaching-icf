@@ -116,17 +116,17 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
   <div className="border-b border-gray-100 last:border-b-0">
     <button 
       onClick={onClick}
-      className="w-full py-4 sm:py-6 text-left flex items-center justify-between group gap-4 sm:gap-6"
+      className="w-full py-3 sm:py-6 text-left flex items-center justify-between group gap-3 sm:gap-6"
     >
-      <span className="text-[15px] sm:text-base font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight">
+      <span className="text-sm sm:text-base font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight leading-snug">
         {title}
       </span>
       <span
-        className={`inline-flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
+        className={`inline-flex h-7 w-7 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
           isOpen ? 'bg-brand-navy text-white border-brand-navy' : ''
         }`}
       >
-        {isOpen ? <Minus size={18} strokeWidth={2.25} /> : <Plus size={18} strokeWidth={2.25} />}
+        {isOpen ? <Minus size={16} strokeWidth={2.25} /> : <Plus size={16} strokeWidth={2.25} />}
       </span>
     </button>
     <AnimatePresence>
@@ -137,7 +137,7 @@ const Accordion = ({ title, content, isOpen, onClick }: { title: string, content
           exit={{ height: 0, opacity: 0 }}
           className="overflow-hidden"
         >
-          <div className="pb-4 sm:pb-6 text-brand-navy/60 leading-relaxed text-sm font-medium">
+          <div className="pb-3 sm:pb-6 text-brand-navy/60 leading-relaxed text-sm font-medium">
             {richText(content)}
           </div>
         </motion.div>
@@ -621,7 +621,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 2. LA FIGURA CENTRALE SECTION */}
-      <section className="py-0 lg:py-24 bg-white">
+      <section className="py-8 lg:py-24 bg-white">
         <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
              <h2 className={`${tSection} mb-8 leading-tight`}>
@@ -635,8 +635,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                ))}
              </div>
           </div>
-          <div className="relative order-1 lg:order-2 -mx-4 lg:mx-0">
-             <div className="rounded-none lg:rounded-[3rem] overflow-hidden shadow-none lg:shadow-2xl">
+          <div className="relative order-1 lg:order-2">
+             <div className="rounded-[1.75rem] lg:rounded-[3rem] overflow-hidden shadow-[0_22px_60px_-38px_rgba(0,21,51,0.35)] lg:shadow-2xl">
                 <CourseImage
                   src={media.overview}
                   fallbackSrc={defaultCourseMedia(id ?? 'corso').overview}
@@ -852,17 +852,17 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                        <h3 className={`${tModuleTitle} mb-4`}>
                           {course.structure.modules[activeModule].title}
                        </h3>
-                       <p className={`${tBody} mb-8`}>
+                       <p className={`${tBody} mb-5 sm:mb-8`}>
                           {course.structure.modules[activeModule].desc}
                        </p>
                        
-                       <div className="mt-auto pt-8 border-t border-gray-100">
-                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/35 mb-3">In sintesi</p>
-                          <div className="flex flex-wrap gap-2">
-                            {moduleTags.map((tag, i) => (
+                       <div className="mt-auto pt-4 sm:pt-8 border-t border-gray-100">
+                          <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.2em] text-brand-navy/35 mb-2 sm:mb-3">In sintesi</p>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                            {moduleTags.slice(0, 6).map((tag, i) => (
                               <span
                                 key={`${activeModule}-${i}`}
-                                className="inline-flex items-center rounded-md border border-brand-navy/10 bg-white px-2.5 py-1.5 text-[10px] sm:text-[11px] font-bold text-brand-navy/80"
+                                className="inline-flex items-center rounded-md border border-brand-navy/10 bg-white px-2 py-1 sm:px-2.5 sm:py-1.5 text-[9px] sm:text-[11px] font-bold text-brand-navy/80"
                               >
                                 {tag}
                               </span>
@@ -977,10 +977,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                           setActiveEditionSlug(firstOfCity.editionSlug);
                         }
                       }}
-                      className={`shrink-0 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                      className={`shrink-0 rounded-full border px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ${
                         active
-                          ? 'bg-brand-navy text-white ring-brand-navy shadow-md'
-                          : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                          ? 'border-brand-navy bg-brand-navy text-white shadow-md'
+                          : 'border-brand-navy/10 bg-white text-brand-navy/65 hover:border-brand-navy/25'
                       }`}
                     >
                       {c.name}
@@ -1013,10 +1013,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                                 );
                           if (firstOfLevel) setActiveEditionSlug(firstOfLevel.editionSlug);
                         }}
-                        className={`shrink-0 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ring-1 ${
+                        className={`shrink-0 rounded-full border px-4 py-2 sm:px-5 sm:py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] transition-all ${
                           active
-                            ? 'bg-brand-accent text-white ring-brand-accent shadow-md'
-                            : 'bg-white text-brand-navy/65 ring-brand-navy/10 hover:ring-brand-navy/25'
+                            ? 'border-brand-accent bg-brand-accent text-white shadow-md'
+                            : 'border-brand-navy/10 bg-white text-brand-navy/65 hover:border-brand-navy/25'
                         }`}
                       >
                         {l.name}
@@ -1041,10 +1041,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         key={e.editionSlug}
                         type="button"
                         onClick={() => setActiveEditionSlug(e.editionSlug)}
-                        className={`shrink-0 max-w-[78vw] text-left rounded-2xl px-4 py-2.5 sm:py-3 transition-all ring-1 ${
+                        className={`shrink-0 max-w-[78vw] text-left rounded-2xl border px-4 py-2.5 sm:py-3 transition-all ${
                           active
-                            ? 'bg-white ring-brand-accent shadow-[0_18px_40px_-28px_rgba(29,59,185,0.5)]'
-                            : 'bg-white/60 ring-brand-navy/10 hover:bg-white hover:ring-brand-navy/25'
+                            ? 'border-brand-accent bg-white shadow-[0_18px_40px_-28px_rgba(29,59,185,0.5)]'
+                            : 'border-brand-navy/10 bg-white/60 hover:bg-white hover:border-brand-navy/25'
                         }`}
                       >
                         <p
@@ -1228,11 +1228,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 </div>
 
                 {/* CTA */}
-                <div className="px-4 pb-4 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-4 sm:pt-6">
+                  <div className="px-4 pb-4 sm:px-9 sm:pb-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 pt-4 sm:pt-6">
                   <p className="text-xs sm:text-sm text-brand-navy/55 font-semibold">
                     Vuoi approfondire questa edizione? Prenota una call con un Advisor.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:gap-3">
                     <a
                       href="#prezzo"
                       onClick={(e) => {
@@ -1249,13 +1249,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         if (varId && wk) setEditionByLevel((s) => ({ ...s, [wk]: varId }));
                         document.getElementById('prezzo')?.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="rounded-full bg-brand-navy px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-white shadow-lg hover:bg-brand-accent transition-colors text-center"
+                      className="rounded-full bg-brand-navy px-3 py-3 text-[9px] sm:px-7 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.22em] text-white shadow-lg hover:bg-brand-accent transition-colors text-center"
                     >
                       {activeEdition.ctaLabel ?? 'Iscriviti a questa edizione'}
                     </a>
                     <a
                       href="#"
-                      className="rounded-full border-2 border-brand-navy/20 px-7 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy hover:bg-gray-50 transition-colors text-center"
+                      className="rounded-full border-2 border-brand-navy/20 px-3 py-3 text-[9px] sm:px-7 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.22em] text-brand-navy hover:bg-gray-50 transition-colors text-center"
                     >
                       Parla con un Advisor
                     </a>
@@ -1287,20 +1287,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     {course.scholarship.body}
                   </p>
                   {course.scholarship.availability ? (
-                    <p className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-[#5E8AD0]/30 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-[#EEF4FC] mb-4 lg:mb-6">
+                    <p className="mx-auto lg:mx-0 inline-flex items-center justify-center gap-2 rounded-full bg-white/10 ring-1 ring-[#5E8AD0]/30 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-[#EEF4FC] mb-4 lg:mb-6">
                       Solo <span className="text-[#5E8AD0] text-sm">2</span> borse di studio rimaste
                     </p>
                   ) : null}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    {course.scholarship.ctaHref ? (
-                      <Link
-                        to={course.scholarship.ctaHref}
-                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-7 py-3 text-[10px] sm:px-8 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
-                      >
-                        {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
-                      </Link>
-                    ) : null}
-                  </div>
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-4 sm:p-6 backdrop-blur-sm">
@@ -1320,6 +1310,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
                 </div>
               </div>
+              {course.scholarship.ctaHref ? (
+                <div className="relative mt-5 lg:mt-7 flex justify-center">
+                  <Link
+                    to={course.scholarship.ctaHref}
+                    className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-7 py-3 text-[10px] sm:px-8 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
+                  >
+                    {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
+                  </Link>
+                </div>
+              ) : null}
             </div>
           </div>
         </section>
@@ -1463,7 +1463,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             <p className={`${tBody} max-w-3xl`}>{richText(studyMode.body)}</p>
             {studyMode.linkText && studyMode.linkHref ? (
               <a
-                href={studyMode.linkHref}
+                href={editions.length > 0 ? '#calendario-edizioni' : studyMode.linkHref}
                 className="mt-4 inline-block text-sm font-black text-brand-accent underline underline-offset-4 hover:text-brand-navy"
               >
                 {studyMode.linkText}
@@ -1684,17 +1684,19 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
             <div
               ref={levelsScrollerRef}
-              className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-smooth md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:gap-6 items-stretch"
+              className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-[13vw] pb-2 scroll-smooth md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:gap-6 items-stretch"
               style={{ scrollbarWidth: 'none' }}
             >
               {course.levelsComparison.levels.map((lvl, i) => (
                 <div
                   key={i}
                   data-level-highlight={lvl.highlight ? 'true' : undefined}
-                  className={`relative flex min-h-[520px] w-[82vw] shrink-0 snap-center flex-col rounded-[1.5rem] p-5 md:min-h-0 md:w-auto md:shrink md:p-6 lg:p-7 ring-1 ${
+                  className={`relative flex min-h-[430px] w-[74vw] shrink-0 snap-center flex-col rounded-[1.35rem] sm:rounded-[1.5rem] p-4 md:min-h-0 md:w-auto md:shrink md:p-6 lg:p-7 ring-1 ${
                     lvl.highlight
                       ? 'bg-brand-navy text-white ring-brand-navy shadow-[0_30px_80px_-40px_rgba(0,21,51,0.55)] lg:scale-[1.03]'
-                      : 'bg-white text-brand-navy ring-black/8 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.22)]'
+                      : i === 0
+                        ? 'bg-[#EEF4FC] text-brand-navy ring-brand-blue-soft shadow-[0_12px_40px_-28px_rgba(0,21,51,0.22)]'
+                        : 'bg-[#5E8AD0] text-white ring-[#5E8AD0] shadow-[0_18px_50px_-28px_rgba(42,86,168,0.4)]'
                   }`}
                 >
                   {lvl.highlight ? (
@@ -1702,39 +1704,39 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       Più scelto
                     </span>
                   ) : null}
-                  <p className={`text-[11px] font-black uppercase tracking-[0.22em] mb-2 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}>
+                  <p className={`text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] mb-2 ${lvl.highlight || i === 0 ? 'text-brand-accent' : 'text-white/75'}`}>
                     {lvl.label}
                   </p>
-                  <h3 className={`text-lg sm:text-2xl font-display font-black tracking-tight leading-tight mb-3 ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                  <h3 className={`text-base sm:text-2xl font-display font-black tracking-tight leading-tight mb-2 sm:mb-3 ${lvl.highlight || i === 2 ? 'text-white' : 'text-brand-navy'}`}>
                     {lvl.name}
                   </h3>
                   {lvl.hours ? (
-                    <p className={`text-[11px] font-black uppercase tracking-[0.18em] mb-5 ${lvl.highlight ? 'text-white/60' : 'text-brand-navy/45'}`}>
+                    <p className={`text-[10px] sm:text-[11px] font-black uppercase tracking-[0.16em] sm:tracking-[0.18em] mb-3 sm:mb-5 ${lvl.highlight || i === 2 ? 'text-white/60' : 'text-brand-navy/45'}`}>
                       {lvl.hours}
                     </p>
                   ) : null}
-                  <div className="mb-5">
-                    <p className={`text-3xl sm:text-4xl font-display font-black tracking-tight leading-none ${lvl.highlight ? 'text-white' : 'text-brand-navy'}`}>
+                  <div className="mb-3 sm:mb-5">
+                    <p className={`text-2xl sm:text-4xl font-display font-black tracking-tight leading-none ${lvl.highlight || i === 2 ? 'text-white' : 'text-brand-navy'}`}>
                       {lvl.price}
                     </p>
                     {lvl.priceLabel ? (
-                      <p className={`text-xs font-semibold mt-1 ${lvl.highlight ? 'text-white/70' : 'text-brand-navy/55'}`}>
+                      <p className={`text-xs font-semibold mt-1 ${lvl.highlight || i === 2 ? 'text-white/70' : 'text-brand-navy/55'}`}>
                         {lvl.priceLabel}
                       </p>
                     ) : null}
                   </div>
                   {lvl.benefit ? (
-                    <p className={`inline-flex self-start items-center rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] mb-5 ${
-                      lvl.highlight ? 'bg-brand-accent/20 text-brand-accent' : 'bg-brand-accent/10 text-brand-accent'
+                    <p className={`inline-flex self-start items-center rounded-full px-3 py-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.16em] sm:tracking-[0.18em] mb-3 sm:mb-5 ${
+                      lvl.highlight ? 'bg-brand-accent/20 text-brand-accent' : i === 0 ? 'bg-brand-accent/10 text-brand-accent' : 'bg-white/15 text-white'
                     }`}>
                       {lvl.benefit}
                     </p>
                   ) : null}
-                  <ul className="space-y-2 mb-5 flex-1">
+                  <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5 flex-1">
                     {lvl.features.map((f, j) => (
-                      <li key={j} className={`flex items-start gap-2 text-sm leading-snug ${lvl.highlight ? 'text-white/85' : 'text-brand-navy/75'}`}>
+                      <li key={j} className={`flex items-start gap-2 text-xs sm:text-sm leading-snug ${lvl.highlight || i === 2 ? 'text-white/85' : 'text-brand-navy/75'}`}>
                         <CheckCircle2
-                          size={16}
+                          size={14}
                           className={`mt-0.5 shrink-0 ${lvl.highlight ? 'text-brand-accent' : 'text-brand-accent'}`}
                           strokeWidth={2.25}
                         />
@@ -1748,10 +1750,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       if (lvl.feeTab) setPaymentTab(lvl.feeTab.toLowerCase());
                       document.getElementById('prezzo')?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className={`mt-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-[11px] font-black uppercase tracking-[0.22em] transition-colors ${
+                    className={`mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 sm:px-6 sm:py-3 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] transition-colors ${
                       lvl.highlight
                         ? 'bg-white text-brand-navy hover:bg-brand-accent hover:text-white'
-                        : 'bg-brand-navy text-white hover:bg-brand-accent'
+                        : i === 0 ? 'bg-brand-navy text-white hover:bg-brand-accent' : 'bg-white text-brand-navy hover:bg-brand-navy hover:text-white'
                     }`}
                   >
                     Iscriviti
@@ -1862,8 +1864,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               : `Scegli il metodo di pagamento per ${course.title}`}
           </p>
 
-          <div className="mx-auto max-w-[840px] rounded-2xl sm:rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
-            <div className="grid grid-cols-2 gap-1 sm:flex sm:overflow-x-auto">
+          <div className="mx-auto max-w-[840px] rounded-full bg-white/25 p-1.5 ring-1 ring-white/40 backdrop-blur-[2px]">
+            <div className="flex gap-1 overflow-x-auto">
               {course.fees.map((fee, idx) => {
                 const key = fee.title.toLowerCase();
                 const active = paymentTab === key;
@@ -1872,7 +1874,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     key={idx}
                     type="button"
                     onClick={() => setPaymentTab(key)}
-                    className={`min-w-0 sm:min-w-[140px] flex-1 rounded-full px-3 py-2.5 sm:px-4 sm:py-3.5 text-[10px] sm:text-sm font-display font-black uppercase tracking-wide leading-tight transition-all ${
+                    className={`min-w-[104px] sm:min-w-[140px] flex-1 whitespace-nowrap rounded-full px-3 py-2.5 sm:px-4 sm:py-3.5 text-[10px] sm:text-sm font-display font-black uppercase tracking-wide leading-tight transition-all ${
                       active
                         ? 'bg-white text-brand-navy shadow-[0_10px_24px_-14px_rgba(0,21,51,0.35)]'
                         : 'text-brand-navy/75 hover:text-brand-navy'
@@ -2042,27 +2044,27 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </div>
                   ) : null}
 
-                  <div className="flex flex-col gap-2.5 sm:gap-4 sm:flex-row sm:justify-center">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-4 sm:flex-row sm:justify-center">
                     {checkoutHref ? (
                       <a
                         href={checkoutHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-full bg-[#001D4B] px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                        className="rounded-full bg-[#001D4B] px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
                       >
                         {fee.ctaLabel ?? 'Iscriviti ora'}
                       </a>
                     ) : (
                       <button
                         type="button"
-                        className="rounded-full bg-[#001D4B] px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                        className="rounded-full bg-[#001D4B] px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
                       >
                         {fee.ctaLabel ?? 'Iscriviti ora'}
                       </button>
                     )}
                     <button
                       type="button"
-                      className="rounded-full border-2 border-brand-navy/25 bg-white px-8 py-3.5 sm:px-10 sm:py-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.22em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                      className="rounded-full border-2 border-brand-navy/25 bg-white px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
                     >
                       Parla con noi
                     </button>
@@ -2136,11 +2138,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 7. TROVIAMO INSIEME SECTION */}
-      <section className="py-8 lg:py-20 bg-white">
+      <section className="py-7 lg:py-14 bg-brand-blue-soft">
          <div className="max-w-[941px] mx-auto px-4">
-            <div className="bg-[#EEF4FC] rounded-[1.35rem] lg:rounded-[1.75rem] p-4 sm:p-7 lg:p-9 flex flex-col sm:flex-row md:flex-row items-center justify-between gap-4 lg:gap-8 border border-brand-accent/5">
+            <div className="flex flex-col sm:flex-row md:flex-row items-center justify-between gap-4 lg:gap-8">
                 <div className="flex flex-row items-center gap-4 sm:gap-8 text-left">
-                   <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-4 sm:border-[6px] border-white shadow-lg">
+                   <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
                       <img
                         src="/advisors/advisor-3.jpeg"
                         className="w-full h-full object-cover object-top"
@@ -2148,11 +2150,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       />
                    </div>
                    <div>
-                      <h3 className="text-base sm:text-xl font-display font-black text-brand-navy uppercase tracking-tight mb-1 sm:mb-2 leading-snug">Troviamo insieme la soluzione giusta per te</h3>
+                      <h3 className="text-base sm:text-xl font-display font-black text-brand-navy tracking-tight mb-1 sm:mb-2 leading-snug">Troviamo insieme la soluzione giusta per te</h3>
                       <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Scopri i dettagli del percorso e parla con un Advisor Asterys Lab.</p>
                    </div>
                 </div>
-                <button className="bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-md font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</button>
+                <button className="bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</button>
             </div>
          </div>
       </section>
@@ -2163,23 +2165,20 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-7 lg:mb-16">
                <h2 className={`${tSection} mb-3 lg:mb-4`}>
-                  Career Center Asterys:{' '}
-                  <span className="bg-brand-accent text-white px-3 py-1.5 inline-block -rotate-1 text-[0.85em] sm:text-[0.9em]">
-                    la tua carriera al centro
-                  </span>
+                  Asterys Lab Career
                </h2>
                <p className={`${tBody} max-w-2xl mx-auto text-center`}>
                   {course.career.content}
                </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-8 sm:gap-y-8">
                {course.career.points.map((p, i) => (
-                 <div key={i} className="flex flex-col items-start p-4 sm:p-7 bg-white rounded-[1.15rem] sm:rounded-[1.25rem] shadow-[0_16px_44px_-30px_rgba(0,21,51,0.2)] border border-gray-100 h-full group hover:shadow-[0_22px_55px_-32px_rgba(0,21,51,0.22)] transition-all text-left">
-                    <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#F9FAFB] rounded-full flex items-center justify-center text-brand-accent mb-3 sm:mb-6 ring-1 ring-black/5 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                 <div key={i} className="flex flex-col items-start text-left">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#EEF4FC] rounded-full flex items-center justify-center text-brand-accent mb-3 ring-1 ring-brand-navy/5">
                        {i === 0 ? <UserCheck size={18} strokeWidth={2} /> : i === 1 ? <Briefcase size={18} strokeWidth={2} /> : i === 2 ? <TrendingUp size={18} strokeWidth={2} /> : <Users size={18} strokeWidth={2} />}
                     </div>
-                    <h3 className="text-[12px] sm:text-base font-black uppercase tracking-tight mb-2 sm:mb-3 leading-snug">{p.title}</h3>
+                    <h3 className="text-[12px] sm:text-base font-black uppercase tracking-tight mb-1.5 sm:mb-2 leading-snug">{p.title}</h3>
                     <p className="text-brand-navy/50 text-[11px] sm:text-xs font-medium leading-relaxed">{p.desc}</p>
                  </div>
                ))}
@@ -2216,9 +2215,9 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
               </div>
             </div>
 
-            <div className="mt-5 lg:mt-9 grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
+            <div className="mt-5 lg:mt-9 grid grid-cols-1 md:grid-cols-3 gap-2.5 lg:gap-4">
               {course.pegasusProgram.points.map((point, i) => (
-                <div key={i} className="rounded-2xl bg-white/[0.07] p-4 sm:p-6 ring-1 ring-white/10">
+                <div key={i} className="rounded-xl sm:rounded-2xl bg-white/[0.07] p-3.5 sm:p-6 ring-1 ring-white/10">
                   {point.meta ? (
                     <p className="mb-2 sm:mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
                       {point.meta}
@@ -2227,7 +2226,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <h3 className="text-sm sm:text-base font-black uppercase tracking-tight leading-snug mb-2 sm:mb-3">
                     {point.title}
                   </h3>
-                  <p className="text-xs sm:text-[13px] text-white/62 font-medium leading-relaxed">
+                  <p className="text-[11px] sm:text-[13px] text-white/62 font-medium leading-relaxed">
                     {point.desc}
                   </p>
                 </div>
@@ -2394,7 +2393,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
       ) : null}
 
-      <TestimonialsSection />
+      <TestimonialsSection compact />
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       {!isCoachingCircle && !isWorkout && !isCL ? (
@@ -2463,7 +2462,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </div>
 
                   {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[260px] sm:min-h-[438px] lg:h-[430px]' : 'overflow-hidden'}`}>
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[260px] pb-[150px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
                      <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
                        {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
@@ -2516,11 +2515,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
-      <section className="py-8 lg:py-20 bg-white">
-         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="bg-[#2A56A8] rounded-[1.35rem] lg:rounded-[1.75rem] p-5 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-[0_26px_70px_-34px_rgba(0,21,51,0.35)] group">
-               <div className="relative z-10 flex flex-col gap-4 sm:block text-left sm:text-center">
-                  <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black uppercase sm:mb-6 tracking-tight leading-[1.05]">
+      <section className="py-8 lg:py-14 bg-[#2A56A8] text-white">
+         <div className="max-w-[1100px] mx-auto px-4 sm:px-8">
+               <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-left">
+                  <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black uppercase tracking-tight leading-[1.05]">
                     {isCoachingCircle ? (
                       <>
                         Fai pratica di coaching: <span className="text-[#CFE0F5]">prenota il tuo posto</span>
@@ -2531,28 +2530,28 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       </>
                     )}
                   </h2>
-                  <p className="text-sm sm:text-base text-white/70 sm:text-white/55 sm:mb-10 font-medium max-w-md sm:mx-auto leading-relaxed">
+                  <p className="mt-2 text-sm sm:text-base text-white/70 font-medium max-w-md leading-relaxed">
                     {isCoachingCircle
                       ? "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
                       : isWorkout
                       ? 'Prenota il tuo Round: posti limitati. Scegli il set di emozioni e mettilo in agenda.'
                       : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
                   </p>
-                  <button className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-md font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto">
+                  </div>
+                  <button className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto shrink-0">
                      {isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
                   </button>
                </div>
-            </div>
          </div>
       </section>
 
       {/* 11. FAQs SECTION */}
-      <section className="py-10 lg:py-20 bg-[#F9FAFB]/80">
+      <section className="py-8 lg:py-20 bg-[#F9FAFB]/80">
          <div className="max-w-[941px] mx-auto px-4">
-            <h2 className={`${tSection} mb-6 lg:mb-12`}>FAQs</h2>
-            <div className="space-y-2.5 sm:space-y-4">
+            <h2 className={`${tSection} mb-4 lg:mb-12`}>FAQs</h2>
+            <div className="space-y-2 sm:space-y-4">
                {course.faqs.map((faq, i) => (
-                 <div key={i} className="bg-white rounded-2xl sm:rounded-3xl px-4 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">
+                 <div key={i} className="bg-white rounded-xl sm:rounded-3xl px-3.5 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">
                     <Accordion 
                      title={faq.q}
                      content={faq.a}

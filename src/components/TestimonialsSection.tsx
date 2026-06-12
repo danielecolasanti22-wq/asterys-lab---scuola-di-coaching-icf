@@ -10,6 +10,7 @@ const tSection =
 type TestimonialsSectionProps = {
   testimonials?: CourseTestimonial[];
   titleUppercase?: boolean;
+  compact?: boolean;
 };
 
 type Slide = { video?: CourseTestimonial; cards: CourseTestimonial[] };
@@ -17,6 +18,7 @@ type Slide = { video?: CourseTestimonial; cards: CourseTestimonial[] };
 export function TestimonialsSection({
   testimonials = homeTestimonials,
   titleUppercase = true,
+  compact = false,
 }: TestimonialsSectionProps) {
   const [activeVideoTestimonial, setActiveVideoTestimonial] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -57,7 +59,9 @@ export function TestimonialsSection({
     <button
       type="button"
       onClick={() => setActiveVideoTestimonial(testimonials.findIndex((t) => t.name === video.name))}
-      className="group relative overflow-hidden rounded-[1.5rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] h-full min-h-[200px] sm:min-h-[380px] lg:min-h-[420px]"
+      className={`group relative overflow-hidden rounded-[1.25rem] lg:rounded-[1.75rem] text-left ring-1 ring-brand-navy/5 shadow-[0_24px_60px_-28px_rgba(0,21,51,0.45)] h-full ${
+        compact ? 'min-h-[180px] sm:min-h-[320px] lg:min-h-[380px]' : 'min-h-[200px] sm:min-h-[380px] lg:min-h-[420px]'
+      }`}
     >
       <img
         src={video.video?.poster}
@@ -94,7 +98,9 @@ export function TestimonialsSection({
   const renderTextCard = (t: CourseTestimonial, idx: number) => (
     <div
       key={`${t.name}-${idx}`}
-      className="relative flex flex-col bg-white rounded-[1.25rem] lg:rounded-[1.75rem] p-4 lg:p-6 border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden"
+      className={`relative flex flex-col bg-white rounded-[1.15rem] lg:rounded-[1.75rem] border border-gray-100 shadow-[0_22px_60px_-32px_rgba(0,21,51,0.22)] overflow-hidden ${
+        compact ? 'p-3.5 lg:p-5' : 'p-4 lg:p-6'
+      }`}
     >
       <div className="flex items-start justify-between mb-3 gap-3">
         <div>
@@ -109,7 +115,7 @@ export function TestimonialsSection({
           </div>
         ) : null}
       </div>
-      <p className="text-[13px] lg:text-sm text-brand-navy/75 leading-relaxed font-medium flex-1 mb-4 line-clamp-3 lg:line-clamp-5 min-h-0">
+      <p className={`${compact ? 'text-xs line-clamp-2 lg:line-clamp-4 mb-3' : 'text-[13px] lg:text-sm line-clamp-3 lg:line-clamp-5 mb-4'} text-brand-navy/75 leading-relaxed font-medium flex-1 min-h-0`}>
         “{t.quote}”
       </p>
       <div className="flex items-center justify-between pt-3 border-t border-gray-100 shrink-0">
@@ -138,20 +144,20 @@ export function TestimonialsSection({
   const slide = slides[activeSlide];
 
   return (
-    <section id="testimonianze" className="py-12 lg:py-24 bg-gradient-to-b from-white via-[#EEF4FC] to-white">
+    <section id="testimonianze" className={`${compact ? 'py-9 lg:py-20' : 'py-12 lg:py-24'} bg-gradient-to-b from-white via-[#EEF4FC] to-white`}>
       <div className="max-w-[941px] mx-auto px-4">
-        <div className="max-w-2xl mb-6 lg:mb-12">
+        <div className={`max-w-2xl ${compact ? 'mb-4 lg:mb-8' : 'mb-6 lg:mb-12'}`}>
           <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
-          <h2 className={`${tSection} ${titleUppercase ? 'uppercase' : ''} mb-4`}>
+          <h2 className={`${compact ? 'text-2xl sm:text-3xl lg:text-[2.4rem]' : tSection} ${titleUppercase ? 'uppercase' : ''} mb-3 lg:mb-4 font-display font-black tracking-tighter text-brand-navy leading-[1.05]`}>
             Storie di chi ha scelto <span className="text-brand-accent">Asterys Lab</span>
           </h2>
-          <p className={tLead}>
+          <p className={compact ? 'text-sm sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-2xl' : tLead}>
             Professionisti che hanno trasformato la loro carriera con il nostro metodo. Video e racconti dalla nostra community.
           </p>
         </div>
 
         {slide ? (
-          <div className="relative overflow-hidden min-h-[560px] sm:min-h-0">
+          <div className={`relative overflow-hidden ${compact ? 'min-h-[420px]' : 'min-h-[560px]'} sm:min-h-0`}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activeSlide}
@@ -171,7 +177,7 @@ export function TestimonialsSection({
                     ? `grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${
                         activeSlide % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
                       }`
-                    : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 items-stretch'
+                    : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 items-stretch'
                 }
               >
                 {slide.video ? (
