@@ -1012,7 +1012,9 @@ export const Footer = () => {
       <section className="border-b border-white/10">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
           {footerNavGroups.map((group) => (
-            <FooterNavToggle key={group.title} title={group.title} links={group.links} />
+            <div key={group.title}>
+              <FooterNavToggle title={group.title} links={group.links} />
+            </div>
           ))}
         </div>
       </section>
