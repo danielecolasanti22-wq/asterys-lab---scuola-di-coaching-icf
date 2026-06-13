@@ -256,7 +256,7 @@ function buildApcmCompleteEditions(editions: CourseEdition[], citySlug: string):
 function levelSortWeight(slug: string): number {
   if (slug === 'l1') return 0;
   if (slug === 'l2') return 1;
-  if (slug === APCM_COMPLETE_LEVEL_SLUG) return 2;
+  if (slug === APCM_COMPLETE_LEVEL_SLUG || slug === 'l1-l2') return 2;
   return 3;
 }
 
@@ -271,32 +271,37 @@ function shortLevelLabel(level: string, levelSlug?: string): string {
   return level;
 }
 
-function shortEditionPillLabel(edition: CourseEdition, siblingsCount = 1): string {
-  const short = shortLevelLabel(edition.level, edition.levelSlug);
-  if (siblingsCount > 1) {
-    if (edition.editionLabel.includes(' · ')) {
-      const parts = edition.editionLabel.split(' · ');
-      return parts[parts.length - 1];
-    }
-    return edition.subtitle ?? edition.city;
-  }
-  if (edition.level.toLowerCase().includes('team coaching sistemico')) return short;
-  return edition.editionLabel;
+function isCompleteEdition(edition: CourseEdition): boolean {
+  return edition.levelSlug === APCM_COMPLETE_LEVEL_SLUG || edition.levelSlug === 'l1-l2';
 }
 
-function desktopEditionPillLabel(edition: CourseEdition): string {
-  const base = edition.editionLabel;
-  if (!edition.subtitle) return base;
-  return `${base} ${edition.subtitle}`;
+function editionDisplayName(edition: CourseEdition): string {
+  const match = edition.editionLabel.match(/Edizione\s+\d+/i);
+  if (match) return match[0].replace(/^edizione/i, 'Edizione');
+  return 'Edizione 1';
 }
 
-function shortEditionHeading(edition: CourseEdition): string {
-  const label = edition.editionLabel;
-  if (label.includes(` · ${edition.city}`)) return label.replace(` · ${edition.city}`, '').trim();
-  if (label.toLowerCase().includes('team coaching sistemico')) {
-    return edition.subtitle ?? label.replace(/Team Coaching Sistemico\s*/gi, '').trim();
-  }
-  return label;
+function editionPeriod(edition: CourseEdition, allEditions: CourseEdition[]): string {
+  if (!isCompleteEdition(edition)) return edition.subtitle ?? '';
+
+  if (edition.subtitle?.includes(' + ')) return edition.subtitle;
+
+  const levelOne = allEditions.find(
+    (e) => e.citySlug === edition.citySlug && e.levelSlug === 'l1',
+  );
+  const levelTwo = allEditions.find(
+    (e) => e.citySlug === edition.citySlug && e.levelSlug === 'l2',
+  );
+
+  if (levelOne?.subtitle && levelTwo?.subtitle) return `${levelOne.subtitle} + ${levelTwo.subtitle}`;
+  return edition.subtitle ?? '';
+}
+
+function editionPillLabel(edition: CourseEdition, allEditions: CourseEdition[]): string {
+  const name = editionDisplayName(edition);
+  const period = editionPeriod(edition, allEditions);
+  if (!period) return name;
+  return isCompleteEdition(edition) ? `${name} · ${period}` : `${name} • ${period}`;
 }
 
 function shortModuleTitle(title: string): string {
@@ -694,7 +699,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                ))}
              </div>
           </div>
-          <div className="relative order-1 lg:order-2">
+          <div className={`relative order-1 lg:order-2 ${id === 'systemic-team-coaching' ? 'hidden lg:block' : ''}`}>
              <div className="rounded-[1.75rem] lg:rounded-[3rem] overflow-hidden shadow-[0_22px_60px_-38px_rgba(0,21,51,0.35)] lg:shadow-2xl">
                 <CourseImage
                   src={media.overview}
@@ -1111,22 +1116,8 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                             active ? 'text-brand-accent' : 'text-brand-navy/55'
                           }`}
                         >
-                          <span className="lg:hidden">
-                            {shortEditionPillLabel(e, editionsForCityLevel.length)}
-                          </span>
-                          <span className="hidden lg:inline">
-                            {desktopEditionPillLabel(e)}
-                          </span>
+                          {editionPillLabel(e, editions)}
                         </p>
-                        {e.subtitle && !e.level.toLowerCase().includes('team coaching sistemico') ? (
-                          <p
-                            className={`mt-1 text-[11px] font-semibold lg:hidden ${
-                              active ? 'text-brand-navy' : 'text-brand-navy/45'
-                            }`}
-                          >
-                            {e.subtitle}
-                          </p>
-                        ) : null}
                       </button>
                     );
                   })}
@@ -1157,11 +1148,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                           {activeEdition.city} · {shortLevelLabel(activeEdition.level, activeEdition.levelSlug)}
                         </p>
                         <h3 className="text-lg sm:text-2xl font-display font-black tracking-tight leading-tight">
-                          {shortEditionHeading(activeEdition)}
+                          {editionDisplayName(activeEdition)}
                         </h3>
-                        {activeEdition.subtitle ? (
+                        {editionPeriod(activeEdition, editions) ? (
                           <p className="mt-1 text-base sm:text-lg text-white/65 font-medium">
-                            {activeEdition.subtitle}
+                            {editionPeriod(activeEdition, editions)}
                           </p>
                         ) : null}
                       </div>

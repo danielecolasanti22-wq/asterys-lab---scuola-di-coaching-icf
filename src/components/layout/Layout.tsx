@@ -518,6 +518,19 @@ export const Header = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
           >
+            <div className="shrink-0 flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-white">
+              <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/45">
+                Menu
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Chiudi menu"
+                className="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-[0_12px_28px_-16px_rgba(0,29,75,0.55)] active:scale-95 transition-transform"
+              >
+                <X size={20} strokeWidth={2.5} />
+              </button>
+            </div>
             <div className="flex-1 overflow-y-auto overscroll-contain px-1">
               <button
                 type="button"
@@ -672,7 +685,7 @@ export const Header = () => {
               <Link
                 to="/iscriviti"
                 onClick={() => setIsMenuOpen(false)}
-                className="block w-full bg-[#2A56A8] text-white py-3.5 rounded-full font-black text-xs uppercase tracking-[0.14em] text-center"
+                className="block w-full bg-[#2A56A8] text-white py-4 rounded-full font-black text-xs uppercase tracking-[0.16em] text-center shadow-[0_18px_38px_-22px_rgba(42,86,168,0.7)] active:scale-[0.98] transition-transform"
               >
                 Iscriviti
               </Link>

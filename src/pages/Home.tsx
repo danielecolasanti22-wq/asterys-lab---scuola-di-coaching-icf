@@ -321,7 +321,7 @@ const ScegliPercorso = () => {
 
 /* 4. MASTER FEATURED (APCM) */
 const MasterFeatured = () => (
-  <section className="bg-white pb-5">
+  <section className="hidden lg:block bg-white pb-5">
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
       <Link to="/corsi/apcm" className="block group">
         <div className="grid sm:grid-cols-[1fr_1fr] gap-4 sm:gap-6 rounded-[1.5rem] sm:rounded-[2rem] bg-white p-3 sm:p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
@@ -686,6 +686,7 @@ export default function Home() {
     <>
       <Hero />
       <ScegliPercorso />
+      <MasterFeatured />
       <MasterGrid />
       <AdvisorBand />
       <TestimonialsSection />
