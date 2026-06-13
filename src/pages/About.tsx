@@ -337,7 +337,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-6 max-w-xl mx-auto">
+          <div className="flex flex-col lg:hidden items-center gap-6 max-w-xl mx-auto">
             <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
               {[accreditations[4], accreditations[1]].map((a) => (
                 <div key={a.file} className="flex flex-col items-center text-center">
@@ -363,6 +363,30 @@ export default function About() {
                 <img src={`/brand/${accreditations[0].file}.png`} alt={accreditations[0].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
               </div>
             </div>
+          </div>
+
+          <div className="hidden lg:grid grid-cols-5 gap-4">
+            {accreditations.map((a) => (
+              <div
+                key={a.file}
+                className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center"
+              >
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src={`/brand/${a.file}.png`}
+                    alt={a.label}
+                    className="max-h-16 w-auto object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">
+                  {a.label}
+                </p>
+                <p className="mt-2 text-xs text-brand-navy/60 font-medium leading-relaxed">
+                  {a.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

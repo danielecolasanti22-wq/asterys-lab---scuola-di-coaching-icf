@@ -284,6 +284,12 @@ function shortEditionPillLabel(edition: CourseEdition, siblingsCount = 1): strin
   return edition.editionLabel;
 }
 
+function desktopEditionPillLabel(edition: CourseEdition): string {
+  const base = edition.editionLabel;
+  if (!edition.subtitle) return base;
+  return `${base} ${edition.subtitle}`;
+}
+
 function shortEditionHeading(edition: CourseEdition): string {
   const label = edition.editionLabel;
   if (label.includes(` · ${edition.city}`)) return label.replace(` · ${edition.city}`, '').trim();
@@ -661,7 +667,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {id === 'systemic-team-coaching' ? (
-        <section className="bg-white pt-4 pb-2 lg:pt-6 lg:pb-4">
+        <section className="bg-white pt-4 pb-2 lg:hidden">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
             <img
               src="/course-media/systemic-team-coaching/classe-below-hero.png"
@@ -1105,11 +1111,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                             active ? 'text-brand-accent' : 'text-brand-navy/55'
                           }`}
                         >
-                          {shortEditionPillLabel(e, editionsForCityLevel.length)}
+                          <span className="lg:hidden">
+                            {shortEditionPillLabel(e, editionsForCityLevel.length)}
+                          </span>
+                          <span className="hidden lg:inline">
+                            {desktopEditionPillLabel(e)}
+                          </span>
                         </p>
                         {e.subtitle && !e.level.toLowerCase().includes('team coaching sistemico') ? (
                           <p
-                            className={`mt-1 text-[11px] font-semibold ${
+                            className={`mt-1 text-[11px] font-semibold lg:hidden ${
                               active ? 'text-brand-navy' : 'text-brand-navy/45'
                             }`}
                           >
@@ -1344,6 +1355,16 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       Solo <span className="text-[#5E8AD0] text-sm">2</span> borse di studio rimaste
                     </p>
                   ) : null}
+                  <div className="hidden lg:flex flex-col sm:flex-row gap-3">
+                    {course.scholarship.ctaHref ? (
+                      <Link
+                        to={course.scholarship.ctaHref}
+                        className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-8 py-3.5 text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
+                      >
+                        {course.scholarship.ctaLabel ?? 'Richiedi la borsa di studio'}
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="rounded-2xl bg-white/8 ring-1 ring-white/15 p-4 sm:p-6 backdrop-blur-sm">
@@ -1364,7 +1385,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                 </div>
               </div>
               {course.scholarship.ctaHref ? (
-                <div className="relative mt-5 lg:mt-7 flex justify-center">
+                <div className="relative mt-5 flex justify-center lg:hidden">
                   <Link
                     to={course.scholarship.ctaHref}
                     className="inline-flex items-center justify-center rounded-full bg-white text-brand-navy px-7 py-3 text-[10px] sm:px-8 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.22em] shadow-lg hover:bg-brand-accent hover:text-white transition-colors"
@@ -2234,7 +2255,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-7 lg:mb-16">
                <h2 className={`${tSection} mb-3 lg:mb-4`}>
-                  Asterys Lab Career
+                  Asterys Lab{' '}
+                  <span className={id === 'apcm' ? 'lg:underline lg:decoration-brand-accent lg:decoration-[0.18em] lg:underline-offset-[0.14em]' : ''}>
+                    Career
+                  </span>
                </h2>
                <p className={`${tBody} max-w-2xl mx-auto text-center`}>
                   {course.career.content}
@@ -2243,11 +2267,24 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
             
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-8 sm:gap-y-8">
                {course.career.points.map((p, i) => (
-                 <div key={i} className="flex flex-col items-start text-left">
-                    <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#EEF4FC] rounded-full flex items-center justify-center text-brand-accent mb-3 ring-1 ring-brand-navy/5">
+                 <div
+                   key={i}
+                   className={`flex flex-col items-start text-left ${
+                     id === 'apcm'
+                       ? 'lg:p-7 lg:bg-white lg:rounded-[1.25rem] lg:shadow-[0_16px_44px_-30px_rgba(0,21,51,0.2)] lg:border lg:border-gray-100 lg:h-full lg:group lg:hover:shadow-[0_22px_55px_-32px_rgba(0,21,51,0.22)] lg:transition-all'
+                       : ''
+                   }`}
+                 >
+                    <div className={`w-9 h-9 sm:w-11 sm:h-11 bg-[#EEF4FC] rounded-full flex items-center justify-center text-brand-accent mb-3 ring-1 ring-brand-navy/5 ${
+                      id === 'apcm'
+                        ? 'lg:bg-[#F9FAFB] lg:mb-6 lg:ring-black/5 lg:group-hover:bg-brand-navy lg:group-hover:text-white lg:transition-colors'
+                        : ''
+                    }`}>
                        {i === 0 ? <UserCheck size={18} strokeWidth={2} /> : i === 1 ? <Briefcase size={18} strokeWidth={2} /> : i === 2 ? <TrendingUp size={18} strokeWidth={2} /> : <Users size={18} strokeWidth={2} />}
                     </div>
-                    <h3 className="text-[12px] sm:text-base font-black uppercase tracking-tight mb-1.5 sm:mb-2 leading-snug">{p.title}</h3>
+                    <h3 className={`text-[12px] sm:text-base font-black uppercase tracking-tight mb-1.5 sm:mb-2 leading-snug ${
+                      id === 'apcm' ? 'lg:mb-3' : ''
+                    }`}>{p.title}</h3>
                     <p className="text-brand-navy/50 text-[11px] sm:text-xs font-medium leading-relaxed">{p.desc}</p>
                  </div>
                ))}

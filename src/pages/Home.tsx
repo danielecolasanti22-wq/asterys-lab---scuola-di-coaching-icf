@@ -455,7 +455,9 @@ const MasterGrid = () => {
             <Link
               key={m.id}
               to={`/corsi/${m.id}`}
-              className="group bg-white border border-gray-100 rounded-[1.4rem] sm:rounded-[2rem] p-3.5 sm:p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col"
+              className={`group bg-white border border-gray-100 rounded-[1.4rem] sm:rounded-[2rem] p-3.5 sm:p-4 shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.32)] transition-shadow flex flex-col ${
+                m.id === 'apcm' ? 'lg:hidden' : ''
+              }`}
             >
               <div className="aspect-[16/9] relative rounded-2xl overflow-hidden bg-gray-100">
                 <CourseImage

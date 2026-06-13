@@ -248,7 +248,7 @@ export const Header = () => {
   return (
     <header
       id="site-header"
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-hidden ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-visible max-[939px]:overflow-hidden ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
       <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
         <div className="flex items-center gap-12">
@@ -1077,28 +1077,28 @@ const FloatingWhatsApp = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 14, scale: 0.96 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="relative w-[240px] max-w-[calc(100vw-3rem)] bg-white rounded-[1.5rem] shadow-[0_24px_70px_-12px_rgba(0,29,75,0.45)] border border-brand-navy/5 p-4"
+            className="relative w-[240px] lg:w-[300px] max-w-[calc(100vw-3rem)] bg-white rounded-[1.5rem] lg:rounded-[1.75rem] shadow-[0_24px_70px_-12px_rgba(0,29,75,0.45)] border border-brand-navy/5 p-4 lg:p-5"
           >
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Chiudi"
-              className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+              className="absolute -top-2.5 -right-2.5 lg:-top-3 lg:-right-3 w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
             >
-              <X size={14} />
+              <X className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
             </button>
 
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 lg:gap-3">
               <img
                 src={ADVISOR_PHOTO}
                 alt="Luciana — advisor Asterys Lab"
-                className="w-9 h-9 rounded-full object-cover object-top bg-brand-blue-soft shrink-0"
+                className="w-9 h-9 lg:w-11 lg:h-11 rounded-full object-cover object-top bg-brand-blue-soft shrink-0"
               />
               <div className="min-w-0">
-                <p className="text-sm font-display font-black text-brand-navy leading-tight tracking-tight">
+                <p className="text-sm lg:text-base font-display font-black text-brand-navy leading-tight tracking-tight">
                   Vuoi parlare con noi?
                 </p>
-                <p className="text-[11px] text-brand-navy/55 font-medium">Rispondiamo su WhatsApp</p>
+                <p className="text-[11px] lg:text-xs text-brand-navy/55 font-medium">Rispondiamo su WhatsApp</p>
               </div>
             </div>
 
@@ -1106,9 +1106,10 @@ const FloatingWhatsApp = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl py-2.5 font-display font-black text-[13px] tracking-tight transition-colors active:scale-[0.98]"
+              className="mt-3 lg:mt-4 flex items-center justify-center gap-2 lg:gap-2.5 w-full bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl lg:rounded-2xl py-2.5 lg:py-3.5 font-display font-black text-[13px] lg:text-[15px] tracking-tight transition-colors active:scale-[0.98]"
             >
-              <WhatsAppIcon size={17} className="text-white" />
+              <WhatsAppIcon size={20} className="hidden lg:block text-white" />
+              <WhatsAppIcon size={17} className="lg:hidden text-white" />
               Contattaci su WhatsApp
             </a>
           </motion.div>
@@ -1122,10 +1123,11 @@ const FloatingWhatsApp = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.6 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="relative w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_14px_34px_-6px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-transform"
+            className="relative w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_14px_34px_-6px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-transform"
           >
-            <WhatsAppIcon size={26} className="text-white" />
-            <span className="absolute top-0 right-0 w-3 h-3 bg-brand-blue rounded-full border-2 border-white animate-pulse" />
+            <WhatsAppIcon size={32} className="hidden lg:block text-white" />
+            <WhatsAppIcon size={26} className="lg:hidden text-white" />
+            <span className="absolute top-0 right-0 w-3 h-3 lg:w-4 lg:h-4 bg-brand-blue rounded-full border-2 border-white animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>
