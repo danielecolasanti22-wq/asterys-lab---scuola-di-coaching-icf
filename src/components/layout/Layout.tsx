@@ -172,8 +172,8 @@ export const Header = () => {
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [activeMega, setActiveMega] = useState(0);
-  const [mobileCampusOpen, setMobileCampusOpen] = useState(true);
-  const [mobileMegaIdx, setMobileMegaIdx] = useState(0);
+  const [mobileCampusOpen, setMobileCampusOpen] = useState(false);
+  const [mobileMegaIdx, setMobileMegaIdx] = useState(-1);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
@@ -195,8 +195,8 @@ export const Header = () => {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
-      setMobileCampusOpen(true);
-      setMobileMegaIdx(0);
+      setMobileCampusOpen(false);
+      setMobileMegaIdx(-1);
       setMobileAboutOpen(false);
     } else {
       document.body.style.overflow = '';
@@ -366,9 +366,21 @@ export const Header = () => {
           </Link>
         </div>
 
-        <button className="lg:hidden text-brand-navy" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <Link
+            to="/iscriviti"
+            className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.12em] whitespace-nowrap shadow-[0_12px_24px_-16px_rgba(42,86,168,0.55)]"
+          >
+            Iscriviti
+          </Link>
+          <button
+            className="text-brand-navy"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Chiudi menu' : 'Apri menu'}
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Desktop Mega Menu */}
@@ -518,62 +530,49 @@ export const Header = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
           >
-            <div className="shrink-0 flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-white">
-              <span className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-navy/45">
-                Menu
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="Chiudi menu"
-                className="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-[0_12px_28px_-16px_rgba(0,29,75,0.55)] active:scale-95 transition-transform"
-              >
-                <X size={20} strokeWidth={2.5} />
-              </button>
-            </div>
             <div className="flex-1 overflow-y-auto overscroll-contain px-1">
               <button
                 type="button"
                 onClick={() => setMobileCampusOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-5 py-5 border-b border-gray-100 text-left"
+                className="w-full flex items-center justify-between px-6 py-6 border-b border-gray-100 text-left"
               >
-                <span className={`text-[17px] font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                <span className={`text-[18px] font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
                   The Campus
                 </span>
                 <ChevronDown
-                  size={18}
+                  size={19}
                   className={`shrink-0 text-brand-navy/40 transition-transform ${mobileCampusOpen ? 'rotate-180 text-brand-accent' : ''}`}
                 />
               </button>
 
               {mobileCampusOpen ? (
-                <div className="border-b border-gray-100 pb-2">
+                <div className="border-b border-gray-100 pb-3">
                   {megaColumns.map((col, idx) => (
-                    <div key={col.label} className="border-t border-gray-50 first:border-t-0">
+                    <div key={col.label} className="border-t border-gray-100 first:border-t-0">
                       <button
                         type="button"
                         onClick={() => setMobileMegaIdx((prev) => (prev === idx ? -1 : idx))}
-                        className="w-full flex items-center justify-between px-5 py-4 text-left"
+                        className="w-full flex items-center justify-between px-6 py-5 text-left"
                       >
-                        <span className={`text-[15px] font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
+                        <span className={`text-[16px] font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
                           {col.label}
                         </span>
                         <ChevronDown
-                          size={15}
+                          size={16}
                           className={`shrink-0 text-brand-navy/35 transition-transform ${mobileMegaIdx === idx ? 'rotate-180 text-brand-accent' : ''}`}
                         />
                       </button>
 
                       {mobileMegaIdx === idx ? (
-                        <div className="mx-3 mb-3 rounded-xl bg-brand-blue-soft/35 px-4 py-3">
-                          <p className="text-[11px] text-brand-navy/50 font-medium mb-3 leading-relaxed">{col.caption}</p>
-                          <div className="space-y-1">
+                        <div className="mx-4 mb-4 rounded-xl bg-brand-blue-soft/35 px-4 py-4">
+                          <p className="text-[11px] text-brand-navy/50 font-medium mb-4 leading-relaxed">{col.caption}</p>
+                          <div className="space-y-2">
                             {col.items.map((item) => (
                               <Link
                                 key={item.id}
                                 to={`/corsi/${item.id}`}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="block rounded-lg px-2 py-3 group hover:bg-white/70 transition-colors"
+                                className="block rounded-lg px-2 py-3.5 group hover:bg-white/70 transition-colors"
                               >
                                 <span className="block text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors leading-snug">
                                   {item.title}
@@ -682,13 +681,6 @@ export const Header = () => {
             </div>
 
             <div className="shrink-0 px-5 py-4 border-t border-gray-100 bg-white">
-              <Link
-                to="/iscriviti"
-                onClick={() => setIsMenuOpen(false)}
-                className="block w-full bg-[#2A56A8] text-white py-4 rounded-full font-black text-xs uppercase tracking-[0.16em] text-center shadow-[0_18px_38px_-22px_rgba(42,86,168,0.7)] active:scale-[0.98] transition-transform"
-              >
-                Iscriviti
-              </Link>
             </div>
           </motion.div>
         )}
