@@ -108,7 +108,7 @@ const megaPromos = [
     title: 'Fino a 1.500€ · Sede di Roma',
     cta: 'Candidati ora',
     img: '/promo/borsa-di-studio-roma.png',
-    to: '/iscriviti',
+    to: '/borsa-di-studio',
   },
 ];
 
@@ -833,6 +833,7 @@ const footerNavGroups = [
     title: 'Candidati',
     links: [
       { label: 'Iscriviti', to: '/iscriviti' },
+      { label: 'Credito ai talenti', to: '/credito-ai-talenti' },
       { label: 'Parla con advisor', to: '/iscriviti' },
       { label: 'Scarica brochure', to: '/iscriviti' },
       { label: 'Calendario edizioni', to: '/corsi/apcm' },

@@ -890,7 +890,7 @@ export const coursesContent: Record<string, CourseData> = {
       ],
       availability: "Solo 2 borse di studio rimaste",
       ctaLabel: "Richiedi la borsa di studio",
-      ctaHref: "/iscriviti"
+      ctaHref: "/borsa-di-studio"
     },
     editions: [
       {

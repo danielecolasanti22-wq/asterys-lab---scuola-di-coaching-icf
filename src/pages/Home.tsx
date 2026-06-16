@@ -681,6 +681,38 @@ const CorsiCta = () => {
   );
 };
 
+/* CREDITO AI TALENTI — band compatta che rimanda alla landing dedicata */
+const CreditoTalentiBand = () => (
+  <section className="bg-white py-10 lg:py-14">
+    <div className="max-w-[941px] mx-auto px-4">
+      <div className="relative overflow-hidden rounded-[1.75rem] bg-[#001D4B] text-white p-7 sm:p-9 lg:p-11">
+        <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-accent/20 blur-3xl" />
+        <div className="relative flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+          <span className="w-12 h-12 shrink-0 rounded-2xl bg-white/10 text-brand-sky flex items-center justify-center ring-1 ring-white/15">
+            <Handshake size={22} />
+          </span>
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-sky mb-2">Credito ai talenti</p>
+            <h2 className="text-2xl sm:text-3xl font-display font-black tracking-tight leading-tight mb-2">
+              Hai talento ma non puoi investire ora?
+            </h2>
+            <p className="text-sm sm:text-base text-white/75 font-medium leading-relaxed max-w-2xl">
+              Diamo credito a chi ha talento ma è senza lavoro o con reddito insufficiente: accedi ai nostri percorsi e
+              inizi a pagare quando inizi a guadagnare. Se non decolla, azzeriamo il debito residuo.
+            </p>
+          </div>
+          <Link
+            to="/credito-ai-talenti"
+            className="shrink-0 inline-flex items-center justify-center gap-2 bg-white text-brand-navy px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.16em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
+          >
+            Scopri come funziona <ArrowUpRight size={15} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export default function Home() {
   return (
     <>
@@ -692,6 +724,7 @@ export default function Home() {
       <TestimonialsSection />
       <Accreditamenti />
       <PercheNoi />
+      <CreditoTalentiBand />
       <StatsBand />
       <CorsiCta />
     </>
