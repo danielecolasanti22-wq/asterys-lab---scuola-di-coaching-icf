@@ -198,6 +198,9 @@ export interface CourseData {
       name: string;
       price: string;
       priceLabel?: string;
+      /** Borsa di studio: prezzo pieno (barrato) + risparmio mostrato accanto al prezzo reale. */
+      originalPrice?: string;
+      saving?: string;
       hours?: string;
       highlight?: boolean;
       benefit?: string;

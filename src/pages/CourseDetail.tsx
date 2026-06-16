@@ -308,12 +308,18 @@ function shortModuleTitle(title: string): string {
   return shortLevelLabel(title);
 }
 
+const WHATSAPP_URL = 'https://wa.me/393498864895';
+
 type CourseDetailProps = {
   courseId?: string;
   courseData?: CourseData;
+  /** Landing borsa: nasconde hero+announcement e converte le CTA d'acquisto in "contatto". */
+  hideHero?: boolean;
+  contactHref?: string;
+  contactLabel?: string;
 };
 
-export default function CourseDetail({ courseId, courseData }: CourseDetailProps = {}) {
+export default function CourseDetail({ courseId, courseData, hideHero, contactHref, contactLabel }: CourseDetailProps = {}) {
   const { id: routeId } = useParams<{ id: string }>();
   const id = courseId ?? routeId;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -559,6 +565,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
 
   return (
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
+      {!hideHero && (<>
       {/* 0. ANNOUNCEMENT BAR */}
       <div className="fixed top-0 left-0 right-0 h-12 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
         <span className="text-[#008060] shrink-0">{promoActive ? earlyPromo.ribbon : 'Iscrizioni aperte'}</span>
@@ -673,6 +680,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
         </div>
       </section>
+      </>)}
 
       {id === 'systemic-team-coaching' ? (
         <section className="bg-white pt-4 pb-2 lg:hidden">
@@ -1292,9 +1300,13 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   </p>
                   <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:gap-3">
                     <a
-                      href="#prezzo"
+                      href={contactHref ?? '#prezzo'}
                       onClick={(e) => {
                         e.preventDefault();
+                        if (contactHref) {
+                          document.querySelector(contactHref)?.scrollIntoView({ behavior: 'smooth' });
+                          return;
+                        }
                         // Preseleziona livello (TAB) ed edizione (variazione) nella sezione prezzi, poi scrolla.
                         const wk =
                           effectiveLevelSlug === APCM_COMPLETE_LEVEL_SLUG ? 'completo' : effectiveLevelSlug;
@@ -1326,7 +1338,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 4c. SCHOLARSHIP */}
-      {course.scholarship ? (
+      {course.scholarship && !contactHref ? (
         <section className="py-10 lg:py-16 bg-white">
           <div className="max-w-[941px] mx-auto px-4">
             <div className="relative overflow-hidden rounded-[1.4rem] lg:rounded-[1.75rem] bg-brand-navy text-white px-5 py-6 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
@@ -1784,6 +1796,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                     </p>
                   ) : null}
                   <div className="mb-3 sm:mb-5">
+                    {lvl.originalPrice ? (
+                      <p className={`text-base font-bold line-through leading-none mb-1 ${lvl.highlight || i === 2 ? 'text-white/55' : 'text-brand-navy/40'}`}>
+                        {lvl.originalPrice}
+                      </p>
+                    ) : null}
                     <p className={`text-2xl sm:text-4xl font-display font-black tracking-tight leading-none ${lvl.highlight || i === 2 ? 'text-white' : 'text-brand-navy'}`}>
                       {lvl.price}
                     </p>
@@ -1791,6 +1808,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       <p className={`text-xs font-semibold mt-1 ${lvl.highlight || i === 2 ? 'text-white/70' : 'text-brand-navy/55'}`}>
                         {lvl.priceLabel}
                       </p>
+                    ) : null}
+                    {lvl.saving ? (
+                      <span className={`mt-2 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.1em] ${lvl.highlight || i === 2 ? 'bg-white/15 text-white' : 'bg-[#E8F5EC] text-[#008060]'}`}>
+                        {lvl.saving}
+                      </span>
                     ) : null}
                   </div>
                   {lvl.benefit ? (
@@ -1815,6 +1837,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   <button
                     type="button"
                     onClick={() => {
+                      if (contactHref) {
+                        document.querySelector(contactHref)?.scrollIntoView({ behavior: 'smooth' });
+                        return;
+                      }
                       if (lvl.feeTab) setPaymentTab(lvl.feeTab.toLowerCase());
                       document.getElementById('prezzo')?.scrollIntoView({ behavior: 'smooth' });
                     }}
@@ -1824,7 +1850,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                         : i === 0 ? 'bg-brand-navy text-white hover:bg-brand-accent' : 'bg-white text-brand-navy hover:bg-brand-navy hover:text-white'
                     }`}
                   >
-                    Iscriviti
+                    {contactHref ? (contactLabel ?? 'Richiedi la borsa') : 'Iscriviti'}
                   </button>
                 </div>
               ))}
@@ -1920,6 +1946,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       ) : null}
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
+      {!contactHref && (
       <section id="prezzo" className="relative py-10 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
@@ -2159,6 +2186,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           </div>
         </div>
       </section>
+      )}
 
       {/* 6b. GUARANTEE 30 HOURS */}
       {course.guarantee30Hours ? (
@@ -2238,7 +2266,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Scopri i dettagli del percorso e parla con un Advisor Asterys Lab.</p>
                    </div>
                 </div>
-                <button className="bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</button>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</a>
             </div>
          </div>
       </section>
@@ -2640,8 +2668,11 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                       : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
                   </p>
                   </div>
-                  <button className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto shrink-0">
-                     {isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
+                  <button
+                    onClick={() => contactHref && document.querySelector(contactHref)?.scrollIntoView({ behavior: 'smooth' })}
+                    className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto shrink-0"
+                  >
+                     {contactHref ? (contactLabel ?? 'RICHIEDI LA BORSA') : isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
                   </button>
                </div>
          </div>
