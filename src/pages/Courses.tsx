@@ -47,13 +47,13 @@ const courseGroups: CourseGroup[] = [
     ],
   },
   {
-    label: 'Specializzazioni',
+    label: 'Formazione avanzata',
     caption: 'Approfondisci ambiti chiave della pratica di coaching.',
     courses: [
       {
         id: 'coaching-circle',
         title: 'Mentoring per il rinnovo delle credenziali',
-        badge: 'Specializzazione',
+        badge: 'Formazione avanzata',
         duration: '10 ore per il rinnovo',
         modality: 'Zoom · gruppo o individuale',
         desc:
@@ -63,7 +63,7 @@ const courseGroups: CourseGroup[] = [
       {
         id: 'voice-dialogue',
         title: 'Voice Dialogue Skills',
-        badge: 'Specializzazione',
+        badge: 'Formazione avanzata',
         duration: '3 giornate',
         modality: 'In presenza · Milano',
         desc:
@@ -138,7 +138,7 @@ export default function Courses() {
             Tutti i <Highlight className="text-brand-sky">percorsi</Highlight>
           </h1>
           <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mx-auto">
-            Dalla formazione di base per aspiranti coach alle specializzazioni avanzate per
+            Dalla formazione di base per aspiranti coach ai percorsi di formazione avanzata per
             professionisti e aziende. Trova il programma adatto ai tuoi obiettivi.
           </p>
         </div>

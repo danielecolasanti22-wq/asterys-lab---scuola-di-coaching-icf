@@ -22,13 +22,13 @@
 
 @layer base {
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 
   body {
     @apply bg-white text-brand-navy font-sans antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 }

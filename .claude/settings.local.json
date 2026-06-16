@@ -126,9 +126,7 @@
       "Bash(awk 'NR>=1740 && NR<=2034 && /fees:/{print NR}' src/constants/coursesContent.tsx)",
       "Bash(awk 'NR>=2089 && NR<=2260 && /fees:/{print NR\": fees\"}' src/constants/coursesContent.tsx)",
       "Bash(awk -F: '$1>2089 && $1<2280')",
-<<<<<<< HEAD
-      "Bash(pkill -f \"vite\")"
-=======
+      "Bash(pkill -f \"vite\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\),indent=2\\)\\); print\\('deps:', [k for k in {**d.get\\('dependencies',{}\\),**d.get\\('devDependencies',{}\\)} if any\\(x in k.lower\\(\\) for x in ['playwright','puppeteer','vite','react-router']\\)]\\)\")",
       "Bash(python3 -c \"import platform; print\\(platform.machine\\(\\)\\)\")",
       "Bash(python3 -c \"from PIL import Image; print\\('PIL OK', Image.open\\('/tmp/audit/apcm_tall.png'\\).size\\)\")",
@@ -146,7 +144,6 @@
       "Bash(pkill -f \"headless\")",
       "Bash(curl -s -o /dev/null -w \"server:%{http_code}\\\\n\" http://localhost:3000/)",
       "Bash(git commit -m ' *)"
->>>>>>> cf6aa7856037d787a9b9aa7ca8b50771ae1a04cd
     ]
   }
 }

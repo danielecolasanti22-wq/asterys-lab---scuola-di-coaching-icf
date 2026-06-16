@@ -66,7 +66,7 @@ const Hero = () => (
       <div className="pt-16 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-          Scuola di coaching accreditata ICF
+          La 1ª scuola accreditata ICF
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
           Dai forma alla tua{' '}
@@ -408,7 +408,7 @@ const MasterGrid = () => {
       id: 'coaching-circle',
       title: 'Mentoring per il rinnovo delle credenziali',
       duration: '10 ore per il rinnovo · gruppo o individuale',
-      label: 'Specializzazione',
+      label: 'Formazione avanzata',
       desc: 'Matura le 10 ore di mentor coaching per il rinnovo ICF: Mentoring di Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
       start: 'Edizione di gruppo: 29 set e 10 dic 2026',
       lastSeats: false,
@@ -418,7 +418,7 @@ const MasterGrid = () => {
       id: 'voice-dialogue',
       title: 'Voice Dialogue Skills',
       duration: '3 giornate · In aula',
-      label: 'Specializzazione',
+      label: 'Formazione avanzata',
       desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
       start: '17 novembre 2026',
       lastSeats: false,
@@ -430,7 +430,7 @@ const MasterGrid = () => {
       duration: '1 live class/mese',
       label: 'Corso Breve',
       desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
-      start: '14 gennaio 2026',
+      start: 'Inizi quando vuoi',
       lastSeats: false,
       seed: 'continuous-learning',
       image: 'card.jpg'

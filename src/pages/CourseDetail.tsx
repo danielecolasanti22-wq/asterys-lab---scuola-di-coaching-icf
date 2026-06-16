@@ -345,7 +345,10 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
     window.scrollTo(0, 0);
     if (course) {
       setPaymentTab(course.fees[0]?.title.toLowerCase() || '');
-      const first = course.editions?.[0];
+      const first =
+        course.editions?.find(
+          (e) => e.badge === 'Early Bird attivo' || e.badge === 'Iscrizioni aperte',
+        ) ?? course.editions?.[0];
       if (first) {
         setActiveCitySlug(first.citySlug);
         setActiveLevelSlug(first.levelSlug);
@@ -2241,7 +2244,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
-      {!isCoachingCircle && !isVoiceDialogue && !isWorkout && !isCL && id !== 'public-speaking' ? (
+      {id === 'apcm' ? (
       <section id="career" className="py-10 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4 text-center">
             <div className="mb-7 lg:mb-16">
@@ -2289,7 +2292,7 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
           <div className="max-w-[941px] mx-auto px-4">
             <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
-                <div className="inline-flex rounded-2xl bg-white p-2.5 sm:p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)]">
+                <div className="inline-flex rounded-2xl bg-white p-2.5 sm:p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)] lg:bg-transparent lg:p-0 lg:ring-0 lg:shadow-none">
                   <img
                     src={course.pegasusProgram.logo}
                     alt="Pegasus Coaching Program"
@@ -2561,10 +2564,12 @@ export default function CourseDetail({ courseId, courseData }: CourseDetailProps
                   {/* Card 3 — blue accent, image top, text bottom */}
                   <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[220px] pb-[80px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
                      <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
-                       {usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
+                       {id === 'apcm' ? 'Supporto 1:1' : usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
                      <p className="relative z-10 text-xs sm:text-sm text-brand-navy/75 font-medium leading-relaxed">
-                       {usesApcmCompleteSection
+                       {id === 'apcm'
+                         ? "Lungo tutto il percorso i trainer ti supportano nella creazione di checkpoint da prima dell'iscrizione e anche dopo l'ottenimento della credenziale."
+                         : usesApcmCompleteSection
                          ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
                          : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
                      </p>

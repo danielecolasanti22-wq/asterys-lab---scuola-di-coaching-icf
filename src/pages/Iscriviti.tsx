@@ -7,10 +7,11 @@ import {
   ArrowRight,
   MessageCircle,
   Phone,
-  Star,
 } from 'lucide-react';
-import { coursesContent } from '../constants/coursesContent';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+
+/** Contatto WhatsApp (numero in formato internazionale senza "+"). */
+const WHATSAPP_URL = 'https://wa.me/393498864895';
 
 const steps = [
   { n: 1, title: 'Compila il form', desc: 'e raccontaci chi sei' },
@@ -21,9 +22,9 @@ const steps = [
 const upcomingClasses = [
   {
     course: 'Master in Coaching Professionale · Milano',
-    date: '15 maggio 2026',
-    deadline: 'Prossima edizione: 25 settembre 2026 · termine candidature 1 settembre',
-    earlyBird: 'Early Bird −800€ entro il 30 aprile 2026',
+    date: '27 ottobre 2026',
+    deadline: 'Iscrizioni aperte · termine candidature 13 ottobre 2026',
+    earlyBird: 'Early Bird 10% entro il 27 agosto 2026',
     highlight: true,
   },
   {
@@ -49,10 +50,30 @@ const upcomingClasses = [
   },
 ];
 
-const courseOptions = Object.entries(coursesContent).map(([id, c]) => ({
-  id,
-  label: c.subtitle ? `${c.subtitle} — ${c.title.split('(')[0].trim()}` : c.title,
-}));
+const courseGroups = [
+  {
+    label: 'Master',
+    options: [
+      { id: 'apcm', label: 'Master in Coaching Professionale' },
+      { id: 'systemic-team-coaching', label: 'Team Coaching Sistemico' },
+    ],
+  },
+  {
+    label: 'Formazione avanzata',
+    options: [
+      { id: 'coaching-circle', label: 'Mentoring per il rinnovo delle credenziali' },
+      { id: 'voice-dialogue', label: 'Voice Dialogue Skills' },
+    ],
+  },
+  {
+    label: 'Corsi brevi',
+    options: [
+      { id: 'eiw', label: 'Intelligenza Emotiva' },
+      { id: 'continuous-learning', label: 'Continuous Learning' },
+      { id: 'public-speaking', label: 'Public Speaking Pro' },
+    ],
+  },
+];
 
 export default function Iscriviti() {
   const [form, setForm] = useState({
@@ -163,12 +184,16 @@ export default function Iscriviti() {
                       className="w-full appearance-none bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 pr-10 text-sm font-medium text-brand-navy focus:outline-none focus:border-brand-accent"
                     >
                       <option value="" disabled>
-                        Scegli...
+                        Scegli il percorso…
                       </option>
-                      {courseOptions.map((opt) => (
-                        <option key={opt.id} value={opt.id}>
-                          {opt.label}
-                        </option>
+                      {courseGroups.map((group) => (
+                        <optgroup key={group.label} label={group.label}>
+                          {group.options.map((opt) => (
+                            <option key={opt.id} value={opt.id}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </optgroup>
                       ))}
                     </select>
                     <ChevronDown
@@ -344,20 +369,20 @@ export default function Iscriviti() {
               </a>
 
               <div className="mt-10 flex flex-wrap items-center gap-6 text-xs text-brand-navy/60 font-bold">
-                <div className="flex items-center gap-2">
-                  <div className="flex text-brand-accent gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={12} fill="currentColor" />
-                    ))}
-                  </div>
-                  Trustpilot 4.7 Eccellente
-                </div>
-                <div className="flex items-center gap-2">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-brand-accent transition-colors"
+                >
                   <MessageCircle size={14} /> Scrivici su WhatsApp
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone size={14} /> +39 02 1234 5678
-                </div>
+                </a>
+                <a
+                  href="tel:+390687165254"
+                  className="flex items-center gap-2 hover:text-brand-accent transition-colors"
+                >
+                  <Phone size={14} /> +39 06 8716 5254
+                </a>
               </div>
             </div>
           </div>

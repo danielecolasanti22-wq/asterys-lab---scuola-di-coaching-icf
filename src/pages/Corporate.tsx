@@ -34,6 +34,7 @@ const clients = [
   { name: 'Kuehne + Nagel', src: '/clients/kuehne-nagel.png' },
   { name: 'Crédit Agricole', src: '/clients/credit-agricole.png' },
   { name: 'Cittalia — Fondazione ANCI', src: '/clients/cittalia.png' },
+  { name: 'KNF', src: '/clients/knf.png' },
 ];
 
 // Una "metà" del carosello: i loghi ripetuti quanto basta a riempire la larghezza.

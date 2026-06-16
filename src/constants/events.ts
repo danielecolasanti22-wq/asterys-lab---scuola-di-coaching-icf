@@ -22,7 +22,7 @@ export const eventsData: EventItem[] = [
   {
     id: 'open-day-master-apcm',
     title: 'Open Day Online: Master in Coaching Professionale',
-    date: '15 Maggio 2026',
+    date: '24 Settembre 2026',
     time: '18:30 – 20:00',
     modality: 'Online (Zoom)',
     location: 'Online · Diretta Zoom',
@@ -45,7 +45,7 @@ export const eventsData: EventItem[] = [
   {
     id: 'webinar-cominciare-coaching',
     title: 'Webinar: Come diventare coach nel 2026',
-    date: '22 Maggio 2026',
+    date: '8 Ottobre 2026',
     time: '14:00 – 15:30',
     modality: 'Webinar Gratuito',
     location: 'Online · Diretta Zoom',
@@ -68,7 +68,7 @@ export const eventsData: EventItem[] = [
   {
     id: 'serata-orientamento-roma',
     title: 'Serata di Orientamento: Coaching & Leadership',
-    date: '5 Giugno 2026',
+    date: '15 Ottobre 2026',
     time: '19:00 – 21:00',
     modality: 'Presenza (Roma)',
     location: 'Sede di Roma · via del Porto Fluviale 35',
@@ -91,7 +91,7 @@ export const eventsData: EventItem[] = [
   {
     id: 'hr-summit-systemic',
     title: 'HR Executive Summit: Systemic Team Coaching',
-    date: '12 Giugno 2026',
+    date: '22 Ottobre 2026',
     time: '09:30 – 13:00',
     modality: 'Presenza (Milano)',
     location: 'Sede di Milano · via Conservatorio 22',

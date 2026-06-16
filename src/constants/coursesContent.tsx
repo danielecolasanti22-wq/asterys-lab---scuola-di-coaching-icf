@@ -399,7 +399,7 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Professione Coach",
     tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: il Master in Coaching Professionale è il percorso d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
-    heroKicker: "PER PROFESSIONISTI",
+    heroKicker: "Diventa coach",
     media: {
       hero: "/course-media/apcm/hero-apcm.png",
       overview: "/course-media/apcm/overview-master.jpg",
@@ -468,7 +468,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     summaryBox: {
       nextEdition: "Milano, Roma & Online",
-      dates: "Maggio – Dicembre 2026",
+      dates: "Ottobre 2026 – Marzo 2027",
       format: "Ibrido (Presenza + Live Online)",
       duration: "150 ore accademiche",
       price: "A partire da 3.400€ + IVA",
@@ -536,9 +536,9 @@ export const coursesContent: Record<string, CourseData> = {
           tags: ["Sessioni registrate", "Mentor MCC", "Supervisione", "Portfolio"],
         },
         {
-          title: "Prosperous Coach",
-          desc: "Costruirai il tuo percorso professionale: posizionamento, offerta, acquisizione clienti ed etica del business, con strumenti concreti per partire.",
-          tags: ["Posizionamento", "Pricing", "Marketing etico", "Piano d’azione"],
+          title: "Marketing per Coach",
+          desc: "Con Helga Ogliari (Personal Branding & Storytelling Designer): 6 incontri da 1,5h per costruire posizionamento, personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°.",
+          tags: ["Personal branding", "Storytelling", "Acquisizione clienti", "6 incontri · 1,5h"],
         },
       ],
     },
@@ -583,7 +583,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Career Support Asterys",
       content: "Il Career Center di Asterys Lab ti supporta nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
-        { title: "Prosperous Coach Lab", desc: "Modulo specifico per costruire il tuo business di coaching con posizionamento, pricing e acquisizione clienti." },
+        { title: "Marketing per Coach", desc: "6 incontri da 1,5h con Helga Ogliari (Personal Branding & Storytelling Designer): personal branding, storytelling e acquisizione clienti per far decollare la tua attività." },
         { title: "Alumni Community", desc: "Accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise." },
         { title: "Formazione Continua", desc: "Masterclass, webinar e workshop esclusivi per approfondire le competenze e restare aggiornato sulle evoluzioni del coaching." },
         { title: "Supporto Carriera", desc: "Sessioni individuali e accompagnamento del coach assegnato per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
@@ -615,8 +615,8 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     classDates: [
-      { date: "15 maggio", badge: "ULTIMI POSTI" },
-      { date: "25 settembre", note: "Termine candidature: 01 settembre" }
+      { date: "27 ottobre 2026", badge: "MILANO · ISCRIZIONI APERTE", note: "Termine candidature: 13 ottobre 2026" },
+      { date: "3 novembre 2026", badge: "ROMA", note: "Termine candidature: 20 ottobre 2026" }
     ],
     sessionSchedule: [
       { days: "Calendario definito in base all'edizione scelta", time: "" }
@@ -781,8 +781,8 @@ export const coursesContent: Record<string, CourseData> = {
           desc: "Sessioni vere, feedback da Mentor MCC, supervisione continua: il Master ti fa iniziare a coachare dal primo mese, non a libro finito."
         },
         {
-          title: "Prosperous Coach incluso",
-          desc: "Posizionamento, pricing, acquisizione clienti ed etica del business: gli strumenti per costruire davvero la tua professione."
+          title: "Marketing per Coach incluso",
+          desc: "6 incontri con Helga Ogliari (Personal Branding & Storytelling Designer) su personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°."
         },
         {
           title: "Career Center e community",
@@ -801,13 +801,17 @@ export const coursesContent: Record<string, CourseData> = {
           name: "ICF Level 1",
           price: "3.400€",
           priceLabel: "+ IVA",
-          hours: "60 ore accademiche",
           benefit: "Fondamenti del coaching",
           features: [
-            "8 core competence ICF · Livello 1",
-            "Etica, alleanza e accordo di coaching",
-            "Basi di Intelligenza Emotiva",
-            "Sessioni pratiche con feedback",
+            "Richiesto CV",
+            "Sedi: Roma e Milano",
+            "Live Lab: 1",
+            "Laboratorio Full Immersion: 1",
+            "Live Class: 6",
+            "Personal Coaching: 5 ore",
+            "Mentor Coaching",
+            "Esame Pratico con la scuola",
+            "Ore di formazione: 63",
             "Abilita alla credenziale ICF ACC"
           ],
           feeTab: "Solo Livello 1"
@@ -817,18 +821,21 @@ export const coursesContent: Record<string, CourseData> = {
           name: "ICF Level 1 + Level 2",
           price: "6.900€",
           priceLabel: "+ IVA · invece di 7.900€",
-          hours: "150 ore accademiche",
           benefit: "Risparmi 1.000€",
           highlight: true,
           features: [
-            "Tutto il Livello 1 + Livello 2 integrale",
-            "Coach di riferimento per tutto il percorso",
-            "Intelligenza Emotiva misurabile (KCG/SEI)",
-            "Approccio sistemico avanzato",
-            "Pratica supervisionata con Mentor MCC",
-            "Abilita alla credenziale ICF PCC",
-            "Accesso alla Community Alumni Asterys",
-            "Percorso di Personal Coaching individuale"
+            "Richiesto CV",
+            "Sedi: Roma e Milano",
+            "Live Lab: 1",
+            "Laboratori Full Immersion: 3",
+            "Live Class: 11",
+            "Personal Coaching: 14 ore",
+            "Corso di Intelligenza Emotiva: 6 ore",
+            "Corso Marketing per Coach incluso",
+            "Mentor Coaching",
+            "Esame Pratico con la scuola",
+            "Ore di formazione: 133,5",
+            "Abilita alle credenziali ICF ACC e PCC"
           ],
           feeTab: "Percorso Completo"
         },
@@ -837,17 +844,20 @@ export const coursesContent: Record<string, CourseData> = {
           name: "ICF Level 2",
           price: "4.500€",
           priceLabel: "+ IVA",
-          hours: "90 ore accademiche",
           benefit: "Prerequisito: Livello 1",
           features: [
             "Accesso riservato a chi ha completato il Livello 1",
-            "Intelligenza Emotiva avanzata",
-            "Lavoro sui sistemi complessi",
-            "Mentor coaching ICF (7+3 ore)",
-            "Supervisione individuale",
-            "Abilita alla credenziale ICF PCC",
-            "Personal Coaching individuale",
-            "Corso Marketing per Coach incluso"
+            "Richiesto CV",
+            "Sedi: Roma e Milano",
+            "Laboratori Full Immersion: 2",
+            "Live Class: 5",
+            "Personal Coaching: 9 ore",
+            "Corso di Intelligenza Emotiva: 6 ore",
+            "Corso Marketing per Coach incluso",
+            "Mentor Coaching",
+            "Esame Pratico con la scuola",
+            "Ore di formazione: 70,5",
+            "Abilita alla credenziale ICF PCC"
           ],
           feeTab: "Solo Livello 2"
         }
@@ -876,7 +886,6 @@ export const coursesContent: Record<string, CourseData> = {
       eligibility: [
         "Residenti in una regione del Centro o Sud Italia",
         "Iscrizione a un'edizione del Master in Coaching a Roma",
-        "Tra i primi 3 iscritti per edizione (ordine cronologico)",
         "Colloquio di ammissione positivo con un nostro Advisor"
       ],
       availability: "Solo 2 borse di studio rimaste",
@@ -918,7 +927,7 @@ export const coursesContent: Record<string, CourseData> = {
         editionLabel: "Edizione 2",
         editionSlug: "ed2-2026",
         subtitle: "Maggio – Dicembre 2026",
-        badge: "Iscrizioni aperte",
+        badge: "In corso",
         earlyBird: { label: "Early Bird", date: "12 marzo 2026" },
         enrollmentEnd: { label: "Fine iscrizioni", date: "28 aprile 2026" },
         events: [
@@ -1054,7 +1063,7 @@ export const coursesContent: Record<string, CourseData> = {
         editionLabel: "Edizione 2",
         editionSlug: "ed2-2026",
         subtitle: "Maggio – Dicembre 2026",
-        badge: "Iscrizioni aperte",
+        badge: "In corso",
         earlyBird: { label: "Early Bird", date: "19 marzo 2026" },
         enrollmentEnd: { label: "Fine iscrizioni", date: "5 maggio 2026" },
         events: [
@@ -2008,7 +2017,7 @@ export const coursesContent: Record<string, CourseData> = {
     title: "Voice Dialogue Skills",
     subtitle: "Voice Dialogue per professionisti",
     tagline: "Un laboratorio in presenza per integrare il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.",
-    type: "SPECIALIZZAZIONE",
+    type: "FORMAZIONE AVANZATA",
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
     media: {
       hero: "/course-media/voice-dialogue/hero-voice-dialogue.png",
@@ -2244,7 +2253,7 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     summaryBox: {
       nextEdition: "Online · Zoom",
-      dates: "Gennaio – Dicembre 2026 (pausa ad agosto)",
+      dates: "Tutto l'anno · pausa ad agosto",
       format: "Live Class mensili",
       duration: "1 incontro/mese · 18:30–20:00",
       price: "Da 9€ + IVA a Live Class",
@@ -2371,12 +2380,6 @@ export const coursesContent: Record<string, CourseData> = {
       { days: "Pausa estiva", time: "Agosto" }
     ],
     classDates: [
-      { date: "14 gennaio 2026", badge: "1a Live Class", note: "E se il Cliente non fosse pronto per un percorso di Coaching?" },
-      { date: "10 febbraio 2026", badge: "2a Live Class", note: "L'Automatismo dei sensi: come la percezione guida la nostra attenzione" },
-      { date: "10 marzo 2026", badge: "3a Live Class", note: "Emozioni a colori – un viaggio creativo" },
-      { date: "16 aprile 2026", badge: "4a Live Class", note: "Strumenti a supporto di una sessione" },
-      { date: "27 maggio 2026", badge: "5a Live Class", note: "I Bias Cognitivi: Percezioni, Memoria e Scelte nella Vita Quotidiana" },
-      { date: "16 giugno 2026", badge: "6a Live Class", note: "Ho ottenuto le mie credenziali ACC… e adesso?" },
       { date: "8 luglio 2026", badge: "7a Live Class", note: "Il declino dei valori: impatto su appartenenza, motivazione e successo di gruppi e organizzazioni" },
       { date: "15 settembre 2026", badge: "8a Live Class", note: "Essere Coach… con stile" },
       { date: "20 ottobre 2026", badge: "9a Live Class", note: "Il coraggio di rompere gli schemi: il valore del pensiero non convenzionale" },

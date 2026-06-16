@@ -60,7 +60,7 @@ const megaColumns: MegaColumn[] = [
     ],
   },
   {
-    label: 'Specializzazioni',
+    label: 'Formazione avanzata',
     caption: 'Approfondisci ambiti chiave del coaching',
     icon: 'specialization',
     items: [
@@ -1146,10 +1146,10 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const isCorporatePage = location.pathname === '/aziende';
 
   return (
-    <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-hidden w-full max-w-[100vw]">
+    <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-clip w-full max-w-[100vw]">
       {isCorporatePage ? <CorporateHeader /> : <Header />}
       <main
-        className={`flex-grow overflow-x-hidden w-full ${
+        className={`flex-grow overflow-x-clip w-full ${
           isCourseDetailPage
             ? 'pt-[120px] max-[939px]:pt-[122px]'
             : isCorporatePage
