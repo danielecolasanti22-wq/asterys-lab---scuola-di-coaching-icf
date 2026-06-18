@@ -986,7 +986,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                 <CourseImage
                   src={course.certificate.image ?? `https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
                   fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
-                  className="w-full max-w-[240px] mx-auto sm:mx-0 rounded-xl shadow-[0_30px_70px_-30px_rgba(0,21,51,0.5)]"
+                  className="w-full max-w-[280px] mx-auto sm:mx-0 drop-shadow-[0_20px_40px_rgba(0,21,51,0.35)]"
                   alt="Certificato del percorso"
                 />
               </div>

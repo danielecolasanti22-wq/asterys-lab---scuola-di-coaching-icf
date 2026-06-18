@@ -1189,6 +1189,12 @@ export const coursesContent: Record<string, CourseData> = {
     title: "Master in Team Coaching Sistemico",
     subtitle: "Team Coaching",
     tagline: "Il Master di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Team Coaching Sistemico dedicato a team e organizzazioni, e prepararti alla credenziale ICF di team coaching (ACTC).",
+    certificate: {
+      eyebrow: "Attestato finale",
+      title: "Un percorso certificato",
+      body: "Completato il Master ricevi il **certificato di partecipazione** (54 ore · 60 CCE ICF). Superando l'**esame Expert** ottieni inoltre il **diploma AATC**, prerequisito ICF per la credenziale **ACTC** (Advanced Certification in Team Coaching).",
+      image: "/course-media/systemic-team-coaching/certificato.png",
+    },
     type: "AVANZATO",
     media: {
       hero: "/course-media/systemic-team-coaching/hero-astc.png",
