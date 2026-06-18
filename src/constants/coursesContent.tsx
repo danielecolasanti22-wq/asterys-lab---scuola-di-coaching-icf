@@ -229,6 +229,15 @@ export interface CourseData {
     ctaLabel?: string;
     ctaHref?: string;
   };
+  /** Banner "Scarica la brochure" nella sezione programma (tutti i corsi). */
+  brochureUrl?: string;
+  /** Sezione "Un percorso certificato" — renderizzata solo se valorizzata (es. APCM). */
+  certificate?: {
+    eyebrow?: string;
+    title: string;
+    body: string;
+    image?: string;
+  };
 }
 
 export interface CourseTestimonial {
@@ -677,6 +686,12 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     faqs: apcmFaqs,
     placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
+    certificate: {
+      eyebrow: "Attestato finale",
+      title: "Un percorso certificato",
+      body: "Completato il Master e superato l'**esame finale con la scuola**, ottieni il **certificato Asterys Lab**: l'attestazione delle ore formative valida per richiedere le **credenziali ICF** (ACC con il Livello 1, PCC con il Percorso Completo). Un documento che certifica le tue competenze di coach e ti permette di presentarti sul mercato con credibilità.",
+      image: "/course-media/apcm/certificato.png",
+    },
     testimonials: commonTestimonials,
     competenciesAndCareers: {
       eyebrow: "Competenze & Professione",

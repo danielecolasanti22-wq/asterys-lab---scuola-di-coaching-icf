@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import {
   CheckCircle2,
   ArrowRight,
+  Download,
   Users,
   Plus,
   Minus,
@@ -948,8 +949,61 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   </AnimatePresence>
                </div>
             </div>
+
+            {/* Banner: scarica la brochure */}
+            <div className="mt-6 lg:mt-8 rounded-[1.5rem] bg-[#2A56A8] text-white overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-6 sm:p-8 lg:p-9">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-display font-black tracking-tight leading-tight mb-2">
+                  Vuoi il programma completo, nel dettaglio?
+                </h3>
+                <p className="text-sm text-white/75 font-medium leading-relaxed mb-5 max-w-md">
+                  Scarica la brochure con tutti i moduli, le ore di formazione e il calendario dell&rsquo;edizione.
+                </p>
+                <a
+                  href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
+                  className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
+                >
+                  Scarica la brochure <Download size={15} />
+                </a>
+              </div>
+              <div className="w-full sm:w-[42%] lg:w-[38%] shrink-0">
+                <CourseImage
+                  src={media.brochureDecor}
+                  fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/440`}
+                  className="w-full rounded-xl shadow-[0_24px_60px_-30px_rgba(0,0,0,0.55)]"
+                  alt={`Brochure ${course.title}`}
+                />
+              </div>
+            </div>
          </div>
       </section>
+
+      {/* 3b. UN PERCORSO CERTIFICATO (solo dove valorizzato, es. APCM) */}
+      {course.certificate ? (
+        <section className="py-8 lg:py-14 bg-white">
+          <div className="max-w-[941px] mx-auto px-4">
+            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-8 lg:p-10 grid sm:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-10 items-center">
+              <div>
+                <CourseImage
+                  src={course.certificate.image ?? `https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
+                  fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
+                  className="w-full max-w-[240px] mx-auto sm:mx-0 rounded-xl shadow-[0_30px_70px_-30px_rgba(0,21,51,0.5)]"
+                  alt="Certificato del percorso"
+                />
+              </div>
+              <div>
+                {course.certificate.eyebrow ? (
+                  <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">
+                    {course.certificate.eyebrow}
+                  </p>
+                ) : null}
+                <h2 className={`${tSection} mb-3 lg:mb-4`}>{course.certificate.title}</h2>
+                <p className={tBody}>{richText(course.certificate.body)}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 4. SCEGLI TU QUANDO INIZIARE — solo Master in Coaching e Team Coaching */}
       {(id === 'apcm' || id === 'systemic-team-coaching') && (
