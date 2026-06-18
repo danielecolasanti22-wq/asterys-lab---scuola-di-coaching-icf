@@ -964,11 +964,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         Scarica la brochure <Download size={14} />
                      </a>
                   </div>
-                  <div className="w-[32%] sm:w-[26%] lg:w-[22%] shrink-0">
+                  <div className="w-[40%] sm:w-[34%] lg:w-[30%] shrink-0">
                      <CourseImage
                         src={media.brochureDecor}
                         fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/420`}
-                        className="w-full rounded-lg shadow-[0_18px_44px_-26px_rgba(0,0,0,0.6)]"
+                        className="w-full h-auto object-contain drop-shadow-[0_12px_26px_rgba(0,0,0,0.35)]"
                         alt={`Brochure ${course.title}`}
                      />
                   </div>
