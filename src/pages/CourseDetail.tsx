@@ -900,14 +900,14 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
             </p>
             
             <div className="bg-white rounded-[1.75rem] overflow-hidden border border-gray-100 shadow-[0_18px_50px_-38px_rgba(0,21,51,0.14)] flex flex-col">
-               <div className="flex flex-col lg:flex-row min-h-0 lg:min-h-[440px]">
+               <div className="flex flex-col lg:flex-row min-h-0 lg:min-h-[300px]">
                {/* Left Sidebar Tabs */}
-               <div className="lg:w-[38%] bg-[#F9FAFB] border-b lg:border-b-0 lg:border-r border-gray-100 p-4 sm:p-6 space-y-2">
+               <div className="lg:w-[38%] bg-[#F9FAFB] border-b lg:border-b-0 lg:border-r border-gray-100 p-3 sm:p-4 space-y-1.5">
                   {course.structure.modules.map((m, i) => (
                     <button 
                       key={i}
                       onClick={() => setActiveModule(i)}
-                      className={`w-full text-left px-4 py-3.5 rounded-xl ${tModuleSide} transition-all flex items-center justify-between gap-3 group ${activeModule === i ? 'bg-brand-navy text-white shadow-md' : 'text-brand-navy/45 hover:bg-white hover:text-brand-navy ring-1 ring-transparent hover:ring-black/5'}`}
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl ${tModuleSide} transition-all flex items-center justify-between gap-3 group ${activeModule === i ? 'bg-brand-navy text-white shadow-md' : 'text-brand-navy/45 hover:bg-white hover:text-brand-navy ring-1 ring-transparent hover:ring-black/5'}`}
                     >
                       <span className="leading-snug">{shortModuleTitle(m.title)}</span>
                       <ArrowRight size={16} className={`shrink-0 transition-transform ${activeModule === i ? 'translate-x-0.5 opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
@@ -916,7 +916,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </div>
                
                {/* Right Content */}
-               <div className="lg:w-[62%] p-5 sm:p-6 lg:p-8 bg-white relative overflow-hidden">
+               <div className="lg:w-[62%] p-5 sm:p-6 lg:p-7 bg-white relative overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeModule}
@@ -926,10 +926,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       transition={{ duration: 0.3 }}
                       className="relative z-10 h-full flex flex-col"
                     >
-                       <h3 className={`${tModuleTitle} mb-4`}>
+                       <h3 className={`${tModuleTitle} mb-2 sm:mb-3`}>
                           {course.structure.modules[activeModule].title}
                        </h3>
-                       <p className={`${tBody} mb-5 sm:mb-8`}>
+                       <p className={`${tBody} mb-4 sm:mb-5`}>
                           {course.structure.modules[activeModule].desc}
                        </p>
                        
@@ -949,26 +949,26 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </div>
 
                {/* Brochure: integrata in fondo alla card, a tutta larghezza */}
-               <div className="bg-[#2A56A8] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6 p-6 sm:p-8 border-t border-white/10">
+               <div className="bg-[#2A56A8] text-white flex flex-row items-center justify-between gap-4 sm:gap-6 px-5 py-4 sm:px-7 sm:py-5 border-t border-white/10">
                   <div className="flex-1 min-w-0">
-                     <h3 className="text-lg sm:text-xl lg:text-2xl font-display font-black tracking-tight leading-tight mb-2">
+                     <h3 className="text-sm sm:text-lg font-display font-black tracking-tight leading-snug mb-1">
                         Vuoi il programma completo, nel dettaglio?
                      </h3>
-                     <p className="text-[13px] sm:text-sm text-white/75 font-medium leading-relaxed mb-4 sm:mb-5 max-w-md">
-                        Scarica la brochure con tutti i moduli, le ore di formazione e il calendario dell&rsquo;edizione.
+                     <p className="hidden sm:block text-[13px] text-white/70 font-medium leading-relaxed mb-3 max-w-md">
+                        Scarica la brochure con tutti i moduli, le ore di formazione e il calendario.
                      </p>
                      <a
                         href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
-                        className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
+                        className="inline-flex items-center gap-2 bg-white text-brand-navy px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.16em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
                      >
-                        Scarica la brochure <Download size={15} />
+                        Scarica la brochure <Download size={14} />
                      </a>
                   </div>
-                  <div className="w-full sm:w-[40%] lg:w-[34%] shrink-0">
+                  <div className="w-[32%] sm:w-[26%] lg:w-[22%] shrink-0">
                      <CourseImage
                         src={media.brochureDecor}
                         fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/420`}
-                        className="w-full rounded-xl shadow-[0_24px_60px_-30px_rgba(0,0,0,0.55)]"
+                        className="w-full rounded-lg shadow-[0_18px_44px_-26px_rgba(0,0,0,0.6)]"
                         alt={`Brochure ${course.title}`}
                      />
                   </div>
