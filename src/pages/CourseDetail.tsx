@@ -899,7 +899,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               {programIntro}
             </p>
             
-            <div className="bg-white rounded-[1.75rem] overflow-hidden border border-gray-100 flex flex-col lg:flex-row shadow-[0_18px_50px_-38px_rgba(0,21,51,0.14)] min-h-0 lg:min-h-[440px]">
+            <div className="bg-white rounded-[1.75rem] overflow-hidden border border-gray-100 shadow-[0_18px_50px_-38px_rgba(0,21,51,0.14)] flex flex-col">
+               <div className="flex flex-col lg:flex-row min-h-0 lg:min-h-[440px]">
                {/* Left Sidebar Tabs */}
                <div className="lg:w-[38%] bg-[#F9FAFB] border-b lg:border-b-0 lg:border-r border-gray-100 p-4 sm:p-6 space-y-2">
                   {course.structure.modules.map((m, i) => (
@@ -932,48 +933,46 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                           {course.structure.modules[activeModule].desc}
                        </p>
                        
-                       <div className="mt-auto pt-4 sm:pt-8 border-t border-gray-100">
-                          <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.2em] text-brand-navy/35 mb-2 sm:mb-3">In sintesi</p>
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                            {moduleTags.slice(0, 6).map((tag, i) => (
-                              <span
-                                key={`${activeModule}-${i}`}
-                                className="inline-flex items-center rounded-md border border-brand-navy/10 bg-white px-2 py-1 sm:px-2.5 sm:py-1.5 text-[9px] sm:text-[11px] font-bold text-brand-navy/80"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+                       <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                          {moduleTags.slice(0, 6).map((tag, i) => (
+                            <span
+                              key={`${activeModule}-${i}`}
+                              className="inline-flex items-center rounded-md border border-brand-navy/10 bg-white px-2 py-1 sm:px-2.5 sm:py-1.5 text-[9px] sm:text-[11px] font-bold text-brand-navy/80"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                        </div>
                     </motion.div>
                   </AnimatePresence>
                </div>
-            </div>
+               </div>
 
-            {/* Banner: scarica la brochure */}
-            <div className="mt-6 lg:mt-8 rounded-[1.5rem] bg-[#2A56A8] text-white overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-6 sm:p-8 lg:p-9">
-              <div className="flex-1 min-w-0">
-                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-display font-black tracking-tight leading-tight mb-2">
-                  Vuoi il programma completo, nel dettaglio?
-                </h3>
-                <p className="text-sm text-white/75 font-medium leading-relaxed mb-5 max-w-md">
-                  Scarica la brochure con tutti i moduli, le ore di formazione e il calendario dell&rsquo;edizione.
-                </p>
-                <a
-                  href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
-                  className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
-                >
-                  Scarica la brochure <Download size={15} />
-                </a>
-              </div>
-              <div className="w-full sm:w-[42%] lg:w-[38%] shrink-0">
-                <CourseImage
-                  src={media.brochureDecor}
-                  fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/440`}
-                  className="w-full rounded-xl shadow-[0_24px_60px_-30px_rgba(0,0,0,0.55)]"
-                  alt={`Brochure ${course.title}`}
-                />
-              </div>
+               {/* Brochure: integrata in fondo alla card, a tutta larghezza */}
+               <div className="bg-[#2A56A8] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6 p-6 sm:p-8 border-t border-white/10">
+                  <div className="flex-1 min-w-0">
+                     <h3 className="text-lg sm:text-xl lg:text-2xl font-display font-black tracking-tight leading-tight mb-2">
+                        Vuoi il programma completo, nel dettaglio?
+                     </h3>
+                     <p className="text-[13px] sm:text-sm text-white/75 font-medium leading-relaxed mb-4 sm:mb-5 max-w-md">
+                        Scarica la brochure con tutti i moduli, le ore di formazione e il calendario dell&rsquo;edizione.
+                     </p>
+                     <a
+                        href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
+                        className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
+                     >
+                        Scarica la brochure <Download size={15} />
+                     </a>
+                  </div>
+                  <div className="w-full sm:w-[40%] lg:w-[34%] shrink-0">
+                     <CourseImage
+                        src={media.brochureDecor}
+                        fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/420`}
+                        className="w-full rounded-xl shadow-[0_24px_60px_-30px_rgba(0,0,0,0.55)]"
+                        alt={`Brochure ${course.title}`}
+                     />
+                  </div>
+               </div>
             </div>
          </div>
       </section>
