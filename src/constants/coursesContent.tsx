@@ -1193,7 +1193,7 @@ export const coursesContent: Record<string, CourseData> = {
     media: {
       hero: "/course-media/systemic-team-coaching/hero-astc.png",
       overview: "/course-media/systemic-team-coaching/astc-modello-pitto.png",
-      brochureDecor: "/course-media/systemic-team-coaching/asterys-systemic-team-coaching-lab.png",
+      brochureDecor: "/course-media/systemic-team-coaching/brochure.png",
       completePractical: "/course-media/apcm/supervision-mentor.png",
       completePlatform: "/course-media/apcm/platform-ui.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
@@ -1565,6 +1565,7 @@ export const coursesContent: Record<string, CourseData> = {
     type: "WORKOUT EQ",
     media: {
       hero: "/course-media/eiw/hero.png",
+      brochureDecor: "/course-media/eiw/brochure.png",
       overview: "/course-media/eiw/plutchik.png",
       howItWorks: "/course-media/apcm/how-master.jpg"
     },
@@ -1758,6 +1759,7 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
       hero: "/course-media/coaching-circle/hero-coaching-circle.png",
+      brochureDecor: "/course-media/coaching-circle/brochure.png",
       overview: "/course-media/coaching-circle/how-coaching-circle.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
@@ -1962,6 +1964,7 @@ export const coursesContent: Record<string, CourseData> = {
     type: "COMUNICAZIONE",
     media: {
       hero: "/course-media/public-speaking/hero-public-speaking.png",
+      brochureDecor: "/course-media/public-speaking/brochure.png",
       overview: "/course-media/public-speaking/overview-psp.jpg",
       howItWorks: "/course-media/apcm/how-master.jpg",
       completePractical: "/course-media/apcm/supervision-mentor.png",
@@ -2039,6 +2042,7 @@ export const coursesContent: Record<string, CourseData> = {
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
     media: {
       hero: "/course-media/voice-dialogue/hero-voice-dialogue.png",
+      brochureDecor: "/course-media/voice-dialogue/brochure.png",
       overview: "/course-media/voice-dialogue/overview-voice-dialogue.png",
       howItWorks: "/course-media/apcm/how-master.jpg",
       completePractical: "/course-media/apcm/supervision-mentor.png",
