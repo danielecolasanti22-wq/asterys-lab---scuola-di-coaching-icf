@@ -414,7 +414,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   const isVoiceDialogue = id === 'voice-dialogue';
   const isWorkout = id === 'eiw';
   // Heroes using the new full-bleed 1512x608 cutout layout (people composed on the right).
-  const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw', 'continuous-learning', 'public-speaking'].includes(id ?? '');
+  const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw', 'continuous-learning', 'public-speaking', 'marketing-per-coach'].includes(id ?? '');
   const isCL = id === 'continuous-learning';
 
   // "Master" deve comparire solo per APCM e ASTC (Team Coaching); per gli altri corsi si dice "corso".
