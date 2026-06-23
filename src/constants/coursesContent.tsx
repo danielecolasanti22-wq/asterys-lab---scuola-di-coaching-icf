@@ -2268,6 +2268,12 @@ export const coursesContent: Record<string, CourseData> = {
     tagline: "Cinque webinar con Helga Ogliari per valorizzare la tua professionalità di coach sul mercato e attrarre i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "Personal branding · 5 webinar",
+    earlyBirdPromo: {
+      ribbon: "PRIMA EDIZIONE",
+      line: "Prima edizione del ciclo «Marketing per Coach»: prezzo di favore riservato ai primi iscritti.",
+      deadline: "",
+      ctaHref: "#prezzo",
+    },
     media: {
       hero: "/course-media/marketing-per-coach/hero.png",
       overview: "/course-media/marketing-per-coach/overview.png",
@@ -2280,20 +2286,21 @@ export const coursesContent: Record<string, CourseData> = {
       "Incluso nel 2° livello del Master in Coaching · a metà prezzo con il 1°"
     ],
     summaryBox: {
-      nextEdition: "Online · Live",
-      dates: "Date in definizione",
+      nextEdition: "Prima edizione · Online",
+      dates: "9 nov – 16 dic 2026",
       format: "5 webinar live online",
-      duration: "5 webinar",
+      duration: "5 webinar · 18:30–20:00",
       price: "790€ + IVA (esterni)",
       installments: "Incluso nel 2° livello del Master · metà prezzo con il 1°"
     },
-    badges: ["5 webinar", "Con Helga Ogliari", "Incluso nel Master L2"],
+    badges: ["Prima edizione", "5 webinar · 18:30–20:00", "Con Helga Ogliari", "Asterys Lab Career"],
     overview: {
       title: "Perché il personal branding per i coach",
       content: [
         "I dati del **2025 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
         "Tra il 2019 e il 2023 il numero di coach professionisti è cresciuto del **54%**, e la crescita non si è fermata. Il dato più impressionante è però un altro: quante persone si definiscono «coach», spesso accostando l'etichetta ad attività che con il coaching hanno poco a che vedere. In un mercato così affollato, **far riconoscere il proprio valore diventa un'impresa**.",
-        "Il ciclo **Il personal branding del coach** nasce per offrire ai coach certificati gli strumenti e le competenze necessari a valorizzare la propria professionalità sul mercato e ad attrarre i clienti giusti."
+        "Il ciclo **Il personal branding del coach** nasce per offrire ai coach certificati gli strumenti e le competenze necessari a valorizzare la propria professionalità sul mercato e ad attrarre i clienti giusti.",
+        "Il ciclo fa parte del programma **Asterys Lab Career**, l'ecosistema con cui Asterys Lab accompagna i coach nella crescita professionale: dall'avvio della pratica fino allo sviluppo del proprio business."
       ]
     },
     target: [
@@ -2345,8 +2352,17 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Come funziona il ciclo",
       intro: "Cinque **webinar live** con Helga Ogliari, in sequenza: ogni incontro ha un focus chiaro, una parte di lavoro guidato e un **output concreto** che porti a casa — dalla promessa di valore al modello per le tue offerte.",
       formazioneTitle: "5 webinar · live online",
-      formazioneIntro: "Gli incontri si svolgono in diretta online. Date e orari della prossima edizione sono in definizione: lascia i tuoi contatti per essere avvisato all'apertura delle iscrizioni."
+      formazioneBadge: "Live online · 18:30–20:00",
+      formazioneIntro: "Gli incontri si svolgono in diretta online, dalle **18:30 alle 20:00**. Ecco il calendario della prima edizione."
     },
+    scheduleBands: [
+      {
+        title: "Webinar in diretta",
+        body: "Cinque incontri live online con Helga Ogliari, in orario serale.",
+        dayLines: ["9 novembre 2026", "16 novembre 2026", "26 novembre 2026", "9 dicembre 2026", "16 dicembre 2026"],
+        timeLines: ["18:30 – 20:00"],
+      },
+    ],
     competenciesAndCareers: {
       eyebrow: "Cosa porti a casa",
       title: "Uno strumento concreto da ogni webinar",
@@ -2380,14 +2396,14 @@ export const coursesContent: Record<string, CourseData> = {
     },
     fees: [
       {
-        title: "Quota",
+        title: "Prima edizione",
         type: "lump",
-        benefit: "Incluso nel Master L2",
+        benefit: "Prezzo di lancio · prima edizione",
         heading: "Il personal branding del coach",
-        desc: "5 webinar con Helga Ogliari. **Incluso** per chi si iscrive al 2° livello del Master in Coaching, a **metà prezzo** con il 1° livello. Aperto anche agli esterni.",
+        desc: "**Prima edizione** del ciclo: la lanciamo con un **prezzo di favore** riservato ai primi iscritti. 5 webinar con Helga Ogliari. **Incluso** per chi si iscrive al 2° livello del Master in Coaching, a **metà prezzo** con il 1° livello. Aperto anche agli esterni.",
         price: "790€",
-        priceLabel: "+ IVA · esterni",
-        footnote: "Incluso nel 2° livello del Master · metà prezzo con il 1° livello"
+        priceLabel: "+ IVA · prezzo di lancio",
+        footnote: "Prezzo di favore riservato alla prima edizione · incluso nel 2° livello del Master, metà prezzo con il 1°"
       }
     ],
     faqs: [

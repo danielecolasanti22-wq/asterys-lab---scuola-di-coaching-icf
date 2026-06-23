@@ -948,7 +948,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </div>
                </div>
 
-               {/* Brochure: integrata in fondo alla card, a tutta larghezza */}
+               {/* Brochure: in fondo alla card, solo se il corso ha una brochure */}
+               {course.media?.brochureDecor ? (
                <div className="bg-[#2A56A8] text-white flex flex-row items-center justify-between gap-4 sm:gap-6 px-5 py-4 sm:px-7 sm:py-5 border-t border-white/10">
                   <div className="flex-1 min-w-0">
                      <h3 className="text-sm sm:text-lg font-display font-black tracking-tight leading-snug mb-1">
@@ -973,6 +974,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      />
                   </div>
                </div>
+               ) : null}
             </div>
          </div>
       </section>
@@ -1971,9 +1973,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/55 to-brand-accent/25 mix-blend-multiply" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  {id !== 'marketing-per-coach' ? (
                   <span className="absolute top-4 left-4 bg-white text-brand-navy text-[10px] font-display font-black uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
                     Faculty
                   </span>
+                  ) : null}
                   <div className="absolute left-4 right-4 bottom-4 sm:left-5 sm:right-5 sm:bottom-5 text-white">
                     <h3 className="font-display font-black text-xl sm:text-2xl leading-[1.05] tracking-tight mb-2">
                       {t.name}
@@ -1987,9 +1991,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         {t.bio}
                       </p>
                     ) : null}
+                    {id !== 'marketing-per-coach' ? (
                     <span className="inline-flex items-center gap-2 bg-white text-brand-navy text-[11px] font-display font-black uppercase tracking-[0.14em] px-4 py-2 rounded-full shadow-md">
                       Asterys Lab
                     </span>
+                    ) : null}
                   </div>
                 </article>
               ))}
