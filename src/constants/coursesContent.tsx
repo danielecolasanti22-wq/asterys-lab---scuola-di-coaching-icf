@@ -2262,6 +2262,142 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ]
   },
+  'marketing-per-coach': {
+    title: "Marketing per Coach",
+    subtitle: "Il personal branding del coach",
+    tagline: "Cinque webinar con Helga Ogliari per valorizzare la tua professionalità di coach sul mercato e attrarre i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
+    type: "FORMAZIONE AVANZATA",
+    heroKicker: "Personal branding · 5 webinar",
+    media: {
+      hero: "/course-media/marketing-per-coach/hero.png",
+      overview: "/course-media/marketing-per-coach/overview.png",
+      howItWorks: "/course-media/apcm/how-master.jpg",
+    },
+    heroBenefits: [
+      "5 webinar live con Helga Ogliari, personal branding & storytelling designer",
+      "Dal «coach che sa fare» al professionista che si posiziona e viene scelto",
+      "Strumenti concreti: Personal Branding Canvas, Storytelling Canvas, Social Selling Index",
+      "Incluso nel 2° livello del Master in Coaching · a metà prezzo con il 1°"
+    ],
+    summaryBox: {
+      nextEdition: "Online · Live",
+      dates: "Date in definizione",
+      format: "5 webinar live online",
+      duration: "5 webinar",
+      price: "790€ + IVA (esterni)",
+      installments: "Incluso nel 2° livello del Master · metà prezzo con il 1°"
+    },
+    badges: ["5 webinar", "Con Helga Ogliari", "Incluso nel Master L2"],
+    overview: {
+      title: "Perché il personal branding per i coach",
+      content: [
+        "I dati del **2025 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
+        "Tra il 2019 e il 2023 il numero di coach professionisti è cresciuto del **54%**, e la crescita non si è fermata. Il dato più impressionante è però un altro: quante persone si definiscono «coach», spesso accostando l'etichetta ad attività che con il coaching hanno poco a che vedere. In un mercato così affollato, **far riconoscere il proprio valore diventa un'impresa**.",
+        "Il ciclo **Il personal branding del coach** nasce per offrire ai coach certificati gli strumenti e le competenze necessari a valorizzare la propria professionalità sul mercato e ad attrarre i clienti giusti."
+      ]
+    },
+    target: [
+      { title: "Coach certificati", desc: "Vuoi valorizzare la tua professionalità e farti riconoscere in un mercato affollato.", icon: <Award /> },
+      { title: "Coach in avvio", desc: "Devi costruire posizionamento, presenza e i primi clienti.", icon: <Zap /> },
+      { title: "Studenti del Master", desc: "Incluso nel 2° livello, a metà prezzo con il 1°: porti il tuo brand sul mercato.", icon: <Target /> },
+      { title: "Professionisti del coaching", desc: "Vuoi attrarre i clienti giusti e comunicare con efficacia il tuo valore.", icon: <TrendingUp /> }
+    ],
+    learning: {
+      cols: [
+        { title: "Identità & posizionamento", items: ["Dalle competenze al valore", "Piramide dei valori", "Promessa di valore", "Personal Branding Canvas"] },
+        { title: "Narrazione & contenuti", items: ["Storytelling professionale", "Personal Storytelling Canvas", "Voce e tono riconoscibili", "Contenuti su LinkedIn"] },
+        { title: "Vendita & relazioni", items: ["Social selling", "Social Selling Index", "Business writing", "Offerte e presentazioni"] }
+      ],
+      softSkills: ["Personal branding", "Storytelling", "Social selling", "Copywriting"]
+    },
+    structure: {
+      modules: [
+        {
+          title: "1 · Mindset del personal branding",
+          desc: "Dal «coach che sa fare» al professionista che si posiziona e viene scelto. Lavoriamo sui due pilastri — identità e relazioni — e sul passaggio dalle competenze al valore con la piramide dei valori. Output: la tua promessa di valore.",
+          tags: ["Identità & relazioni", "Piramide dei valori", "Promessa di valore"]
+        },
+        {
+          title: "2 · Personal Branding Canvas",
+          desc: "Posizionarsi è scegliere: a chi ti rivolgi, quale problema risolvi, con quali strumenti. Costruiamo il tuo Personal Branding Canvas (visual thinking di Luigi Centenaro): pubblico, competenze, promessa di valore e strumenti di comunicazione. Output: il tuo Personal Branding Canvas.",
+          tags: ["Posizionamento distintivo", "Pubblico di riferimento", "Canvas"]
+        },
+        {
+          title: "3 · Storytelling professionale",
+          desc: "Trasformi identità e posizionamento in narrazione: come scegliere le storie giuste, collegarle al posizionamento e dar loro una voce riconoscibile. Output: il tuo Personal Storytelling Canvas, ideato da Helga Ogliari.",
+          tags: ["Narrazione", "Voce riconoscibile", "Storytelling Canvas"]
+        },
+        {
+          title: "4 · Social selling su LinkedIn",
+          desc: "Costruisci, prima della vendita, le condizioni perché qualcuno ti scelga: visibilità, credibilità, relazioni. Misuriamo il tuo Social Selling Index e lavoriamo su profilo, contatti, contenuti e relazioni. Output: un piano per farlo crescere.",
+          tags: ["Social Selling Index", "Profilo & contenuti", "Relazioni"]
+        },
+        {
+          title: "5 · Business writing for selling",
+          desc: "Un'offerta non si vende da sola. Lavoriamo su testi persuasivi per email, presentazioni e offerte: struttura, tono e leve che spingono chi legge a dire sì. Output: un modello riutilizzabile per offerte e presentazioni.",
+          tags: ["Testi persuasivi", "Offerte & presentazioni", "Modello riutilizzabile"]
+        }
+      ]
+    },
+    programIntro:
+      "Cinque webinar per passare dalle competenze al valore riconosciuto: identità e posizionamento, storytelling, social selling e scrittura che vende. Ogni incontro produce uno strumento concreto da usare subito.",
+    howItWorks: {
+      title: "Come funziona il ciclo",
+      intro: "Cinque **webinar live** con Helga Ogliari, in sequenza: ogni incontro ha un focus chiaro, una parte di lavoro guidato e un **output concreto** che porti a casa — dalla promessa di valore al modello per le tue offerte.",
+      formazioneTitle: "5 webinar · live online",
+      formazioneIntro: "Gli incontri si svolgono in diretta online. Date e orari della prossima edizione sono in definizione: lascia i tuoi contatti per essere avvisato all'apertura delle iscrizioni."
+    },
+    competenciesAndCareers: {
+      eyebrow: "Cosa porti a casa",
+      title: "Uno strumento concreto da ogni webinar",
+      intro: "Non solo teoria: ogni webinar produce un deliverable riutilizzabile per il tuo personal branding e per acquisire clienti.",
+      competencies: [
+        { title: "La tua promessa di valore", desc: "Dal webinar 1: chiarisci chi sei, per chi lavori e perché qualcuno dovrebbe scegliere proprio te." },
+        { title: "Il tuo Personal Branding Canvas", desc: "Dal webinar 2: la mappa del tuo posizionamento distintivo, del pubblico e degli strumenti." },
+        { title: "Il tuo Personal Storytelling Canvas", desc: "Dal webinar 3: la tua narrazione professionale con una voce riconoscibile." },
+        { title: "Un piano per il Social Selling Index", desc: "Dal webinar 4: come crescere su profilo, contatti, contenuti e relazioni su LinkedIn." },
+        { title: "Un modello per offerte e presentazioni", desc: "Dal webinar 5: testi persuasivi pronti da riutilizzare per vendere il tuo valore." }
+      ],
+      careerPaths: []
+    },
+    admissionBox: {
+      title: "A chi è rivolto",
+      body: "Il ciclo è pensato per coach certificati e professionisti del coaching che vogliono valorizzare la propria professionalità sul mercato. È incluso per chi si iscrive al 2° livello del Master in Coaching e a metà prezzo per chi si iscrive al 1°.",
+    },
+    teachers: [
+      {
+        name: "Helga Ogliari",
+        creds: "Personal Branding & Storytelling Designer",
+        role: "Relatrice del ciclo",
+        bio: "Personal branding e storytelling designer. Ideatrice della piramide dei valori per il personal branding e del Personal Storytelling Canvas.",
+        img: "/course-media/marketing-per-coach/helga-ogliari.png"
+      }
+    ],
+    career: {
+      title: "Marketing per Coach",
+      content: "Strumenti di personal branding, storytelling e social selling per far riconoscere il tuo valore e acquisire clienti.",
+      points: []
+    },
+    fees: [
+      {
+        title: "Quota",
+        type: "lump",
+        benefit: "Incluso nel Master L2",
+        heading: "Il personal branding del coach",
+        desc: "5 webinar con Helga Ogliari. **Incluso** per chi si iscrive al 2° livello del Master in Coaching, a **metà prezzo** con il 1° livello. Aperto anche agli esterni.",
+        price: "790€",
+        priceLabel: "+ IVA · esterni",
+        footnote: "Incluso nel 2° livello del Master · metà prezzo con il 1° livello"
+      }
+    ],
+    faqs: [
+      { q: "A chi è rivolto il ciclo «Il personal branding del coach»?", a: "A coach certificati e professionisti del coaching che vogliono valorizzare la propria professionalità sul mercato, posizionarsi e attrarre i clienti giusti." },
+      { q: "Chi è la relatrice?", a: "Helga Ogliari, personal branding e storytelling designer, ideatrice della piramide dei valori per il personal branding e del Personal Storytelling Canvas." },
+      { q: "Quanti webinar sono e di cosa parlano?", a: "Cinque: mindset del personal branding, Personal Branding Canvas, storytelling professionale, social selling su LinkedIn e business writing for selling. Ogni webinar produce uno strumento concreto." },
+      { q: "È incluso nel Master in Coaching?", a: "Sì: è incluso per chi si iscrive al 2° livello del Master in Coaching ed è a metà prezzo per chi si iscrive al 1° livello. È aperto anche agli esterni." },
+      { q: "Quanto costa per gli esterni e quando parte la prossima edizione?", a: "Per gli esterni la quota è di 790€ + IVA. Date e orari della prossima edizione sono in definizione: lascia i tuoi contatti per essere avvisato all'apertura delle iscrizioni." }
+    ]
+  },
   'continuous-learning': {
     title: "Continuous Learning (CL)",
     subtitle: "Continuous Learning",

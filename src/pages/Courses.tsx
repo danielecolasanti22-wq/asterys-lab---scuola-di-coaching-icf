@@ -70,6 +70,16 @@ const courseGroups: CourseGroup[] = [
           'Un laboratorio in presenza per integrare il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.',
         img: '/course-media/voice-dialogue/card.png',
       },
+      {
+        id: 'marketing-per-coach',
+        title: 'Marketing per Coach',
+        badge: 'Formazione avanzata',
+        duration: '5 webinar',
+        modality: 'Live online',
+        desc:
+          'Il personal branding del coach: 5 webinar con Helga Ogliari per posizionarti, raccontarti e acquisire clienti. Incluso nel 2° livello del Master.',
+        img: '/course-media/marketing-per-coach/card.png',
+      },
     ],
   },
   {

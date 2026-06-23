@@ -2577,7 +2577,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       <TestimonialsSection compact />
 
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
-      {!isCoachingCircle && !isWorkout && !isCL ? (
+      {!isCoachingCircle && !isWorkout && !isCL && id !== 'marketing-per-coach' ? (
       <section className="py-10 lg:py-24 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <h2 className={`${tSection} mb-3 lg:mb-4`}>

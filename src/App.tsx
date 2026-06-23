@@ -12,6 +12,7 @@ import SystemicTeamCoachingCourse from './pages/courses/SystemicTeamCoachingCour
 import EiwCourse from './pages/courses/EiwCourse';
 import CoachingCircleCourse from './pages/courses/CoachingCircleCourse';
 import VoiceDialogueCourse from './pages/courses/VoiceDialogueCourse';
+import MarketingPerCoachCourse from './pages/courses/MarketingPerCoachCourse';
 import ContinuousLearningCourse from './pages/courses/ContinuousLearningCourse';
 import PublicSpeakingCourse from './pages/courses/PublicSpeakingCourse';
 import Events from './pages/Events';
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/corsi/eiw" element={<EiwCourse />} />
           <Route path="/corsi/coaching-circle" element={<CoachingCircleCourse />} />
           <Route path="/corsi/voice-dialogue" element={<VoiceDialogueCourse />} />
+          <Route path="/corsi/marketing-per-coach" element={<MarketingPerCoachCourse />} />
           <Route path="/corsi/continuous-learning" element={<ContinuousLearningCourse />} />
           <Route path="/corsi/public-speaking" element={<PublicSpeakingCourse />} />
           <Route path="/corsi/:id" element={<CourseDetail />} />

@@ -66,6 +66,7 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'coaching-circle', title: 'Mentoring per il rinnovo delle credenziali', kicker: 'Per la credenziale ICF', meta: '10 ore · gruppo o individuale · Zoom' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
+      { id: 'marketing-per-coach', title: 'Marketing per Coach', kicker: 'Personal branding · 5 webinar', meta: 'Con Helga Ogliari · Live online' },
     ],
   },
   {
