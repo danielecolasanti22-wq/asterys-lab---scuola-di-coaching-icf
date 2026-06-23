@@ -416,6 +416,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   // Heroes using the new full-bleed 1512x608 cutout layout (people composed on the right).
   const fullBleedHero = ['apcm', 'systemic-team-coaching', 'coaching-circle', 'voice-dialogue', 'eiw', 'continuous-learning', 'public-speaking', 'marketing-per-coach'].includes(id ?? '');
   const isCL = id === 'continuous-learning';
+  // Sezione date a lista (titolo + data per riga), come Continuous Learning.
+  const usesClassDateList = isCL || id === 'marketing-per-coach';
 
   // "Master" deve comparire solo per APCM e ASTC (Team Coaching); per gli altri corsi si dice "corso".
   const isMasterLike = id === 'apcm' || id === 'systemic-team-coaching';
@@ -1044,7 +1046,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
-                        {(isCL ? (course.classDates ?? []).slice(0, 3) : (course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }])).map((cd, i, arr) => (
+                        {(usesClassDateList ? (course.classDates ?? []).slice(0, 3) : (course.classDates || [{ date: course.summaryBox.dates, badge: "PROSSIMA EDIZIONE" }])).map((cd, i, arr) => (
                           <div key={i} className="contents">
                             {i > 0 && <div className="h-px w-full md:h-12 md:w-px bg-white/10 shrink-0"></div>}
                             <div className="flex-1">
@@ -1492,7 +1494,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
           </div>
           <p className={`${tBody} max-w-3xl mb-10`}>{richText(how.formazioneIntro)}</p>
 
-          {isCL ? (
+          {usesClassDateList ? (
             <div className="divide-y divide-gray-200 border-t border-gray-200">
               {(course.classDates ?? []).map((cd, i) => (
                 <div

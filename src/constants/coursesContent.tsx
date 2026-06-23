@@ -2355,13 +2355,12 @@ export const coursesContent: Record<string, CourseData> = {
       formazioneBadge: "Live online · 18:30–20:00",
       formazioneIntro: "Gli incontri si svolgono in diretta online, dalle **18:30 alle 20:00**. Ecco il calendario della prima edizione."
     },
-    scheduleBands: [
-      {
-        title: "Webinar in diretta",
-        body: "Cinque incontri live online con Helga Ogliari, in orario serale.",
-        dayLines: ["9 novembre 2026", "16 novembre 2026", "26 novembre 2026", "9 dicembre 2026", "16 dicembre 2026"],
-        timeLines: ["18:30 – 20:00"],
-      },
+    classDates: [
+      { date: "9 novembre 2026", badge: "Webinar 1", note: "Mindset del personal branding" },
+      { date: "16 novembre 2026", badge: "Webinar 2", note: "Il tuo piano strategico con Personal Branding Canvas" },
+      { date: "26 novembre 2026", badge: "Webinar 3", note: "Storytelling professionale" },
+      { date: "9 dicembre 2026", badge: "Webinar 4", note: "Social selling su LinkedIn" },
+      { date: "16 dicembre 2026", badge: "Webinar 5", note: "Business writing for selling" },
     ],
     competenciesAndCareers: {
       eyebrow: "Cosa porti a casa",
