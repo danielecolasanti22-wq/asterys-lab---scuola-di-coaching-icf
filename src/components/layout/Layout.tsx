@@ -55,7 +55,7 @@ const megaColumns: MegaColumn[] = [
     caption: 'Percorsi completi per diventare coach ICF',
     icon: 'master',
     items: [
-      { id: 'apcm', title: 'Professione Coach', kicker: 'Master in Coaching Professionale · ICF Level 1 & 2', meta: '6 mesi · Milano · Roma · Online' },
+      { id: 'apcm', title: 'Professione Coach', kicker: 'Master in Coaching · ICF Level 1 & 2', meta: '6–12 mesi · Milano · Roma · Online' },
       { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
     ],
   },
@@ -92,7 +92,7 @@ const aboutMenu = [
 const megaPromos = [
   {
     kicker: 'Evento in evidenza',
-    title: 'Open Day Online: Master in Coaching Professionale',
+    title: 'Open Day Online: Master in Coaching',
     cta: "Scopri l'evento",
     img: '/course-media/apcm/card.png',
     to: '/eventi/open-day-master-apcm',
@@ -805,7 +805,7 @@ const footerNavGroups = [
   {
     title: 'The Campus',
     links: [
-      { label: 'Master in Coaching Professionale', to: '/corsi/apcm' },
+      { label: 'Master in Coaching', to: '/corsi/apcm' },
       { label: 'Team Coaching', to: '/corsi/systemic-team-coaching' },
       { label: 'Intelligenza Emotiva', to: '/corsi/eiw' },
       { label: 'Mentoring per le credenziali', to: '/corsi/coaching-circle' },

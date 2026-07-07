@@ -1621,30 +1621,30 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
             {isCoachingCircle ? (
               <>
                 <div className="space-y-4">
-                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Sessione singola</h3>
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Mentoring di gruppo</h3>
                   <p className={tBody}>
-                    Acquisti la singola sessione di pratica e prenoti la data dal calendario, senza impegni ricorrenti.
+                    Acquisti un'edizione: 2 incontri da 3,5h insieme (7 ore in tutto), non sessioni separate. Le date sono fisse, dal calendario.
                   </p>
                   <ul className="space-y-3 pt-2">
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Acquisto una tantum
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Edizione = 2 incontri (7h)
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Data scelta dal calendario
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date fisse dal calendario
                     </li>
                   </ul>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Formato</h3>
+                  <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Mentoring individuale</h3>
                   <p className={tBody}>
-                    3,30h in videochiamata, gruppi da 4: alterni i ruoli di coach, cliente e osservatore con supervisione del mentor MCC.
+                    Sessioni one-to-one col Mentor Coach MCC, a costo orario. Le date non sono prefissate: le concordi direttamente con lui/lei.
                   </p>
                   <ul className="space-y-3 pt-2">
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> 20' come coach + 30' di feedback
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> 3 ore per completare le 10h
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Apprendimento dalle tre posizioni
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date concordate col mentor
                     </li>
                   </ul>
                 </div>

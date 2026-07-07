@@ -17,7 +17,7 @@ const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Accedi al Master in Coaching Professionale anche senza poterlo pagare subito',
+  'Accedi al Master in Coaching anche senza poterlo pagare subito',
   'Paghi quando inizi a guadagnare, con un piano sostenibile calibrato sul tuo reddito',
   'Se non raggiungi un reddito nel periodo concordato, azzeriamo il debito residuo',
 ];
@@ -26,7 +26,7 @@ const comeFunziona = [
   {
     icon: HandCoins,
     title: 'Una scommessa, non una carità',
-    desc: 'Diamo credito a chi ha talento ma è senza lavoro o con reddito insufficiente per accedere al Master in Coaching Professionale. Se tu vinci, vinciamo insieme: è un patto di fiducia, empowerment e responsabilità.',
+    desc: 'Diamo credito a chi ha talento ma è senza lavoro o con reddito insufficiente per accedere al Master in Coaching. Se tu vinci, vinciamo insieme: è un patto di fiducia, empowerment e responsabilità.',
   },
   {
     icon: TrendingUp,
@@ -248,7 +248,7 @@ export default function CreditoAiTalenti() {
           </h2>
           <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mb-10">
             &ldquo;Credito ai talenti&rdquo; è l&rsquo;iniziativa di Asterys Lab a sostegno dei talenti professionali:
-            un&rsquo;alternativa alla borsa di studio per accedere al Master in Coaching Professionale.
+            un&rsquo;alternativa alla borsa di studio per accedere al Master in Coaching.
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {comeFunziona.map(({ icon: Icon, title, desc }) => (

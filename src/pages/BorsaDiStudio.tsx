@@ -9,7 +9,7 @@ const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Riservata alle prime iscrizioni delle edizioni di Roma del Master in Coaching Professionale',
+  'Riservata alle prime iscrizioni delle edizioni di Roma del Master in Coaching',
   'Fino a 1.500€ di sconto sulla quota del Master, accreditato ICF Level 1 & 2',
   'Selezione tramite colloquio gratuito con un Advisor — nessun acquisto online',
 ];
@@ -92,7 +92,7 @@ export default function BorsaDiStudio() {
             Diventa coach con la Borsa di studio Asterys
           </h1>
           <p className="text-sm sm:text-lg text-white/80 font-medium leading-relaxed max-w-[640px] mb-7">
-            Per supportare l&rsquo;accesso al Master in Coaching Professionale ai talenti del Centro e Sud Italia,
+            Per supportare l&rsquo;accesso al Master in Coaching ai talenti del Centro e Sud Italia,
             riserviamo una borsa di studio <span className="text-white font-black">fino a 1.500€</span> sulle prime
             iscrizioni delle edizioni di Roma.
           </p>

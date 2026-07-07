@@ -369,18 +369,18 @@ export const commonTestimonials: CourseTestimonial[] = [
 const apcmFaqs = [
   {
     q: "Serve la laurea per diventare coach?",
-    a: "No, non serve una laurea specifica. Al Master in Coaching Professionale può iscriversi chi arriva dall'università e si avvicina per la prima volta al coaching, così come chi già lavora (in HR, consulenza, management o psicologia) e vuole integrare il coaching nella propria professione. Contano motivazione, maturità professionale e voglia di mettersi in gioco."
+    a: "No, non serve una laurea specifica. Al Master in Coaching può iscriversi chi arriva dall'università e si avvicina per la prima volta al coaching, così come chi già lavora (in HR, consulenza, management o psicologia) e vuole integrare il coaching nella propria professione. Contano motivazione, maturità professionale e voglia di mettersi in gioco."
   },
   {
-    q: "Quanto dura il Master in Coaching Professionale?",
+    q: "Quanto dura il Master in Coaching?",
     a: "Il Master si sviluppa nell'arco di alcuni mesi, in base al livello scelto (Livello 1, Livello 2 o Percorso Completo) e al calendario dell'edizione. Le lezioni si tengono in genere una volta a settimana; le sessioni online sono dalle 18:30 alle 20:00, con studio, esercitazioni e report tra una lezione e l'altra."
   },
   {
-    q: "Quanto costa il Master in Coaching Professionale?",
+    q: "Quanto costa il Master in Coaching?",
     a: "Il Livello 1 parte da 3.400€ + IVA, il Livello 2 da 4.500€ + IVA e il Percorso Completo (Livello 1 + 2, il più scelto) è 6.900€ + IVA. È prevista la rateizzazione fino a 24 mesi senza interessi. Prezzi aggiornati ed eventuali condizioni Early Bird sono nella sezione Prezzi."
   },
   {
-    q: "Si può pagare a rate il Master in Coaching Professionale?",
+    q: "Si può pagare a rate il Master in Coaching?",
     a: "Sì. Puoi pagare in un'unica soluzione oppure rateizzare fino a 24 mesi senza interessi, per distribuire l'investimento nel tempo. Le modalità di pagamento e le eventuali condizioni Early Bird sono indicate nella sezione Prezzi."
   },
   {
@@ -407,9 +407,9 @@ const apcmFaqs = [
 
 export const coursesContent: Record<string, CourseData> = {
   'apcm': {
-    title: "Master in Coaching Professionale",
+    title: "Master in Coaching",
     subtitle: "Professione Coach",
-    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: il Master in Coaching Professionale è il percorso d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
+    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: il Master in Coaching è il percorso d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "Diventa coach",
     media: {
@@ -488,9 +488,9 @@ export const coursesContent: Record<string, CourseData> = {
     },
     badges: ["ICF Level 1 & 2", "20+ anni esperienza", "Community Alumni"],
     overview: {
-      title: "Perché questo Master in Coaching Professionale",
+      title: "Perché questo Master in Coaching",
       content: [
-        "Il Master in Coaching Professionale è il percorso di Asterys Lab per diventare **coach professionista** con **credenziali ICF** riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra metodo, **intelligenza emotiva** e **approccio sistemico**.",
+        "Il Master in Coaching è il percorso di Asterys Lab per diventare **coach professionista** con **credenziali ICF** riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra metodo, **intelligenza emotiva** e **approccio sistemico**.",
         "Impari a condurre sessioni con rigore etico e a costruire un business sostenibile, accanto a **trainer MCC & PCC** con 20+ anni di esperienza e 3.000+ alumni. Che tu venga da HR, consulenza, management o psicologia, ti porta da professionista curioso a **coach pronto per il mercato**."
       ]
     },
@@ -516,7 +516,7 @@ export const coursesContent: Record<string, CourseData> = {
     },
     earlyBirdPromo: {
       ribbon: "SCONTO EARLY BIRD",
-      line: "Early Bird: fino a 690€ di sconto sul Master in Coaching Professionale, già applicato al checkout | Iscriviti entro il 27/08/2026",
+      line: "Early Bird: fino a 690€ di sconto sul Master in Coaching, già applicato al checkout | Iscriviti entro il 27/08/2026",
       deadline: "27/08/2026",
       ctaHref: "#prezzo",
       pillDeadlineLabel: "10% EARLY BIRD",
@@ -579,8 +579,8 @@ export const coursesContent: Record<string, CourseData> = {
       {
         name: "Paola Rulfi",
         creds: "MCC",
-        role: "Business and Executive Coach, Mentor Coach, Supervisor",
-        bio: "Business ed Executive Coach MCC, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
+        role: "Business and Executive Coach, Trainer, Mentor Coach, Supervisor",
+        bio: "Business ed Executive Coach MCC, Trainer, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
         img: "/course-media/apcm/trainer-paola-rulfi.png"
       },
       {
@@ -605,13 +605,13 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Ecosistema Asterys",
       title: "Pegasus Coaching Program",
       intro:
-        "Pegasus collega studenti e diplomati del Master in Coaching Professionale: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
+        "Pegasus collega studenti e diplomati del Master in Coaching: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
       logo: "/brand/pegasus.png",
       note: "Il programma è attivo sulle edizioni e sui percorsi in cui è previsto da Asterys Lab.",
       points: [
         {
           title: "Coaching incluso per gli studenti",
-          desc: "Gli studenti del Master in Coaching Professionale possono ricevere da 3 a 15 ore di coaching individuale, erogato da coach formati nelle edizioni precedenti del Master.",
+          desc: "Gli studenti del Master in Coaching possono ricevere da 3 a 15 ore di coaching individuale, erogato da coach formati nelle edizioni precedenti del Master.",
           meta: "Da 3 a 15 ore"
         },
         {
@@ -769,10 +769,10 @@ export const coursesContent: Record<string, CourseData> = {
         "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri Online, i Live Lab, i Corsi intensivi e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
     },
     whyChoose: {
-      eyebrow: "Perché scegliere il Master in Coaching Professionale",
+      eyebrow: "Perché scegliere il Master in Coaching",
       title: "Un Master che unisce rigore, umanità e mercato",
       intro:
-        "Il Master in Coaching Professionale è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
+        "Il Master in Coaching è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
       bullets: [
         {
           title: "Accreditamento ICF Level 1 & 2",
@@ -812,7 +812,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Struttura del percorso",
       title: "Scegli come affrontare il Master",
       intro:
-        "Il Master in Coaching Professionale è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio. Il **2° livello** è accessibile dopo aver completato il **1° livello**.",
+        "Il Master in Coaching è organizzato su **due livelli** che puoi frequentare insieme (Percorso Completo) o separatamente. Il Percorso Completo è il più scelto: metodo ICF integrale e il miglior risparmio. Il **2° livello** è accessibile dopo aver completato il **1° livello**.",
       levels: [
         {
           label: "Livello 1",
@@ -1863,12 +1863,12 @@ export const coursesContent: Record<string, CourseData> = {
       formazioneTitle: "Pratica supervisionata · date di gruppo",
       formazioneBadge: "17:00–20:30 · Zoom",
       formazioneIntro:
-        "Edizione di gruppo in corso (Set–Dic 2026): **29 settembre 2026** e **10 dicembre 2026**, ore **17:00–20:30**, online su Zoom. In ogni incontro pratichi come coach su un caso reale e ricevi feedback dedicato dal Mentor Coach MCC. Per il mentor coaching individuale concordi le date direttamente con il mentor.",
+        "Edizione di gruppo in corso (Set–Dic 2026): **29 settembre 2026** e **10 dicembre 2026**, ore **17:00–20:30**, online su Zoom. In ogni incontro pratichi come coach su un caso reale e ricevi feedback dedicato dal Mentor Coach MCC. **Il mentor coaching individuale, invece, non ha date fisse: le concordi una a una direttamente con il Mentor Coach**, in base alle ore che ti servono e ai tuoi impegni.",
     },
     scheduleColumns: [
-      { icon: 'monitor', title: 'Modalità', body: 'Videochiamata su Zoom — link inviato prima dell\'incontro. Orario 17:00–20:30.' },
-      { icon: 'users', title: 'Gruppo', body: 'Gruppi da 4 partecipanti, con supervisione di Paola Rulfi, Mentor Coach MCC.' },
-      { icon: 'calendar', title: 'Quando', body: '3 edizioni l\'anno (Gen–Mar, Apr–Giu, Set–Dic). Ogni edizione ha 2 date, acquistabili insieme; vengono comunicate di volta in volta.' },
+      { icon: 'users', title: 'Gruppo', body: 'Gruppi da 4 con Paola Rulfi, Mentor Coach MCC. Date fisse: 29 set e 10 dic 2026, ore 17:00–20:30. 3 edizioni l\'anno (Gen–Mar, Apr–Giu, Set–Dic).' },
+      { icon: 'calendar', title: 'Individuale', body: 'Sessioni one-to-one col Mentor Coach: le date non sono prefissate, le concordi direttamente con lui/lei in base alle ore che ti servono.' },
+      { icon: 'monitor', title: 'Dove', body: 'Tutto online su Zoom; il link viene inviato prima di ogni incontro.' },
     ],
     studyModeBox: {
       title: "Come si acquista",
@@ -1879,8 +1879,8 @@ export const coursesContent: Record<string, CourseData> = {
       {
         name: "Paola Rulfi",
         creds: "MCC",
-        role: "Business and Executive Coach, Mentor Coach, Supervisor",
-        bio: "Business ed Executive Coach MCC, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
+        role: "Business and Executive Coach, Trainer, Mentor Coach, Supervisor",
+        bio: "Business ed Executive Coach MCC, Trainer, Mentor Coach e Supervisor per coach e professionisti in sviluppo.",
         img: "/course-media/apcm/trainer-paola-rulfi.png"
       }
     ],
@@ -1955,7 +1955,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Chi è il Mentor Coach?",
-        a: "Paola Rulfi, Mentor Coach MCC di Asterys Lab: Business ed Executive Coach, Mentor Coach e Supervisor. Offre feedback immediato e discute con i partecipanti scelte e strategie sui casi reali."
+        a: "Paola Rulfi, Mentor Coach MCC di Asterys Lab: Business ed Executive Coach, Trainer, Mentor Coach e Supervisor. Offre feedback immediato e discute con i partecipanti scelte e strategie sui casi reali."
       },
       {
         q: "Dove si svolge?",

@@ -21,7 +21,7 @@ const steps = [
 
 const upcomingClasses = [
   {
-    course: 'Master in Coaching Professionale · Milano',
+    course: 'Master in Coaching · Milano',
     date: '27 ottobre 2026',
     deadline: 'Iscrizioni aperte · termine candidature 13 ottobre 2026',
     earlyBird: 'Early Bird 10% entro il 27 agosto 2026',
@@ -54,7 +54,7 @@ const courseGroups = [
   {
     label: 'Master',
     options: [
-      { id: 'apcm', label: 'Master in Coaching Professionale' },
+      { id: 'apcm', label: 'Master in Coaching' },
       { id: 'systemic-team-coaching', label: 'Team Coaching Sistemico' },
     ],
   },

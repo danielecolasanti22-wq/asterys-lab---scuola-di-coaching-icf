@@ -342,7 +342,7 @@ const MasterFeatured = () => (
             </h3>
             <div className="flex items-center gap-5 text-[11px] text-brand-accent font-bold uppercase tracking-[0.18em]">
               <span className="flex items-center gap-1.5">
-                <Calendar size={13} /> 3-8 mesi
+                <Calendar size={13} /> 6–12 mesi
               </span>
               <span className="flex items-center gap-1.5">
                 <MapPin size={13} /> In diretta
@@ -375,7 +375,7 @@ const MasterGrid = () => {
     {
       id: 'apcm',
       title: 'Master in Coaching',
-      duration: '3-8 mesi',
+      duration: '6–12 mesi',
       label: 'Master',
       desc: 'Lancia una nuova carriera da zero con supporto costante e una full-immersion nelle competenze di coaching ICF Level 1 & 2.',
       start: 'Più edizioni 2026',
@@ -397,7 +397,7 @@ const MasterGrid = () => {
     {
       id: 'eiw',
       title: 'Intelligenza Emotiva',
-      duration: 'Round · 4 CCE',
+      duration: '4 Workout live · 4 CCE',
       label: 'Corso Breve',
       desc: "Allena l'IE con esperienze consapevoli: modello CSI, fiore di Plutchik, coach dedicati.",
       start: 'Prossimo Round',
@@ -417,7 +417,7 @@ const MasterGrid = () => {
     {
       id: 'voice-dialogue',
       title: 'Voice Dialogue Skills',
-      duration: '3 giornate · In aula',
+      duration: '3 giornate · In presenza',
       label: 'Formazione avanzata',
       desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
       start: '17 novembre 2026',
@@ -429,7 +429,7 @@ const MasterGrid = () => {
       title: 'Continuous Learning',
       duration: '1 live class/mese',
       label: 'Corso Breve',
-      desc: 'Formazione continua per coach e alumni: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
+      desc: 'Formazione continua per coach: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
       start: 'Inizi quando vuoi',
       lastSeats: false,
       seed: 'continuous-learning',

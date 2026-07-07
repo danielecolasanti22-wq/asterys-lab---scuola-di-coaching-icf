@@ -29,7 +29,7 @@ export function richText(text: string): ReactNode {
  * leftmost di JS cattura "team coaching sistemico" prima di "team coaching".
  */
 const KEYWORDS = [
-  'Master in Coaching Professionale',
+  'Master in Coaching',
   'team coaching sistemico',
   'coach professionista',
   'business coaching',

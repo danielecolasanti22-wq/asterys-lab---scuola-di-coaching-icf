@@ -21,7 +21,7 @@ export type EventItem = {
 export const eventsData: EventItem[] = [
   {
     id: 'open-day-master-apcm',
-    title: 'Open Day Online: Master in Coaching Professionale',
+    title: 'Open Day Online: Master in Coaching',
     date: '24 Settembre 2026',
     time: '18:30 – 20:00',
     modality: 'Online (Zoom)',
@@ -31,11 +31,11 @@ export const eventsData: EventItem[] = [
     desc:
       'Incontra i docenti, scopri il metodo sistemico e ricevi tutte le informazioni sul Master per diventare coach professionista.',
     long: [
-      'Un incontro online dedicato a chi vuole capire se la professione di coach fa per sé. Conosci i trainer, il metodo Asterys Lab e ricevi tutte le informazioni sul Master in Coaching Professionale, accreditato ICF Level 1 & 2.',
+      'Un incontro online dedicato a chi vuole capire se la professione di coach fa per sé. Conosci i trainer, il metodo Asterys Lab e ricevi tutte le informazioni sul Master in Coaching, accreditato ICF Level 1 & 2.',
       'È l’occasione per fare domande dirette su programma, calendario, modalità di studio e sbocchi professionali, e per vedere il coaching all’opera con una dimostrazione pratica.',
     ],
     highlights: [
-      'La struttura del Master in Coaching Professionale e i suoi riconoscimenti ICF',
+      'La struttura del Master in Coaching e i suoi riconoscimenti ICF',
       'Una dimostrazione live di coaching',
       'Il percorso dalla formazione alla professione',
       'Spazio per domande dirette con i trainer',

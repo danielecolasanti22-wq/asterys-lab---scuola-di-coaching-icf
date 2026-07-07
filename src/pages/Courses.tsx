@@ -28,7 +28,7 @@ const courseGroups: CourseGroup[] = [
         id: 'apcm',
         title: 'Professione Coach',
         badge: 'Master',
-        duration: '3–8 mesi',
+        duration: '6–12 mesi',
         modality: 'Online + Aula',
         desc:
           'Il percorso completo per diventare coach professionista con credenziali ICF Level 1 & 2: metodo, pratica supervisionata e intelligenza emotiva misurabile.',
@@ -90,10 +90,10 @@ const courseGroups: CourseGroup[] = [
         id: 'eiw',
         title: 'Intelligenza Emotiva',
         badge: 'Corso Breve',
-        duration: 'Round · 4 CCE',
+        duration: '4 Workout live · 4 CCE',
         modality: 'Live Online',
         desc:
-          "Allena l'intelligenza emotiva con esperienze guidate: modello CSI, fiore di Plutchik e coach dedicati. 4 CCE ICF per Round.",
+          "Allena l'intelligenza emotiva con esperienze guidate: modello CSI, fiore di Plutchik e coach dedicati. Ogni ciclo è di 4 Workout live da 60' (4 CCE ICF).",
         img: '/course-media/eiw/card.png',
       },
       {
@@ -103,7 +103,7 @@ const courseGroups: CourseGroup[] = [
         duration: '1 live class/mese',
         modality: 'Zoom · 18:30–20:00',
         desc:
-          'Sviluppo continuo per coach e alumni: una live class al mese in Zoom, tutto l’anno tranne agosto. Entri quando vuoi.',
+          'Formazione continua per coach: una live class al mese in Zoom, tutto l’anno tranne agosto. Entri quando vuoi.',
         img: '/course-media/continuous-learning/card.jpg',
       },
       {
