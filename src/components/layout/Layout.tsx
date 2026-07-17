@@ -52,7 +52,7 @@ type MegaColumn = {
 const megaColumns: MegaColumn[] = [
   {
     label: 'Master',
-    caption: 'Percorsi completi per diventare coach ICF',
+    caption: 'Diventa coach ICF, riconosciuto ovunque',
     icon: 'master',
     items: [
       { id: 'apcm', title: 'Professione Coach', kicker: 'Master in Coaching · ICF Level 1 & 2', meta: '6–12 mesi · Milano · Roma · Online' },
@@ -61,7 +61,7 @@ const megaColumns: MegaColumn[] = [
   },
   {
     label: 'Formazione avanzata',
-    caption: 'Approfondisci ambiti chiave del coaching',
+    caption: 'Porta il tuo coaching a un nuovo livello',
     icon: 'specialization',
     items: [
       { id: 'coaching-circle', title: 'Mentoring per il rinnovo delle credenziali', kicker: 'Per la credenziale ICF', meta: '10 ore · gruppo o individuale · Zoom' },
@@ -71,7 +71,7 @@ const megaColumns: MegaColumn[] = [
   },
   {
     label: 'Corsi brevi',
-    caption: 'Skill pratiche, tempi ridotti',
+    caption: 'Nuove skill spendibili subito, in poche ore',
     icon: 'short',
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'Modello CSI', meta: '4 Workout · Live Online' },
@@ -91,22 +91,22 @@ const aboutMenu = [
 
 const megaPromos = [
   {
-    kicker: 'Evento in evidenza',
-    title: 'Open Day Online: Master in Coaching',
-    cta: "Scopri l'evento",
+    kicker: 'Open Day gratuito',
+    title: 'Scopri dal vivo come diventare coach ICF',
+    cta: 'Prenota il tuo posto',
     img: '/course-media/apcm/card.png',
     to: '/eventi/open-day-master-apcm',
   },
   {
-    kicker: 'Risorsa',
-    title: 'Come diventare coach ICF',
+    kicker: 'Guida gratuita',
+    title: 'Come diventare coach ICF, passo dopo passo',
     cta: 'Leggi la guida',
     img: '/blog/credenziali-icf.png',
     to: '/blog',
   },
   {
     kicker: 'Borsa di studio',
-    title: 'Fino a 1.500€ · Sede di Roma',
+    title: 'Formati a Roma con fino a 1.500€ di sconto',
     cta: 'Candidati ora',
     img: '/promo/borsa-di-studio-roma.png',
     to: '/borsa-di-studio',
@@ -898,7 +898,7 @@ export const Footer = () => {
               Entra in <Highlight className="text-brand-blue">Asterys Letters</Highlight>.
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-white/65 font-medium leading-relaxed">
-              Coaching, intelligenza emotiva e leadership. Senza spam.
+              Idee pratiche di coaching, intelligenza emotiva e leadership per crescere ogni mese. Senza spam.
             </p>
             <form className="mt-4 flex flex-col sm:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
               <input

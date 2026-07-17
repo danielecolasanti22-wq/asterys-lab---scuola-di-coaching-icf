@@ -62,48 +62,48 @@ const pillars = [
     icon: <HeartHandshake size={22} />,
     title: 'Persone al centro',
     body:
-      'Il cambiamento sostenibile parte dalla relazione: prima di qualsiasi tecnica viene la qualità dell\'incontro tra coach e cliente.',
+      'Il cambiamento che generi parte dalla relazione: prima di ogni tecnica impari a curare la qualità dell’incontro tra te e il tuo cliente.',
   },
   {
     icon: <Compass size={22} />,
     title: 'Metodo evidence-based',
     body:
-      'Intelligenza emotiva misurabile, approccio sistemico e standard ICF: un metodo solido, validato su migliaia di professionisti.',
+      'Lavori con intelligenza emotiva misurabile, approccio sistemico e standard ICF: un metodo solido, validato su migliaia di professionisti, su cui puoi contare davanti a ogni cliente.',
   },
   {
     icon: <Users size={22} />,
     title: 'Apprendimento in community',
     body:
-      'Si cresce dentro una comunità viva: trainer certificati, compagni di aula e alumni in tutta Europa, con pratica supervisionata.',
+      'Cresci dentro una comunità viva: trainer certificati, compagni di aula e alumni in tutta Europa, con pratica supervisionata che ti fa arrivare pronto.',
   },
   {
     icon: <Sparkles size={22} />,
     title: 'Alta formazione accessibile',
     body:
-      'Formazione di livello internazionale pensata per chi lavora: lezioni live, percorsi modulari e rateizzazioni su misura.',
+      'Accedi a una formazione di livello internazionale pensata per chi lavora: lezioni live, percorsi modulari e rateizzazioni su misura per farla stare nella tua vita.',
   },
 ];
 
 const values = [
-  { label: 'Rigore', body: 'Standard ICF, supervisione e valutazione continua.' },
-  { label: 'Umanità', body: 'La relazione prima della performance.' },
+  { label: 'Rigore', body: 'Standard ICF, supervisione e valutazione continua che alzano il tuo livello.' },
+  { label: 'Umanità', body: 'Impari a mettere la relazione prima della performance.' },
   { label: 'Impatto', body: 'Strumenti concreti, misurabili e replicabili nella tua pratica.' },
   { label: 'Comunità', body: 'Alumni, trainer e advisor a supporto del tuo percorso.' },
 ];
 
 const accreditations = [
-  { file: 'icf', label: 'ICF', desc: 'International Coaching Federation: l’ente di riferimento mondiale.' },
-  { file: 'icf-level-1', label: 'Level 1', desc: 'Accredited Coaching Education — verso la credenziale ACC.' },
-  { file: 'icf-level-2', label: 'Level 2', desc: 'Accredited Coaching Education — verso la credenziale PCC.' },
-  { file: 'icf-cce-new', label: 'CCE', desc: 'Continuing Coach Education: crediti per il rinnovo.' },
-  { file: 'icf-aatc', label: 'AATC', desc: 'Advanced Accreditation in Team Coaching.' },
+  { file: 'icf', label: 'ICF', desc: 'International Coaching Federation: l’ente mondiale che dà valore al tuo titolo.' },
+  { file: 'icf-level-1', label: 'Level 1', desc: 'Accredited Coaching Education: la tua strada verso la credenziale ACC.' },
+  { file: 'icf-level-2', label: 'Level 2', desc: 'Accredited Coaching Education: la tua strada verso la credenziale PCC.' },
+  { file: 'icf-cce-new', label: 'CCE', desc: 'Continuing Coach Education: i crediti che ti servono per rinnovare la credenziale.' },
+  { file: 'icf-aatc', label: 'AATC', desc: 'Advanced Accreditation in Team Coaching: alleni team e leader al risultato.' },
 ];
 
 const communityPillars = [
   {
     icon: <Users size={20} />,
     title: 'Alumni network',
-    body: '3.000+ professionisti in Italia e in Europa per referral, collaborazioni e crescita condivisa.',
+    body: '3.000+ professionisti in Italia e in Europa a cui appoggiarti per referral, collaborazioni e nuove opportunità.',
   },
   {
     icon: <RefreshCw size={20} />,
@@ -113,12 +113,12 @@ const communityPillars = [
   {
     icon: <Calendar size={20} />,
     title: 'Eventi & incontri',
-    body: 'Workshop, open day e momenti di confronto dal vivo e online con docenti e coach.',
+    body: 'Workshop, open day e momenti di confronto dal vivo e online dove allarghi la tua rete con docenti e coach.',
   },
   {
     icon: <MessagesSquare size={20} />,
     title: 'Mentoring tra pari',
-    body: 'Mentoring di gruppo e pratica supervisionata per continuare ad allenarti con gli altri coach e maturare le ore per il rinnovo della credenziale ICF.',
+    body: 'Mentoring di gruppo e pratica supervisionata per continuare ad allenarti con altri coach e maturare le ore utili al rinnovo della credenziale ICF.',
   },
 ];
 
@@ -180,14 +180,14 @@ export default function About() {
               About · Asterys Lab
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02] text-white">
-              La nostra{' '}
-              <Highlight className="text-brand-sky">filosofia</Highlight>{' '}
-              del coaching.
+              La scuola che ti fa{' '}
+              <Highlight className="text-brand-sky">diventare coach</Highlight>{' '}
+              e riconoscere ovunque.
             </h1>
             <p className="mt-6 text-lg text-white/75 font-medium max-w-[640px] leading-relaxed">
-              Asterys Lab è la prima Coaching School ICF accreditata in Italia. Da venticinque anni
-              accompagniamo coach, manager, HR e professionisti della relazione a stare nelle relazioni
-              con rigore, intelligenza emotiva misurabile e un'umanità che si vede.
+              Scegli la prima Coaching School ICF accreditata in Italia e porti a casa venticinque anni
+              di metodo: impari a stare nelle relazioni con rigore, intelligenza emotiva misurabile e
+              un'umanità che si vede — e a farti riconoscere come coach, ovunque.
             </p>
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function About() {
                 25+
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
-                Anni di ricerca e pratica nel coaching
+                Anni di metodo collaudato che erediti dal primo giorno
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
@@ -210,7 +210,7 @@ export default function About() {
                 3.000+
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
-                Coach formati in Italia e nel mondo
+                Colleghi e alumni pronti a sostenere la tua carriera
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
@@ -234,7 +234,7 @@ export default function About() {
                 Chi siamo
               </span>
               <h2 className={`${tSection} mt-3`}>
-                La prima Coaching School{' '}
+                Impari dove tutto è iniziato: la prima Coaching School{' '}
                 <Highlight>ICF accreditata</Highlight> in Italia.
               </h2>
               <SectionImage
@@ -245,20 +245,21 @@ export default function About() {
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
               <p>
-                Asterys Lab nasce oltre venticinque anni fa con un'idea precisa: portare in Italia un
-                coaching <Highlight>rigoroso, misurabile e profondamente umano</Highlight>, allineato agli
-                standard internazionali della International Coaching Federation.
+                Porti a casa un coaching <Highlight>rigoroso, misurabile e profondamente umano</Highlight>,
+                allineato agli standard internazionali della International Coaching Federation: è l'idea
+                precisa con cui, oltre venticinque anni fa, Asterys Lab ha portato in Italia un nuovo
+                modo di formare coach.
               </p>
               <p>
-                Da allora siamo cresciuti come <Highlight>scuola, metodo e comunità</Highlight>. Abbiamo
-                formato più di 3.000 tra coach, manager, HR e professionisti della relazione, in Italia
-                e in Europa, e siamo diventati un punto di riferimento riconosciuto dalla stampa e dal
-                mondo delle organizzazioni.
+                Entri in una <Highlight>scuola, un metodo e una comunità</Highlight> cresciuti insieme:
+                più di 3.000 tra coach, manager, HR e professionisti della relazione si sono già formati
+                qui, in Italia e in Europa, dentro un punto di riferimento riconosciuto dalla stampa e
+                dal mondo delle organizzazioni. La stessa rete e la stessa reputazione lavorano per te.
               </p>
               <p>
-                Oggi Asterys Lab è un team di trainer e mentor coach certificati ICF: nessuna formula
-                preconfezionata, ma persone che fanno coaching ogni giorno e lo insegnano stando
-                accanto a chi cresce.
+                Impari da un team di trainer e mentor coach certificati ICF: nessuna formula
+                preconfezionata, ma persone che fanno coaching ogni giorno e restano accanto a te
+                mentre cresci.
               </p>
             </div>
           </div>
@@ -274,7 +275,7 @@ export default function About() {
                 Filosofia
               </span>
               <h2 className={`${tSection} mt-3`}>
-                Il coaching come atto di{' '}
+                Esci con un coaching che è un atto di{' '}
                 <Highlight>responsabilità</Highlight>.
               </h2>
               <SectionImage
@@ -284,19 +285,19 @@ export default function About() {
             </div>
             <div className="space-y-6 text-lg text-brand-navy/80 font-medium leading-relaxed lg:order-1">
               <p>
-                Per noi il coaching non è una moda né una tecnica: è una <Highlight>scelta di metodo</Highlight>
-                {' '}e di <Highlight>postura</Highlight>. Significa stare accanto alle persone — senza sostituirsi
+                Impari che il coaching non è una moda né una tecnica: è una <Highlight>scelta di metodo</Highlight>
+                {' '}e di <Highlight>postura</Highlight>. Sai stare accanto alle persone — senza sostituirti
                 a loro — per aiutarle a trovare risorse, direzione e voce.
               </p>
               <p>
-                Da un quarto di secolo portiamo in aula ricerca internazionale, standard <Highlight>ICF</Highlight>,
-                intelligenza emotiva misurabile e lettura sistemica. Ma partiamo sempre dalla domanda più
-                difficile: <em>chi vogliamo essere, quando siamo accanto a un'altra persona?</em>
+                Porti in ogni sessione un quarto di secolo di ricerca internazionale, standard <Highlight>ICF</Highlight>,
+                intelligenza emotiva misurabile e lettura sistemica. E parti sempre dalla domanda più
+                difficile: <em>chi vuoi essere, quando sei accanto a un'altra persona?</em>
               </p>
               <p>
-                È da questa domanda che è nato Asterys Lab. Ed è per questa domanda che continuiamo,
-                edizione dopo edizione, a formare coach, counsellor, psicologi, manager e HR che vogliono
-                fare la differenza — davvero, con rigore e con cuore.
+                È da questa domanda che nasce tutto. Ed è la domanda che ti alleni a farti, edizione dopo
+                edizione, insieme a coach, counsellor, psicologi, manager e HR che vogliono fare la
+                differenza — davvero, con rigore e con cuore.
               </p>
             </div>
           </div>
@@ -328,12 +329,12 @@ export default function About() {
               Accreditamenti
             </span>
             <h2 className={`${tSection} mt-3`}>
-              Credenziali riconosciute in tutto il mondo.
+              Le tue credenziali, riconosciute in tutto il mondo.
             </h2>
             <p className="mt-4 text-base text-brand-navy/70 font-medium leading-relaxed">
-              Tutti i nostri percorsi rispondono agli standard della International Coaching Federation.
-              Gli accreditamenti ICF garantiscono metodo verificato, ore certificate e credenziali
-              spendibili a livello internazionale.
+              Ogni percorso risponde agli standard della International Coaching Federation: porti a casa
+              metodo verificato, ore certificate e una credenziale spendibile a livello internazionale,
+              ovunque tu voglia lavorare.
             </p>
           </div>
 
@@ -400,7 +401,7 @@ export default function About() {
                 Il manifesto
               </span>
               <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter leading-[1.05]">
-                Quattro parole che guidano ogni aula.
+                Quattro parole che porti in ogni tua sessione.
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
@@ -428,13 +429,13 @@ export default function About() {
                 La community
               </span>
               <h2 className={`${tSection} mt-3`}>
-                Una rete viva di{' '}
+                Entri in una rete viva di{' '}
                 <Highlight>3.000+ coach</Highlight>.
               </h2>
               <p className="mt-6 text-lg text-brand-navy/80 font-medium leading-relaxed">
-                Formarsi con Asterys Lab significa entrare in una comunità che non si esaurisce con il
-                diploma: alumni, trainer e advisor continuano a sostenersi, a fare pratica insieme e a
-                crescere, in Italia e in tutta Europa.
+                Con il diploma non finisce nulla: entri in una comunità che continua a sostenerti.
+                Alumni, trainer e advisor fanno pratica con te e crescono al tuo fianco, in Italia e in
+                tutta Europa.
               </p>
             </div>
 
@@ -462,10 +463,11 @@ export default function About() {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
               Press
             </span>
-            <h2 className={`${tSection} mt-3`}>Hanno parlato di noi.</h2>
+            <h2 className={`${tSection} mt-3`}>Una reputazione che lavora per te.</h2>
             <p className="mt-4 text-base text-brand-navy/70 font-medium max-w-[560px]">
-              Ricerche, interviste e racconti sulla nostra Coaching School ICF, sulla community di coach
-              e sull'impatto del coaching nelle organizzazioni italiane.
+              Ricerche, interviste e racconti sulla Coaching School ICF che scegli, sulla community di
+              coach e sull'impatto del coaching nelle organizzazioni italiane: la stessa autorevolezza
+              che porti nel tuo nome.
             </p>
           </div>
 

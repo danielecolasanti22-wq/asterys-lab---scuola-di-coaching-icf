@@ -14,9 +14,9 @@ import { TestimonialsSection } from '../components/TestimonialsSection';
 const WHATSAPP_URL = 'https://wa.me/393498864895';
 
 const steps = [
-  { n: 1, title: 'Compila il form', desc: 'e raccontaci chi sei' },
-  { n: 2, title: 'Troviamo il percorso', desc: 'più adatto a te' },
-  { n: 3, title: 'Completa l\'iscrizione', desc: 'ed entra in classe' },
+  { n: 1, title: 'Raccontaci chi sei', desc: 'e dove vuoi arrivare' },
+  { n: 2, title: 'Trovi il percorso', desc: 'giusto per il tuo obiettivo' },
+  { n: 3, title: 'Entri in classe', desc: 'e inizi a metterti in gioco' },
 ];
 
 const upcomingClasses = [
@@ -127,12 +127,12 @@ export default function Iscriviti() {
             className="max-w-[560px] mx-auto bg-white rounded-3xl shadow-[0_30px_80px_-30px_rgba(29,59,185,0.45)] p-7 sm:p-10"
           >
             <h1 className="text-center text-2xl sm:text-[1.75rem] font-display font-black tracking-tighter leading-[1.1]">
-              Percorsi formativi completi e
+              La tua carriera da coach
               <br className="hidden sm:block" />
-              {' '}professionalizzanti.
+              {' '}comincia da qui.
             </h1>
             <p className="text-center text-sm text-brand-navy/60 mt-3 font-medium">
-              Inizia il processo di ammissione gratis e senza impegno.
+              Parla con un Advisor senza impegno e scopri il percorso giusto per te: gratis, con risposte sincere.
             </p>
 
             {/* steps */}
@@ -157,17 +157,18 @@ export default function Iscriviti() {
                   <CheckCircle2 size={28} />
                 </div>
                 <h2 className="text-xl font-display font-black tracking-tight">
-                  Richiesta inviata con successo!
+                  Ci sei quasi.
                 </h2>
                 <p className="text-sm text-brand-navy/70 font-medium max-w-sm">
-                  Un advisor Asterys ti contatterà entro 24 ore lavorative per un colloquio
-                  conoscitivo gratuito e senza impegno.
+                  Un Advisor Asterys ti richiama entro 24 ore lavorative per un colloquio
+                  conoscitivo gratuito e senza impegno: capirai se il percorso fa davvero
+                  al caso tuo, con risposte sincere.
                 </p>
                 <Link
                   to="/corsi"
                   className="mt-3 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-brand-accent"
                 >
-                  Esplora gli altri percorsi <ArrowRight size={14} />
+                  Scopri gli altri percorsi <ArrowRight size={14} />
                 </Link>
               </div>
             ) : (
@@ -294,14 +295,14 @@ export default function Iscriviti() {
       <section className="bg-[#2A56A8] text-white">
         <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20">
           <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tighter">
-            Puoi iniziare quando vuoi
+            Inizi quando è il momento giusto per te
           </h2>
           <p className="mt-4 text-base text-white/85 max-w-[640px] font-medium leading-relaxed">
-            Ogni mese partono diverse classi dei nostri percorsi: scegli tu la data migliore per te.
-            In pochi mesi daremo una svolta definitiva alla tua carriera. La tua classe ti sta aspettando!
+            Scegli la data che si incastra con la tua vita: ogni mese parte una nuova classe.
+            In pochi mesi dai una svolta concreta alla tua carriera, con una classe che cresce insieme a te.
           </p>
           <p className="mt-2 text-xs text-white/55 font-medium">
-            Non trovi la data giusta per te? Portati avanti e inizia il processo di ammissione per le classi che partiranno in futuro.
+            Nessuna data ti convince fino in fondo? Portati avanti ora: prenoti il tuo posto nelle classi che partiranno più avanti.
           </p>
 
           <div className="mt-10 grid sm:grid-cols-2 gap-4">
@@ -353,8 +354,9 @@ export default function Iscriviti() {
                 Il tuo futuro ti sta aspettando
               </h2>
               <p className="mt-5 text-base text-brand-navy/75 font-medium leading-relaxed max-w-[480px]">
-                Compila il form e inizia il processo di ammissione: costruiamo insieme la tua nuova
-                carriera di coach, con metodo e con una community che non ti lascia solo.
+                Fai il primo passo oggi: costruisci la tua carriera di coach con un metodo che regge
+                nella realtà e una community che non ti lascia mai da solo. Se hai dubbi, un Advisor
+                ti risponde con sincerità, senza impegno.
               </p>
               <a
                 href="#top"
@@ -364,7 +366,7 @@ export default function Iscriviti() {
                 }}
                 className="mt-7 inline-flex items-center gap-2 bg-brand-navy text-white px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.98]"
               >
-                Compila il form
+                Fai il primo passo
                 <ArrowRight size={14} />
               </a>
 

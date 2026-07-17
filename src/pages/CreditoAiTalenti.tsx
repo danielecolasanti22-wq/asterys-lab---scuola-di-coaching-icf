@@ -17,31 +17,31 @@ const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Accedi al Master in Coaching anche senza poterlo pagare subito',
-  'Paghi quando inizi a guadagnare, con un piano sostenibile calibrato sul tuo reddito',
-  'Se non raggiungi un reddito nel periodo concordato, azzeriamo il debito residuo',
+  'Entri nel Master in Coaching anche se oggi non puoi pagarlo tutto subito',
+  'Inizi a pagare quando inizi a guadagnare, con un piano sostenibile calibrato sul tuo reddito',
+  'Se non raggiungi un reddito nel periodo concordato, il debito residuo si azzera',
 ];
 
 const comeFunziona = [
   {
     icon: HandCoins,
-    title: 'Una scommessa, non una carità',
-    desc: 'Diamo credito a chi ha talento ma è senza lavoro o con reddito insufficiente per accedere al Master in Coaching. Se tu vinci, vinciamo insieme: è un patto di fiducia, empowerment e responsabilità.',
+    title: 'Ricevi credito perché hai talento',
+    desc: 'Accedi al Master in Coaching anche se oggi sei senza lavoro o con un reddito insufficiente: non è una carità, è una scommessa su di te. Se tu vinci, vinciamo insieme, in un patto di fiducia, empowerment e responsabilità.',
   },
   {
     icon: TrendingUp,
-    title: 'Paghi quando inizi a guadagnare',
+    title: 'Inizi a pagare quando inizi a guadagnare',
     desc: 'Versi un fee d’iscrizione iniziale (almeno il 10%) e poi una quota mensile sostenibile, concordata con Asterys Lab in base al reddito che raggiungi. Nessun interesse, nessun costo extra.',
   },
   {
     icon: ShieldCheck,
-    title: 'Se non decolla, sei libero',
-    desc: 'Se entro il periodo concordato non raggiungi un reddito o l’obiettivo professionale previsto, Asterys Lab ti ritiene libero da ogni debito residuo.',
+    title: 'Se non decolla, resti libero',
+    desc: 'Se entro il periodo concordato non raggiungi un reddito o l’obiettivo professionale previsto, sei libero da ogni debito residuo. Il rischio non ricade su di te.',
   },
   {
     icon: HeartHandshake,
-    title: 'Ti facciamo da sponsor',
-    desc: 'Ti accompagniamo con coaching individuale per definire e raggiungere un obiettivo professionale entro un anno dalla fine del Master.',
+    title: 'Hai un alleato che ti fa da sponsor',
+    desc: 'Ti accompagniamo con coaching individuale per definire e centrare un obiettivo professionale entro un anno dalla fine del Master.',
   },
 ];
 
@@ -111,9 +111,9 @@ export default function CreditoAiTalenti() {
             Scommettiamo che ce la fai?
           </h1>
           <p className="text-sm sm:text-lg text-white/80 font-medium leading-relaxed max-w-[640px] mb-7">
-            Diamo <span className="text-white font-black">credito a chi ha talento</span> ma è senza lavoro o con un
-            reddito insufficiente per accedere al <span className="text-white font-black">Master in Coaching
-            Professionale</span>. Se tu vinci, vinciamo insieme: inizi a pagare quando inizi a guadagnare.
+            Hai <span className="text-white font-black">talento</span> ma sei senza lavoro o con un
+            reddito insufficiente? Entri comunque nel <span className="text-white font-black">Master in Coaching
+            Professionale</span>: inizi a pagare quando inizi a guadagnare. Se tu vinci, vinciamo insieme.
           </p>
           <ul className="space-y-2.5 mb-8 text-[13px] lg:text-[15px] font-medium text-white max-w-[640px]">
             {heroBenefits.map((b) => (
@@ -151,8 +151,8 @@ export default function CreditoAiTalenti() {
               Mandaci la tua candidatura
             </h2>
             <p className="text-sm text-brand-navy/65 font-medium leading-relaxed mb-5">
-              Se rientri nei criteri, ti invitiamo a un colloquio gratuito in cui definiamo insieme gli obiettivi del
-              percorso. La candidatura è per il <span className="font-black text-brand-navy">Master in Coaching
+              Se rientri nei criteri, ti aspetta un colloquio gratuito in cui definisci insieme a noi gli obiettivi del
+              tuo percorso. Ti candidi per il <span className="font-black text-brand-navy">Master in Coaching
               Professionale</span>.
             </p>
             <p className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/45 mb-2">Requisiti</p>
@@ -179,7 +179,7 @@ export default function CreditoAiTalenti() {
                 </div>
                 <h3 className="text-lg font-display font-black tracking-tight">Candidatura inviata!</h3>
                 <p className="text-sm text-brand-navy/70 font-medium max-w-sm">
-                  Grazie. Se rientra nei criteri, ti contatteremo per il colloquio e per il CV.
+                  Grazie. Se rientri nei criteri, ti ricontattiamo per il colloquio gratuito e per il tuo CV.
                 </p>
               </div>
             ) : (
@@ -247,8 +247,8 @@ export default function CreditoAiTalenti() {
             Un meccanismo di fiducia, non un prestito
           </h2>
           <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mb-10">
-            &ldquo;Credito ai talenti&rdquo; è l&rsquo;iniziativa di Asterys Lab a sostegno dei talenti professionali:
-            un&rsquo;alternativa alla borsa di studio per accedere al Master in Coaching.
+            Con &ldquo;Credito ai talenti&rdquo; entri nel Master in Coaching senza che il denaro ti fermi:
+            un&rsquo;alternativa alla borsa di studio pensata per chi ha valore da esprimere.
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {comeFunziona.map(({ icon: Icon, title, desc }) => (
@@ -279,8 +279,8 @@ export default function CreditoAiTalenti() {
               ordine di arrivo. La selezione è a insindacabile giudizio di Asterys Lab.
             </p>
             <p className="text-[13px] text-brand-navy/55 font-medium leading-relaxed">
-              Se la tua richiesta rientra nei criteri, ti invitiamo a un colloquio individuale gratuito per definire
-              insieme gli obiettivi del percorso.
+              Se la tua richiesta rientra nei criteri, ti aspetta un colloquio individuale gratuito in cui definisci
+              insieme a noi gli obiettivi del tuo percorso.
             </p>
           </div>
           <div className="rounded-2xl bg-[#F9FAFB] ring-1 ring-gray-100 p-7">

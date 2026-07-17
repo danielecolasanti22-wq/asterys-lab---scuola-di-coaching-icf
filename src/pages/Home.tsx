@@ -31,6 +31,7 @@ import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
 import { autoHighlight } from '../utils/highlight';
+import { HOME_FAQ as faqItems } from '../constants/homeFaq';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -283,18 +284,18 @@ const Accreditamenti = () => {
 /* 3. SCEGLI IL PERCORSO */
 const ScegliPercorso = () => {
   const features = [
-    { icon: Handshake, title: 'Tutoring costante e dedicato' },
-    { icon: BriefcaseBusiness, title: 'Supporto alla carriera incluso' },
-    { icon: BadgeCheck, title: 'Credenziali internazionali ICF' }
+    { icon: Handshake, title: 'Un tutor al tuo fianco fino alla fine' },
+    { icon: BriefcaseBusiness, title: 'Ti accompagniamo fino al primo cliente' },
+    { icon: BadgeCheck, title: 'Credenziali ICF spendibili ovunque' }
   ];
   return (
     <section id="percorsi" className="py-14 lg:py-20 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
-          <h2 className={`${tSection} mb-4`}>Scegli il percorso giusto per te</h2>
+          <h2 className={`${tSection} mb-4`}>Scegli il percorso che ti porta dove vuoi arrivare</h2>
           <p className="text-brand-navy/70 text-base leading-relaxed">
             {autoHighlight(
-              'Master in coaching professionalizzanti, 100% blended e in diretta, per imparare da zero tutto ciò che serve a diventare coach e a far evolvere la tua carriera. Lezioni online e in presenza a Milano e Roma.',
+              'Impari da zero tutto ciò che serve per diventare coach e portare la tua carriera a un nuovo livello. Percorsi 100% blended e in diretta, con lezioni online e in presenza a Milano e Roma.',
               new Set<string>(),
             )}
           </p>
@@ -349,7 +350,7 @@ const MasterFeatured = () => (
               </span>
             </div>
             <p className="text-sm lg:text-base text-brand-navy/75 leading-relaxed">
-              Lancia una nuova carriera da zero con supporto costante e una full-immersion nelle competenze di coaching ICF Level 1 & 2.
+              Diventi coach da zero e arrivi pronto al primo cliente: supporto costante e una full-immersion nelle competenze di coaching accreditate ICF Level 1 & 2.
             </p>
             <div className="inline-flex items-center gap-2 bg-[#E8F5EC] text-brand-navy px-3.5 py-2 rounded-lg self-start">
               <CheckCircle2 size={16} className="text-[#008060]" />
@@ -377,7 +378,7 @@ const MasterGrid = () => {
       title: 'Master in Coaching',
       duration: '6–12 mesi',
       label: 'Master',
-      desc: 'Lancia una nuova carriera da zero con supporto costante e una full-immersion nelle competenze di coaching ICF Level 1 & 2.',
+      desc: 'Diventi coach da zero e arrivi pronto al primo cliente: supporto costante e una full-immersion nelle competenze accreditate ICF Level 1 & 2.',
       start: 'Più edizioni 2026',
       lastSeats: false,
       seed: 'apcm-master',
@@ -388,7 +389,7 @@ const MasterGrid = () => {
       title: 'Team Coaching Sistemico',
       duration: '54 ore · 60 CCE',
       label: 'Master',
-      desc: "Master ICF per apprendere il modello sistemico di coaching dei team. Prerequisito per la credenziale ACTC.",
+      desc: "Impari a portare team e leader a risultati straordinari con il modello sistemico. Requisito per la credenziale ACTC.",
       start: '6 ottobre 2026',
       lastSeats: false,
       seed: 'stc',
@@ -399,7 +400,7 @@ const MasterGrid = () => {
       title: 'Intelligenza Emotiva',
       duration: '4 Workout live · 4 CCE',
       label: 'Corso Breve',
-      desc: "Allena l'IE con esperienze consapevoli: modello CSI, fiore di Plutchik, coach dedicati.",
+      desc: "Impari a riconoscere e usare le tue emozioni per relazioni più efficaci, con esperienze pratiche e coach dedicati.",
       start: 'Prossimo Round',
       lastSeats: true,
       seed: 'eiw'
@@ -409,7 +410,7 @@ const MasterGrid = () => {
       title: 'Mentoring per il rinnovo delle credenziali',
       duration: '10 ore per il rinnovo · gruppo o individuale',
       label: 'Formazione avanzata',
-      desc: 'Matura le 10 ore di mentor coaching per il rinnovo ICF: Mentoring di Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
+      desc: 'Ottieni le 10 ore di mentor coaching che ti servono per rinnovare la credenziale ICF: Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
       start: 'Edizione di gruppo: 29 set e 10 dic 2026',
       lastSeats: false,
       seed: 'coaching-circle'
@@ -419,7 +420,7 @@ const MasterGrid = () => {
       title: 'Voice Dialogue Skills',
       duration: '3 giornate · In presenza',
       label: 'Formazione avanzata',
-      desc: 'Laboratorio intensivo per integrare il Voice Dialogue nella pratica di coaching, con Lab online su piattaforma Inner.',
+      desc: 'Integri il Voice Dialogue nella tua pratica e ampli ciò che riesci a far emergere nei clienti, con Lab online su piattaforma Inner.',
       start: '17 novembre 2026',
       lastSeats: false,
       seed: 'voice-dialogue'
@@ -429,7 +430,7 @@ const MasterGrid = () => {
       title: 'Continuous Learning',
       duration: '1 live class/mese',
       label: 'Corso Breve',
-      desc: 'Formazione continua per coach: incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
+      desc: 'Tieni viva e aggiornata la tua pratica di coach, con incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
       start: 'Inizi quando vuoi',
       lastSeats: false,
       seed: 'continuous-learning',
@@ -440,7 +441,7 @@ const MasterGrid = () => {
       title: 'Public Speaking Pro',
       duration: '3 giornate + 2 online',
       label: 'Corso Breve',
-      desc: 'Rendi memorabile la tua presenza in pubblico: voce, corpo ed emozioni in una full immersion pratica.',
+      desc: 'Diventi memorabile quando parli in pubblico: padroneggi voce, corpo ed emozioni in una full immersion pratica.',
       start: 'Da definire',
       lastSeats: false,
       seed: 'public-speaking',
@@ -519,7 +520,7 @@ const AdvisorBand = () => (
     <div className="max-w-[1200px] mx-auto px-6 text-center">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
         <h2 className="text-2xl sm:text-3xl font-display font-black text-brand-navy tracking-tight">
-          Vuoi parlare con noi?
+          Vuoi capire qual è il percorso giusto per te?
         </h2>
         <div className="flex -space-x-2">
           {[
@@ -537,7 +538,7 @@ const AdvisorBand = () => (
         </div>
       </div>
       <p className="text-sm text-brand-navy/75 mb-5">
-        Dietro Asterys Lab ci sono persone: i nostri advisor rispondono a ogni tua domanda, con calma e senza impegno.
+        Un advisor ti aiuta a scegliere il percorso più adatto ai tuoi obiettivi e risponde a ogni tua domanda, con calma e senza impegno.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
@@ -564,30 +565,30 @@ const PercheNoi = () => {
   const reasons = [
     {
       icon: Dumbbell,
-      title: 'Metodo pratico e aggiornato',
-      desc: 'Ogni percorso è costruito su casi reali: eserciti le competenze su situazioni concrete per arrivare preparato al primo cliente.'
+      title: 'Arrivi pronto al primo cliente',
+      desc: 'Eserciti le competenze su casi reali e situazioni concrete: quando finisci, sai già come muoverti con un cliente vero.'
     },
     {
       icon: Radio,
-      title: 'Lezioni in diretta e interattive',
-      desc: 'Niente corsi pre-registrati. Fai parte di una classe: interagisci con i docenti, chiedi feedback, metti in pratica subito.'
+      title: 'Impari facendo, in una classe vera',
+      desc: 'Niente corsi pre-registrati. Fai parte di una classe: interagisci con i docenti, chiedi feedback e metti in pratica subito.'
     },
     {
       icon: BadgeCheck,
-      title: 'Docenti certificati ICF',
-      desc: 'I tuoi trainer sono Master Coach attivi sul campo: condividono conoscenze pratiche e il loro modo di lavorare.'
+      title: 'Impari da coach attivi sul campo',
+      desc: 'I tuoi trainer sono Master Coach con credenziale ICF: porti a casa conoscenze pratiche e il loro modo reale di lavorare.'
     },
     {
       icon: Wallet,
-      title: 'Alta formazione accessibile',
-      desc: 'Scegli come investire: rateizzazione fino a 24 mesi e piani pensati per chi vuole crescere senza compromessi.'
+      title: 'Investi con serenità, al tuo ritmo',
+      desc: 'Scegli come sostenere il tuo percorso: rateizzazione fino a 24 mesi e piani pensati per farti crescere senza compromessi.'
     }
   ];
   const seen = new Set<string>();
   return (
     <section id="perche-noi" className="py-12 lg:py-20 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <h2 className={`${tSection} mb-8 lg:mb-12 max-w-2xl`}>Perché scegliere i nostri percorsi?</h2>
+        <h2 className={`${tSection} mb-8 lg:mb-12 max-w-2xl`}>Cosa ti porti a casa con i nostri percorsi</h2>
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-12">
           {reasons.map((r) => (
             <div key={r.title} className="flex gap-4">
@@ -641,7 +642,7 @@ const CorsiCta = () => {
             Cosa stai <br />
             aspettando?
           </h2>
-          <p className="text-base text-brand-navy/70 leading-relaxed">Scegli il tuo percorso.</p>
+          <p className="text-base text-brand-navy/70 leading-relaxed">Il tuo primo passo da coach parte da qui: scegli il percorso e comincia.</p>
         </div>
         <ul className="space-y-3">
           {ids.map((id) => {
@@ -713,6 +714,37 @@ const CreditoTalentiBand = () => (
   </section>
 );
 
+/* FAQ — Domande frequenti (dati in ../constants/homeFaq, condivisi con il JSON-LD SEO in seo.ts) */
+const Faq = () => (
+  <section id="faq" className="py-14 lg:py-20 bg-[#EEF4FC]">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto">
+        <h2 className={`${tSection} mb-8 lg:mb-10 text-center`}>Domande frequenti</h2>
+        <div className="space-y-3">
+          {faqItems.map((f) => (
+            <details
+              key={f.q}
+              className="group rounded-2xl bg-white border border-brand-navy/10 px-5 py-4 open:shadow-[0_18px_55px_-30px_rgba(0,21,51,0.28)] transition-shadow"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <h3 className="text-base sm:text-lg font-black text-brand-navy leading-snug">
+                  {f.q}
+                </h3>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-brand-blue-soft text-brand-accent flex items-center justify-center transition-transform group-open:rotate-90">
+                  <ChevronRight size={18} strokeWidth={2.5} className="rotate-90" />
+                </span>
+              </summary>
+              <p className="text-sm sm:text-base text-brand-navy/70 leading-relaxed mt-3">
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export default function Home() {
   return (
     <>
@@ -726,6 +758,7 @@ export default function Home() {
       <PercheNoi />
       <CreditoTalentiBand />
       <StatsBand />
+      <Faq />
       <CorsiCta />
     </>
   );

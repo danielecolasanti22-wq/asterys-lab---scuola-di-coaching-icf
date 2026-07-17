@@ -47,32 +47,32 @@ const ambiti = [
   {
     icon: Building2,
     title: 'Organizzazione e riorganizzazione aziendale',
-    desc: 'Ridisegniamo ruoli e processi a partire da come funziona davvero la tua impresa.',
+    desc: 'Ruoli e processi allineati a come funziona davvero la tua impresa.',
   },
   {
     icon: RefreshCw,
     title: 'Facilitazione del cambiamento',
-    desc: 'Ti accompagniamo nei passaggi più delicati, anche quando il cambio di approccio è radicale.',
+    desc: 'Attraversi i passaggi più delicati con lucidità, anche quando il cambio di approccio è radicale.',
   },
   {
     icon: TrendingUp,
     title: 'Miglioramento dei risultati aziendali',
-    desc: 'Mettiamo a fuoco priorità e leve concrete su cui agire per far crescere la performance.',
+    desc: 'Priorità chiare e leve concrete su cui agire per far crescere la performance.',
   },
   {
     icon: Compass,
     title: 'Sviluppo della leadership',
-    desc: 'Rafforziamo la capacità di guidare, decidere e ispirare le persone.',
+    desc: 'Una leadership capace di guidare, decidere e ispirare le persone.',
   },
   {
     icon: Briefcase,
     title: 'Business Coaching',
-    desc: 'Un percorso, individuale o collettivo, per imprenditori, soci e manager.',
+    desc: 'Decisioni più lucide per imprenditori, soci e manager, da soli o in gruppo.',
   },
   {
     icon: Users,
     title: 'Team Coaching',
-    desc: 'Sviluppiamo la collaborazione del team e il superamento di ostacoli e conflitti.',
+    desc: 'Un team che collabora davvero e supera insieme ostacoli e conflitti.',
   },
 ];
 
@@ -103,19 +103,19 @@ export default function Corporate() {
               Business Coaching
             </p>
             <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.6rem] leading-[0.95] tracking-tight max-w-[640px]">
-              Quando il tuo lavoro è la tua vita
+              Guida la tua impresa nei momenti che contano
             </h1>
             <p className="mt-6 text-white/75 text-base sm:text-lg max-w-[540px] leading-relaxed">
-              Non esiste un orario che ti permetta di «staccare»: sei così coinvolto nel tuo business che
-              un coach può davvero fare la differenza tra il successo e il fallimento. Dal 2014 affianchiamo
-              imprenditori e imprese con percorsi di business e executive coaching su misura, per chi vuole
-              guardare avanti.
+              Quando il tuo lavoro è la tua vita, non esiste un orario per «staccare». Con un coach al tuo
+              fianco prendi decisioni più lucide, fai crescere le tue persone e affronti con eccellenza i
+              momenti cruciali del business. Dal 2014 affianchiamo imprenditori, manager e team con percorsi
+              di business ed executive coaching su misura, per chi vuole guardare avanti.
             </p>
             <a
               href="#contatti-aziende"
               className="mt-8 inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors"
             >
-              Parla con noi
+              Parla con un coach
               <ArrowRight size={15} />
             </a>
           </div>
@@ -140,7 +140,7 @@ export default function Corporate() {
       {/* CLIENTI — LOGHI SCORREVOLI */}
       <section className="bg-white py-10 lg:py-12 border-b border-[#EEF4FC]">
         <p className="text-center text-[11px] font-black uppercase tracking-[0.28em] text-brand-navy/45 mb-8">
-          Aziende con cui abbiamo lavorato
+          Aziende che hanno scelto di crescere con noi
         </p>
         <div className="marquee-mask group relative overflow-hidden">
           <div className="marquee-track flex w-max items-center animate-[marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]">
@@ -170,16 +170,16 @@ export default function Corporate() {
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
-              Siamo imprenditori anche noi
+              Nessuno conosce i tuoi affari meglio di te
             </h2>
             <p className="mt-5 text-brand-navy/80 leading-relaxed">
-              Crediamo nella capacità visionaria e realizzativa di chi, letteralmente ogni giorno, reinventa
-              l'economia di un Paese come l'Italia. Per te e per la tua azienda non esistono soluzioni standard:
-              nessuno può sapere meglio di te come funzionano i tuoi affari.
+              Ogni giorno reinventi l'economia di un Paese come l'Italia, e per la tua azienda non esistono
+              soluzioni standard. Al tuo fianco un coach ti dà un interlocutore equilibrato e creativo, esterno
+              alle dinamiche aziendali e societarie: uno sguardo lucido su cui contare quando le decisioni pesano.
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
               {autoHighlight(
-                "Un coach è al tuo fianco per offrirti un interlocutore equilibrato e creativo, esterno alle dinamiche aziendali o societarie. La nostra esperienza di consulenti, facilitatori e coach è da anni dedicata alle grandi aziende, spesso multinazionali. Dal 2014 abbiamo deciso di metterci anche a disposizione delle imprese e degli imprenditori italiani.",
+                "Da anni affianchiamo grandi aziende, spesso multinazionali, come consulenti, facilitatori e coach. Dal 2014 mettiamo la stessa esperienza al servizio delle imprese e degli imprenditori italiani, con la stessa serietà e lo stesso livello.",
                 seen,
               )}
             </p>
@@ -191,8 +191,8 @@ export default function Corporate() {
             </span>
             <p className="mt-6 text-6xl font-display font-black tracking-tight">2014</p>
             <p className="text-sm text-white/80 leading-relaxed mt-3">
-              L'anno in cui abbiamo scelto di affiancare imprese e imprenditori italiani con la stessa serietà
-              che dedichiamo alle grandi multinazionali.
+              L'anno in cui hai iniziato a poter contare sulla stessa esperienza che dedichiamo alle grandi
+              multinazionali, portata al fianco della tua impresa.
             </p>
             <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-black uppercase tracking-[0.16em] text-white/70">
               <span>Consulenti</span>
@@ -212,9 +212,8 @@ export default function Corporate() {
             I risultati
           </p>
           <p className="text-2xl sm:text-3xl lg:text-[2.35rem] font-display font-black leading-[1.12] tracking-tight">
-            Dopo aver lavorato con noi i nostri clienti hanno le idee più chiare, spesso nuove idee e nuovi
-            progetti. Ma soprattutto guardano avanti con occhi nuovi, con maggiore fiducia in se stessi e nelle
-            proprie capacità.
+            Dopo un percorso con noi avrai le idee più chiare, spesso nuove idee e nuovi progetti. Ma
+            soprattutto guarderai avanti con occhi nuovi, con più fiducia in te stesso e nelle tue capacità.
           </p>
           <p className="mt-6 text-brand-navy/70 leading-relaxed max-w-[640px] mx-auto">
             Quando il nostro lavoro sarà finito, ti scoprirai più capace di andare oltre le tue vecchie idee e
@@ -228,12 +227,12 @@ export default function Corporate() {
         <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
           <div className="max-w-[680px]">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
-              Verifichiamo i bisogni reali della tua impresa
+              Metti a fuoco le priorità che fanno crescere la tua impresa
             </h2>
             <p className="mt-4 text-brand-navy/75 leading-relaxed">
-              Insieme individuiamo le priorità su cui lavorare, una dopo l'altra. Ecco gli ambiti del
-              coaching aziendale in cui possiamo intervenire al tuo fianco, dal business coaching al team
-              coaching, dalla leadership al cambiamento organizzativo.
+              Individuiamo insieme le priorità su cui agire, una dopo l'altra. Ecco gli ambiti del coaching
+              aziendale su cui puoi far leva, dal business coaching al team coaching, dalla leadership al
+              cambiamento organizzativo.
             </p>
           </div>
 
@@ -275,15 +274,14 @@ export default function Corporate() {
             </h3>
             <p className="mt-5 text-brand-navy/80 leading-relaxed">
               {autoHighlight(
-                "Il business coaching aiuta imprenditori e imprese sia in fase di avviamento — partendo da visione, missione e obiettivi — sia in fase di sviluppo, riconsiderando l'attività alla luce di nuove sfide e scenari, per anticipare i tempi e restare un passo avanti alla concorrenza e alla complessità che avanza.",
+                "Che tu stia avviando un'impresa — partendo da visione, missione e obiettivi — o la stia facendo crescere di fronte a nuove sfide e scenari, il business coaching ti aiuta ad anticipare i tempi e a restare un passo avanti alla concorrenza e alla complessità che avanza.",
                 seen,
               )}
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
-              I nostri programmi sono rivolti a imprenditori e manager di PMI che vogliono fare tutto il possibile
-              per ottenere risultati eccellenti. Mettiamo a disposizione dell'impresa know-how e competenze per
-              sostenere lo sviluppo del suo potenziale e supportarla nei momenti più critici: contrazione o
-              espansione.
+              Se guidi una PMI e vuoi fare tutto il possibile per risultati eccellenti, porti in azienda know-how
+              e competenze per sviluppare il pieno potenziale della tua impresa e superare i momenti più critici,
+              dalla contrazione all'espansione.
             </p>
           </div>
         </div>
@@ -300,13 +298,13 @@ export default function Corporate() {
               Un vero partner al tuo fianco
             </h3>
             <p className="mt-5 text-brand-navy/80 leading-relaxed">
-              Il coaching, individuale o collettivo, serve all'imprenditore, ai soci e ai manager che devono
-              prendere decisioni e gestire l'organizzazione. Lo stress e la necessità di raggiungere risultati,
-              spesso in contesti poco favorevoli, possono generare atteggiamenti poco produttivi e poco obiettivi.
+              Che tu sia imprenditore, socio o manager, ogni giorno prendi decisioni e guidi l'organizzazione. Lo
+              stress e la pressione dei risultati, spesso in contesti poco favorevoli, possono spingerti su
+              atteggiamenti poco produttivi e poco obiettivi.
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
-              Il coach si pone al tuo fianco come un vero partner: ti offre momenti di reale apertura e maggiore
-              obiettività sui temi che ti stanno a cuore. Resti completamente autonomo nelle tue decisioni, ma con
+              Un coach si mette al tuo fianco come un vero partner: ti apre spazi di reale confronto e maggiore
+              obiettività sui temi che ti stanno a cuore. Resti pienamente autonomo nelle tue decisioni, ma con
               meno stress, più fiducia e uno sguardo capace di arrivare anche dove non avresti mai pensato di
               guardare.
             </p>
@@ -383,13 +381,13 @@ export default function Corporate() {
               Non solo riorganizzare: cambiare cultura
             </h3>
             <p className="mt-5 text-brand-navy/80 leading-relaxed">
-              Partiamo da una premessa: dentro un'azienda spesso non basta riorganizzare o implementare nuove
-              attività. Serve un vero e proprio cambiamento culturale, accompagnando l'imprenditore e i suoi
-              collaboratori verso un cambio di approccio a volte radicale.
+              Dentro un'azienda spesso non basta riorganizzare o aggiungere nuove attività. Il vero salto arriva
+              da un cambiamento culturale: un cambio di approccio, a volte radicale, che coinvolge te e i tuoi
+              collaboratori e cambia il modo in cui lavorate insieme.
             </p>
             <p className="mt-4 text-brand-navy/80 leading-relaxed">
               {autoHighlight(
-                "Operiamo con coach professionisti che, oltre a un background manageriale e imprenditoriale, si sono formati nella nostra scuola di coaching, acquisendo il know-how per supportare manager e professionisti in ambito aziendale.",
+                "Lavori con coach professionisti che, oltre a un solido background manageriale e imprenditoriale, si sono formati nella nostra scuola di coaching, con il know-how per supportare manager e professionisti in ambito aziendale.",
                 seen,
               )}
             </p>
@@ -416,7 +414,7 @@ export default function Corporate() {
         <div className="max-w-[820px] mx-auto px-4 sm:px-6">
           <h3 className="text-4xl font-display font-black tracking-tight text-center">Parliamo della tua impresa</h3>
           <p className="text-center text-brand-navy/75 mt-2">
-            Compila il modulo: capiremo insieme i bisogni reali della tua azienda e da dove partire.
+            Raccontaci la tua sfida: mettiamo a fuoco insieme le priorità della tua azienda e da dove partire.
           </p>
 
           <form className="mt-8 space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -438,7 +436,7 @@ export default function Corporate() {
             </label>
             <div className="flex justify-center pt-2">
               <button className="inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-7 py-3 text-xs font-black uppercase tracking-[0.14em] transition-colors">
-                Invia messaggio
+                Richiedi un confronto
               </button>
             </div>
           </form>

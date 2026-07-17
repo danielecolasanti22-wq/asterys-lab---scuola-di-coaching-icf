@@ -9,9 +9,9 @@ const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Riservata alle prime iscrizioni delle edizioni di Roma del Master in Coaching',
-  'Fino a 1.500€ di sconto sulla quota del Master, accreditato ICF Level 1 & 2',
-  'Selezione tramite colloquio gratuito con un Advisor — nessun acquisto online',
+  'Ti assicuri un posto tra le prime iscrizioni delle edizioni di Roma del Master in Coaching',
+  'Risparmi fino a 1.500€ sulla quota del Master e ottieni una credenziale ICF Level 1 & 2',
+  'Accedi con un colloquio gratuito insieme a un Advisor, senza acquistare nulla online',
 ];
 
 const requisiti = [
@@ -89,12 +89,13 @@ export default function BorsaDiStudio() {
             Borsa di studio · Sede di Roma
           </div>
           <h1 className="text-[2.6rem] sm:text-[3.4rem] lg:text-[4rem] font-display font-black leading-[0.95] tracking-tighter text-white max-w-[18ch] mb-5">
-            Diventa coach con la Borsa di studio Asterys
+            Diventa coach: la Borsa di studio abbatte la barriera
           </h1>
           <p className="text-sm sm:text-lg text-white/80 font-medium leading-relaxed max-w-[640px] mb-7">
-            Per supportare l&rsquo;accesso al Master in Coaching ai talenti del Centro e Sud Italia,
-            riserviamo una borsa di studio <span className="text-white font-black">fino a 1.500€</span> sulle prime
-            iscrizioni delle edizioni di Roma.
+            Se vieni dal Centro o Sud Italia, entri nel Master in Coaching a Roma pagando
+            <span className="text-white font-black"> fino a 1.500€ in meno</span>: la borsa di studio
+            riservata alle prime iscrizioni delle edizioni di Roma trasforma un investimento importante
+            in un passo alla tua portata.
           </p>
           <ul className="space-y-2.5 mb-8 text-[13px] lg:text-[15px] font-medium text-white max-w-[640px]">
             {heroBenefits.map((b) => (
@@ -133,11 +134,11 @@ export default function BorsaDiStudio() {
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">Borsa di studio</p>
             <h2 className="text-2xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-4">
-              Richiedila in 1 minuto
+              Assicurati il tuo posto in 1 minuto
             </h2>
             <p className="text-sm text-brand-navy/65 font-medium leading-relaxed mb-5">
-              Nessun acquisto: compila il modulo e un Advisor ti ricontatta per il colloquio gratuito e per valutare la
-              borsa (fino a −1.500€ sulla quota del Master a Roma).
+              Non paghi nulla ora: compila il modulo e un Advisor ti richiama per il colloquio gratuito e per
+              confermare quanto risparmi (fino a −1.500€ sulla quota del Master a Roma).
             </p>
             <ul className="space-y-2.5 mb-5">
               {requisiti.map((r) => (
@@ -161,7 +162,8 @@ export default function BorsaDiStudio() {
                 </div>
                 <h3 className="text-lg font-display font-black tracking-tight">Richiesta inviata!</h3>
                 <p className="text-sm text-brand-navy/70 font-medium max-w-sm">
-                  Un Advisor ti contatterà entro 24 ore lavorative per il colloquio gratuito.
+                  Un Advisor ti richiama entro 24 ore lavorative: nel colloquio gratuito definite insieme il tuo
+                  percorso e quanto risparmi con la borsa.
                 </p>
               </div>
             ) : (
@@ -202,7 +204,7 @@ export default function BorsaDiStudio() {
                   type="submit"
                   className="mt-1 bg-brand-navy text-white py-3.5 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99]"
                 >
-                  Invia richiesta
+                  Richiedi la borsa di studio
                 </button>
                 <a
                   href={WHATSAPP_URL}

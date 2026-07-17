@@ -16,9 +16,9 @@ export default function Blog() {
   return (
     <div className="pb-20">
       <PageHero
-        title="Risorse &"
-        highlight="Blog"
-        subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi scritti dai nostri trainer MCC e PCC."
+        title="Impara a"
+        highlight="crescere"
+        subtitle="Idee pratiche su coaching, intelligenza emotiva e dinamiche di team che puoi mettere al lavoro da subito — con te, con i tuoi clienti, con la tua organizzazione. Firmate dai trainer ICF MCC e PCC di Asterys Lab."
       />
 
       <div className="max-w-7xl mx-auto px-6 pt-16">
@@ -53,7 +53,7 @@ export default function Blog() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center gap-2 font-black text-xs uppercase tracking-widest group-hover:text-brand-accent transition-colors">
-                    Continua a leggere <ArrowRight size={18} className="translate-x-[-4px] group-hover:translate-x-1 transition-transform" />
+                    Leggi e portalo nella pratica <ArrowRight size={18} className="translate-x-[-4px] group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
               </motion.article>
@@ -68,22 +68,22 @@ export default function Blog() {
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
                 <Bookmark className="text-brand-accent" size={32} />
               </div>
-              <h3 className="font-display font-bold text-2xl mb-4 leading-tight">Risorsa Gratuita per Aspiranti Coach</h3>
+              <h3 className="font-display font-bold text-2xl mb-4 leading-tight">Scegli il tuo percorso verso le credenziali ICF</h3>
               <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-                Scarica la nostra guida su come ottenere le credenziali ICF e scegliere il percorso formativo corretto per le tue ambizioni.
+                Scarica la guida gratuita e capisci subito quale strada ti porta alle credenziali ICF e quale Master fa al caso delle tue ambizioni — senza tentativi a vuoto.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3 text-xs font-bold text-brand-navy"><CheckCircle2 size={16} className="text-brand-accent" /> Roadmap ICF 2026</div>
                 <div className="flex items-center gap-3 text-xs font-bold text-brand-navy"><CheckCircle2 size={16} className="text-brand-accent" /> Tabella comparativa Master</div>
               </div>
               <button className="btn-primary w-full py-4 flex items-center justify-center gap-2 shadow-xl shadow-brand-navy/10 transform transition-transform hover:scale-[1.02]">
-                Ottieni la guida <Download size={18} />
+                Scarica la guida gratuita <Download size={18} />
               </button>
             </div>
 
             {/* Popular Topics */}
             <div>
-              <h4 className="font-display font-bold text-sm uppercase tracking-widest text-brand-navy/30 mb-8 border-b border-gray-100 pb-4">Argomenti caldi</h4>
+              <h4 className="font-display font-bold text-sm uppercase tracking-widest text-brand-navy/30 mb-8 border-b border-gray-100 pb-4">Approfondisci per argomento</h4>
               <div className="flex flex-wrap gap-2">
                 {["ICF Level 2", "Six Seconds", "Team Dynamics", "Self-Brand", "Leadership", "Mentoring"].map(t => (
                   <span key={t} className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest hover:border-brand-accent transition-colors cursor-pointer">{t}</span>

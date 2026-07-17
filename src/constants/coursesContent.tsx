@@ -495,10 +495,10 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Manager in transizione", desc: "Leader che vogliono reinventarsi come Executive Coach.", icon: <Target /> },
-      { title: "HR & People Manager", desc: "Professionisti che vogliono portare cultura coaching in azienda.", icon: <Users /> },
-      { title: "Psicologi & Counselor", desc: "Specialisti che intendono aggiungere strumenti orientati all'azione.", icon: <Brain /> },
-      { title: "Coach emergente", desc: "Chi cerca un programma solido accreditato ICF.", icon: <Zap /> }
+      { title: "Manager in transizione", desc: "Reinventi la tua carriera come Executive Coach, con un metodo riconosciuto.", icon: <Target /> },
+      { title: "HR & People Manager", desc: "Porti una vera cultura coaching in azienda e fai crescere i tuoi team.", icon: <Users /> },
+      { title: "Psicologi & Counselor", desc: "Aggiungi alla tua pratica strumenti concreti e orientati all'azione.", icon: <Brain /> },
+      { title: "Coach emergente", desc: "Parti con basi solide e un accreditamento ICF spendibile ovunque.", icon: <Zap /> }
     ],
     learning: {
       cols: [
@@ -1188,7 +1188,7 @@ export const coursesContent: Record<string, CourseData> = {
   'systemic-team-coaching': {
     title: "Master in Team Coaching Sistemico",
     subtitle: "Team Coaching",
-    tagline: "Il Master di Asterys Lab accreditato ICF per apprendere l'esclusivo modello di Team Coaching Sistemico dedicato a team e organizzazioni, e prepararti alla credenziale ICF di team coaching (ACTC).",
+    tagline: "Padroneggia l'esclusivo modello di Team Coaching Sistemico e accompagna team e organizzazioni a risultati straordinari — con un Master accreditato ICF che ti prepara alla credenziale di team coaching (ACTC).",
     certificate: {
       eyebrow: "Attestato finale",
       title: "Un percorso certificato",
@@ -1281,9 +1281,9 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Coach e facilitatori", desc: "Professionisti con competenze di coaching e/o facilitazione che vogliono migliorare la propria capacità di lavorare a livello sistemico e con i team.", icon: <TrendingUp /> },
-      { title: "Manager & Consulenti", desc: "Persone che supportano team e organizzazioni e desiderano liberarne il pieno potenziale con un approccio sistemico al lavoro di gruppo.", icon: <Users /> },
-      { title: "Coach esperti verso ACTC", desc: "Coach che vogliono ottenere il diploma AATC per poi impegnarsi nell'ottenimento della credenziale ICF ACTC.", icon: <Award /> }
+      { title: "Coach e facilitatori", desc: "Porti la tua pratica a livello sistemico e impari a lavorare con i team, non solo con i singoli.", icon: <TrendingUp /> },
+      { title: "Manager & Consulenti", desc: "Liberi il pieno potenziale dei team che accompagni, con un approccio sistemico al lavoro di gruppo.", icon: <Users /> },
+      { title: "Coach esperti verso ACTC", desc: "Ottieni il diploma AATC e apri la strada alla credenziale ICF ACTC.", icon: <Award /> }
     ],
     learning: {
       cols: [
@@ -1798,9 +1798,9 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Coach con percorso base completato", desc: "Ha già effettuato un percorso base per diventare coach e vuole fare pratica di coaching attraverso il feedback diretto di un professionista del settore.", icon: <Target /> },
-      { title: "Coach credenzialati", desc: "Vuole allenare la pratica rimanendo aderente alle linee guida e al codice etico ICF, evitando derive da altre discipline.", icon: <Award /> },
-      { title: "Coach in cerca di feedback", desc: "Desidera confrontarsi con un mentor-coach MCC e con altri coach in un contesto strutturato di pratica supervisionata.", icon: <Users /> },
+      { title: "Coach con percorso base completato", desc: "Hai completato un percorso base e vuoi fare pratica con il feedback diretto di un professionista.", icon: <Target /> },
+      { title: "Coach credenzialati", desc: "Alleni la pratica restando aderente alle linee guida e al codice etico ICF, senza derive da altre discipline.", icon: <Award /> },
+      { title: "Coach in cerca di feedback", desc: "Ti confronti con un Mentor Coach MCC e con altri coach in un contesto strutturato di pratica supervisionata.", icon: <Users /> },
     ],
     learning: {
       cols: [
@@ -1988,10 +1988,10 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Professionisti one-to-many", desc: "Chi interagisce spesso con il pubblico ed è un riferimento per i propri interlocutori.", icon: <Users /> },
-      { title: "Chi punta all'eccellenza", desc: "Professionisti per cui, dalla capacità di presentare, dipende il destino di un progetto.", icon: <Target /> },
-      { title: "Trainer e formatori", desc: "Chi vuole rendere più efficaci i propri interventi e liberare tutto il potenziale di formatore.", icon: <MessageCircle /> },
-      { title: "Manager", desc: "Chi vuole migliorare l'esposizione nei consigli di amministrazione e nelle riunioni.", icon: <TrendingUp /> }
+      { title: "Professionisti one-to-many", desc: "Parli spesso al pubblico e vuoi diventare un vero punto di riferimento per chi ti ascolta.", icon: <Users /> },
+      { title: "Chi punta all'eccellenza", desc: "Quando dalla tua capacità di presentare dipende il destino di un progetto, non lasci nulla al caso.", icon: <Target /> },
+      { title: "Trainer e formatori", desc: "Rendi più efficaci i tuoi interventi e liberi tutto il tuo potenziale di formatore.", icon: <MessageCircle /> },
+      { title: "Manager", desc: "Migliori la tua esposizione nei consigli di amministrazione e nelle riunioni che contano.", icon: <TrendingUp /> }
     ],
     learning: {
       cols: [
@@ -2043,7 +2043,7 @@ export const coursesContent: Record<string, CourseData> = {
   'voice-dialogue': {
     title: "Voice Dialogue Skills",
     subtitle: "Voice Dialogue per professionisti",
-    tagline: "Un laboratorio in presenza per integrare il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.",
+    tagline: "Integra il Voice Dialogue nella tua pratica di coaching e di supporto alla persona: un laboratorio esperienziale in presenza per ampliare consapevolezza, risorse e qualità della Presenza.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
     media: {
@@ -2077,9 +2077,9 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Coach professionisti", desc: "Aggiungono una metodologia di riconosciuta efficacia alla pratica quotidiana di coaching.", icon: <Target /> },
-      { title: "Professionisti dello sviluppo personale", desc: "Integrano il Voice Dialogue nel lavoro con clienti e gruppi per ampliare consapevolezza ed efficacia.", icon: <Users /> },
-      { title: "Professionisti del supporto alla persona", desc: "Aprono nuove possibilità nell'ascolto e nell'accompagnamento con tecniche esperienziali.", icon: <MessageCircle /> },
+      { title: "Coach professionisti", desc: "Aggiungi una metodologia di riconosciuta efficacia alla tua pratica quotidiana di coaching.", icon: <Target /> },
+      { title: "Professionisti dello sviluppo personale", desc: "Integri il Voice Dialogue nel lavoro con clienti e gruppi per ampliare consapevolezza ed efficacia.", icon: <Users /> },
+      { title: "Professionisti del supporto alla persona", desc: "Apri nuove possibilità nell'ascolto e nell'accompagnamento con tecniche esperienziali.", icon: <MessageCircle /> },
     ],
     learning: {
       cols: [

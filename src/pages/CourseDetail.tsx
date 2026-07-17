@@ -2012,7 +2012,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[941px] mx-auto px-4 text-center">
           <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-2 lg:mb-3 normal-case max-w-3xl mx-auto">
-            La migliore formazione professionale, accessibile
+            La tua crescita professionale, alla tua portata
           </h2>
           <p className="text-sm sm:text-base text-brand-navy/80 font-medium mb-4 sm:mb-7">
             {isMasterLike
@@ -2238,7 +2238,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       type="button"
                       className="rounded-full border-2 border-brand-navy/25 bg-white px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
                     >
-                      Parla con noi
+                      Parla con un Advisor
                     </button>
                   </div>
                 </div>
@@ -2324,7 +2324,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                    </div>
                    <div>
                       <h3 className="text-base sm:text-xl font-display font-black text-brand-navy tracking-tight mb-1 sm:mb-2 leading-snug">Troviamo insieme la soluzione giusta per te</h3>
-                      <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Scopri i dettagli del percorso e parla con un Advisor Asterys Lab.</p>
+                      <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Ottieni risposte chiare sul percorso e la data di partenza giusta per te, con un Advisor Asterys Lab.</p>
                    </div>
                 </div>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</a>
@@ -2593,7 +2593,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               <Highlight>completo</Highlight>
             </h2>
             <p className={`${tLead} mb-6 lg:mb-14 max-w-2xl`}>
-              Scegli la formazione di Asterys Lab: qualità ICF, metodo e un percorso davvero professionale. Affidati a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un metodo collaudato, costruito per accompagnarti con serietà lungo tutto il percorso.
+              Arrivi pronto alla professione, con credenziali ICF spendibili e un metodo che regge nella realtà. Ti affidi a <span className="text-brand-navy font-black">20+ anni di esperienza</span> e a un percorso collaudato che ti accompagna con serietà, dalla prima lezione al primo cliente.
             </p>
 
             <div className="space-y-3 lg:space-y-6">

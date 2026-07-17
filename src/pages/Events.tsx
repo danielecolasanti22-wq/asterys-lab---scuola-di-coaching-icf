@@ -17,7 +17,7 @@ export default function Events() {
       <PageHero
         title="Eventi &"
         highlight="Open Day"
-        subtitle="Scopri il mondo Asterys Lab partecipando ai nostri incontri. Webinar gratuiti, sessioni di orientamento e seminari dal vivo per esplorare la tua prossima evoluzione."
+        subtitle="Vivi il metodo dal vivo prima di scegliere. Webinar gratuiti, sessioni di orientamento e incontri in presenza per capire se il coaching fa per te e fare il primo passo senza impegno."
       />
 
       {/* FEATURED — prossimo evento */}
@@ -51,7 +51,7 @@ export default function Events() {
                 <div className="flex items-center gap-1.5"><MapPin size={14} className="text-brand-accent" /> {eventsData[0].modality}</div>
               </div>
               <span className="inline-flex items-center gap-2 bg-brand-navy text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] self-start group-hover:bg-brand-accent transition-colors">
-                Scopri &amp; iscriviti <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                Prenota il tuo posto <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function Events() {
       {/* GRIGLIA — altri appuntamenti */}
       <section className="max-w-7xl mx-auto px-6 pt-12 lg:pt-16">
         <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-10">
-          <h2 className="font-display font-bold text-2xl tracking-tight">Tutti gli appuntamenti</h2>
+          <h2 className="font-display font-bold text-2xl tracking-tight">Scegli il tuo prossimo passo</h2>
           <p className="text-xs font-black text-brand-navy/30 uppercase tracking-widest">{eventsData.length} eventi in programma</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -115,11 +115,11 @@ export default function Events() {
       <section className="max-w-7xl mx-auto px-6 pt-16 lg:pt-20">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8">
           <div className="bg-brand-navy text-white p-10 lg:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-            <h3 className="font-display font-bold text-2xl lg:text-3xl mb-5 relative z-10">Vuoi un incontro individuale?</h3>
+            <h3 className="font-display font-bold text-2xl lg:text-3xl mb-5 relative z-10">Preferisci parlarne a tu per tu?</h3>
             <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10 max-w-md">
-              Se preferisci un confronto privato e personalizzato, i nostri counselor sono a disposizione per un colloquio orientativo gratuito via Zoom.
+              Prenota un colloquio orientativo gratuito via Zoom: ricevi risposte sul tuo caso specifico e capisci quale percorso ti porta davvero dove vuoi arrivare.
             </p>
-            <button className="btn-primary bg-white text-brand-navy hover:bg-white/90 px-8 py-4 font-bold rounded-xl relative z-10">Prenota ora</button>
+            <button className="btn-primary bg-white text-brand-navy hover:bg-white/90 px-8 py-4 font-bold rounded-xl relative z-10">Prenota la tua call gratuita</button>
           </div>
 
           <div className="bg-brand-blue-soft/50 p-10 lg:p-12 rounded-[2.5rem]">
@@ -129,10 +129,10 @@ export default function Events() {
             </div>
             <ul className="space-y-4">
               {[
-                "Tutti i webinar online vengono registrati.",
-                "Gli open day in sede hanno posti limitati.",
-                "Riceverai il link Zoom 2h prima.",
-                "Possibilità di colloquio post-evento."
+                "Rivedi con calma ogni webinar: li registriamo tutti per te.",
+                "Assicurati il posto in anticipo: gli open day in sede sono a numero chiuso.",
+                "Ti basta un clic: ricevi il link Zoom 2h prima dell’incontro.",
+                "Vuoi approfondire? Prenoti un colloquio dedicato dopo l’evento."
               ].map((item, i) => (
                 <li key={i} className="flex gap-2 text-xs font-medium text-brand-navy/60 leading-relaxed">
                   <ChevronRight size={14} className="text-brand-accent shrink-0 mt-0.5" />

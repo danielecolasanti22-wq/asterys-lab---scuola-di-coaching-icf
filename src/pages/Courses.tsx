@@ -22,7 +22,7 @@ type CourseGroup = {
 const courseGroups: CourseGroup[] = [
   {
     label: 'Master',
-    caption: 'Percorsi completi per diventare coach professionista ICF.',
+    caption: 'Diventa coach professionista e ottieni le credenziali ICF riconosciute nel mondo.',
     courses: [
       {
         id: 'apcm',
@@ -31,7 +31,7 @@ const courseGroups: CourseGroup[] = [
         duration: '6–12 mesi',
         modality: 'Online + Aula',
         desc:
-          'Il percorso completo per diventare coach professionista con credenziali ICF Level 1 & 2: metodo, pratica supervisionata e intelligenza emotiva misurabile.',
+          'Arrivi pronto al tuo primo cliente e diventi coach con le credenziali ICF Level 1 & 2: metodo, pratica supervisionata e intelligenza emotiva che si vede nei risultati.',
         img: '/course-media/apcm/card.png',
       },
       {
@@ -41,14 +41,14 @@ const courseGroups: CourseGroup[] = [
         duration: '54 ore · 60 CCE',
         modality: 'Online + Milano/Roma',
         desc:
-          'Il modello sistemico accreditato ICF per il coaching sistemico di team e organizzazioni. Prerequisito per la credenziale ACTC.',
+          'Impari ad accompagnare team e organizzazioni a risultati straordinari in tempi brevi, con il modello sistemico accreditato ICF. È il prerequisito per la credenziale ACTC.',
         img: '/course-media/systemic-team-coaching/card.jpg',
       },
     ],
   },
   {
     label: 'Formazione avanzata',
-    caption: 'Approfondisci ambiti chiave della pratica di coaching.',
+    caption: 'Porta a un nuovo livello la tua pratica e allarga ciò che sai fare con i clienti.',
     courses: [
       {
         id: 'coaching-circle',
@@ -57,7 +57,7 @@ const courseGroups: CourseGroup[] = [
         duration: '10 ore per il rinnovo',
         modality: 'Zoom · gruppo o individuale',
         desc:
-          'Matura le 10 ore di mentor coaching per il rinnovo ICF: Mentoring di Gruppo (7h) e/o Individuale (3h), con un Mentor Coach MCC.',
+          'Rinnovi la tua credenziale ICF con serenità: maturi le 10 ore di mentor coaching richieste — Mentoring di Gruppo (7h) e/o Individuale (3h) — al fianco di un Mentor Coach MCC.',
         img: '/course-media/coaching-circle/card.png',
       },
       {
@@ -67,7 +67,7 @@ const courseGroups: CourseGroup[] = [
         duration: '3 giornate',
         modality: 'In presenza · Milano',
         desc:
-          'Un laboratorio in presenza per integrare il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.',
+          'Aggiungi uno strumento potente alla tua pratica: in un laboratorio in presenza a Milano impari a integrare il Voice Dialogue nel coaching e nel supporto alla persona.',
         img: '/course-media/voice-dialogue/card.png',
       },
       {
@@ -77,14 +77,14 @@ const courseGroups: CourseGroup[] = [
         duration: '5 webinar',
         modality: 'Live online',
         desc:
-          'Il personal branding del coach: 5 webinar con Helga Ogliari per posizionarti, raccontarti e acquisire clienti. Incluso nel 2° livello del Master.',
+          'Ti posizioni, ti racconti e acquisisci i tuoi primi clienti: 5 webinar con Helga Ogliari sul personal branding del coach. Incluso nel 2° livello del Master.',
         img: '/course-media/marketing-per-coach/card.png',
       },
     ],
   },
   {
     label: 'Corsi brevi',
-    caption: 'Competenze pratiche, in tempi ridotti.',
+    caption: 'Competenze spendibili da subito, in poche sessioni.',
     courses: [
       {
         id: 'eiw',
@@ -93,7 +93,7 @@ const courseGroups: CourseGroup[] = [
         duration: '4 Workout live · 4 CCE',
         modality: 'Live Online',
         desc:
-          "Allena l'intelligenza emotiva con esperienze guidate: modello CSI, fiore di Plutchik e coach dedicati. Ogni ciclo è di 4 Workout live da 60' (4 CCE ICF).",
+          "Impari a stare con le emozioni e a usarle a tuo vantaggio in ogni relazione: esperienze guidate con modello CSI, fiore di Plutchik e coach dedicati. Ogni ciclo è di 4 Workout live da 60' (4 CCE ICF).",
         img: '/course-media/eiw/card.png',
       },
       {
@@ -103,7 +103,7 @@ const courseGroups: CourseGroup[] = [
         duration: '1 live class/mese',
         modality: 'Zoom · 18:30–20:00',
         desc:
-          'Formazione continua per coach: una live class al mese in Zoom, tutto l’anno tranne agosto. Entri quando vuoi.',
+          'Resti sempre aggiornato e in allenamento: una live class al mese in Zoom, tutto l’anno tranne agosto. Entri quando vuoi.',
         img: '/course-media/continuous-learning/card.jpg',
       },
       {
@@ -113,7 +113,7 @@ const courseGroups: CourseGroup[] = [
         duration: '3 giornate + 2 online',
         modality: 'Aula + Online',
         desc:
-          'Rendi memorabile la tua presenza in pubblico: voce, corpo ed emozioni in una full immersion pratica.',
+          'Conquisti la tua audience e ti presenti con autorevolezza: voce, corpo ed emozioni al servizio di una presenza che resta impressa, in una full immersion pratica.',
         img: '/course-media/public-speaking/card.jpg',
       },
     ],
@@ -123,15 +123,15 @@ const courseGroups: CourseGroup[] = [
 const corporatePrograms = [
   {
     title: 'Coaching per Manager',
-    desc: 'Allena la leadership quotidiana con un coach dedicato.',
+    desc: 'I tuoi manager guidano meglio ogni giorno, con un coach dedicato al loro fianco.',
   },
   {
     title: 'Leadership Development',
-    desc: 'Programmi strutturati per far crescere chi guida le persone.',
+    desc: 'Chi guida le persone cresce e porta tutto il team a un nuovo livello.',
   },
   {
     title: 'Team Coaching Sistemico',
-    desc: 'Il modello sistemico per allineare e accelerare i team.',
+    desc: 'I tuoi team si allineano e accelerano verso risultati concreti.',
   },
 ];
 
@@ -145,11 +145,12 @@ export default function Courses() {
             Academy
           </span>
           <h1 className="mt-4 text-[2.3rem] sm:text-[2.9rem] lg:text-[3.3rem] font-display font-black leading-[0.98] tracking-tighter text-white mb-5">
-            Tutti i <Highlight className="text-brand-sky">percorsi</Highlight>
+            Il percorso che ti fa <Highlight className="text-brand-sky">crescere</Highlight>
           </h1>
           <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed max-w-2xl mx-auto">
-            Dalla formazione di base per aspiranti coach ai percorsi di formazione avanzata per
-            professionisti e aziende. Trova il programma adatto ai tuoi obiettivi.
+            Che tu voglia muovere i primi passi come coach o portare la tua pratica a un nuovo
+            livello, qui trovi il percorso che ti fa arrivare pronto: credenziali ICF riconosciute e
+            competenze spendibili da subito.
           </p>
         </div>
       </section>
@@ -221,8 +222,8 @@ export default function Courses() {
                   Cerchi formazione per il tuo team?
                 </h2>
                 <p className="mt-5 text-white/70 leading-relaxed max-w-md">
-                  Progettiamo percorsi su misura per le organizzazioni, con la stessa qualità ICF dei
-                  nostri Master: dal coaching per manager allo sviluppo della leadership, fino al team
+                  Fai crescere il tuo team con percorsi su misura e la stessa qualità ICF dei nostri
+                  Master: dal coaching per manager allo sviluppo della leadership, fino al team
                   coaching sistemico.
                 </p>
                 <Link
