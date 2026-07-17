@@ -408,8 +408,8 @@ const apcmFaqs = [
 export const coursesContent: Record<string, CourseData> = {
   'apcm': {
     title: "Master in Coaching",
-    subtitle: "Professione Coach",
-    tagline: "Diventare coach cambia la prospettiva su se stessi e sul mondo: il Master in Coaching è il percorso d'eccellenza per trasformare la tua esperienza in una nuova carriera riconosciuta ICF, con intelligenza emotiva misurabile e approccio sistemico.",
+    subtitle: "Diventa coach professionista riconosciuto ICF",
+    tagline: "Trasforma la tua esperienza in una nuova carriera da coach riconosciuto ICF: impari a far decidere e agire le persone fino al risultato, con intelligenza emotiva e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "Diventa coach",
     media: {
@@ -473,10 +473,10 @@ export const coursesContent: Record<string, CourseData> = {
         "Costruisci un **mix equilibrato** tra metodo, relazione e visione d’insieme: ciò che serve per essere **competitivo** come coach professionista oggi.",
     },
     heroBenefits: [
-      "Trasforma la tua esperienza professionale in una nuova carriera da coach",
-      "Ottieni le ore formative necessarie per le credenziali ICF Level 1 e Level 2",
-      "Allena intelligenza emotiva e competenze relazionali con strumenti misurabili",
-      "Costruisci il tuo business di coaching con un percorso dedicato"
+      "Diventi davvero efficace nel far decidere e agire le persone fino al risultato",
+      "Ti accrediti come coach ICF (ACC con il Livello 1, PCC con il Percorso Completo)",
+      "Alleni sul serio le competenze di coaching: gran parte del percorso è pratica",
+      "Integri intelligenza emotiva e approccio sistemico nella tua pratica"
     ],
     summaryBox: {
       nextEdition: "Milano, Roma & Online",
@@ -490,7 +490,7 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Perché questo Master in Coaching",
       content: [
-        "Il Master in Coaching è il percorso di Asterys Lab per diventare **coach professionista** con **credenziali ICF** riconosciute nel mondo. Non solo tecnica: un viaggio di trasformazione che integra metodo, **intelligenza emotiva** e **approccio sistemico**.",
+        "Diventi **coach professionista** con **credenziali ICF** riconosciute nel mondo, e impari ad ascoltare a una profondità nuova e a far decidere e agire le persone fino al risultato. Non solo tecnica: un percorso di trasformazione che integra metodo, **intelligenza emotiva** e **approccio sistemico**.",
         "Impari a condurre sessioni con rigore etico e a costruire un business sostenibile, accanto a **trainer MCC & PCC** con 20+ anni di esperienza e 3.000+ alumni. Che tu venga da HR, consulenza, management o psicologia, ti porta da professionista curioso a **coach pronto per il mercato**."
       ]
     },
@@ -697,7 +697,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Competenze & Professione",
       title: "Cosa impari a fare e come puoi usarlo nel lavoro",
       intro:
-        "Il Master ti dà metodo, pratica supervisionata e strumenti concreti per iniziare a lavorare nel coaching o integrare un approccio coaching nella tua professione. Le competenze che alleni sono spendibili con persone, team e organizzazioni, con standard ICF e attenzione alla pratica reale.",
+        "Esci dal Master capace di condurre percorsi di coaching veri: metodo, pratica supervisionata e strumenti concreti per iniziare a lavorare come coach o integrare il coaching nella tua professione. Le competenze che porti a casa sono spendibili con persone, team e organizzazioni, con standard ICF e attenzione alla pratica reale.",
       stats: [
         { value: "150 ore", label: "Tra lezioni, pratica e studio" },
         { value: "3.000+", label: "Alumni Asterys nel mondo" },
@@ -705,28 +705,28 @@ export const coursesContent: Record<string, CourseData> = {
       ],
       competencies: [
         {
-          title: "Condurre conversazioni di coaching strutturate",
-          desc: "Impari a costruire accordo, obiettivi e direzione della sessione, mantenendo una relazione professionale e rispettando le competenze e il codice etico ICF."
+          title: "Conduci conversazioni di coaching strutturate",
+          desc: "Sai costruire accordo, obiettivi e direzione della sessione, mantenendo una relazione professionale e rispettando le competenze e il codice etico ICF."
         },
         {
-          title: "Ascoltare in profondità e fare domande efficaci",
-          desc: "Alleni presenza, ascolto attivo, domande potenti e feedback per aiutare la persona a generare consapevolezza, leggere alternative e scegliere azioni concrete."
+          title: "Ascolti in profondità e fai domande che smuovono",
+          desc: "Padroneggi presenza, ascolto attivo, domande potenti e feedback per aiutare la persona a generare consapevolezza, leggere alternative e scegliere azioni concrete."
         },
         {
-          title: "Accompagnare obiettivi, scelte e cambiamenti",
-          desc: "Impari a sostenere clienti in passaggi professionali, decisioni, sviluppo personale, cambi ruolo e piani d'azione, senza sostituirti alla persona."
+          title: "Accompagni obiettivi, scelte e cambiamenti",
+          desc: "Sai sostenere clienti in passaggi professionali, decisioni, sviluppo personale, cambi ruolo e piani d'azione, senza sostituirti alla persona."
         },
         {
-          title: "Usare intelligenza emotiva e lettura sistemica",
-          desc: "Integra strumenti di intelligenza emotiva e approccio sistemico per comprendere relazioni, contesti, stakeholder e dinamiche che influenzano la persona o il team."
+          title: "Porti intelligenza emotiva e lettura sistemica in sessione",
+          desc: "Integri strumenti di intelligenza emotiva e approccio sistemico per comprendere relazioni, contesti, stakeholder e dinamiche che influenzano la persona o il team."
         },
         {
-          title: "Gestire pratica, feedback e report",
-          desc: "Sviluppi abitudine alla pratica supervisionata, alla riflessione sul metodo, alla preparazione tra una lezione e l'altra e alla produzione di report professionali."
+          title: "Gestisci pratica, feedback e report da professionista",
+          desc: "Acquisisci l'abitudine alla pratica supervisionata, alla riflessione sul metodo, alla preparazione tra una lezione e l'altra e alla produzione di report professionali."
         },
         {
-          title: "Costruire identità e posizionamento da coach",
-          desc: "Lavori su confini professionali, stile personale, proposta di valore e primi passi per presentarti in modo credibile a clienti, aziende o contesti HR."
+          title: "Costruisci la tua identità e il tuo posizionamento da coach",
+          desc: "Definisci confini professionali, stile personale, proposta di valore e primi passi per presentarti in modo credibile a clienti, aziende o contesti HR."
         }
       ],
       careerPaths: [
@@ -1187,8 +1187,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'systemic-team-coaching': {
     title: "Master in Team Coaching Sistemico",
-    subtitle: "Team Coaching",
-    tagline: "Padroneggia l'esclusivo modello di Team Coaching Sistemico e accompagna team e organizzazioni a risultati straordinari — con un Master accreditato ICF che ti prepara alla credenziale di team coaching (ACTC).",
+    subtitle: "Fai crescere interi team, non solo i singoli",
+    tagline: "Accompagni team e organizzazioni a risultati straordinari con l'esclusivo modello di Team Coaching Sistemico — e maturi il prerequisito ICF per la credenziale di team coaching (ACTC).",
     certificate: {
       eyebrow: "Attestato finale",
       title: "Un percorso certificato",
@@ -1258,10 +1258,10 @@ export const coursesContent: Record<string, CourseData> = {
       deadlineISO: "2026-11-21T23:59:59+01:00", // banner attivo fino alla EB più lunga (2° livello)
     },
     heroBenefits: [
-      "Apprendi l'esclusivo modello sistemico di coaching per i team",
-      "Prerequisito per la credenziale ICF ACTC (Advanced Certification in Team Coaching)",
-      "54 ore di formazione live · attestato AATC equivalente a 60 CCE ICF",
-      "Edizioni in videoconferenza e in aula a Milano e Roma"
+      "Accompagni team e organizzazioni a risultati straordinari in tempi brevi",
+      "Aiuti team e leader a sostituire gli schemi limitanti ed esprimere tutto il potenziale del gruppo",
+      "Maturi il prerequisito per la credenziale ICF di team coaching (ACTC)",
+      "Porti a casa 54 ore di formazione live e 60 CCE ICF per il rinnovo della credenziale"
     ],
     summaryBox: {
       nextEdition: "Videoconferenza + Milano / Roma",
@@ -1275,9 +1275,9 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Dal singolo al sistema: il modello sistemico",
       content: [
-        "Pier Paolo Colasanti e Stefano Petti hanno lavorato come **team coach** e consulenti nelle realtà organizzative più complesse, collaborando con eccellenze internazionali nel campo del Team Coaching.",
-        "Grazie allo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale, e alla loro esperienza con tanti clienti e nelle situazioni più sfidanti, hanno sviluppato il modello innovativo di **Team Coaching Sistemico**.",
-        "Il modello si occupa delle persone che compongono il team, ma soprattutto dei **pattern** e delle **interazioni** tra di loro: cambiando il sistema, migliorano le dinamiche e **cambiano i risultati**."
+        "Impari a leggere e trasformare le dinamiche di un intero team: al termine sai accompagnare gruppi e organizzazioni a **risultati straordinari**, lavorando sui pattern che li bloccano.",
+        "Lo fai con il modello innovativo di **Team Coaching Sistemico** sviluppato da Pier Paolo Colasanti e Stefano Petti — nato dallo studio dei più importanti modelli organizzativi e di team coaching a livello internazionale e dalla loro esperienza con tanti clienti nelle situazioni più sfidanti.",
+        "È un approccio che si occupa delle persone che compongono il team, ma soprattutto dei **pattern** e delle **interazioni** tra di loro: cambiando il sistema, migliorano le dinamiche e **cambiano i risultati**."
       ]
     },
     target: [
@@ -1322,13 +1322,33 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ],
     career: {
-      title: "Dopo il Master in Team Coaching Sistemico",
-      content: "Al termine del percorso potrai operare come team coach sistemico e, superando l'esame Expert, accedere al diploma AATC — prerequisito ICF per ottenere la credenziale Advanced Certification in Team Coaching (ACTC).",
+      title: "Cosa ottieni dopo il Master",
+      content: "Esci pronto a operare come team coach sistemico e, superando l'esame Expert, ottieni il diploma AATC — prerequisito ICF per la credenziale Advanced Certification in Team Coaching (ACTC).",
       points: [
-        { title: "Diploma AATC ICF", desc: "Rilasciato dopo il superamento dell'esame Expert. Utile come prerequisito per la credenziale ICF ACTC." },
-        { title: "Attestato di partecipazione", desc: "Per chi non sostiene o non supera l'esame: 54 ore di formazione sincrona certificate." },
-        { title: "60 CCE ICF", desc: "L'attestato AATC equivale a 60 CCE, utili per il rinnovo della tua credenziale di Coach ICF." },
-        { title: "Metodologia sistemica", desc: "Imparerai a condurre percorsi di team coaching immersivi e team-centrici grazie alle procedure e alla metodologia sistemica." }
+        { title: "Diploma AATC ICF", desc: "Lo ottieni superando l'esame Expert: è il prerequisito riconosciuto per accedere alla credenziale ICF ACTC." },
+        { title: "Attestato di partecipazione", desc: "Anche senza esame porti a casa 54 ore di formazione sincrona certificate." },
+        { title: "60 CCE ICF", desc: "L'attestato AATC vale 60 CCE: rinnovi la tua credenziale di Coach ICF mentre ti specializzi sui team." },
+        { title: "Conduci team coaching immersivi", desc: "Sai condurre percorsi di team coaching immersivi e team-centrici, con procedure e metodologia sistemica." }
+      ]
+    },
+    competenciesAndCareers: {
+      eyebrow: "Competenze & Professione",
+      title: "Cosa saprai fare con i team",
+      intro:
+        "Esci capace di far funzionare i team come sistemi: le competenze concrete per accompagnare gruppi e organizzazioni a risultati straordinari, sciogliere gli schemi che li bloccano e condurre interi percorsi di team coaching con metodo sistemico.",
+      competencies: [
+        { title: "Accompagni i team a risultati straordinari", desc: "Guidi team e gruppi di lavoro verso obiettivi ambiziosi in tempi brevi, intervenendo sul sistema e non solo sui singoli." },
+        { title: "Sciogli gli schemi che frenano il gruppo", desc: "Aiuti team e leader a riconoscere e sostituire convinzioni e pattern limitanti con dinamiche che liberano il potenziale collettivo." },
+        { title: "Leggi il team come un organismo vivente", desc: "Applichi il modello sistemico per cogliere relazioni, ruoli, confini e dinamiche che determinano le performance del team." },
+        { title: "Conduci percorsi di team coaching immersivi", desc: "Progetti e faciliti interi percorsi team-centrici, con metodologia sistemica, ToolBox e la piattaforma di social learning Inner." },
+        { title: "Gestisci leader, committenza e stakeholder", desc: "Ingaggi la committenza e accompagni leader e stakeholder lungo tutto l'intervento, dal contratto ai risultati." },
+        { title: "Ti specializzi come team coach ICF", desc: "Maturi le competenze e le ore per il diploma AATC e per accedere alla credenziale ICF per il team coaching (ACTC)." }
+      ],
+      careerPaths: [
+        { title: "Team coach in azienda", desc: "Accompagni team e reparti dentro organizzazioni che vogliono performance e collaborazione reali.", contexts: ["Aziende", "Team", "Reparti"] },
+        { title: "Executive & leadership team", desc: "Lavori con team di vertice, board e comitati direttivi sui momenti che contano.", contexts: ["C-level", "Board", "Leadership"] },
+        { title: "Consulenza e sviluppo organizzativo", desc: "Integri il team coaching sistemico nei percorsi di sviluppo organizzativo e di cambiamento.", contexts: ["Consulenza", "OD", "Cambiamento"] },
+        { title: "Coach ICF specializzato sui team", desc: "Aggiungi alla tua pratica di coach una specializzazione sui team riconosciuta ICF.", contexts: ["ICF", "ACTC", "Team coaching"] }
       ]
     },
     classDates: [
@@ -1566,8 +1586,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Intelligenza Emotiva",
-    subtitle: "Intelligenza Emotiva",
-    tagline: "Il corso di intelligenza emotiva di Asterys Lab: non serve più dire che è importante, ormai si sa che è sviluppabile. Qui la alleni con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
+    subtitle: "Stai con le emozioni in modo intelligente, dove più conta",
+    tagline: "Impari a stare con le emozioni in modo intelligente, dove più conta: alleni davvero la tua intelligenza emotiva con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
     type: "WORKOUT EQ",
     media: {
       hero: "/course-media/eiw/hero.png",
@@ -1576,10 +1596,10 @@ export const coursesContent: Record<string, CourseData> = {
       howItWorks: "/course-media/apcm/how-master.jpg"
     },
     heroBenefits: [
-      "L'IE si sviluppa facendo esperienze consapevoli e mirate, non studiando concetti",
-      "Round di 4 Workout da 60 min live · 4 emozioni dal fiore di Plutchik",
-      "Modello CSI Asterys: Consapevolezza · Strategia · Interazione",
-      "4 CCE ICF per ogni Round · posti limitati"
+      "Impari a stare con le emozioni in modo intelligente: la competenza che fa la differenza nella tua efficacia, in ogni campo",
+      "Ti alleni sul serio, con esperienze pratiche progettate apposta — si fa, non si studia soltanto",
+      "Sviluppi una consapevolezza mirata di ogni emozione con il modello CSI Asterys: Consapevolezza · Strategia · Interazione",
+      "Maturi 4 CCE ICF per ogni Round, con coach esperti di intelligenza emotiva al tuo fianco"
     ],
     summaryBox: {
       nextEdition: "Da settembre 2026",
@@ -1593,7 +1613,7 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
-        "Che l'**intelligenza emotiva** sia importante ormai lo sanno tutti. La vera domanda è un'altra: come si sviluppa davvero? Qui le risposte si fanno vaghe, e spesso poco praticabili.",
+        "Esci da questo percorso capace di **stare con le emozioni** — le tue e quelle degli altri — in modo intelligente, proprio dove più conta. Che l'intelligenza emotiva sia importante ormai lo sanno tutti; la vera domanda è come si sviluppa davvero, e lì le risposte di solito si fanno vaghe e poco praticabili.",
         "Dopo anni sul campo e collaborazioni internazionali, Asterys Lab ha costruito un percorso che non spiega soltanto l'intelligenza emotiva: te la fa **allenare**. Negli altri corsi se ne parla come di una materia da \"sapere\"; qui si \"diventa\", con **esperienze pratiche** progettate apposta. C'è da mettersi in gioco.",
         "Se vuoi spostarti sul serio da dove sei oggi, questo è il percorso giusto: spazio, strumenti e coach che ti accompagnano sulla competenza che, più di ogni altra, **fa la differenza**."
       ]
@@ -1759,8 +1779,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
-    subtitle: "Mentoring di gruppo ed individuale",
-    tagline: "Per rinnovare la credenziale ICF servono 10 ore di mentor coaching: le maturi con il mentoring di gruppo o individuale, accompagnato da un Mentor Coach MCC.",
+    subtitle: "Le 10 ore di mentor coaching che ti servono per rinnovare la credenziale",
+    tagline: "Rinnovi la tua credenziale ICF con serenità: maturi le 10 ore di mentor coaching richieste, accompagnato da un Mentor Coach MCC, in gruppo o individualmente.",
     type: "MENTORING ICF",
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
     media: {
@@ -1770,10 +1790,10 @@ export const coursesContent: Record<string, CourseData> = {
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
     heroBenefits: [
-      "Per il rinnovo della credenziale ICF servono 10 ore di mentor coaching",
-      "Mentor coaching di gruppo: pratica supervisionata in piccoli gruppi",
-      "Mentor coaching individuale: percorso one-to-one a costo orario",
-      "Gruppo e individuale ti portano alle 10 ore, con un Mentor Coach MCC"
+      "Maturi le 10 ore di mentor coaching richieste per rinnovare la credenziale ICF",
+      "Ricevi feedback su sessioni reali da un Mentor Coach MCC",
+      "Rinnovi con serenità: in gruppo (7h), individuale (3h) o entrambi (10h)",
+      "Rafforzi la tua personal mastery e la qualità del tuo coaching"
     ],
     summaryBox: {
       nextEdition: "Online · Zoom",
@@ -1793,8 +1813,8 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Mentoring per rinnovare la tua credenziale ICF",
       content: [
-        "Per **rinnovare la credenziale ICF** servono **10 ore di mentor coaching**. Asterys Lab te le fa maturare con un **Mentor Coach MCC**, in due modalità anche combinabili: **Mentoring di Gruppo** e **Mentoring Individuale**.",
-        "Il **Mentoring di Gruppo** (già *Coaching Circle*) è un'edizione di 2 incontri da 3,5h in gruppi da 4 (**7 ore**). Il **Mentoring Individuale** sono **3 ore** one-to-one. **Insieme arrivi alle 10 ore** richieste per il rinnovo."
+        "**Rinnovi la tua credenziale ICF** maturando le **10 ore di mentor coaching** richieste, accompagnato da un **Mentor Coach MCC**. Le maturi nella modalità che preferisci — anche combinandole: **Mentoring di Gruppo** e **Mentoring Individuale**.",
+        "Con il **Mentoring di Gruppo** (già *Coaching Circle*) alleni la pratica in gruppi da 4 su un'edizione di 2 incontri da 3,5h (**7 ore**); con il **Mentoring Individuale** lavori **3 ore** one-to-one sul tuo coaching. **Insieme arrivi alle 10 ore** richieste per il rinnovo."
       ]
     },
     target: [
@@ -1965,8 +1985,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'public-speaking': {
     title: "Public Speaking Pro",
-    subtitle: "Parla con Presenza",
-    tagline: "Rendi memorabile la tua presenza in pubblico: 3 giornate di full immersion in presenza più follow up online per padroneggiare l'arte del parlare in pubblico, con corpo, voce ed emozioni.",
+    subtitle: "Parla in pubblico con presenza e impatto",
+    tagline: "Parli in pubblico con disinvoltura e rendi memorabile ogni tuo intervento: in 3 giornate di full immersion in presenza più follow up online padroneggi corpo, voce ed emozioni davanti a qualsiasi platea.",
     type: "COMUNICAZIONE",
     media: {
       hero: "/course-media/public-speaking/hero-public-speaking.png",
@@ -1976,14 +1996,14 @@ export const coursesContent: Record<string, CourseData> = {
       completePractical: "/course-media/apcm/supervision-mentor.png",
       completePlatform: "/course-media/apcm/platform-ui.png",
     },
-    heroBenefits: ["Pianifica uno speech memorabile", "Comunica con il corpo", "Usa la voce come tua alleata", "Accogli le emozioni con presenza"],
+    heroBenefits: ["Parli in pubblico con disinvoltura e catturi l'attenzione della platea", "Padroneggi voce, corpo e postura e ne senti l'impatto", "Presenti idee e progetti con credibilità e autorevolezza", "Usi le tue emozioni a tuo vantaggio, anche sotto pressione"],
     summaryBox: { nextEdition: "Da definire", dates: "Da definire", format: "Aula + Online", duration: "3 giornate + 2 follow up", price: "--", installments: "" },
     badges: ["Pratico", "Feedback Immediato"],
     overview: {
       title: "Comunicare è servire",
       content: [
-        "Se desideri padroneggiare l'arte del **parlare in pubblico** e rendere i tuoi interventi memorabili, questo è il corso per te. Public Speaking PRO non è solo formazione: è una vera **esperienza di trasformazione** che ti dà le competenze per eccellere in tutte le situazioni **one to many**.",
-        "Immagina di interagire con il pubblico con maestria e disinvoltura, veicolando i tuoi messaggi e **catturando l'attenzione della platea**. Immagina di avere tutti gli strumenti per **superare la paura di parlare in pubblico** e agire con piena consapevolezza, trasmettendo competenza e professionalità.",
+        "Esci da questo corso capace di **parlare in pubblico con disinvoltura**, catturare l'attenzione della platea e veicolare i tuoi messaggi in ogni situazione **one to many**. Public Speaking PRO non è solo formazione: è una vera **esperienza di trasformazione** che ti dà le competenze per eccellere quando tutti gli occhi sono su di te.",
+        "Interagisci con il pubblico con maestria e disinvoltura, veicolando i tuoi messaggi e **catturando l'attenzione della platea**. Hai tutti gli strumenti per **superare la paura di parlare in pubblico** e agire con piena consapevolezza, trasmettendo competenza e professionalità.",
         "Non si tratta solo di parlare in pubblico, ma di **essere serenamente chi sei mentre lo fai**."
       ]
     },
@@ -2016,6 +2036,42 @@ export const coursesContent: Record<string, CourseData> = {
       { name: "Nuna Shoesmith", creds: "Coach ACC ICF", role: "Vocal Coach", bio: "Diplomata al Conservatorio, vocal coach con esperienza decennale: aiuta a trovare la propria voce autentica con un approccio olistico al benessere vocale.", img: "/course-media/public-speaking/nuna-shoesmith.png" }
     ],
     career: { title: "Datti Voce", content: "Migliora la tua visibilità interna ed esterna.", points: [] },
+    competenciesAndCareers: {
+      eyebrow: "Competenze & Impatto",
+      title: "Cosa saprai fare davanti a un pubblico",
+      intro:
+        "Public Speaking PRO ti dà una **presenza davvero efficace**: le competenze concrete per parlare in pubblico con disinvoltura, presentare idee e progetti con autorevolezza e usare corpo, voce ed emozioni a tuo vantaggio, in ogni situazione one to many.",
+      competencies: [
+        { title: "Parlare in pubblico con disinvoltura", desc: "Affronti eventi, riunioni e conferenze con sicurezza e consapevolezza dell'effetto che hai sull'audience, catturando e mantenendo l'attenzione." },
+        { title: "Padroneggiare voce e postura", desc: "Usi voce, corpo e postura in modo consapevole e ne percepisci l'impatto, trasformandoli nei tuoi alleati più potenti sul palco." },
+        { title: "Presentarti con credibilità e autorevolezza", desc: "Esprimi le tue idee e ti presenti in modo credibile e autorevole, trasmettendo competenza e professionalità in ogni intervento." },
+        { title: "Condurre riunioni e presentazioni", desc: "Conduci una riunione e presenti un progetto con sicurezza, anche quando dalla tua capacità di esporre dipende il destino di un'idea." },
+        { title: "Sviluppare una presenza efficace", desc: "Costruisci la padronanza di una presenza scenica davvero efficace, capace di stimolare interesse e restare memorabile." },
+        { title: "Usare le emozioni a tuo vantaggio", desc: "Accogli e gestisci le tue emozioni, anche sotto pressione, per una relazione con la platea centrata, autentica ed efficace." }
+      ],
+      careerPaths: [
+        {
+          title: "Speech ed eventi pubblici",
+          desc: "Porti sul palco interventi memorabili in conferenze, eventi e presentazioni davanti a un pubblico ampio.",
+          contexts: ["Conferenze", "Eventi", "Speech"]
+        },
+        {
+          title: "Riunioni e presentazioni di progetto",
+          desc: "Esponi progetti e idee con sicurezza quando dalla tua capacità di presentare dipende una decisione o un risultato.",
+          contexts: ["Riunioni", "Pitch", "Presentazioni"]
+        },
+        {
+          title: "Aula e formazione",
+          desc: "Rendi più efficaci i tuoi interventi formativi e liberi tutto il tuo potenziale di trainer e formatore.",
+          contexts: ["Trainer", "Formatori", "Docenti"]
+        },
+        {
+          title: "Board e comitati",
+          desc: "Migliori la tua esposizione nei consigli di amministrazione e nelle riunioni che contano, con presenza e autorevolezza.",
+          contexts: ["Manager", "Board", "Leadership"]
+        }
+      ]
+    },
     fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "--", priceLabel: "prezzo in definizione" }],
     faqs: [
       {
@@ -2042,8 +2098,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'voice-dialogue': {
     title: "Voice Dialogue Skills",
-    subtitle: "Voice Dialogue per professionisti",
-    tagline: "Integra il Voice Dialogue nella tua pratica di coaching e di supporto alla persona: un laboratorio esperienziale in presenza per ampliare consapevolezza, risorse e qualità della Presenza.",
+    subtitle: "Più consapevolezza, risorse e Presenza nella tua pratica professionale",
+    tagline: "Porti più profondità, risorse e qualità di Presenza in ogni sessione: integri il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
     media: {
@@ -2055,10 +2111,10 @@ export const coursesContent: Record<string, CourseData> = {
       completePlatform: "/course-media/apcm/platform-ui.png",
     },
     heroBenefits: [
-      "3 giornate full immersion in aula a Milano",
-      "Sperimenti in prima persona le tecniche base del Voice Dialogue",
-      "Riconosci e gestisci voci interne, Critico, Giudizio Negativo e campo energetico",
-      "Colleghi il metodo alle competenze ICF"
+      "Integri il Voice Dialogue nei tuoi percorsi di coaching e nella pratica professionale",
+      "Dai più profondità, risorse e qualità di Presenza alle tue sessioni",
+      "Sperimenti su di te la potenza e l'efficacia del metodo",
+      "Sai riconoscere e gestire voci interne, Critico e Giudizio Negativo, e collegarli alle competenze ICF"
     ],
     summaryBox: {
       nextEdition: "Milano",
@@ -2072,7 +2128,7 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Voice Dialogue per professionisti",
       content: [
-        "Il **Voice Dialogue** è tra le metodologie che possono fornire un prezioso supporto nel rapporto di coaching e in altre professioni dedicate allo sviluppo della persona. Basato sulla **Psicologia dei Sé** elaborata negli Stati Uniti da **Hal e Sidra Stone**, permette al cliente di raggiungere profondi livelli di consapevolezza delle proprie risorse e dei propri comportamenti limitanti.",
+        "Integri nella tua pratica una metodologia che porta più profondità, risorse e qualità di Presenza in ogni sessione. Il **Voice Dialogue** è tra le metodologie che offrono un supporto prezioso nel rapporto di coaching e nelle professioni dedicate allo sviluppo della persona: basato sulla **Psicologia dei Sé** elaborata negli Stati Uniti da **Hal e Sidra Stone**, ti permette di accompagnare il cliente verso profondi livelli di consapevolezza delle proprie risorse e dei propri comportamenti limitanti.",
         "**Asterys Lab introduce il Voice Dialogue nel mondo del coaching italiano nel 2013**, portando da Londra **John Kent** e organizzando alcune edizioni memorabili del corso Voice Dialogue Facilitator. Da allora ha certificato molti dei facilitatori oggi attivi nel contesto del coaching ICF."
       ]
     },
@@ -2159,14 +2215,14 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Competenze",
       title: "Cosa porterai nella tua pratica",
       intro:
-        "Il Voice Dialogue è un **arricchimento professionale**: non un percorso che ti fa lavorare di per sé, ma una metodologia che potenzia la tua cassetta degli attrezzi e amplia la qualità della Presenza nel coaching e nelle professioni di supporto alla persona.",
+        "Esci con una metodologia in più nella tua cassetta degli attrezzi e una Presenza più ampia in ogni sessione. Il Voice Dialogue è un **arricchimento professionale**: non un percorso che ti fa lavorare di per sé, ma una risorsa che potenzia le tue competenze e la qualità della Presenza nel coaching e nelle professioni di supporto alla persona.",
       competencies: [
-        { title: "Dinamica dei Sé e mappa dei sé", desc: "Riconosci Sé primari e Sé rinnegati, origine e funzione di ciascuno, e usi la mappa come strumento di lettura nelle sessioni." },
-        { title: "Tecniche base del Voice Dialogue", desc: "Pentalogo, Margherita dei sé, Core Quadrant, Ara, Triangolazione: hai un set di strumenti operativi pronti per la pratica." },
-        { title: "Lavoro con il Critico interiore", desc: "Sai riconoscere il Critico e iniziare a gestirlo, in te stesso e nei clienti, usando in modo creativo il Giudizio Negativo." },
-        { title: "Consapevolezza energetica e corporea", desc: "Leggi i sé come schemi energetici e gestisci il tuo campo energetico nei contesti di stress o conflitto." },
-        { title: "Presenza ampliata", desc: "Aumenti la qualità della Presenza attivando sensibilità corporea ed energetica, asset chiave nelle professioni di sviluppo." },
-        { title: "Integrazione con le competenze ICF", desc: "Sai come il Voice Dialogue dialoga con le competenze chiave del coaching ICF e quando il metodo è più utile nelle sessioni." },
+        { title: "Leggi le voci interne con la mappa dei Sé", desc: "Riconosci Sé primari e Sé rinnegati, origine e funzione di ciascuno, e usi la mappa come strumento di lettura nelle sessioni." },
+        { title: "Applichi subito le tecniche base del Voice Dialogue", desc: "Pentalogo, Margherita dei sé, Core Quadrant, Ara, Triangolazione: porti a casa un set di strumenti operativi pronti per la pratica." },
+        { title: "Riconosci e gestisci il Critico interiore", desc: "Sai riconoscere il Critico e iniziare a gestirlo, in te stesso e nei clienti, usando in modo creativo il Giudizio Negativo." },
+        { title: "Gestisci il tuo campo energetico", desc: "Leggi i sé come schemi energetici e governi il tuo campo energetico nei contesti di stress o conflitto." },
+        { title: "Ampli la qualità della tua Presenza", desc: "Aumenti la qualità della Presenza attivando sensibilità corporea ed energetica, asset chiave nelle professioni di sviluppo." },
+        { title: "Colleghi il metodo alle competenze ICF", desc: "Sai come il Voice Dialogue dialoga con le competenze chiave del coaching ICF e quando il metodo è più utile nelle sessioni." },
       ],
       careerPaths: [],
     },
@@ -2264,8 +2320,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'marketing-per-coach': {
     title: "Marketing per Coach",
-    subtitle: "Il personal branding del coach",
-    tagline: "Cinque webinar con Helga Ogliari per valorizzare la tua professionalità di coach sul mercato e attrarre i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
+    subtitle: "Fatti riconoscere, fatti scegliere, acquisisci i tuoi primi clienti",
+    tagline: "In cinque webinar con Helga Ogliari costruisci un personal branding chiaro e riconoscibile, impari a comunicare il tuo valore e acquisisci i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "Personal branding · 5 webinar",
     earlyBirdPromo: {
@@ -2280,10 +2336,10 @@ export const coursesContent: Record<string, CourseData> = {
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
     heroBenefits: [
-      "5 webinar live con Helga Ogliari, personal branding & storytelling designer",
-      "Dal «coach che sa fare» al professionista che si posiziona e viene scelto",
-      "Strumenti concreti: Personal Branding Canvas, Storytelling Canvas, Social Selling Index",
-      "Incluso nel 2° livello del Master in Coaching · a metà prezzo con il 1°"
+      "Ti posizioni con un personal branding chiaro e riconoscibile, e ti fai scegliere",
+      "Acquisisci i tuoi primi clienti con storytelling, social selling e scrittura che vende",
+      "Porti a casa strumenti pronti all'uso: Personal Branding Canvas, Storytelling Canvas, Social Selling Index",
+      "5 webinar live con Helga Ogliari · incluso nel 2° livello del Master in Coaching, a metà prezzo con il 1°"
     ],
     summaryBox: {
       nextEdition: "Prima edizione · Online",
@@ -2297,10 +2353,11 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Perché il personal branding per i coach",
       content: [
-        "I dati del **2025 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
+        "Esci da questo ciclo con un **personal branding chiaro e riconoscibile**, la capacità di raccontare il tuo valore e gli strumenti per acquisire i tuoi primi clienti: tutto ciò che ti fa scegliere in un mercato affollato.",
+        "Perché ne hai bisogno lo dicono i numeri. I dati del **2025 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
         "Tra il 2019 e il 2023 il numero di coach professionisti è cresciuto del **54%**, e la crescita non si è fermata. Il dato più impressionante è però un altro: quante persone si definiscono «coach», spesso accostando l'etichetta ad attività che con il coaching hanno poco a che vedere. In un mercato così affollato, **far riconoscere il proprio valore diventa un'impresa**.",
-        "Il ciclo **Il personal branding del coach** nasce per offrire ai coach certificati gli strumenti e le competenze necessari a valorizzare la propria professionalità sul mercato e ad attrarre i clienti giusti.",
-        "Il ciclo fa parte del programma **Asterys Lab Career**, l'ecosistema con cui Asterys Lab accompagna i coach nella crescita professionale: dall'avvio della pratica fino allo sviluppo del proprio business."
+        "Il ciclo **Il personal branding del coach** ti dà gli strumenti e le competenze per valorizzare la tua professionalità sul mercato e attrarre i clienti giusti.",
+        "Fa parte del programma **Asterys Lab Career**, l'ecosistema con cui Asterys Lab accompagna i coach nella crescita professionale: dall'avvio della pratica fino allo sviluppo del proprio business."
       ]
     },
     target: [
@@ -2365,13 +2422,13 @@ export const coursesContent: Record<string, CourseData> = {
     competenciesAndCareers: {
       eyebrow: "Cosa porti a casa",
       title: "Uno strumento concreto da ogni webinar",
-      intro: "Non solo teoria: ogni webinar produce un deliverable riutilizzabile per il tuo personal branding e per acquisire clienti.",
+      intro: "Esci con strumenti pronti da usare, non con appunti da rileggere: ogni webinar produce un deliverable riutilizzabile per posizionarti, raccontarti e acquisire clienti.",
       competencies: [
-        { title: "La tua promessa di valore", desc: "Dal webinar 1: chiarisci chi sei, per chi lavori e perché qualcuno dovrebbe scegliere proprio te." },
-        { title: "Il tuo Personal Branding Canvas", desc: "Dal webinar 2: la mappa del tuo posizionamento distintivo, del pubblico e degli strumenti." },
-        { title: "Il tuo Personal Storytelling Canvas", desc: "Dal webinar 3: la tua narrazione professionale con una voce riconoscibile." },
-        { title: "Un piano per il Social Selling Index", desc: "Dal webinar 4: come crescere su profilo, contatti, contenuti e relazioni su LinkedIn." },
-        { title: "Un modello per offerte e presentazioni", desc: "Dal webinar 5: testi persuasivi pronti da riutilizzare per vendere il tuo valore." }
+        { title: "Chiarisci chi sei e perché ti scelgono", desc: "Dal webinar 1: definisci la tua promessa di valore — chi sei, per chi lavori e perché qualcuno dovrebbe scegliere proprio te." },
+        { title: "Ti posizioni in modo distintivo", desc: "Dal webinar 2: costruisci il tuo Personal Branding Canvas, la mappa del tuo posizionamento, del pubblico e degli strumenti." },
+        { title: "Impari a raccontarti con una voce riconoscibile", desc: "Dal webinar 3: dai forma al tuo Personal Storytelling Canvas e trasformi identità e posizionamento in narrazione." },
+        { title: "Fai crescere la tua presenza su LinkedIn", desc: "Dal webinar 4: porti a casa un piano per il tuo Social Selling Index — profilo, contatti, contenuti e relazioni." },
+        { title: "Trasformi la tua offerta in clienti", desc: "Dal webinar 5: ottieni un modello di testi persuasivi pronti da riutilizzare per vendere il tuo valore." }
       ],
       careerPaths: []
     },
@@ -2415,8 +2472,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'continuous-learning': {
     title: "Continuous Learning (CL)",
-    subtitle: "Continuous Learning",
-    tagline: "Sviluppo continuo per la tua crescita come coach: un appuntamento mensile su Zoom, tutto l'anno tranne agosto. Senza inizio né fine, entri quando vuoi.",
+    subtitle: "Cresci come coach ogni mese e accumuli CCE ICF",
+    tagline: "Non ti fermi dopo il corso: tieni viva la tua pratica di coach e accumuli CCE ICF, un incontro al mese tutto l'anno tranne agosto. Entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
     media: {
       hero: "/course-media/continuous-learning/hero-continuous-learning.png",
@@ -2425,10 +2482,10 @@ export const coursesContent: Record<string, CourseData> = {
     },
     heroKicker: "FORMAZIONE CONTINUA PER COACH",
     heroBenefits: [
-      "Struttura circolare: nessun inizio né fine, entri quando vuoi",
-      "Live Class mensili in Zoom (18:30–20:00), tutto l'anno tranne agosto",
-      "Approccio di facilitazione: incontri interattivi, non lezioni frontali",
-      "Permette di ottenere CCE ICF · ottima occasione di networking"
+      "Tieni viva e aggiornata la tua pratica di coach, un incontro al mese",
+      "Accumuli CCE ICF utili al rinnovo delle tue credenziali",
+      "Ti alleni su casi e temi nuovi, in diretta su Zoom (18:30–20:00)",
+      "Entri in una community di coach e fai networking, tutto l'anno tranne agosto"
     ],
     summaryBox: {
       nextEdition: "Online · Zoom",
@@ -2442,8 +2499,8 @@ export const coursesContent: Record<string, CourseData> = {
     overview: {
       title: "Sviluppo senza fine",
       content: [
-        "Il Continuous Learning è **formazione continua** per coach: una struttura circolare, senza inizio né fine, con un appuntamento mensile tutto l'anno tranne agosto. Entri quando vuoi.",
-        "È pensato per studenti e alumni di Asterys Lab — chi inizia, chi è tra un livello e l'altro, chi vuole restare aggiornato — ma è aperto a **chiunque faccia coaching**, di qualsiasi livello e scuola. Ogni Live Class, dallo sviluppo personale agli approfondimenti sulla pratica, è un'occasione di crescita.",
+        "Continui a crescere come coach anche dopo il percorso: **tieni viva la pratica**, ti alleni su temi nuovi e accumuli **CCE ICF** utili al rinnovo delle tue credenziali. Un appuntamento al mese, tutto l'anno tranne agosto, senza inizio né fine: entri quando vuoi.",
+        "È aperto a **chiunque faccia coaching**, di qualsiasi livello e scuola — studenti e alumni di Asterys Lab, ma anche chi arriva da altri percorsi. Ogni Live Class, dallo sviluppo personale agli approfondimenti sulla pratica, ti lascia uno stimolo concreto da riportare in sessione.",
         "Le sessioni sono condotte da **Alessandra Bitelli, PCC**, executive coach della Faculty di Asterys Lab, con ospiti che portano stimoli sempre nuovi. Una volta al mese, su Zoom, dalle 18:30 alle 20:00."
       ]
     },
@@ -2543,14 +2600,14 @@ export const coursesContent: Record<string, CourseData> = {
     competenciesAndCareers: {
       eyebrow: "Competenze",
       title: "Cosa impari",
-      intro: "Ogni Live Class alimenta competenze concrete per il tuo lavoro di coach, tra sviluppo personale e prospettiva di coaching.",
+      intro: "Esci da ogni Live Class con qualcosa in più da usare subito con i clienti: riflessioni nuove, uno sguardo più ampio e CCE ICF per le tue credenziali.",
       competencies: [
-        { title: "Riflessione guidata su casi reali", desc: "Analizzi situazioni e casi rileggendoli con la prospettiva del coaching." },
-        { title: "Approccio interdisciplinare", desc: "Colleghi spunti da storia, business, filosofia e psicologia al lavoro di coach." },
-        { title: "Lettura di contesti complessi", desc: "Sviluppi consapevolezza per orientarti con clienti e situazioni diverse." },
-        { title: "Postura di facilitazione", desc: "Alleni una modalità interattiva e non frontale, fatta di domande e ascolto." },
-        { title: "Aggiornamento continuo", desc: "Mantieni viva la pratica con stimoli mensili e la possibilità di CCE ICF." },
-        { title: "Network professionale", desc: "Resti connesso a una community ricca e multi-livello di coach." }
+        { title: "Rileggi ogni caso con occhi da coach", desc: "Porti in sessione riflessioni allenate su casi reali, mese dopo mese." },
+        { title: "Amplii il tuo bagaglio, oltre il coaching", desc: "Colleghi spunti da storia, business, filosofia e psicologia e li usi con il cliente." },
+        { title: "Ti muovi con sicurezza nei contesti complessi", desc: "Sviluppi la consapevolezza per orientarti con clienti e situazioni sempre diverse." },
+        { title: "Affini la tua postura di facilitatore", desc: "Alleni una modalità interattiva, fatta di domande e ascolto, non di lezioni frontali." },
+        { title: "Tieni viva e aggiornata la tua pratica", desc: "Non ti fermi dopo il corso: stimoli mensili e CCE ICF per il rinnovo delle credenziali." },
+        { title: "Fai networking con coach di ogni livello", desc: "Entri in una community ricca e multi-livello e resti connesso nel tempo." }
       ],
       careerPaths: []
     },
