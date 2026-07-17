@@ -58,7 +58,7 @@ const Hero = () => (
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
           <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.1em] text-brand-navy whitespace-nowrap">
             <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-            La 1ª scuola di coaching accreditata ICF
+            La tua scuola di coaching accreditata ICF
           </div>
         </div>
       </div>
@@ -66,14 +66,14 @@ const Hero = () => (
       <div className="pt-16 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-          La 1ª scuola accreditata ICF
+          La tua scuola accreditata ICF
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
           Dai forma alla tua{' '}
           <Highlight className="text-brand-sky">crescita professionale</Highlight>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
-          Percorsi di coaching in diretta per sviluppare competenze relazionali, leadership e metodo. Dalla formazione continua ai master in coaching accreditati ICF, scegli il passo giusto per diventare coach professionista.
+          Trasforma la tua passione per le persone in una nuova professione: impara a generare un cambiamento reale in chi hai di fronte e porta la tua carriera a un nuovo livello.
         </p>
         <div className="flex mb-8 lg:hidden justify-center sm:justify-start">
           <Link
@@ -85,9 +85,9 @@ const Hero = () => (
         </div>
         <ul className="space-y-2 lg:space-y-2.5 mb-5 lg:mb-7 text-[12px] lg:text-[14px] font-medium text-white">
           {[
-            'Master in coaching, corsi brevi e formazione continua per professionisti',
-            'Lezioni live, pratica guidata e confronto con coach e trainer certificati ICF',
-            'Metodo Asterys Lab: concreto, sistemico e orientato alla crescita'
+            'Le competenze per far crescere persone, team e organizzazioni',
+            'Credenziali ICF riconosciute a livello internazionale',
+            'La sicurezza e il supporto per arrivare pronto al tuo primo cliente'
           ].map((b) => (
             <li key={b} className="flex items-start gap-2">
               <span className="text-brand-sky font-black mt-0.5">→</span>
