@@ -92,7 +92,6 @@ const values = [
 ];
 
 const accreditations = [
-  { file: 'icf', label: 'ICF', desc: 'International Coaching Federation: l’ente mondiale che dà valore al tuo titolo.' },
   { file: 'icf-level-1', label: 'Level 1', desc: 'Accredited Coaching Education: la tua strada verso la credenziale ACC.' },
   { file: 'icf-level-2', label: 'Level 2', desc: 'Accredited Coaching Education: la tua strada verso la credenziale PCC.' },
   { file: 'icf-cce-new', label: 'CCE', desc: 'Continuing Coach Education: i crediti che ti servono per rinnovare la credenziale.' },
@@ -181,11 +180,10 @@ export default function About() {
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-[1.02] text-white">
               La scuola che ti fa{' '}
-              <Highlight className="text-brand-sky">diventare coach</Highlight>{' '}
-              e riconoscere ovunque.
+              <Highlight className="text-brand-sky">diventare coach</Highlight>.
             </h1>
             <p className="mt-6 text-lg text-white/75 font-medium max-w-[640px] leading-relaxed">
-              Scegli la prima Coaching School ICF accreditata in Italia e porti a casa venticinque anni
+              Scegli una scuola di coaching accreditata ICF e porti a casa venticinque anni
               di metodo: impari a stare nelle relazioni con rigore, intelligenza emotiva misurabile e
               un'umanità che si vede — e a farti riconoscere come coach, ovunque.
             </p>
@@ -234,8 +232,8 @@ export default function About() {
                 Chi siamo
               </span>
               <h2 className={`${tSection} mt-3`}>
-                Impari dove tutto è iniziato: la prima Coaching School{' '}
-                <Highlight>ICF accreditata</Highlight> in Italia.
+                Impari da una Coaching School{' '}
+                <Highlight>ICF accreditata</Highlight>.
               </h2>
               <SectionImage
                 src="/about/chi-siamo.jpg"

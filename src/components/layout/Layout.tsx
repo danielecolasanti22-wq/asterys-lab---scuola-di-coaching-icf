@@ -793,8 +793,6 @@ const socialChannels = [
 ];
 
 const certifications: { label: string; src: string; invert?: boolean }[] = [
-  // icf.png è un logo scuro su trasparente: lo rendiamo bianco per leggerlo sul navy.
-  { label: 'ICF', src: 'brand/icf.png', invert: true },
   { label: 'ICF Level 1', src: 'brand/icf-level-1.png' },
   { label: 'ICF Level 2', src: 'brand/icf-level-2.png' },
   { label: 'ICF CCE', src: 'brand/icf-cce-new.png' },
@@ -980,7 +978,7 @@ export const Footer = () => {
           <div>
             <img src={`${base}brand/asterys-lab-logo-white.png`} alt="Asterys Lab" className="h-9 w-auto" />
             <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
-              Transforming people, expanding results. La 1° Coaching School ICF accreditata in Italia.
+              Transforming people, expanding results. La tua scuola di coaching accreditata ICF.
             </p>
             <div className="mt-5">
               <div className="flex items-center gap-2 mb-2">

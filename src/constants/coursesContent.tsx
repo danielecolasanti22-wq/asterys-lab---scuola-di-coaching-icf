@@ -596,7 +596,7 @@ export const coursesContent: Record<string, CourseData> = {
       content: "Il Career Center di Asterys Lab ti supporta nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
         { title: "Marketing per Coach", desc: "6 incontri da 1,5h con Helga Ogliari (Personal Branding & Storytelling Designer): personal branding, storytelling e acquisizione clienti per far decollare la tua attività." },
-        { title: "Alumni Community", desc: "Accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise." },
+        { title: "Alumni Community", desc: "Entri negli Alumni Asterys: accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise, con attività dedicate e condizioni agevolate su corsi e iniziative Asterys." },
         { title: "Formazione Continua", desc: "Masterclass, webinar e workshop esclusivi per approfondire le competenze e restare aggiornato sulle evoluzioni del coaching." },
         { title: "Supporto Carriera", desc: "Sessioni individuali e accompagnamento del coach assegnato per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
       ]
@@ -1586,7 +1586,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Intelligenza Emotiva",
-    subtitle: "Stai con le emozioni in modo intelligente, dove più conta",
+    subtitle: "Stai con le emozioni, dove conta",
     tagline: "Impari a stare con le emozioni in modo intelligente, dove più conta: alleni davvero la tua intelligenza emotiva con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
     type: "WORKOUT EQ",
     media: {
@@ -1779,7 +1779,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
-    subtitle: "Le 10 ore di mentor coaching che ti servono per rinnovare la credenziale",
+    subtitle: "Le tue 10 ore di mentor coaching",
     tagline: "Rinnovi la tua credenziale ICF con serenità: maturi le 10 ore di mentor coaching richieste, accompagnato da un Mentor Coach MCC, in gruppo o individualmente.",
     type: "MENTORING ICF",
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
@@ -1911,7 +1911,8 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Ore per la credenziale", desc: "7 ore con l'edizione di gruppo; con +3h di mentoring individuale arrivi alle 10 ore utili al rinnovo." },
         { title: "Feedback di un Mentor MCC", desc: "Paola Rulfi osserva la tua pratica e restituisce un feedback dedicato sul caso reale." },
         { title: "Le tre posizioni", desc: "Coach, cliente e osservatore: ogni ruolo amplia la consapevolezza e affina lo sguardo professionale." },
-        { title: "Allineamento ICF", desc: "Tieni la pratica dentro le linee guida e il codice etico ICF, evitando derive da altre discipline." }
+        { title: "Allineamento ICF", desc: "Tieni la pratica dentro le linee guida e il codice etico ICF, evitando derive da altre discipline." },
+        { title: "Padronanza del coaching", desc: "Consolidi la padronanza del coaching professionale e delle sue basi, per una pratica più solida e consapevole." }
       ]
     },
     fees: [
@@ -2098,7 +2099,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'voice-dialogue': {
     title: "Voice Dialogue Skills",
-    subtitle: "Più consapevolezza, risorse e Presenza nella tua pratica professionale",
+    subtitle: "Più Presenza in ogni sessione",
     tagline: "Porti più profondità, risorse e qualità di Presenza in ogni sessione: integri il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
@@ -2223,6 +2224,7 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Gestisci il tuo campo energetico", desc: "Leggi i sé come schemi energetici e governi il tuo campo energetico nei contesti di stress o conflitto." },
         { title: "Ampli la qualità della tua Presenza", desc: "Aumenti la qualità della Presenza attivando sensibilità corporea ed energetica, asset chiave nelle professioni di sviluppo." },
         { title: "Colleghi il metodo alle competenze ICF", desc: "Sai come il Voice Dialogue dialoga con le competenze chiave del coaching ICF e quando il metodo è più utile nelle sessioni." },
+        { title: "Conosci e apprezzi di più gli altri", desc: "Riconoscendo i Sé rinnegati impari a comprendere e apprezzare di più le persone, anche quelle che senti più distanti dal tuo modo di essere." },
       ],
       careerPaths: [],
     },
@@ -2320,7 +2322,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'marketing-per-coach': {
     title: "Marketing per Coach",
-    subtitle: "Fatti riconoscere, fatti scegliere, acquisisci i tuoi primi clienti",
+    subtitle: "Fatti scegliere dai clienti giusti",
     tagline: "In cinque webinar con Helga Ogliari costruisci un personal branding chiaro e riconoscibile, impari a comunicare il tuo valore e acquisisci i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "Personal branding · 5 webinar",

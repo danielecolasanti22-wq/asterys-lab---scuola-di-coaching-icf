@@ -135,12 +135,6 @@ const Hero = () => (
 /* 2. ACCREDITAMENTI ICF */
 const accreditamentiItems = [
   {
-    label: 'ICF',
-    title: 'International Coaching Federation',
-    logo: 'brand/icf.png',
-    desc: "La più importante associazione mondiale del coaching: definisce competenze chiave, codice etico e standard professionali riconosciuti a livello globale. Essere accreditati ICF significa aderire a un metodo verificato e a una comunità internazionale di coach.",
-  },
-  {
     label: 'Level 1',
     title: 'ICF Level 1 — Accredited Coaching Education',
     logo: 'brand/icf-level-1.png',
