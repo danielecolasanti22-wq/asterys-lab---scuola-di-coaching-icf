@@ -24,6 +24,7 @@ import About from './pages/About';
 import Iscriviti from './pages/Iscriviti';
 import BorsaDiStudio from './pages/BorsaDiStudio';
 import CreditoAiTalenti from './pages/CreditoAiTalenti';
+import PersonalCoaching from './pages/PersonalCoaching';
 import NuovaPagina from './pages/NuovaPagina';
 import NuovaPagina2 from './pages/NuovaPagina2';
 
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPostDetail />} />
           <Route path="/aziende" element={<Corporate />} />
+          <Route path="/personal-coaching" element={<PersonalCoaching />} />
           <Route path="/about" element={<About />} />
           <Route path="/iscriviti" element={<Iscriviti />} />
           <Route path="/borsa-di-studio" element={<BorsaDiStudio />} />

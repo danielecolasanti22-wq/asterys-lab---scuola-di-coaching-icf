@@ -106,10 +106,11 @@ export default function Corporate() {
               Guida la tua impresa nei momenti che contano
             </h1>
             <p className="mt-6 text-white/75 text-base sm:text-lg max-w-[540px] leading-relaxed">
-              Quando il tuo lavoro è la tua vita, non esiste un orario per «staccare». Con un coach al tuo
-              fianco prendi decisioni più lucide, fai crescere le tue persone e affronti con eccellenza i
-              momenti cruciali del business. Dal 2014 affianchiamo imprenditori, manager e team con percorsi
-              di business ed executive coaching su misura, per chi vuole guardare avanti.
+              Quando il tuo lavoro è la tua vita, non esiste un orario per «staccare»: sei così dentro il tuo
+              business che un coach al tuo fianco può fare davvero la differenza. Prendi decisioni più lucide,
+              fai crescere le tue persone e affronti con eccellenza i momenti cruciali. Dal 2014 affianchiamo
+              imprenditori, manager e team con percorsi di business ed executive coaching su misura, per chi
+              vuole guardare avanti.
             </p>
             <a
               href="#contatti-aziende"

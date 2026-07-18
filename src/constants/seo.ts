@@ -82,6 +82,11 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
     description:
       'Fai il primo passo verso la tua nuova professione: scegli il percorso, parla con un Advisor e iscriviti ai corsi di coaching accreditati ICF di Asterys Lab.',
   },
+  '/personal-coaching': {
+    title: 'Personal Coaching: un coach al tuo fianco | Asterys Lab',
+    description:
+      'Percorso di coaching individuale per realizzare il tuo pieno potenziale: più consapevolezza, obiettivi chiari, relazioni ed equilibrio. Sessioni di persona o online. Parla con un coach.',
+  },
   '/nuova-pagina': { title: 'Asterys Lab', description: '', noindex: true },
   '/nuova-pagina-2': { title: 'Asterys Lab', description: '', noindex: true },
 };

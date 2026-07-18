@@ -72,7 +72,7 @@ const courseGroups: CourseGroup[] = [
       },
       {
         id: 'marketing-per-coach',
-        title: 'Marketing per Coach',
+        title: 'Personal Branding per Coach',
         badge: 'Formazione avanzata',
         duration: '5 webinar',
         modality: 'Live online',

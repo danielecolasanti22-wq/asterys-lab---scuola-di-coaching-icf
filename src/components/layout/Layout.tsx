@@ -66,7 +66,7 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'coaching-circle', title: 'Mentoring per il rinnovo delle credenziali', kicker: 'Per la credenziale ICF', meta: '10 ore · gruppo o individuale · Zoom' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
-      { id: 'marketing-per-coach', title: 'Marketing per Coach', kicker: 'Personal branding · 5 webinar', meta: 'Con Helga Ogliari · Live online' },
+      { id: 'marketing-per-coach', title: 'Personal Branding per Coach', kicker: 'Personal branding · 5 webinar', meta: 'Con Helga Ogliari · Live online' },
     ],
   },
   {
@@ -354,6 +354,12 @@ export const Header = () => {
               className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
             >
               Per Aziende
+            </Link>
+            <Link
+              to="/personal-coaching"
+              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/personal-coaching' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+            >
+              Personal Coaching
             </Link>
           </nav>
         </div>
@@ -678,6 +684,13 @@ export const Header = () => {
                 className="flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight text-brand-navy"
               >
                 Per Aziende
+              </Link>
+              <Link
+                to="/personal-coaching"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight text-brand-navy"
+              >
+                Personal Coaching
               </Link>
             </div>
 
