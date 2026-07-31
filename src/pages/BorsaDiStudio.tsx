@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, CheckCircle2, MessageCircle, MapPin } from 'lucide-react';
 import CourseDetail from './CourseDetail';
 import { coursesContent } from '../constants/coursesContent';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_BORSA, GF_ERR_BORSA } from '../constants/gravityForms';
+
+/** Regioni ammesse alla borsa di studio (confermate 30 lug 2026). */
+const BORSA_REGIONI = [
+  'Lazio', 'Abruzzo', 'Campania', 'Basilicata', 'Molise', 'Puglia', 'Calabria', 'Sicilia', 'Sardegna',
+];
 
 const WHATSAPP_URL = 'https://wa.me/393498864895';
 const HERO_GRADIENT =
@@ -52,6 +59,9 @@ export default function BorsaDiStudio() {
     terms: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const prev = document.title;
@@ -66,10 +76,29 @@ export default function BorsaDiStudio() {
     };
   }, []);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.terms || !form.firstName || !form.lastName || !form.email || !form.phone || !form.region) return;
-    setSubmitted(true);
+    setError(null);
+    setFieldErrors({});
+    setSending(true);
+    const result = await submitToGravityForms(GF_BORSA.formId, {
+      'input_1.3': form.firstName,
+      'input_1.6': form.lastName,
+      input_2: form.email,
+      input_3: form.phone ? `+39 ${form.phone}` : '',
+      input_4: form.region,
+      input_5: GF_BORSA.levelToGf[form.level] ?? form.level,
+      'input_6.1': form.terms ? '1' : '',
+    });
+    setSending(false);
+    if (result.ok) {
+      setSubmitted(true);
+      return;
+    }
+    const fe = mapGfErrors(result.errors, GF_ERR_BORSA);
+    if (Object.keys(fe).length) setFieldErrors(fe);
+    else setError(result.message || 'Qualcosa non ha funzionato. Controlla i campi e riprova.');
   };
 
   return (
@@ -169,15 +198,41 @@ export default function BorsaDiStudio() {
             ) : (
               <form className="flex flex-col gap-3" onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="Nome" value={form.firstName} onChange={(v) => setForm({ ...form, firstName: v })} placeholder="Mario" required />
+                  <Field label="Nome" value={form.firstName} onChange={(v) => setForm({ ...form, firstName: v })} placeholder="Mario" required error={fieldErrors.firstName} />
                   <Field label="Cognome" value={form.lastName} onChange={(v) => setForm({ ...form, lastName: v })} placeholder="Rossi" required />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} placeholder="mario@mail.it" required />
-                  <Field label="Telefono" type="tel" value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} placeholder="+39 ..." required />
+                  <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} placeholder="mario@mail.it" required error={fieldErrors.email} />
+                  <div>
+                    <label className="block text-[11px] font-black text-brand-navy tracking-tight mb-1">Telefono <span className="text-brand-accent">•</span></label>
+                    <div className={`flex items-center gap-2 bg-gray-50 border rounded-lg px-3 py-2.5 ${fieldErrors.phone ? 'border-red-500' : 'border-gray-200 focus-within:border-brand-accent'}`}>
+                      <span className="text-sm shrink-0">🇮🇹 +39</span>
+                      <input
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="333 1234567"
+                        className="w-full bg-transparent text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none"
+                      />
+                    </div>
+                    {fieldErrors.phone ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.phone}</p> : null}
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="Regione" value={form.region} onChange={(v) => setForm({ ...form, region: v })} placeholder="Es. Campania" required />
+                  <div>
+                    <label className="block text-[11px] font-black text-brand-navy tracking-tight mb-1">Regione <span className="text-brand-accent">•</span></label>
+                    <select
+                      value={form.region}
+                      onChange={(e) => setForm({ ...form, region: e.target.value })}
+                      className={`w-full appearance-none bg-gray-50 border rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy focus:outline-none ${fieldErrors.region ? 'border-red-500' : 'border-gray-200 focus:border-brand-accent'}`}
+                    >
+                      <option value="">Seleziona la regione…</option>
+                      {BORSA_REGIONI.map((r) => (
+                        <option key={r} value={r}>{r}</option>
+                      ))}
+                    </select>
+                    {fieldErrors.region ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.region}</p> : null}
+                  </div>
                   <div>
                     <label className="block text-[11px] font-black text-brand-navy tracking-tight mb-1">Percorso</label>
                     <select
@@ -200,12 +255,15 @@ export default function BorsaDiStudio() {
                   />
                   Accetto il trattamento dei dati (privacy policy)
                 </label>
+                {fieldErrors.terms ? <p className="text-[11px] font-bold text-red-600">{fieldErrors.terms}</p> : null}
                 <button
                   type="submit"
-                  className="mt-1 bg-brand-navy text-white py-3.5 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99]"
+                  disabled={sending}
+                  className="mt-1 bg-brand-navy text-white py-3.5 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Richiedi la borsa di studio
+                  {sending ? 'Invio in corso…' : 'Richiedi la borsa di studio'}
                 </button>
+                {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
@@ -239,6 +297,7 @@ function Field({
   placeholder,
   type = 'text',
   required = false,
+  error,
 }: {
   label: string;
   value: string;
@@ -246,6 +305,7 @@ function Field({
   placeholder?: string;
   type?: string;
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div>
@@ -258,8 +318,11 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none focus:border-brand-accent"
+        className={`w-full bg-gray-50 border rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none ${
+          error ? 'border-red-500 focus:border-red-500' : 'border-gray-200 focus:border-brand-accent'
+        }`}
       />
+      {error ? <p className="mt-1 text-[11px] font-bold text-red-600">{error}</p> : null}
     </div>
   );
 }

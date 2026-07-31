@@ -6,9 +6,10 @@ import {
   ChevronDown,
   ArrowRight,
   MessageCircle,
-  Phone,
 } from 'lucide-react';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_ISCRIVITI, GF_ERR_ISCRIVITI } from '../constants/gravityForms';
 
 /** Contatto WhatsApp (numero in formato internazionale senza "+"). */
 const WHATSAPP_URL = 'https://wa.me/393498864895';
@@ -85,11 +86,32 @@ export default function Iscriviti() {
     terms: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.terms || !form.course || !form.firstName || !form.lastName || !form.phone || !form.email) return;
-    setSubmitted(true);
+    setError(null);
+    setFieldErrors({});
+    setSending(true);
+    const result = await submitToGravityForms(GF_ISCRIVITI.formId, {
+      input_1: GF_ISCRIVITI.courseToGf[form.course] ?? form.course,
+      'input_3.3': form.firstName,
+      'input_3.6': form.lastName,
+      input_4: form.phone ? `+39 ${form.phone}` : '',
+      input_5: form.email,
+      'input_6.1': form.terms ? '1' : '',
+    });
+    setSending(false);
+    if (result.ok) {
+      setSubmitted(true);
+      return;
+    }
+    const fe = mapGfErrors(result.errors, GF_ERR_ISCRIVITI);
+    if (Object.keys(fe).length) setFieldErrors(fe);
+    else setError(result.message || 'Qualcosa non ha funzionato. Controlla i campi e riprova.');
   };
 
   return (
@@ -182,7 +204,7 @@ export default function Iscriviti() {
                       required
                       value={form.course}
                       onChange={(e) => setForm({ ...form, course: e.target.value })}
-                      className="w-full appearance-none bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 pr-10 text-sm font-medium text-brand-navy focus:outline-none focus:border-brand-accent"
+                      className={`w-full appearance-none bg-gray-50 border rounded-lg px-4 py-3 pr-10 text-sm font-medium text-brand-navy focus:outline-none ${fieldErrors.course ? 'border-red-500' : 'border-gray-200 focus:border-brand-accent'}`}
                     >
                       <option value="" disabled>
                         Scegli il percorso…
@@ -202,6 +224,7 @@ export default function Iscriviti() {
                       className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-navy/50 pointer-events-none"
                     />
                   </div>
+                  {fieldErrors.course ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.course}</p> : null}
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -215,8 +238,9 @@ export default function Iscriviti() {
                       placeholder="Mario"
                       value={form.firstName}
                       onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none focus:border-brand-accent"
+                      className={`w-full bg-gray-50 border rounded-lg px-4 py-3 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none ${fieldErrors.firstName ? 'border-red-500' : 'border-gray-200 focus:border-brand-accent'}`}
                     />
+                    {fieldErrors.firstName ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.firstName}</p> : null}
                   </div>
                   <div>
                     <label className="block text-xs font-black text-brand-navy tracking-tight mb-1.5">
@@ -238,7 +262,7 @@ export default function Iscriviti() {
                     <label className="block text-xs font-black text-brand-navy tracking-tight mb-1.5">
                       Telefono <span className="text-brand-accent">•</span>
                     </label>
-                    <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 py-3 focus-within:border-brand-accent">
+                    <div className={`flex items-center bg-gray-50 border rounded-lg px-3 py-3 ${fieldErrors.phone ? 'border-red-500' : 'border-gray-200 focus-within:border-brand-accent'}`}>
                       <span className="text-sm mr-2">🇮🇹</span>
                       <span className="text-sm font-medium text-brand-navy/70 mr-2">+39</span>
                       <input
@@ -249,6 +273,7 @@ export default function Iscriviti() {
                         className="flex-1 bg-transparent text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none"
                       />
                     </div>
+                    {fieldErrors.phone ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.phone}</p> : null}
                   </div>
                   <div>
                     <label className="block text-xs font-black text-brand-navy tracking-tight mb-1.5">
@@ -260,8 +285,9 @@ export default function Iscriviti() {
                       placeholder="mario.rossi@mail.it"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none focus:border-brand-accent"
+                      className={`w-full bg-gray-50 border rounded-lg px-4 py-3 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none ${fieldErrors.email ? 'border-red-500' : 'border-gray-200 focus:border-brand-accent'}`}
                     />
+                    {fieldErrors.email ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.email}</p> : null}
                   </div>
                 </div>
 
@@ -278,13 +304,18 @@ export default function Iscriviti() {
                     termini e condizioni
                   </a>
                 </label>
+                {fieldErrors.terms ? <p className="text-[11px] font-bold text-red-600">{fieldErrors.terms}</p> : null}
 
                 <button
                   type="submit"
-                  className="mt-2 bg-brand-navy text-white py-4 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99]"
+                  disabled={sending}
+                  className="mt-2 bg-brand-navy text-white py-4 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Inizia ora
+                  {sending ? 'Invio in corso…' : 'Inizia ora'}
                 </button>
+                {error ? (
+                  <p className="text-xs font-bold text-red-600 text-center">{error}</p>
+                ) : null}
               </form>
             )}
           </motion.div>
@@ -378,12 +409,6 @@ export default function Iscriviti() {
                   className="flex items-center gap-2 hover:text-brand-accent transition-colors"
                 >
                   <MessageCircle size={14} /> Scrivici su WhatsApp
-                </a>
-                <a
-                  href="tel:+390687165254"
-                  className="flex items-center gap-2 hover:text-brand-accent transition-colors"
-                >
-                  <Phone size={14} /> +39 06 8716 5254
                 </a>
               </div>
             </div>

@@ -11,6 +11,8 @@ import {
   HeartHandshake,
   FileText,
 } from 'lucide-react';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_CREDITO, GF_ERR_CREDITO } from '../constants/gravityForms';
 
 const WHATSAPP_URL = 'https://wa.me/393498864895';
 const HERO_GRADIENT =
@@ -71,6 +73,9 @@ export default function CreditoAiTalenti() {
     terms: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const prev = document.title;
@@ -85,10 +90,30 @@ export default function CreditoAiTalenti() {
     };
   }, []);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.terms || !form.firstName || !form.lastName || !form.email || !form.phone) return;
-    setSubmitted(true);
+    setError(null);
+    setFieldErrors({});
+    setSending(true);
+    const result = await submitToGravityForms(GF_CREDITO.formId, {
+      'input_1.3': form.firstName,
+      'input_1.6': form.lastName,
+      input_2: form.email,
+      input_3: form.phone ? `+39 ${form.phone}` : '',
+      input_4: form.education,
+      input_5: GF_CREDITO.employmentToGf[form.employment] ?? form.employment,
+      input_6: form.message,
+      'input_7.1': form.terms ? '1' : '',
+    });
+    setSending(false);
+    if (result.ok) {
+      setSubmitted(true);
+      return;
+    }
+    const fe = mapGfErrors(result.errors, GF_ERR_CREDITO);
+    if (Object.keys(fe).length) setFieldErrors(fe);
+    else setError(result.message || 'Qualcosa non ha funzionato. Controlla i campi e riprova.');
   };
 
   return (
@@ -185,12 +210,25 @@ export default function CreditoAiTalenti() {
             ) : (
               <form className="flex flex-col gap-3" onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="Nome" value={form.firstName} onChange={(v) => setForm({ ...form, firstName: v })} placeholder="Mario" required />
+                  <Field label="Nome" value={form.firstName} onChange={(v) => setForm({ ...form, firstName: v })} placeholder="Mario" required error={fieldErrors.firstName} />
                   <Field label="Cognome" value={form.lastName} onChange={(v) => setForm({ ...form, lastName: v })} placeholder="Rossi" required />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} placeholder="mario@mail.it" required />
-                  <Field label="Telefono" type="tel" value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} placeholder="+39 ..." required />
+                  <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} placeholder="mario@mail.it" required error={fieldErrors.email} />
+                  <div>
+                    <label className="block text-[11px] font-black text-brand-navy tracking-tight mb-1">Telefono <span className="text-brand-accent">•</span></label>
+                    <div className={`flex items-center gap-2 bg-gray-50 border rounded-lg px-3 py-2.5 ${fieldErrors.phone ? 'border-red-500' : 'border-gray-200 focus-within:border-brand-accent'}`}>
+                      <span className="text-sm shrink-0">🇮🇹 +39</span>
+                      <input
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="333 1234567"
+                        className="w-full bg-transparent text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none"
+                      />
+                    </div>
+                    {fieldErrors.phone ? <p className="mt-1 text-[11px] font-bold text-red-600">{fieldErrors.phone}</p> : null}
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Titolo di studio" value={form.education} onChange={(v) => setForm({ ...form, education: v })} placeholder="Es. Laurea in…" />
@@ -227,12 +265,16 @@ export default function CreditoAiTalenti() {
                   />
                   Accetto il trattamento dei dati (privacy policy)
                 </label>
+                {fieldErrors.terms ? <p className="text-[11px] font-bold text-red-600">{fieldErrors.terms}</p> : null}
                 <button
                   type="submit"
-                  className="mt-1 bg-brand-navy text-white py-3.5 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99]"
+                  disabled={sending}
+                  className="mt-1 bg-brand-navy text-white py-3.5 rounded-full text-xs font-black uppercase tracking-[0.22em] hover:bg-brand-accent transition-colors active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Invia candidatura
+                  {sending ? 'Invio in corso…' : 'Invia candidatura'}
                 </button>
+                {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
+                {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
               </form>
             )}
           </div>
@@ -307,6 +349,7 @@ function Field({
   placeholder,
   type = 'text',
   required = false,
+  error,
 }: {
   label: string;
   value: string;
@@ -314,6 +357,7 @@ function Field({
   placeholder?: string;
   type?: string;
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div>
@@ -326,8 +370,11 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none focus:border-brand-accent"
+        className={`w-full bg-gray-50 border rounded-lg px-3 py-2.5 text-sm font-medium text-brand-navy placeholder:text-brand-navy/40 focus:outline-none ${
+          error ? 'border-red-500 focus:border-red-500' : 'border-gray-200 focus:border-brand-accent'
+        }`}
       />
+      {error ? <p className="mt-1 text-[11px] font-bold text-red-600">{error}</p> : null}
     </div>
   );
 }

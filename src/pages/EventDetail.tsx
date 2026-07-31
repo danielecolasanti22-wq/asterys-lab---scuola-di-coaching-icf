@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Calendar,
@@ -10,10 +10,38 @@ import {
   Ticket,
 } from 'lucide-react';
 import { eventsBySlug } from '../constants/events';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_EVENTO, GF_ERR_EVENTO } from '../constants/gravityForms';
 
 export default function EventDetail() {
   const { id } = useParams<{ id: string }>();
   const event = id ? eventsBySlug[id] : undefined;
+
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setError(null);
+    setFieldErrors({});
+    setSending(true);
+    const result = await submitToGravityForms(GF_EVENTO.formId, {
+      input_2: email,
+      input_3: event?.title ?? id ?? '',
+    });
+    setSending(false);
+    if (result.ok) {
+      setSubmitted(true);
+      return;
+    }
+    const fe = mapGfErrors(result.errors, GF_ERR_EVENTO);
+    if (Object.keys(fe).length) setFieldErrors(fe);
+    else setError(result.message || 'Qualcosa non ha funzionato. Riprova.');
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -138,24 +166,32 @@ export default function EventDetail() {
             <p className="mt-2 text-sm text-brand-navy/60 leading-relaxed">
               {event.date} · {event.time} — {event.location}
             </p>
-            <form className="mt-6 space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="text"
-                placeholder="Nome e cognome"
-                className="w-full px-5 py-3.5 rounded-xl bg-gray-50 border border-gray-100 outline-none focus:border-brand-accent transition-colors font-medium text-sm"
-              />
+            {submitted ? (
+              <div className="mt-6 rounded-xl bg-gray-50 border border-gray-100 p-6 text-center">
+                <CheckCircle2 size={24} className="text-brand-accent mx-auto mb-2" />
+                <p className="font-display font-black text-brand-navy">Posto riservato!</p>
+                <p className="text-sm text-brand-navy/60 mt-1">Riceverai via email la conferma e le istruzioni per partecipare.</p>
+              </div>
+            ) : (
+            <form className="mt-6 space-y-3" onSubmit={handleSubmit} noValidate>
               <input
                 type="email"
                 placeholder="La tua email"
-                className="w-full px-5 py-3.5 rounded-xl bg-gray-50 border border-gray-100 outline-none focus:border-brand-accent transition-colors font-medium text-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={`w-full px-5 py-3.5 rounded-xl bg-gray-50 border outline-none transition-colors font-medium text-sm ${fieldErrors.email ? 'border-red-500' : 'border-gray-100 focus:border-brand-accent'}`}
               />
+              {fieldErrors.email ? <p className="text-xs font-bold text-red-600">{fieldErrors.email}</p> : null}
+              {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
               <button
                 type="submit"
-                className="btn-primary w-full py-4 uppercase text-xs font-black tracking-widest"
+                disabled={sending}
+                className="btn-primary w-full py-4 uppercase text-xs font-black tracking-widest disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Riserva il mio posto
+                {sending ? 'Invio in corso…' : 'Riserva il mio posto'}
               </button>
             </form>
+            )}
             <p className="mt-4 text-[11px] text-brand-navy/45 text-center leading-relaxed">
               Riceverai via email la conferma e le istruzioni per partecipare.
             </p>

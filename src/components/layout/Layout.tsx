@@ -14,13 +14,15 @@ import {
   Linkedin,
   Facebook,
   MapPin,
-  Phone,
   Mail,
-  Award
+  Award,
+  User,
+  Building2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 import { Highlight } from '../Highlight';
+import { NewsletterForm } from '../NewsletterForm';
 
 /** Contatto WhatsApp (numero in formato internazionale senza "+"). */
 const WHATSAPP_NUMBER = '393498864895';
@@ -56,7 +58,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'master',
     items: [
       { id: 'apcm', title: 'Professione Coach', kicker: 'Master in Coaching · ICF Level 1 & 2', meta: '6–12 mesi · Milano · Roma · Online' },
-      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Accreditato ICF', meta: '54 ore · Online + Milano/Roma' },
+      { id: 'systemic-team-coaching', title: 'Team Coaching Sistemico', kicker: 'Accreditato ICF', meta: '60 ore · Online + Milano/Roma' },
     ],
   },
   {
@@ -75,7 +77,7 @@ const megaColumns: MegaColumn[] = [
     icon: 'short',
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'Modello CSI', meta: '4 Workout · Live Online' },
-      { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Live Class mensili', meta: 'Annuale · Zoom 18:30–20:00' },
+      { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Incontri online mensili', meta: 'Annuale · Zoom 18:30–20:00' },
       { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '3 giornate · Aula + Online' },
     ],
   },
@@ -239,7 +241,7 @@ export const Header = () => {
   };
 
   const navLinks = [
-    { name: 'The Campus', href: '/corsi', hasDropdown: true },
+    { name: 'Corsi', href: '/corsi', hasDropdown: true },
     { name: 'Eventi', href: '/eventi' },
     { name: 'Risorse', href: '/blog' },
   ];
@@ -258,6 +260,13 @@ export const Header = () => {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
+            <Link
+              to="/personal-coaching"
+              className={`whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${location.pathname === '/personal-coaching' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+            >
+              Personal Coaching
+            </Link>
+            <div className="h-4 w-px bg-gray-200"></div>
             {navLinks.map((link) =>
               link.hasDropdown ? (
                 <div
@@ -270,7 +279,7 @@ export const Header = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                    className={`flex items-center gap-1 whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${
                       location.pathname.startsWith('/corsi') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                     }`}
                     aria-haspopup="true"
@@ -287,7 +296,7 @@ export const Header = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`flex items-center gap-1 font-bold text-sm tracking-tight transition-colors ${
+                  className={`flex items-center gap-1 whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${
                     location.pathname === link.href ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'
                   }`}
                 >
@@ -302,7 +311,7 @@ export const Header = () => {
             >
               <Link
                 to="/about"
-                className={`font-bold text-sm tracking-tight transition-colors ${
+                className={`whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${
                   location.pathname.startsWith('/about') ? 'text-brand-accent' : 'text-brand-navy hover:text-brand-accent'
                 }`}
               >
@@ -351,25 +360,19 @@ export const Header = () => {
             <div className="h-4 w-px bg-gray-200"></div>
             <Link
               to="/aziende"
-              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
+              className={`whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${location.pathname === '/aziende' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
             >
               Per Aziende
-            </Link>
-            <Link
-              to="/personal-coaching"
-              className={`font-bold text-sm tracking-tight transition-colors ${location.pathname === '/personal-coaching' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
-            >
-              Personal Coaching
             </Link>
           </nav>
         </div>
 
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6 ml-8">
           <Link
             to="/iscriviti"
             className="bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
           >
-            Iscriviti
+            Contattaci
           </Link>
         </div>
 
@@ -378,7 +381,7 @@ export const Header = () => {
             to="/iscriviti"
             className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.12em] whitespace-nowrap shadow-[0_12px_24px_-16px_rgba(42,86,168,0.55)]"
           >
-            Iscriviti
+            Contattaci
           </Link>
           <button
             className="text-brand-navy"
@@ -538,13 +541,41 @@ export const Header = () => {
             className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
           >
             <div className="flex-1 overflow-y-auto overscroll-contain px-1">
+              {/* Le tre direzioni: subito visibili e facili da toccare */}
+              <div className="grid grid-cols-2 gap-3 px-5 pt-5 pb-6">
+                <Link
+                  to="/personal-coaching"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex flex-col justify-between rounded-2xl border border-gray-100 bg-brand-blue-soft/40 p-4 min-h-[104px] active:scale-[0.98] transition-transform"
+                >
+                  <User size={22} className="text-brand-accent" />
+                  <span>
+                    <span className="block text-[15px] font-display font-black tracking-tight text-brand-navy leading-tight">Personal Coaching</span>
+                    <span className="block mt-0.5 text-[11px] font-medium text-brand-navy/50">Percorsi 1:1</span>
+                  </span>
+                </Link>
+                <Link
+                  to="/aziende"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex flex-col justify-between rounded-2xl border border-gray-100 bg-brand-blue-soft/40 p-4 min-h-[104px] active:scale-[0.98] transition-transform"
+                >
+                  <Building2 size={22} className="text-brand-accent" />
+                  <span>
+                    <span className="block text-[15px] font-display font-black tracking-tight text-brand-navy leading-tight">Per Aziende</span>
+                    <span className="block mt-0.5 text-[11px] font-medium text-brand-navy/50">Formazione per team</span>
+                  </span>
+                </Link>
+              </div>
+
+              <p className="px-6 pb-1 text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/35">La scuola</p>
+
               <button
                 type="button"
                 onClick={() => setMobileCampusOpen((v) => !v)}
-                className="w-full flex items-center justify-between px-6 py-6 border-b border-gray-100 text-left"
+                className="w-full flex items-center justify-between px-6 py-5 border-b border-gray-100 text-left"
               >
                 <span className={`text-[18px] font-display font-black tracking-tight ${mobileCampusOpen ? 'text-brand-accent' : 'text-brand-navy'}`}>
-                  The Campus
+                  Corsi
                 </span>
                 <ChevronDown
                   size={19}
@@ -677,24 +708,16 @@ export const Header = () => {
                   ))}
                 </div>
               ) : null}
-
-              <Link
-                to="/aziende"
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight text-brand-navy"
-              >
-                Per Aziende
-              </Link>
-              <Link
-                to="/personal-coaching"
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-center px-5 py-5 border-b border-gray-100 text-[17px] font-display font-black tracking-tight text-brand-navy"
-              >
-                Personal Coaching
-              </Link>
             </div>
 
             <div className="shrink-0 px-5 py-4 border-t border-gray-100 bg-white">
+              <Link
+                to="/iscriviti"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full rounded-full bg-[#2A56A8] text-white py-4 font-sans font-black text-xs uppercase tracking-[0.12em] active:scale-[0.98] transition-transform"
+              >
+                Contattaci <ArrowRight size={16} />
+              </Link>
             </div>
           </motion.div>
         )}
@@ -788,19 +811,19 @@ const socialChannels = [
   {
     name: 'Instagram',
     handle: '@asteryslab',
-    href: 'https://instagram.com/',
+    href: 'https://www.instagram.com/asteryslab/',
     icon: <Instagram size={18} />,
   },
   {
     name: 'LinkedIn',
     handle: 'Asterys Lab',
-    href: 'https://linkedin.com/',
+    href: 'https://www.linkedin.com/company/asterys-lab/',
     icon: <Linkedin size={18} />,
   },
   {
     name: 'Facebook',
     handle: 'asteryslab',
-    href: 'https://facebook.com/',
+    href: 'https://www.facebook.com/AsterysLab/',
     icon: <Facebook size={18} />,
   },
 ];
@@ -906,24 +929,19 @@ export const Footer = () => {
               <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/60">Newsletter</span>
             </div>
             <h3 className="mt-3 text-xl sm:text-2xl font-display font-black tracking-tighter leading-[1.08]">
-              Entra in <Highlight className="text-brand-blue">Asterys Letters</Highlight>.
+              Iscriviti a <Highlight className="text-brand-blue">Le Note di AL</Highlight>.
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-white/65 font-medium leading-relaxed">
               Idee pratiche di coaching, intelligenza emotiva e leadership per crescere ogni mese. Senza spam.
             </p>
-            <form className="mt-4 flex flex-col sm:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="la-tua@email.com"
-                className="flex-1 bg-white/10 border border-white/15 rounded-full px-4 py-2.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-white text-brand-navy px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors whitespace-nowrap"
-              >
-                Iscriviti
-              </button>
-            </form>
+            <NewsletterForm
+              source="Footer"
+              placeholder="la-tua@email.com"
+              tone="dark"
+              wrapperClassName="mt-4 flex flex-col sm:flex-row gap-2"
+              inputClassName="flex-1 bg-white/10 border border-white/15 rounded-full px-4 py-2.5 text-sm font-medium placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+              buttonClassName="bg-white text-brand-navy px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors whitespace-nowrap"
+            />
             <p className="mt-2 text-[10px] text-white/40 font-medium">
               Iscrivendoti accetti l'
               <a href="#" className="underline decoration-white/30 hover:text-white">informativa privacy</a>.
@@ -959,17 +977,17 @@ export const Footer = () => {
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
-                  <Phone size={13} className="text-white" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Telefono</span>
-                </div>
-                <a href="tel:+390687165254" className="text-sm font-black text-white">+39 06 8716 5254</a>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1.5">
                   <Mail size={13} className="text-white" />
                   <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Scrivici</span>
                 </div>
                 <a href="mailto:info@asteryslab.com" className="text-sm font-black text-white break-all">info@asteryslab.com</a>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <WhatsAppIcon size={13} className="text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Telefono / WhatsApp</span>
+                </div>
+                <a href="tel:+393498864895" className="text-sm font-black text-white">+39 349 886 4895</a>
               </div>
             </div>
             <div className="mt-3">
@@ -1046,22 +1064,15 @@ export const Footer = () => {
               Accreditamenti & Certificazioni
             </span>
           </div>
-          <div className="flex flex-col items-center gap-5">
-            <img
-              src={`${base}${certifications[0].src}`}
-              alt={certifications[0].label}
-              className="h-11 sm:h-12 w-auto object-contain brightness-0 invert opacity-90"
-            />
-            <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-3">
-              {certifications.slice(1).map((c) => (
-                <img
-                  key={c.label}
-                  src={`${base}${c.src}`}
-                  alt={c.label}
-                  className="h-10 sm:h-11 w-auto object-contain"
-                />
-              ))}
-            </div>
+          <div className="flex flex-nowrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 overflow-x-auto">
+            {certifications.map((c) => (
+              <img
+                key={c.label}
+                src={`${base}${c.src}`}
+                alt={c.label}
+                className="h-11 sm:h-12 w-auto object-contain shrink-0"
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -1070,11 +1081,13 @@ export const Footer = () => {
       <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-white/45">
         <p className="text-center md:text-left">
           © {new Date().getFullYear()} Asterys Lab S.r.l. — Scuola di Coaching ICF Accreditata · Milano · Roma
+          <br />
+          P.IVA e C.F. 11673371008 · REA RM-1320906 · Cert. n. 655Q
         </p>
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-white transition-colors">Privacy</a>
-          <a href="#" className="hover:text-white transition-colors">Cookie</a>
-          <a href="#" className="hover:text-white transition-colors">Termini</a>
+          <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+          <Link to="/cookie" className="hover:text-white transition-colors">Cookie</Link>
+          <Link to="/termini" className="hover:text-white transition-colors">Termini</Link>
         </div>
       </div>
     </footer>
@@ -1141,11 +1154,11 @@ const FloatingWhatsApp = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.6 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="relative w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_14px_34px_-6px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-transform"
+            className="relative w-10 h-10 lg:w-[52px] lg:h-[52px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_14px_34px_-6px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-transform"
           >
-            <WhatsAppIcon size={32} className="hidden lg:block text-white" />
-            <WhatsAppIcon size={26} className="lg:hidden text-white" />
-            <span className="absolute top-0 right-0 w-3 h-3 lg:w-4 lg:h-4 bg-brand-blue rounded-full border-2 border-white animate-pulse" />
+            <WhatsAppIcon size={26} className="hidden lg:block text-white" />
+            <WhatsAppIcon size={22} className="lg:hidden text-white" />
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 lg:w-3.5 lg:h-3.5 bg-brand-blue rounded-full border-2 border-white animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>

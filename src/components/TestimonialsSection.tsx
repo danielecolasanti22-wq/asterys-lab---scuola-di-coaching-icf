@@ -103,10 +103,7 @@ export function TestimonialsSection({
       }`}
     >
       <div className="flex items-start justify-between mb-3 gap-3">
-        <div>
-          <p className="text-base font-black text-brand-navy leading-tight">{t.name}</p>
-          <p className="text-xs font-semibold text-brand-navy/60 mt-1">{t.role}</p>
-        </div>
+        <p className="text-base font-black text-brand-navy leading-tight">{t.name}</p>
         {t.rating ? (
           <div className="flex text-[#008060] gap-0.5 shrink-0">
             {Array.from({ length: t.rating }).map((_, s) => (
@@ -115,29 +112,9 @@ export function TestimonialsSection({
           </div>
         ) : null}
       </div>
-      <p className={`${compact ? 'text-xs line-clamp-2 lg:line-clamp-4 mb-3' : 'text-[13px] lg:text-sm line-clamp-3 lg:line-clamp-5 mb-4'} text-brand-navy/75 leading-relaxed font-medium flex-1 min-h-0`}>
+      <p className={`${compact ? 'text-xs line-clamp-2 lg:line-clamp-4' : 'text-[13px] lg:text-sm line-clamp-3 lg:line-clamp-5'} text-brand-navy/75 leading-relaxed font-medium flex-1 min-h-0`}>
         “{t.quote}”
       </p>
-      <div className="flex items-center justify-between pt-3 border-t border-gray-100 shrink-0">
-        {t.cohort ? (
-          <p className="text-[10px] font-black uppercase tracking-wider text-brand-accent truncate">
-            {t.cohort}
-          </p>
-        ) : (
-          <span />
-        )}
-        {t.img ? (
-          <img
-            src={t.img}
-            alt={t.name}
-            className="h-10 w-10 rounded-full object-cover border-2 border-white shadow shrink-0"
-          />
-        ) : (
-          <div className="h-10 w-10 rounded-full bg-[#EEF4FC] text-brand-accent flex items-center justify-center text-sm font-black shrink-0">
-            {t.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
-          </div>
-        )}
-      </div>
     </div>
   );
 

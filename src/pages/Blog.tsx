@@ -1,31 +1,140 @@
 import {
   ArrowRight,
-  User,
   Calendar,
-  Clock,
   Download,
   CheckCircle2,
   Bookmark
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { useState, FormEvent } from 'react';
 import { PageHero } from '../components/PageHero';
 import { blogPosts } from '../constants/blogPosts';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_GUIDA, GF_ERR_GUIDA } from '../constants/gravityForms';
+
+const GUIDE_URL = '/guide/diventare-coach.pdf';
+
+/** Lead magnet: clic sul bottone → compare il campo email → invio → download della guida. */
+function LeadMagnetCard() {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [done, setDone] = useState(false);
+
+  const startDownload = () => {
+    const a = document.createElement('a');
+    a.href = GUIDE_URL;
+    a.download = 'Diventare-Coach-Asterys-Lab.pdf';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setError(null);
+    setSending(true);
+    if (GF_GUIDA.formId) {
+      const r = await submitToGravityForms(GF_GUIDA.formId, {
+        input_1: email,
+        input_2: 'Guida: Diventare Coach',
+      });
+      setSending(false);
+      if (!r.ok) {
+        const fe = mapGfErrors(r.errors, GF_ERR_GUIDA);
+        setError(fe.email || r.message || "Controlla l'email e riprova.");
+        return;
+      }
+    } else {
+      setSending(false);
+    }
+    setDone(true);
+    startDownload();
+  };
+
+  return (
+    <div className="bg-brand-blue-soft p-10 rounded-[2.5rem] shadow-brand-navy/5 shadow-xl">
+      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+        <Bookmark className="text-brand-accent" size={32} />
+      </div>
+      <h3 className="font-display font-bold text-2xl mb-4 leading-tight">La guida gratuita per diventare Coach</h3>
+      <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
+        Scarica la guida di Asterys Lab e scopri come trasformare la tua passione per le persone in una professione: cos'è il coaching, come si diventa coach e il percorso verso le credenziali ICF.
+      </p>
+
+      {done ? (
+        <div className="rounded-2xl bg-white/70 p-6 text-center">
+          <CheckCircle2 className="text-brand-accent mx-auto mb-2" size={26} />
+          <p className="font-display font-black text-brand-navy">Ecco la tua guida!</p>
+          <p className="text-sm text-brand-navy/60 mt-1">
+            Il download è partito.{' '}
+            <a href={GUIDE_URL} target="_blank" rel="noopener noreferrer" className="underline font-bold">
+              Non parte? Scarica qui
+            </a>
+            .
+          </p>
+        </div>
+      ) : open ? (
+        <form onSubmit={handleSubmit} noValidate className="space-y-3">
+          <input
+            type="email"
+            required
+            autoFocus
+            placeholder="La tua email"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); setError(null); }}
+            className={`w-full px-5 py-3.5 rounded-xl bg-white border outline-none transition-colors font-medium text-sm ${error ? 'border-red-500' : 'border-gray-100 focus:border-brand-accent'}`}
+          />
+          {error ? <p className="text-xs font-bold text-red-600">{error}</p> : null}
+          <button
+            type="submit"
+            disabled={sending}
+            className="btn-primary w-full py-4 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {sending ? 'Invio…' : <>Scarica <Download size={18} /></>}
+          </button>
+          <p className="text-[11px] text-brand-navy/45 text-center">Lasciando l'email accetti l'informativa privacy.</p>
+        </form>
+      ) : (
+        <button
+          onClick={() => setOpen(true)}
+          className="btn-primary w-full py-4 flex items-center justify-center gap-2 shadow-xl shadow-brand-navy/10 transform transition-transform hover:scale-[1.02]"
+        >
+          Scarica la guida gratuita <Download size={18} />
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function Blog() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  // Categorie reali dai post, ordinate per frequenza, max 12 pill
+  const categories = (() => {
+    const counts: Record<string, number> = {};
+    blogPosts.forEach((p) => { counts[p.category] = (counts[p.category] || 0) + 1; });
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([c]) => c);
+  })();
+  const visiblePosts = activeCategory ? blogPosts.filter((p) => p.category === activeCategory) : blogPosts;
+
   return (
     <div className="pb-20">
       <PageHero
-        title="Impara a"
-        highlight="crescere"
-        subtitle="Idee pratiche su coaching, intelligenza emotiva e dinamiche di team che puoi mettere al lavoro da subito — con te, con i tuoi clienti, con la tua organizzazione. Firmate dai trainer ICF MCC e PCC di Asterys Lab."
+        title="Risorse &"
+        highlight="Blog"
+        subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi per crescere come professionista e come persona."
       />
 
       <div className="max-w-7xl mx-auto px-6 pt-16">
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Posts List */}
           <div className="lg:col-span-8 space-y-20">
-            {blogPosts.map((post, i) => (
+            {visiblePosts.map((post, i) => (
               <motion.article 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -43,8 +152,6 @@ export default function Blog() {
                   </div>
                   <div className="flex items-center gap-6 mb-4 text-[10px] font-black uppercase tracking-widest text-brand-navy/40">
                     <div className="flex items-center gap-2"><Calendar size={14} className="text-brand-accent" /> {post.date}</div>
-                    <div className="flex items-center gap-2"><Clock size={14} className="text-brand-accent" /> {post.readTime}</div>
-                    <div className="flex items-center gap-2"><User size={14} className="text-brand-accent" /> {post.author}</div>
                   </div>
                   <h2 className="font-display font-bold text-3xl lg:text-4xl mb-4 group-hover:text-brand-navy transition-colors tracking-tight leading-tight">
                     {post.title}
@@ -64,29 +171,36 @@ export default function Blog() {
           <aside className="lg:col-span-4">
             <div className="lg:sticky lg:top-28 space-y-12">
             {/* Lead Magnet Card — fisso durante lo scroll */}
-            <div className="bg-brand-blue-soft p-10 rounded-[2.5rem] shadow-brand-navy/5 shadow-xl">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-                <Bookmark className="text-brand-accent" size={32} />
-              </div>
-              <h3 className="font-display font-bold text-2xl mb-4 leading-tight">Scegli il tuo percorso verso le credenziali ICF</h3>
-              <p className="text-sm text-brand-navy/60 leading-relaxed mb-8">
-                Scarica la guida gratuita e capisci subito quale strada ti porta alle credenziali ICF e quale Master fa al caso delle tue ambizioni — senza tentativi a vuoto.
-              </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-xs font-bold text-brand-navy"><CheckCircle2 size={16} className="text-brand-accent" /> Roadmap ICF 2026</div>
-                <div className="flex items-center gap-3 text-xs font-bold text-brand-navy"><CheckCircle2 size={16} className="text-brand-accent" /> Tabella comparativa Master</div>
-              </div>
-              <button className="btn-primary w-full py-4 flex items-center justify-center gap-2 shadow-xl shadow-brand-navy/10 transform transition-transform hover:scale-[1.02]">
-                Scarica la guida gratuita <Download size={18} />
-              </button>
-            </div>
+            <LeadMagnetCard />
 
             {/* Popular Topics */}
             <div>
               <h4 className="font-display font-bold text-sm uppercase tracking-widest text-brand-navy/30 mb-8 border-b border-gray-100 pb-4">Approfondisci per argomento</h4>
               <div className="flex flex-wrap gap-2">
-                {["ICF Level 2", "Six Seconds", "Team Dynamics", "Self-Brand", "Leadership", "Mentoring"].map(t => (
-                  <span key={t} className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest hover:border-brand-accent transition-colors cursor-pointer">{t}</span>
+                <button
+                  type="button"
+                  onClick={() => setActiveCategory(null)}
+                  className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors ${
+                    activeCategory === null
+                      ? 'bg-brand-navy text-white border border-brand-navy'
+                      : 'bg-gray-50 border border-gray-100 text-brand-navy hover:border-brand-accent'
+                  }`}
+                >
+                  Tutti
+                </button>
+                {categories.map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => setActiveCategory(c)}
+                    className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-colors ${
+                      activeCategory === c
+                        ? 'bg-brand-navy text-white border border-brand-navy'
+                        : 'bg-gray-50 border border-gray-100 text-brand-navy hover:border-brand-accent'
+                    }`}
+                  >
+                    {c}
+                  </button>
                 ))}
               </div>
             </div>

@@ -27,6 +27,7 @@ import CreditoAiTalenti from './pages/CreditoAiTalenti';
 import PersonalCoaching from './pages/PersonalCoaching';
 import NuovaPagina from './pages/NuovaPagina';
 import NuovaPagina2 from './pages/NuovaPagina2';
+import { PrivacyPolicy, CookiePolicy, Terms } from './pages/Legal';
 
 // --- Global Scroll Recovery Component ---
 const ScrollToTop = () => {
@@ -68,6 +69,9 @@ export default function App() {
           <Route path="/credito-ai-talenti" element={<CreditoAiTalenti />} />
           <Route path="/nuova-pagina" element={<NuovaPagina />} />
           <Route path="/nuova-pagina-2" element={<NuovaPagina2 />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookie" element={<CookiePolicy />} />
+          <Route path="/termini" element={<Terms />} />
         </Routes>
       </LayoutWrapper>
     </Router>

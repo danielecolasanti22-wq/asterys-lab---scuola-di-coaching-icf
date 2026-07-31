@@ -14,7 +14,7 @@ type PageHeroProps = {
 export function PageHero({ title, highlight, subtitle }: PageHeroProps) {
   return (
     <section className="bg-brand-hero">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-12 lg:pt-16 lg:pb-16 text-center">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-12 lg:pt-16 lg:pb-16 text-center min-h-[300px] lg:min-h-[340px] flex flex-col justify-center">
         <h1 className="text-[2.3rem] sm:text-[2.9rem] lg:text-[3.3rem] font-display font-black leading-[0.98] tracking-tighter text-white mb-5">
           {title}
           {highlight ? (

@@ -22,6 +22,7 @@ import {
   Wallet,
   Brain,
   Mic,
+  Megaphone,
   AudioLines,
   RefreshCw,
   MessagesSquare
@@ -59,7 +60,7 @@ const Hero = () => (
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-20">
           <div className="inline-flex items-center gap-2 bg-[#CFE0F5] px-4 py-2 rounded-full text-[8px] font-black uppercase tracking-[0.1em] text-brand-navy whitespace-nowrap">
             <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-            La tua scuola di coaching accreditata ICF
+            Il partner per lo sviluppo delle tue risorse
           </div>
         </div>
       </div>
@@ -67,11 +68,11 @@ const Hero = () => (
       <div className="pt-16 lg:pt-14 pb-0 lg:pb-10 relative z-10 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-t-[2.6rem] lg:rounded-none bg-brand-hero lg:bg-transparent -mt-8 lg:mt-0">
         <div className="hidden lg:inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy border border-brand-navy/10 mb-4 w-full sm:w-auto justify-center lg:justify-start">
           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
-          La tua scuola accreditata ICF
+          Il partner per lo sviluppo delle tue risorse
         </div>
         <h1 className="text-[2.85rem] text-center lg:text-left sm:text-[3.7rem] lg:text-[4.35rem] font-display font-black leading-[0.94] tracking-tighter mb-4 lg:mb-5 text-white">
-          Dai forma alla tua{' '}
-          <Highlight className="text-brand-sky">crescita professionale</Highlight>
+          Dai impulso alla tua{' '}
+          <Highlight className="text-brand-sky">crescita personale</Highlight>
         </h1>
         <p className="text-[12px] text-center lg:text-left lg:text-base text-white/80 mb-5 lg:mb-6 max-w-[520px] leading-relaxed mx-auto lg:mx-0">
           Trasforma la tua passione per le persone in una nuova professione: impara a generare un cambiamento reale in chi hai di fronte e porta la tua carriera a un nuovo livello.
@@ -381,7 +382,7 @@ const MasterGrid = () => {
     {
       id: 'systemic-team-coaching',
       title: 'Team Coaching Sistemico',
-      duration: '54 ore · 60 CCE',
+      duration: '60 ore · 54 CCE',
       label: 'Master',
       desc: "Impari a portare team e leader a risultati straordinari con il modello sistemico. Requisito per la credenziale ACTC.",
       start: '6 ottobre 2026',
@@ -420,9 +421,20 @@ const MasterGrid = () => {
       seed: 'voice-dialogue'
     },
     {
+      id: 'marketing-per-coach',
+      title: 'Personal Branding per Coach',
+      duration: '5 webinar · con Helga Ogliari',
+      label: 'Formazione avanzata',
+      desc: 'Costruisci un personal brand da coach riconoscibile e attira i clienti giusti: dal posizionamento allo storytelling all’acquisizione clienti.',
+      start: 'Novembre 2026',
+      lastSeats: false,
+      seed: 'marketing-per-coach',
+      image: 'card.png'
+    },
+    {
       id: 'continuous-learning',
       title: 'Continuous Learning',
-      duration: '1 live class/mese',
+      duration: '1 incontro online/mese',
       label: 'Corso Breve',
       desc: 'Tieni viva e aggiornata la tua pratica di coach, con incontri Zoom mensili interattivi (18:30–20:00), tutto l’anno tranne agosto.',
       start: 'Inizi quando vuoi',
@@ -502,6 +514,55 @@ const MasterGrid = () => {
               </div>
             </Link>
           ))}
+
+          {/* Card Aziende — riempie la cella dispari su desktop (dove la card Master è nascosta).
+              Sfondo: mesh sistemico (immagine) + punti-costellazione, con velatura navy per la leggibilità. */}
+          <Link
+            to="/aziende"
+            className="group hidden lg:flex relative overflow-hidden rounded-[2rem] p-7 lg:p-8 text-white flex-col bg-[linear-gradient(155deg,#001a45_0%,#00285f_55%,#0b3b7a_100%)] shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.5)] transition-shadow"
+          >
+            {/* Sfondo mesh (immagine) + velatura navy a sinistra per il testo */}
+            <img
+              src="/aziende/4.png"
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-80 group-hover:opacity-90 transition-opacity"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#001a45] via-[#001a45]/75 to-[#001a45]/10" />
+
+            <div className="relative flex flex-col flex-1 justify-between gap-6">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-sky">
+                  Per Aziende
+                </span>
+                <h3 className="mt-3 text-3xl lg:text-[2.4rem] font-display font-black text-white leading-[1.04] tracking-tight max-w-[92%]">
+                  Porta i nostri percorsi in azienda
+                </h3>
+                <p className="mt-4 text-[15px] text-white/80 leading-relaxed">
+                  Entriamo nella tua azienda e portiamo i percorsi giusti alle tue persone: dal business coaching alla leadership, dal team coaching alla facilitazione del cambiamento. Progettiamo ogni intervento su misura — obiettivi, competenze e cultura — per far crescere manager e team, con un impatto che si vede davvero sui risultati.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-2">
+                  {['Performance', 'Comunicazione nel team', 'Leadership', 'Collaborazione', 'Gestione del cambiamento'].map((s) => (
+                    <span key={s} className="rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1 text-[11px] font-bold text-white/85">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5 pt-5 border-t border-white/10 flex items-center justify-between gap-3">
+                  <span className="text-[11px] text-white/55 font-semibold max-w-[55%] leading-snug">
+                    Programmi su misura per micro imprese e PMI
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white text-brand-navy px-5 py-2.5 text-[10px] uppercase tracking-[0.16em] font-black leading-none group-hover:gap-3 transition-all shrink-0">
+                    Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </section>
@@ -573,6 +634,16 @@ const PercheNoi = () => {
       desc: 'I tuoi trainer sono Master Coach con credenziale ICF: porti a casa conoscenze pratiche e il loro modo reale di lavorare.'
     },
     {
+      icon: GraduationCap,
+      title: 'Porti a casa credenziali che valgono ovunque',
+      desc: 'Formazione accreditata ICF Level 1 & 2: al termine hai le ore per le credenziali ACC e PCC, riconosciute a livello internazionale e spendibili ovunque tu voglia lavorare.'
+    },
+    {
+      icon: Users,
+      title: 'Non sei mai solo: prima, durante e dopo',
+      desc: 'Un coach di riferimento ti accompagna dall’orientamento fino al post-diploma, ed entri negli Alumni Asterys: 3.000+ colleghi per confronto, referral e nuove opportunità.'
+    },
+    {
       icon: Wallet,
       title: 'Investi con serenità, al tuo ritmo',
       desc: 'Scegli come sostenere il tuo percorso: rateizzazione fino a 24 mesi e piani pensati per farti crescere senza compromessi.'
@@ -626,6 +697,7 @@ const CorsiCta = () => {
     'coaching-circle': MessagesSquare,
     'public-speaking': Mic,
     'voice-dialogue': AudioLines,
+    'marketing-per-coach': Megaphone,
     'continuous-learning': RefreshCw,
   };
   return (
@@ -739,10 +811,78 @@ const Faq = () => (
   </section>
 );
 
+/* 3 MONDI — router audience con gerarchia (scuola dominante) */
+const TreMondi = () => (
+  <section className="py-10 lg:py-14 bg-white">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="grid lg:grid-cols-[1.45fr_1fr] gap-4 lg:gap-5 items-stretch">
+        {/* Scuola di Coaching — dominante */}
+        <Link
+          to="/corsi"
+          className="group relative overflow-hidden rounded-[1.75rem] lg:rounded-[2rem] bg-brand-navy text-white p-7 lg:p-10 flex flex-col min-h-[300px] lg:min-h-[380px] shadow-[0_18px_55px_-30px_rgba(0,21,51,0.5)]"
+        >
+          <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-accent/25 blur-3xl" />
+          <div className="relative flex flex-col flex-1">
+            <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-brand-sky">
+              <GraduationCap size={16} /> La nostra identità
+            </span>
+            <h3 className="mt-4 text-3xl lg:text-[2.6rem] font-display font-black leading-[1.04] tracking-tight">
+              Scuola di Coaching
+            </h3>
+            <p className="mt-3 text-white/75 leading-relaxed max-w-[460px]">
+              Diventa coach professionista riconosciuto ICF: percorsi accreditati Level 1 &amp; 2, intelligenza emotiva e approccio sistemico, con pratica guidata e una community di 3.000+ coach.
+            </p>
+            <div className="mt-auto pt-7">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white text-brand-navy px-6 py-3 text-[11px] uppercase tracking-[0.16em] font-black group-hover:gap-3 transition-all">
+                Scopri i percorsi <ArrowUpRight size={15} strokeWidth={2.5} />
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Colonna destra: 2 card secondarie */}
+        <div className="grid grid-rows-2 gap-4 lg:gap-5">
+          <Link
+            to="/personal-coaching"
+            className="group rounded-[1.75rem] bg-brand-blue-soft p-6 lg:p-7 flex flex-col justify-between hover:bg-[#dce8fb] transition-colors"
+          >
+            <div>
+              <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent">
+                <Sparkles size={14} /> Crescita personale
+              </span>
+              <h3 className="mt-2 text-xl lg:text-2xl font-display font-black text-brand-navy tracking-tight">Personal Coaching</h3>
+              <p className="mt-1.5 text-sm text-brand-navy/65 leading-relaxed">Un coach al tuo fianco per obiettivi, scelte ed equilibrio. Di persona o online.</p>
+            </div>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-brand-navy group-hover:text-brand-accent transition-colors">
+              Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
+            </span>
+          </Link>
+          <Link
+            to="/aziende"
+            className="group rounded-[1.75rem] bg-brand-blue-soft p-6 lg:p-7 flex flex-col justify-between hover:bg-[#dce8fb] transition-colors"
+          >
+            <div>
+              <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent">
+                <BriefcaseBusiness size={14} /> Formazione aziendale
+              </span>
+              <h3 className="mt-2 text-xl lg:text-2xl font-display font-black text-brand-navy tracking-tight">Per Aziende</h3>
+              <p className="mt-1.5 text-sm text-brand-navy/65 leading-relaxed">Coaching, team coaching e sviluppo della leadership su misura per manager e team.</p>
+            </div>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-brand-navy group-hover:text-brand-accent transition-colors">
+              Scopri <ArrowUpRight size={14} strokeWidth={2.5} />
+            </span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export default function Home() {
   return (
     <>
       <Hero />
+      {/* <TreMondi /> — sezione "3 mondi" parcheggiata: da rivedere posizione/design */}
       <ScegliPercorso />
       <MasterFeatured />
       <MasterGrid />

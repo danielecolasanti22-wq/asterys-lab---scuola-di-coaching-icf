@@ -28,4 +28,16 @@ export const HOME_FAQ: { q: string; a: string }[] = [
     q: 'Quali credenziali ICF posso ottenere?',
     a: 'In base al percorso: ACC e PCC per il coaching individuale, ACTC per il team coaching, oltre ai crediti CCE utili per il rinnovo delle credenziali.',
   },
+  {
+    q: 'Come capisco se il coaching fa per me?',
+    a: 'Il coaching è utile a chi ha obiettivi da raggiungere o sfide da superare. Se hai dubbi, puoi richiedere un colloquio gratuito e senza impegno con un Advisor: esponi le tue esigenze e ricevi risposte sincere. Un coach ICF è tenuto per etica a dirti se il coaching non è lo strumento giusto per te.',
+  },
+  {
+    q: 'Cosa fa (e cosa non fa) un coach?',
+    a: 'Il coach lavora sui tuoi obiettivi: ti aiuta ad aumentare consapevolezza ed espressione del potenziale, a superare blocchi e a definire traguardi coerenti con i tuoi valori, con feedback onesti e senza giudizio. Non è un consulente che risolve i problemi al posto tuo, né un terapeuta: quando serve un altro tipo di lavoro, un buon coach te lo dice.',
+  },
+  {
+    q: 'Ci sono borse di studio o agevolazioni?',
+    a: 'Sì. Offriamo sconti Early Bird a chi si iscrive in anticipo e agevolazioni per chi è già nostro cliente. Periodicamente attiviamo bandi con borse di studio e condizioni dedicate: scrivici per sapere quali sono attivi al momento.',
+  },
 ];

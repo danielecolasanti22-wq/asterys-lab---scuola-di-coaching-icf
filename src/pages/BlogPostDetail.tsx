@@ -1,13 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import {
   Calendar,
-  Clock,
   ArrowLeft,
   ArrowRight,
   MessageCircle,
 } from 'lucide-react';
 import { blogPosts, blogPostsBySlug } from '../constants/blogPosts';
 import { autoHighlight } from '../utils/highlight';
+import { NewsletterForm } from '../components/NewsletterForm';
 
 export default function BlogPostDetail() {
   const { id } = useParams<{ id: string }>();
@@ -61,7 +61,6 @@ export default function BlogPostDetail() {
             </h1>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-[10px] font-black uppercase tracking-widest text-white/60">
               <div className="flex items-center gap-2"><Calendar size={14} className="text-brand-accent" /> {post.date}</div>
-              <div className="flex items-center gap-2"><Clock size={14} className="text-brand-accent" /> {post.readTime} di lettura</div>
             </div>
           </div>
         </section>
@@ -143,10 +142,13 @@ export default function BlogPostDetail() {
             <p className="text-brand-navy/65 mb-10 leading-relaxed">
               Iscriviti alla newsletter per ricevere nuovi approfondimenti su coaching, intelligenza emotiva e crescita professionale.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input type="email" placeholder="La tua email..." className="flex-grow px-6 py-4 rounded-xl bg-white border border-brand-navy/10 outline-none focus:border-brand-accent font-medium" />
-              <button className="btn-primary bg-brand-navy text-white whitespace-nowrap">Iscriviti</button>
-            </div>
+            <NewsletterForm
+              source="Fine articolo blog"
+              placeholder="La tua email..."
+              wrapperClassName="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+              inputClassName="flex-grow px-6 py-4 rounded-xl bg-white border border-brand-navy/10 outline-none focus:border-brand-accent font-medium"
+              buttonClassName="btn-primary bg-brand-navy text-white whitespace-nowrap"
+            />
           </div>
         </section>
       </article>

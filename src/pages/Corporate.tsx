@@ -1,4 +1,7 @@
+import { FormEvent, useState } from 'react';
 import { autoHighlight } from '../utils/highlight';
+import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
+import { GF_AZIENDE, GF_ERR_AZIENDE } from '../constants/gravityForms';
 import {
   ArrowRight,
   Briefcase,
@@ -93,6 +96,46 @@ const beneficiPersonali = [
 
 export default function Corporate() {
   const seen = new Set<string>();
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    area: '',
+    email: '',
+    phone: '',
+    message: '',
+    terms: false,
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!form.terms || !form.firstName || !form.lastName || !form.company || !form.email) return;
+    setError(null);
+    setFieldErrors({});
+    setSending(true);
+    const result = await submitToGravityForms(GF_AZIENDE.formId, {
+      'input_1.3': form.firstName,
+      'input_1.6': form.lastName,
+      input_2: form.company,
+      input_3: form.area,
+      input_4: form.email,
+      input_5: form.phone ? `+39 ${form.phone}` : '',
+      input_6: form.message,
+      'input_7.1': form.terms ? '1' : '',
+    });
+    setSending(false);
+    if (result.ok) {
+      setSubmitted(true);
+      return;
+    }
+    const fe = mapGfErrors(result.errors, GF_ERR_AZIENDE);
+    if (Object.keys(fe).length) setFieldErrors(fe);
+    else setError(result.message || 'Qualcosa non ha funzionato. Controlla i campi e riprova.');
+  };
   return (
     <div className="bg-[#EEF4FC] text-brand-navy">
       {/* HERO */}
@@ -418,29 +461,50 @@ export default function Corporate() {
             Raccontaci la tua sfida: mettiamo a fuoco insieme le priorità della tua azienda e da dove partire.
           </p>
 
-          <form className="mt-8 space-y-4" onSubmit={(e) => e.preventDefault()}>
+          {submitted ? (
+            <div className="mt-8 rounded-2xl bg-white/90 border border-[#CFE0F5] p-8 text-center">
+              <CheckCircle2 size={28} className="text-[#2A56A8] mx-auto mb-3" />
+              <p className="text-lg font-display font-black text-brand-navy">Richiesta inviata!</p>
+              <p className="text-brand-navy/70 mt-1">Ti ricontattiamo al più presto per fissare un confronto.</p>
+            </div>
+          ) : (
+          <form className="mt-8 space-y-4" onSubmit={handleSubmit} noValidate>
             <div className="grid sm:grid-cols-2 gap-4">
-              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Nome" />
-              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Cognome" />
-              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Azienda" />
-              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Area di interesse" />
-              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none sm:col-span-1" placeholder="Email" />
-              <div className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 flex items-center gap-2">
-                <span className="text-sm">🇮🇹 +39</span>
-                <input className="w-full outline-none bg-transparent" placeholder="Telefono" />
+              <div>
+                <input className={`w-full h-12 px-4 rounded-lg border bg-white/90 outline-none ${fieldErrors.firstName ? 'border-red-500' : 'border-[#CFE0F5]'}`} placeholder="Nome" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+                {fieldErrors.firstName ? <p className="mt-1 text-xs font-bold text-red-600">{fieldErrors.firstName}</p> : null}
+              </div>
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Cognome" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+              <div>
+                <input className={`w-full h-12 px-4 rounded-lg border bg-white/90 outline-none ${fieldErrors.company ? 'border-red-500' : 'border-[#CFE0F5]'}`} placeholder="Azienda" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
+                {fieldErrors.company ? <p className="mt-1 text-xs font-bold text-red-600">{fieldErrors.company}</p> : null}
+              </div>
+              <input className="h-12 px-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Area di interesse" value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value })} />
+              <div className="sm:col-span-1">
+                <input className={`w-full h-12 px-4 rounded-lg border bg-white/90 outline-none ${fieldErrors.email ? 'border-red-500' : 'border-[#CFE0F5]'}`} placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                {fieldErrors.email ? <p className="mt-1 text-xs font-bold text-red-600">{fieldErrors.email}</p> : null}
+              </div>
+              <div>
+                <div className={`h-12 px-4 rounded-lg border bg-white/90 flex items-center gap-2 ${fieldErrors.phone ? 'border-red-500' : 'border-[#CFE0F5]'}`}>
+                  <span className="text-sm">🇮🇹 +39</span>
+                  <input className="w-full outline-none bg-transparent" placeholder="Telefono" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                </div>
+                {fieldErrors.phone ? <p className="mt-1 text-xs font-bold text-red-600">{fieldErrors.phone}</p> : null}
               </div>
             </div>
-            <textarea className="w-full h-28 p-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Raccontaci la tua sfida" />
+            <textarea className="w-full h-28 p-4 rounded-lg border border-[#CFE0F5] bg-white/90 outline-none" placeholder="Raccontaci la tua sfida" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
             <label className="flex items-center gap-2 text-sm text-brand-navy/70">
-              <input type="checkbox" className="rounded border-gray-300" />
+              <input type="checkbox" className="rounded border-gray-300" checked={form.terms} onChange={(e) => setForm({ ...form, terms: e.target.checked })} />
               Accetto la Privacy Policy
             </label>
+            {error ? <p className="text-sm font-bold text-red-600 text-center">{error}</p> : null}
             <div className="flex justify-center pt-2">
-              <button className="inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-7 py-3 text-xs font-black uppercase tracking-[0.14em] transition-colors">
-                Richiedi un confronto
+              <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-[#2A56A8] hover:bg-[#2748d1] text-white rounded-full px-7 py-3 text-xs font-black uppercase tracking-[0.14em] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                {sending ? 'Invio in corso…' : 'Richiedi un confronto'}
               </button>
             </div>
           </form>
+          )}
         </div>
       </section>
 

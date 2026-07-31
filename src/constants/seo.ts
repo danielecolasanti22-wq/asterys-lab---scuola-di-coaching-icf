@@ -50,7 +50,7 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/corsi/continuous-learning': {
     title: 'Cresci come coach ogni mese (CCE ICF) | Asterys Lab',
     description:
-      'Resta al passo e accumula CCE ICF: Live Class mensili su Zoom, networking e crescita continua per coach. Scegli singole Live Class o pacchetti.',
+      'Resta al passo e accumula CCE ICF: Incontri online mensili su Zoom, networking e crescita continua per coach. Scegli singoli incontri o pacchetti.',
   },
   '/corsi/public-speaking': {
     title: 'Parla in pubblico con presenza e impatto | Asterys Lab',
@@ -116,12 +116,14 @@ const ORG_JSONLD = {
       '@type': 'PostalAddress',
       streetAddress: 'Via Conservatorio 22',
       addressLocality: 'Milano',
+      postalCode: '20122',
       addressCountry: 'IT',
     },
     {
       '@type': 'PostalAddress',
       streetAddress: 'Via del Porto Fluviale 35',
       addressLocality: 'Roma',
+      postalCode: '00154',
       addressCountry: 'IT',
     },
   ],
@@ -158,8 +160,8 @@ const COURSE_JSONLD: Record<string, { name: string; description: string; courseM
     courseMode: 'blended',
   },
   '/corsi/continuous-learning': {
-    name: 'Continuous Learning — Live Class per coach',
-    description: 'Live Class mensili di formazione continua per coach, con CCE ICF.',
+    name: 'Continuous Learning — Incontri online per coach',
+    description: 'Incontri online mensili di formazione continua per coach, con CCE ICF.',
     courseMode: 'online',
   },
   '/corsi/public-speaking': {

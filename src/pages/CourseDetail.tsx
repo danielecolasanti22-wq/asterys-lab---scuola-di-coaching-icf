@@ -57,7 +57,7 @@ import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
 
-/** Data d'inizio (ISO) di un'edizione vetrina: prima Live Class / Corso / Live Lab. */
+/** Data d'inizio (ISO) di un'edizione vetrina: primo Incontro online / Modulo. */
 function editionStartISO(ed: CourseEdition | undefined): string | null {
   if (!ed) return null;
   const starts = ed.events
@@ -197,7 +197,7 @@ const APCM_COMPLETE_LEVEL_SLUG = 'complete';
 
 function displayEditionEventLabel(label: string, courseId?: string): string {
   if (courseId !== 'apcm') return label;
-  return label.replace(/Live Class/g, 'Incontro Online');
+  return label;
 }
 
 function completeLevelNote(note: string | undefined, level: string): string {
@@ -527,9 +527,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
     : null;
 
   const editionStatBadges: { type: CourseEditionEventType; label: string }[] = [
-    { type: 'live-class', label: id === 'apcm' ? 'Incontri Online' : 'Live Class' },
-    { type: 'live-lab', label: 'Live Lab' },
-    { type: 'corso', label: 'Corsi intensivi' },
+    { type: 'live-class', label: 'Incontri online' },
+    { type: 'live-lab', label: 'Modulo online' },
+    { type: 'corso', label: 'Moduli in presenza' },
     { type: 'orientamento', label: 'Orientamento' },
     { type: 'individual', label: 'Sessioni 1:1' },
   ];
@@ -957,7 +957,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                     }`}
                   >
                     <Compass size={16} strokeWidth={2.25} className={careerTab === 'careers' ? 'text-[#CFE0F5]' : ''} />
-                    <span>Sbocchi professionali</span>
+                    <span>Opportunità lavorative</span>
                     <span className={`hidden sm:inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-black ${
                       careerTab === 'careers' ? 'bg-[#CFE0F5] text-brand-navy' : 'bg-brand-navy/5 text-brand-navy/50'
                     }`}>
@@ -1113,6 +1113,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      </p>
                      <a
                         href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
+                        {...(course.brochureUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                         className="inline-flex items-center gap-2 bg-white text-brand-navy px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.16em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
                      >
                         Scarica la brochure <Download size={14} />
@@ -1160,7 +1161,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       ) : null}
 
       {/* 4. SCEGLI TU QUANDO INIZIARE — solo Master in Coaching e Team Coaching */}
-      {(id === 'apcm' || id === 'systemic-team-coaching') && (
+      {/* Temporaneamente nascosta: rimuovere `false &&` per riattivarla */}
+      {false && (id === 'apcm' || id === 'systemic-team-coaching') && (
       <section className="py-10 lg:py-20 bg-white">
          <div className="max-w-[941px] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.5rem] lg:rounded-[1.75rem] p-5 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
@@ -1179,7 +1181,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                    : isWorkout
                    ? "I Round sono pubblicati con largo anticipo: scegli quello con il set di emozioni che preferisci e mettilo in agenda. Nessuna sequenza obbligata, i posti sono limitati."
                    : isCL
-                   ? "Il programma è circolare: non c'è un inizio obbligato, entri quando vuoi. Ecco le prossime Live Class — trovi il calendario completo poco più sotto."
+                   ? "Il programma è circolare: non c'è un inizio obbligato, entri quando vuoi. Ecco i prossimi Incontri online — trovi il calendario completo poco più sotto."
                    : 'Inizia gratis e senza impegno il processo di ammissione e poi valuta insieme a un Advisor la data di partenza migliore per te.'}
                </p>
 
@@ -1193,7 +1195,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                          : isWorkout
                          ? 'Prossimi Round in calendario'
                          : isCL
-                         ? 'Prossime Live Class'
+                         ? 'Prossimi Incontri online'
                          : 'Le classi di questo master partono di continuo: ecco le prossime'}
                      </p>
                      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
@@ -1865,7 +1867,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Zoom · 18:30–20:00, una volta al mese
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Live Class non recuperabili
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Incontri online non recuperabili
                     </li>
                   </ul>
                 </div>
@@ -2333,7 +2335,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         htmlFor={`qty-${idx}`}
                         className="block text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy/60 mb-1.5"
                       >
-                        {fee.wooQuantityLabel ?? 'Quante Live Class'}
+                        {fee.wooQuantityLabel ?? 'Quanti Incontri online'}
                       </label>
                       <select
                         id={`qty-${idx}`}
@@ -2344,17 +2346,17 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         className="w-full rounded-xl border border-brand-navy/15 bg-white px-4 py-3 text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-accent"
                       >
                         {(fee.wooQuantityOptions ?? [
-                          { value: 1, label: '1 Live Class — 16€ + IVA' },
-                          { value: 2, label: '2 Live Class — 16€ + IVA cad.' },
-                          { value: 3, label: '3 Live Class — 12€ + IVA cad.' },
-                          { value: 4, label: '4 Live Class — 12€ + IVA cad.' },
-                          { value: 5, label: '5 Live Class — 12€ + IVA cad.' },
-                          { value: 6, label: '6 Live Class — 12€ + IVA cad.' },
-                          { value: 7, label: '7 Live Class — 12€ + IVA cad.' },
-                          { value: 8, label: '8 Live Class — 9€ + IVA cad.' },
-                          { value: 9, label: '9 Live Class — 9€ + IVA cad.' },
-                          { value: 10, label: '10 Live Class — 9€ + IVA cad.' },
-                          { value: 12, label: '12 Live Class — 9€ + IVA cad.' },
+                          { value: 1, label: '1 Incontro online — 16€ + IVA' },
+                          { value: 2, label: '2 Incontri online — 16€ + IVA cad.' },
+                          { value: 3, label: '3 Incontri online — 12€ + IVA cad.' },
+                          { value: 4, label: '4 Incontri online — 12€ + IVA cad.' },
+                          { value: 5, label: '5 Incontri online — 12€ + IVA cad.' },
+                          { value: 6, label: '6 Incontri online — 12€ + IVA cad.' },
+                          { value: 7, label: '7 Incontri online — 12€ + IVA cad.' },
+                          { value: 8, label: '8 Incontri online — 9€ + IVA cad.' },
+                          { value: 9, label: '9 Incontri online — 9€ + IVA cad.' },
+                          { value: 10, label: '10 Incontri online — 9€ + IVA cad.' },
+                          { value: 12, label: '12 Incontri online — 9€ + IVA cad.' },
                         ]).map((opt) => (
                           <option key={opt.value} value={opt.value}>
                             {opt.label}
@@ -2362,7 +2364,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         ))}
                       </select>
                       <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-brand-navy/55">
-                        {fee.wooQuantityHint ?? 'Il prezzo per Live Class cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.'}
+                        {fee.wooQuantityHint ?? 'Il prezzo per incontro cala con la quantità (16€ · 12€ · 9€): la fascia giusta si applica da sola nel carrello.'}
                       </p>
                     </div>
                   ) : null}

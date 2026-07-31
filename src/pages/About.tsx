@@ -123,12 +123,16 @@ const communityPillars = [
 
 type PressLogoEntry = { name: string; file: string; tall?: boolean };
 const pressLogos: PressLogoEntry[] = [
-  { name: 'Corriere della Sera', file: 'corriere-della-sera' },
-  { name: 'Il Sole 24 Ore', file: 'il-sole-24-ore' },
-  { name: 'HBR Italia', file: 'hbr-italia', tall: true },
-  { name: 'La Repubblica', file: 'la-repubblica' },
-  { name: 'Forbes', file: 'forbes' },
-  { name: 'Wired', file: 'wired' },
+  { name: 'Corriere della Sera', file: 'corriere-della-sera.png' },
+  { name: 'Il Sole 24 Ore', file: 'il-sole-24-ore.png' },
+  { name: 'HBR Italia', file: 'hbr-italia.png', tall: true },
+  { name: 'La Repubblica', file: 'la-repubblica.png' },
+  { name: 'Forbes', file: 'forbes.png' },
+  { name: 'Wired', file: 'wired.png' },
+  { name: 'Cosmopolitan', file: 'Cosmopolitan_logo.svg.png' },
+  { name: 'HR Link', file: 'HRLINK-LOGO-2019.png' },
+  { name: 'QN — Quotidiano Nazionale', file: 'qn.svg' },
+  { name: 'Persone e Conoscenze', file: 'Persone-e-Conoscenze.png', tall: true },
 ];
 
 function PressLogo({ name, file, tall }: { name: string; file: string; tall?: boolean }) {
@@ -143,7 +147,7 @@ function PressLogo({ name, file, tall }: { name: string; file: string; tall?: bo
   const sizeClasses = tall ? 'h-12 sm:h-14' : 'h-6 sm:h-8';
   return (
     <img
-      src={`/press/${file}.png`}
+      src={`/press/${file}`}
       alt={name}
       onError={() => setFailed(true)}
       className={`${sizeClasses} w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all`}
@@ -208,7 +212,7 @@ export default function About() {
                 3.000+
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
-                Colleghi e alumni pronti a sostenere la tua carriera
+                Coach formati pronti a sostenere la tua carriera
               </p>
             </div>
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
@@ -216,7 +220,7 @@ export default function About() {
                 Accreditamento <span className="text-brand-accent">ICF</span>
               </p>
               <p className="mt-3 text-[11px] font-black uppercase tracking-[0.2em] text-brand-navy/55 leading-snug">
-                Level 1 · Level 2 · CCE · ACTC · Mentor
+                Level 1 · Level 2 · CCE · AATC · Mentor
               </p>
             </div>
           </div>
@@ -338,7 +342,7 @@ export default function About() {
 
           <div className="flex flex-col lg:hidden items-center gap-6 max-w-xl mx-auto">
             <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
-              {[accreditations[4], accreditations[1]].map((a) => (
+              {accreditations.map((a) => (
                 <div key={a.file} className="flex flex-col items-center text-center">
                   <div className="h-16 flex items-center justify-center mb-2">
                     <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
@@ -346,25 +350,10 @@ export default function About() {
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{a.label}</p>
                 </div>
               ))}
-            </div>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6 justify-items-center w-full">
-              {accreditations.slice(2, 4).map((a) => (
-                <div key={a.file} className="flex flex-col items-center text-center">
-                  <div className="h-16 flex items-center justify-center mb-2">
-                    <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
-                  </div>
-                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{a.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="h-16 flex items-center justify-center">
-                <img src={`/brand/${accreditations[0].file}.png`} alt={accreditations[0].label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
-              </div>
             </div>
           </div>
 
-          <div className="hidden lg:grid grid-cols-5 gap-4">
+          <div className="hidden lg:grid grid-cols-4 gap-4">
             {accreditations.map((a) => (
               <div
                 key={a.file}

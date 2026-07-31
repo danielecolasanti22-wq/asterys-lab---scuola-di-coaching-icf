@@ -32,7 +32,7 @@ export interface CourseFee {
   wooQuantity?: number;
   /** Mostra un selettore di quantità libero (sconto volume): la quantità scelta finisce nel link al checkout. */
   wooQuantitySelector?: boolean;
-  /** Etichetta del selettore quantità (default "Quante Live Class"). */
+  /** Etichetta del selettore quantità (default "Quanti Incontri online"). */
   wooQuantityLabel?: string;
   /** Testo esplicativo sotto il selettore quantità. */
   wooQuantityHint?: string;
@@ -408,7 +408,8 @@ const apcmFaqs = [
 export const coursesContent: Record<string, CourseData> = {
   'apcm': {
     title: "Master in Coaching",
-    subtitle: "Diventa coach professionista riconosciuto ICF",
+    brochureUrl: "https://asteryslab.com/wp-content/uploads/APCM-brochure.pdf",
+    subtitle: "Trasforma la tua carriera: diventa coach ICF",
     tagline: "Trasforma la tua esperienza in una nuova carriera da coach riconosciuto ICF: impari a far decidere e agire le persone fino al risultato, con intelligenza emotiva e approccio sistemico.",
     type: "ICF LEVEL 1 & 2",
     heroKicker: "Diventa coach",
@@ -426,7 +427,7 @@ export const coursesContent: Record<string, CourseData> = {
       intro:
         "Un percorso strutturato che alterna **lezioni live**, pratica supervisionata, studio individuale e report. Le lezioni sono circa una volta a settimana, secondo il calendario dell'edizione, e ti guidano passo passo fino alle competenze ICF e alla **certificazione**.",
       formazioneTitle: "Formazione",
-      formazioneBadge: "Ibrido · 150 ore",
+      formazioneBadge: "Ibrido · 133,5 ore",
       formazioneIntro:
         "La prima parte del Master è dedicata alle **lezioni in diretta** (in aula o in videoconferenza), con esercitazioni guidate e feedback dai trainer. Le lezioni online si svolgono dalle 18:30 alle 20:00.",
     },
@@ -482,7 +483,7 @@ export const coursesContent: Record<string, CourseData> = {
       nextEdition: "Milano, Roma & Online",
       dates: "Ottobre 2026 – Marzo 2027",
       format: "Ibrido (Presenza + Live Online)",
-      duration: "150 ore accademiche",
+      duration: "133,5 ore di formazione",
       price: "A partire da 3.400€ + IVA",
       installments: "Rateizzabile fino a 24 mesi senza interessi"
     },
@@ -659,7 +660,7 @@ export const coursesContent: Record<string, CourseData> = {
         wooKey: "l1",
         benefit: "Fondamenti coaching",
         heading: "Livello 1 · ICF Level 1 Ready",
-        desc: "Parti dal 1° livello (60 ore accademiche): fondamenti del coaching ICF, abilita alla credenziale ACC. Potrai completare il 2° livello in una successiva edizione.",
+        desc: "Parti dal 1° livello (63 ore di formazione): fondamenti del coaching ICF, abilita alla credenziale ACC. Potrai completare il 2° livello in una successiva edizione.",
         price: "3.400€",
         priceLabel: "+ IVA",
         financing: {
@@ -674,7 +675,7 @@ export const coursesContent: Record<string, CourseData> = {
         wooKey: "l2",
         benefit: "Prerequisito: Livello 1",
         heading: "Livello 2 · ICF Level 2 Advanced",
-        desc: "Il 2° livello (90 ore accademiche) per chi ha già completato il Livello 1: intelligenza emotiva avanzata, sistemi complessi, mentor coaching e supervisione. Abilita alla credenziale PCC.",
+        desc: "Il 2° livello (70,5 ore di formazione) per chi ha già completato il Livello 1: intelligenza emotiva avanzata, sistemi complessi, mentor coaching e supervisione. Abilita alla credenziale PCC.",
         price: "4.500€",
         priceLabel: "+ IVA",
         financing: {
@@ -699,7 +700,7 @@ export const coursesContent: Record<string, CourseData> = {
       intro:
         "Esci dal Master capace di condurre percorsi di coaching veri: metodo, pratica supervisionata e strumenti concreti per iniziare a lavorare come coach o integrare il coaching nella tua professione. Le competenze che porti a casa sono spendibili con persone, team e organizzazioni, con standard ICF e attenzione alla pratica reale.",
       stats: [
-        { value: "150 ore", label: "Tra lezioni, pratica e studio" },
+        { value: "133,5 ore", label: "Di formazione, tra lezioni e pratica" },
         { value: "3.000+", label: "Alumni Asterys nel mondo" },
         { value: "ICF", label: "Standard e competenze internazionali" }
       ],
@@ -727,6 +728,18 @@ export const coursesContent: Record<string, CourseData> = {
         {
           title: "Costruisci la tua identità e il tuo posizionamento da coach",
           desc: "Definisci confini professionali, stile personale, proposta di valore e primi passi per presentarti in modo credibile a clienti, aziende o contesti HR."
+        },
+        {
+          title: "Sviluppi la tua padronanza personale (personal mastery)",
+          desc: "Lavori su di te — consapevolezza, presenza, centratura ed etica — perché la personal mastery è la base indispensabile dell'eccellenza nella professione di coach."
+        },
+        {
+          title: "Gestisci gli aspetti corporate dell'executive coaching",
+          desc: "Sai muoverti nei programmi di executive coaching in azienda: contrattazione a tre (coach, cliente, committenza), obiettivi organizzativi, stakeholder e reportistica verso l'impresa."
+        },
+        {
+          title: "Padroneggi il coaching trasformazionale e sistemico",
+          desc: "Vai oltre gli obiettivi di superficie: accompagni cambiamenti profondi lavorando su schemi, prospettive e sistemi, con le competenze avanzate del coaching trasformazionale."
         }
       ],
       careerPaths: [
@@ -766,7 +779,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Calendario edizioni",
       title: "Scegli sede, livello ed edizione",
       intro:
-        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri Online, i Live Lab, i Corsi intensivi e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
+        "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri online, i Moduli (online e in presenza) e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
     },
     whyChoose: {
       eyebrow: "Perché scegliere il Master in Coaching",
@@ -823,9 +836,9 @@ export const coursesContent: Record<string, CourseData> = {
           features: [
             "Richiesto CV",
             "Sedi: Roma e Milano",
-            "Live Lab: 1",
-            "Laboratorio Full Immersion: 1",
-            "Live Class: 6",
+            "Modulo online: 1",
+            "Moduli in presenza: 1",
+            "Incontri online: 6",
             "Personal Coaching: 5 ore",
             "Mentor Coaching",
             "Esame Pratico con la scuola",
@@ -844,9 +857,9 @@ export const coursesContent: Record<string, CourseData> = {
           features: [
             "Richiesto CV",
             "Sedi: Roma e Milano",
-            "Live Lab: 1",
-            "Laboratori Full Immersion: 3",
-            "Live Class: 11",
+            "Modulo online: 1",
+            "Moduli in presenza: 3",
+            "Incontri online: 11",
             "Personal Coaching: 14 ore",
             "Corso di Intelligenza Emotiva: 6 ore",
             "Corso Personal Branding per Coach incluso",
@@ -867,8 +880,8 @@ export const coursesContent: Record<string, CourseData> = {
             "Accesso riservato a chi ha completato il Livello 1",
             "Richiesto CV",
             "Sedi: Roma e Milano",
-            "Laboratori Full Immersion: 2",
-            "Live Class: 5",
+            "Moduli in presenza: 2",
+            "Incontri online: 5",
             "Personal Coaching: 9 ore",
             "Corso di Intelligenza Emotiva: 6 ore",
             "Corso Personal Branding per Coach incluso",
@@ -925,14 +938,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "12 dicembre 2025", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "29 gennaio 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "12 febbraio 2026", type: "live-class" },
-          { label: "Live Lab", date: "19, 20, 21 febbraio 2026", type: "live-lab", note: "Videoconferenza" },
-          { label: "Live Class 2", date: "25 febbraio 2026", type: "live-class" },
-          { label: "Live Class 3", date: "3 marzo 2026", type: "live-class" },
-          { label: "Live Class 4", date: "9 marzo 2026", type: "live-class" },
-          { label: "Corso II", date: "19, 20, 21 marzo 2026", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 5", date: "25 marzo 2026", type: "live-class" },
-          { label: "Live Class 6", date: "31 marzo 2026", type: "live-class" },
+          { label: "Incontro online 1", date: "12 febbraio 2026", type: "live-class" },
+          { label: "Modulo 1", date: "19, 20, 21 febbraio 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "25 febbraio 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "3 marzo 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "9 marzo 2026", type: "live-class" },
+          { label: "Modulo 2", date: "19, 20, 21 marzo 2026", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 5", date: "25 marzo 2026", type: "live-class" },
+          { label: "Incontro online 6", date: "31 marzo 2026", type: "live-class" },
           { label: "Orientamento", date: "6 maggio 2026", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Maggio 2026", type: "milestone" }
         ]
@@ -951,14 +964,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "12 marzo 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "28 aprile 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "12 maggio 2026", type: "live-class" },
-          { label: "Live Lab", date: "21, 22, 23 maggio 2026", type: "live-lab", note: "Videoconferenza" },
-          { label: "Live Class 2", date: "28 maggio 2026", type: "live-class" },
-          { label: "Live Class 3", date: "3 giugno 2026", type: "live-class" },
-          { label: "Live Class 4", date: "23 settembre 2026", type: "live-class" },
-          { label: "Corso II", date: "1, 2, 3 ottobre 2026", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 5", date: "13 ottobre 2026", type: "live-class" },
-          { label: "Live Class 6", date: "21 ottobre 2026", type: "live-class" },
+          { label: "Incontro online 1", date: "12 maggio 2026", type: "live-class" },
+          { label: "Modulo 1", date: "21, 22, 23 maggio 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "28 maggio 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "3 giugno 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "23 settembre 2026", type: "live-class" },
+          { label: "Modulo 2", date: "1, 2, 3 ottobre 2026", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 5", date: "13 ottobre 2026", type: "live-class" },
+          { label: "Incontro online 6", date: "21 ottobre 2026", type: "live-class" },
           { label: "Orientamento", date: "2 dicembre 2026", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Dicembre 2026", type: "milestone" }
         ]
@@ -977,14 +990,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "27 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "13 ottobre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "27 ottobre 2026", type: "live-class" },
-          { label: "Live Lab", date: "5, 6, 7 novembre 2026", type: "live-lab", note: "Videoconferenza" },
-          { label: "Live Class 2", date: "12 novembre 2026", type: "live-class" },
-          { label: "Live Class 3", date: "18 novembre 2026", type: "live-class" },
-          { label: "Live Class 4", date: "13 gennaio 2027", type: "live-class" },
-          { label: "Corso II", date: "21, 22, 23 gennaio 2027", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 5", date: "4 febbraio 2027", type: "live-class" },
-          { label: "Live Class 6", date: "10 febbraio 2027", type: "live-class" },
+          { label: "Incontro online 1", date: "27 ottobre 2026", type: "live-class" },
+          { label: "Modulo 1", date: "5, 6, 7 novembre 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "12 novembre 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "18 novembre 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "13 gennaio 2027", type: "live-class" },
+          { label: "Modulo 2", date: "21, 22, 23 gennaio 2027", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 5", date: "4 febbraio 2027", type: "live-class" },
+          { label: "Incontro online 6", date: "10 febbraio 2027", type: "live-class" },
           { label: "Orientamento", date: "2 marzo 2027", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Marzo 2027", type: "milestone" }
         ]
@@ -1003,17 +1016,17 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "21 febbraio 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "7 aprile 2026", type: "deadline-final" },
-          { label: "Live Class 7 EI", date: "21 aprile 2026", type: "live-class" },
-          { label: "Live Class 8", date: "29 aprile 2026", type: "live-class" },
-          { label: "Live Class 9 EI", date: "6 maggio 2026", type: "live-class" },
-          { label: "Corso III", date: "14, 15, 16 maggio 2026", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 10 EI", date: "19 maggio 2026", type: "live-class" },
-          { label: "Live Class 11", date: "26 maggio 2026", type: "live-class" },
-          { label: "Live Class 12", date: "4 giugno 2026", type: "live-class" },
-          { label: "Live Class 13 EI", date: "10 giugno 2026", type: "live-class" },
-          { label: "Corso IV", date: "18, 19, 20 giugno 2026", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 14", date: "24 giugno 2026", type: "live-class" },
-          { label: "Live Class 15", date: "30 giugno 2026", type: "live-class" },
+          { label: "Incontro online 7 EI", date: "21 aprile 2026", type: "live-class" },
+          { label: "Incontro online 8", date: "29 aprile 2026", type: "live-class" },
+          { label: "Incontro online 9 EI", date: "6 maggio 2026", type: "live-class" },
+          { label: "Modulo 3", date: "14, 15, 16 maggio 2026", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 10 EI", date: "19 maggio 2026", type: "live-class" },
+          { label: "Incontro online 11", date: "26 maggio 2026", type: "live-class" },
+          { label: "Incontro online 12", date: "4 giugno 2026", type: "live-class" },
+          { label: "Incontro online 13 EI", date: "10 giugno 2026", type: "live-class" },
+          { label: "Modulo 4", date: "18, 19, 20 giugno 2026", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 14", date: "24 giugno 2026", type: "live-class" },
+          { label: "Incontro online 15", date: "30 giugno 2026", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
           { label: "Fine Attività 2° livello", date: "Giugno 2026", type: "milestone" }
         ]
@@ -1032,17 +1045,17 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "10 gennaio 2027", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "24 febbraio 2027", type: "deadline-final" },
-          { label: "Live Class 7 EI", date: "10 marzo 2027", type: "live-class" },
-          { label: "Live Class 8", date: "17 marzo 2027", type: "live-class" },
-          { label: "Live Class 9 EI", date: "24 marzo 2027", type: "live-class" },
-          { label: "Corso III", date: "1, 2, 3 aprile 2027", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 10", date: "14 aprile 2027", type: "live-class" },
-          { label: "Live Class 11 EI", date: "21 aprile 2027", type: "live-class" },
-          { label: "Live Class 12", date: "28 aprile 2027", type: "live-class" },
-          { label: "Live Class 13 EI", date: "5 maggio 2027", type: "live-class" },
-          { label: "Corso IV", date: "13, 14, 15 maggio 2027", type: "corso", note: "Modulo intensivo" },
-          { label: "Live Class 14", date: "26 maggio 2027", type: "live-class" },
-          { label: "Live Class 15", date: "8 giugno 2027", type: "live-class" },
+          { label: "Incontro online 7 EI", date: "10 marzo 2027", type: "live-class" },
+          { label: "Incontro online 8", date: "17 marzo 2027", type: "live-class" },
+          { label: "Incontro online 9 EI", date: "24 marzo 2027", type: "live-class" },
+          { label: "Modulo 3", date: "1, 2, 3 aprile 2027", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 10", date: "14 aprile 2027", type: "live-class" },
+          { label: "Incontro online 11 EI", date: "21 aprile 2027", type: "live-class" },
+          { label: "Incontro online 12", date: "28 aprile 2027", type: "live-class" },
+          { label: "Incontro online 13 EI", date: "5 maggio 2027", type: "live-class" },
+          { label: "Modulo 4", date: "13, 14, 15 maggio 2027", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 14", date: "26 maggio 2027", type: "live-class" },
+          { label: "Incontro online 15", date: "8 giugno 2027", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
           { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
         ]
@@ -1061,14 +1074,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "19 dicembre 2025", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "5 febbraio 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "19 febbraio 2026", type: "live-class" },
-          { label: "Live Lab", date: "26, 27, 28 febbraio 2026", type: "live-lab", note: "In presenza a Roma" },
-          { label: "Live Class 2", date: "4 marzo 2026", type: "live-class" },
-          { label: "Live Class 3", date: "10 marzo 2026", type: "live-class" },
-          { label: "Live Class 4", date: "16 marzo 2026", type: "live-class" },
-          { label: "Corso II", date: "26, 27, 28 marzo 2026", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 5", date: "1 aprile 2026", type: "live-class" },
-          { label: "Live Class 6", date: "7 aprile 2026", type: "live-class" },
+          { label: "Incontro online 1", date: "19 febbraio 2026", type: "live-class" },
+          { label: "Modulo 1", date: "26, 27, 28 febbraio 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "4 marzo 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "10 marzo 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "16 marzo 2026", type: "live-class" },
+          { label: "Modulo 2", date: "26, 27, 28 marzo 2026", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 5", date: "1 aprile 2026", type: "live-class" },
+          { label: "Incontro online 6", date: "7 aprile 2026", type: "live-class" },
           { label: "Orientamento", date: "13 maggio 2026", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Maggio 2026", type: "milestone" }
         ]
@@ -1087,14 +1100,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "19 marzo 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "5 maggio 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "19 maggio 2026", type: "live-class" },
-          { label: "Live Lab", date: "28, 29, 30 maggio 2026", type: "live-lab", note: "In presenza a Roma" },
-          { label: "Live Class 2", date: "3 giugno 2026", type: "live-class" },
-          { label: "Live Class 3", date: "10 giugno 2026", type: "live-class" },
-          { label: "Live Class 4", date: "30 settembre 2026", type: "live-class" },
-          { label: "Corso II", date: "8, 9, 10 ottobre 2026", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 5", date: "20 ottobre 2026", type: "live-class" },
-          { label: "Live Class 6", date: "28 ottobre 2026", type: "live-class" },
+          { label: "Incontro online 1", date: "19 maggio 2026", type: "live-class" },
+          { label: "Modulo 1", date: "28, 29, 30 maggio 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "3 giugno 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "10 giugno 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "30 settembre 2026", type: "live-class" },
+          { label: "Modulo 2", date: "8, 9, 10 ottobre 2026", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 5", date: "20 ottobre 2026", type: "live-class" },
+          { label: "Incontro online 6", date: "28 ottobre 2026", type: "live-class" },
           { label: "Orientamento", date: "9 dicembre 2026", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Dicembre 2026", type: "milestone" }
         ]
@@ -1113,14 +1126,14 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "3 settembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "20 ottobre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "3 novembre 2026", type: "live-class" },
-          { label: "Live Lab", date: "12, 13, 14 novembre 2026", type: "live-lab", note: "In presenza a Roma" },
-          { label: "Live Class 2", date: "19 novembre 2026", type: "live-class" },
-          { label: "Live Class 3", date: "25 novembre 2026", type: "live-class" },
-          { label: "Live Class 4", date: "20 gennaio 2027", type: "live-class" },
-          { label: "Corso II", date: "28, 29, 30 gennaio 2027", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 5", date: "11 febbraio 2027", type: "live-class" },
-          { label: "Live Class 6", date: "17 febbraio 2027", type: "live-class" },
+          { label: "Incontro online 1", date: "3 novembre 2026", type: "live-class" },
+          { label: "Modulo 1", date: "12, 13, 14 novembre 2026", type: "live-lab", note: "Online" },
+          { label: "Incontro online 2", date: "19 novembre 2026", type: "live-class" },
+          { label: "Incontro online 3", date: "25 novembre 2026", type: "live-class" },
+          { label: "Incontro online 4", date: "20 gennaio 2027", type: "live-class" },
+          { label: "Modulo 2", date: "28, 29, 30 gennaio 2027", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 5", date: "11 febbraio 2027", type: "live-class" },
+          { label: "Incontro online 6", date: "17 febbraio 2027", type: "live-class" },
           { label: "Orientamento", date: "9 marzo 2027", type: "orientamento" },
           { label: "Fine Attività 1° livello", date: "Marzo 2027", type: "milestone" }
         ]
@@ -1139,17 +1152,17 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "28 febbraio 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "14 aprile 2026", type: "deadline-final" },
-          { label: "Live Class 7 EI", date: "28 aprile 2026", type: "live-class" },
-          { label: "Live Class 8", date: "6 maggio 2026", type: "live-class" },
-          { label: "Live Class 9 EI", date: "13 maggio 2026", type: "live-class" },
-          { label: "Corso III", date: "21, 22, 23 maggio 2026", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 10 EI", date: "26 maggio 2026", type: "live-class" },
-          { label: "Live Class 11", date: "3 giugno 2026", type: "live-class" },
-          { label: "Live Class 12", date: "11 giugno 2026", type: "live-class" },
-          { label: "Live Class 13 EI", date: "17 giugno 2026", type: "live-class" },
-          { label: "Corso IV", date: "25, 26, 27 giugno 2026", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 14", date: "1 luglio 2026", type: "live-class" },
-          { label: "Live Class 15", date: "7 luglio 2026", type: "live-class" },
+          { label: "Incontro online 7 EI", date: "28 aprile 2026", type: "live-class" },
+          { label: "Incontro online 8", date: "6 maggio 2026", type: "live-class" },
+          { label: "Incontro online 9 EI", date: "13 maggio 2026", type: "live-class" },
+          { label: "Modulo 3", date: "21, 22, 23 maggio 2026", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 10 EI", date: "26 maggio 2026", type: "live-class" },
+          { label: "Incontro online 11", date: "3 giugno 2026", type: "live-class" },
+          { label: "Incontro online 12", date: "11 giugno 2026", type: "live-class" },
+          { label: "Incontro online 13 EI", date: "17 giugno 2026", type: "live-class" },
+          { label: "Modulo 4", date: "25, 26, 27 giugno 2026", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 14", date: "1 luglio 2026", type: "live-class" },
+          { label: "Incontro online 15", date: "7 luglio 2026", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
           { label: "Fine Attività 2° livello", date: "Luglio 2026", type: "milestone" }
         ]
@@ -1168,17 +1181,17 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "17 gennaio 2027", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "3 marzo 2027", type: "deadline-final" },
-          { label: "Live Class 7 EI", date: "17 marzo 2027", type: "live-class" },
-          { label: "Live Class 8", date: "24 marzo 2027", type: "live-class" },
-          { label: "Live Class 9 EI", date: "31 marzo 2027", type: "live-class" },
-          { label: "Corso III", date: "8, 9, 10 aprile 2027", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 10", date: "21 aprile 2027", type: "live-class" },
-          { label: "Live Class 11 EI", date: "28 aprile 2027", type: "live-class" },
-          { label: "Live Class 12", date: "5 maggio 2027", type: "live-class" },
-          { label: "Live Class 13 EI", date: "12 maggio 2027", type: "live-class" },
-          { label: "Corso IV", date: "20, 21, 22 maggio 2027", type: "corso", note: "Modulo intensivo in presenza" },
-          { label: "Live Class 14", date: "2 giugno 2027", type: "live-class" },
-          { label: "Live Class 15", date: "15 giugno 2027", type: "live-class" },
+          { label: "Incontro online 7 EI", date: "17 marzo 2027", type: "live-class" },
+          { label: "Incontro online 8", date: "24 marzo 2027", type: "live-class" },
+          { label: "Incontro online 9 EI", date: "31 marzo 2027", type: "live-class" },
+          { label: "Modulo 3", date: "8, 9, 10 aprile 2027", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 10", date: "21 aprile 2027", type: "live-class" },
+          { label: "Incontro online 11 EI", date: "28 aprile 2027", type: "live-class" },
+          { label: "Incontro online 12", date: "5 maggio 2027", type: "live-class" },
+          { label: "Incontro online 13 EI", date: "12 maggio 2027", type: "live-class" },
+          { label: "Modulo 4", date: "20, 21, 22 maggio 2027", type: "corso", note: "In presenza a Roma" },
+          { label: "Incontro online 14", date: "2 giugno 2027", type: "live-class" },
+          { label: "Incontro online 15", date: "15 giugno 2027", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
           { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
         ]
@@ -1187,12 +1200,13 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'systemic-team-coaching': {
     title: "Master in Team Coaching Sistemico",
-    subtitle: "Fai crescere interi team, non solo i singoli",
+    brochureUrl: "https://asteryslab.com/wp-content/uploads/ASTC-brochure.pdf",
+    subtitle: "Accompagna team e leader al risultato",
     tagline: "Accompagni team e organizzazioni a risultati straordinari con l'esclusivo modello di Team Coaching Sistemico — e maturi il prerequisito ICF per la credenziale di team coaching (ACTC).",
     certificate: {
       eyebrow: "Attestato finale",
       title: "Un percorso certificato",
-      body: "Completato il Master ricevi il **certificato di partecipazione** (54 ore · 60 CCE ICF). Superando l'**esame Expert** ottieni inoltre il **diploma AATC**, prerequisito ICF per la credenziale **ACTC** (Advanced Certification in Team Coaching).",
+      body: "Completato il Master ricevi il **certificato di partecipazione** (60 ore · 54 CCE ICF). Superando l'**esame Expert** ottieni inoltre il **diploma AATC**, prerequisito ICF per la credenziale **ACTC** (Advanced Certification in Team Coaching).",
       image: "/course-media/systemic-team-coaching/certificato.png",
     },
     type: "AVANZATO",
@@ -1207,17 +1221,17 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Come si struttura il percorso",
       intro:
-        "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Live Class e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox e pratica applicata.",
+        "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Incontro online e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox e pratica applicata.",
       formazioneTitle: "Struttura e trainer",
-      formazioneBadge: "54 ore live · 60 CCE ICF",
+      formazioneBadge: "60 ore live · 54 CCE ICF",
       formazioneIntro:
-        "Team Coaching Sistemico 1° livello prevede due giornate in videoconferenza e Live Class da due ore. Team Coaching Sistemico 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox. L'Esame Expert è opzionale e consente di ottenere il diploma AATC ICF.",
+        "Team Coaching Sistemico 1° livello prevede due giornate in videoconferenza e Incontro online da due ore. Team Coaching Sistemico 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox. L'Esame Expert è opzionale e consente di ottenere il diploma AATC ICF.",
     },
     scheduleColumns: [
       {
         icon: "monitor",
         title: "Team Coaching Sistemico 1° livello",
-        body: "Corso di due giornate in videoconferenza, Live Class da due ore e homework su progetti di team coaching supportati dalla piattaforma Inner.",
+        body: "Corso di due giornate in videoconferenza, Incontro online da due ore e homework su progetti di team coaching supportati dalla piattaforma Inner.",
       },
       {
         icon: "users",
@@ -1242,7 +1256,7 @@ export const coursesContent: Record<string, CourseData> = {
       body: "Dopo aver superato l'esame ottieni il diploma AATC ICF: è il prerequisito per accedere alla credenziale Advanced Certification in Team Coaching (ACTC) e ti dà accesso all'application ICF. Dovrai maturare un certo numero di ore di pratica professionale, ma il tuo diploma è riconosciuto a livello internazionale.",
     },
     programIntro:
-      "Il percorso di Team Coaching Sistemico unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Live Class, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox.",
+      "Il percorso di Team Coaching Sistemico unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Incontro online, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox.",
     admissionBox: {
       title: "Requisiti per partecipare",
       body: "Per l'accesso al corso è richiesto l'invio del CV. Il workshop non tratta i fondamentali di management, coaching o facilitazione: è quindi importante avere una conoscenza di base di queste discipline.",
@@ -1261,13 +1275,13 @@ export const coursesContent: Record<string, CourseData> = {
       "Accompagni team e organizzazioni a risultati straordinari in tempi brevi",
       "Aiuti team e leader a sostituire gli schemi limitanti ed esprimere tutto il potenziale del gruppo",
       "Maturi il prerequisito per la credenziale ICF di team coaching (ACTC)",
-      "Porti a casa 54 ore di formazione live e 60 CCE ICF per il rinnovo della credenziale"
+      "Porti a casa 60 ore di formazione live e 54 CCE ICF per il rinnovo della credenziale"
     ],
     summaryBox: {
       nextEdition: "Videoconferenza + Milano / Roma",
       dates: "Ottobre 2026 – Febbraio 2027",
       format: "Ibrido (Live Online + In aula)",
-      duration: "54 ore sincrone · 60 CCE",
+      duration: "60 ore sincrone · 54 CCE",
       price: "Da 1.200€ + IVA",
       installments: "Rateizzazione disponibile"
     },
@@ -1297,8 +1311,8 @@ export const coursesContent: Record<string, CourseData> = {
       modules: [
         {
           title: "Team Coaching Sistemico 1° livello",
-          desc: "Corso di due giornate in videoconferenza più alcune Live Class da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra piattaforma di social learning Inner.",
-          tags: ["Live Online", "Live Class 2h", "Piattaforma Inner", "Homework"]
+          desc: "Corso di due giornate in videoconferenza più alcune Incontro online da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra piattaforma di social learning Inner.",
+          tags: ["Live Online", "Incontro online 2h", "Piattaforma Inner", "Homework"]
         },
         {
           title: "Team Coaching Sistemico 2° livello",
@@ -1326,8 +1340,8 @@ export const coursesContent: Record<string, CourseData> = {
       content: "Esci pronto a operare come team coach sistemico, con le competenze e gli strumenti indispensabili per esserlo davvero — e che, come raccontano i nostri graduati, hanno un'influenza molto positiva anche sul tuo coaching individuale. Superando l'esame Expert ottieni il diploma AATC, prerequisito ICF per la credenziale Advanced Certification in Team Coaching (ACTC).",
       points: [
         { title: "Diploma AATC ICF", desc: "Lo ottieni superando l'esame Expert: è il prerequisito riconosciuto per accedere alla credenziale ICF ACTC." },
-        { title: "Attestato di partecipazione", desc: "Anche senza esame porti a casa 54 ore di formazione sincrona certificate." },
-        { title: "60 CCE ICF", desc: "L'attestato AATC vale 60 CCE: rinnovi la tua credenziale di Coach ICF mentre ti specializzi sui team." },
+        { title: "Attestato di partecipazione", desc: "Anche senza esame porti a casa 60 ore di formazione sincrona certificate." },
+        { title: "54 CCE ICF", desc: "L'attestato AATC vale 54 CCE (46 CC + 8 RD): rinnovi la tua credenziale di Coach ICF mentre ti specializzi sui team." },
         { title: "Conduci team coaching immersivi", desc: "Sai condurre percorsi di team coaching immersivi e team-centrici, con procedure e metodologia sistemica." }
       ]
     },
@@ -1353,13 +1367,13 @@ export const coursesContent: Record<string, CourseData> = {
     },
     classDates: [
       { date: "6 ottobre 2026", badge: "TEAM COACHING SISTEMICO 1° LIVELLO · Live Online" },
-      { date: "20 gennaio 2027", badge: "TEAM COACHING SISTEMICO 2° LIVELLO · 1a Live Class" }
+      { date: "20 gennaio 2027", badge: "TEAM COACHING SISTEMICO 2° LIVELLO · Incontro online 1" }
     ],
     sessionSchedule: [
-      { days: "Team Coaching Sistemico 1° livello · Live Class", time: "6 ottobre, 29 ottobre e 10 novembre 2026" },
-      { days: "Team Coaching Sistemico 1° livello · Corso a distanza", time: "16, 17 ottobre 2026" },
-      { days: "Team Coaching Sistemico 2° livello · Live Class", time: "20 gennaio e 15 febbraio 2027" },
-      { days: "Team Coaching Sistemico 2° livello · Corso in aula", time: "Milano 4, 5, 6 febbraio · Roma 25, 26, 27 febbraio 2027" }
+      { days: "Team Coaching Sistemico 1° livello · Incontro online", time: "6 ottobre, 29 ottobre e 10 novembre 2026" },
+      { days: "Team Coaching Sistemico 1° livello · Modulo 1 (online)", time: "16, 17 ottobre 2026" },
+      { days: "Team Coaching Sistemico 2° livello · Incontro online", time: "20 gennaio e 15 febbraio 2027" },
+      { days: "Team Coaching Sistemico 2° livello · Modulo 2 (in presenza)", time: "Milano 4, 5, 6 febbraio · Roma 25, 26, 27 febbraio 2027" }
     ],
     editionsSection: {
       eyebrow: "Calendario edizioni",
@@ -1383,15 +1397,15 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird 1° livello", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 1° livello", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Team Coaching Sistemico 1° livello" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Incontro online 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Modulo 1", date: "16, 17 ottobre 2026", type: "corso", note: "1° livello · Online" },
+          { label: "Incontro online 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Incontro online 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
           { label: "Early Bird 2° livello", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 2° livello", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
-          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "Team Coaching Sistemico 2° livello" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Incontro online 1", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Modulo 2", date: "4, 5, 6 febbraio 2027", type: "corso", note: "2° livello · In presenza a Milano" },
+          { label: "Incontro online 2", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
           { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
@@ -1410,10 +1424,10 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Videoconferenza" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Online" },
+          { label: "Incontro online 1", date: "6 ottobre 2026", type: "live-class", note: "Online" },
+          { label: "Modulo 1", date: "16, 17 ottobre 2026", type: "corso", note: "Online" },
+          { label: "Incontro online 2", date: "29 ottobre 2026", type: "live-class", note: "Online" },
+          { label: "Incontro online 3", date: "10 novembre 2026", type: "live-class", note: "Online" },
         ],
       },
       {
@@ -1431,9 +1445,9 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Online" },
-          { label: "Corso in aula Milano", date: "4, 5, 6 febbraio 2027", type: "corso", note: "Milano" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Online" },
+          { label: "Incontro online 1", date: "20 gennaio 2027", type: "live-class", note: "Online" },
+          { label: "Modulo 2", date: "4, 5, 6 febbraio 2027", type: "corso", note: "In presenza a Milano" },
+          { label: "Incontro online 2", date: "15 febbraio 2027", type: "live-class", note: "Online" },
           { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
@@ -1452,15 +1466,15 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird 1° livello", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 1° livello", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Team Coaching Sistemico 1° livello" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Incontro online 1", date: "6 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Modulo 1", date: "16, 17 ottobre 2026", type: "corso", note: "1° livello · Online" },
+          { label: "Incontro online 2", date: "29 ottobre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
+          { label: "Incontro online 3", date: "10 novembre 2026", type: "live-class", note: "Team Coaching Sistemico 1° livello · Online" },
           { label: "Early Bird 2° livello", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni 2° livello", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
-          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "Team Coaching Sistemico 2° livello" },
+          { label: "Incontro online 1", date: "20 gennaio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Incontro online 2", date: "15 febbraio 2027", type: "live-class", note: "Team Coaching Sistemico 2° livello · Online" },
+          { label: "Modulo 2", date: "25, 26, 27 febbraio 2027", type: "corso", note: "2° livello · In presenza a Roma" },
           { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
@@ -1479,10 +1493,10 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "19 agosto 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "19 settembre 2026", type: "deadline-final" },
-          { label: "Live Class 1", date: "6 ottobre 2026", type: "live-class", note: "Online" },
-          { label: "Corso a distanza", date: "16, 17 ottobre 2026", type: "corso", note: "Videoconferenza" },
-          { label: "Live Class 2", date: "29 ottobre 2026", type: "live-class", note: "Online" },
-          { label: "Live Class 3", date: "10 novembre 2026", type: "live-class", note: "Online" },
+          { label: "Incontro online 1", date: "6 ottobre 2026", type: "live-class", note: "Online" },
+          { label: "Modulo 1", date: "16, 17 ottobre 2026", type: "corso", note: "Online" },
+          { label: "Incontro online 2", date: "29 ottobre 2026", type: "live-class", note: "Online" },
+          { label: "Incontro online 3", date: "10 novembre 2026", type: "live-class", note: "Online" },
         ],
       },
       {
@@ -1500,9 +1514,9 @@ export const coursesContent: Record<string, CourseData> = {
         events: [
           { label: "Early Bird", date: "21 novembre 2026", type: "deadline-early" },
           { label: "Fine iscrizioni", date: "20 dicembre 2026", type: "deadline-final" },
-          { label: "1a Live Class", date: "20 gennaio 2027", type: "live-class", note: "Online" },
-          { label: "2a Live Class", date: "15 febbraio 2027", type: "live-class", note: "Online" },
-          { label: "Corso in aula Roma", date: "25, 26, 27 febbraio 2027", type: "corso", note: "Roma" },
+          { label: "Incontro online 1", date: "20 gennaio 2027", type: "live-class", note: "Online" },
+          { label: "Incontro online 2", date: "15 febbraio 2027", type: "live-class", note: "Online" },
+          { label: "Modulo 2", date: "25, 26, 27 febbraio 2027", type: "corso", note: "In presenza a Roma" },
           { label: "Esame Expert", date: "Opzionale", type: "milestone" },
         ],
       },
@@ -1515,7 +1529,7 @@ export const coursesContent: Record<string, CourseData> = {
         wooKey: "l1",
         benefit: "Live online",
         heading: "Team Coaching Sistemico 1° livello",
-        desc: "Primo livello di Team Coaching Sistemico in videoconferenza, con Live Class e corso a distanza.",
+        desc: "Primo livello di Team Coaching Sistemico in videoconferenza, con Incontro online e corso a distanza.",
         price: "1.200€",
         priceLabel: "+ IVA",
         financing: {
@@ -1547,7 +1561,7 @@ export const coursesContent: Record<string, CourseData> = {
         wooKey: "l2",
         benefit: "In aula",
         heading: "Team Coaching Sistemico 2° livello",
-        desc: "Secondo livello di Team Coaching Sistemico con Live Class online e corso in aula a Milano o Roma.",
+        desc: "Secondo livello di Team Coaching Sistemico con Incontro online online e corso in aula a Milano o Roma.",
         price: "2.100€",
         priceLabel: "+ IVA",
         financing: {
@@ -1576,7 +1590,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Le lezioni sono online o in presenza?",
-        a: "Il 1° livello si svolge a distanza, in videoconferenza con Live Class; il 2° livello è in aula a Milano o a Roma. Unisci così la flessibilità dell'online alla profondità della pratica in presenza."
+        a: "Il 1° livello si svolge a distanza, in videoconferenza con Incontro online; il 2° livello è in aula a Milano o a Roma. Unisci così la flessibilità dell'online alla profondità della pratica in presenza."
       },
       {
         q: "Si può pagare a rate?",
@@ -1586,7 +1600,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'eiw': {
     title: "Intelligenza Emotiva",
-    subtitle: "Stai con le emozioni, dove conta",
+    subtitle: "Gestisci le emozioni nei momenti che contano",
     tagline: "Impari a stare con le emozioni in modo intelligente, dove più conta: alleni davvero la tua intelligenza emotiva con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
     type: "WORKOUT EQ",
     media: {
@@ -1779,7 +1793,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'coaching-circle': {
     title: "Mentoring per il rinnovo delle credenziali",
-    subtitle: "Le tue 10 ore di mentor coaching",
+    subtitle: "Rinnova la tua credenziale ICF con la pratica",
     tagline: "Rinnovi la tua credenziale ICF con serenità: maturi le 10 ore di mentor coaching richieste, accompagnato da un Mentor Coach MCC, in gruppo o individualmente.",
     type: "MENTORING ICF",
     heroKicker: "PER RINNOVARE LA TUA CREDENZIALE ICF",
@@ -1987,7 +2001,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'public-speaking': {
     title: "Public Speaking Pro",
-    subtitle: "Parla in pubblico con presenza e impatto",
+    brochureUrl: "https://asteryslab.com/wp-content/uploads/Public-Speaking-Pro-1.pdf",
+    subtitle: "Rendi memorabile ogni tuo intervento",
     tagline: "Parli in pubblico con disinvoltura e rendi memorabile ogni tuo intervento: in 3 giornate di full immersion in presenza più follow up online padroneggi corpo, voce ed emozioni davanti a qualsiasi platea.",
     type: "COMUNICAZIONE",
     media: {
@@ -2100,7 +2115,8 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'voice-dialogue': {
     title: "Voice Dialogue Skills",
-    subtitle: "Più Presenza in ogni sessione",
+    brochureUrl: "https://asteryslab.com/wp-content/uploads/VDS-brochure-2026-v.1.0.pdf",
+    subtitle: "Porta più profondità in ogni sessione",
     tagline: "Porti più profondità, risorse e qualità di Presenza in ogni sessione: integri il Voice Dialogue nella tua pratica di coaching e di supporto alla persona.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "PER COACH E PROFESSIONISTI DELLO SVILUPPO",
@@ -2132,7 +2148,7 @@ export const coursesContent: Record<string, CourseData> = {
       content: [
         "Di fronte a cambiamenti radicali del contesto capita di trovarsi in difficoltà: continui a pensare con il solito set di pensieri e ti identifichi in un Sé che non riesce ad adattarsi, senza sapere dove trovare le risorse necessarie. Il **Voice Dialogue** offre un supporto prezioso allo sviluppo della consapevolezza, nel rapporto di coaching e nelle professioni dedicate allo sviluppo della persona: basato sulla **Psicologia dei Sé** — che affonda le radici nel pensiero di **C.G. Jung** ed è stata poi elaborata negli Stati Uniti da **Hal e Sidra Stone** — ti permette di integrare le tue risorse e di comprendere la natura dei comportamenti limitanti, tuoi e del cliente, portando più profondità, risorse e qualità di Presenza in ogni sessione.",
         "Lo scopo del Voice Dialogue è supportare la persona a trovare il proprio **Io consapevole** — diverso dall'Io operativo — inteso come \"altro\" rispetto ai Sé in cui di solito ci si identifica. Così puoi scegliere consapevolmente quali parti e atteggiamenti di te utilizzare in base alle necessità: conoscere e padroneggiare il metodo porta a una maggiore consapevolezza di sé e, quindi, a maggiori possibilità di scelta e d'azione.",
-        "**Asterys Lab introduce il Voice Dialogue nel mondo del coaching italiano nel 2013**, portando da Londra **John Kent** e organizzando alcune edizioni memorabili del corso Voice Dialogue Facilitator. Da allora ha certificato molti dei facilitatori oggi attivi nel contesto del coaching ICF."
+        "**Asterys Lab introduce il Voice Dialogue nel mondo del coaching italiano nel 2013**, portando da Londra **John Kent** e organizzando alcune edizioni memorabili. Da allora ha certificato molti dei facilitatori oggi attivi nel contesto del coaching ICF."
       ]
     },
     target: [
@@ -2326,7 +2342,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'marketing-per-coach': {
     title: "Personal Branding per Coach",
-    subtitle: "Fatti scegliere dai clienti giusti",
+    subtitle: "Costruisci un personal brand da coach",
     tagline: "In cinque webinar con Helga Ogliari costruisci un personal branding chiaro e riconoscibile, impari a comunicare il tuo valore e acquisisci i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
     type: "FORMAZIONE AVANZATA",
     heroKicker: "Personal branding · 5 webinar",
@@ -2478,7 +2494,7 @@ export const coursesContent: Record<string, CourseData> = {
   },
   'continuous-learning': {
     title: "Continuous Learning (CL)",
-    subtitle: "Cresci come coach ogni mese e accumuli CCE ICF",
+    subtitle: "La tua formazione continua di coach",
     tagline: "Non ti fermi dopo il corso: tieni viva la tua pratica di coach e accumuli CCE ICF, un incontro al mese tutto l'anno tranne agosto. Entri quando vuoi.",
     type: "CONTINUOUS LEARNING",
     media: {
@@ -2496,9 +2512,9 @@ export const coursesContent: Record<string, CourseData> = {
     summaryBox: {
       nextEdition: "Online · Zoom",
       dates: "Tutto l'anno · pausa ad agosto",
-      format: "Live Class mensili",
+      format: "Incontri online mensili",
       duration: "1 incontro/mese · 18:30–20:00",
-      price: "Da 9€ + IVA a Live Class",
+      price: "Da 9€ + IVA a incontro",
       installments: "Pacchetti: più ne acquisti, più risparmi"
     },
     badges: ["Struttura circolare", "CCE ICF", "Network coaching"],
@@ -2506,7 +2522,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Sviluppo senza fine",
       content: [
         "Continui a crescere come coach anche dopo il percorso: **tieni viva la pratica**, ti alleni su temi nuovi e accumuli **CCE ICF** utili al rinnovo delle tue credenziali. Un appuntamento al mese, tutto l'anno tranne agosto, senza inizio né fine: entri quando vuoi.",
-        "È aperto a **chiunque faccia coaching**, di qualsiasi livello e scuola — studenti e alumni di Asterys Lab, ma anche chi arriva da altri percorsi. Ogni Live Class, dallo sviluppo personale agli approfondimenti sulla pratica, ti lascia uno stimolo concreto da riportare in sessione.",
+        "È aperto a **chiunque faccia coaching**, di qualsiasi livello e scuola — studenti e alumni di Asterys Lab, ma anche chi arriva da altri percorsi. Ogni incontro online, dallo sviluppo personale agli approfondimenti sulla pratica, ti lascia uno stimolo concreto da riportare in sessione.",
         "Le sessioni sono condotte da **Alessandra Bitelli, PCC**, executive coach della Faculty di Asterys Lab, con ospiti che portano stimoli sempre nuovi. Una volta al mese, su Zoom, dalle 18:30 alle 20:00."
       ]
     },
@@ -2552,17 +2568,17 @@ export const coursesContent: Record<string, CourseData> = {
       modules: [
         {
           title: "Formato circolare",
-          desc: "Il programma è attivo tutto l'anno (escluso agosto) con ingresso continuo: non c'è un punto d'inizio obbligato, entri quando vuoi. Puoi acquistare una singola Live Class o un pacchetto di incontri.",
+          desc: "Il programma è attivo tutto l'anno (escluso agosto) con ingresso continuo: non c'è un punto d'inizio obbligato, entri quando vuoi. Puoi acquistare un singolo incontro o un pacchetto di incontri.",
           tags: ["Nessun inizio obbligato", "Tutto l'anno tranne agosto", "Singola o pacchetto"]
         },
         {
-          title: "Come funziona ogni Live Class",
+          title: "Come funziona ogni incontro online",
           desc: "Ogni incontro tratta un tema, spesso mutuato da altre discipline (storia, business, filosofia, psicologia) e riletto con la prospettiva del coaching. Modalità di facilitazione, non formazione frontale: ogni partecipante può integrare e portare le proprie riflessioni.",
           tags: ["Tema interdisciplinare", "Prospettiva coaching", "Altamente interattivo"]
         },
         {
           title: "Iscrizione e partecipazione",
-          desc: "Al momento dell'iscrizione ricevi il calendario con tutte le date successive. Circa 3-4 giorni prima di ogni incontro ricevi il link Zoom e il titolo della sessione: scegli liberamente se partecipare a quella o alla successiva. Attenzione: le Live Class a cui non partecipi non sono recuperabili.",
+          desc: "Al momento dell'iscrizione ricevi il calendario con tutte le date successive. Circa 3-4 giorni prima di ogni incontro ricevi il link Zoom e il titolo della sessione: scegli liberamente se partecipare a quella o alla successiva. Attenzione: gli incontri online a cui non partecipi non sono recuperabili.",
           tags: ["Calendario all'iscrizione", "Link 3-4 giorni prima", "Non recuperabili"]
         },
         {
@@ -2578,16 +2594,16 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Come funziona e a chi è dedicato",
       intro: "Ogni incontro tratta un tema, spesso mutuato da altre discipline (storia, business, filosofia, psicologia), riletto con la **prospettiva del coaching**. La nostra modalità è di facilitazione, non formazione frontale: l'incontro è molto interattivo e, se vuoi, puoi integrare e portare le tue riflessioni. Così amplii il tuo bagaglio e impari a supportare il cliente nelle situazioni più diverse.",
       formazioneTitle: "Iscrizione e calendario",
-      formazioneIntro: "Il programma permette di ottenere **CCE ICF** ed è pensato per coach formati o in formazione, con un'ottima occasione di **networking**. Puoi acquistare singole Live Class o pacchetti, con prezzi ridotti in base al numero di incontri. Dopo l'iscrizione ricevi il calendario e, prima di ogni evento, il link Zoom e il tema della sessione."
+      formazioneIntro: "Il programma permette di ottenere **CCE ICF** ed è pensato per coach formati o in formazione, con un'ottima occasione di **networking**. Puoi acquistare singoli incontri o pacchetti, con prezzi ridotti in base al numero di incontri. Dopo l'iscrizione ricevi il calendario e, prima di ogni evento, il link Zoom e il tema della sessione."
     },
     studyModeBox: {
       title: "Tutto su Zoom, ",
       highlight: "una volta al mese",
-      body: "Tutte le Live Class si svolgono in videoconferenza Zoom dalle 18:30 alle 20:00. Dopo l'iscrizione ricevi il calendario; 3-4 giorni prima di ogni incontro ricevi link Zoom e titolo della sessione e scegli liberamente se partecipare. **Attenzione: le Live Class a cui non partecipi non sono recuperabili.**",
+      body: "Tutti gli incontri online si svolgono in videoconferenza Zoom dalle 18:30 alle 20:00. Dopo l'iscrizione ricevi il calendario; 3-4 giorni prima di ogni incontro ricevi link Zoom e titolo della sessione e scegli liberamente se partecipare. **Attenzione: gli incontri online a cui non partecipi non sono recuperabili.**",
     },
     admissionBox: {
       title: "A chi è dedicato",
-      body: "È nato per offrire apprendimento continuo a coach già formati e con credenziale, ma anche a chi è ancora in un percorso di formazione. Rivolto particolarmente a studenti e alumni Asterys Lab (chi inizia, chi è in pausa, chi ha concluso), è aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola. Nessun processo di ammissione: scegli le Live Class e iscriviti."
+      body: "È nato per offrire apprendimento continuo a coach già formati e con credenziale, ma anche a chi è ancora in un percorso di formazione. Rivolto particolarmente a studenti e alumni Asterys Lab (chi inizia, chi è in pausa, chi ha concluso), è aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola. Nessun processo di ammissione: scegli gli incontri online e iscriviti."
     },
     teachers: [
       { name: "Alessandra Bitelli", creds: "PCC", role: "Titolare del corso", bio: "PCC, formata come coach in Asterys Lab. Executive coach e parte della Faculty di Asterys Lab, con cui collabora allo sviluppo dei programmi di formazione.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
@@ -2597,7 +2613,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Perché inserirlo nella tua pratica",
       content: "Tieni attive nel tempo riflessione, confronto e aggiornamento, dentro un network ricco di coach in fasi diverse, e ottieni CCE ICF utili al rinnovo delle credenziali.",
       points: [
-        { title: "Allenamento costante", desc: "Una Live Class al mese per non interrompere il ritmo di crescita." },
+        { title: "Allenamento costante", desc: "Un incontro online al mese per non interrompere il ritmo di crescita." },
         { title: "Approccio interdisciplinare", desc: "Temi da storia, business, filosofia e psicologia, riletti in chiave coaching." },
         { title: "Facilitazione interattiva", desc: "Ogni partecipante può portare riflessioni e casi: nessuna lezione frontale." },
         { title: "CCE ICF e network", desc: "Ottieni CCE ICF e resti connesso a una community ricca di coach." }
@@ -2606,7 +2622,7 @@ export const coursesContent: Record<string, CourseData> = {
     competenciesAndCareers: {
       eyebrow: "Competenze",
       title: "Cosa impari",
-      intro: "Esci da ogni Live Class con qualcosa in più da usare subito con i clienti: riflessioni nuove, uno sguardo più ampio e CCE ICF per le tue credenziali.",
+      intro: "Esci da ogni incontro online con qualcosa in più da usare subito con i clienti: riflessioni nuove, uno sguardo più ampio e CCE ICF per le tue credenziali.",
       competencies: [
         { title: "Rileggi ogni caso con occhi da coach", desc: "Porti in sessione riflessioni allenate su casi reali, mese dopo mese." },
         { title: "Amplii il tuo bagaglio, oltre il coaching", desc: "Colleghi spunti da storia, business, filosofia e psicologia e li usi con il cliente." },
@@ -2622,22 +2638,22 @@ export const coursesContent: Record<string, CourseData> = {
       { days: "Pausa estiva", time: "Agosto" }
     ],
     classDates: [
-      { date: "8 luglio 2026", badge: "7a Live Class", note: "Il declino dei valori: impatto su appartenenza, motivazione e successo di gruppi e organizzazioni" },
-      { date: "15 settembre 2026", badge: "8a Live Class", note: "Essere Coach… con stile" },
-      { date: "20 ottobre 2026", badge: "9a Live Class", note: "Il coraggio di rompere gli schemi: il valore del pensiero non convenzionale" },
-      { date: "17 novembre 2026", badge: "10a Live Class", note: "Il rispetto dei tempi. Il compromesso dell'orologio" },
-      { date: "15 dicembre 2026", badge: "11a Live Class", note: "Il bisogno di esistere: riconoscimento, coaching e strategie di affermazione" }
+      { date: "8 luglio 2026", badge: "7° Incontro online", note: "Il declino dei valori: impatto su appartenenza, motivazione e successo di gruppi e organizzazioni" },
+      { date: "15 settembre 2026", badge: "8° Incontro online", note: "Essere Coach… con stile" },
+      { date: "20 ottobre 2026", badge: "9° Incontro online", note: "Il coraggio di rompere gli schemi: il valore del pensiero non convenzionale" },
+      { date: "17 novembre 2026", badge: "10° Incontro online", note: "Il rispetto dei tempi. Il compromesso dell'orologio" },
+      { date: "15 dicembre 2026", badge: "11° Incontro online", note: "Il bisogno di esistere: riconoscimento, coaching e strategie di affermazione" }
     ],
     fees: [
       {
-        title: "Live Class",
+        title: "Incontri online",
         type: "lump",
         wooQuantitySelector: true,
         benefit: "Sconto sul volume",
-        heading: "Scegli quante Live Class",
-        desc: "Acquisti singole Live Class o un pacchetto: **più ne prendi, meno costa ognuna**. 16€ (1–2) · 12€ (3–7) · 9€ (da 8), + IVA a Live Class. La fascia giusta si applica da sola nel carrello in base alla quantità.",
+        heading: "Scegli quanti Incontri online",
+        desc: "Acquisti singoli incontri o un pacchetto: **più ne prendi, meno costa ognuna**. 16€ (1–2) · 12€ (3–7) · 9€ (da 8), + IVA a incontro. La fascia giusta si applica da sola nel carrello in base alla quantità.",
         price: "da 9€",
-        priceLabel: "+ IVA / Live Class"
+        priceLabel: "+ IVA / incontro"
       }
     ],
     faqs: [
@@ -2646,12 +2662,12 @@ export const coursesContent: Record<string, CourseData> = {
         a: "No. Il Continuous Learning è circolare: non c'è un punto d'inizio obbligato, entri quando vuoi. Si svolge tutto l'anno tranne agosto."
       },
       {
-        q: "Quando si svolgono le Live Class?",
+        q: "Quando si svolgono gli incontri online?",
         a: "In videoconferenza Zoom, una volta al mese, dalle 18:30 alle 20:00, tutto l'anno tranne agosto."
       },
       {
-        q: "Posso acquistare una sola Live Class?",
-        a: "Sì. Puoi acquistare un singolo incontro o un pacchetto: più Live Class acquisti, più il prezzo unitario diminuisce."
+        q: "Posso acquistare un solo incontro?",
+        a: "Sì. Puoi acquistare un singolo incontro o un pacchetto: più incontri acquisti, più il prezzo unitario diminuisce."
       },
       {
         q: "Chi può partecipare?",
@@ -2659,11 +2675,11 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Quanto costa e come si paga?",
-        a: "Il prezzo è per Live Class, con sconto sulla quantità: più incontri acquisti, più il costo unitario diminuisce. Il pagamento avviene online al momento dell'acquisto; trovi i prezzi aggiornati nella sezione Prezzi."
+        a: "Il prezzo è per incontro, con sconto sulla quantità: più incontri acquisti, più il costo unitario diminuisce. Il pagamento avviene online al momento dell'acquisto; trovi i prezzi aggiornati nella sezione Prezzi."
       },
       {
-        q: "Le Live Class si possono recuperare?",
-        a: "No: le Live Class a cui non partecipi non sono recuperabili. Prima di ogni incontro ricevi link Zoom e tema, così scegli liberamente se partecipare."
+        q: "Gli incontri online si possono recuperare?",
+        a: "No: gli incontri online a cui non partecipi non sono recuperabili. Prima di ogni incontro ricevi link Zoom e tema, così scegli liberamente se partecipare."
       },
       {
         q: "Il programma dà crediti ICF?",
