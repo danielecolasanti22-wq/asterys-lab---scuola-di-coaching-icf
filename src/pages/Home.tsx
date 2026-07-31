@@ -48,7 +48,7 @@ const Hero = () => (
       aria-hidden
       className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
     />
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
         <img
           src="/home/hero-mobile.jpg"
@@ -200,7 +200,7 @@ const Accreditamenti = () => {
 
   return (
     <section className="relative bg-[#EEF4FC] text-brand-navy">
-      <div className="relative max-w-[1200px] mx-auto px-6 py-12 lg:py-14">
+      <div className="relative max-w-[var(--wrap-max)] mx-auto px-6 py-12 lg:py-14">
         {/* Arrows on the sides */}
         <button
           type="button"
@@ -285,7 +285,7 @@ const ScegliPercorso = () => {
   ];
   return (
     <section id="percorsi" className="py-14 lg:py-20 bg-white">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className={`${tSection} mb-4`}>Scegli il percorso che ti porta dove vuoi arrivare</h2>
           <p className="text-brand-navy/70 text-base leading-relaxed">
@@ -318,7 +318,7 @@ const ScegliPercorso = () => {
 /* 4. MASTER FEATURED (APCM) */
 const MasterFeatured = () => (
   <section className="hidden lg:block bg-white pb-5">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
       <Link to="/corsi/apcm" className="block group">
         <div className="grid sm:grid-cols-[1fr_1fr] gap-4 sm:gap-6 rounded-[1.5rem] sm:rounded-[2rem] bg-white p-3 sm:p-4 border border-gray-100 shadow-[0_18px_60px_-34px_rgba(0,21,51,0.22)] hover:shadow-[0_24px_72px_-30px_rgba(0,21,51,0.3)] transition-shadow">
           <div className="relative aspect-[5/4] sm:aspect-auto rounded-2xl overflow-hidden bg-gray-100 min-h-[260px]">
@@ -456,7 +456,7 @@ const MasterGrid = () => {
   ];
   return (
     <section className="bg-white pt-3 pb-16">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
         <div className="grid sm:grid-cols-2 gap-5">
           {masters.map((m) => (
             <Link
@@ -572,7 +572,7 @@ const MasterGrid = () => {
 /* 6. ADVISOR BAND */
 const AdvisorBand = () => (
   <section className="py-12 lg:py-14 bg-brand-blue-soft">
-    <div className="max-w-[1200px] mx-auto px-6 text-center">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-6 text-center">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
         <h2 className="text-2xl sm:text-3xl font-display font-black text-brand-navy tracking-tight">
           Vuoi capire qual è il percorso giusto per te?
@@ -652,7 +652,7 @@ const PercheNoi = () => {
   const seen = new Set<string>();
   return (
     <section id="perche-noi" className="py-12 lg:py-20 bg-white">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
         <h2 className={`${tSection} mb-8 lg:mb-12 max-w-2xl`}>Cosa ti porti a casa con i nostri percorsi</h2>
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 lg:gap-y-12">
           {reasons.map((r) => (
@@ -675,7 +675,7 @@ const PercheNoi = () => {
 /* 9. STATS BAND MINT */
 const StatsBand = () => (
   <section className="bg-[#C4F4DB]">
-    <div className="max-w-[1200px] mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-x-16 gap-y-2 text-center">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-x-16 gap-y-2 text-center">
       <p className="text-sm lg:text-base font-display font-black text-brand-navy tracking-[0.08em] uppercase">
         Credenziali Internazionali ICF
       </p>
@@ -702,7 +702,7 @@ const CorsiCta = () => {
   };
   return (
     <section id="catalogo" className="py-14 lg:py-24 bg-white">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
         <div className="lg:sticky lg:top-24">
           <h2 className={`${tSection} mb-5`}>
             Cosa stai <br />
@@ -751,7 +751,7 @@ const CorsiCta = () => {
 /* CREDITO AI TALENTI — band compatta che rimanda alla landing dedicata */
 const CreditoTalentiBand = () => (
   <section className="bg-white py-10 lg:py-14">
-    <div className="max-w-[941px] mx-auto px-4">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-4">
       <div className="relative overflow-hidden rounded-[1.75rem] bg-[#001D4B] text-white p-7 sm:p-9 lg:p-11">
         <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-accent/20 blur-3xl" />
         <div className="relative flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
@@ -783,7 +783,7 @@ const CreditoTalentiBand = () => (
 /* FAQ — Domande frequenti (dati in ../constants/homeFaq, condivisi con il JSON-LD SEO in seo.ts) */
 const Faq = () => (
   <section id="faq" className="py-14 lg:py-20 bg-[#EEF4FC]">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <h2 className={`${tSection} mb-8 lg:mb-10 text-center`}>Domande frequenti</h2>
         <div className="space-y-3">
@@ -814,7 +814,7 @@ const Faq = () => (
 /* 3 MONDI — router audience con gerarchia (scuola dominante) */
 const TreMondi = () => (
   <section className="py-10 lg:py-14 bg-white">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
       <div className="grid lg:grid-cols-[1.45fr_1fr] gap-4 lg:gap-5 items-stretch">
         {/* Scuola di Coaching — dominante */}
         <Link

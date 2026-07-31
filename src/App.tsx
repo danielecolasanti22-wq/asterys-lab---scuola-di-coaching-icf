@@ -25,9 +25,8 @@ import Iscriviti from './pages/Iscriviti';
 import BorsaDiStudio from './pages/BorsaDiStudio';
 import CreditoAiTalenti from './pages/CreditoAiTalenti';
 import PersonalCoaching from './pages/PersonalCoaching';
-import NuovaPagina from './pages/NuovaPagina';
-import NuovaPagina2 from './pages/NuovaPagina2';
 import { PrivacyPolicy, CookiePolicy, Terms } from './pages/Legal';
+import NotFound from './pages/NotFound';
 
 // --- Global Scroll Recovery Component ---
 const ScrollToTop = () => {
@@ -67,11 +66,10 @@ export default function App() {
           <Route path="/iscriviti" element={<Iscriviti />} />
           <Route path="/borsa-di-studio" element={<BorsaDiStudio />} />
           <Route path="/credito-ai-talenti" element={<CreditoAiTalenti />} />
-          <Route path="/nuova-pagina" element={<NuovaPagina />} />
-          <Route path="/nuova-pagina-2" element={<NuovaPagina2 />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/cookie" element={<CookiePolicy />} />
           <Route path="/termini" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </LayoutWrapper>
     </Router>

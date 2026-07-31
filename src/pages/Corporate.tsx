@@ -140,7 +140,7 @@ export default function Corporate() {
     <div className="bg-[#EEF4FC] text-brand-navy">
       {/* HERO */}
       <section className="bg-[#001D4B] text-white">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#5E8AD0] mb-5">
               Business Coaching
@@ -211,7 +211,7 @@ export default function Corporate() {
 
       {/* SIAMO IMPRENDITORI ANCHE NOI */}
       <section id="perche" className="bg-white py-14 lg:py-20 border-b border-[#EEF4FC]">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
               Nessuno conosce i tuoi affari meglio di te
@@ -268,7 +268,7 @@ export default function Corporate() {
 
       {/* AMBITI DI INTERVENTO */}
       <section id="ambiti" className="bg-white py-14 lg:py-20">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
           <div className="max-w-[680px]">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
               Metti a fuoco le priorità che fanno crescere la tua impresa
@@ -299,7 +299,7 @@ export default function Corporate() {
 
       {/* BUSINESS COACHING — AVVIAMENTO E SVILUPPO */}
       <section className="bg-[#EEF4FC] py-12 lg:py-16">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
             <img
               src={IMG.avviamento}
@@ -333,7 +333,7 @@ export default function Corporate() {
 
       {/* IL COACH AL TUO FIANCO */}
       <section className="bg-white py-12 lg:py-16">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
           <div className="order-2 lg:order-1">
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-accent mb-3">
               Il metodo
@@ -367,7 +367,7 @@ export default function Corporate() {
 
       {/* VANTAGGI + BENEFICI PERSONALI */}
       <section id="vantaggi" className="bg-[#EEF4FC] py-14 lg:py-20 border-y border-[#EEF4FC]">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_24px_60px_-40px_rgba(0,29,75,0.4)]">
             <h3 className="text-2xl sm:text-[1.75rem] font-display font-black tracking-tight leading-snug">
               I vantaggi del Business Coaching
@@ -407,7 +407,7 @@ export default function Corporate() {
 
       {/* COME OPERIAMO */}
       <section id="come-operiamo" className="bg-white py-14 lg:py-20">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
             <img
               src={IMG.operiamo}
@@ -510,7 +510,7 @@ export default function Corporate() {
 
       {/* SMALL END BAND */}
       <section className="bg-[#001D4B] text-white py-8">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-2 font-black">
             <UserRound size={16} />
             Asterys for business

@@ -106,7 +106,7 @@ export default function BorsaDiStudio() {
       {/* HERO — stessa altezza delle pagine corso */}
       <section className="relative overflow-hidden bg-brand-hero">
         <div aria-hidden className={`pointer-events-none absolute inset-0 z-0 ${HERO_GRADIENT}`} />
-        <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
+        <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
           <Link
             to="/corsi/apcm"
             className="flex w-fit items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-white/70 hover:text-white transition-colors mb-4"
@@ -158,7 +158,7 @@ export default function BorsaDiStudio() {
 
       {/* MODULO + REQUISITI — in cima, subito dopo la hero */}
       <section id="richiedi-borsa" className="py-12 lg:py-16 bg-[#EEF4FC] scroll-mt-20">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
           {/* Requisiti + sede */}
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">Borsa di studio</p>

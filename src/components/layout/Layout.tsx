@@ -253,13 +253,14 @@ export const Header = () => {
       id="site-header"
       className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-visible max-[939px]:overflow-hidden ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
-      <div className="max-w-[941px] mx-auto px-4 w-full flex items-center justify-between">
-        <div className="flex items-center gap-12">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 w-full grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+        <div className="col-start-1 flex items-center justify-self-start">
           <Link to="/" className="group shrink-0">
             <BrandLogo />
           </Link>
+        </div>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="col-start-2 justify-self-center hidden lg:flex items-center gap-8">
             <Link
               to="/personal-coaching"
               className={`whitespace-nowrap font-bold text-sm tracking-tight transition-colors ${location.pathname === '/personal-coaching' ? 'text-brand-navy' : 'text-brand-navy hover:text-brand-accent'}`}
@@ -365,31 +366,30 @@ export const Header = () => {
               Per Aziende
             </Link>
           </nav>
-        </div>
 
-        <div className="hidden lg:flex items-center gap-6 ml-8">
+        <div className="col-start-3 flex items-center justify-self-end">
           <Link
             to="/iscriviti"
-            className="bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
+            className="hidden lg:inline-flex items-center bg-[#2A56A8] text-white px-8 py-3 rounded-full font-sans font-black text-xs uppercase tracking-[0.1em] hover:bg-blue-700 transition-all active:scale-95"
           >
             Contattaci
           </Link>
-        </div>
 
-        <div className="lg:hidden flex items-center gap-2">
-          <Link
-            to="/iscriviti"
-            className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.12em] whitespace-nowrap shadow-[0_12px_24px_-16px_rgba(42,86,168,0.55)]"
-          >
-            Contattaci
-          </Link>
-          <button
-            className="text-brand-navy"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Chiudi menu' : 'Apri menu'}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <Link
+              to="/iscriviti"
+              className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.12em] whitespace-nowrap shadow-[0_12px_24px_-16px_rgba(42,86,168,0.55)]"
+            >
+              Contattaci
+            </Link>
+            <button
+              className="text-brand-navy"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Chiudi menu' : 'Apri menu'}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -406,7 +406,7 @@ export const Header = () => {
             onMouseEnter={openMega}
             onMouseLeave={scheduleCloseMega}
           >
-            <div className="max-w-[1140px] mx-auto px-4">
+            <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_20px_60px_-20px_rgba(29,59,185,0.25)] overflow-hidden">
                 <div className="grid grid-cols-3 gap-0 p-6">
                   {/* Colonna 1 — categorie */}
@@ -738,7 +738,7 @@ const CorporateHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
-      <div className="max-w-[1200px] mx-auto px-4 w-full flex items-center justify-between gap-4">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 w-full flex items-center justify-between gap-4">
         <Link to="/aziende" className="shrink-0">
           <img
             src="/brand/asterys-for-business.png"
@@ -920,7 +920,7 @@ export const Footer = () => {
 
       {/* BAND 1 — NEWSLETTER + CONTATTI */}
       <section className="relative border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10 lg:py-12 grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-8">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-10 lg:py-12 grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-8">
           <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-white text-brand-navy flex items-center justify-center">
@@ -1005,7 +1005,7 @@ export const Footer = () => {
 
       {/* BAND 2 — LOGO + SEDI + SOCIAL */}
       <section className="border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-8 lg:py-10 grid lg:grid-cols-[1.05fr_1fr] gap-8">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-8 lg:py-10 grid lg:grid-cols-[1.05fr_1fr] gap-8">
           <div>
             <img src={`${base}brand/asterys-lab-logo-white.png`} alt="Asterys Lab" className="h-9 w-auto" />
             <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
@@ -1046,7 +1046,7 @@ export const Footer = () => {
 
       {/* BAND 3 — NAV LINKS (toggle) */}
       <section className="border-b border-white/10">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
           {footerNavGroups.map((group) => (
             <div key={group.title}>
               <FooterNavToggle title={group.title} links={group.links} />
@@ -1057,7 +1057,7 @@ export const Footer = () => {
 
       {/* BAND 4 — CERTIFICATIONS */}
       <section className="border-b border-white/10 bg-black/20">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-7">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-7">
           <div className="flex items-center gap-2 justify-center mb-5">
             <Award size={13} className="text-white" />
             <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/50">
@@ -1078,7 +1078,7 @@ export const Footer = () => {
       </section>
 
       {/* BAND 5 — COPYRIGHT */}
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-white/45">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-white/45">
         <p className="text-center md:text-left">
           © {new Date().getFullYear()} Asterys Lab S.r.l. — Scuola di Coaching ICF Accreditata · Milano · Roma
           <br />

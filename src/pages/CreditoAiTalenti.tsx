@@ -121,7 +121,7 @@ export default function CreditoAiTalenti() {
       {/* HERO — stessa altezza delle pagine corso */}
       <section className="relative overflow-hidden bg-brand-hero">
         <div aria-hidden className={`pointer-events-none absolute inset-0 z-0 ${HERO_GRADIENT}`} />
-        <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
+        <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
           <Link
             to="/"
             className="flex w-fit items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-white/70 hover:text-white transition-colors mb-4"
@@ -169,7 +169,7 @@ export default function CreditoAiTalenti() {
 
       {/* MODULO + REQUISITI — in cima, subito dopo la hero */}
       <section id="candidati" className="py-12 lg:py-16 bg-[#EEF4FC] scroll-mt-20">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">Candidatura</p>
             <h2 className="text-2xl lg:text-[2rem] font-display font-black tracking-tight leading-tight mb-4">
@@ -283,7 +283,7 @@ export default function CreditoAiTalenti() {
 
       {/* COME FUNZIONA */}
       <section className="py-14 lg:py-20 bg-[#001D4B] text-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
           <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-sky mb-3">Come funziona</p>
           <h2 className="text-3xl lg:text-[2.5rem] font-display font-black tracking-tight leading-tight max-w-2xl mb-3">
             Un meccanismo di fiducia, non un prestito
@@ -310,7 +310,7 @@ export default function CreditoAiTalenti() {
 
       {/* CRITERI + IMPEGNO */}
       <section className="py-14 lg:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-14">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-14">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">Selezione</p>
             <h2 className="text-3xl lg:text-[2.3rem] font-display font-black tracking-tight leading-tight mb-6 text-brand-navy">

@@ -122,7 +122,7 @@ export function TestimonialsSection({
 
   return (
     <section id="testimonianze" className={`${compact ? 'py-9 lg:py-20' : 'py-12 lg:py-24'} bg-gradient-to-b from-white via-[#EEF4FC] to-white`}>
-      <div className="max-w-[941px] mx-auto px-4">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4">
         <div className={`max-w-2xl ${compact ? 'mb-4 lg:mb-8' : 'mb-6 lg:mb-12'}`}>
           <p className="text-lg font-display font-black text-brand-accent mb-3">Testimonianze</p>
           <h2 className={`${compact ? 'text-2xl sm:text-3xl lg:text-[2.4rem]' : tSection} ${titleUppercase ? 'uppercase' : ''} mb-3 lg:mb-4 font-display font-black tracking-tighter text-brand-navy leading-[1.05]`}>

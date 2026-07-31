@@ -600,7 +600,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
         />
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:h-[608px]">
           <div className="relative hidden -mx-4 sm:-mx-6">
             <CourseImage
               src={media.hero}
@@ -687,7 +687,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {id === 'systemic-team-coaching' ? (
         <section className="bg-white pt-4 pb-2 lg:hidden">
-          <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
             <img
               src="/course-media/systemic-team-coaching/classe-below-hero.png"
               alt="Sessione di Team Coaching Sistemico in aula"
@@ -700,7 +700,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 2. LA FIGURA CENTRALE SECTION */}
       <section className="py-8 lg:py-24 bg-white">
-        <div className="max-w-[941px] mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
              <h2 className={`${tSection} mb-8 leading-tight`}>
                 {course.overview.title}
@@ -828,7 +828,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
           </section>
         ) : (
           <section className="py-16 lg:py-24 bg-[#EEF4FC]">
-            <div className="max-w-[941px] mx-auto px-4">
+            <div className="max-w-[var(--wrap-max)] mx-auto px-4">
               <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-16 items-end mb-12 lg:mb-16">
                 <div className="max-w-xl">
                   {course.whyChoose.eyebrow ? (
@@ -888,7 +888,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 8b. COMPETENZE & SBOCCHI LAVORATIVI */}
       {!isCoachingCircle ? (
       <section id="competenze-sbocchi" className="py-14 lg:py-20 bg-[#F9FAFB]/70">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-8 lg:mb-10">
               <div className="max-w-2xl">
                 {competenciesAndCareers.eyebrow ? (
@@ -1038,7 +1038,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 3. PROGRAMMA DEL MASTER TABS */}
       <section id="programma" className="py-16 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <h2 className={`${tSection} mb-4`}>
               {isCoachingCircle
                 ? 'Come funziona la pratica'
@@ -1136,7 +1136,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 3b. UN PERCORSO CERTIFICATO (solo dove valorizzato, es. APCM) */}
       {course.certificate ? (
         <section className="py-8 lg:py-14 bg-white">
-          <div className="max-w-[941px] mx-auto px-4">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-8 lg:p-10 grid sm:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-10 items-center">
               <div>
                 <CourseImage
@@ -1164,7 +1164,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* Temporaneamente nascosta: rimuovere `false &&` per riattivarla */}
       {false && (id === 'apcm' || id === 'systemic-team-coaching') && (
       <section className="py-10 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="bg-[#001D4B] rounded-[1.5rem] lg:rounded-[1.75rem] p-5 sm:p-7 lg:p-10 text-white text-center relative overflow-hidden">
                <h2 className={`${tSection} text-white mb-3 lg:mb-4`}>
                  {isCoachingCircle
@@ -1222,7 +1222,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 4b. CALENDARIO EDIZIONI */}
       {editions.length > 0 && activeEdition ? (
         <section id="calendario-edizioni" className="py-10 lg:py-24 bg-[#F9FAFB]/70">
-          <div className="max-w-[941px] mx-auto px-4">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             {editionsSection.eyebrow ? (
               <p className="text-sm lg:text-lg font-display font-black text-brand-accent mb-2 lg:mb-3">
                 {editionsSection.eyebrow}
@@ -1550,7 +1550,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 4c. SCHOLARSHIP */}
       {course.scholarship && !contactHref ? (
         <section className="py-10 lg:py-16 bg-white">
-          <div className="max-w-[941px] mx-auto px-4">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="relative overflow-hidden rounded-[1.4rem] lg:rounded-[1.75rem] bg-brand-navy text-white px-5 py-6 sm:px-10 sm:py-12 lg:px-14 lg:py-14 shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)]">
               <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-accent/30 blur-3xl" />
               <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-5 lg:gap-10 items-center">
@@ -1617,7 +1617,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 5. COME FUNZIONA (layout Boolean: intro 2 col + formazione + griglia 3 col + box + orientamento) */}
       <section id="metodo" className="py-16 lg:py-24 bg-white">
-        <div className="max-w-[941px] mx-auto px-4">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start mb-14 lg:mb-16">
             <div>
               <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.1] mb-6">
@@ -1955,7 +1955,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 5c. LEVELS COMPARISON */}
       {course.levelsComparison ? (
         <section className="py-14 sm:py-16 lg:py-20 bg-white overflow-visible">
-          <div className="max-w-[1100px] mx-auto px-4 overflow-visible">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4 overflow-visible">
             <div className="text-center mb-7 lg:mb-12">
               {course.levelsComparison.eyebrow ? (
                 <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-4">
@@ -2079,7 +2079,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
         <section id="docenti" className="relative py-12 lg:py-24 bg-brand-navy overflow-hidden">
           <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-accent/10 blur-3xl" />
           <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-          <div className="relative max-w-[941px] mx-auto px-4">
+          <div className="relative max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-7 lg:mb-10">
               <div className="max-w-2xl">
                 <p className="text-brand-accent text-[11px] font-display font-black uppercase tracking-[0.18em] mb-3">
@@ -2163,7 +2163,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {!contactHref && (
       <section id="prezzo" className="relative py-10 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
-        <div className="relative max-w-[941px] mx-auto px-4 text-center">
+        <div className="relative max-w-[var(--wrap-max)] mx-auto px-4 text-center">
           <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-2 lg:mb-3 normal-case max-w-3xl mx-auto">
             La tua crescita professionale, alla tua portata
           </h2>
@@ -2405,7 +2405,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 6b. GUARANTEE 30 HOURS */}
       {course.guarantee30Hours ? (
         <section className="py-10 lg:py-20 bg-white">
-          <div className="max-w-[941px] mx-auto px-4">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="rounded-[1.35rem] lg:rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-7 lg:p-9 ring-1 ring-black/5">
               <div className="grid lg:grid-cols-[1fr_1.1fr] gap-5 lg:gap-10 items-start">
                 <div>
@@ -2465,7 +2465,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-7 lg:py-14 bg-brand-blue-soft">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="flex flex-col sm:flex-row md:flex-row items-center justify-between gap-4 lg:gap-8">
                 <div className="flex flex-row items-center gap-4 sm:gap-8 text-left">
                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
@@ -2488,7 +2488,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 8. CAREER CENTER SECTION */}
       {id === 'apcm' ? (
       <section id="career" className="py-10 lg:py-20 bg-white">
-         <div className="max-w-[941px] mx-auto px-4 text-center">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4 text-center">
             <div className="mb-7 lg:mb-16">
                <h2 className={`${tSection} mb-3 lg:mb-4`}>
                   Asterys Lab{' '}
@@ -2531,7 +2531,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {course.pegasusProgram ? (
         <section id="pegasus" className="py-10 lg:py-20 bg-[#001D4B] text-white">
-          <div className="max-w-[941px] mx-auto px-4">
+          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
                 <div className="inline-flex rounded-2xl bg-white p-2.5 sm:p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)] lg:bg-transparent lg:p-0 lg:ring-0 lg:shadow-none">
@@ -2589,7 +2589,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 9. UN PERCORSO FORMATIVO COMPLETO SECTION */}
       {!isCoachingCircle && !isWorkout && !isCL && id !== 'marketing-per-coach' ? (
       <section className="py-10 lg:py-24 bg-white">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <h2 className={`${tSection} mb-3 lg:mb-4`}>
               Un percorso formativo{' '}
               <Highlight>completo</Highlight>
@@ -2709,7 +2709,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 10. ACCELERA LA TUA CARRIERA SECTION */}
       <section className="py-8 lg:py-14 bg-[#2A56A8] text-white">
-         <div className="max-w-[1100px] mx-auto px-4 sm:px-8">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8">
                <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-left">
                   <div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black uppercase tracking-tight leading-[1.05]">
@@ -2743,7 +2743,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 11. FAQs SECTION */}
       <section className="py-8 lg:py-20 bg-[#F9FAFB]/80">
-         <div className="max-w-[941px] mx-auto px-4">
+         <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             <h2 className={`${tSection} mb-4 lg:mb-12`}>FAQs</h2>
             <div className="space-y-2 sm:space-y-4">
                {course.faqs.map((faq, i) => (

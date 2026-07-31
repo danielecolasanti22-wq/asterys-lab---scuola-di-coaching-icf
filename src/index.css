@@ -20,6 +20,13 @@
   --shadow-soft: 0 10px 40px -10px rgba(7, 26, 63, 0.08);
 }
 
+/* Larghezza massima della banda di contenuto (header, footer e tutte le pagine).
+   UNICO punto da cambiare per testare/regolare l'impaginazione di tutto il sito:
+   i container di banda usano max-w-[var(--wrap-max)]. */
+:root {
+  --wrap-max: 1200px;
+}
+
 @layer base {
   html {
     overflow-x: clip;

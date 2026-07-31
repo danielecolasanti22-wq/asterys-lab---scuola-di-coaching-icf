@@ -130,7 +130,7 @@ export default function Blog() {
         subtitle="Approfondimenti su coaching, intelligenza emotiva e sistemi organizzativi per crescere come professionista e come persona."
       />
 
-      <div className="max-w-7xl mx-auto px-6 pt-16">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-6 pt-16">
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Posts List */}
           <div className="lg:col-span-8 space-y-20">

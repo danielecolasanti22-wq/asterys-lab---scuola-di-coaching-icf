@@ -43,7 +43,7 @@ export default function PersonalCoaching() {
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_20%,#143f7a_55%,#2c63a8_100%)]"
         />
-        <div className="relative z-10 max-w-[1060px] mx-auto px-4 sm:px-6 py-16 lg:py-24">
+        <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-16 lg:py-24">
           <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-sky mb-5">Personal Coaching</p>
           <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.4rem] leading-[0.96] tracking-tighter max-w-[720px]">
             Realizza il tuo pieno potenziale, con un coach al tuo fianco
@@ -86,7 +86,7 @@ export default function PersonalCoaching() {
 
       {/* AREE */}
       <section className="bg-[#EEF4FC] py-14 lg:py-20">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
           <div className="max-w-[680px]">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.9rem] font-display font-black tracking-tight leading-[1.02]">
               Su cosa puoi lavorare
@@ -115,7 +115,7 @@ export default function PersonalCoaching() {
 
       {/* IL RUOLO DEL COACH */}
       <section className="bg-white py-14 lg:py-20">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-accent mb-3">Il ruolo del coach</p>
             <h3 className="text-3xl sm:text-4xl font-display font-black tracking-tight leading-[1.05]">
@@ -148,7 +148,7 @@ export default function PersonalCoaching() {
 
       {/* COME FUNZIONA */}
       <section className="bg-[#EEF4FC] py-14 lg:py-20">
-        <div className="max-w-[1060px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
           <div className="max-w-[680px] mb-10">
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-accent mb-3">Come funziona</p>
             <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tight leading-[1.02]">

@@ -21,7 +21,7 @@ export default function Events() {
       />
 
       {/* FEATURED — prossimo evento */}
-      <section className="max-w-7xl mx-auto px-6 pt-14">
+      <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-14">
         <Link to={`/eventi/${eventsData[0].id}`} className="group block">
           <div className="grid lg:grid-cols-[1fr_1.15fr] rounded-[2rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all bg-white">
             <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[260px] overflow-hidden">
@@ -59,7 +59,7 @@ export default function Events() {
       </section>
 
       {/* GRIGLIA — altri appuntamenti */}
-      <section className="max-w-7xl mx-auto px-6 pt-12 lg:pt-16">
+      <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-12 lg:pt-16">
         <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-10">
           <h2 className="font-display font-bold text-2xl tracking-tight">Scegli il tuo prossimo passo</h2>
           <p className="text-xs font-black text-brand-navy/30 uppercase tracking-widest">{eventsData.length} eventi in programma</p>
@@ -112,7 +112,7 @@ export default function Events() {
       </section>
 
       {/* BAND — incontro individuale + info utili */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 lg:pt-20">
+      <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-16 lg:pt-20">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8">
           <div className="bg-brand-navy text-white p-10 lg:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
             <h3 className="font-display font-bold text-2xl lg:text-3xl mb-5 relative z-10">Preferisci parlarne a tu per tu?</h3>

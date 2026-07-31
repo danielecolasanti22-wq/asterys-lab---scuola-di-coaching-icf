@@ -76,7 +76,7 @@ export default function EventDetail() {
     <div className="bg-white">
       {/* HERO */}
       <section className="bg-brand-hero">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-10 lg:py-14">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-10 lg:py-14">
           <Link
             to="/eventi"
             className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[11px] font-black uppercase tracking-[0.18em]"
@@ -131,7 +131,7 @@ export default function EventDetail() {
       </section>
 
       {/* CONTENT + REGISTRATION */}
-      <section className="max-w-[1100px] mx-auto px-4 sm:px-6 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <section className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-7">
           <h2 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-brand-navy mb-6">
             Di cosa parleremo

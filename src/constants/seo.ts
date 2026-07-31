@@ -1,6 +1,6 @@
 // SEO/GEO — meta per pagina + dati strutturati JSON-LD.
-// ⚠️ SITE_URL = dominio canonico della vetrina. DA CONFERMARE (www vs non-www, e che la vetrina
-// stia su questo dominio). È l'unica costante da cambiare se il dominio è diverso.
+// SITE_URL = dominio canonico. CONFERMATO 31/07/2026: asteryslab.com senza www
+// (il React sostituisce WordPress sullo stesso dominio). È l'unica costante da cambiare se il dominio cambia.
 import { coursesContent } from './coursesContent';
 import { HOME_FAQ } from './homeFaq';
 
@@ -87,8 +87,6 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
     description:
       'Percorso di coaching individuale per realizzare il tuo pieno potenziale: più consapevolezza, obiettivi chiari, relazioni ed equilibrio. Sessioni di persona o online. Parla con un coach.',
   },
-  '/nuova-pagina': { title: 'Asterys Lab', description: '', noindex: true },
-  '/nuova-pagina-2': { title: 'Asterys Lab', description: '', noindex: true },
 };
 
 export function getSeoForPath(pathname: string): PageSeo {

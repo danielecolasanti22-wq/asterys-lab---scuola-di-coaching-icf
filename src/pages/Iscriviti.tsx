@@ -118,7 +118,7 @@ export default function Iscriviti() {
     <div className="bg-white text-brand-navy">
       {/* FORM HERO */}
       <section className="relative overflow-hidden bg-gradient-to-b from-brand-blue-soft/70 via-brand-blue-soft/60 to-[#2A56A8]">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-14 lg:py-20 relative">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-14 lg:py-20 relative">
           {/* left hand-drawn note */}
           <div className="hidden lg:flex absolute left-6 top-28 flex-col items-center text-brand-navy/70 text-[11px] font-black uppercase tracking-[0.18em] italic leading-tight">
             <span className="rotate-[-6deg]">Ti aspettiamo</span>
@@ -324,7 +324,7 @@ export default function Iscriviti() {
 
       {/* UPCOMING CLASSES */}
       <section className="bg-[#2A56A8] text-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-20">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-16 lg:py-20">
           <h2 className="text-3xl sm:text-4xl font-display font-black tracking-tighter">
             Inizi quando è il momento giusto per te
           </h2>
@@ -371,7 +371,7 @@ export default function Iscriviti() {
 
       {/* FINAL CTA BAND */}
       <section className="bg-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-16 lg:py-24">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-16 lg:py-24">
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-10 items-center">
             <div className="rounded-3xl overflow-hidden bg-gray-100 aspect-[4/3]">
               <img

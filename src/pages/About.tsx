@@ -177,7 +177,7 @@ export default function About() {
     <div className="bg-white text-brand-navy">
       {/* HERO */}
       <section className="relative overflow-hidden bg-brand-hero">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-sky">
               About · Asterys Lab
@@ -197,7 +197,7 @@ export default function About() {
 
       {/* STATS COUNTER */}
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-10 lg:py-14">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-10 lg:py-14">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
             <div className="px-2 sm:px-6 lg:px-10 py-6 sm:py-2 text-center sm:text-left">
               <p className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-tight">
@@ -229,7 +229,7 @@ export default function About() {
 
       {/* CHI SIAMO */}
       <section id="chi-siamo" className="scroll-mt-28 border-b border-gray-100">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
@@ -270,7 +270,7 @@ export default function About() {
 
       {/* FILOSOFIA */}
       <section id="filosofia" className="scroll-mt-28">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="lg:order-2">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
@@ -325,7 +325,7 @@ export default function About() {
 
       {/* ACCREDITAMENTI */}
       <section id="accreditamenti" className="scroll-mt-28 border-b border-gray-100">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="max-w-2xl mb-12">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
               Accreditamenti
@@ -381,7 +381,7 @@ export default function About() {
 
       {/* VALORI / MANIFESTO */}
       <section className="bg-brand-navy text-white">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-24">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 items-start">
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#CFE0F5]">
@@ -409,7 +409,7 @@ export default function About() {
 
       {/* LA COMMUNITY */}
       <section id="community" className="scroll-mt-28 bg-brand-blue-soft">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
             <div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
@@ -445,7 +445,7 @@ export default function About() {
 
       {/* PRESS */}
       <section id="press" className="scroll-mt-28">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-8 py-20 lg:py-28">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-20 lg:py-28">
           <div className="mb-10">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-accent">
               Press

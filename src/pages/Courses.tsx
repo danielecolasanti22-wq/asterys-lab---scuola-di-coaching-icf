@@ -156,7 +156,7 @@ export default function Courses() {
       </section>
 
       {/* GROUPED COURSES */}
-      <div className="max-w-[941px] mx-auto px-4">
+      <div className="max-w-[var(--wrap-max)] mx-auto px-4">
         {courseGroups.map((group, gi) => (
           <section key={group.label} className={gi === 0 ? 'pt-14 lg:pt-16' : 'pt-16 lg:pt-20'}>
             <div className="mb-8 pb-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
@@ -211,7 +211,7 @@ export default function Courses() {
 
       {/* CORPORATE BRIDGE — redesigned */}
       <section className="mt-20 lg:mt-28">
-        <div className="max-w-[941px] mx-auto px-4">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4">
           <div className="bg-brand-navy rounded-[1.75rem] lg:rounded-[2.5rem] overflow-hidden">
             <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
               <div className="p-8 sm:p-12 lg:p-14 text-white">
