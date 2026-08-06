@@ -140,12 +140,12 @@ export default function Corporate() {
     <div className="bg-[#EEF4FC] text-brand-navy">
       {/* HERO */}
       <section className="bg-[#001D4B] text-white">
-        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+        <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-12 lg:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.28em] text-[#5E8AD0] mb-5">
               Business Coaching
             </p>
-            <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.6rem] leading-[0.95] tracking-tight max-w-[640px]">
+            <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-[3.5rem] leading-[1.02] tracking-tight max-w-[560px]">
               Guida la tua impresa nei momenti che contano
             </h1>
             <p className="mt-6 text-white/75 text-base sm:text-lg max-w-[540px] leading-relaxed">
@@ -164,17 +164,17 @@ export default function Corporate() {
             </a>
           </div>
 
-          <div className="relative h-[300px] sm:h-[360px] lg:h-[390px]">
+          <div className="relative h-[340px] sm:h-[420px] lg:h-[460px]">
             <img
               src={IMG.heroMain}
               alt="Imprenditori in confronto durante una sessione di lavoro"
-              className="absolute top-4 right-8 w-[250px] sm:w-[300px] rounded-2xl shadow-2xl object-cover"
+              className="absolute top-0 right-6 w-[300px] sm:w-[400px] lg:w-[440px] rounded-2xl shadow-2xl object-cover"
               referrerPolicy="no-referrer"
             />
             <img
               src={IMG.heroSide}
               alt="Risultati raggiunti grazie al coaching"
-              className="absolute bottom-10 right-0 w-[160px] sm:w-[190px] rounded-xl shadow-2xl object-cover border-4 border-[#001D4B]"
+              className="absolute bottom-0 right-0 w-[200px] sm:w-[240px] lg:w-[260px] rounded-xl shadow-2xl object-cover border-4 border-[#001D4B]"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -521,7 +521,7 @@ export default function Corporate() {
           </div>
           <div className="flex items-center gap-2 text-white/75">
             <MapPin size={16} />
-            Coach certificati · in tutta Italia
+            Coach accreditati · in tutta Italia
           </div>
         </div>
       </section>

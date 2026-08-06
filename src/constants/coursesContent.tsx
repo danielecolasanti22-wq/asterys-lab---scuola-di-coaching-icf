@@ -121,7 +121,7 @@ export interface CourseData {
   career: {
     title: string;
     content: string;
-    points: { title: string; desc: string }[];
+    points: { title: string; desc: string; highlights?: string[] }[];
   };
   pegasusProgram?: {
     eyebrow?: string;
@@ -231,7 +231,7 @@ export interface CourseData {
   };
   /** Banner "Scarica la brochure" nella sezione programma (tutti i corsi). */
   brochureUrl?: string;
-  /** Sezione "Un percorso certificato" — renderizzata solo se valorizzata (es. APCM). */
+  /** Sezione "Un percorso riconosciuto" — renderizzata solo se valorizzata (es. APCM). */
   certificate?: {
     eyebrow?: string;
     title: string;
@@ -425,7 +425,7 @@ export const coursesContent: Record<string, CourseData> = {
     howItWorks: {
       title: "Come funziona il Master",
       intro:
-        "Un percorso strutturato che alterna **lezioni live**, pratica supervisionata, studio individuale e report. Le lezioni sono circa una volta a settimana, secondo il calendario dell'edizione, e ti guidano passo passo fino alle competenze ICF e alla **certificazione**.",
+        "Un percorso strutturato che alterna **lezioni live**, pratica supervisionata, studio individuale e report. Le lezioni sono circa una volta a settimana, secondo il calendario dell'edizione, e ti guidano passo passo fino alle competenze ICF e all'**accreditamento**.",
       formazioneTitle: "Formazione",
       formazioneBadge: "Ibrido · 133,5 ore",
       formazioneIntro:
@@ -510,7 +510,7 @@ export const coursesContent: Record<string, CourseData> = {
       softSkills: ["Presenza", "Centratura", "Leadership relazionale", "Empatia"]
     },
     programIntro:
-      "Imparerai a progettare e condurre percorsi di coaching professionale: dalle fondamenta alle competenze ICF, dall’intelligenza emotiva alla pratica supervisionata, fino al business del coaching e alla certificazione. Gran parte del percorso è dedicata allo sviluppo concreto delle competenze di coaching.",
+      "Imparerai a progettare e condurre percorsi di coaching professionale: dalle fondamenta alle competenze ICF, dall’intelligenza emotiva alla pratica supervisionata, fino al business del coaching e all'accreditamento. Gran parte del percorso è dedicata allo sviluppo concreto delle competenze di coaching.",
     admissionBox: {
       title: "Requisiti di ammissione al Master",
       body: "Non servono requisiti rigidi o una formazione precedente nel coaching. Il Master è adatto sia a chi arriva dall'università e si avvicina per la prima volta a questa disciplina, sia a chi lavora e vuole integrare il coaching nella propria professione.",
@@ -546,12 +546,12 @@ export const coursesContent: Record<string, CourseData> = {
         {
           title: "Pratica Supervisionata",
           desc: "Metterai in pratica le competenze con sessioni reali, feedback da Mentor MCC e supervisione per accelerare la qualità del tuo coaching.",
-          tags: ["Sessioni registrate", "Mentor MCC", "Supervisione", "Portfolio"],
+          tags: ["Sessioni reali", "Mentor MCC", "Supervisione", "Portfolio"],
         },
         {
           title: "Personal Branding per Coach",
-          desc: "Con Helga Ogliari (Personal Branding & Storytelling Designer): 6 incontri da 1,5h per costruire posizionamento, personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°.",
-          tags: ["Personal branding", "Storytelling", "Acquisizione clienti", "6 incontri · 1,5h"],
+          desc: "Con Helga Ogliari (Personal Branding & Storytelling Designer): 5 incontri online da 1,5h per costruire posizionamento, personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°.",
+          tags: ["Personal branding", "Storytelling", "Acquisizione clienti", "5 incontri online · 1,5h"],
         },
       ],
     },
@@ -594,17 +594,17 @@ export const coursesContent: Record<string, CourseData> = {
     ],
     career: {
       title: "Career Support Asterys",
-      content: "Il Career Center di Asterys Lab ti supporta nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
+      content: "Ti accompagniamo nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
-        { title: "Personal Branding per Coach", desc: "6 incontri da 1,5h con Helga Ogliari (Personal Branding & Storytelling Designer): personal branding, storytelling e acquisizione clienti per far decollare la tua attività." },
-        { title: "Alumni Community", desc: "Entri negli Alumni Asterys: accedi alla rete di 3.000+ professionisti certificati ICF per collaborazioni, referral e opportunità di crescita condivise, con attività dedicate e condizioni agevolate su corsi e iniziative Asterys." },
-        { title: "Formazione Continua", desc: "Masterclass, webinar e workshop esclusivi per approfondire le competenze e restare aggiornato sulle evoluzioni del coaching." },
-        { title: "Supporto Carriera", desc: "Sessioni individuali e accompagnamento del coach assegnato per valorizzare il tuo profilo e orientarti nelle scelte professionali post-certificazione." }
+        { title: "Alumni Community", desc: "Diventi parte degli Alumni Asterys: una rete di oltre 3.000 coach accreditati ICF con cui fare pratica, scambiare referral e costruire collaborazioni reali. Accedi a incontri dedicati, gruppi di pratica e condizioni riservate su corsi ed eventi Asterys — un ecosistema che ti accompagna ben oltre la fine del Master." },
+        { title: "Personal Branding per Coach", desc: "Ti fai trovare e scegliere dai clienti giusti. Corso incluso nel 2° livello del Master, con Helga Ogliari.", highlights: ["Un posizionamento chiaro che ti distingue dagli altri coach", "Acquisisci i primi clienti con storytelling e social selling", "Strumenti pronti all'uso: Personal Branding & Storytelling Canvas", "5 incontri online live con Helga Ogliari (Branding & Storytelling Designer)"] },
+        { title: "Formazione Continua", desc: "Non smetti mai di crescere: masterclass, webinar e workshop esclusivi per approfondire competenze specifiche, scoprire nuovi strumenti e restare aggiornato sulle evoluzioni del coaching." },
+        { title: "Supporto Carriera", desc: "Durante tutto il percorso hai un coach di riferimento dedicato: sessioni individuali per valorizzare il tuo profilo, mettere a fuoco il tuo modello di business e orientarti nelle scelte professionali dopo l'accreditamento." }
       ]
     },
     pegasusProgram: {
       eyebrow: "Ecosistema Asterys",
-      title: "Pegasus Coaching Program",
+      title: "Pegasus Program",
       intro:
         "Pegasus collega studenti e diplomati del Master in Coaching: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
       logo: "/brand/pegasus.png",
@@ -686,11 +686,10 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ],
     faqs: apcmFaqs,
-    placementStats: { rate: "98%", partners: "150+", opportunities: "500+" },
     certificate: {
-      eyebrow: "Attestato finale",
-      title: "Un percorso certificato",
-      body: "Completato il Master e superato l'**esame finale con la scuola**, ottieni il **certificato Asterys Lab**: l'attestazione delle ore formative valida per richiedere le **credenziali ICF** (ACC con il Livello 1, PCC con il Percorso Completo). Un documento che certifica le tue competenze di coach e ti permette di presentarti sul mercato con credibilità.",
+      eyebrow: "Attestato di partecipazione",
+      title: "Un percorso riconosciuto",
+      body: "Completato il Master e superato l'**esame finale con la scuola**, ottieni l'**attestato di partecipazione Asterys Lab**: l'attestazione delle ore formative valida per richiedere le **credenziali ICF** (ACC con il Livello 1, PCC con il Percorso Completo). Un documento che attesta le tue competenze di coach e ti permette di presentarti sul mercato con credibilità.",
       image: "/course-media/apcm/certificato.png",
     },
     testimonials: commonTestimonials,
@@ -782,8 +781,8 @@ export const coursesContent: Record<string, CourseData> = {
         "Seleziona la **città**, il **livello** e l'**edizione**: vedrai il calendario completo con tutti gli Incontri online, i Moduli (online e in presenza) e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per accedere al **2° livello** è necessario aver completato prima il **1° livello**."
     },
     whyChoose: {
-      eyebrow: "Perché scegliere il Master in Coaching",
-      title: "Un Master che unisce rigore, umanità e mercato",
+      eyebrow: "Cosa include il Master",
+      title: "Tutto quello che ti serve per diventare coach",
       intro:
         "Il Master in Coaching è pensato per chi vuole diventare coach davvero: **metodo accreditato ICF**, **coach di riferimento dedicato**, **trainer con credenziali MCC & PCC**, **pratica supervisionata**, strumenti di mercato e una **community professionale** che resta accessibile anche dopo il Master.",
       bullets: [
@@ -813,7 +812,7 @@ export const coursesContent: Record<string, CourseData> = {
         },
         {
           title: "Personal Branding per Coach incluso",
-          desc: "6 incontri con Helga Ogliari (Personal Branding & Storytelling Designer) su personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°."
+          desc: "5 incontri online con Helga Ogliari (Personal Branding & Storytelling Designer) su personal branding, storytelling e acquisizione clienti. Incluso nel 2° livello, a metà prezzo con il 1°."
         },
         {
           title: "Career Center e community",
@@ -1028,7 +1027,8 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "Incontro online 14", date: "24 giugno 2026", type: "live-class" },
           { label: "Incontro online 15", date: "30 giugno 2026", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
-          { label: "Fine Attività 2° livello", date: "Giugno 2026", type: "milestone" }
+          { label: "Fine Attività 2° livello", date: "Giugno 2026", type: "milestone" },
+          { label: "Colloquio fine percorso", date: "Date personalizzate", type: "individual" }
         ]
       },
       {
@@ -1057,7 +1057,8 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "Incontro online 14", date: "26 maggio 2027", type: "live-class" },
           { label: "Incontro online 15", date: "8 giugno 2027", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
-          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
+          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" },
+          { label: "Colloquio fine percorso", date: "Date personalizzate", type: "individual" }
         ]
       },
       {
@@ -1164,7 +1165,8 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "Incontro online 14", date: "1 luglio 2026", type: "live-class" },
           { label: "Incontro online 15", date: "7 luglio 2026", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
-          { label: "Fine Attività 2° livello", date: "Luglio 2026", type: "milestone" }
+          { label: "Fine Attività 2° livello", date: "Luglio 2026", type: "milestone" },
+          { label: "Colloquio fine percorso", date: "Date personalizzate", type: "individual" }
         ]
       },
       {
@@ -1193,7 +1195,8 @@ export const coursesContent: Record<string, CourseData> = {
           { label: "Incontro online 14", date: "2 giugno 2027", type: "live-class" },
           { label: "Incontro online 15", date: "15 giugno 2027", type: "live-class" },
           { label: "Personal Coaching Individuale", date: "Date personalizzate", type: "individual" },
-          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" }
+          { label: "Fine Attività 2° livello", date: "Giugno 2027", type: "milestone" },
+          { label: "Colloquio fine percorso", date: "Date personalizzate", type: "individual" }
         ]
       }
     ]
@@ -1204,9 +1207,9 @@ export const coursesContent: Record<string, CourseData> = {
     subtitle: "Accompagna team e leader al risultato",
     tagline: "Accompagni team e organizzazioni a risultati straordinari con l'esclusivo modello di Team Coaching Sistemico — e maturi il prerequisito ICF per la credenziale di team coaching (ACTC).",
     certificate: {
-      eyebrow: "Attestato finale",
-      title: "Un percorso certificato",
-      body: "Completato il Master ricevi il **certificato di partecipazione** (60 ore · 54 CCE ICF). Superando l'**esame Expert** ottieni inoltre il **diploma AATC**, prerequisito ICF per la credenziale **ACTC** (Advanced Certification in Team Coaching).",
+      eyebrow: "Attestato di partecipazione",
+      title: "Un percorso riconosciuto",
+      body: "Completato il percorso ricevi l'**attestato di partecipazione** (60 ore di formazione). L'**esame Expert** (ASTC Expert Exam) è opzionale e a pagamento: superandolo ottieni il **diploma AATC**, prerequisito per la credenziale ICF **ACTC** (Advanced Certification in Team Coaching) e pari a **60 CCE ICF** utili al rinnovo.",
       image: "/course-media/systemic-team-coaching/certificato.png",
     },
     type: "AVANZATO",
@@ -1223,7 +1226,7 @@ export const coursesContent: Record<string, CourseData> = {
       intro:
         "Il Master si articola in **due livelli**: un primo livello in videoconferenza con Incontro online e homework su progetti reali, e un secondo livello in aula di tre giornate con e-learning specifico, ToolBox e pratica applicata.",
       formazioneTitle: "Struttura e trainer",
-      formazioneBadge: "60 ore live · 54 CCE ICF",
+      formazioneBadge: "60 ore live · 60 CCE ICF",
       formazioneIntro:
         "Team Coaching Sistemico 1° livello prevede due giornate in videoconferenza e Incontro online da due ore. Team Coaching Sistemico 2° livello prevede tre giorni in aula, modulo e-learning specifico e ToolBox. L'Esame Expert è opzionale e consente di ottenere il diploma AATC ICF.",
     },
@@ -1231,7 +1234,7 @@ export const coursesContent: Record<string, CourseData> = {
       {
         icon: "monitor",
         title: "Team Coaching Sistemico 1° livello",
-        body: "Corso di due giornate in videoconferenza, Incontro online da due ore e homework su progetti di team coaching supportati dalla piattaforma Inner.",
+        body: "Corso di due giornate in videoconferenza, Incontro online da due ore e homework su progetti di team coaching supportati dalil Laboratorio Virtuale.",
       },
       {
         icon: "users",
@@ -1245,7 +1248,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
     ],
     studyModeBox: {
-      title: "Piattaforma Inner e",
+      title: "Laboratorio Virtuale e",
       highlight: "ToolBox",
       body: "Tra una sessione e l'altra lavori su progetti reali di team coaching, con homework e materiali dedicati. Il percorso integra social learning, e-learning specifico e strumenti operativi per accompagnare team e organizzazioni.",
       linkText: "Vedi il calendario dell'edizione",
@@ -1256,7 +1259,7 @@ export const coursesContent: Record<string, CourseData> = {
       body: "Dopo aver superato l'esame ottieni il diploma AATC ICF: è il prerequisito per accedere alla credenziale Advanced Certification in Team Coaching (ACTC) e ti dà accesso all'application ICF. Dovrai maturare un certo numero di ore di pratica professionale, ma il tuo diploma è riconosciuto a livello internazionale.",
     },
     programIntro:
-      "Il percorso di Team Coaching Sistemico unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Incontro online, giornate intensive, homework su progetti reali, piattaforma Inner, e-learning e ToolBox.",
+      "Il percorso di Team Coaching Sistemico unisce modello sistemico, pratica sui pattern di team e strumenti operativi. Si lavora con Incontro online, giornate intensive, homework su progetti reali, Laboratorio Virtuale, e-learning e ToolBox.",
     admissionBox: {
       title: "Requisiti per partecipare",
       body: "Per l'accesso al corso è richiesto l'invio del CV. Il workshop non tratta i fondamentali di management, coaching o facilitazione: è quindi importante avere una conoscenza di base di queste discipline.",
@@ -1275,13 +1278,13 @@ export const coursesContent: Record<string, CourseData> = {
       "Accompagni team e organizzazioni a risultati straordinari in tempi brevi",
       "Aiuti team e leader a sostituire gli schemi limitanti ed esprimere tutto il potenziale del gruppo",
       "Maturi il prerequisito per la credenziale ICF di team coaching (ACTC)",
-      "Porti a casa 60 ore di formazione live e 54 CCE ICF per il rinnovo della credenziale"
+      "Porti a casa 60 ore di formazione live e 60 CCE ICF per il rinnovo della credenziale"
     ],
     summaryBox: {
       nextEdition: "Videoconferenza + Milano / Roma",
       dates: "Ottobre 2026 – Febbraio 2027",
       format: "Ibrido (Live Online + In aula)",
-      duration: "60 ore sincrone · 54 CCE",
+      duration: "60 ore sincrone · 60 CCE",
       price: "Da 1.200€ + IVA",
       installments: "Rateizzazione disponibile"
     },
@@ -1302,7 +1305,7 @@ export const coursesContent: Record<string, CourseData> = {
     learning: {
       cols: [
         { title: "Modello sistemico", items: ["Coaching sistemico dei team", "Pattern e dinamiche di gruppo", "Il team come organismo vivente", "Paradigma del team di successo"] },
-        { title: "Metodo & Strumenti", items: ["ToolBox", "Piattaforma Inner di social learning", "Homework su progetti reali", "Percorso immersivo e team-centrico"] },
+        { title: "Metodo & Strumenti", items: ["ToolBox", "Laboratorio Virtuale di social learning", "Homework su progetti reali", "Percorso immersivo e team-centrico"] },
         { title: "Alta performance", items: ["Ri-pensare le high performing team", "Sostituire convinzioni limitanti", "Facilitare il cambiamento sistemico", "Soddisfazione e risultati straordinari"] }
       ],
       softSkills: ["Visione d'insieme", "Neutralità sistemica", "Presenza nei team", "Gestione della complessità"]
@@ -1311,8 +1314,8 @@ export const coursesContent: Record<string, CourseData> = {
       modules: [
         {
           title: "Team Coaching Sistemico 1° livello",
-          desc: "Corso di due giornate in videoconferenza più alcune Incontro online da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra piattaforma di social learning Inner.",
-          tags: ["Live Online", "Incontro online 2h", "Piattaforma Inner", "Homework"]
+          desc: "Corso di due giornate in videoconferenza più alcune Incontro online da due ore in videoconferenza. Homework su progetti di team coaching supportati dalla nostra Laboratorio Virtuale di social learning.",
+          tags: ["Live Online", "Incontro online 2h", "Laboratorio Virtuale", "Homework"]
         },
         {
           title: "Team Coaching Sistemico 2° livello",
@@ -1321,8 +1324,8 @@ export const coursesContent: Record<string, CourseData> = {
         },
         {
           title: "Esame Expert",
-          desc: "Opzionale e a pagamento, per chi vuole certificarsi come Expert: valutazione di quanto prodotto nei tre giorni del 2° livello, verifica scritta e incontro individuale di chiusura.",
-          tags: ["Opzionale", "Certificazione Expert", "Colloquio finale"]
+          desc: "Opzionale e a pagamento, per chi vuole ottenere il riconoscimento ASTC Expert: valutazione di quanto prodotto nei tre giorni del 2° livello, verifica scritta e incontro individuale di chiusura.",
+          tags: ["Opzionale", "Riconoscimento Expert", "Colloquio finale"]
         }
       ]
     },
@@ -1340,8 +1343,8 @@ export const coursesContent: Record<string, CourseData> = {
       content: "Esci pronto a operare come team coach sistemico, con le competenze e gli strumenti indispensabili per esserlo davvero — e che, come raccontano i nostri graduati, hanno un'influenza molto positiva anche sul tuo coaching individuale. Superando l'esame Expert ottieni il diploma AATC, prerequisito ICF per la credenziale Advanced Certification in Team Coaching (ACTC).",
       points: [
         { title: "Diploma AATC ICF", desc: "Lo ottieni superando l'esame Expert: è il prerequisito riconosciuto per accedere alla credenziale ICF ACTC." },
-        { title: "Attestato di partecipazione", desc: "Anche senza esame porti a casa 60 ore di formazione sincrona certificate." },
-        { title: "54 CCE ICF", desc: "L'attestato AATC vale 54 CCE (46 CC + 8 RD): rinnovi la tua credenziale di Coach ICF mentre ti specializzi sui team." },
+        { title: "Attestato di partecipazione", desc: "Anche senza esame porti a casa 60 ore di formazione sincrona accreditate." },
+        { title: "60 CCE ICF", desc: "L'attestato AATC vale 60 CCE: rinnovi la tua credenziale di Coach ICF mentre ti specializzi sui team." },
         { title: "Conduci team coaching immersivi", desc: "Sai condurre percorsi di team coaching immersivi e team-centrici, con procedure e metodologia sistemica." }
       ]
     },
@@ -1354,7 +1357,7 @@ export const coursesContent: Record<string, CourseData> = {
         { title: "Accompagni i team a risultati straordinari", desc: "Guidi team e gruppi di lavoro verso obiettivi ambiziosi in tempi brevi, intervenendo sul sistema e non solo sui singoli." },
         { title: "Sciogli gli schemi che frenano il gruppo", desc: "Aiuti team e leader a riconoscere e sostituire convinzioni e pattern limitanti con dinamiche che liberano il potenziale collettivo." },
         { title: "Leggi il team come un organismo vivente", desc: "Applichi il modello sistemico per cogliere relazioni, ruoli, confini e dinamiche che determinano le performance del team." },
-        { title: "Conduci percorsi di team coaching immersivi", desc: "Progetti e faciliti interi percorsi team-centrici, con metodologia sistemica, ToolBox e la piattaforma di social learning Inner." },
+        { title: "Conduci percorsi di team coaching immersivi", desc: "Progetti e faciliti interi percorsi team-centrici, con metodologia sistemica, ToolBox e la Laboratorio Virtuale di social learning." },
         { title: "Gestisci leader, committenza e stakeholder", desc: "Ingaggi la committenza e accompagni leader e stakeholder lungo tutto l'intervento, dal contratto ai risultati." },
         { title: "Ti specializzi come team coach ICF", desc: "Maturi le competenze e le ore per il diploma AATC e per accedere alla credenziale ICF per il team coaching (ACTC)." }
       ],
@@ -1414,7 +1417,7 @@ export const coursesContent: Record<string, CourseData> = {
         citySlug: "milano",
         level: "Team Coaching Sistemico 1° livello",
         levelSlug: "l1",
-        editionLabel: "Team Coaching Sistemico 1° livello 261",
+        editionLabel: "Team Coaching Sistemico 1° livello",
         editionSlug: "astc-l1-261-2026",
         subtitle: "Ottobre – Novembre 2026",
         badge: "Live Online",
@@ -1483,7 +1486,7 @@ export const coursesContent: Record<string, CourseData> = {
         citySlug: "roma",
         level: "Team Coaching Sistemico 1° livello",
         levelSlug: "l1",
-        editionLabel: "Team Coaching Sistemico 1° livello 261",
+        editionLabel: "Team Coaching Sistemico 1° livello",
         editionSlug: "astc-l1-261-2026-roma",
         subtitle: "Ottobre – Novembre 2026",
         badge: "Live Online",
@@ -1582,11 +1585,11 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Cosa serve per la credenziale ICF di team coaching (ACTC)?",
-        a: "Il percorso è accreditato ICF ed è prerequisito per la credenziale ACTC (Advanced Certification in Team Coaching). Completando il 1° e il 2° livello — e, in opzione, l'esame finale di certificazione — maturi i requisiti formativi per accedere all'ACTC."
+        a: "Il percorso è accreditato ICF ed è prerequisito per la credenziale ACTC (Advanced Certification in Team Coaching). Completando il 1° e il 2° livello — e, in opzione, l'esame Expert — maturi i requisiti formativi per accedere all'ACTC."
       },
       {
         q: "Quanto costa il Master in Team Coaching Sistemico?",
-        a: "Il Livello 1 parte da 1.200€ + IVA, il Livello 2 da 2.100€ + IVA e il percorso completo (1° + 2° livello) è 2.900€ + IVA. L'esame di certificazione è un'opzione aggiuntiva. Sono previste condizioni Early Bird per chi si iscrive in anticipo."
+        a: "Il Livello 1 parte da 1.200€ + IVA, il Livello 2 da 2.100€ + IVA e il percorso completo (1° + 2° livello) è 2.900€ + IVA. L'esame Expert (ASTC) è un'opzione aggiuntiva. Sono previste condizioni Early Bird per chi si iscrive in anticipo."
       },
       {
         q: "Le lezioni sono online o in presenza?",
@@ -1601,7 +1604,7 @@ export const coursesContent: Record<string, CourseData> = {
   'eiw': {
     title: "Intelligenza Emotiva",
     subtitle: "Gestisci le emozioni nei momenti che contano",
-    tagline: "Impari a stare con le emozioni in modo intelligente, dove più conta: alleni davvero la tua intelligenza emotiva con esperienze pratiche — si fa, non si ascolta soltanto — maturando crediti CCE ICF.",
+    tagline: "Alleni la tua intelligenza emotiva con esperienze pratiche — si fa, non si ascolta soltanto — e maturi crediti CCE ICF.",
     type: "WORKOUT EQ",
     media: {
       hero: "/course-media/eiw/hero.png",
@@ -1610,10 +1613,10 @@ export const coursesContent: Record<string, CourseData> = {
       howItWorks: "/course-media/apcm/how-master.jpg"
     },
     heroBenefits: [
-      "Impari a stare con le emozioni in modo intelligente: la competenza che fa la differenza nella tua efficacia, in ogni campo",
-      "Ti alleni sul serio, con esperienze pratiche progettate apposta — si fa, non si studia soltanto",
-      "Sviluppi una consapevolezza mirata di ogni emozione con il modello CSI Asterys: Consapevolezza · Strategia · Interazione",
-      "Maturi 4 CCE ICF per ogni Round, con coach esperti di intelligenza emotiva al tuo fianco"
+      "Impari a gestire le emozioni quando conta di più",
+      "Esperienze pratiche progettate apposta: si fa, non si studia",
+      "Il modello CSI Asterys: Consapevolezza · Strategia · Interazione",
+      "Maturi 4 CCE ICF per ogni Round, con coach esperti al tuo fianco"
     ],
     summaryBox: {
       nextEdition: "Da settembre 2026",
@@ -1814,7 +1817,7 @@ export const coursesContent: Record<string, CourseData> = {
       dates: "Gruppo: 2 date a edizione · Individuale: on-demand",
       format: "Mentor coaching di gruppo o individuale",
       duration: "10 ore per il rinnovo (gruppo 7h + individuale 3h)",
-      price: "Gruppo 180€ · Individuale 300€/h · Entrambi 480€",
+      price: "Gruppo 179€ · Individuale 319€ · Entrambi 499€ (+ IVA)",
       installments: "Sconto Alumni applicato in cassa"
     },
     earlyBirdPromo: {
@@ -1908,7 +1911,7 @@ export const coursesContent: Record<string, CourseData> = {
     studyModeBox: {
       title: "Come si acquista",
       highlight: "1 edizione = 2 incontri (7h) · +3h individuale = 10h",
-      body: "Acquisti un'edizione: 2 sessioni insieme, non separate. Le 2 date vengono comunicate di volta in volta. Se annulli una sessione, la perdi. Se l'edizione non parte (sotto il numero minimo di partecipanti) ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo. [Regole d'acquisto in via di conferma]",
+      body: "Acquisti un'edizione: 2 sessioni insieme, non separate. Le 2 date vengono comunicate di volta in volta. Se annulli una sessione, la perdi. Se l'edizione non parte (sotto il numero minimo di partecipanti) ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo.",
     },
     teachers: [
       {
@@ -1983,7 +1986,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Come funziona l'acquisto?",
-        a: "Acquisti un'edizione, cioè le 2 sessioni insieme (non separatamente). Se annulli una sessione, la perdi. Se l'edizione non parte per numero insufficiente di partecipanti, ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo. [Regole in via di conferma]"
+        a: "Acquisti un'edizione, cioè le 2 sessioni insieme (non separatamente). Se annulli una sessione, la perdi. Se l'edizione non parte per numero insufficiente di partecipanti, ti proponiamo l'edizione successiva; se non ti va, ti rimborsiamo."
       },
       {
         q: "Quanto costa e come si paga?",
@@ -2000,7 +2003,7 @@ export const coursesContent: Record<string, CourseData> = {
     ]
   },
   'public-speaking': {
-    title: "Public Speaking Pro",
+    title: "Public Speaking PRO",
     brochureUrl: "https://asteryslab.com/wp-content/uploads/Public-Speaking-Pro-1.pdf",
     subtitle: "Rendi memorabile ogni tuo intervento",
     tagline: "Parli in pubblico con disinvoltura e rendi memorabile ogni tuo intervento: in 3 giornate di full immersion in presenza più follow up online padroneggi corpo, voce ed emozioni davanti a qualsiasi platea.",
@@ -2014,12 +2017,12 @@ export const coursesContent: Record<string, CourseData> = {
       completePlatform: "/course-media/apcm/platform-ui.png",
     },
     heroBenefits: ["Parli in pubblico con disinvoltura e catturi l'attenzione della platea", "Padroneggi voce, corpo e postura e ne senti l'impatto", "Presenti idee e progetti con credibilità e autorevolezza", "Usi le tue emozioni a tuo vantaggio, anche sotto pressione"],
-    summaryBox: { nextEdition: "Da definire", dates: "Da definire", format: "Aula + Online", duration: "3 giornate + 2 follow up", price: "--", installments: "" },
+    summaryBox: { nextEdition: "Da definire", dates: "Da definire", format: "Aula + Online", duration: "3 giornate + 2 follow up", price: "da 1.500€ + IVA", installments: "" },
     badges: ["Pratico", "Feedback Immediato"],
     overview: {
       title: "Comunicare è servire",
       content: [
-        "Esci da questo corso capace di **parlare in pubblico con disinvoltura**, catturare l'attenzione della platea e veicolare i tuoi messaggi in ogni situazione **one to many**. Public Speaking PRO non è solo formazione: è una vera **esperienza di trasformazione** che ti dà le competenze per eccellere quando tutti gli occhi sono su di te.",
+        "Esci da questo corso capace di **parlare in pubblico con disinvoltura**, catturare l'attenzione della platea e veicolare i tuoi messaggi in ogni situazione **one-to-many**. Public Speaking PRO non è solo formazione: è una vera **esperienza di trasformazione** che ti dà le competenze per eccellere quando tutti gli occhi sono su di te.",
         "Interagisci con il pubblico con maestria e disinvoltura, veicolando i tuoi messaggi e **catturando l'attenzione della platea**. Hai tutti gli strumenti per **superare la paura di parlare in pubblico** e agire con piena consapevolezza, trasmettendo competenza e professionalità.",
         "Non si tratta solo di parlare in pubblico, ma di **essere serenamente chi sei mentre lo fai**."
       ]
@@ -2047,7 +2050,7 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     teachers: [
-      { name: "Alessandra Bitelli", creds: "Executive Coach", role: "Trainer", bio: "Executive coach, formatrice e facilitatrice, specializzata in comunicazione efficace, crescita professionale e dinamiche relazionali, con esperienza internazionale. Laureata in Pedagogia.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
+      { name: "Alessandra Bitelli", creds: "MCC", role: "Trainer", bio: "Executive coach MCC, formatrice e facilitatrice, specializzata in comunicazione efficace, crescita professionale e dinamiche relazionali, con esperienza internazionale. Laureata in Pedagogia.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
       { name: "Renata Beltrami", creds: "Coach PCC", role: "Trainer", bio: "Coach PCC, trainer e facilitatrice certificata di Intelligenza Emotiva. Dopo quasi 20 anni all'estero, aiuta le persone a sviluppare consapevolezza di sé, obiettivi ed emozioni.", img: "/course-media/apcm/trainer-renata-cargnelutti-beltrami.png" },
       { name: "Laura Jacobbi", creds: "Actor Coach", role: "Presenza scenica", bio: "Regista, attrice e actor coach, formata all'Accademia d'Arte Drammatica «Silvio D'Amico». Dal 1993 insegna recitazione e dizione ed è coach di molti attori professionisti.", img: "/course-media/public-speaking/laura-jacobbi.png" },
       { name: "Nuna Shoesmith", creds: "Coach ACC ICF", role: "Vocal Coach", bio: "Diplomata al Conservatorio, vocal coach con esperienza decennale: aiuta a trovare la propria voce autentica con un approccio olistico al benessere vocale.", img: "/course-media/public-speaking/nuna-shoesmith.png" }
@@ -2057,7 +2060,7 @@ export const coursesContent: Record<string, CourseData> = {
       eyebrow: "Competenze & Impatto",
       title: "Cosa saprai fare davanti a un pubblico",
       intro:
-        "Public Speaking PRO ti dà una **presenza davvero efficace**: le competenze concrete per parlare in pubblico con disinvoltura, presentare idee e progetti con autorevolezza e usare corpo, voce ed emozioni a tuo vantaggio, in ogni situazione one to many.",
+        "Public Speaking PRO ti dà una **presenza davvero efficace**: le competenze concrete per parlare in pubblico con disinvoltura, presentare idee e progetti con autorevolezza e usare corpo, voce ed emozioni a tuo vantaggio, in ogni situazione one-to-many.",
       competencies: [
         { title: "Parlare in pubblico con disinvoltura", desc: "Affronti eventi, riunioni e conferenze con sicurezza e consapevolezza dell'effetto che hai sull'audience, catturando e mantenendo l'attenzione." },
         { title: "Padroneggiare voce e postura", desc: "Usi voce, corpo e postura in modo consapevole e ne percepisci l'impatto, trasformandoli nei tuoi alleati più potenti sul palco." },
@@ -2089,7 +2092,29 @@ export const coursesContent: Record<string, CourseData> = {
         }
       ]
     },
-    fees: [{ title: "Unica", type: "lump" as const, benefit: "Tutto incluso", heading: "Quota iscrizione", desc: "Include accesso alle sessioni live, dispense, video registrazioni e certificato di partecipazione.", price: "--", priceLabel: "prezzo in definizione" }],
+    fees: [
+      {
+        title: "Standard",
+        tabLabel: "Standard",
+        type: "lump" as const,
+        benefit: "3 giornate in aula + online",
+        heading: "Public Speaking · Standard",
+        desc: "Il percorso completo: 3 giornate tra aula e online + 2 follow-up, con dispense, strumenti e attestato di partecipazione. Metodo e pratica per parlare in pubblico con presenza e impatto.",
+        price: "1.500€",
+        priceLabel: "+ IVA · data da definire",
+      },
+      {
+        title: "Elite",
+        tabLabel: "Elite",
+        type: "lump" as const,
+        benefit: "Standard + 3 sessioni 1:1",
+        heading: "Public Speaking · Elite",
+        desc: "Tutto il percorso Standard, più 3 sessioni individuali 1:1 con il trainer per lavorare sul tuo caso reale e accelerare i risultati.",
+        price: "2.000€",
+        priceLabel: "+ IVA · data da definire",
+        footnote: "Include le 3 giornate + 2 follow-up dello Standard e, in più, 3 sessioni individuali 1:1.",
+      },
+    ],
     faqs: [
       {
         q: "A chi serve un corso di public speaking?",
@@ -2142,13 +2167,13 @@ export const coursesContent: Record<string, CourseData> = {
       price: "Da 1.575€ + IVA",
       installments: "Pagamento rateizzato disponibile"
     },
-    badges: ["3 giornate in aula", "Lab su piattaforma Inner", "Pagamento a rate"],
+    badges: ["3 giornate in aula", "Laboratorio Virtuale", "Pagamento a rate"],
     overview: {
       title: "Voice Dialogue per professionisti",
       content: [
         "Di fronte a cambiamenti radicali del contesto capita di trovarsi in difficoltà: continui a pensare con il solito set di pensieri e ti identifichi in un Sé che non riesce ad adattarsi, senza sapere dove trovare le risorse necessarie. Il **Voice Dialogue** offre un supporto prezioso allo sviluppo della consapevolezza, nel rapporto di coaching e nelle professioni dedicate allo sviluppo della persona: basato sulla **Psicologia dei Sé** — che affonda le radici nel pensiero di **C.G. Jung** ed è stata poi elaborata negli Stati Uniti da **Hal e Sidra Stone** — ti permette di integrare le tue risorse e di comprendere la natura dei comportamenti limitanti, tuoi e del cliente, portando più profondità, risorse e qualità di Presenza in ogni sessione.",
         "Lo scopo del Voice Dialogue è supportare la persona a trovare il proprio **Io consapevole** — diverso dall'Io operativo — inteso come \"altro\" rispetto ai Sé in cui di solito ci si identifica. Così puoi scegliere consapevolmente quali parti e atteggiamenti di te utilizzare in base alle necessità: conoscere e padroneggiare il metodo porta a una maggiore consapevolezza di sé e, quindi, a maggiori possibilità di scelta e d'azione.",
-        "**Asterys Lab introduce il Voice Dialogue nel mondo del coaching italiano nel 2013**, portando da Londra **John Kent** e organizzando alcune edizioni memorabili. Da allora ha certificato molti dei facilitatori oggi attivi nel contesto del coaching ICF."
+        "**Asterys Lab introduce il Voice Dialogue nel mondo del coaching italiano nel 2013**, portando da Londra **John Kent** e organizzando alcune edizioni memorabili. Da allora ha formato molti dei facilitatori oggi attivi nel contesto del coaching ICF."
       ]
     },
     target: [
@@ -2217,9 +2242,9 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Struttura del percorso",
       intro:
         "Il corso si sviluppa in **3 giorni di full immersion in aula, in presenza a Milano**. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci la padronanza per applicarle in un percorso di coaching.",
-      formazioneTitle: "Lab su piattaforma Inner",
+      formazioneTitle: "Laboratorio Virtuale",
       formazioneIntro:
-        "Hai accesso al **Lab sulla piattaforma Inner**, uno spazio digitale dedicato dove trovi materiali, dispense e strumenti di supporto al percorso e ti confronti con colleghi e trainer durante tutto il corso.",
+        "Hai accesso al **Laboratorio Virtuale**, uno spazio digitale dedicato dove trovi materiali, dispense e strumenti di supporto al percorso e ti confronti con colleghi e trainer durante tutto il corso.",
     },
     scheduleBands: [
       {
@@ -2250,8 +2275,8 @@ export const coursesContent: Record<string, CourseData> = {
     },
     studyModeBox: {
       title: "Modalità di svolgimento",
-      highlight: "In aula a Milano + Lab Inner",
-      body: "3 giorni di full immersion in aula, in presenza. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue per acquisire la padronanza necessaria ad applicarle in un percorso di coaching. In parallelo hai accesso al Lab sulla piattaforma Inner per confrontarti con colleghi e trainer durante tutto il periodo del corso.",
+      highlight: "In aula a Milano + Laboratorio Virtuale",
+      body: "3 giorni di full immersion in aula, in presenza. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue per acquisire la padronanza necessaria ad applicarle in un percorso di coaching. In parallelo hai accesso al Laboratorio Virtuale per confrontarti con colleghi e trainer durante tutto il periodo del corso.",
     },
     admissionBox: {
       title: "Ammissione",
@@ -2302,7 +2327,7 @@ export const coursesContent: Record<string, CourseData> = {
         type: "lump",
         benefit: "Quota standard",
         heading: "Quota iscrizione",
-        desc: "Include **3 giornate full immersion in aula a Milano**, materiali didattici e accesso al **Lab su piattaforma Inner**.",
+        desc: "Include **3 giornate full immersion in aula a Milano**, materiali didattici e accesso al **Laboratorio Virtuale**.",
         price: "1.750€",
         priceLabel: "+ IVA",
         financing: {
@@ -2320,11 +2345,11 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Come è strutturato il percorso?",
-        a: "3 giorni di full immersion in aula, in presenza a Milano. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci la padronanza per applicarle in un percorso di coaching. In parallelo è allestito un Lab sulla piattaforma Inner per confrontarsi con colleghi e trainer durante tutto il corso."
+        a: "3 giorni di full immersion in aula, in presenza a Milano. Durante il laboratorio sperimenti in prima persona le tecniche di base del Voice Dialogue e acquisisci la padronanza per applicarle in un percorso di coaching. In parallelo è allestito un Laboratorio Virtuale per confrontarsi con colleghi e trainer durante tutto il corso."
       },
       {
-        q: "Che cos'è la piattaforma Inner?",
-        a: "Inner è il Lab digitale del corso: uno spazio web dedicato dove ti confronti con colleghi e trainer per tutto il periodo di svolgimento."
+        q: "Che cos'è il Laboratorio Virtuale?",
+        a: "È lo spazio digitale del corso: un'area web dedicata dove trovi materiali, dispense e strumenti di supporto e ti confronti con colleghi e trainer per tutta la durata del percorso. Le lezioni si svolgono in diretta e non vengono registrate."
       },
       {
         q: "È richiesto un CV per iscriversi?",
@@ -2343,12 +2368,12 @@ export const coursesContent: Record<string, CourseData> = {
   'marketing-per-coach': {
     title: "Personal Branding per Coach",
     subtitle: "Costruisci un personal brand da coach",
-    tagline: "In cinque webinar con Helga Ogliari costruisci un personal branding chiaro e riconoscibile, impari a comunicare il tuo valore e acquisisci i clienti giusti: dal posizionamento allo storytelling, dal social selling alla scrittura che vende.",
+    tagline: "In cinque incontri online con Helga Ogliari costruisci un personal branding chiaro e acquisisci i clienti giusti: dal posizionamento allo storytelling.",
     type: "FORMAZIONE AVANZATA",
-    heroKicker: "Personal branding · 5 webinar",
+    heroKicker: "Personal branding · 5 incontri online",
     earlyBirdPromo: {
       ribbon: "PRIMA EDIZIONE",
-      line: "Prima edizione del ciclo «Personal Branding per Coach»: prezzo di favore riservato ai primi iscritti.",
+      line: "Prima edizione del corso «Personal Branding per Coach»: prezzo di favore riservato ai primi iscritti.",
       deadline: "",
       ctaHref: "#prezzo",
     },
@@ -2358,32 +2383,32 @@ export const coursesContent: Record<string, CourseData> = {
       howItWorks: "/course-media/apcm/how-master.jpg",
     },
     heroBenefits: [
-      "Ti posizioni con un personal branding chiaro e riconoscibile, e ti fai scegliere",
-      "Acquisisci i tuoi primi clienti con storytelling, social selling e scrittura che vende",
-      "Porti a casa strumenti pronti all'uso: Personal Branding Canvas, Storytelling Canvas, Social Selling Index",
-      "5 webinar live con Helga Ogliari · incluso nel 2° livello del Master in Coaching, a metà prezzo con il 1°"
+      "Ti posizioni con un personal branding chiaro, e ti fai scegliere",
+      "Acquisisci i primi clienti con storytelling e social selling",
+      "Strumenti pronti all'uso: Personal Branding & Storytelling Canvas",
+      "5 incontri online in diretta con Helga Ogliari · incluso nel 2° livello del Master"
     ],
     summaryBox: {
       nextEdition: "Prima edizione · Online",
       dates: "9 nov – 16 dic 2026",
-      format: "5 webinar live online",
-      duration: "5 webinar · 18:30–20:00",
+      format: "5 incontri online in diretta",
+      duration: "5 incontri online · 18:30–20:00",
       price: "790€ + IVA (esterni)",
       installments: "Incluso nel 2° livello del Master · metà prezzo con il 1°"
     },
-    badges: ["Prima edizione", "5 webinar · 18:30–20:00", "Con Helga Ogliari", "Asterys Lab Career"],
+    badges: ["Prima edizione", "5 incontri online · 18:30–20:00", "Con Helga Ogliari", "Asterys Lab Career"],
     overview: {
       title: "Perché il personal branding per i coach",
       content: [
-        "Esci da questo ciclo con un **personal branding chiaro e riconoscibile**, la capacità di raccontare il tuo valore e gli strumenti per acquisire i tuoi primi clienti: tutto ciò che ti fa scegliere in un mercato affollato.",
-        "Perché ne hai bisogno lo dicono i numeri. I dati del **2025 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
+        "Esci da questo corso con un **personal branding chiaro e riconoscibile**, la capacità di raccontare il tuo valore e gli strumenti per acquisire i tuoi primi clienti: tutto ciò che ti fa scegliere in un mercato affollato.",
+        "Perché ne hai bisogno lo dicono i numeri. I dati del **2023 ICF Global Coaching Study** evidenziano una crescita sostenuta della domanda di coaching, da parte sia delle organizzazioni sia dei singoli professionisti. **Oltre la metà** dei percorsi di coaching è finanziata dalle aziende: il coaching è ormai integrato nelle strategie di sviluppo della leadership e delle persone.",
         "Tra il 2019 e il 2023 il numero di coach professionisti è cresciuto del **54%**, e la crescita non si è fermata. Il dato più impressionante è però un altro: quante persone si definiscono «coach», spesso accostando l'etichetta ad attività che con il coaching hanno poco a che vedere. In un mercato così affollato, **far riconoscere il proprio valore diventa un'impresa**.",
-        "Il ciclo **Il personal branding del coach** ti dà gli strumenti e le competenze per valorizzare la tua professionalità sul mercato e attrarre i clienti giusti.",
+        "Il corso **Personal Branding per Coach** ti dà gli strumenti e le competenze per valorizzare la tua professionalità sul mercato e attrarre i clienti giusti.",
         "Fa parte del programma **Asterys Lab Career**, l'ecosistema con cui Asterys Lab accompagna i coach nella crescita professionale: dall'avvio della pratica fino allo sviluppo del proprio business."
       ]
     },
     target: [
-      { title: "Coach certificati", desc: "Vuoi valorizzare la tua professionalità e farti riconoscere in un mercato affollato.", icon: <Award /> },
+      { title: "Coach accreditati", desc: "Vuoi valorizzare la tua professionalità e farti riconoscere in un mercato affollato.", icon: <Award /> },
       { title: "Coach in avvio", desc: "Devi costruire posizionamento, presenza e i primi clienti.", icon: <Zap /> },
       { title: "Studenti del Master", desc: "Incluso nel 2° livello, a metà prezzo con il 1°: porti il tuo brand sul mercato.", icon: <Target /> },
       { title: "Professionisti del coaching", desc: "Vuoi attrarre i clienti giusti e comunicare con efficacia il tuo valore.", icon: <TrendingUp /> }
@@ -2426,43 +2451,43 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     programIntro:
-      "Cinque webinar per passare dalle competenze al valore riconosciuto: identità e posizionamento, storytelling, social selling e scrittura che vende. Ogni incontro produce uno strumento concreto da usare subito.",
+      "Cinque incontri online per passare dalle competenze al valore riconosciuto: identità e posizionamento, storytelling, social selling e scrittura che vende. Ogni incontro produce uno strumento concreto da usare subito.",
     howItWorks: {
-      title: "Come funziona il ciclo",
-      intro: "Cinque **webinar live** con Helga Ogliari, in sequenza: ogni incontro ha un focus chiaro, una parte di lavoro guidato e un **output concreto** che porti a casa — dalla promessa di valore al modello per le tue offerte.",
-      formazioneTitle: "5 webinar · live online",
+      title: "Come funziona il corso",
+      intro: "Cinque **incontri online in diretta** con Helga Ogliari, in sequenza: ogni incontro ha un focus chiaro, una parte di lavoro guidato e un **output concreto** che porti a casa — dalla promessa di valore al modello per le tue offerte.",
+      formazioneTitle: "5 incontri online in diretta",
       formazioneBadge: "Live online · 18:30–20:00",
       formazioneIntro: "Gli incontri si svolgono in diretta online, dalle **18:30 alle 20:00**. Ecco il calendario della prima edizione."
     },
     classDates: [
-      { date: "9 novembre 2026", badge: "Webinar 1", note: "Mindset del personal branding" },
-      { date: "16 novembre 2026", badge: "Webinar 2", note: "Il tuo piano strategico con Personal Branding Canvas" },
-      { date: "26 novembre 2026", badge: "Webinar 3", note: "Storytelling professionale" },
-      { date: "9 dicembre 2026", badge: "Webinar 4", note: "Social selling su LinkedIn" },
-      { date: "16 dicembre 2026", badge: "Webinar 5", note: "Business writing for selling" },
+      { date: "9 novembre 2026", badge: "1° Incontro online", note: "Mindset del personal branding" },
+      { date: "16 novembre 2026", badge: "2° Incontro online", note: "Il tuo piano strategico con Personal Branding Canvas" },
+      { date: "26 novembre 2026", badge: "3° Incontro online", note: "Storytelling professionale" },
+      { date: "9 dicembre 2026", badge: "4° Incontro online", note: "Social selling su LinkedIn" },
+      { date: "16 dicembre 2026", badge: "5° Incontro online", note: "Business writing for selling" },
     ],
     competenciesAndCareers: {
       eyebrow: "Cosa porti a casa",
-      title: "Uno strumento concreto da ogni webinar",
-      intro: "Esci con strumenti pronti da usare, non con appunti da rileggere: ogni webinar produce un deliverable riutilizzabile per posizionarti, raccontarti e acquisire clienti.",
+      title: "Uno strumento concreto da ogni incontro",
+      intro: "Esci con strumenti pronti da usare, non con appunti da rileggere: ogni incontro produce un deliverable riutilizzabile per posizionarti, raccontarti e acquisire clienti.",
       competencies: [
-        { title: "Chiarisci chi sei e perché ti scelgono", desc: "Dal webinar 1: definisci la tua promessa di valore — chi sei, per chi lavori e perché qualcuno dovrebbe scegliere proprio te." },
-        { title: "Ti posizioni in modo distintivo", desc: "Dal webinar 2: costruisci il tuo Personal Branding Canvas, la mappa del tuo posizionamento, del pubblico e degli strumenti." },
-        { title: "Impari a raccontarti con una voce riconoscibile", desc: "Dal webinar 3: dai forma al tuo Personal Storytelling Canvas e trasformi identità e posizionamento in narrazione." },
-        { title: "Fai crescere la tua presenza su LinkedIn", desc: "Dal webinar 4: porti a casa un piano per il tuo Social Selling Index — profilo, contatti, contenuti e relazioni." },
-        { title: "Trasformi la tua offerta in clienti", desc: "Dal webinar 5: ottieni un modello di testi persuasivi pronti da riutilizzare per vendere il tuo valore." }
+        { title: "Chiarisci chi sei e perché ti scelgono", desc: "Dal 1° incontro: definisci la tua promessa di valore — chi sei, per chi lavori e perché qualcuno dovrebbe scegliere proprio te." },
+        { title: "Ti posizioni in modo distintivo", desc: "Dal 2° incontro: costruisci il tuo Personal Branding Canvas, la mappa del tuo posizionamento, del pubblico e degli strumenti." },
+        { title: "Impari a raccontarti con una voce riconoscibile", desc: "Dal 3° incontro: dai forma al tuo Personal Storytelling Canvas e trasformi identità e posizionamento in narrazione." },
+        { title: "Fai crescere la tua presenza su LinkedIn", desc: "Dal 4° incontro: porti a casa un piano per il tuo Social Selling Index — profilo, contatti, contenuti e relazioni." },
+        { title: "Trasformi la tua offerta in clienti", desc: "Dal 5° incontro: ottieni un modello di testi persuasivi pronti da riutilizzare per vendere il tuo valore." }
       ],
       careerPaths: []
     },
     admissionBox: {
       title: "A chi è rivolto",
-      body: "Il ciclo è pensato per te se sei un coach certificato o un professionista del coaching e vuoi trasformare la tua professionalità in un posizionamento chiaro, riconoscibile e capace di attrarre i clienti giusti. È incluso per chi si iscrive al 2° livello del Master in Coaching e a metà prezzo per chi si iscrive al 1°.",
+      body: "Il corso è pensato per te se sei un coach accreditato o un professionista del coaching e vuoi trasformare la tua professionalità in un posizionamento chiaro, riconoscibile e capace di attrarre i clienti giusti. È incluso per chi si iscrive al 2° livello del Master in Coaching e a metà prezzo per chi si iscrive al 1°.",
     },
     teachers: [
       {
         name: "Helga Ogliari",
         creds: "Personal Branding & Storytelling Designer",
-        role: "Relatrice del ciclo",
+        role: "Relatrice del corso",
         bio: "Personal branding e storytelling designer. Ideatrice della piramide dei valori per il personal branding e del Personal Storytelling Canvas.",
         img: "/course-media/marketing-per-coach/helga-ogliari.png"
       }
@@ -2477,19 +2502,19 @@ export const coursesContent: Record<string, CourseData> = {
         title: "Prima edizione",
         type: "lump",
         benefit: "Prezzo di lancio · prima edizione",
-        heading: "Il personal branding del coach",
-        desc: "**Prima edizione** del ciclo: la lanciamo con un **prezzo di favore** riservato ai primi iscritti. 5 webinar con Helga Ogliari. **Incluso** per chi si iscrive al 2° livello del Master in Coaching, a **metà prezzo** con il 1° livello. Aperto anche agli esterni.",
+        heading: "Personal Branding per Coach",
+        desc: "**Prima edizione** del corso: la lanciamo con un **prezzo di favore** riservato ai primi iscritti. 5 incontri online con Helga Ogliari. **Incluso** per chi si iscrive al 2° livello del Master in Coaching, a **metà prezzo** con il 1° livello. Aperto anche agli esterni.",
         price: "790€",
         priceLabel: "+ IVA · prezzo di lancio",
         footnote: "Prezzo di favore riservato alla prima edizione · incluso nel 2° livello del Master, metà prezzo con il 1°"
       }
     ],
     faqs: [
-      { q: "A chi è rivolto il ciclo «Il personal branding del coach»?", a: "A coach certificati e professionisti del coaching che vogliono valorizzare la propria professionalità sul mercato, posizionarsi e attrarre i clienti giusti." },
+      { q: "A chi è rivolto il corso «Personal Branding per Coach»?", a: "A coach accreditati e professionisti del coaching che vogliono valorizzare la propria professionalità sul mercato, posizionarsi e attrarre i clienti giusti." },
       { q: "Chi è la relatrice?", a: "Helga Ogliari, personal branding e storytelling designer, ideatrice della piramide dei valori per il personal branding e del Personal Storytelling Canvas." },
-      { q: "Quanti webinar sono e di cosa parlano?", a: "Cinque: mindset del personal branding, Personal Branding Canvas, storytelling professionale, social selling su LinkedIn e business writing for selling. Ogni webinar produce uno strumento concreto." },
+      { q: "Quanti incontri sono e di cosa parlano?", a: "Cinque: mindset del personal branding, Personal Branding Canvas, storytelling professionale, social selling su LinkedIn e business writing for selling. Ogni incontri online produce uno strumento concreto." },
       { q: "È incluso nel Master in Coaching?", a: "Sì: è incluso per chi si iscrive al 2° livello del Master in Coaching ed è a metà prezzo per chi si iscrive al 1° livello. È aperto anche agli esterni." },
-      { q: "Quanto costa per gli esterni e quando parte la prossima edizione?", a: "Per gli esterni la quota è di 790€ + IVA. La prima edizione parte il 9 novembre 2026 e si articola in cinque webinar live serali fino al 16 dicembre: lascia i tuoi contatti per bloccare il prezzo di lancio riservato ai primi iscritti." }
+      { q: "Quanto costa per gli esterni e quando parte la prossima edizione?", a: "Per gli esterni la quota è di 790€ + IVA. La prima edizione parte il 9 novembre 2026 e si articola in cinque incontri online in diretta serali fino al 16 dicembre: lascia i tuoi contatti per bloccare il prezzo di lancio riservato ai primi iscritti." }
     ]
   },
   'continuous-learning': {
@@ -2523,7 +2548,7 @@ export const coursesContent: Record<string, CourseData> = {
       content: [
         "Continui a crescere come coach anche dopo il percorso: **tieni viva la pratica**, ti alleni su temi nuovi e accumuli **CCE ICF** utili al rinnovo delle tue credenziali. Un appuntamento al mese, tutto l'anno tranne agosto, senza inizio né fine: entri quando vuoi.",
         "È aperto a **chiunque faccia coaching**, di qualsiasi livello e scuola — studenti e alumni di Asterys Lab, ma anche chi arriva da altri percorsi. Ogni incontro online, dallo sviluppo personale agli approfondimenti sulla pratica, ti lascia uno stimolo concreto da riportare in sessione.",
-        "Le sessioni sono condotte da **Alessandra Bitelli, PCC**, executive coach della Faculty di Asterys Lab, con ospiti che portano stimoli sempre nuovi. Una volta al mese, su Zoom, dalle 18:30 alle 20:00."
+        "Le sessioni sono condotte da **Alessandra Bitelli (MCC)** e **Graziano Nicoli (PCC)**, della Faculty di Asterys Lab, con ospiti che portano stimoli sempre nuovi. Una volta al mese, su Zoom, dalle 18:30 alle 20:00."
       ]
     },
     target: [
@@ -2606,7 +2631,7 @@ export const coursesContent: Record<string, CourseData> = {
       body: "È nato per offrire apprendimento continuo a coach già formati e con credenziale, ma anche a chi è ancora in un percorso di formazione. Rivolto particolarmente a studenti e alumni Asterys Lab (chi inizia, chi è in pausa, chi ha concluso), è aperto a chiunque si occupi di coaching, a qualsiasi livello e di qualsiasi scuola. Nessun processo di ammissione: scegli gli incontri online e iscriviti."
     },
     teachers: [
-      { name: "Alessandra Bitelli", creds: "PCC", role: "Titolare del corso", bio: "PCC, formata come coach in Asterys Lab. Executive coach e parte della Faculty di Asterys Lab, con cui collabora allo sviluppo dei programmi di formazione.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
+      { name: "Alessandra Bitelli", creds: "MCC", role: "Titolare del corso", bio: "MCC, formata come coach in Asterys Lab. Executive coach e parte della Faculty di Asterys Lab, con cui collabora allo sviluppo dei programmi di formazione.", img: "/course-media/apcm/trainer-alessandra-bitelli.jpeg" },
       { name: "Graziano Nicoli", creds: "ICF PCC", role: "Titolare del corso", bio: "Executive Coach ICF PCC, Trainer, Facilitator e Assessor. Executive coach con focus su change management, gestione dell'incertezza e transizioni di carriera.", img: "/course-media/continuous-learning/trainer-graziano-nicoli.jpeg" }
     ],
     career: {
@@ -2638,7 +2663,6 @@ export const coursesContent: Record<string, CourseData> = {
       { days: "Pausa estiva", time: "Agosto" }
     ],
     classDates: [
-      { date: "8 luglio 2026", badge: "7° Incontro online", note: "Il declino dei valori: impatto su appartenenza, motivazione e successo di gruppi e organizzazioni" },
       { date: "15 settembre 2026", badge: "8° Incontro online", note: "Essere Coach… con stile" },
       { date: "20 ottobre 2026", badge: "9° Incontro online", note: "Il coraggio di rompere gli schemi: il valore del pensiero non convenzionale" },
       { date: "17 novembre 2026", badge: "10° Incontro online", note: "Il rispetto dei tempi. Il compromesso dell'orologio" },

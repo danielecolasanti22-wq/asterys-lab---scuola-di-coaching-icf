@@ -84,6 +84,8 @@ export const COURSE_WOO: Record<
   'voice-dialogue': { productId: 77327, sku: 'VDS-24-1', single: true },
   'coaching-circle': { productId: 80393, sku: 'MENT', note: 'variabile → mappato in MENTORING_WOO (gruppo/individuale/completo)' },
   'continuous-learning': { productId: 55762, sku: 'CL', single: true },
+  // Personal Branding per Coach (con Helga): prodotto SEMPLICE, virtuale, 790€+IVA, 1ª ed. 2026.
+  'marketing-per-coach': { productId: 80428, sku: 'PBCOACH-2026-ED1', single: true },
   // Variabili — mappatura variazioni da rifinire:
   'systemic-team-coaching': {
     productId: 56029,
@@ -194,9 +196,9 @@ export type WooEarlyBird = { discountLabel?: string; deadlineISO: string; deadli
  * - l2            → ed. Roma (partenza settembre) — EB entro 17/07/2026
  */
 export const APCM_EARLY_BIRD: Record<'l1' | 'l2' | 'completo', WooEarlyBird> = {
-  // discountLabel = cifra risparmiata (10% del prezzo): L1 340 · L2 450 · Completo 690.
+  // Sconti EB CONFERMATI da Daniele (6 ago 2026): L1 340 (pieno 3400→EB 3060) · L2 450 (4500→4050) · Completo 600 (6900→6300).
   l1: { discountLabel: '340€', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
-  completo: { discountLabel: '690€', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
+  completo: { discountLabel: '600€', deadlineISO: '2026-08-27T23:59:59+02:00', deadlineLabel: '27/08/2026' },
   l2: { discountLabel: '450€', deadlineISO: '2026-07-17T23:59:59+02:00', deadlineLabel: '17/07/2026' },
 };
 
@@ -205,16 +207,15 @@ export const APCM_EARLY_BIRD: Record<'l1' | 'l2' | 'completo', WooEarlyBird> = {
  * per il corso intero (prodotti senza livelli). null = nessun EB per quell'opzione.
  * NB: l'EB NON si applica a Continuous Learning, Coaching Circle ed EIW.
  */
-const EARLY_BIRD: Record<string, WooEarlyBird> = {
+export const EARLY_BIRD: Record<string, WooEarlyBird> = {
   'apcm:l1': APCM_EARLY_BIRD.l1,
   'apcm:l2': APCM_EARLY_BIRD.l2,
   'apcm:completo': APCM_EARLY_BIRD.completo,
   // Voice Dialogue: prodotto semplice, EB a livello di corso (10% di 1.750 = 175€, fino al 31/10/2026).
   'voice-dialogue': { discountLabel: '175€', deadlineISO: '2026-10-31T23:59:59+01:00', deadlineLabel: '31/10/2026' },
-  // ASTC: 6% (da footnote prezzi) → Completo 174 · 1° 72 · 2° 126. 1°/Completo 19/08; 2° 21/11/2026.
+  // ASTC — sconti CONFERMATI da Daniele (6 ago 2026): Completo 174 (pieno 2900→EB 2726) · 1° 72 (1200→1128). Il 2° livello NON ha EB (Daniele: nessuna info + su Woo pieno=scontato).
   'systemic-team-coaching:completo': { discountLabel: '174€', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
   'systemic-team-coaching:l1': { discountLabel: '72€', deadlineISO: '2026-08-19T23:59:59+02:00', deadlineLabel: '19/08/2026' },
-  'systemic-team-coaching:l2': { discountLabel: '126€', deadlineISO: '2026-11-21T23:59:59+01:00', deadlineLabel: '21/11/2026' },
 };
 
 export function getEarlyBird(
@@ -227,7 +228,7 @@ export function getEarlyBird(
 }
 
 /** Registro dei prodotti variabili mappati per corso → (wooKey → prodotto/variazioni). */
-const WOO_PRODUCTS: Record<string, Record<string, WooProductMap>> = {
+export const WOO_PRODUCTS: Record<string, Record<string, WooProductMap>> = {
   apcm: APCM_WOO,
   'systemic-team-coaching': ASTC_WOO,
   eiw: EIW_WOO,

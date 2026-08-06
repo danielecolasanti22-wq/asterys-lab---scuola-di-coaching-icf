@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
+import TopBanner from './TopBanner';
+import { hasBanner } from '../../utils/banner';
 import {
   Menu,
   X,
@@ -24,9 +26,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Highlight } from '../Highlight';
 import { NewsletterForm } from '../NewsletterForm';
 
-/** Contatto WhatsApp (numero in formato internazionale senza "+"). */
-const WHATSAPP_NUMBER = '393498864895';
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+import { whatsappHref } from '../../utils/whatsapp';
 /** Foto di Luciana (advisor) usata nei contatti WhatsApp. */
 const ADVISOR_PHOTO = '/advisors/advisor-1.png';
 
@@ -68,7 +68,7 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'coaching-circle', title: 'Mentoring per il rinnovo delle credenziali', kicker: 'Per la credenziale ICF', meta: '10 ore · gruppo o individuale · Zoom' },
       { id: 'voice-dialogue', title: 'Voice Dialogue Skills', kicker: 'Metodo esperienziale', meta: '3 giorni · In presenza a Milano' },
-      { id: 'marketing-per-coach', title: 'Personal Branding per Coach', kicker: 'Personal branding · 5 webinar', meta: 'Con Helga Ogliari · Live online' },
+      { id: 'marketing-per-coach', title: 'Personal Branding per Coach', kicker: 'Personal branding · 5 incontri online', meta: 'Con Helga Ogliari · Live online' },
     ],
   },
   {
@@ -78,7 +78,7 @@ const megaColumns: MegaColumn[] = [
     items: [
       { id: 'eiw', title: 'Intelligenza Emotiva', kicker: 'Modello CSI', meta: '4 Workout · Live Online' },
       { id: 'continuous-learning', title: 'Continuous Learning', kicker: 'Incontri online mensili', meta: 'Annuale · Zoom 18:30–20:00' },
-      { id: 'public-speaking', title: 'Public Speaking Pro', kicker: 'Comunicazione', meta: '3 giornate · Aula + Online' },
+      { id: 'public-speaking', title: 'Public Speaking PRO', kicker: 'Comunicazione', meta: '3 giornate · Aula + Online' },
     ],
   },
 ];
@@ -97,7 +97,7 @@ const megaPromos = [
     title: 'Scopri dal vivo come diventare coach ICF',
     cta: 'Prenota il tuo posto',
     img: '/course-media/apcm/card.png',
-    to: '/eventi/open-day-master-apcm',
+    to: '/eventi',
   },
   {
     kicker: 'Guida gratuita',
@@ -181,7 +181,6 @@ export const Header = () => {
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
   const location = useLocation();
-  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -251,7 +250,7 @@ export const Header = () => {
   return (
     <header
       id="site-header"
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-visible max-[939px]:overflow-hidden ${isCourseDetailPage ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 h-[72px] max-[939px]:h-[74px] flex items-center overflow-visible max-[939px]:overflow-hidden ${hasBanner(location.pathname) ? 'top-12' : 'top-0'} ${isScrolled || !isHome ? 'bg-white border-b border-gray-100' : 'bg-white'}`}
     >
       <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 w-full grid grid-cols-[1fr_auto_1fr] items-center gap-4">
         <div className="col-start-1 flex items-center justify-self-start">
@@ -944,7 +943,7 @@ export const Footer = () => {
             />
             <p className="mt-2 text-[10px] text-white/40 font-medium">
               Iscrivendoti accetti l'
-              <a href="#" className="underline decoration-white/30 hover:text-white">informativa privacy</a>.
+              <a href="/privacy" target="_blank" rel="noreferrer" className="underline decoration-white/30 hover:text-white">informativa privacy</a>.
             </p>
           </div>
 
@@ -954,7 +953,7 @@ export const Footer = () => {
               Parla con noi.
             </h3>
             <a
-              href={WHATSAPP_URL}
+              href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contattaci su WhatsApp"
@@ -1061,7 +1060,7 @@ export const Footer = () => {
           <div className="flex items-center gap-2 justify-center mb-5">
             <Award size={13} className="text-white" />
             <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/50">
-              Accreditamenti & Certificazioni
+              Accreditamenti
             </span>
           </div>
           <div className="flex flex-nowrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 overflow-x-auto">
@@ -1134,7 +1133,7 @@ const FloatingWhatsApp = () => {
             </div>
 
             <a
-              href={WHATSAPP_URL}
+              href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 lg:mt-4 flex items-center justify-center gap-2 lg:gap-2.5 w-full bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl lg:rounded-2xl py-2.5 lg:py-3.5 font-display font-black text-[13px] lg:text-[15px] tracking-tight transition-colors active:scale-[0.98]"
@@ -1168,15 +1167,18 @@ const FloatingWhatsApp = () => {
 
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
-  const isCourseDetailPage = /^\/corsi\/[^/]+$/.test(location.pathname);
   const isCorporatePage = location.pathname === '/aziende';
+  // La barra c'è solo dove getBanner() ha davvero qualcosa di reale da dire (EB attivo o edizione a
+  // calendario): niente barra ⇒ niente offset di 48px. Aziende ha un header dedicato senza barra.
+  const showBanner = !isCorporatePage && hasBanner(location.pathname);
 
   return (
     <div className="font-sans text-brand-navy min-h-screen flex flex-col overflow-x-clip w-full max-w-[100vw]">
+      {showBanner && <TopBanner />}
       {isCorporatePage ? <CorporateHeader /> : <Header />}
       <main
         className={`flex-grow overflow-x-clip w-full ${
-          isCourseDetailPage
+          showBanner
             ? 'pt-[120px] max-[939px]:pt-[122px]'
             : isCorporatePage
               ? 'pt-[72px]'

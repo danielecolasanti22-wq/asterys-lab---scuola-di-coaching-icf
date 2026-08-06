@@ -12,7 +12,7 @@ import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
 import { GF_ISCRIVITI, GF_ERR_ISCRIVITI } from '../constants/gravityForms';
 
 /** Contatto WhatsApp (numero in formato internazionale senza "+"). */
-const WHATSAPP_URL = 'https://wa.me/393498864895';
+import { whatsappHref } from '../utils/whatsapp';
 
 const steps = [
   { n: 1, title: 'Raccontaci chi sei', desc: 'e dove vuoi arrivare' },
@@ -300,7 +300,7 @@ export default function Iscriviti() {
                     className="accent-brand-accent"
                   />
                   Accetto{' '}
-                  <a href="#" className="underline hover:text-brand-accent">
+                  <a href="/termini" target="_blank" rel="noreferrer" className="underline hover:text-brand-accent">
                     termini e condizioni
                   </a>
                 </label>
@@ -375,9 +375,10 @@ export default function Iscriviti() {
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-10 items-center">
             <div className="rounded-3xl overflow-hidden bg-gray-100 aspect-[4/3]">
               <img
-                src="https://picsum.photos/seed/iscriviti-futuro/900/700"
-                alt="Il tuo futuro ti sta aspettando"
+                src="/iscriviti/futuro.jpg"
+                alt="Aula Asterys Lab durante una sessione di coaching"
                 className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
               />
             </div>
             <div>
@@ -403,7 +404,7 @@ export default function Iscriviti() {
 
               <div className="mt-10 flex flex-wrap items-center gap-6 text-xs text-brand-navy/60 font-bold">
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappHref()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-brand-accent transition-colors"

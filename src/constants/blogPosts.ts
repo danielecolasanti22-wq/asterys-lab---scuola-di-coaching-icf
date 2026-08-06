@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Un percorso completo per diventare coach certificato richiede in genere dai 6 mesi a un paio d’anni, a seconda del livello (ACC o PCC) e del ritmo con cui accumuli le ore di pratica. I costi della formazione variano molto in base all’accreditamento e alla durata: orientativamente da poche migliaia di euro per un Level 1 fino a percorsi più strutturati di Level 1 & 2. È un investimento sulla professione: la differenza la fanno la qualità del metodo e del corpo docente."
+        "text": "Un percorso completo per diventare coach accreditato richiede in genere dai 6 mesi a un paio d’anni, a seconda del livello (ACC o PCC) e del ritmo con cui accumuli le ore di pratica. I costi della formazione variano molto in base all’accreditamento e alla durata: orientativamente da poche migliaia di euro per un Level 1 fino a percorsi più strutturati di Level 1 & 2. È un investimento sulla professione: la differenza la fanno la qualità del metodo e del corpo docente."
       },
       {
         "type": "h2",
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Diventare coach è un percorso di crescita, prima ancora che professionale. Se vuoi partire con basi solide e riconosciute, il punto di partenza è una scuola accreditata ICF: il Master in Coaching Professionale di Asterys Lab forma coach certificati ICF (Level 1 & 2) a Milano, Roma e online."
+        "text": "Diventare coach è un percorso di crescita, prima ancora che professionale. Se vuoi partire con basi solide e riconosciute, il punto di partenza è una scuola accreditata ICF: il Master in Coaching Professionale di Asterys Lab forma coach accreditati ICF (Level 1 & 2) a Milano, Roma e online."
       }
     ]
   },
@@ -147,7 +147,7 @@ export const blogPosts: BlogPost[] = [
     "content": [
       {
         "type": "p",
-        "text": "Per scegliere una buona scuola di coaching conta soprattutto una cosa: l’accreditamento. In Italia la professione non ha un albo, quindi la qualità la certificano gli enti riconosciuti — in primis ICF (International Coaching Federation), lo standard internazionale. Una scuola accreditata ICF (Level 1 o Level 2) garantisce ore di formazione, pratica e mentor coaching verificate e un percorso che porta a credenziali spendibili in tutto il mondo. Oltre all’accreditamento, però, ci sono altri criteri da valutare."
+        "text": "Per scegliere una buona scuola di coaching conta soprattutto una cosa: l’accreditamento. In Italia la professione non ha un albo, quindi la qualità la garantiscono gli enti riconosciuti — in primis ICF (International Coaching Federation), lo standard internazionale. Una scuola accreditata ICF (Level 1 o Level 2) garantisce ore di formazione, pratica e mentor coaching verificate e un percorso che porta a credenziali spendibili in tutto il mondo. Oltre all’accreditamento, però, ci sono altri criteri da valutare."
       },
       {
         "type": "h2",
@@ -196,7 +196,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Asterys Lab è una scuola di coaching accreditata ICF (Level 1 & 2): il Master in Coaching Professionale forma coach certificati con metodo, intelligenza emotiva, approccio sistemico e pratica supervisionata, a Milano, Roma e online."
+        "text": "Asterys Lab è una scuola di coaching accreditata ICF (Level 1 & 2): il Master in Coaching Professionale forma coach accreditati con metodo, intelligenza emotiva, approccio sistemico e pratica supervisionata, a Milano, Roma e online."
       }
     ]
   },
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "È la prima credenziale ufficiale. Certifica che sei un coach competente, con una solida base di esperienza."
+        "text": "È la prima credenziale ufficiale. Attesta che sei un coach competente, con una solida base di esperienza."
       },
       {
         "type": "p",
@@ -1312,7 +1312,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Dopo qualche anno di “coaching in solitaria”, per caso feci la scoperta che esisteva la Federazione Italiana Coach -quella che adesso si chiama ICF Italiae, dal mio punto di vista di allora, pensai che si trattasse del solito sistema adottato da qualche coach furbo per darsi importanza e credibilità, non mi interessava, anzi. Qualche anno dopo, grazie all’incontro con Giovanna D’Alessio, invece fui in grado di apprezzare il senso di quell’organizzazione, diventandone parte e poi coach certificato e persino membro del consiglio direttivo."
+        "text": "Dopo qualche anno di “coaching in solitaria”, per caso feci la scoperta che esisteva la Federazione Italiana Coach -quella che adesso si chiama ICF Italiae, dal mio punto di vista di allora, pensai che si trattasse del solito sistema adottato da qualche coach furbo per darsi importanza e credibilità, non mi interessava, anzi. Qualche anno dopo, grazie all’incontro con Giovanna D’Alessio, invece fui in grado di apprezzare il senso di quell’organizzazione, diventandone parte e poi coach accreditato e persino membro del consiglio direttivo."
       },
       {
         "type": "h2",
@@ -1918,11 +1918,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Quello che viene promesso dalla scuola a voce viene anche scritto su un contratto? Prospettive professionali, formatori presenti, ore di formazione certificate, clienti con cui iniziare l’attività, ecc."
+        "text": "Quello che viene promesso dalla scuola a voce viene anche scritto su un contratto? Prospettive professionali, formatori presenti, ore di formazione accreditate, clienti con cui iniziare l’attività, ecc."
       },
       {
         "type": "p",
-        "text": "Che certificazione offre la scuola? È una certificazione riconosciuta nel mondo del Coaching nazionale o internazionale? C’è un ente esterno alla scuola che certifica il valore della formazione offerta o fa tutto da sola? Vengono date informazioni chiare ed esaustive sulle procedure di certificazione? Come sono valutati gli studenti?"
+        "text": "Che accreditamento offre la scuola? È un accreditamento riconosciuto nel mondo del Coaching nazionale o internazionale? C’è un ente esterno alla scuola che attesta il valore della formazione offerta o fa tutto da sola? Vengono date informazioni chiare ed esaustive sulle procedure di accreditamento? Come sono valutati gli studenti?"
       },
       {
         "type": "p",
@@ -1946,7 +1946,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Che tipo di supporto è disponibile alla fine del corso? Tutoring per l’avviamento e la certificazione, tirocinio, altri corsi disponibili, Mentor Coaching, Supervisione, ecc."
+        "text": "Che tipo di supporto è disponibile alla fine del corso? Tutoring per l’avviamento e l'accreditamento, tirocinio, altri corsi disponibili, Mentor Coaching, Supervisione, ecc."
       },
       {
         "type": "p",

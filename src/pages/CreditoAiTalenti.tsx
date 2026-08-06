@@ -14,14 +14,14 @@ import {
 import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
 import { GF_CREDITO, GF_ERR_CREDITO } from '../constants/gravityForms';
 
-const WHATSAPP_URL = 'https://wa.me/393498864895';
+import { whatsappHref } from '../utils/whatsapp';
 const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Entri nel Master in Coaching anche se oggi non puoi pagarlo tutto subito',
-  'Inizi a pagare quando inizi a guadagnare, con un piano sostenibile calibrato sul tuo reddito',
-  'Se non raggiungi un reddito nel periodo concordato, il debito residuo si azzera',
+  'Entri nel Master anche se oggi non puoi pagarlo subito',
+  'Paghi quando inizi a guadagnare, con un piano sul tuo reddito',
+  'Se non raggiungi il reddito concordato, il residuo si azzera',
 ];
 
 const comeFunziona = [
@@ -121,6 +121,14 @@ export default function CreditoAiTalenti() {
       {/* HERO — stessa altezza delle pagine corso */}
       <section className="relative overflow-hidden bg-brand-hero">
         <div aria-hidden className={`pointer-events-none absolute inset-0 z-0 ${HERO_GRADIENT}`} />
+        <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block overflow-hidden">
+          <img
+            src="/credito/hero.png"
+            alt=""
+            className="hero-figure absolute bottom-0 right-0 w-[calc(100vw-135px)] max-w-[1480px] min-w-[1020px] object-contain object-bottom object-right-bottom"
+            referrerPolicy="no-referrer"
+          />
+        </div>
         <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
           <Link
             to="/"
@@ -133,12 +141,12 @@ export default function CreditoAiTalenti() {
             Credito ai talenti
           </div>
           <h1 className="text-[2.6rem] sm:text-[3.4rem] lg:text-[4rem] font-display font-black leading-[0.95] tracking-tighter text-white max-w-[16ch] mb-5">
-            Scommettiamo che ce la fai?
+            Diventa coach ora, paghi quando guadagni
           </h1>
           <p className="text-sm sm:text-lg text-white/80 font-medium leading-relaxed max-w-[640px] mb-7">
             Hai <span className="text-white font-black">talento</span> ma sei senza lavoro o con un
-            reddito insufficiente? Entri comunque nel <span className="text-white font-black">Master in Coaching
-            Professionale</span>: inizi a pagare quando inizi a guadagnare. Se tu vinci, vinciamo insieme.
+            reddito insufficiente? Entri comunque nel <span className="text-white font-black">Master in Coaching</span>:
+            inizi a pagare solo quando inizi a guadagnare.
           </p>
           <ul className="space-y-2.5 mb-8 text-[13px] lg:text-[15px] font-medium text-white max-w-[640px]">
             {heroBenefits.map((b) => (
@@ -154,14 +162,6 @@ export default function CreditoAiTalenti() {
               className="inline-flex items-center justify-center gap-2 bg-white text-brand-navy px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
             >
               Candidati ora <ArrowRight size={15} />
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-[#1ebe57] transition-colors active:scale-[0.98]"
-            >
-              <MessageCircle size={16} /> Scrivici su WhatsApp
             </a>
           </div>
         </div>
@@ -274,7 +274,14 @@ export default function CreditoAiTalenti() {
                   {sending ? 'Invio in corso…' : 'Invia candidatura'}
                 </button>
                 {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
-                {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
+                <a
+                  href={whatsappHref()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-xs font-black text-brand-accent hover:text-brand-navy transition-colors inline-flex items-center justify-center gap-1.5"
+                >
+                  <MessageCircle size={14} /> Oppure scrivici su WhatsApp
+                </a>
               </form>
             )}
           </div>

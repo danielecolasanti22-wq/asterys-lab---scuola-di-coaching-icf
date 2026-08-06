@@ -74,10 +74,10 @@ const courseGroups: CourseGroup[] = [
         id: 'marketing-per-coach',
         title: 'Personal Branding per Coach',
         badge: 'Formazione avanzata',
-        duration: '5 webinar',
+        duration: '5 incontri online',
         modality: 'Live online',
         desc:
-          'Ti posizioni, ti racconti e acquisisci i tuoi primi clienti: 5 webinar con Helga Ogliari sul personal branding del coach. Incluso nel 2° livello del Master.',
+          'Ti posizioni, ti racconti e acquisisci i tuoi primi clienti: 5 incontri online con Helga Ogliari sul personal branding del coach. Incluso nel 2° livello del Master.',
         img: '/course-media/marketing-per-coach/card.png',
       },
     ],

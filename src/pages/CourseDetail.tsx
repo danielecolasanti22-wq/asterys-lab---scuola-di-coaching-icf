@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Fragment, type ReactNode } from 'react';
+import { useState, useEffect, useRef, Fragment, type ReactNode, type MouseEvent as ReactMouseEvent } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   CheckCircle2,
@@ -30,6 +30,8 @@ import {
   Network,
   BadgeCheck,
   Route,
+  Megaphone,
+  Brain,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -309,7 +311,8 @@ function shortModuleTitle(title: string): string {
   return shortLevelLabel(title);
 }
 
-const WHATSAPP_URL = 'https://wa.me/393498864895';
+import { whatsappHref } from '../utils/whatsapp';
+
 
 type CourseDetailProps = {
   courseId?: string;
@@ -349,7 +352,6 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (course) {
       setPaymentTab(course.fees[0]?.title.toLowerCase() || '');
       const first =
@@ -362,6 +364,14 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
         setActiveEditionSlug(first.editionSlug);
       }
     }
+    // Ancora richiamata dal banner (es. #prezzo / #calendario-edizioni): dopo il montaggio scrolla lì.
+    // Altrimenti riparti dall'alto della pagina.
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const t = setTimeout(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' }), 120);
+      return () => clearTimeout(t);
+    }
+    window.scrollTo(0, 0);
   }, [id, course]);
 
   useEffect(() => {
@@ -392,17 +402,6 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
     title: 'Requisiti di ammissione al corso',
     body: 'Questo corso richiede impegno e maturità professionale. Il livello è avanzato e il percorso è pensato per chi ha già esperienza nel mondo del lavoro e vuole applicare il metodo a contesti reali, non per chi parte senza una base professionale solida.',
   };
-
-  const earlyPromo: NonNullable<CourseData['earlyBirdPromo']> = course.earlyBirdPromo ?? {
-    ribbon: 'PROMO',
-    line: `Scopri condizioni dedicate a ${course.title} | Contattaci per i dettagli`,
-    deadline: '',
-    ctaHref: '#prezzo',
-  };
-  // Early Bird attivo finché oggi ≤ deadline; passata la data, codice/EB spariscono dal banner.
-  const promoActive = !earlyPromo.deadlineISO || Date.now() <= Date.parse(earlyPromo.deadlineISO);
-  // Il CTA punta al checkout Woo che applica il coupon in automatico (se configurato), altrimenti al prezzo.
-  const promoCtaHref = promoActive && earlyPromo.couponUrl ? earlyPromo.couponUrl : earlyPromo.ctaHref;
 
   const activeModuleData = course.structure.modules[activeModule];
   const moduleTags =
@@ -550,6 +549,35 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       linkHref: '#programma',
     };
 
+  // Sezione "Flessibilità / Impegno" — adattata per corso (PBC, PSP); default per gli altri.
+  const studyDuo =
+    id === 'marketing-per-coach'
+      ? {
+          flexText:
+            "5 incontri online serali (18:30–20:00), in sequenza: un ritmo compatibile con lavoro e studio, con lavoro guidato in ogni incontro.",
+          flexBullets: ['5 incontri online · 18:30–20:00', 'Lavoro guidato in diretta'],
+          impText:
+            "Non è teoria da ascoltare: a ogni incontro lavori sul tuo caso reale e porti a casa un output concreto da applicare subito sui tuoi canali.",
+          impBullets: ['Applichi subito sui tuoi canali', 'Un output concreto a ogni incontro'],
+        }
+      : id === 'public-speaking'
+      ? {
+          flexText:
+            "Un formato pratico e concentrato tra aula e online: si lavora dal vivo, con esercitazioni ripetute e feedback immediato su ogni intervento.",
+          flexBullets: ['Aula + online', 'Esercitazioni dal vivo'],
+          impText:
+            "Si impara parlando: metti in pratica davanti agli altri e ricevi feedback mirato su voce, postura ed efficacia, affinando la tua presenza a ogni intervento.",
+          impBullets: ['Pratica davanti all’aula', 'Feedback su voce e presenza'],
+        }
+      : {
+          flexText:
+            "Le lezioni seguono le date del calendario e, quando sono online, si svolgono dalle 18:30 alle 20:00: un ritmo compatibile con studio o lavoro, con preparazione e report tra una sessione e l'altra.",
+          flexBullets: ['Date definite dal calendario', 'Esercitazioni e report guidati'],
+          impText:
+            "Ti diamo strumenti e supporto, ma il risultato dipende dalla costanza: pratica settimanale, feedback e supervisione ti aiutano a consolidare il metodo.",
+          impBullets: ['Pratica supervisionata', 'Esame / assessment finale'],
+        };
+
   const orientation =
     course.orientationBanner ??
     (isMasterLike
@@ -569,27 +597,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   return (
     <div className="bg-white font-sans text-brand-navy antialiased overflow-x-hidden">
       {!hideHero && (<>
-      {/* 0. ANNOUNCEMENT BAR */}
-      <div className="fixed top-0 left-0 right-0 h-12 bg-[#001D4B] text-white flex items-center justify-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.15em] z-[60] px-3 sm:px-4 overflow-x-auto">
-        <span className="text-[#008060] shrink-0">{promoActive ? earlyPromo.ribbon : 'Iscrizioni aperte'}</span>
-        <span className="text-white/90 font-semibold normal-case tracking-normal hidden min-[480px]:inline max-w-[52ch] truncate">
-          {promoActive ? earlyPromo.line : 'Scopri date, edizioni e condizioni di iscrizione.'}
-        </span>
-        <span className="text-white/90 font-semibold normal-case tracking-normal min-[480px]:hidden">
-          {isCoachingCircle ? 'Dettagli e date della pratica' : isMasterLike ? 'Dettagli e date sul Master' : 'Dettagli e date del corso'}
-        </span>
-        {promoActive && earlyPromo.code ? (
-          <span className="shrink-0 rounded-full bg-white/15 px-2.5 py-0.5 text-white ring-1 ring-white/25 whitespace-nowrap">
-            Codice {earlyPromo.code}
-          </span>
-        ) : null}
-        <a
-          href={promoCtaHref}
-          className="ml-1 shrink-0 border-b border-white/80 text-white hover:text-[#CFE0F5] transition-colors whitespace-nowrap"
-        >
-          {isCoachingCircle ? 'Prenota il tuo posto →' : promoActive ? 'Blocca il tuo sconto →' : 'Scopri di più →'}
-        </a>
-      </div>
+      {/* La barra promo in cima è ora globale (TopBanner in Layout), guidata da date/edizioni. */}
 
       {/* 1. HERO SECTION */}
       <section className="relative bg-brand-hero overflow-hidden pb-0">
@@ -667,10 +675,16 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
           
           <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
             <div
-              className={`absolute bottom-0 ${
+              className={`absolute ${
                 fullBleedHero
-                  ? 'right-[-36%] w-[calc(113vw-135px)] max-w-[1690px] min-w-[1170px] translate-x-[15px]'
-                  : 'right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
+                  ? id === 'apcm'
+                    ? 'bottom-0 right-[-36%] w-[calc(110vw-135px)] max-w-[1650px] min-w-[1140px] translate-x-[70px]'
+                    : id === 'systemic-team-coaching'
+                    ? 'bottom-0 right-[-33%] w-[calc(108vw-135px)] max-w-[1620px] min-w-[1120px] -translate-x-[40px]'
+                    : id === 'eiw' || id === 'voice-dialogue' || id === 'marketing-per-coach'
+                    ? 'bottom-0 right-[-33%] w-[calc(108vw-135px)] max-w-[1600px] min-w-[1100px] translate-x-[15px]'
+                    : 'bottom-0 right-[-33%] w-[calc(104vw-135px)] max-w-[1560px] min-w-[1080px] translate-x-[15px]'
+                  : 'bottom-0 right-[-36%] w-[calc(78vw-80px)] max-w-[1180px] min-w-[820px] translate-x-[150px]'
               }`}
             >
               <CourseImage
@@ -729,7 +743,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 2b. WHY CHOOSE */}
       {course.whyChoose ? (
         id === 'apcm' ? (
-          <section className="py-16 lg:py-24 bg-white">
+          <section className="py-12 lg:py-20 bg-white">
             <div className="max-w-[1080px] mx-auto px-4">
               <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-end mb-10 lg:mb-14">
                 <div className="max-w-xl">
@@ -758,8 +772,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   },
                   {
                     icon: HeartHandshake,
-                    title: 'Coach tutor assegnato',
-                    desc: 'Un coach tutor di riferimento ti accompagna prima, durante e dopo il percorso.',
+                    title: 'Coach assegnato',
+                    desc: 'Un coach di riferimento ti accompagna prima, durante e dopo il percorso.',
                   },
                   {
                     icon: Network,
@@ -773,7 +787,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   },
                   {
                     icon: Monitor,
-                    title: 'Accesso gratuito ai webinar Asterys',
+                    title: 'Accesso gratuito ai webinar',
                     desc: 'Partecipazione gratuita ai webinar Asterys per continuare ad approfondire temi e strumenti professionali.',
                   },
                   {
@@ -793,19 +807,19 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   },
                   {
                     icon: Users,
-                    title: 'Community alumni e Career Center',
+                    title: 'Community alumni e Career Boost',
                     desc: 'Accesso a rete alumni, supporto carriera e occasioni di confronto anche dopo la fine del Master.',
                   },
                 ];
 
                 return (
-                  <div className="grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 border-t border-brand-navy/12">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 border-t border-brand-navy/12">
                     {includedCards.map((card) => {
                       const Icon = card.icon;
                       return (
                         <div
                           key={card.title}
-                          className="flex items-start gap-4 py-6 border-b border-brand-navy/12"
+                          className="flex items-start gap-4 py-5 border-b border-brand-navy/12"
                         >
                           <span className="shrink-0 mt-0.5 text-brand-accent">
                             <Icon size={24} strokeWidth={1.9} />
@@ -1133,19 +1147,17 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
          </div>
       </section>
 
-      {/* 3b. UN PERCORSO CERTIFICATO (solo dove valorizzato, es. APCM) */}
+      {/* 3b. UN PERCORSO RICONOSCIUTO (solo dove valorizzato, es. APCM) */}
       {course.certificate ? (
         <section className="py-8 lg:py-14 bg-white">
           <div className="max-w-[var(--wrap-max)] mx-auto px-4">
-            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-8 lg:p-10 grid sm:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-10 items-center">
-              <div>
-                <CourseImage
-                  src={course.certificate.image ?? `https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
-                  fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
-                  className="w-full max-w-[280px] mx-auto sm:mx-0 drop-shadow-[0_20px_40px_rgba(0,21,51,0.35)]"
-                  alt="Certificato del percorso"
-                />
-              </div>
+            <div className="rounded-[1.75rem] bg-[#EEF4FC] p-5 sm:p-8 lg:p-9 grid sm:grid-cols-[0.85fr_1.15fr] gap-6 lg:gap-10 items-center">
+              <CourseImage
+                src={course.certificate.image ?? `https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
+                fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-cert/600/800`}
+                className="w-full max-w-[250px] mx-auto sm:mx-0 drop-shadow-[0_20px_40px_rgba(0,21,51,0.32)]"
+                alt="Attestato di partecipazione"
+              />
               <div>
                 {course.certificate.eyebrow ? (
                   <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">
@@ -1213,7 +1225,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   </div>
                </div>
                
-               <p className="text-xs sm:text-sm font-bold text-white/55">Vuoi parlare con noi? <a href="#" className="underline hover:text-white transition-colors">Scrivici</a></p>
+               <p className="text-xs sm:text-sm font-bold text-white/55">Vuoi parlare con noi? <a href={whatsappHref()} target="_blank" rel="noreferrer" className="underline hover:text-white transition-colors">Scrivici</a></p>
             </div>
          </div>
       </section>
@@ -1221,7 +1233,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 4b. CALENDARIO EDIZIONI */}
       {editions.length > 0 && activeEdition ? (
-        <section id="calendario-edizioni" className="py-10 lg:py-24 bg-[#F9FAFB]/70">
+        <section id="calendario-edizioni" className="scroll-mt-[130px] py-10 lg:py-24 bg-[#F9FAFB]/70">
           <div className="max-w-[var(--wrap-max)] mx-auto px-4">
             {editionsSection.eyebrow ? (
               <p className="text-sm lg:text-lg font-display font-black text-brand-accent mb-2 lg:mb-3">
@@ -1534,7 +1546,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       {activeEdition.ctaLabel ?? 'Iscriviti a questa edizione'}
                     </a>
                     <a
-                      href="#"
+                      href={whatsappHref()}
+                      target="_blank"
+                      rel="noreferrer"
                       className="rounded-full border-2 border-brand-navy/20 px-3 py-3 text-[9px] sm:px-7 sm:py-3.5 sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.22em] text-brand-navy hover:bg-gray-50 transition-colors text-center"
                     >
                       Parla con un Advisor
@@ -1648,7 +1662,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
           <p className={`${tBody} max-w-3xl mb-10`}>{richText(how.formazioneIntro)}</p>
 
           {usesClassDateList ? (
-            <div className="divide-y divide-gray-200 border-t border-gray-200">
+            <div id="prossime-date" className="scroll-mt-[130px] divide-y divide-gray-200 border-t border-gray-200">
               {(course.classDates ?? []).map((cd, i) => (
                 <div
                   key={i}
@@ -1818,7 +1832,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> 8 ore di laboratorio al giorno
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Lab Inner online in parallelo
+                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Laboratorio Virtuale in parallelo
                     </li>
                   </ul>
                 </div>
@@ -1832,7 +1846,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica diretta con i trainer
                     </li>
                     <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Confronto con colleghi su Inner
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Confronto con colleghi nel Laboratorio Virtuale
                     </li>
                   </ul>
                 </div>
@@ -1915,31 +1929,24 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               <>
                 <div className="space-y-4">
                   <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Flessibilità</h3>
-                  <p className={tBody}>
-                    Le lezioni seguono le date del calendario e, quando sono online, si svolgono dalle 18:30 alle 20:00: un ritmo compatibile con studio o lavoro, con preparazione e report tra una sessione e l'altra.
-                  </p>
+                  <p className={tBody}>{studyDuo.flexText}</p>
                   <ul className="space-y-3 pt-2">
-                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Date definite dal calendario
-                    </li>
-                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> Esercitazioni e report guidati
-                    </li>
+                    {studyDuo.flexBullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                        <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> {b}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-lg sm:text-xl font-display font-black text-brand-accent uppercase tracking-tight">Impegno</h3>
-                  <p className={tBody}>
-                    Ti diamo strumenti e supporto, ma il risultato dipende dalla costanza: pratica settimanale, feedback e supervisione ti aiutano a
-                    consolidare il metodo.
-                  </p>
+                  <p className={tBody}>{studyDuo.impText}</p>
                   <ul className="space-y-3 pt-2">
-                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Pratica supervisionata
-                    </li>
-                    <li className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-navy/25 mt-1.5 shrink-0" /> Esame / assessment finale
-                    </li>
+                    {studyDuo.impBullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-[11px] font-black text-brand-navy uppercase tracking-wide leading-snug">
+                        <CheckCircle2 size={16} className="text-[#008060] shrink-0 mt-0.5" /> {b}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="rounded-2xl bg-[#E6F7F5] p-6 sm:p-8 space-y-4 flex flex-col h-full border border-[#D1EBE7]">
@@ -2161,7 +2168,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
       {/* 6. PAGAMENTI (tab pill + card — reference Boolean) */}
       {!contactHref && (
-      <section id="prezzo" className="relative py-10 lg:py-24 overflow-hidden">
+      <section id="prezzo" className="relative scroll-mt-[130px] py-10 lg:py-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#5E8AD0_0%,#5E8AD0_55%,#5E8AD0_100%)]" />
         <div className="relative max-w-[var(--wrap-max)] mx-auto px-4 text-center">
           <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl font-display font-black text-brand-navy tracking-tight leading-[1.08] mb-2 lg:mb-3 normal-case max-w-3xl mx-auto">
@@ -2323,7 +2330,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         Aggiungi esame Expert{' '}
                         <span className="font-black text-[#008060]">+{ASTC_EXAM_PRICE_LABEL}</span>
                         <span className="mt-0.5 block text-[11px] font-medium text-brand-navy/55">
-                          Certificazione finale · richiede il percorso 1° + 2° livello
+                          Esame finale · richiede il percorso 1° + 2° livello
                         </span>
                       </span>
                     </label>
@@ -2466,7 +2473,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 7. TROVIAMO INSIEME SECTION */}
       <section className="py-7 lg:py-14 bg-brand-blue-soft">
          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
-            <div className="flex flex-col sm:flex-row md:flex-row items-center justify-between gap-4 lg:gap-8">
+            <div className="flex flex-col sm:flex-row md:flex-row items-center justify-center gap-6 lg:gap-10">
                 <div className="flex flex-row items-center gap-4 sm:gap-8 text-left">
                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
                       <img
@@ -2480,50 +2487,75 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       <p className="text-xs sm:text-base text-brand-navy/65 font-medium leading-relaxed max-w-md">Ottieni risposte chiare sul percorso e la data di partenza giusta per te, con un Advisor Asterys Lab.</p>
                    </div>
                 </div>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</a>
+                <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-navy text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] hover:bg-brand-accent transition-all shadow-lg active:scale-[0.98] shrink-0 w-full sm:w-auto">SCRIVICI SU WHATSAPP</a>
             </div>
          </div>
       </section>
 
       {/* 8. CAREER CENTER SECTION */}
       {id === 'apcm' ? (
-      <section id="career" className="py-10 lg:py-20 bg-white">
-         <div className="max-w-[var(--wrap-max)] mx-auto px-4 text-center">
-            <div className="mb-7 lg:mb-16">
+      <section id="career" className="relative overflow-hidden py-14 lg:py-28 bg-gradient-to-b from-white via-[#F4F8FD] to-[#EAF1FB]">
+         {/* alone accent per staccare la sezione dal bianco piatto */}
+         <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-64 w-[560px] rounded-full bg-brand-accent/10 blur-3xl" />
+         <div className="relative max-w-[var(--wrap-max)] mx-auto px-4">
+            <div className="text-center mb-11 lg:mb-20">
+               <p className="text-[11px] font-black uppercase tracking-[0.26em] text-brand-accent mb-3">Career Boost</p>
                <h2 className={`${tSection} mb-3 lg:mb-4`}>
-                  Asterys Lab{' '}
-                  <span className={id === 'apcm' ? 'lg:underline lg:decoration-brand-accent lg:decoration-[0.18em] lg:underline-offset-[0.14em]' : ''}>
-                    Career
+                  <span className="box-decoration-clone bg-brand-accent text-white px-3 py-1 leading-[1.6] rounded-[3px]">
+                    Dai un boost alla tua carriera!
                   </span>
                </h2>
                <p className={`${tBody} max-w-2xl mx-auto text-center`}>
                   {course.career.content}
                </p>
             </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-8 sm:gap-y-8">
-               {course.career.points.map((p, i) => (
-                 <div
-                   key={i}
-                   className={`flex flex-col items-start text-left ${
-                     id === 'apcm'
-                       ? 'lg:p-7 lg:bg-white lg:rounded-[1.25rem] lg:shadow-[0_16px_44px_-30px_rgba(0,21,51,0.2)] lg:border lg:border-gray-100 lg:h-full lg:group lg:hover:shadow-[0_22px_55px_-32px_rgba(0,21,51,0.22)] lg:transition-all'
-                       : ''
-                   }`}
-                 >
-                    <div className={`w-9 h-9 sm:w-11 sm:h-11 bg-[#EEF4FC] rounded-full flex items-center justify-center text-brand-accent mb-3 ring-1 ring-brand-navy/5 ${
-                      id === 'apcm'
-                        ? 'lg:bg-[#F9FAFB] lg:mb-6 lg:ring-black/5 lg:group-hover:bg-brand-navy lg:group-hover:text-white lg:transition-colors'
-                        : ''
-                    }`}>
-                       {i === 0 ? <UserCheck size={18} strokeWidth={2} /> : i === 1 ? <Briefcase size={18} strokeWidth={2} /> : i === 2 ? <TrendingUp size={18} strokeWidth={2} /> : <Users size={18} strokeWidth={2} />}
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:gap-5">
+               {course.career.points.map((p, i) => {
+                  const span = ['col-span-2 lg:row-span-2', 'col-span-2', 'col-span-1', 'col-span-1'][i];
+                  const feature = i === 0;
+                  const Icon = [HeartHandshake, Megaphone, GraduationCap, Compass][i];
+                  const cardBg = feature
+                    ? 'bg-gradient-to-br from-[#0A2E66] via-[#001D4B] to-[#001334] text-white border-white/10 shadow-[0_34px_74px_-40px_rgba(0,15,40,0.85)]'
+                    : [
+                        'bg-gradient-to-br from-[#C3D8F4] to-[#A6C4EF] border-white/70 shadow-[0_24px_56px_-34px_rgba(0,21,51,0.55)]',
+                        'bg-gradient-to-br from-[#DCE8FA] to-[#C2D8F4] border-white/70 shadow-[0_22px_54px_-36px_rgba(0,21,51,0.45)]',
+                        'bg-gradient-to-br from-[#ECF3FD] to-[#D6E4F7] border-white/80 shadow-[0_20px_50px_-36px_rgba(0,21,51,0.4)]',
+                      ][i - 1];
+                  return (
+                    <div
+                      key={i}
+                      className={`group relative overflow-hidden flex flex-col rounded-[1.5rem] p-5 lg:p-7 text-left border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_38px_78px_-34px_rgba(0,21,51,0.55)] ${span} ${cardBg}`}
+                    >
+                       <div className={`inline-flex shrink-0 items-center justify-center rounded-2xl mb-4 lg:mb-5 shadow-sm transition-colors ${feature ? 'h-14 w-14 bg-white/10 text-white ring-1 ring-white/25 group-hover:bg-white group-hover:text-brand-navy' : 'h-11 w-11 bg-white text-brand-accent ring-1 ring-brand-navy/5 group-hover:bg-brand-navy group-hover:text-white'}`}>
+                          <Icon size={feature ? 26 : 20} strokeWidth={2} />
+                       </div>
+                       <h3 className={`font-black uppercase tracking-tight leading-snug mb-2 ${feature ? 'text-lg sm:text-2xl text-white' : 'text-[13px] sm:text-[15px] text-brand-navy'}`}>{p.title}</h3>
+                       <p className={`font-medium leading-relaxed ${feature ? 'text-sm sm:text-[15px] text-white/70' : 'text-xs sm:text-[13px] text-brand-navy/65'}`}>{p.desc}</p>
+                       {p.highlights ? (
+                         <ul className="mt-3.5 space-y-2">
+                            {p.highlights.map((h, hi) => (
+                              <li key={hi} className="flex items-start gap-2 text-[12px] sm:text-[13px] font-semibold text-brand-navy/80 leading-snug">
+                                 <CheckCircle2 size={15} strokeWidth={2.5} className="mt-[1px] shrink-0 text-brand-accent" />
+                                 <span>{h}</span>
+                              </li>
+                            ))}
+                         </ul>
+                       ) : null}
+                       {feature ? (
+                         <div className="relative mt-5 flex-1 flex items-center justify-center min-h-[160px] lg:min-h-[200px]">
+                            {/* mappa Italia piccola, centrata nello spazio tra testo e fondo card */}
+                            <img
+                              src="/career/community-italy.png"
+                              alt="La community di alumni Asterys, connessa in tutta Italia"
+                              className="pointer-events-none select-none w-[62%] max-w-[240px] h-auto object-contain"
+                            />
+                            <span className="absolute bottom-0 right-0 z-10 rounded-full bg-white/90 px-3 py-1 text-[11px] font-black text-brand-navy shadow-sm">+3.000 alumni</span>
+                         </div>
+                       ) : null}
                     </div>
-                    <h3 className={`text-[12px] sm:text-base font-black uppercase tracking-tight mb-1.5 sm:mb-2 leading-snug ${
-                      id === 'apcm' ? 'lg:mb-3' : ''
-                    }`}>{p.title}</h3>
-                    <p className="text-brand-navy/50 text-[11px] sm:text-xs font-medium leading-relaxed">{p.desc}</p>
-                 </div>
-               ))}
+                  );
+               })}
             </div>
          </div>
       </section>
@@ -2532,17 +2564,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {course.pegasusProgram ? (
         <section id="pegasus" className="py-10 lg:py-20 bg-[#001D4B] text-white">
           <div className="max-w-[var(--wrap-max)] mx-auto px-4">
-            <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-              <div>
-                <div className="inline-flex rounded-2xl bg-white p-2.5 sm:p-4 ring-1 ring-white/15 shadow-[0_18px_48px_-30px_rgba(0,0,0,0.55)] lg:bg-transparent lg:p-0 lg:ring-0 lg:shadow-none">
-                  <img
-                    src={course.pegasusProgram.logo}
-                    alt="Pegasus Coaching Program"
-                    className="h-16 sm:h-32 w-auto object-contain"
-                  />
-                </div>
-              </div>
-              <div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 lg:gap-12">
+              <div className="flex-1">
                 {course.pegasusProgram.eyebrow ? (
                   <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#5E8AD0] mb-3">
                     {course.pegasusProgram.eyebrow}
@@ -2555,24 +2578,33 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   {course.pegasusProgram.intro}
                 </p>
               </div>
+              <img
+                src={course.pegasusProgram.logo}
+                alt="Pegasus Program"
+                className="h-24 sm:h-28 lg:h-36 w-auto object-contain shrink-0 drop-shadow-[0_20px_44px_rgba(0,0,0,0.55)]"
+              />
             </div>
 
-            <div className="mt-5 lg:mt-9 grid grid-cols-1 md:grid-cols-3 gap-2.5 lg:gap-4">
-              {course.pegasusProgram.points.map((point, i) => (
-                <div key={i} className="rounded-xl sm:rounded-2xl bg-white/[0.07] p-3.5 sm:p-6 ring-1 ring-white/10">
-                  {point.meta ? (
-                    <p className="mb-2 sm:mb-4 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
-                      {point.meta}
+            <div className="mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+              {course.pegasusProgram.points.map((point, i) => {
+                const Icon = [HeartHandshake, Briefcase, ShieldCheck][i] ?? Sparkles;
+                return (
+                  <div key={i} className="group">
+                    <Icon size={20} strokeWidth={2} className="mb-3 text-[#6BB0F5] transition-colors group-hover:text-white" />
+                    {point.meta ? (
+                      <p className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-[#CFE0F5]">
+                        {point.meta}
+                      </p>
+                    ) : null}
+                    <h3 className="text-base sm:text-lg font-black uppercase tracking-tight leading-snug mb-2">
+                      {point.title}
+                    </h3>
+                    <p className="text-[13px] sm:text-[14px] text-white/62 font-medium leading-relaxed">
+                      {point.desc}
                     </p>
-                  ) : null}
-                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight leading-snug mb-2 sm:mb-3">
-                    {point.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-[13px] text-white/62 font-medium leading-relaxed">
-                    {point.desc}
-                  </p>
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
 
             {course.pegasusProgram.note ? (
@@ -2602,7 +2634,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                {/* Card 1 — full width, periwinkle, icon + text */}
                <div className="bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-9 lg:p-11 flex flex-row sm:flex-row items-start gap-4 sm:gap-7 lg:gap-10 border border-white/40">
                   <div className="shrink-0 h-11 w-11 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-2xl bg-white/50 flex items-center justify-center ring-1 ring-white/60">
-                     <Sparkles size={22} strokeWidth={2} className="text-brand-navy" />
+                     <Brain size={22} strokeWidth={2} className="text-brand-navy" />
                   </div>
                   <div className="flex-1 min-w-0">
                      <h3 className="text-lg sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
@@ -2616,29 +2648,21 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
 
                {/* Row 2 — two cards side by side */}
                <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
-                  {/* Card 2 — cyan/blue gradient, text top, image bottom */}
-                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[260px] sm:min-h-[438px] lg:h-[430px]' : ''}`}>
+                  {/* Card 2 — Piattaforma didattica: PNG trasparente che sborda in basso (card alta) */}
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-3 bg-gradient-to-br from-[#C8F2FB] to-[#EEF4FC] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 overflow-hidden border border-white/40 flex flex-col ${usesApcmCompleteSection ? 'relative min-h-[320px] sm:min-h-[520px] lg:h-[520px]' : ''}`}>
                      <h3 className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-lg sm:text-2xl lg:text-3xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight`}>
-                       {usesApcmCompleteSection ? (
-                         <>
-                           Piattaforma didattica
-                           <br />
-                           potenziata dall'AI
-                         </>
-                       ) : (
-                         'Piattaforma didattica con registrazioni'
-                       )}
+                       {usesApcmCompleteSection ? 'Piattaforma didattica' : 'Piattaforma didattica'}
                      </h3>
                      <p className={`${usesApcmCompleteSection ? 'relative z-10' : ''} text-xs sm:text-base text-brand-navy/70 font-medium leading-relaxed mb-4 sm:mb-6 max-w-md`}>
                        {usesApcmCompleteSection
                          ? 'Trovi materiali, dispense e strumenti di supporto al percorso. Le eventuali registrazioni sono riservate a uso interno e non sono accessibili agli studenti.'
-                         : 'Registrazioni, materiali strutturati e percorsi di recupero: la piattaforma tiene il filo di ogni lezione. Hai perso una sessione? Riprendi il tuo ritmo senza stress.'}
+                         : 'Materiali, dispense e strumenti di supporto sempre a portata di mano. Le lezioni si svolgono in diretta e non vengono registrate: si partecipa dal vivo.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[145px] sm:h-[256px] lg:h-[260px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[180px] sm:h-[320px] lg:h-[330px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePlatform}
-                           className="absolute left-1/2 bottom-[-120px] w-[178%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-226px] sm:w-[194%] lg:bottom-[-240px] lg:w-[200%]"
+                           className="absolute left-1/2 bottom-[-135px] w-[188%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-258px] sm:w-[206%] lg:bottom-[-272px] lg:w-[214%]"
                            alt="Piattaforma didattica"
                          />
                        ) : (
@@ -2652,31 +2676,29 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      </div>
                   </div>
 
-                  {/* Card 3 — blue accent, image top, text bottom */}
-                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[220px] pb-[80px] sm:min-h-[438px] sm:pb-7 lg:h-[430px] lg:pb-8' : 'overflow-hidden'}`}>
+                  {/* Card 3 — Supporto 1:1: PNG trasparente (persone scontornate) che sborda in basso */}
+                  <div className={`col-span-2 min-[480px]:col-span-1 lg:col-span-2 bg-[#CFE0F5] rounded-[1.35rem] lg:rounded-[2rem] p-4 sm:p-7 lg:p-8 flex flex-col border border-[#5E8AD0]/40 ${usesApcmCompleteSection ? 'relative overflow-hidden min-h-[320px] pb-[96px] sm:min-h-[520px] sm:pb-7 lg:h-[520px] lg:pb-8' : 'overflow-hidden'}`}>
                      <h3 className="text-lg sm:text-2xl font-display font-black text-brand-navy leading-tight mb-2 sm:mb-3 tracking-tight">
-                       {id === 'apcm' ? 'Supporto 1:1' : usesApcmCompleteSection ? 'Supporto 1:1 con tutor' : 'Supervisione 1:1 con Mentor MCC'}
+                       {usesApcmCompleteSection ? 'Supporto 1:1' : 'Supervisione 1:1 con Mentor MCC'}
                      </h3>
                      <p className="relative z-10 text-xs sm:text-sm text-brand-navy/75 font-medium leading-relaxed">
-                       {id === 'apcm'
+                       {usesApcmCompleteSection
                          ? "Lungo tutto il percorso i trainer ti supportano nella creazione di checkpoint da prima dell'iscrizione e anche dopo l'ottenimento della credenziale."
-                         : usesApcmCompleteSection
-                         ? "Lungo tutto il percorso tutor e teacher ti supportano con incontri individuali in aula virtuale e checkpoint, fuori dall'orario di lavoro."
-                         : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback certificati ICF e check-point sul tuo stile — il salto di qualità verso la certificazione.'}
+                         : 'Mentor Coach MCC ti affiancano con sessioni individuali, feedback ICF e check-point sul tuo stile — il salto di qualità verso la credenziale.'}
                      </p>
-                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[72px] sm:h-[252px] lg:h-[260px]' : 'mb-6'}>
+                     <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[160px] sm:h-[320px] lg:h-[330px]' : 'mb-6'}>
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-8px] w-[85%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-70px] sm:w-[188%] lg:bottom-[-74px] lg:w-[190%]"
-                           alt="Supervisione 1:1"
+                           className="absolute left-1/2 bottom-[-10px] w-[96%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
+                           alt="Supporto 1:1"
                          />
                        ) : (
                          <CourseImage
                            src={media.completePractical}
                            fallbackSrc={defaultCourseMedia(id ?? 'corso').completePractical}
                            className="w-full rounded-xl lg:rounded-2xl shadow-[0_20px_50px_-26px_rgba(0,21,51,0.4)]"
-                           alt="Supervisione 1:1"
+                           alt="Supporto 1:1"
                          />
                        )}
                      </div>
@@ -2697,7 +2719,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {isVoiceDialogue ? (
                          <>Al termine del corso entri in contatto con la <span className="text-white font-black">community degli alumni Asterys</span>: eventi, formazione continua e occasioni di confronto tra professionisti del coaching e dello sviluppo personale.</>
                        ) : (
-                         <>Alla fine del percorso entri nel network degli alumni Asterys: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con <span className="text-white font-black">oltre 3.000 professionisti</span> in Italia e all'estero.</>
+                         <>Alla fine del percorso entri nella <span className="text-white font-black">community Alumni Asterys Lab</span>: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con oltre 3.000 professionisti in Italia e all'estero.</>
                        )}
                      </p>
                   </div>
@@ -2719,7 +2741,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       </>
                     ) : (
                       <>
-                        Accelera la tua carriera: <span className="text-[#CFE0F5]">parti da qui</span>
+                        Fai il primo passo, <span className="text-[#CFE0F5]">gratis</span>
                       </>
                     )}
                   </h2>
@@ -2728,14 +2750,14 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       ? "Dopo l'acquisto riceverai il link al calendario per scegliere la data più comoda tra quelle disponibili."
                       : isWorkout
                       ? 'Prenota il tuo Round: posti limitati. Scegli il set di emozioni e mettilo in agenda.'
-                      : 'Inizia il tuo processo di ammissione gratis e senza impegno.'}
+                      : 'Avvia la tua candidatura e scegli con un Advisor la data di partenza giusta per te. Senza impegno.'}
                   </p>
                   </div>
                   <button
                     onClick={() => contactHref && document.querySelector(contactHref)?.scrollIntoView({ behavior: 'smooth' })}
                     className="bg-[#CFE0F5] text-brand-navy px-7 py-3.5 sm:px-10 sm:py-4 rounded-full font-display font-black text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] shadow-lg hover:bg-white transition-all active:scale-[0.98] self-start sm:self-auto shrink-0"
                   >
-                     {contactHref ? (contactLabel ?? 'RICHIEDI LA BORSA') : isCoachingCircle ? 'PRENOTA SULLO STORE' : 'INIZIA ORA'}
+                     {contactHref ? (contactLabel ?? 'RICHIEDI LA BORSA') : isCoachingCircle ? 'PRENOTA SULLO STORE' : isWorkout ? 'PRENOTA IL ROUND' : 'CANDIDATI ORA'}
                   </button>
                </div>
          </div>

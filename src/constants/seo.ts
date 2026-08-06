@@ -25,10 +25,10 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/corsi/apcm': {
     title: 'Diventa Coach ICF con il Master in Coaching | Asterys Lab',
     description:
-      'Arrivi pronto al primo cliente: diventa coach certificato ICF (ACC e PCC) con intelligenza emotiva e approccio sistemico. In aula a Milano e Roma e online. Parla con un Advisor.',
+      'Arrivi pronto al primo cliente: diventa coach accreditato ICF (ACC e PCC) con intelligenza emotiva e approccio sistemico. In aula a Milano e Roma e online. Parla con un Advisor.',
   },
   '/corsi/systemic-team-coaching': {
-    title: 'Fai coaching ai team e certificati ICF (ACTC) | Asterys Lab',
+    title: 'Fai coaching ai team e accreditati ICF (ACTC) | Asterys Lab',
     description:
       'Porta team e leader a risultati straordinari con il team coaching sistemico. Percorso accreditato ICF, prerequisito per la credenziale ACTC. Edizioni a Milano e Roma.',
   },
@@ -45,7 +45,7 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/corsi/voice-dialogue': {
     title: 'Integra il Voice Dialogue nel tuo coaching | Asterys Lab',
     description:
-      'Dai più profondità alle tue sessioni: integra il Voice Dialogue nella pratica di coaching con un laboratorio esperienziale. In presenza a Milano, con Lab online su piattaforma Inner.',
+      'Dai più profondità alle tue sessioni: integra il Voice Dialogue nella pratica di coaching con un laboratorio esperienziale. In presenza a Milano, con Laboratorio Virtuale online.',
   },
   '/corsi/continuous-learning': {
     title: 'Cresci come coach ogni mese (CCE ICF) | Asterys Lab',
@@ -75,7 +75,7 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/blog': {
     title: 'Guide e idee per crescere nel coaching ICF | Asterys Lab',
     description:
-      'Fai il tuo prossimo passo con articoli e guide su coaching, certificazione ICF, intelligenza emotiva e crescita professionale, dal team di Asterys Lab.',
+      'Fai il tuo prossimo passo con articoli e guide su coaching, credenziali ICF, intelligenza emotiva e crescita professionale, dal team di Asterys Lab.',
   },
   '/iscriviti': {
     title: 'Inizia ora il tuo percorso di coaching | Asterys Lab',
@@ -133,7 +133,7 @@ const COURSE_JSONLD: Record<string, { name: string; description: string; courseM
   '/corsi/apcm': {
     name: 'Master in Coaching Professionale (ICF Level 1 & 2)',
     description:
-      'Master per diventare coach professionista certificato ICF (ACC e PCC), con metodo, intelligenza emotiva e approccio sistemico.',
+      'Master per diventare coach professionista accreditato ICF (ACC e PCC), con metodo, intelligenza emotiva e approccio sistemico.',
     courseMode: 'blended',
   },
   '/corsi/systemic-team-coaching': {

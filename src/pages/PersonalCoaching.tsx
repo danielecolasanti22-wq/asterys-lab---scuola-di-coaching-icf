@@ -11,8 +11,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
-const WHATSAPP =
-  'https://wa.me/393498864895?text=Ciao!%20Vorrei%20informazioni%20sul%20Personal%20Coaching%20di%20Asterys%20Lab.';
+import { whatsappHref } from '../utils/whatsapp';
 
 // Aree di vita su cui lavora un personal coach (reference: /sviluppo-personale/).
 const aree = [
@@ -43,6 +42,14 @@ export default function PersonalCoaching() {
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_20%,#143f7a_55%,#2c63a8_100%)]"
         />
+        <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block overflow-hidden">
+          <img
+            src="/personal-coaching/hero.png"
+            alt=""
+            className="hero-figure absolute bottom-0 right-0 w-[calc(100vw-135px)] max-w-[1480px] min-w-[1020px] object-contain object-bottom object-right-bottom"
+            referrerPolicy="no-referrer"
+          />
+        </div>
         <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 py-16 lg:py-24">
           <p className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-sky mb-5">Personal Coaching</p>
           <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[4.4rem] leading-[0.96] tracking-tighter max-w-[720px]">
@@ -54,7 +61,7 @@ export default function PersonalCoaching() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
             <a
-              href={WHATSAPP}
+              href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white rounded-full px-6 py-3.5 text-xs font-black uppercase tracking-[0.16em] hover:brightness-110 transition-all"
@@ -198,7 +205,7 @@ export default function PersonalCoaching() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
-              href={WHATSAPP}
+              href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#25D366] text-white rounded-full px-7 py-3.5 text-xs font-black uppercase tracking-[0.16em] hover:brightness-110 transition-all"

@@ -74,7 +74,7 @@ const pillars = [
     icon: <Users size={22} />,
     title: 'Apprendimento in community',
     body:
-      'Cresci dentro una comunità viva: trainer certificati, compagni di aula e alumni in tutta Europa, con pratica supervisionata che ti fa arrivare pronto.',
+      'Cresci dentro una comunità viva: trainer accreditati, compagni di aula e alumni in tutta Europa, con pratica supervisionata che ti fa arrivare pronto.',
   },
   {
     icon: <Sparkles size={22} />,
@@ -259,7 +259,7 @@ export default function About() {
                 dal mondo delle organizzazioni. La stessa rete e la stessa reputazione lavorano per te.
               </p>
               <p>
-                Impari da un team di trainer e mentor coach certificati ICF: nessuna formula
+                Impari da un team di trainer e mentor coach accreditati ICF: nessuna formula
                 preconfezionata, ma persone che fanno coaching ogni giorno e restano accanto a te
                 mentre cresci.
               </p>
@@ -335,7 +335,7 @@ export default function About() {
             </h2>
             <p className="mt-4 text-base text-brand-navy/70 font-medium leading-relaxed">
               Ogni percorso risponde agli standard della International Coaching Federation: porti a casa
-              metodo verificato, ore certificate e una credenziale spendibile a livello internazionale,
+              metodo verificato, ore accreditate e una credenziale spendibile a livello internazionale,
               ovunque tu voglia lavorare.
             </p>
           </div>

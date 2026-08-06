@@ -18,7 +18,8 @@ export type EventItem = {
   img: string;
 };
 
-export const eventsData: EventItem[] = [
+// Eventi di esempio (struttura di riferimento). NON pubblicati: al momento 0 eventi in programma.
+export const SAMPLE_EVENTS: EventItem[] = [
   {
     id: 'open-day-master-apcm',
     title: 'Open Day Online: Master in Coaching',
@@ -112,6 +113,10 @@ export const eventsData: EventItem[] = [
     img: 'https://picsum.photos/seed/event4/1000/750',
   },
 ];
+
+// Lista LIVE usata dal sito. Vuota = nessun evento in programma (la pagina Eventi mostra lo stato vuoto).
+// Per pubblicare eventi: copia qui gli oggetti (vedi SAMPLE_EVENTS sopra).
+export const eventsData: EventItem[] = [];
 
 export const eventsBySlug: Record<string, EventItem> = Object.fromEntries(
   eventsData.map((e) => [e.id, e]),

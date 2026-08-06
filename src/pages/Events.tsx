@@ -11,7 +11,10 @@ import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { eventsData } from '../constants/events';
 
+import { whatsappHref } from '../utils/whatsapp';
+
 export default function Events() {
+  const hasEvents = eventsData.length > 0;
   return (
     <div className="pb-20">
       <PageHero
@@ -20,6 +23,8 @@ export default function Events() {
         subtitle="Vivi il metodo dal vivo prima di scegliere. Webinar gratuiti, sessioni di orientamento e incontri in presenza per capire se il coaching fa per te e fare il primo passo senza impegno."
       />
 
+      {hasEvents ? (
+       <>
       {/* FEATURED — prossimo evento */}
       <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-14">
         <Link to={`/eventi/${eventsData[0].id}`} className="group block">
@@ -110,6 +115,39 @@ export default function Events() {
           ))}
         </div>
       </section>
+       </>
+      ) : (
+        <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-14">
+          <div className="rounded-[2rem] border border-gray-100 bg-white shadow-soft p-10 lg:p-16 text-center">
+            <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue-soft text-brand-accent mb-5">
+              <Calendar size={26} />
+            </div>
+            <h2 className="font-display font-black text-2xl sm:text-3xl tracking-tight text-brand-navy mb-3">
+              Nessun evento in programma al momento
+            </h2>
+            <p className="text-brand-navy/60 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8">
+              Stiamo preparando i prossimi Open Day, webinar e sessioni di orientamento. Lasciaci un
+              contatto: ti avvisiamo appena apriamo le iscrizioni.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={whatsappHref()}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-brand-navy text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-accent transition-colors"
+              >
+                Scrivici su WhatsApp <ArrowRight size={15} />
+              </a>
+              <Link
+                to="/iscriviti"
+                className="inline-flex items-center gap-2 border-2 border-brand-navy/15 text-brand-navy px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-50 transition-colors"
+              >
+                Parla con un Advisor
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* BAND — incontro individuale + info utili */}
       <section className="max-w-[var(--wrap-max)] mx-auto px-6 pt-16 lg:pt-20">
@@ -119,7 +157,7 @@ export default function Events() {
             <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10 max-w-md">
               Prenota un colloquio orientativo gratuito via Zoom: ricevi risposte sul tuo caso specifico e capisci quale percorso ti porta davvero dove vuoi arrivare.
             </p>
-            <button className="btn-primary bg-white text-brand-navy hover:bg-white/90 px-8 py-4 font-bold rounded-xl relative z-10">Prenota la tua call gratuita</button>
+            <a href={whatsappHref()} target="_blank" rel="noreferrer" className="btn-primary inline-block bg-white text-brand-navy hover:bg-white/90 px-8 py-4 font-bold rounded-xl relative z-10">Prenota la tua call gratuita</a>
           </div>
 
           <div className="bg-brand-blue-soft/50 p-10 lg:p-12 rounded-[2.5rem]">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { whatsappHref } from '../utils/whatsapp';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowUpRight,
@@ -36,6 +37,15 @@ import { HOME_FAQ as faqItems } from '../constants/homeFaq';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
+
+/** Immagine "persone" dell'hero desktop.
+ *  TEST candidati nuovi: aggiungi `?hero=42` … `?hero=49` (o `?hero=original`) all'URL della home.
+ *  Senza parametro resta il default attuale. I file sono in public/home/candidates/. */
+const HERO_PEOPLE_SRC = (() => {
+  if (typeof window === 'undefined') return '/home/hero-people.png';
+  const c = new URLSearchParams(window.location.search).get('hero');
+  return c ? `/home/candidates/${c}.png` : '/home/hero-people.png';
+})();
 
 /* 1. HERO */
 const Hero = () => (
@@ -120,9 +130,9 @@ const Hero = () => (
       </div>
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
-        <div className="absolute right-[-36%] bottom-0 w-[calc(113vw-135px)] max-w-[1690px] min-w-[1170px] translate-x-[15px]">
+        <div className="absolute right-[-33%] bottom-0 w-[calc(104vw-135px)] max-w-[1560px] min-w-[1080px] translate-x-[15px]">
           <img
-            src="/home/hero-people.png"
+            src={HERO_PEOPLE_SRC}
             alt="Coach Asterys"
             className="hero-figure block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
             referrerPolicy="no-referrer"
@@ -139,7 +149,7 @@ const accreditamentiItems = [
     label: 'Level 1',
     title: 'ICF Level 1 — Accredited Coaching Education',
     logo: 'brand/icf-level-1.png',
-    desc: "L'accreditamento ICF di base per le scuole di coaching: certifica un programma con ore di formazione, pratica e mentor coaching, propedeutico alla credenziale ACC (Associate Certified Coach). Il primo passo per diventare coach professionista riconosciuto.",
+    desc: "L'accreditamento ICF di base per le scuole di coaching: attesta un programma con ore di formazione, pratica e mentor coaching, propedeutico alla credenziale ACC (Associate Certified Coach). Il primo passo per diventare coach professionista riconosciuto.",
   },
   {
     label: 'Level 2',
@@ -157,7 +167,7 @@ const accreditamentiItems = [
     label: 'AATC',
     title: 'Advanced Accreditation in Team Coaching',
     logo: 'brand/icf-aatc.png',
-    desc: "L'accreditamento ICF dedicato al team coaching: certifica programmi formativi che preparano coach a lavorare con team e organizzazioni secondo gli standard internazionali specifici per il coaching di squadra.",
+    desc: "L'accreditamento ICF dedicato al team coaching: attesta programmi formativi che preparano coach a lavorare con team e organizzazioni secondo gli standard internazionali specifici per il coaching di squadra.",
   },
 ];
 
@@ -415,7 +425,7 @@ const MasterGrid = () => {
       title: 'Voice Dialogue Skills',
       duration: '3 giornate · In presenza',
       label: 'Formazione avanzata',
-      desc: 'Integri il Voice Dialogue nella tua pratica e ampli ciò che riesci a far emergere nei clienti, con Lab online su piattaforma Inner.',
+      desc: 'Integri il Voice Dialogue nella tua pratica e ampli ciò che riesci a far emergere nei clienti, con Laboratorio Virtuale online.',
       start: '17 novembre 2026',
       lastSeats: false,
       seed: 'voice-dialogue'
@@ -423,7 +433,7 @@ const MasterGrid = () => {
     {
       id: 'marketing-per-coach',
       title: 'Personal Branding per Coach',
-      duration: '5 webinar · con Helga Ogliari',
+      duration: '5 incontri online · con Helga Ogliari',
       label: 'Formazione avanzata',
       desc: 'Costruisci un personal brand da coach riconoscibile e attira i clienti giusti: dal posizionamento allo storytelling all’acquisizione clienti.',
       start: 'Novembre 2026',
@@ -597,7 +607,7 @@ const AdvisorBand = () => (
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href="https://wa.me/393498864895?text=Ciao!%20Vorrei%20informazioni%20sui%20percorsi%20di%20Asterys%20Lab."
+          href={whatsappHref()}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-[0.22em] shadow-md hover:brightness-110 transition-all"

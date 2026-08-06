@@ -11,14 +11,14 @@ const BORSA_REGIONI = [
   'Lazio', 'Abruzzo', 'Campania', 'Basilicata', 'Molise', 'Puglia', 'Calabria', 'Sicilia', 'Sardegna',
 ];
 
-const WHATSAPP_URL = 'https://wa.me/393498864895';
+import { whatsappHref } from '../utils/whatsapp';
 const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
 const heroBenefits = [
-  'Ti assicuri un posto tra le prime iscrizioni delle edizioni di Roma del Master in Coaching',
-  'Risparmi fino a 1.500€ sulla quota del Master e ottieni una credenziale ICF Level 1 & 2',
-  'Accedi con un colloquio gratuito insieme a un Advisor, senza acquistare nulla online',
+  'Un posto tra le prime iscrizioni delle edizioni di Roma',
+  'Fino a 1.500€ di sconto + credenziale ICF Level 1 & 2',
+  'Accesso con un colloquio gratuito, senza acquisti online',
 ];
 
 const requisiti = [
@@ -37,6 +37,14 @@ const BORSA_PRICES: Record<string, { price: string; originalPrice: string; savin
 const apcmData = coursesContent['apcm'];
 const borsaData = {
   ...apcmData,
+  // La borsa di studio è riservata alle edizioni di Roma: mostra solo Roma nel calendario.
+  editions: apcmData.editions?.filter((e) => e.citySlug === 'roma'),
+  editionsSection: {
+    eyebrow: 'Calendario edizioni',
+    title: 'Scegli livello ed edizione',
+    intro:
+      "Seleziona il **livello** e l'**edizione** a Roma: vedrai il calendario completo con Incontri online, Moduli (online e in presenza) e le scadenze di iscrizione. Il **Percorso Completo** racchiude 1° e 2° livello; per il **2° livello** è necessario aver completato prima il **1° livello**.",
+  },
   levelsComparison: apcmData.levelsComparison
     ? {
         ...apcmData.levelsComparison,
@@ -106,6 +114,14 @@ export default function BorsaDiStudio() {
       {/* HERO — stessa altezza delle pagine corso */}
       <section className="relative overflow-hidden bg-brand-hero">
         <div aria-hidden className={`pointer-events-none absolute inset-0 z-0 ${HERO_GRADIENT}`} />
+        <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block overflow-hidden">
+          <img
+            src="/borsa/hero.png"
+            alt=""
+            className="hero-figure absolute bottom-0 right-[-6%] w-[calc(100vw-135px)] max-w-[1480px] min-w-[1020px] object-contain object-bottom object-right-bottom"
+            referrerPolicy="no-referrer"
+          />
+        </div>
         <div className="relative z-10 max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col justify-center lg:min-h-[608px] py-12 lg:py-0">
           <Link
             to="/corsi/apcm"
@@ -118,13 +134,11 @@ export default function BorsaDiStudio() {
             Borsa di studio · Sede di Roma
           </div>
           <h1 className="text-[2.6rem] sm:text-[3.4rem] lg:text-[4rem] font-display font-black leading-[0.95] tracking-tighter text-white max-w-[18ch] mb-5">
-            Diventa coach: la Borsa di studio abbatte la barriera
+            Fino a 1.500€ in meno per diventare coach a Roma
           </h1>
           <p className="text-sm sm:text-lg text-white/80 font-medium leading-relaxed max-w-[640px] mb-7">
             Se vieni dal Centro o Sud Italia, entri nel Master in Coaching a Roma pagando
-            <span className="text-white font-black"> fino a 1.500€ in meno</span>: la borsa di studio
-            riservata alle prime iscrizioni delle edizioni di Roma trasforma un investimento importante
-            in un passo alla tua portata.
+            <span className="text-white font-black"> fino a 1.500€ in meno</span>.
           </p>
           <ul className="space-y-2.5 mb-8 text-[13px] lg:text-[15px] font-medium text-white max-w-[640px]">
             {heroBenefits.map((b) => (
@@ -140,14 +154,6 @@ export default function BorsaDiStudio() {
               className="inline-flex items-center justify-center gap-2 bg-white text-brand-navy px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
             >
               Richiedi la borsa di studio <ArrowRight size={15} />
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.18em] hover:bg-[#1ebe57] transition-colors active:scale-[0.98]"
-            >
-              <MessageCircle size={16} /> Scrivici su WhatsApp
             </a>
           </div>
           <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-sky">
@@ -265,7 +271,7 @@ export default function BorsaDiStudio() {
                 </button>
                 {error ? <p className="text-xs font-bold text-red-600 text-center">{error}</p> : null}
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappHref()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-center text-xs font-black text-brand-accent hover:text-brand-navy transition-colors inline-flex items-center justify-center gap-1.5"

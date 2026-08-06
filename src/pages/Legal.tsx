@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-import { AlertTriangle } from 'lucide-react';
 
 /**
  * Pagine legali: Privacy, Cookie, Termini.
- * ⚠️ BOZZE — la Privacy è adattata dal testo del vecchio sito (asteryslab.com/disclaimer-privacy),
- * aggiornata con le sedi attuali; Cookie e Termini non esistevano sul vecchio sito e sono bozze
- * coerenti da completare. Tutti i testi vanno validati legalmente prima della pubblicazione.
+ * - Privacy: basata sull'Informativa GDPR ufficiale di asteryslab.com/informativa (art. 13 Reg. UE
+ *   2016/679), + nota di trasparenza AI Act (immagini generate). Titolare/DPO come da Informativa.
+ * - Cookie e Termini: bozze coerenti (non esistevano sul vecchio sito) da completare con lo stack
+ *   reale (banner/CMP es. Iubenda, cookie effettivi, contratti d'iscrizione).
+ * Validazione legale consigliata prima della pubblicazione.
  */
 
 const tH2 = 'text-lg lg:text-xl font-display font-black tracking-tight text-brand-navy mt-8 mb-3';
@@ -23,15 +24,6 @@ function LegalLayout({
   return (
     <main className="pt-28 lg:pt-32 pb-20 bg-white">
       <div className="max-w-[820px] mx-auto px-4">
-        {/* Banner bozza — da rimuovere dopo la validazione legale */}
-        <div className="flex items-start gap-3 rounded-2xl bg-amber-50 border border-amber-200 px-4 py-3 mb-8">
-          <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
-          <p className="text-[13px] leading-relaxed text-amber-800 font-medium">
-            <span className="font-black">Bozza in revisione.</span> Questo testo è provvisorio e
-            deve essere validato legalmente prima della pubblicazione.
-          </p>
-        </div>
-
         <h1 className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-brand-navy leading-[1.05] mb-2">
           {title}
         </h1>
@@ -47,66 +39,135 @@ function LegalLayout({
 
 export function PrivacyPolicy() {
   return (
-    <LegalLayout title="Privacy Policy" updated="Luglio 2026">
+    <LegalLayout title="Privacy Policy" updated="Agosto 2026">
       <p className={tP}>
-        Gentile cliente, desideriamo fornirti alcune informazioni relative all'utilizzo e al
-        trattamento dei tuoi dati e di ogni altra informazione a carattere personale che deciderai
-        di comunicarci nel corso del rapporto. Il rispetto della tua privacy e la totale
-        riservatezza delle nostre comunicazioni è per noi un principio fondamentale.
+        Informativa sul trattamento dei dati personali ai sensi dell'art. 13 del Regolamento UE
+        2016/679 (GDPR). Il sito <strong>asteryslab.com</strong> è di proprietà di Asterys Lab
+        S.r.l. La protezione dei dati personali e il loro trattamento consapevole sono per noi un
+        principio di riferimento: ci impegniamo al rigoroso rispetto di tutte le leggi e le
+        regolamentazioni in materia.
       </p>
 
       <h2 className={tH2}>Titolare del trattamento</h2>
       <p className={tP}>
-        Titolare del trattamento è <strong>Asterys Lab S.r.l.</strong>, con sedi operative in
-        Milano, via Conservatorio 22 (20122) e Roma, via del Porto Fluviale 35 (00154). P.IVA e
-        C.F. 11673371008. Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a{' '}
-        <a href="mailto:privacy@asteryslab.com" className="text-brand-accent font-bold">
-          privacy@asteryslab.com
+        Il titolare del trattamento è <strong>Asterys Lab S.r.l.</strong>, via del Porto Fluviale
+        35, 00154 Roma. P.IVA e C.F. 11673371008.
+      </p>
+
+      <h2 className={tH2}>Data Protection Officer (DPO)</h2>
+      <p className={tP}>
+        Pier Paolo Colasanti — via del Porto Fluviale 35, 00154 Roma —{' '}
+        <a href="mailto:dpo@asteryslab.com" className="text-brand-accent font-bold">
+          dpo@asteryslab.com
         </a>
         .
       </p>
 
-      <h2 className={tH2}>Dati raccolti e finalità</h2>
+      <h2 className={tH2}>Dati personali</h2>
       <p className={tP}>
-        Se decidi di usufruire dei nostri servizi, ti chiediamo di comunicarci alcune informazioni
-        relative alla tua persona (ad esempio nome, cognome, professione, codice fiscale). Le
-        utilizziamo esclusivamente per programmare e organizzare le sessioni e i percorsi
-        formativi, per adempiere ad obblighi di legge — anche di carattere fiscale e contabile — e,
-        previo tuo consenso, per tenerti informato su novità e opportunità e per finalità di
-        marketing, pubblicità e promozione. Trattiamo i tuoi dati con mezzi manuali e informatici,
-        idonei a garantirne riservatezza e integrità.
+        Per dato personale si intende qualsiasi informazione correlata a una persona fisica
+        identificata o identificabile, direttamente o indirettamente (ad esempio nome, indirizzo o
+        numero di telefono). Le informazioni non correlate alla tua identità reale non sono dati
+        personali.
       </p>
 
-      <h2 className={tH2}>Conferimento dei dati</h2>
+      <h2 className={tH2}>Finalità del trattamento e base giuridica</h2>
       <p className={tP}>
-        Sei tenuto a comunicarci le informazioni richieste nei campi contrassegnati come
-        obbligatori nei nostri moduli: senza queste informazioni non potremo dare seguito alla tua
-        richiesta e fornirti il servizio. Il conferimento di ogni altra informazione è facoltativo.
+        Asterys Lab tratta i dati personali per le seguenti finalità:
+      </p>
+      <ul className="list-disc pl-5 mb-4 space-y-2 text-[15px] leading-relaxed text-brand-navy/75 font-medium">
+        <li>
+          <strong>Esecuzione del rapporto contrattuale</strong> e fruizione dei servizi richiesti
+          (organizzazione di sessioni e percorsi formativi). Per il trattamento di eventuali
+          categorie particolari di dati è necessario il tuo espresso consenso, senza il quale non
+          saremo in grado di fornirti il servizio.
+        </li>
+        <li>
+          <strong>Adempimento di obblighi legali</strong> (es. normativa fiscale, richieste della
+          magistratura): il conferimento dei dati necessari a tali fini rappresenta un obbligo di
+          legge.
+        </li>
+        <li>
+          <strong>Marketing</strong> (telefonico, posta elettronica o ordinaria, materiale
+          pubblicitario, vendita diretta, indagini di mercato) sulla base del tuo{' '}
+          <strong>consenso</strong>, libero e revocabile in qualsiasi momento. Il conferimento non è
+          obbligatorio e il rifiuto non comporta conseguenze negative, salvo l'impossibilità di
+          ricevere comunicazioni commerciali.
+        </li>
+      </ul>
+      <p className={tP}>I tuoi dati personali non saranno trasferiti o venduti a terzi.</p>
+
+      <h2 className={tH2}>Periodo di conservazione</h2>
+      <p className={tP}>
+        Conserviamo i tuoi dati per tutta la durata del rapporto contrattuale e per l'adempimento
+        degli obblighi di legge e regolamentari applicabili, nonché per finalità difensive, fino
+        alla scadenza dei relativi termini di conservazione (che decorrono dall'estinzione del
+        rapporto). Per i trattamenti basati sul consenso, fino alla revoca dello stesso. Al termine,
+        i dati vengono cancellati o resi anonimi, salvo un ulteriore trattamento necessario per la
+        gestione di precontenziosi o contenziosi.
       </p>
 
-      <h2 className={tH2}>Comunicazione a terzi</h2>
+      <h2 className={tH2}>Misure di sicurezza</h2>
       <p className={tP}>
-        I tuoi dati non sono comunicati a terzi, fatta eccezione per i dati strettamente necessari
-        ad adempiere agli obblighi contabili e fiscali, e non sono diffusi né trasferiti all'estero.
+        Adottiamo idonee misure tecniche e organizzative per proteggere i dati da accesso non
+        autorizzato, alterazione, divulgazione, perdita, distruzione e abuso: monitoraggi e
+        controlli dei processi di raccolta, archiviazione ed elaborazione, e misure di sicurezza dei
+        sistemi informatici. Riesaminiamo regolarmente lo stato dell'arte delle tecnologie di
+        sicurezza e adottiamo i principi di <strong>privacy by design</strong> e{' '}
+        <strong>privacy by default</strong>, richiedendo solo i dati necessari alle rispettive
+        finalità. I backup hanno finalità strettamente tecniche; i log di sistema, privi di dati
+        personali, sono eliminati automaticamente dopo 90 giorni.
+      </p>
+      <p className={tP}>
+        Ti ricordiamo che la privacy delle informazioni trasmesse via e-mail non può essere
+        garantita: per informazioni riservate consigliamo canali più sicuri.
       </p>
 
       <h2 className={tH2}>I tuoi diritti</h2>
       <p className={tP}>
-        Hai il diritto di ottenere informazioni sull'esistenza, l'origine, le finalità e le
-        modalità del trattamento dei dati che ti riguardano; di ottenerne la cancellazione, il
-        blocco, l'aggiornamento, la rettifica e l'integrazione; e di opporti, per motivi legittimi,
-        al trattamento. Puoi esercitare questi diritti scrivendo a{' '}
-        <a href="mailto:privacy@asteryslab.com" className="text-brand-accent font-bold">
-          privacy@asteryslab.com
-        </a>{' '}
-        o presso la sede della società.
+        Hai il diritto di accedere ai tuoi dati e di richiederne la rettifica, la cancellazione o la
+        limitazione del trattamento, nonché il diritto alla portabilità e di opposizione. Se hai
+        prestato il consenso, puoi <strong>revocarlo</strong> in qualsiasi momento (con effetto per
+        il futuro). Il <strong>diritto alla portabilità</strong> ti consente di ricevere una copia
+        dei tuoi dati in formato strutturato e leggibile da dispositivo automatico; il{' '}
+        <strong>diritto all'oblio</strong> di richiederne la cancellazione. Puoi esercitare questi
+        diritti scrivendo a{' '}
+        <a href="mailto:dpo@asteryslab.com" className="text-brand-accent font-bold">
+          dpo@asteryslab.com
+        </a>
+        . Alcuni dati potrebbero non essere immediatamente cancellabili per obblighi di
+        conservazione di legge, di cui verrai informato.
+      </p>
+      <p className={tP}>
+        Hai inoltre il diritto di presentare reclamo all'autorità di controllo: il{' '}
+        <strong>Garante per la protezione dei dati personali</strong>, Piazza di Monte Citorio 121,
+        00186 Roma —{' '}
+        <a href="mailto:garante@gpdp.it" className="text-brand-accent font-bold">
+          garante@gpdp.it
+        </a>
+        .
+      </p>
+
+      <h2 className={tH2}>Contenuti generati con intelligenza artificiale</h2>
+      <p className={tP}>
+        In conformità ai principi di trasparenza (Regolamento UE 2024/1689 — «AI Act»), ti
+        informiamo che alcune immagini illustrative presenti su questo sito sono state{' '}
+        <strong>generate o rielaborate con strumenti di intelligenza artificiale</strong> e non
+        raffigurano necessariamente persone, luoghi o eventi reali. Il sito non utilizza sistemi di
+        AI che interagiscono direttamente con l'utente (es. chatbot).
+      </p>
+
+      <h2 className={tH2}>Modifiche</h2>
+      <p className={tP}>
+        La presente informativa può essere aggiornata nel tempo; ogni versione è identificabile
+        dalla data di aggiornamento. La versione più recente è sempre disponibile su questa pagina.
       </p>
 
       <p className="text-[13px] leading-relaxed text-brand-navy/50 font-medium mt-8 pt-6 border-t border-gray-100">
-        Nota per la revisione: il testo originale del vecchio sito faceva riferimento al D.Lgs.
-        196/2003; va aggiornato ai riferimenti del Regolamento UE 2016/679 (GDPR) — base giuridica,
-        tempi di conservazione, diritto alla portabilità e reclamo al Garante — a cura del
-        consulente legale.
+        Nota per la revisione: testo basato sull'Informativa GDPR ufficiale di asteryslab.com. Prima
+        della pubblicazione va integrato l'elenco aggiornato dei responsabili/fornitori esterni
+        realmente in uso sul nuovo sito (es. hosting, Gravity Forms, MailPoet, eventuali analytics)
+        e va confermata con un legale la formulazione della sezione «AI Act».
       </p>
     </LegalLayout>
   );
@@ -144,9 +205,10 @@ export function CookiePolicy() {
       </p>
 
       <p className="text-[13px] leading-relaxed text-brand-navy/50 font-medium mt-8 pt-6 border-t border-gray-100">
-        Nota per la revisione: l'elenco puntuale dei cookie effettivamente installati (nome,
-        finalità, durata, fornitore) e l'eventuale banner di consenso vanno definiti in base agli
-        strumenti realmente attivi sul sito in produzione.
+        Nota per la revisione: al momento il sito usa solo cookie tecnici. Quando saranno attivati
+        strumenti di misurazione (es. Google Analytics 4, Microsoft Clarity) serviranno un banner di
+        consenso a norma con Google Consent Mode v2 (CMP, es. Iubenda) e l'elenco puntuale dei
+        cookie (nome, finalità, durata, fornitore).
       </p>
     </LegalLayout>
   );

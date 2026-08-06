@@ -7,6 +7,15 @@ import { homeTestimonials } from '../constants/testimonials';
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
 
+/** Iniziali (nome + cognome) per l'avatar di ripiego quando manca la foto. */
+const getInitials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+
 type TestimonialsSectionProps = {
   testimonials?: CourseTestimonial[];
   titleUppercase?: boolean;
@@ -85,7 +94,6 @@ export function TestimonialsSection({
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
         <p className="font-display font-black leading-tight mb-0.5 text-lg lg:text-xl">{video.name}</p>
-        <p className="text-[11px] lg:text-xs font-semibold text-white/75 leading-tight">{video.role}</p>
         {video.cohort ? (
           <p className="text-[10px] font-black uppercase tracking-[0.18em] text-brand-accent mt-2">
             {video.cohort}
@@ -103,9 +111,25 @@ export function TestimonialsSection({
       }`}
     >
       <div className="flex items-start justify-between mb-3 gap-3">
-        <p className="text-base font-black text-brand-navy leading-tight">{t.name}</p>
+        <div className="flex items-center gap-3 min-w-0">
+          {t.img ? (
+            <img
+              src={t.img}
+              alt={t.name}
+              referrerPolicy="no-referrer"
+              className="h-11 w-11 rounded-full object-cover ring-1 ring-brand-navy/10 shrink-0"
+            />
+          ) : (
+            <span className="h-11 w-11 rounded-full bg-brand-accent/10 text-brand-accent grid place-items-center text-sm font-black shrink-0">
+              {getInitials(t.name)}
+            </span>
+          )}
+          <div className="min-w-0">
+            <p className="text-sm sm:text-base font-black text-brand-navy leading-tight truncate">{t.name}</p>
+          </div>
+        </div>
         {t.rating ? (
-          <div className="flex text-[#008060] gap-0.5 shrink-0">
+          <div className="flex text-[#008060] gap-0.5 shrink-0 mt-0.5">
             {Array.from({ length: t.rating }).map((_, s) => (
               <Star key={s} size={12} fill="currentColor" />
             ))}
@@ -117,6 +141,25 @@ export function TestimonialsSection({
       </p>
     </div>
   );
+
+  // Classe della griglia di una slide (video vs solo-testo). idx serve solo per alternare l'ordine.
+  const slideGridClass = (s: Slide, idx: number) =>
+    s.video
+      ? `grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${
+          idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
+        }`
+      : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 items-stretch';
+
+  // Contenuto di una slide (usato sia nella slide visibile sia nel "ghost" che fissa l'altezza).
+  const slideBody = (s: Slide) =>
+    s.video ? (
+      <>
+        {renderVideoCard(s.video)}
+        <div className="grid grid-cols-1 gap-4">{s.cards.map(renderTextCard)}</div>
+      </>
+    ) : (
+      s.cards.map(renderTextCard)
+    );
 
   const slide = slides[activeSlide];
 
@@ -134,39 +177,41 @@ export function TestimonialsSection({
         </div>
 
         {slide ? (
-          <div className={`relative overflow-hidden ${compact ? 'min-h-[420px]' : 'min-h-[560px]'} sm:min-h-0`}>
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={activeSlide}
-                initial={{ opacity: 0, x: 22 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -22 }}
-                transition={{ duration: 0.28, ease: 'easeInOut' }}
-                drag={slides.length > 1 ? 'x' : false}
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.08}
-                onDragEnd={(_, info) => {
-                  if (info.offset.x < -70) goToSlide(activeSlide + 1);
-                  if (info.offset.x > 70) goToSlide(activeSlide - 1);
-                }}
-                className={
-                  slide.video
-                    ? `grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch ${
-                        activeSlide % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
-                      }`
-                    : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 items-stretch'
-                }
-              >
-                {slide.video ? (
-                  <>
-                    {renderVideoCard(slide.video)}
-                    <div className="grid grid-cols-1 gap-4">{slide.cards.map(renderTextCard)}</div>
-                  </>
-                ) : (
-                  slide.cards.map(renderTextCard)
-                )}
-              </motion.div>
-            </AnimatePresence>
+          <>
+            <div className="relative">
+              {/* GHOST: rende TUTTE le slide impilate e invisibili così la finestra prende l'altezza
+                  della slide più alta e NON cambia mai al cambio pagina → niente salti nel layout. */}
+              <div className="grid pointer-events-none" aria-hidden="true">
+                {slides.map((s, i) => (
+                  <div key={i} className={`invisible [grid-area:1/1] ${slideGridClass(s, i)}`}>
+                    {slideBody(s)}
+                  </div>
+                ))}
+              </div>
+
+              {/* Slide visibile e animata, sovrapposta al ghost e centrata verticalmente. */}
+              <div className="absolute inset-0 overflow-hidden flex items-center">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeSlide}
+                    initial={{ opacity: 0, x: 22 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -22 }}
+                    transition={{ duration: 0.28, ease: 'easeInOut' }}
+                    drag={slides.length > 1 ? 'x' : false}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.08}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x < -70) goToSlide(activeSlide + 1);
+                      if (info.offset.x > 70) goToSlide(activeSlide - 1);
+                    }}
+                    className={`w-full ${slideGridClass(slide, activeSlide)}`}
+                  >
+                    {slideBody(slide)}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
 
             {slides.length > 1 ? (
               <div className="mt-6 flex items-center justify-center gap-2">
@@ -185,7 +230,7 @@ export function TestimonialsSection({
                 ))}
               </div>
             ) : null}
-          </div>
+          </>
         ) : null}
       </div>
 
