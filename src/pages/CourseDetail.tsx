@@ -5,8 +5,6 @@ import {
   ArrowRight,
   Download,
   Users,
-  Plus,
-  Minus,
   Clock,
   Video,
   UserCheck,
@@ -118,19 +116,19 @@ function scheduleColumnIcon(icon: CourseScheduleColumn['icon']) {
 
 const Accordion = ({ title, content, isOpen, onClick }: { title: string, content: string, isOpen: boolean, onClick: () => void }) => (
   <div className="border-b border-gray-100 last:border-b-0">
-    <button 
+    <button
       onClick={onClick}
-      className="w-full py-3 sm:py-6 text-left flex items-center justify-between group gap-3 sm:gap-6"
+      className="w-full py-4 sm:py-5 text-left flex items-center justify-between group gap-4"
     >
-      <span className="text-sm sm:text-base font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight leading-snug">
+      <span className="text-base sm:text-lg font-black text-brand-navy group-hover:text-brand-accent transition-colors tracking-tight leading-snug">
         {title}
       </span>
       <span
-        className={`inline-flex h-7 w-7 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-brand-navy/10 bg-white text-brand-navy transition-colors ${
-          isOpen ? 'bg-brand-navy text-white border-brand-navy' : ''
+        className={`shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-blue-soft text-brand-accent flex items-center justify-center transition-transform ${
+          isOpen ? 'rotate-90' : ''
         }`}
       >
-        {isOpen ? <Minus size={16} strokeWidth={2.25} /> : <Plus size={16} strokeWidth={2.25} />}
+        <ChevronRightIcon size={18} strokeWidth={2.5} className="rotate-90" />
       </span>
     </button>
     <AnimatePresence>
@@ -385,7 +383,12 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
     const el = levelsScrollerRef.current;
     if (!el || !window.matchMedia('(max-width: 767px)').matches) return;
     const highlighted = el.querySelector<HTMLElement>('[data-level-highlight="true"]');
-    highlighted?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' });
+    if (!highlighted) return;
+    // Centra il livello evidenziato SOLO orizzontalmente dentro lo scroller,
+    // senza scrollIntoView (che farebbe scorrere anche la pagina verso il basso).
+    const er = el.getBoundingClientRect();
+    const hr = highlighted.getBoundingClientRect();
+    el.scrollLeft += hr.left - er.left - (el.clientWidth - hr.width) / 2;
   }, [id]);
 
   if (!course) {
@@ -586,11 +589,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
     (isMasterLike
       ? {
           title: 'Fase di orientamento',
-          body: 'Prima del via, allineiamo obiettivi, aspettative e piano di percorso con il team Asterys, così entri in classe con chiarezza.',
+          body: 'Prima del via, allineiamo obiettivi, aspettative e piano di percorso con il team Asterys Lab, così entri in classe con chiarezza.',
         }
       : null);
 
-  /** Tipografia compatta (reference: PDF Asterys) — migliora leggibilità sotto la piega */
+  /** Tipografia compatta (reference: PDF Asterys Lab) — migliora leggibilità sotto la piega */
   const tSection = 'text-3xl sm:text-4xl lg:text-[2.65rem] font-display font-black uppercase tracking-tighter text-brand-navy';
   const tLead = 'text-base sm:text-lg text-brand-navy/65 font-medium leading-relaxed max-w-2xl';
   const tModuleSide = 'text-[11px] sm:text-xs font-black uppercase tracking-tight';
@@ -770,8 +773,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                 const includedCards = [
                   {
                     icon: CalendarCheck,
-                    title: '6 o 9 incontri di Continuous Learning',
-                    desc: "Dal momento dell'iscrizione fino a dopo la fine del Master: 6 incontri nel 1° livello, 9 nel Percorso Completo.",
+                    title: 'Continuous Learning',
+                    desc: "Incontri brevi e mensili di crescita professionale, sempre con la prospettiva del coaching, dall'iscrizione fino a dopo la fine del Master. Ne sono inclusi 6 con il 1° livello e 9 con il Percorso Completo.",
                   },
                   {
                     icon: HeartHandshake,
@@ -791,7 +794,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   {
                     icon: Monitor,
                     title: 'Accesso gratuito ai webinar',
-                    desc: 'Partecipazione gratuita ai webinar Asterys per continuare ad approfondire temi e strumenti professionali.',
+                    desc: 'Partecipazione gratuita ai webinar Asterys Lab per continuare ad approfondire temi e strumenti professionali.',
                   },
                   {
                     icon: ShieldCheck,
@@ -810,8 +813,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   },
                   {
                     icon: Users,
-                    title: 'Community alumni e Career Boost',
-                    desc: 'Accesso a rete alumni, supporto carriera e occasioni di confronto anche dopo la fine del Master.',
+                    title: 'Personal Branding, community e Career Boost',
+                    desc: 'Con il Percorso Completo è incluso il corso di Personal Branding per Coach (con Helga Ogliari). In più entri nella community degli Alumni Asterys Lab e in tutto il Career Boost: rete, supporto carriera e occasioni di confronto anche dopo la fine del Master.',
                   },
                 ];
 
@@ -941,23 +944,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               ) : null}
             </div>
 
-            {/* Toggle solo mobile: la sezione parte chiusa per non allungare la pagina */}
-            <button
-              type="button"
-              onClick={() => setCompetenzeOpenMobile((v) => !v)}
-              aria-expanded={competenzeOpenMobile}
-              className="lg:hidden w-full flex items-center justify-between gap-3 rounded-2xl bg-white border border-gray-100 px-4 py-3.5 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)]"
-            >
-              <span className="text-sm font-display font-black text-brand-navy tracking-tight">
-                {competenzeOpenMobile ? 'Nascondi competenze e sbocchi' : 'Vedi competenze e sbocchi'}
-              </span>
-              <ChevronDown
-                size={18}
-                className={`shrink-0 text-brand-navy/45 transition-transform ${competenzeOpenMobile ? 'rotate-180 text-brand-accent' : ''}`}
-              />
-            </button>
-
-            <div className={`${competenzeOpenMobile ? 'mt-3' : 'hidden'} lg:block lg:mt-0 rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden`}>
+            <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
                {/* Tab switcher */}
                {competenciesAndCareers.careerPaths.length > 0 ? (
                <div className="grid grid-cols-2 gap-2 p-2 bg-[#EEF4FC] border-b border-gray-100">
@@ -1000,8 +987,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </div>
                ) : null}
 
-               {/* List area */}
+               {/* List area — su mobile mostra ~1 voce e mezza, poi si amplia (come il calendario) */}
                <div className="relative">
+                <div className={`relative ${competenzeOpenMobile ? '' : 'max-h-[190px] overflow-hidden'} lg:max-h-none lg:overflow-visible`}>
                   <AnimatePresence mode="wait" initial={false}>
                     {careerTab === 'competencies' || competenciesAndCareers.careerPaths.length === 0 ? (
                       <motion.ul
@@ -1063,6 +1051,21 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       </motion.ul>
                     )}
                   </AnimatePresence>
+                  {!competenzeOpenMobile ? (
+                    <div className="lg:hidden pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
+                  ) : null}
+                </div>
+                <div className="lg:hidden border-t border-gray-100">
+                  <button
+                    type="button"
+                    onClick={() => setCompetenzeOpenMobile((v) => !v)}
+                    aria-expanded={competenzeOpenMobile}
+                    className="w-full flex items-center justify-center gap-1.5 px-5 py-3.5 text-[11px] font-black uppercase tracking-[0.18em] text-brand-accent"
+                  >
+                    {competenzeOpenMobile ? 'Mostra meno' : 'Vedi tutte le voci'}
+                    <ChevronDown size={15} className={`transition-transform ${competenzeOpenMobile ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
                </div>
             </div>
          </div>
@@ -2548,10 +2551,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                       key={i}
                       className={`group relative overflow-hidden flex flex-col rounded-[1.5rem] p-5 lg:p-7 text-left border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_38px_78px_-34px_rgba(0,21,51,0.55)] ${span} ${cardBg}`}
                     >
-                       <div className={`inline-flex shrink-0 items-center justify-center rounded-2xl mb-4 lg:mb-5 shadow-sm transition-colors ${feature ? 'h-14 w-14 bg-white/10 text-white ring-1 ring-white/25 group-hover:bg-white group-hover:text-brand-navy' : 'h-11 w-11 bg-white text-brand-accent ring-1 ring-brand-navy/5 group-hover:bg-brand-navy group-hover:text-white'}`}>
+                       {/* icone solo nel bento desktop: nel carosello mobile le card restano compatte */}
+                       <div className={`hidden lg:inline-flex shrink-0 items-center justify-center rounded-2xl mb-4 lg:mb-5 shadow-sm transition-colors ${feature ? 'h-14 w-14 bg-white/10 text-white ring-1 ring-white/25 group-hover:bg-white group-hover:text-brand-navy' : 'h-11 w-11 bg-white text-brand-accent ring-1 ring-brand-navy/5 group-hover:bg-brand-navy group-hover:text-white'}`}>
                           <Icon size={feature ? 26 : 20} strokeWidth={2} />
                        </div>
-                       <h3 className={`font-black uppercase tracking-tight leading-snug mb-2 ${feature ? 'text-lg sm:text-2xl text-white' : 'text-[13px] sm:text-[15px] text-brand-navy'}`}>{p.title}</h3>
+                       <h3 className={`font-black uppercase tracking-tight leading-snug mb-2 ${feature ? 'text-base lg:text-2xl text-white' : 'text-[15px] lg:text-[15px] text-brand-navy'}`}>{p.title}</h3>
                        <p className={`font-medium leading-relaxed ${feature ? 'text-sm sm:text-[15px] text-white/70' : 'text-xs sm:text-[13px] text-brand-navy/65'}`}>{p.desc}</p>
                        {p.highlights ? (
                          <ul className="mt-3.5 space-y-2">
@@ -2564,11 +2568,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                          </ul>
                        ) : null}
                        {feature ? (
-                         <div className="relative mt-5 flex-1 flex items-center justify-center min-h-[160px] lg:min-h-[200px]">
-                            {/* mappa Italia piccola, centrata nello spazio tra testo e fondo card */}
+                         <div className="relative mt-5 hidden lg:flex lg:flex-1 items-center justify-center min-h-[160px] lg:min-h-[200px]">
+                            {/* mappa Italia piccola, centrata nello spazio tra testo e fondo card (solo bento desktop) */}
                             <img
                               src="/career/community-italy.png"
-                              alt="La community di alumni Asterys, connessa in tutta Italia"
+                              alt="La community di alumni Asterys Lab, connessa in tutta Italia"
                               className="pointer-events-none select-none w-[62%] max-w-[240px] h-auto object-contain"
                             />
                             <span className="absolute bottom-0 right-0 z-10 rounded-full bg-white/90 px-3 py-1 text-[11px] font-black text-brand-navy shadow-sm">+3.000 alumni</span>
@@ -2711,7 +2715,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-0 w-[122%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
+                           className="absolute left-1/2 bottom-[-40px] w-[200%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
                            alt="Supporto 1:1"
                          />
                        ) : (
@@ -2734,11 +2738,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   </div>
                   <div className="relative flex-1 min-w-0">
                      <h3 className="text-lg sm:text-2xl lg:text-3xl font-display font-black leading-tight mb-2 sm:mb-3 tracking-tight">
-                       {isVoiceDialogue ? 'Community Alumni Asterys' : 'Community Alumni e opportunità continue'}
+                       {isVoiceDialogue ? 'Community Alumni Asterys Lab' : 'Community Alumni e opportunità continue'}
                      </h3>
                      <p className="text-xs sm:text-base text-white/80 font-medium leading-relaxed max-w-2xl">
                        {isVoiceDialogue ? (
-                         <>Al termine del corso entri in contatto con la <span className="text-white font-black">community degli alumni Asterys</span>: eventi, formazione continua e occasioni di confronto tra professionisti del coaching e dello sviluppo personale.</>
+                         <>Al termine del corso entri in contatto con la <span className="text-white font-black">community degli alumni Asterys Lab</span>: eventi, formazione continua e occasioni di confronto tra professionisti del coaching e dello sviluppo personale.</>
                        ) : (
                          <>Alla fine del percorso entri nella <span className="text-white font-black">community Alumni Asterys Lab</span>: eventi, supervisione continuativa, collaborazioni e opportunità di lavoro con oltre 3.000 professionisti in Italia e all'estero.</>
                        )}
@@ -2787,7 +2791,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {/* 11. FAQs SECTION */}
       <section className="py-8 lg:py-20 bg-[#F9FAFB]/80">
          <div className="max-w-[var(--wrap-max)] mx-auto px-4">
-            <h2 className={`${tSection} mb-4 lg:mb-12`}>FAQs</h2>
+            <h2 className={`${tSection} mb-4 lg:mb-12`}>Domande frequenti</h2>
             <div className="space-y-2 sm:space-y-4">
                {course.faqs.map((faq, i) => (
                  <div key={i} className="bg-white rounded-xl sm:rounded-3xl px-3.5 sm:px-10 border border-gray-100 shadow-[0_18px_50px_-32px_rgba(0,21,51,0.14)]">

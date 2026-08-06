@@ -344,7 +344,7 @@ export const commonTestimonials: CourseTestimonial[] = [
     name: "Camilla Pedrazzini",
     role: "Leader Organizzazione",
     quote:
-      "Un percorso in primis su se stesso, un percorso sulla consapevolezza. Fare il coach è ben diverso da essere coach e in questo Asterys si impegna molto. La scuola offre metodi di lavoro e tecniche per poter accompagnare un cliente al suo obiettivo. Bisogna avere una totale fiducia nella scuola e nei mentor che ci sono.",
+      "Un percorso in primis su se stesso, un percorso sulla consapevolezza. Fare il coach è ben diverso da essere coach e in questo Asterys Lab si impegna molto. La scuola offre metodi di lavoro e tecniche per poter accompagnare un cliente al suo obiettivo. Bisogna avere una totale fiducia nella scuola e nei mentor che ci sono.",
     rating: 4,
     cohort: "Consiglierebbe il corso: 4/5"
   },
@@ -360,7 +360,7 @@ export const commonTestimonials: CourseTestimonial[] = [
     name: "Costanza Catapano",
     role: "Learning and Development Manager",
     quote:
-      "Un viaggio alla scoperta di sé stessi e degli altri in compagnia di trainer esperte e competenti e di un gruppo entusiasta ed eterogeneo. Le giornate di formazione sono andate ben oltre le mie aspettative sia in termini di contenuti sia in termini di risultati. Sono grata a tutto il team Asterys per questo percorso di crescita e di trasformazione.",
+      "Un viaggio alla scoperta di sé stessi e degli altri in compagnia di trainer esperte e competenti e di un gruppo entusiasta ed eterogeneo. Le giornate di formazione sono andate ben oltre le mie aspettative sia in termini di contenuti sia in termini di risultati. Sono grata a tutto il team Asterys Lab per questo percorso di crescita e di trasformazione.",
     rating: 5,
     cohort: "Consiglierebbe il corso: 5/5"
   }
@@ -593,7 +593,7 @@ export const coursesContent: Record<string, CourseData> = {
       }
     ],
     career: {
-      title: "Career Support Asterys",
+      title: "Career Support Asterys Lab",
       content: "Ti accompagniamo nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
         { title: "Alumni Community", desc: "Diventi parte degli Alumni Asterys Lab: una rete di oltre 3.000 coach accreditati ICF con cui fare pratica, scambiare referral e costruire collaborazioni reali. Accedi a incontri dedicati, gruppi di pratica e condizioni riservate su corsi ed eventi Asterys Lab — un ecosistema che ti accompagna ben oltre la fine del Master." },
@@ -603,7 +603,7 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     pegasusProgram: {
-      eyebrow: "Ecosistema Asterys",
+      eyebrow: "Ecosistema Asterys Lab",
       title: "Pegasus Program",
       intro:
         "Pegasus collega studenti e diplomati del Master in Coaching: chi frequenta il Master può ricevere coaching individuale, mentre i migliori graduati possono essere selezionati per fare pratica professionale supervisionata con gli studenti delle edizioni successive.",
@@ -621,7 +621,7 @@ export const coursesContent: Record<string, CourseData> = {
           meta: "Coach selezionati"
         },
         {
-          title: "Tutor e supervisione Asterys",
+          title: "Coach e supervisione Asterys Lab",
           desc: "Il programma prevede abbinamento coach/coachee, monitoraggio del percorso e momenti di supervisione con figure esperte della Faculty Asterys Lab.",
           meta: "Supervisione"
         }
@@ -700,7 +700,7 @@ export const coursesContent: Record<string, CourseData> = {
         "Esci dal Master capace di condurre percorsi di coaching veri: metodo, pratica supervisionata e strumenti concreti per iniziare a lavorare come coach o integrare il coaching nella tua professione. Le competenze che porti a casa sono spendibili con persone, team e organizzazioni, con standard ICF e attenzione alla pratica reale.",
       stats: [
         { value: "133,5 ore", label: "Di formazione, tra lezioni e pratica" },
-        { value: "3.000+", label: "Alumni Asterys nel mondo" },
+        { value: "3.000+", label: "Alumni Asterys Lab nel mondo" },
         { value: "ICF", label: "Standard e competenze internazionali" }
       ],
       competencies: [
@@ -1615,7 +1615,7 @@ export const coursesContent: Record<string, CourseData> = {
     heroBenefits: [
       "Impari a gestire le emozioni quando conta di più",
       "Esperienze pratiche progettate apposta: si fa, non si studia",
-      "Il modello CSI Asterys: Consapevolezza · Strategia · Interazione",
+      "Il modello CSI Asterys Lab: Consapevolezza · Strategia · Interazione",
       "Maturi 4 CCE ICF per ogni Round, con coach esperti al tuo fianco"
     ],
     summaryBox: {
@@ -1626,7 +1626,7 @@ export const coursesContent: Record<string, CourseData> = {
       price: "100€ + IVA per Round",
       installments: "4 CCE ICF per Round"
     },
-    badges: ["Modello CSI Asterys", "Fiore di Plutchik", "4 CCE ICF per Round"],
+    badges: ["Modello CSI Asterys Lab", "Fiore di Plutchik", "4 CCE ICF per Round"],
     overview: {
       title: "L'IE si sviluppa facendo, non solo sapendo",
       content: [
@@ -1662,7 +1662,7 @@ export const coursesContent: Record<string, CourseData> = {
           tags: ["4 Workout da 60 min", "Fino a 90 min oltre i 6 partecipanti", "5–6 Round all'anno"]
         },
         {
-          title: "Modello CSI Asterys",
+          title: "Modello CSI Asterys Lab",
           desc: "Tutto il percorso è costruito sul modello di sviluppo dell'IE \"CSI\" di Asterys Lab. Consapevolezza: riconosco e distinguo le mie emozioni, so dargli un nome e riconoscerne l'intensità. Strategia: prevedo quale evento mi farà provare un'emozione invece di un'altra, conosco i miei trigger e percorsi interiori, agisco in modo strategico considerando le mie emozioni e quelle degli altri. Interazione: cosa faccio nel mondo con le mie emozioni e quelle degli altri, che ruolo hanno nelle mie scelte, obiettivi e relazioni; nelle relazioni riesco a percepire cosa provano gli altri? Mi interessa?",
           tags: ["Consapevolezza", "Strategia", "Interazione"]
         },
@@ -1778,7 +1778,7 @@ export const coursesContent: Record<string, CourseData> = {
       },
       {
         q: "Come funziona un Round di Intelligenza Emotiva?",
-        a: "Un Round è composto da 4 Workout da 60 minuti in diretta online, ciascuno dedicato a un'emozione del fiore di Plutchik, con il modello CSI di Asterys. Si lavora in modo esperienziale e pratico, non solo teorico."
+        a: "Un Round è composto da 4 Workout da 60 minuti in diretta online, ciascuno dedicato a un'emozione del fiore di Plutchik, con il modello CSI di Asterys Lab. Si lavora in modo esperienziale e pratico, non solo teorico."
       },
       {
         q: "Quanti CCE ICF si ottengono?",
@@ -2552,7 +2552,7 @@ export const coursesContent: Record<string, CourseData> = {
       ]
     },
     target: [
-      { title: "Alumni e studenti Asterys", desc: "Chi inizia, chi è in pausa tra un livello e l'altro, chi ha concluso e vuole restare stimolato.", icon: <Users /> },
+      { title: "Alumni e studenti Asterys Lab", desc: "Chi inizia, chi è in pausa tra un livello e l'altro, chi ha concluso e vuole restare stimolato.", icon: <Users /> },
       { title: "Coach con credenziale", desc: "Per nutrire la pratica con nuovi punti di vista e ottenere CCE ICF.", icon: <Award /> },
       { title: "Coach in formazione", desc: "Per integrare il percorso con stimoli continui e networking.", icon: <Target /> },
       { title: "Chiunque faccia coaching", desc: "A qualsiasi livello e di qualsiasi scuola: il programma è aperto a tutti.", icon: <MessageCircle /> },
@@ -2583,7 +2583,7 @@ export const coursesContent: Record<string, CourseData> = {
             "Community viva e multi-livello",
             "Apprendimento distribuito nel tempo",
             "Partecipazione libera alla singola sessione",
-            "Collegamento stabile con la faculty Asterys"
+            "Collegamento stabile con la faculty Asterys Lab"
           ]
         }
       ],

@@ -1946,7 +1946,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         "type": "p",
-        "text": "Che tipo di supporto è disponibile alla fine del corso? Tutoring per l’avviamento e l'accreditamento, tirocinio, altri corsi disponibili, Mentor Coaching, Supervisione, ecc."
+        "text": "Che tipo di supporto è disponibile alla fine del corso? Coaching per l’avviamento e l'accreditamento, tirocinio, altri corsi disponibili, Mentor Coaching, Supervisione, ecc."
       },
       {
         "type": "p",

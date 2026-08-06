@@ -411,7 +411,7 @@ export default function Corporate() {
           <div>
             <img
               src={IMG.operiamo}
-              alt="Coach Asterys mentre facilita un percorso di cambiamento con il team"
+              alt="Coach Asterys Lab mentre facilita un percorso di cambiamento con il team"
               className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full object-cover"
               referrerPolicy="no-referrer"
               loading="lazy"
@@ -513,7 +513,7 @@ export default function Corporate() {
         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-2 font-black">
             <UserRound size={16} />
-            Asterys for business
+            Asterys Lab for business
           </div>
           <div className="flex items-center gap-2 text-white/75">
             <CheckCircle2 size={16} />

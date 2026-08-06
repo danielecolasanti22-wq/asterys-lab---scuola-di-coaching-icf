@@ -133,7 +133,7 @@ const Hero = () => (
         <div className="absolute right-[-33%] bottom-0 w-[calc(104vw-135px)] max-w-[1560px] min-w-[1080px] translate-x-[15px]">
           <img
             src={HERO_PEOPLE_SRC}
-            alt="Coach Asterys"
+            alt="Coach Asterys Lab"
             className="hero-figure block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
             referrerPolicy="no-referrer"
           />
@@ -289,7 +289,7 @@ const Accreditamenti = () => {
 /* 3. SCEGLI IL PERCORSO */
 const ScegliPercorso = () => {
   const features = [
-    { icon: Handshake, title: 'Un tutor al tuo fianco fino alla fine' },
+    { icon: Handshake, title: 'Un coach al tuo fianco fino alla fine' },
     { icon: BriefcaseBusiness, title: 'Ti accompagniamo fino al primo cliente' },
     { icon: BadgeCheck, title: 'Credenziali ICF spendibili ovunque' }
   ];
@@ -651,7 +651,7 @@ const PercheNoi = () => {
     {
       icon: Users,
       title: 'Non sei mai solo: prima, durante e dopo',
-      desc: 'Un coach di riferimento ti accompagna dall’orientamento fino al post-diploma, ed entri negli Alumni Asterys: 3.000+ colleghi per confronto, referral e nuove opportunità.'
+      desc: 'Un coach di riferimento ti accompagna dall’orientamento fino al post-diploma, ed entri negli Alumni Asterys Lab: 3.000+ colleghi per confronto, referral e nuove opportunità.'
     },
     {
       icon: Wallet,

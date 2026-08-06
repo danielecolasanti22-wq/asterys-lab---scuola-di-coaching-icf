@@ -182,7 +182,7 @@ export default function Iscriviti() {
                   Ci sei quasi.
                 </h2>
                 <p className="text-sm text-brand-navy/70 font-medium max-w-sm">
-                  Un Advisor Asterys ti richiama entro 24 ore lavorative per un colloquio
+                  Un Advisor Asterys Lab ti richiama entro 24 ore lavorative per un colloquio
                   conoscitivo gratuito e senza impegno: capirai se il percorso fa davvero
                   al caso tuo, con risposte sincere.
                 </p>

@@ -374,7 +374,7 @@ export const Header = () => {
             Contattaci
           </Link>
 
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-3.5">
             <Link
               to="/iscriviti"
               className="inline-flex items-center justify-center rounded-full bg-[#2A56A8] text-white px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.12em] whitespace-nowrap shadow-[0_12px_24px_-16px_rgba(42,86,168,0.55)]"
@@ -710,16 +710,6 @@ export const Header = () => {
                 </div>
               ) : null}
             </div>
-
-            <div className="shrink-0 px-5 py-4 border-t border-gray-100 bg-white">
-              <Link
-                to="/iscriviti"
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full rounded-full bg-[#2A56A8] text-white py-4 font-sans font-black text-xs uppercase tracking-[0.12em] active:scale-[0.98] transition-transform"
-              >
-                Contattaci <ArrowRight size={16} />
-              </Link>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -832,8 +822,8 @@ const socialChannels = [
 const certifications: { label: string; src: string; invert?: boolean }[] = [
   { label: 'ICF Level 1', src: 'brand/icf-level-1.png' },
   { label: 'ICF Level 2', src: 'brand/icf-level-2.png' },
-  { label: 'ICF CCE', src: 'brand/icf-cce-new.png' },
   { label: 'ICF AATC', src: 'brand/icf-aatc.png' },
+  { label: 'ICF CCE', src: 'brand/icf-cce-new.png' },
 ];
 
 const footerNavGroups = [

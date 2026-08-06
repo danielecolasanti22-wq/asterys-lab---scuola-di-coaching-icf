@@ -79,7 +79,7 @@ export const homeTestimonials: CourseTestimonial[] = [
     role: 'Coach ACC ICF · Crédit Agricole',
     img: '/testimonials/people/tito-bertasi.jpg',
     quote:
-      'Questo è stato l’anno della mia prima credenziale ICF (ACC). Devo molto ad Asterys e al continuous learning: sono stato seguito e accompagnato in un percorso davvero trasformativo.',
+      'Questo è stato l’anno della mia prima credenziale ICF (ACC). Devo molto ad Asterys Lab e al continuous learning: sono stato seguito e accompagnato in un percorso davvero trasformativo.',
     rating: 5,
     cohort: 'Fino alla prima credenziale ICF',
   },
@@ -88,7 +88,7 @@ export const homeTestimonials: CourseTestimonial[] = [
     role: 'Talent Management & Development',
     img: '/testimonials/people/vincenzo-torcivia.jpg',
     quote:
-      'Asterys mi ha accompagnato in un percorso di crescita che ha arricchito prima la persona e poi il professionista. A guidarlo è stata la passione: quella dei docenti e la mia, cresciuta nel tempo.',
+      'Asterys Lab mi ha accompagnato in un percorso di crescita che ha arricchito prima la persona e poi il professionista. A guidarlo è stata la passione: quella dei docenti e la mia, cresciuta nel tempo.',
     rating: 5,
     cohort: 'Prima la persona, poi il professionista',
   },
@@ -212,7 +212,7 @@ export const homeTestimonials: CourseTestimonial[] = [
     cohort: 'Preparazione e umanità',
   },
 
-  // --- TESTO con foto reale (consenso "LinkedIn" — verificati via profilo/rete Asterys) ---
+  // --- TESTO con foto reale (consenso "LinkedIn" — verificati via profilo/rete Asterys Lab) ---
   {
     name: 'Ilaria Cereda',
     role: 'Retail Director · Business Coach ICF',
