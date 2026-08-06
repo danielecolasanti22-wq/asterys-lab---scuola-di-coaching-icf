@@ -109,3 +109,13 @@
   -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
+
+/* Caroselli orizzontali su mobile: nasconde la scrollbar mantenendo lo scroll
+   (usato dove le card scorrono lateralmente per non occupare spazio verticale). */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

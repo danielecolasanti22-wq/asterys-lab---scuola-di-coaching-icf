@@ -238,7 +238,7 @@ export default function Corporate() {
               L'anno in cui hai iniziato a poter contare sulla stessa esperienza che dedichiamo alle grandi
               multinazionali, portata al fianco della tua impresa.
             </p>
-            <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-black uppercase tracking-[0.16em] text-white/70">
+            <div className="mt-6 pt-5 border-t border-white/15 flex flex-nowrap items-center whitespace-nowrap gap-x-2.5 sm:gap-x-4 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.08em] sm:tracking-[0.16em] text-white/70">
               <span>Consulenti</span>
               <span>·</span>
               <span>Facilitatori</span>

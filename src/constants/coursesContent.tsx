@@ -397,7 +397,7 @@ const apcmFaqs = [
   },
   {
     q: "Come funziona l'ammissione al Master?",
-    a: "Non è richiesta una formazione pregressa nel coaching. Il processo prevede la compilazione del form online e un confronto con un Advisor Asterys per chiarire obiettivi, aspettative e coerenza del percorso. È gratuito e senza impegno fino alla firma del contratto di iscrizione."
+    a: "Non è richiesta una formazione pregressa nel coaching. Il processo prevede la compilazione del form online e un confronto con un Advisor Asterys Lab per chiarire obiettivi, aspettative e coerenza del percorso. È gratuito e senza impegno fino alla firma del contratto di iscrizione."
   },
   {
     q: "Posso accedere alle registrazioni se mi perdo una lezione?",
@@ -459,13 +459,13 @@ export const coursesContent: Record<string, CourseData> = {
     studyModeBox: {
       title: "Modalità di studio",
       highlight: "",
-      body: "Il ritmo prevede lezioni circa una volta a settimana, in base al calendario dell'edizione. Dal momento dell'iscrizione hai a disposizione materiale didattico online per iniziare subito a studiare e stare al passo. Tra una sessione e l'altra lavori su preparazione, studio individuale, esercitazioni e report, con il supporto del team Asterys.",
+      body: "Il ritmo prevede lezioni circa una volta a settimana, in base al calendario dell'edizione. Dal momento dell'iscrizione hai a disposizione materiale didattico online per iniziare subito a studiare e stare al passo. Tra una sessione e l'altra lavori su preparazione, studio individuale, esercitazioni e report, con il supporto del team Asterys Lab.",
       linkText: "Scopri il calendario completo",
       linkHref: "#programma",
     },
     orientationBanner: {
       title: "Fase di orientamento",
-      body: "Prima del via, chiarisci obiettivi, aspettative e piano di studio insieme al team Asterys. A ogni studente viene assegnato un coach di riferimento che lo segue prima, durante e dopo il percorso.",
+      body: "Prima del via, chiarisci obiettivi, aspettative e piano di studio insieme al team Asterys Lab. A ogni studente viene assegnato un coach di riferimento che lo segue prima, durante e dopo il percorso.",
     },
     specializationsSection: {
       eyebrow: "Specializzazioni",
@@ -596,7 +596,7 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Career Support Asterys",
       content: "Ti accompagniamo nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
-        { title: "Alumni Community", desc: "Diventi parte degli Alumni Asterys: una rete di oltre 3.000 coach accreditati ICF con cui fare pratica, scambiare referral e costruire collaborazioni reali. Accedi a incontri dedicati, gruppi di pratica e condizioni riservate su corsi ed eventi Asterys — un ecosistema che ti accompagna ben oltre la fine del Master." },
+        { title: "Alumni Community", desc: "Diventi parte degli Alumni Asterys Lab: una rete di oltre 3.000 coach accreditati ICF con cui fare pratica, scambiare referral e costruire collaborazioni reali. Accedi a incontri dedicati, gruppi di pratica e condizioni riservate su corsi ed eventi Asterys Lab — un ecosistema che ti accompagna ben oltre la fine del Master." },
         { title: "Personal Branding per Coach", desc: "Ti fai trovare e scegliere dai clienti giusti. Corso incluso nel 2° livello del Master, con Helga Ogliari.", highlights: ["Un posizionamento chiaro che ti distingue dagli altri coach", "Acquisisci i primi clienti con storytelling e social selling", "Strumenti pronti all'uso: Personal Branding & Storytelling Canvas", "5 incontri online live con Helga Ogliari (Branding & Storytelling Designer)"] },
         { title: "Formazione Continua", desc: "Non smetti mai di crescere: masterclass, webinar e workshop esclusivi per approfondire competenze specifiche, scoprire nuovi strumenti e restare aggiornato sulle evoluzioni del coaching." },
         { title: "Supporto Carriera", desc: "Durante tutto il percorso hai un coach di riferimento dedicato: sessioni individuali per valorizzare il tuo profilo, mettere a fuoco il tuo modello di business e orientarti nelle scelte professionali dopo l'accreditamento." }

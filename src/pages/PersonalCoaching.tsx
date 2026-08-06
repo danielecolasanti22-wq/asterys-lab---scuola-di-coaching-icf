@@ -103,11 +103,11 @@ export default function PersonalCoaching() {
               senti più importante adesso.
             </p>
           </div>
-          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
             {aree.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="bg-white border border-[#EEF4FC] rounded-3xl p-7 hover:shadow-[0_24px_50px_-34px_rgba(0,29,75,0.5)] hover:-translate-y-0.5 transition-all"
+                className="w-[78%] shrink-0 snap-start sm:w-auto bg-white border border-[#EEF4FC] rounded-3xl p-7 hover:shadow-[0_24px_50px_-34px_rgba(0,29,75,0.5)] hover:-translate-y-0.5 transition-all"
               >
                 <span className="w-12 h-12 rounded-2xl bg-brand-blue-soft text-brand-accent flex items-center justify-center">
                   <Icon size={22} />

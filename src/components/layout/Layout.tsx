@@ -144,7 +144,7 @@ const BrandLogo = () => {
   return (
     <div className="flex items-center gap-3">
       {!showFallback && (
-        <div className="h-14 w-[230px] overflow-hidden flex items-center">
+        <div className="h-10 w-[158px] sm:h-14 sm:w-[230px] overflow-hidden flex items-center">
           <img
             src={logoSrc}
             alt="Asterys Lab"
@@ -537,7 +537,9 @@ export const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[74px] z-40 bg-white lg:hidden flex flex-col overflow-hidden"
+            className={`fixed inset-x-0 bottom-0 z-40 bg-white lg:hidden flex flex-col overflow-hidden ${
+              hasBanner(location.pathname) ? 'top-[120px] max-[939px]:top-[122px]' : 'top-[72px] max-[939px]:top-[74px]'
+            }`}
           >
             <div className="flex-1 overflow-y-auto overscroll-contain px-1">
               {/* Le tre direzioni: subito visibili e facili da toccare */}

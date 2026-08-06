@@ -24,6 +24,7 @@ import {
   Hourglass,
   ChevronLeft,
   ChevronRight as ChevronRightIcon,
+  ChevronDown,
   ShieldCheck,
   HeartHandshake,
   BarChart3,
@@ -341,6 +342,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   const [activeEditionSlug, setActiveEditionSlug] = useState<string>('');
   const [timelineOpenMobile, setTimelineOpenMobile] = useState(false);
   const [careerTab, setCareerTab] = useState<'competencies' | 'careers'>('careers');
+  // Sezione "Competenze & sbocchi": su mobile è chiusa e si apre col toggle (come il calendario).
+  const [competenzeOpenMobile, setCompetenzeOpenMobile] = useState(false);
   const teachersScrollerRef = useRef<HTMLDivElement>(null);
   const levelsScrollerRef = useRef<HTMLDivElement>(null);
 
@@ -938,7 +941,23 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               ) : null}
             </div>
 
-            <div className="rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden">
+            {/* Toggle solo mobile: la sezione parte chiusa per non allungare la pagina */}
+            <button
+              type="button"
+              onClick={() => setCompetenzeOpenMobile((v) => !v)}
+              aria-expanded={competenzeOpenMobile}
+              className="lg:hidden w-full flex items-center justify-between gap-3 rounded-2xl bg-white border border-gray-100 px-4 py-3.5 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)]"
+            >
+              <span className="text-sm font-display font-black text-brand-navy tracking-tight">
+                {competenzeOpenMobile ? 'Nascondi competenze e sbocchi' : 'Vedi competenze e sbocchi'}
+              </span>
+              <ChevronDown
+                size={18}
+                className={`shrink-0 text-brand-navy/45 transition-transform ${competenzeOpenMobile ? 'rotate-180 text-brand-accent' : ''}`}
+              />
+            </button>
+
+            <div className={`${competenzeOpenMobile ? 'mt-3' : 'hidden'} lg:block lg:mt-0 rounded-[1.5rem] bg-white border border-gray-100 shadow-[0_16px_44px_-30px_rgba(0,21,51,0.16)] overflow-hidden`}>
                {/* Tab switcher */}
                {competenciesAndCareers.careerPaths.length > 0 ? (
                <div className="grid grid-cols-2 gap-2 p-2 bg-[#EEF4FC] border-b border-gray-100">
@@ -1128,12 +1147,12 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      <a
                         href={course.brochureUrl ?? contactHref ?? '/iscriviti'}
                         {...(course.brochureUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        className="inline-flex items-center gap-2 bg-white text-brand-navy px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.16em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
+                        className="inline-flex items-center gap-2 whitespace-nowrap bg-white text-brand-navy px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-[0.08em] sm:tracking-[0.16em] hover:bg-brand-blue-soft transition-colors active:scale-[0.98]"
                      >
-                        Scarica la brochure <Download size={14} />
+                        Scarica la brochure <Download size={14} className="shrink-0" />
                      </a>
                   </div>
-                  <div className="w-[40%] sm:w-[34%] lg:w-[30%] shrink-0">
+                  <div className="w-[30%] sm:w-[34%] lg:w-[30%] shrink-0">
                      <CourseImage
                         src={media.brochureDecor}
                         fallbackSrc={`https://picsum.photos/seed/${id ?? 'corso'}-brochure/640/420`}
@@ -1252,7 +1271,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
               <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                 <MapPin size={12} strokeWidth={2.5} /> Sede
               </p>
-              <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+              <div className="flex flex-wrap gap-2">
                 {editionCities.map((c) => {
                   const active = c.slug === effectiveCitySlug;
                   return (
@@ -1293,7 +1312,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                 <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                   <GraduationCap size={12} strokeWidth={2.5} /> Livello
                 </p>
-                <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+                <div className="flex flex-wrap gap-2">
                   {editionLevelsForCity.map((l) => {
                     const active = l.slug === effectiveLevelSlug;
                     return (
@@ -1330,7 +1349,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                 <p className="text-[10px] font-black uppercase tracking-[0.22em] text-brand-navy/45 mb-2 lg:mb-3 flex items-center gap-2">
                   <Flag size={12} strokeWidth={2.5} /> Edizione
                 </p>
-                <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+                <div className="flex flex-wrap gap-2">
                   {editionsForCityLevel.map((e) => {
                     const active = e.editionSlug === activeEdition.editionSlug;
                     return (
@@ -2387,19 +2406,21 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         {fee.ctaLabel ?? 'Iscriviti ora'}
                       </a>
                     ) : (
-                      <button
-                        type="button"
-                        className="rounded-full bg-[#001D4B] px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98]"
+                      <a
+                        href={contactHref ?? '/iscriviti'}
+                        className="rounded-full bg-[#001D4B] px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-white shadow-lg hover:bg-[#2A56A8] active:scale-[0.98] text-center"
                       >
                         {fee.ctaLabel ?? 'Iscriviti ora'}
-                      </button>
+                      </a>
                     )}
-                    <button
-                      type="button"
-                      className="rounded-full border-2 border-brand-navy/25 bg-white px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98]"
+                    <a
+                      href={whatsappHref()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border-2 border-brand-navy/25 bg-white px-3 py-3.5 sm:px-10 sm:py-4 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.12em] sm:tracking-[0.26em] text-brand-navy hover:bg-gray-50 active:scale-[0.98] text-center"
                     >
                       Parla con un Advisor
-                    </button>
+                    </a>
                   </div>
                 </div>
               );
@@ -2510,9 +2531,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:gap-5">
+            <div className="flex items-start gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-1 lg:items-stretch lg:mx-0 lg:px-0 lg:pb-0 lg:overflow-visible lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:gap-5">
                {course.career.points.map((p, i) => {
-                  const span = ['col-span-2 lg:row-span-2', 'col-span-2', 'col-span-1', 'col-span-1'][i];
+                  const span = ['w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-2 lg:row-span-2', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-2', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-1', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-1'][i];
                   const feature = i === 0;
                   const Icon = [HeartHandshake, Megaphone, GraduationCap, Compass][i];
                   const cardBg = feature
@@ -2690,7 +2711,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-10px] w-[96%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
+                           className="absolute left-1/2 bottom-0 w-[122%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
                            alt="Supporto 1:1"
                          />
                        ) : (
