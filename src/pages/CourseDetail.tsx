@@ -2534,7 +2534,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                </p>
             </div>
 
-            <div className="flex items-start gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-1 lg:items-stretch lg:mx-0 lg:px-0 lg:pb-0 lg:overflow-visible lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:gap-5">
+            <div className="flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-1 lg:mx-0 lg:px-0 lg:pb-0 lg:overflow-visible lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:gap-5">
                {course.career.points.map((p, i) => {
                   const span = ['w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-2 lg:row-span-2', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-2', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-1', 'w-[80%] shrink-0 snap-start lg:w-auto lg:col-span-1'][i];
                   const feature = i === 0;
@@ -2568,12 +2568,12 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                          </ul>
                        ) : null}
                        {feature ? (
-                         <div className="relative mt-5 hidden lg:flex lg:flex-1 items-center justify-center min-h-[160px] lg:min-h-[200px]">
-                            {/* mappa Italia piccola, centrata nello spazio tra testo e fondo card (solo bento desktop) */}
+                         <div className="relative mt-4 lg:mt-5 flex flex-1 items-center justify-center min-h-[70px] lg:min-h-[200px]">
+                            {/* mappa Italia: piccola nel carosello mobile, grande nel bento desktop */}
                             <img
                               src="/career/community-italy.png"
                               alt="La community di alumni Asterys Lab, connessa in tutta Italia"
-                              className="pointer-events-none select-none w-[62%] max-w-[240px] h-auto object-contain"
+                              className="pointer-events-none select-none w-[38%] max-w-[118px] lg:w-[62%] lg:max-w-[240px] h-auto object-contain"
                             />
                             <span className="absolute bottom-0 right-0 z-10 rounded-full bg-white/90 px-3 py-1 text-[11px] font-black text-brand-navy shadow-sm">+3.000 alumni</span>
                          </div>
@@ -2715,7 +2715,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-40px] w-[200%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
+                           className="absolute left-1/2 bottom-[-72px] w-[200%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
                            alt="Supporto 1:1"
                          />
                        ) : (
