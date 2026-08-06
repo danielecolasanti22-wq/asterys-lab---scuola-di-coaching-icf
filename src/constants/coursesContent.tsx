@@ -596,10 +596,10 @@ export const coursesContent: Record<string, CourseData> = {
       title: "Career Support Asterys Lab",
       content: "Ti accompagniamo nel costruire e far crescere la tua carriera come coach professionista: dall'avvio della pratica alla crescita continua come esperto riconosciuto a livello internazionale. Durante tutto il percorso hai anche un coach di riferimento dedicato.",
       points: [
-        { title: "Alumni Community", desc: "Diventi parte degli Alumni Asterys Lab: una rete di oltre 3.000 coach accreditati ICF con cui fare pratica, scambiare referral e costruire collaborazioni reali. Accedi a incontri dedicati, gruppi di pratica e condizioni riservate su corsi ed eventi Asterys Lab — un ecosistema che ti accompagna ben oltre la fine del Master." },
+        { title: "Alumni Community", desc: "Entri negli Alumni Asterys Lab, una rete di oltre 3.000 coach accreditati ICF che ti accompagna oltre la fine del Master.", highlights: ["Gruppi di pratica e incontri dedicati", "Referral e collaborazioni reali tra colleghi", "Condizioni riservate su corsi ed eventi"] },
         { title: "Personal Branding per Coach", desc: "Ti fai trovare e scegliere dai clienti giusti. Corso incluso nel 2° livello del Master, con Helga Ogliari.", highlights: ["Un posizionamento chiaro che ti distingue dagli altri coach", "Acquisisci i primi clienti con storytelling e social selling", "Strumenti pronti all'uso: Personal Branding & Storytelling Canvas", "5 incontri online live con Helga Ogliari (Branding & Storytelling Designer)"] },
-        { title: "Formazione Continua", desc: "Non smetti mai di crescere: masterclass, webinar e workshop esclusivi per approfondire competenze specifiche, scoprire nuovi strumenti e restare aggiornato sulle evoluzioni del coaching." },
-        { title: "Supporto Carriera", desc: "Durante tutto il percorso hai un coach di riferimento dedicato: sessioni individuali per valorizzare il tuo profilo, mettere a fuoco il tuo modello di business e orientarti nelle scelte professionali dopo l'accreditamento." }
+        { title: "Formazione continua", desc: "Dopo il Master continui a crescere: aggiornamenti costanti per affinare il metodo e restare al passo con il coaching.", highlights: ["Masterclass e workshop di aggiornamento", "Continuous Learning mensile con la community", "Nuovi strumenti e trend del coaching"] },
+        { title: "Avvio alla professione", desc: "Ti aiutiamo a trasformare il percorso in una vera attività: supervisione e supporto concreto per partire.", highlights: ["Supervisione con Mentor Coach MCC", "Offerta, tariffe e modello di business a fuoco", "Pratica supervisionata con il Pegasus Program"] }
       ]
     },
     pegasusProgram: {

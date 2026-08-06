@@ -2560,8 +2560,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {p.highlights ? (
                          <ul className="mt-3.5 space-y-2">
                             {p.highlights.map((h, hi) => (
-                              <li key={hi} className="flex items-start gap-2 text-[12px] sm:text-[13px] font-semibold text-brand-navy/80 leading-snug">
-                                 <CheckCircle2 size={15} strokeWidth={2.5} className="mt-[1px] shrink-0 text-brand-accent" />
+                              <li key={hi} className={`flex items-start gap-2 text-[12px] sm:text-[13px] font-semibold leading-snug ${feature ? 'text-white/85' : 'text-brand-navy/80'}`}>
+                                 <CheckCircle2 size={15} strokeWidth={2.5} className={`mt-[1px] shrink-0 ${feature ? 'text-[#6BB0F5]' : 'text-brand-accent'}`} />
                                  <span>{h}</span>
                               </li>
                             ))}
@@ -2573,7 +2573,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                             <img
                               src="/career/community-italy.png"
                               alt="La community di alumni Asterys Lab, connessa in tutta Italia"
-                              className="pointer-events-none select-none w-[38%] max-w-[118px] lg:w-[62%] lg:max-w-[240px] h-auto object-contain"
+                              className="pointer-events-none select-none w-[47%] max-w-[146px] lg:w-[62%] lg:max-w-[240px] h-auto object-contain"
                             />
                             <span className="absolute bottom-0 right-0 z-10 rounded-full bg-white/90 px-3 py-1 text-[11px] font-black text-brand-navy shadow-sm">+3.000 alumni</span>
                          </div>
@@ -2715,7 +2715,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {usesApcmCompleteSection ? (
                          <img
                            src={media.completePractical}
-                           className="absolute left-1/2 bottom-[-72px] w-[200%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
+                           className="absolute left-1/2 bottom-[-58px] w-[160%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
                            alt="Supporto 1:1"
                          />
                        ) : (
