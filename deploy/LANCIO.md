@@ -159,16 +159,17 @@ WordPress non è stato toccato, quindi il ripristino è immediato e completo.
 
 Domanda pratica: per cambiare una data devi ricaricare tutto?
 
-**No.** Dei 766 file di `dist/`, la stragrande maggioranza sono immagini — 50 MB che non
-cambiano mai. A ogni modifica del sito cambiano davvero:
+**No.** Dei 53 MB di `dist/`, la maggior parte è materiale che non cambia mai:
 
-| | |
-|---|---|
-| Le 74 pagine HTML | poche centinaia di KB in tutto |
-| I file in `assets/` | ~1 MB, e solo quelli toccati |
-| Le immagini | **nessuna**, a meno che tu non ne abbia aggiunte |
+| | Peso | A ogni modifica |
+|---|---|---|
+| Immagini (con tutte le varianti) | 32 MB | **non cambiano** |
+| PDF della guida | 13 MB | **non cambia** |
+| Le 74 pagine HTML | 6 MB | cambiano |
+| `assets/` (css + js) | 1,3 MB | cambiano |
 
-In pratica: **circa 1-2 MB**, non 54.
+Quindi si spostano **circa 7 MB su 53**. Le pagine HTML pesano perché ognuna contiene il
+testo già renderizzato — è esattamente ciò che permette ai motori di leggerle.
 
 ### Il modo pratico
 
