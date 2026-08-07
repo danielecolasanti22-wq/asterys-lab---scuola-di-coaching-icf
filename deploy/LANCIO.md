@@ -102,6 +102,11 @@ httpdocs/
 
 L'unico file che si sovrappone è `index.html`, che WordPress non usa.
 
+> **Cosa succede alla vecchia vetrina?** Continua a esistere: resta nel database, la
+> trovi ancora nella bacheca, e le sue pagine sono ancora lì. Semplicemente **non viene
+> più servita**, perché per ogni indirizzo nginx trova prima un file del sito nuovo o un
+> rimando. È il motivo per cui l'operazione si annulla in un minuto togliendo le regole.
+
 > `robots.txt` e `sitemap.xml`: se WordPress ne generava di suoi, ora vincono i file
 > nuovi. È quello che vogliamo.
 
@@ -147,6 +152,46 @@ curl -I https://asteryslab.com/sitemap.xml
 
 Togli le regole nginx dal pannello e applica: il sito torna esattamente a com'era.
 WordPress non è stato toccato, quindi il ripristino è immediato e completo.
+
+---
+
+## E dopo? Come si pubblica una modifica
+
+Domanda pratica: per cambiare una data devi ricaricare tutto?
+
+**No.** Dei 766 file di `dist/`, la stragrande maggioranza sono immagini — 50 MB che non
+cambiano mai. A ogni modifica del sito cambiano davvero:
+
+| | |
+|---|---|
+| Le 74 pagine HTML | poche centinaia di KB in tutto |
+| I file in `assets/` | ~1 MB, e solo quelli toccati |
+| Le immagini | **nessuna**, a meno che tu non ne abbia aggiunte |
+
+In pratica: **circa 1-2 MB**, non 54.
+
+### Il modo pratico
+
+Usa un client FTP con la **sincronizzazione** (FileZilla → *Confronta directory*, oppure
+Cyberduck, oppure Transmit): confronta locale e server e carica solo ciò che è diverso.
+Per una modifica normale sono pochi secondi.
+
+Il ciclo diventa:
+
+```bash
+npm run build     # rigenera dist/
+# poi: sincronizza dist/ verso la docroot col client FTP
+```
+
+Le regole nginx **non si toccano più**: si impostano una volta sola. Vanno rigenerate solo
+se cambiano gli indirizzi delle pagine o si aggiungono rimandi.
+
+### Se diventa frequente
+
+Plesk ha il **supporto Git integrato** (*Siti web e domini → Git*). Si può collegare il
+repository e fargli tirare giù le modifiche con un click, o in automatico a ogni push.
+Richiede una preparazione una tantum — se le modifiche diventano settimanali, vale la
+pena: chiedimelo e la configuriamo.
 
 ---
 
