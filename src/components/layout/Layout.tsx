@@ -669,6 +669,30 @@ export const Header = () => {
                   ))}
                 </div>
               ) : null}
+
+              {/* In evidenza — promo sempre visibili, fuori dai toggle */}
+              <div className="px-5 pt-6 pb-8">
+                <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/35">In evidenza</p>
+                <div className="space-y-2.5">
+                  {megaPromos.map((promo) => (
+                    <Link
+                      key={promo.title}
+                      to={promo.to}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 rounded-xl bg-gray-50 border border-gray-100 p-3 active:scale-[0.99] transition-transform"
+                    >
+                      <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                        <img src={promo.img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <span className="block text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/80">{promo.kicker}</span>
+                        <span className="block mt-0.5 text-sm font-black text-brand-navy leading-snug">{promo.title}</span>
+                      </div>
+                      <ArrowRight size={14} className="shrink-0 text-brand-accent/60" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
