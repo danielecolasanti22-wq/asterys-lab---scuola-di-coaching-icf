@@ -44,6 +44,11 @@ righe.push('# --- 1. AREA RISERVATA --------------------------------------------
 righe.push('# /inner e\' un WordPress separato (login, Lab, ordini). Va lasciato a PHP e mai');
 righe.push('# toccato dalle regole della vetrina: senza questo blocco, il ripiego su');
 righe.push('# index.html piu\' sotto se lo mangerebbe e gli iscritti non entrerebbero piu\'.');
+righe.push('# Senza barra finale il blocco qui sotto non scatterebbe e si finirebbe sulla');
+righe.push('# home della vetrina: chi digita asteryslab.com/inner deve entrare lo stesso.');
+righe.push('location = /inner {');
+righe.push('    return 301 /inner/;');
+righe.push('}');
 righe.push('location ^~ /inner/ {');
 righe.push('    try_files $uri $uri/ /inner/index.php?$args;');
 righe.push('}');
