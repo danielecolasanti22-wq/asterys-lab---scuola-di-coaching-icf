@@ -2711,34 +2711,6 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    "slug": "perche-diventare-coach-3",
-    "title": "Perché diventare coach",
-    "excerpt": "Una riflessione personale sulla scelta di diventare coach: quando il lavoro unisce sviluppo personale ed esperienza di business, impegno e fatica diventano leggeri.",
-    "category": "Diventare coach",
-    "date": "17 giugno 2025",
-    "author": "Redazione Asterys Lab",
-    "readTime": "3 min",
-    "img": "/blog/perche-diventare-coach-3.jpg",
-    "content": [
-      {
-        "type": "p",
-        "text": "Provenendo da varie altre carriere professionali, molti anni fa ho scelto questa strada perché metteva insieme il mio percorso di sviluppo personale e spirituale con le mie esperienze di business e azienda. Ricordo come, leggendo il libro di John Whitmore provai una crescente eccitazione ed entusiasmo, ogni pagina valorizzava il mio modo di essere e le mie esperienze tanto diverse tra loro. Potevo finalmente occuparmi di temi che sentivo centrali vedendomi riconosciuta una dignità professionale e la possibilità di avere un adeguato riscontro economico, tutto questo facendo quello che più mi dava energia. A proposito di energia, nella versione italiana di “The Apprentice” -che mi è capitato di vedere per pura curiosità professionale- Flavio Briatore dice: “Sul lavoro non ci si diverte. Per me il lavoro è una cosa molto seria: se ti stai divertendo, probabilmente non stai lavorando bene.”"
-      },
-      {
-        "type": "p",
-        "text": "È una frase che potrebbe sembrare banale e passare inosservata, ma pur rispettando il pensiero di Briatore e/o degli autori della trasmissione, credo che questa frase provenga da un modo di pensare vecchio, legato a circuiti mentali e atteggiamenti sociali “deviati” dalla convinzione che il piacere sia un peccato a prescindere o che solo soffrendo si possano avere dei risultati. D’accordo, il lavoro richiede impegno e fatica, ma se ami quel che fai, impegno e fatica diventano leggeri e puoi persino scoprirti a sorridere con te stesso mentre lavori."
-      },
-      {
-        "type": "h2",
-        "text": "Sperimentare il coaching"
-      },
-      {
-        "type": "p",
-        "text": "Se svolgendo un lavoro ti dimentichi del tempo che passa, se una volta iniziato non vorresti più smettere, quando ciò che stai facendo ti piace e senti che ti fa bene, allora quello è il tuo lavoro, ammesso che trovi qualcuno disposto a pagarti per farlo… Ecco, credo che abbia senso diventare coach solo se ti senti nutrito e provi piacere nel farlo. Come fai a sapere se ti sentirai nutrito e proverai piacere a essere un coach? Puoi iniziare con lo sperimentare come funziona il coaching, cosa fa un coach (questo puoi scoprirlo diventando tu stesso cliente di un coach) e poi immaginare come ti sentiresti al suo posto e se questo “assaggio” si rivela invitante allora avrai il “problema” di dover scegliere una scuola dove formarti e iniziare prima possibile a misurarti con il tuo essere coach sul campo. Ma questa è un’altra storia e ne parleremo prossimamente."
-      }
-    ]
-  },
-  {
     "slug": "team-coaching-e-team-coaching-sistemico",
     "title": "Team Coaching e Team Coaching sistemico",
     "excerpt": "Team building, facilitazione, training e team coaching: attività diverse per lo sviluppo dei team. Perché l'approccio sistemico è il più potente per una vera trasformazione.",
@@ -2862,13 +2834,13 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    "slug": "perche-diventare-coach-2",
-    "title": "Perché diventare coach",
-    "excerpt": "Chi sceglie di diventare coach e perché. Un ritratto dei professionisti che, dopo altre carriere, decidono di dedicarsi allo sviluppo delle persone spinti da valori e senso di significato.",
+    "slug": "perche-diventare-coach",
+    "title": "Perché diventare coach: chi sceglie questa strada",
+    "excerpt": "Chi decide di diventare coach e perché: il ritratto di chi arriva a questa professione dopo altre carriere, e come capire se è la strada giusta anche per te.",
     "category": "Diventare coach",
-    "date": "7 giugno 2025",
+    "date": "17 giugno 2025",
     "author": "Redazione Asterys Lab",
-    "readTime": "4 min",
+    "readTime": "5 min",
     "img": "/blog/perche-diventare-coach-2.jpg",
     "content": [
       {
@@ -2882,42 +2854,26 @@ export const blogPosts: BlogPost[] = [
       {
         "type": "p",
         "text": "Tutti i colleghi affermati che conosco sono over 40 con un’esperienza, personale e professionale, significativa alle spalle. Il coaching è una professione che attrae persone con una particolare sensibilità, spinte da sistemi valoriali definiti. Generalmente i coach sono persone che amano migliorare le cose, sentirsi artefici di un cambiamento positivo, sono in cerca di un’attività fatta di relazioni non superficiali, volte allo sviluppo, il benessere e la realizzazione delle persone. Ogni volta che ho partecipato a una riunione o conferenza di coach, da Roma o Milano, a Parigi, Ginevra, Madrid, Los Angeles, Orlando o Fort Worth, ho sempre visto una partecipazione autentica. Che si trattasse di professionisti di lunga esperienza o “matricole” ho trovato persone con un forte senso di collaborazione, persone pronte a offrire il proprio contributo per migliorare il mondo, iniziando dal facilitare i propri clienti nella realizzazione di loro stessi. Il senso di significato, unito al pragmatismo del coaching, è il vero motore di questa professione. Certo, ci sono anche coach meno idealisti e che, dando sfoggio di se rischiano di sembrare più impegnati nella soddisfazione dei loro bisogni psicologici che dello sviluppo dei clienti, ma chi può giudicare? Personalmente ammetto di trovarmi a mio agio con i colleghi che a me sembrano abbastanza consapevoli si se stessi e genuinamente al servizio degli altri e per fortuna sono la gran parte. D’altronde, quella del coach, se non hai un autentico interesse per le persone è una professione pesante. Immagina come ci si potrebbe sentire passando le ore ad ascoltare le chiacchiere di qualcuno di cui non ti interessa altro che il pagamento… immagino che potrebbe essere insopportabile. Se non si amano le persone, se non si ha genuina curiosità per gli altri, meglio non scegliere il coaching come professione."
-      }
-    ]
-  },
-  {
-    "slug": "pensiero-sistemico-coaching",
-    "title": "Pensiero sistemico e coaching",
-    "excerpt": "Anche il bene comune sottostà alle leggi sistemiche. Perché coinvolgere tutte le parti e lasciare la responsabilità delle soluzioni ai clienti rende gli obiettivi più duraturi e sostenibili.",
-    "category": "Team coaching",
-    "date": "14 giugno 2025",
-    "author": "Redazione Asterys Lab",
-    "readTime": "4 min",
-    "img": "/blog/pensiero-sistemico-coaching.jpg",
-    "content": [
-      {
-        "type": "h2",
-        "text": "Pensiero sistemico, soluzioni e consapevolezza"
-      },
-      {
-        "type": "p",
-        "text": "Anche il bene comune sottostà alle leggi sistemiche, come per esempio quelle visibili in natura. I vari elementi del sistema si adattano o vengono eliminati affinché il sistema continui ad esistere e questo è semplicemente quello che è, senza aggettivi; se il bene comune viene perseguito da un ingegnere con la passione per il risparmio del tempo, ma senza nessuna consapevolezza del fattore umano e/o di altri fattori sistemici, a dispetto delle buone intenzioni, potremmo andare verso il male comune, quanto meno verso l’insoddisfazione comune e questo –attenzione- dato che un sistema tende sempre a cercare l’equilibrio, potrebbe significare meno clienti per la compagnia aerea, il conseguente licenziamento dell’ingegnere e un ritorno ai vecchi sistemi… invece, un bravo consulente farebbe un questionario per i passeggeri e parecchie domande ai lavoratori implicati nel processo d’imbarco, ai responsabili della compagnia, a chiunque fosse coinvolto e poi proporrebbe una soluzione, ma se anche il nostro consulente fosse molto bravo, proporrebbe comunque una soluzione sua, che potrebbe generare un fenomeno chiamato: “resistenza al cambiamento”, che però chiamerei: “resistenza al cambiamento imposto e noncurante del fattore umano”."
       },
       {
         "type": "h2",
-        "text": "Pensiero sistemico: cosa potrebbe fare di meglio un coach?"
+        "text": "Perché l’ho scelto io"
       },
       {
         "type": "p",
-        "text": "Coinvolgere tutte le parti per facilitare la definizione e condivisione degli obiettivi, in modo che, quando definita una soluzione, tutte le persone coinvolte possano percepirla come volta al bene comune. Un coach lascerebbe la responsabilità delle soluzioni ai clienti i quali saprebbero trovare le migliori per loro, in quel momento e avrebbero la percezione di possedere gli strumenti per trovare nuove soluzioni al sopraggiungere di mutate condizioni o volontà."
+        "text": "Provenendo da varie altre carriere professionali, molti anni fa ho scelto questa strada perché metteva insieme il mio percorso di sviluppo personale e spirituale con le mie esperienze di business e azienda. Ricordo come, leggendo il libro di John Whitmore provai una crescente eccitazione ed entusiasmo, ogni pagina valorizzava il mio modo di essere e le mie esperienze tanto diverse tra loro. Potevo finalmente occuparmi di temi che sentivo centrali vedendomi riconosciuta una dignità professionale e la possibilità di avere un adeguato riscontro economico, tutto questo facendo quello che più mi dava energia. A proposito di energia, nella versione italiana di “The Apprentice” -che mi è capitato di vedere per pura curiosità professionale- Flavio Briatore dice: “Sul lavoro non ci si diverte. Per me il lavoro è una cosa molto seria: se ti stai divertendo, probabilmente non stai lavorando bene.”"
       },
       {
         "type": "p",
-        "text": "In conclusione Il bene comune non è definibile in termini assoluti, ma il coaching, aiutando le persone a scoprire se stesse e ad aumentare la loro consapevolezza personale, è il metodo che più di altri le supporta nel definire quali azioni mettere in atto per il raggiungimento di obiettivi che coinvolgano il “bene comune”, aiutandole a prevederne le conseguenze nel tempo e nel sistema in cui si inseriscono. Nel caso il lavoro del coach sia richiesto da un cliente che non ha nessun interesse per il bene comune è importante che comunque il coach lo supporti nell’esplorare le conseguenze del raggiungimento del suo obiettivo, perché più un obiettivo sarà accolto o sostenuto dal sistema in cui si dovrà realizzare e maggiori sono le possibilità di successo e soddisfazione del cliente. Più il raggiungimento dell’obiettivo sarà utile al funzionamento del sistema e più sarà percepito come tale (bene comune) più sarà facile, probabile e duraturo il successo dell’iniziativa."
+        "text": "È una frase che potrebbe sembrare banale e passare inosservata, ma pur rispettando il pensiero di Briatore e/o degli autori della trasmissione, credo che questa frase provenga da un modo di pensare vecchio, legato a circuiti mentali e atteggiamenti sociali “deviati” dalla convinzione che il piacere sia un peccato a prescindere o che solo soffrendo si possano avere dei risultati. D’accordo, il lavoro richiede impegno e fatica, ma se ami quel che fai, impegno e fatica diventano leggeri e puoi persino scoprirti a sorridere con te stesso mentre lavori."
+      },
+      {
+        "type": "h2",
+        "text": "Sperimentare il coaching"
       },
       {
         "type": "p",
-        "text": "Insomma, cercare il bene comune è un vantaggio per tutti e non è dato sapere quale sia realmente il bene comune, ma ne possiamo avere una percezione che talvolta è… comune, il massimo bene comune possibile."
+        "text": "Se svolgendo un lavoro ti dimentichi del tempo che passa, se una volta iniziato non vorresti più smettere, quando ciò che stai facendo ti piace e senti che ti fa bene, allora quello è il tuo lavoro, ammesso che trovi qualcuno disposto a pagarti per farlo… Ecco, credo che abbia senso diventare coach solo se ti senti nutrito e provi piacere nel farlo. Come fai a sapere se ti sentirai nutrito e proverai piacere a essere un coach? Puoi iniziare con lo sperimentare come funziona il coaching, cosa fa un coach (questo puoi scoprirlo diventando tu stesso cliente di un coach) e poi immaginare come ti sentiresti al suo posto e se questo “assaggio” si rivela invitante allora avrai il “problema” di dover scegliere una scuola dove formarti e iniziare prima possibile a misurarti con il tuo essere coach sul campo. Ma questa è un’altra storia e ne parleremo prossimamente."
       }
     ]
   },
@@ -3299,6 +3255,42 @@ export const blogPosts: BlogPost[] = [
           "Ridurre il rischio di questioni etiche riduce il rischio per il coach e per i suoi clienti",
           "Opportunità di cogliere la meta-visione e la visione più ampia dei propri clienti, competenze e pratica"
         ]
+      }
+    ]
+  },
+  {
+    "slug": "pensiero-sistemico-coaching",
+    "title": "Pensiero sistemico e coaching",
+    "excerpt": "Anche il bene comune sottostà alle leggi sistemiche. Perché coinvolgere tutte le parti e lasciare la responsabilità delle soluzioni ai clienti rende gli obiettivi più duraturi e sostenibili.",
+    "category": "Team coaching",
+    "date": "14 giugno 2025",
+    "author": "Redazione Asterys Lab",
+    "readTime": "4 min",
+    "img": "/blog/pensiero-sistemico-coaching.jpg",
+    "content": [
+      {
+        "type": "h2",
+        "text": "Pensiero sistemico, soluzioni e consapevolezza"
+      },
+      {
+        "type": "p",
+        "text": "Anche il bene comune sottostà alle leggi sistemiche, come per esempio quelle visibili in natura. I vari elementi del sistema si adattano o vengono eliminati affinché il sistema continui ad esistere e questo è semplicemente quello che è, senza aggettivi; se il bene comune viene perseguito da un ingegnere con la passione per il risparmio del tempo, ma senza nessuna consapevolezza del fattore umano e/o di altri fattori sistemici, a dispetto delle buone intenzioni, potremmo andare verso il male comune, quanto meno verso l’insoddisfazione comune e questo –attenzione- dato che un sistema tende sempre a cercare l’equilibrio, potrebbe significare meno clienti per la compagnia aerea, il conseguente licenziamento dell’ingegnere e un ritorno ai vecchi sistemi… invece, un bravo consulente farebbe un questionario per i passeggeri e parecchie domande ai lavoratori implicati nel processo d’imbarco, ai responsabili della compagnia, a chiunque fosse coinvolto e poi proporrebbe una soluzione, ma se anche il nostro consulente fosse molto bravo, proporrebbe comunque una soluzione sua, che potrebbe generare un fenomeno chiamato: “resistenza al cambiamento”, che però chiamerei: “resistenza al cambiamento imposto e noncurante del fattore umano”."
+      },
+      {
+        "type": "h2",
+        "text": "Pensiero sistemico: cosa potrebbe fare di meglio un coach?"
+      },
+      {
+        "type": "p",
+        "text": "Coinvolgere tutte le parti per facilitare la definizione e condivisione degli obiettivi, in modo che, quando definita una soluzione, tutte le persone coinvolte possano percepirla come volta al bene comune. Un coach lascerebbe la responsabilità delle soluzioni ai clienti i quali saprebbero trovare le migliori per loro, in quel momento e avrebbero la percezione di possedere gli strumenti per trovare nuove soluzioni al sopraggiungere di mutate condizioni o volontà."
+      },
+      {
+        "type": "p",
+        "text": "In conclusione Il bene comune non è definibile in termini assoluti, ma il coaching, aiutando le persone a scoprire se stesse e ad aumentare la loro consapevolezza personale, è il metodo che più di altri le supporta nel definire quali azioni mettere in atto per il raggiungimento di obiettivi che coinvolgano il “bene comune”, aiutandole a prevederne le conseguenze nel tempo e nel sistema in cui si inseriscono. Nel caso il lavoro del coach sia richiesto da un cliente che non ha nessun interesse per il bene comune è importante che comunque il coach lo supporti nell’esplorare le conseguenze del raggiungimento del suo obiettivo, perché più un obiettivo sarà accolto o sostenuto dal sistema in cui si dovrà realizzare e maggiori sono le possibilità di successo e soddisfazione del cliente. Più il raggiungimento dell’obiettivo sarà utile al funzionamento del sistema e più sarà percepito come tale (bene comune) più sarà facile, probabile e duraturo il successo dell’iniziativa."
+      },
+      {
+        "type": "p",
+        "text": "Insomma, cercare il bene comune è un vantaggio per tutti e non è dato sapere quale sia realmente il bene comune, ma ne possiamo avere una percezione che talvolta è… comune, il massimo bene comune possibile."
       }
     ]
   }
