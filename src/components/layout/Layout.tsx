@@ -93,11 +93,11 @@ const aboutMenu = [
 
 const megaPromos = [
   {
-    kicker: 'Open Day gratuito',
-    title: 'Scopri dal vivo come diventare coach ICF',
-    cta: 'Prenota il tuo posto',
-    img: '/course-media/apcm/card.png',
-    to: '/eventi',
+    kicker: 'Credito ai Talenti',
+    title: 'Ricevi credito perché hai talento',
+    cta: 'Scopri come funziona',
+    img: '/promo/credito-ai-talenti.png',
+    to: '/credito-ai-talenti',
   },
   {
     kicker: 'Guida gratuita',
@@ -176,7 +176,6 @@ export const Header = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [activeMega, setActiveMega] = useState(0);
   const [mobileCampusOpen, setMobileCampusOpen] = useState(false);
-  const [mobileMegaIdx, setMobileMegaIdx] = useState(-1);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const aboutCloseTimer = useRef<number | null>(null);
@@ -198,7 +197,6 @@ export const Header = () => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
       setMobileCampusOpen(false);
-      setMobileMegaIdx(-1);
       setMobileAboutOpen(false);
     } else {
       document.body.style.overflow = '';
@@ -585,75 +583,37 @@ export const Header = () => {
               </button>
 
               {mobileCampusOpen ? (
-                <div className="border-b border-gray-100 pb-3">
-                  {megaColumns.map((col, idx) => (
-                    <div key={col.label} className="border-t border-gray-100 first:border-t-0">
-                      <button
-                        type="button"
-                        onClick={() => setMobileMegaIdx((prev) => (prev === idx ? -1 : idx))}
-                        className="w-full flex items-center justify-between px-6 py-5 text-left"
-                      >
-                        <span className={`text-[16px] font-display font-black tracking-tight ${mobileMegaIdx === idx ? 'text-brand-accent' : 'text-brand-navy'}`}>
-                          {col.label}
-                        </span>
-                        <ChevronDown
-                          size={16}
-                          className={`shrink-0 text-brand-navy/35 transition-transform ${mobileMegaIdx === idx ? 'rotate-180 text-brand-accent' : ''}`}
-                        />
-                      </button>
-
-                      {mobileMegaIdx === idx ? (
-                        <div className="mx-4 mb-4 rounded-xl bg-brand-blue-soft/35 px-4 py-4">
-                          <p className="text-[11px] text-brand-navy/50 font-medium mb-4 leading-relaxed">{col.caption}</p>
-                          <div className="space-y-2">
-                            {col.items.map((item) => (
-                              <Link
-                                key={item.id}
-                                to={`/corsi/${item.id}`}
-                                onClick={() => setIsMenuOpen(false)}
-                                className="block rounded-lg px-2 py-3.5 group hover:bg-white/70 transition-colors"
-                              >
-                                <span className="block text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors leading-snug">
-                                  {item.title}
-                                </span>
-                                <span className="block mt-1 text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/75">
-                                  {item.kicker}
-                                </span>
-                                <span className="block mt-0.5 text-xs text-brand-navy/50 font-medium">{item.meta}</span>
-                              </Link>
-                            ))}
-                          </div>
+                <div className="border-b border-gray-100 bg-[#F9FBFF]">
+                  {megaColumns.map((col) => (
+                    <div key={col.label} className="px-6 pt-4 pb-1.5 border-t border-gray-100 first:border-t-0">
+                      <p className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-brand-accent/70">
+                        {col.label}
+                      </p>
+                      <div className="divide-y divide-gray-100">
+                        {col.items.map((item) => (
                           <Link
-                            to="/corsi"
+                            key={item.id}
+                            to={`/corsi/${item.id}`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="mt-2 inline-flex items-center gap-1.5 px-2 py-2 text-sm font-black text-brand-accent"
+                            className="flex items-center justify-between gap-3 py-3 group"
                           >
-                            Tutti i corsi <ArrowRight size={14} />
+                            <span className="text-[15px] font-black text-brand-navy group-hover:text-brand-accent transition-colors leading-snug">
+                              {item.title}
+                            </span>
+                            <ArrowRight size={15} className="shrink-0 text-brand-navy/25 group-hover:text-brand-accent transition-colors" />
                           </Link>
-                        </div>
-                      ) : null}
+                        ))}
+                      </div>
                     </div>
                   ))}
-
-                  <div className="mx-3 mt-3 pt-4 border-t border-gray-100 space-y-2.5">
-                    <p className="px-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-navy/40">In evidenza</p>
-                    {megaPromos.map((promo) => (
-                      <Link
-                        key={promo.title}
-                        to={promo.to}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 rounded-xl bg-gray-50 border border-gray-100 p-3"
-                      >
-                        <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 shrink-0">
-                          <img src={promo.img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <span className="block text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/80">{promo.kicker}</span>
-                          <span className="block mt-0.5 text-sm font-black text-brand-navy leading-snug">{promo.title}</span>
-                        </div>
-                        <ArrowRight size={14} className="shrink-0 text-brand-accent/60" />
-                      </Link>
-                    ))}
+                  <div className="px-6 py-4 border-t border-gray-100">
+                    <Link
+                      to="/corsi"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="inline-flex items-center gap-1.5 text-sm font-black text-brand-accent"
+                    >
+                      Tutti i corsi <ArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
               ) : null}
