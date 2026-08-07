@@ -46,9 +46,14 @@ const ScrollToTop = () => {
 // Placeholder discreto durante il caricamento del chunk di pagina (riserva l'altezza per evitare salti).
 const PageFallback = () => <div className="min-h-[60vh]" aria-hidden />;
 
-export default function App() {
+/**
+ * Contenuto dell'app senza il Router, così può essere montato sia dal browser
+ * (BrowserRouter, sotto) sia dal prerender (StaticRouter, vedi src/entry-server.tsx),
+ * che genera l'HTML statico di ogni pagina al momento del build.
+ */
+export function AppRoutes() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <Seo />
       <LayoutWrapper>
@@ -82,6 +87,14 @@ export default function App() {
           </Routes>
         </Suspense>
       </LayoutWrapper>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppRoutes />
     </Router>
   );
 }

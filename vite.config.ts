@@ -3,22 +3,26 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
   const env = loadEnv(mode, '.', '');
   return {
     plugins: [react(), tailwindcss()],
     build: {
       rollupOptions: {
-        output: {
-          // Le librerie cambiano molto meno del nostro codice: tenendole in chunk separati
-          // restano nella cache del browser tra un deploy e l'altro, invece di essere
-          // riscaricate ogni volta che tocchiamo una pagina.
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-motion': ['motion/react'],
-            'vendor-icons': ['lucide-react'],
-          },
-        },
+        output: isSsrBuild
+          ? {}
+          : {
+              // Le librerie cambiano molto meno del nostro codice: tenendole in chunk
+              // separati restano nella cache del browser tra un deploy e l'altro, invece
+              // di essere riscaricate ogni volta che tocchiamo una pagina.
+              // Solo per il bundle del browser: nella build SSR queste dipendenze restano
+              // esterne (le carica Node), e spezzarle in chunk darebbe errore.
+              manualChunks: {
+                'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+                'vendor-motion': ['motion/react'],
+                'vendor-icons': ['lucide-react'],
+              },
+            },
       },
     },
     define: {

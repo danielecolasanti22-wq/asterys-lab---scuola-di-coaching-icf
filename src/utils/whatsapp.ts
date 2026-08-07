@@ -16,10 +16,18 @@ export function whatsappHref(message?: string): string {
 
 function messageFromPath(): string {
   const fallback = 'Salve, vorrei avere maggiori informazioni sui vostri percorsi di coaching.';
-  if (typeof window === 'undefined') return fallback;
-  const p = window.location.pathname.replace(/\/$/, '') || '/';
 
-  const course = p.match(/^\/corsi\/([^/]+)$/);
+  // Durante il prerender non esiste window: il percorso lo passa entry-server. Senza
+  // questo il link generato al build direbbe una cosa e quello ricostruito nel browser
+  // un'altra, e React scarterebbe l'HTML statico trovandolo diverso.
+  const p =
+    typeof window === 'undefined'
+      ? (globalThis as { __PRERENDER_PATH__?: string }).__PRERENDER_PATH__
+      : window.location.pathname;
+  if (!p) return fallback;
+  const path = p.replace(/\/$/, '') || '/';
+
+  const course = path.match(/^\/corsi\/([^/]+)$/);
   if (course && coursesContent[course[1]]) {
     return `Salve, vorrei saperne di più sul corso «${coursesContent[course[1]].title}»: date, costi e come iscrivermi.`;
   }
@@ -36,9 +44,9 @@ function messageFromPath(): string {
     '/credito-ai-talenti': 'Salve, vorrei più informazioni su come funziona il Credito ai Talenti.',
     '/about': 'Salve, vorrei conoscere meglio la vostra scuola e i vostri percorsi di coaching.',
   };
-  if (map[p]) return map[p];
-  if (p.startsWith('/blog/')) return 'Salve, ho letto un vostro articolo e vorrei maggiori informazioni sui percorsi di coaching.';
-  if (p.startsWith('/eventi/')) return 'Salve, vorrei informazioni su un vostro evento.';
-  if (p.startsWith('/corsi/')) return 'Salve, vorrei saperne di più su un vostro corso di coaching.';
+  if (map[path]) return map[path];
+  if (path.startsWith('/blog/')) return 'Salve, ho letto un vostro articolo e vorrei maggiori informazioni sui percorsi di coaching.';
+  if (path.startsWith('/eventi/')) return 'Salve, vorrei informazioni su un vostro evento.';
+  if (path.startsWith('/corsi/')) return 'Salve, vorrei saperne di più su un vostro corso di coaching.';
   return fallback;
 }

@@ -3,6 +3,7 @@
 // (il React sostituisce WordPress sullo stesso dominio). È l'unica costante da cambiare se il dominio cambia.
 import { coursesContent } from './coursesContent';
 import { HOME_FAQ } from './homeFaq';
+import { BLOG_BY_SLUG } from './blogIndex';
 
 export const SITE_URL = 'https://asteryslab.com';
 const DEFAULT_OG = '/course-media/apcm/hero-apcm.png';
@@ -12,7 +13,7 @@ export type PageSeo = { title: string; description: string; ogImage?: string; no
 const DEFAULT_SEO: PageSeo = {
   title: 'Diventa Coach professionista accreditato ICF | Asterys Lab',
   description:
-    'Diventa coach professionista con formazione accreditata ICF Level 1 & 2: metodo, pratica guidata e mentoring per accreditarti ACC o PCC. Milano, Roma e online. Parla con un Advisor.',
+    'Diventa coach professionista con formazione accreditata ICF Level 1 & 2: metodo, pratica guidata e mentoring per accreditarti ACC o PCC. Milano, Roma e online.',
 };
 
 export const SEO_BY_PATH: Record<string, PageSeo> = {
@@ -20,20 +21,20 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/corsi': {
     title: 'Scegli il tuo percorso per diventare coach ICF | Asterys Lab',
     description:
-      'Trasforma la tua esperienza in una professione riconosciuta ICF: Master in Coaching (Level 1 & 2), Team Coaching Sistemico, Intelligenza Emotiva, Voice Dialogue e Mentoring per il rinnovo delle credenziali.',
+      'Master in Coaching ICF Level 1 & 2, Team Coaching Sistemico, Intelligenza Emotiva e Voice Dialogue: scegli il percorso per diventare coach o specializzarti.',
   },
   '/corsi/apcm': {
     title: 'Diventa Coach ICF con il Master in Coaching | Asterys Lab',
     description:
-      'Arrivi pronto al primo cliente: diventa coach accreditato ICF (ACC e PCC) con intelligenza emotiva e approccio sistemico. In aula a Milano e Roma e online. Parla con un Advisor.',
+      'Diventa coach accreditato ICF (ACC e PCC) con intelligenza emotiva e approccio sistemico, e arriva pronto al primo cliente. Milano, Roma e online.',
   },
   '/corsi/systemic-team-coaching': {
     title: 'Fai coaching ai team e accreditati ICF (ACTC) | Asterys Lab',
     description:
-      'Porta team e leader a risultati straordinari con il team coaching sistemico. Percorso accreditato ICF, prerequisito per la credenziale ACTC. Edizioni a Milano e Roma.',
+      'Porta team e leader a risultati misurabili con il team coaching sistemico: percorso accreditato ICF, prerequisito per la credenziale ACTC. Milano e Roma.',
   },
   '/corsi/eiw': {
-    title: 'Allena l’intelligenza emotiva per coach (CCE ICF) | Asterys Lab',
+    title: 'Allena l’intelligenza emotiva come coach | Asterys Lab',
     description:
       'Impara a stare con le emozioni e usarle a tuo vantaggio: allena l’intelligenza emotiva con il modello CSI e il fiore di Plutchik. 4 CCE ICF per Round, online.',
   },
@@ -45,7 +46,7 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/corsi/voice-dialogue': {
     title: 'Integra il Voice Dialogue nel tuo coaching | Asterys Lab',
     description:
-      'Dai più profondità alle tue sessioni: integra il Voice Dialogue nella pratica di coaching con un laboratorio esperienziale. In presenza a Milano, con Laboratorio Virtuale online.',
+      'Dai più profondità alle tue sessioni integrando il Voice Dialogue nella pratica di coaching. Laboratorio esperienziale a Milano, con Laboratorio Virtuale.',
   },
   '/corsi/continuous-learning': {
     title: 'Cresci come coach ogni mese (CCE ICF) | Asterys Lab',
@@ -85,7 +86,30 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   '/personal-coaching': {
     title: 'Personal Coaching: un coach al tuo fianco | Asterys Lab',
     description:
-      'Percorso di coaching individuale per realizzare il tuo pieno potenziale: più consapevolezza, obiettivi chiari, relazioni ed equilibrio. Sessioni di persona o online. Parla con un coach.',
+      'Percorso di coaching individuale per esprimere il tuo potenziale: più consapevolezza, obiettivi chiari ed equilibrio. Sessioni di persona o online.',
+  },
+
+  '/corsi/marketing-per-coach': {
+    title: 'Fatti scegliere dai clienti giusti come coach | Asterys Lab',
+    description:
+      'Costruisci un posizionamento riconoscibile come coach: personal branding, presenza online e strumenti per attrarre i clienti giusti. Incontri online.',
+  },
+
+  // Pagine legali: hanno meta propri per non presentarsi ai motori come copie della home.
+  '/privacy': {
+    title: 'Privacy Policy | Asterys Lab',
+    description:
+      'Come Asterys Lab raccoglie, usa e protegge i dati personali di chi visita il sito e si iscrive ai percorsi di coaching, secondo il Regolamento UE 2016/679.',
+  },
+  '/cookie': {
+    title: 'Cookie Policy | Asterys Lab',
+    description:
+      'Quali cookie usa il sito di Asterys Lab, a cosa servono e come gestirli o disattivarli dalle impostazioni del tuo browser.',
+  },
+  '/termini': {
+    title: 'Termini e condizioni | Asterys Lab',
+    description:
+      'Termini e condizioni di utilizzo del sito Asterys Lab e di iscrizione ai percorsi di formazione in coaching accreditati ICF.',
   },
 
   // Landing private: si raggiungono solo col link diretto, non devono finire sui motori.
@@ -105,8 +129,60 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
   },
 };
 
+/** Lunghezza oltre la quale Google taglia il titolo nei risultati. */
+const MAX_TITLE = 62;
+const SUFFISSO = ' | Asterys Lab';
+/** Lunghezza utile di una description: oltre, Google taglia. */
+const MAX_DESC = 158;
+
+/**
+ * Accorcia un testo all'ultima parola intera che ci sta, invece di lasciarlo tagliare a
+ * metà parola nei risultati di ricerca. Se possibile chiude su una frase compiuta.
+ */
+function accorcia(testo: string, max = MAX_DESC): string {
+  if (testo.length <= max) return testo;
+
+  const taglio = testo.slice(0, max);
+  // Meglio chiudere su un punto se ce n'è uno abbastanza avanti nel testo.
+  const punto = Math.max(taglio.lastIndexOf('. '), taglio.lastIndexOf('? '), taglio.lastIndexOf('! '));
+  if (punto > max * 0.6) return taglio.slice(0, punto + 1);
+
+  const spazio = taglio.lastIndexOf(' ');
+  return (spazio > 0 ? taglio.slice(0, spazio) : taglio).replace(/[,;:]$/, '') + '…';
+}
+
+/**
+ * Meta di un articolo del blog, costruiti dal suo titolo e dal suo excerpt.
+ *
+ * Senza questo i 52 articoli ricadevano tutti su DEFAULT_SEO: stesso titolo e stessa
+ * descrizione della home, quindi 52 pagine che agli occhi di Google si somigliavano
+ * tutte e nessuna in grado di posizionarsi per la propria ricerca.
+ */
+function seoPerArticolo(slug: string): PageSeo | null {
+  const post = BLOG_BY_SLUG[slug];
+  if (!post) return null;
+  return {
+    // Il brand si aggiunge solo se ci sta: su un titolo già lungo verrebbe troncato
+    // da Google, e il titolo dell'articolo è ciò che intercetta la ricerca.
+    title:
+      post.title.length + SUFFISSO.length <= MAX_TITLE ? post.title + SUFFISSO : post.title,
+    // Gli excerpt nascono come sommario in pagina, quindi spesso superano lo spazio
+    // disponibile nei risultati di ricerca: qui vengono chiusi su una frase intera.
+    description: accorcia(post.excerpt),
+    ogImage: post.img,
+  };
+}
+
 export function getSeoForPath(pathname: string): PageSeo {
-  return SEO_BY_PATH[pathname] ?? DEFAULT_SEO;
+  const statica = SEO_BY_PATH[pathname];
+  if (statica) return statica;
+
+  if (pathname.startsWith('/blog/')) {
+    const post = seoPerArticolo(pathname.slice('/blog/'.length));
+    if (post) return post;
+  }
+
+  return DEFAULT_SEO;
 }
 
 export function ogImageFor(meta: PageSeo): string {
@@ -200,6 +276,24 @@ function faqPageJsonLd(faqs: { q: string; a: string }[]): object {
   };
 }
 
+/**
+ * Briciole di pane (Home > sezione > pagina) come dati strutturati.
+ * Servono a spiegare ai motori come sono organizzate le pagine fra loro, e sono quelle
+ * che Google mostra al posto dell'URL nudo sotto il titolo del risultato.
+ */
+function breadcrumbJsonLd(voci: [nome: string, path: string][]): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [['Home', '/'], ...voci].map(([name, path], i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name,
+      item: SITE_URL + (path === '/' ? '' : path),
+    })),
+  };
+}
+
 export function getJsonLdForPath(pathname: string): object[] {
   const out: object[] = [ORG_JSONLD];
 
@@ -229,6 +323,34 @@ export function getJsonLdForPath(pathname: string): object[] {
     const course = coursesContent[id];
     if (course?.faqs?.length) {
       out.push(faqPageJsonLd(course.faqs));
+    }
+    out.push(breadcrumbJsonLd([['Corsi', '/corsi'], [c?.name ?? 'Corso', pathname]]));
+  }
+
+  // Articoli: dichiararli come articoli veri (autore, data, argomento) è ciò che permette
+  // ai motori e alle AI di attribuirli e citarli, invece di leggerli come pagine generiche.
+  if (pathname.startsWith('/blog/')) {
+    const post = BLOG_BY_SLUG[pathname.slice('/blog/'.length)];
+    if (post) {
+      out.push({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        url: SITE_URL + pathname,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': SITE_URL + pathname },
+        image: SITE_URL + post.img,
+        articleSection: post.category,
+        inLanguage: 'it',
+        ...(post.iso ? { datePublished: post.iso, dateModified: post.iso } : {}),
+        author: { '@type': 'Organization', name: 'Asterys Lab', url: SITE_URL },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Asterys Lab',
+          logo: { '@type': 'ImageObject', url: SITE_URL + '/brand/asterys-lab-logo.png' },
+        },
+      });
+      out.push(breadcrumbJsonLd([['Blog', '/blog'], [post.title, pathname]]));
     }
   }
 
