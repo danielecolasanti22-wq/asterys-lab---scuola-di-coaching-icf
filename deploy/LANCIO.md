@@ -1,187 +1,202 @@
 # Messa online su asteryslab.com
 
-Come sostituire la vetrina WordPress con questo sito, tenendo in piedi l'area riservata
-e senza perdere il posizionamento già acquisito.
+Come far prendere il posto della vetrina a questo sito, **senza toccare il multisito
+WordPress** che ospita l'area riservata e gli altri sottositi.
 
 ---
 
-## Com'è messo il dominio oggi
+## Il vincolo da cui parte tutto
 
-Su `asteryslab.com` girano **due WordPress separati**, non un multisito:
+`asteryslab.com` è un **WordPress multisito**. La vetrina è solo uno dei siti della rete:
+accanto vivono `/inner` (login, Lab, ordini) e altri sottositi, tutti serviti dallo
+**stesso WordPress** installato nella cartella principale.
 
-| Indirizzo | Cosa c'è | Cosa ne facciamo |
+> ⛔ **Non cancellare `wp-admin/`, `wp-includes/`, `wp-config.php` o `index.php`.**
+> In un multisito il nucleo di WordPress è uno solo: rimuoverlo spegne l'area riservata
+> e tutti gli altri sottositi insieme alla vetrina.
+
+Quindi la vetrina non si "sostituisce": i file del sito nuovo **si affiancano** a
+WordPress nella stessa cartella, e nginx decide di volta in volta chi risponde.
+
+## Come funziona la convivenza
+
+Una sola regola, applicata in ordine a ogni richiesta:
+
+| | Cosa cerca nginx | Chi risponde |
 |---|---|---|
-| `asteryslab.com/` | La vetrina WordPress | **Sostituita** da questo sito |
-| `asteryslab.com/inner/` | Area riservata: login, Lab, ordini | **Resta esattamente com'è** |
+| 1 | Esiste un file con quel nome fra quelli del sito nuovo? | il sito nuovo |
+| 2 | Esiste una cartella con dentro `index.html`? | il sito nuovo |
+| 3 | Nessuna delle due | **WordPress**, come oggi |
 
-Che siano due installazioni distinte è la ragione per cui l'operazione è fattibile senza
-toccare l'area riservata: `/inner` è una cartella con il suo WordPress e la sua REST API,
-indipendente dalla vetrina.
+Il terzo punto è la rete di sicurezza. `/inner`, la bacheca, gli altri sottositi e
+qualunque indirizzo che non abbiamo previsto **continuano a funzionare da soli**, senza
+doverli elencare da nessuna parte. Se domani aggiungi un sottosito, funziona senza che
+tu debba toccare questa configurazione.
 
-## Perché non serve Node sul server
+E rende l'operazione **reversibile**: se qualcosa non torna, togliere le regole nginx
+riporta tutto esattamente a com'era, perché WordPress non è mai stato toccato.
 
-Le pagine di questo sito vengono generate come **file HTML già pronti** al momento della
-build (74 pagine). Quello che va caricato è una cartella di file statici: nessun processo
-da tenere acceso, nessuna versione di Node da gestire, nessun rischio che il sito cada
-perché un servizio si è fermato. Per Plesk è la condizione ideale.
+## Perché non serve Node
+
+Le 74 pagine sono HTML già generati al momento della build: quello che carichi è una
+cartella di file. Nessun processo da tenere acceso, niente che possa cadere.
 
 ---
 
-## Preparazione (prima del giorno X)
+## Preparazione
 
 ```bash
-npm ci          # dipendenze pulite
-npm run seo     # sitemap + indice del blog
-npm run images  # solo se hai aggiunto o cambiato immagini
-npm run build   # compila e genera le 74 pagine in dist/
-npm run nginx   # regole nginx da incollare in Plesk
+npm ci
+npm run seo      # sitemap + indice del blog
+npm run build    # genera le 74 pagine in dist/
+npm run nginx    # regole nginx da incollare in Plesk
 ```
 
-Alla fine servono due cose:
+Servono due cose: il contenuto di **`dist/`** e il file **`deploy/nginx-asteryslab.conf`**.
 
-- il contenuto di **`dist/`** — è tutto il sito;
-- il file **`deploy/nginx-asteryslab.conf`** — le regole del server.
+### Prima di procedere: due controlli
 
-> ⚠️ Va caricato il **contenuto** di `dist/`, non la cartella. Nella docroot deve
-> trovarsi `index.html`, non `dist/index.html`.
+**1. Nomi che si sovrappongono.** Il sito nuovo occuperà questi indirizzi:
+
+```
+/corsi  /blog  /eventi  /aziende  /about  /iscriviti  /personal-coaching
+/scuola-di-coaching-milano  /scuola-di-coaching-roma
+/privacy  /cookie  /termini  /borsa-di-studio  /credito-ai-talenti
+```
+
+Nella bacheca di rete, controlla che **nessun sottosito** usi uno di questi nomi. Se ce
+n'è uno, va rinominato uno dei due prima di procedere: il file statico avrebbe la
+precedenza e quel sottosito diventerebbe irraggiungibile.
+
+**2. Fai la prova su un dominio di test**, se ne hai uno su Plesk. Dieci minuti che ti
+risparmiano di scoprire un problema in produzione.
 
 ---
 
 ## Il giorno del passaggio
 
-### 1. Backup della vetrina attuale
+### 1. Backup
 
-Da Plesk, backup completo del dominio. Serve a poter tornare indietro in pochi minuti se
-qualcosa non torna: finché il backup non è fatto, non toccare altro.
+Backup completo del dominio da Plesk. Finché non è fatto, non toccare nient'altro.
 
-### 2. Svuota la docroot **senza toccare `/inner`**
+### 2. Carica i file
 
-Nella docroot (di solito `httpdocs/`) vanno rimossi i file della vetrina WordPress:
-`wp-admin/`, `wp-includes/`, `wp-content/`, `index.php`, `wp-config.php`, `.htaccess`…
+Il **contenuto** di `dist/` va nella docroot (di solito `httpdocs/`), accanto ai file di
+WordPress. Non la cartella `dist`: il suo contenuto.
 
-**La cartella `inner/` non si tocca.** È l'area riservata: se sparisce, gli iscritti non
-accedono più ai Lab.
-
-> Se `wp-config.php` della vetrina contiene credenziali del database usate anche
-> altrove, conservane una copia prima di cancellare.
-
-### 3. Carica il sito
-
-Il contenuto di `dist/` va nella docroot. Alla fine devi vedere, allo stesso livello:
+Alla fine nella docroot convivono:
 
 ```
 httpdocs/
-├── index.html          ← la home
+├── index.html          ← la home del sito nuovo
 ├── assets/             ← css e javascript
-├── corsi/  blog/  ...  ← una cartella per pagina, ognuna con index.html
+├── corsi/  blog/  ...  ← una cartella per pagina, con dentro index.html
 ├── robots.txt  sitemap.xml
-└── inner/              ← l'area riservata, intatta
+│
+├── index.php           ← WordPress: NON TOCCARE
+├── wp-admin/           ← WordPress: NON TOCCARE
+├── wp-includes/        ← WordPress: NON TOCCARE
+├── wp-content/         ← WordPress: NON TOCCARE
+└── wp-config.php       ← WordPress: NON TOCCARE
 ```
 
-### 4. Incolla le regole nginx
+L'unico file che si sovrappone è `index.html`, che WordPress non usa.
+
+> `robots.txt` e `sitemap.xml`: se WordPress ne generava di suoi, ora vincono i file
+> nuovi. È quello che vogliamo.
+
+### 3. Incolla le regole nginx
 
 Plesk → **Domini** → asteryslab.com → **Apache & nginx Settings** →
-**Additional nginx directives**: incolla il contenuto di `deploy/nginx-asteryslab.conf`
-e applica.
+**Additional nginx directives**: incolla `deploy/nginx-asteryslab.conf` e premi
+**Applica** (non basta salvare).
 
-Fanno tre cose: lasciano `/inner` a WordPress, rimandano i 187 vecchi indirizzi ai nuovi,
-e servono le pagine statiche.
+Se compare un errore tipo *"duplicate location"*, Plesk ha già una sua `location /`:
+in fondo al file trovi la variante alternativa, con le istruzioni per sostituirla.
 
-### 5. Verifica subito, in quest'ordine
+### 4. Verifica, in quest'ordine
+
+**Prima l'area riservata.** È la cosa che non può rompersi:
 
 ```bash
-# a) L'area riservata funziona ancora — controlla PRIMA di tutto il resto
-curl -I https://asteryslab.com/inner/
+curl -I https://asteryslab.com/inner/          # atteso: 200
+```
 
-# b) Un vecchio indirizzo rimanda al nuovo (301, non 404)
+E soprattutto: apri `/inner/` nel browser, **fai un login vero**, controlla di vedere i
+Lab. Poi apri la bacheca di rete e verifica che gli altri sottositi rispondano.
+
+**Poi i rimandi:**
+
+```bash
 curl -I https://asteryslab.com/trovare-clienti-come-coach/
 #    atteso: 301 → /blog/trovare-clienti-come-coach
 
 curl -I https://asteryslab.com/scuola-coaching-facilitazione/masterincoaching
 #    atteso: 301 → /corsi/apcm
-
-# c) Le pagine nuove rispondono con il PROPRIO titolo
-curl -s https://asteryslab.com/corsi/apcm | grep -o "<title>[^<]*</title>"
-curl -s https://asteryslab.com/scuola-di-coaching-milano | grep -o "<title>[^<]*</title>"
-
-# d) I file per i motori ci sono
-curl -I https://asteryslab.com/sitemap.xml
-curl -I https://asteryslab.com/robots.txt
 ```
 
-E dal browser: apri `/inner/`, **fai un login vero** e controlla di vedere i Lab. È la
-verifica che conta più di tutte le altre.
+**Infine le pagine nuove:**
+
+```bash
+curl -s https://asteryslab.com/ | grep -o "<title>[^<]*</title>"
+curl -s https://asteryslab.com/corsi/apcm | grep -o "<title>[^<]*</title>"
+curl -I https://asteryslab.com/sitemap.xml
+```
+
+### Se qualcosa non torna
+
+Togli le regole nginx dal pannello e applica: il sito torna esattamente a com'era.
+WordPress non è stato toccato, quindi il ripristino è immediato e completo.
 
 ---
 
 ## Subito dopo: gli strumenti Google
 
-Il sito nuovo non eredita nulla in automatico. Serve rimettere mano a tutto.
-
 ### Search Console
-- La proprietà esistente **resta valida**: stesso dominio, quindi non va rifatta.
-- Invia la nuova `sitemap.xml` (72 indirizzi) e rimuovi le vecchie sitemap WordPress
-  (`wp-sitemap.xml`), altrimenti Google continua a cercare pagine che non esistono più.
-- Nelle settimane seguenti, in *Indicizzazione → Pagine*, compariranno errori 404: sono
-  attesi e vanno letti. Se un indirizzo con traffico è finito lì, aggiungilo alla mappa
-  in `scripts/redirects.mjs` e rigenera.
-- Dopo 3–4 settimane guarda le ricerche in posizione **11–30**: lì un ritocco vale più di
-  un articolo nuovo.
+- La proprietà **resta valida**: stesso dominio.
+- Invia la nuova `sitemap.xml` (72 indirizzi) e rimuovi la vecchia `wp-sitemap.xml`.
+- Nelle settimane seguenti compariranno 404 in *Indicizzazione → Pagine*: sono attesi.
+  Se fra questi c'è un indirizzo con traffico reale, aggiungilo a `scripts/redirects.mjs`
+  e rigenera con `npm run redirects && npm run nginx`.
+- Dopo 3–4 settimane guarda le ricerche in posizione **11–30**: lì un ritocco vale più
+  di un articolo nuovo.
 
 ### Analytics
-- Se è GA4, **il tag va reinserito**: era in WordPress, che non c'è più. Va aggiunto in
-  `index.html` (o via Tag Manager).
-- Annota la data del passaggio: senza, un eventuale calo di qualche giorno sembra un
-  problema di posizionamento invece che l'effetto del cambio.
+- Il tag GA4 **va reinserito**: stava nella vetrina WordPress, che non risponde più. Va
+  aggiunto in `index.html` o via Tag Manager.
+- Annota la data del passaggio: senza, un calo di qualche giorno sembra un problema di
+  posizionamento invece che l'effetto del cambio.
 
 ### Google Ads
-- Controlla le **destinazioni di ogni annuncio**: quelle che puntano ai vecchi indirizzi
-  funzionerebbero comunque grazie ai rimandi, ma un annuncio che passa per un 301 perde
-  qualità e velocità. Meglio aggiornarle agli indirizzi nuovi.
-- Se usi conversioni basate su URL, vanno rifatte con i percorsi nuovi.
+- Aggiorna le destinazioni degli annunci agli indirizzi nuovi. Continuerebbero a
+  funzionare grazie ai rimandi, ma un annuncio che passa per un 301 perde qualità.
+- Le conversioni basate su URL vanno rifatte con i percorsi nuovi.
 
-### Profilo dell'attività (Google Business Profile)
-- Il sito resta lo stesso, quindi il collegamento regge.
-- Le due sedi possono ora puntare alle rispettive pagine:
+### Profilo dell'attività
+- Il collegamento al sito regge. Le due sedi possono ora puntare a
   `/scuola-di-coaching-milano` e `/scuola-di-coaching-roma`.
 
 ---
 
-## Le domande che ti sei posto, con risposta
+## Le domande che ti sei posto
 
-**«Le vecchie pagine indicizzate e le nuove convivranno?»**
-No, e va bene così. Dopo il passaggio esiste **un solo sito**: i vecchi indirizzi non
-esistono più come pagine, esistono come rimandi. Google li ripassa nel giro di qualche
-settimana e sposta il posizionamento sull'indirizzo nuovo.
+**«Il redirect è già attivo adesso?»**
+No. `vercel.json` vale solo per il deploy Vercel, che è un altro server
+(`216.198.79.3`, mentre asteryslab.com è `188.165.123.76`). Il sito vero non ne è
+toccato: i rimandi si accendono **solo** quando incolli le regole nginx su Plesk. Prima
+di allora sono scritti, non attivi — che è esattamente come deve essere finché aspetti
+l'ok.
 
-**«E le pagine vecchie che nel sito nuovo non ci sono?»**
-Sono 64 articoli, quasi tutti notizie di conferenze e apparizioni di anni fa, mai
-ripubblicate. Vanno all'elenco del blog: non è la stessa cosa di un rimando puntuale, ma
-è molto meglio di un errore, e riguarda pagine che oggi portano traffico quasi nullo. Se
-Search Console dovesse mostrare che una di queste ha ancora visite, si aggiunge un
-rimando dedicato in cinque minuti.
+**«Le vecchie pagine e le nuove convivranno sui motori?»**
+Per qualche settimana sì, poi no. I vecchi indirizzi non sono più pagine ma rimandi:
+Google li ripassa e sposta il posizionamento su quelli nuovi.
 
-**«Come faccio ad avere due sistemi diversi sullo stesso dominio?»**
-È il caso più semplice: non due sistemi in conflitto, ma due cartelle. La docroot serve
-file statici, `/inner` continua a essere gestita da PHP. Il blocco `location ^~ /inner/`
-nelle regole nginx è esattamente ciò che tiene separate le due cose.
+**«E le pagine vecchie che nel sito nuovo non esistono?»**
+64 articoli, quasi tutti notizie di conferenze di anni fa, con traffico prossimo a zero.
+Vanno all'elenco del blog. Se Search Console ne mostra una con visite vere, si aggiunge
+un rimando dedicato in cinque minuti.
 
-**«E se invece tenessi il sito su Vercel?»**
-Si può, ma **non lo consiglio in questo caso**: per servire `/inner` dallo stesso dominio
-Vercel dovrebbe fare da tramite verso il tuo server, e in mezzo ci passano i cookie di
-sessione, il login e il checkout dell'area riservata. Sono esattamente le cose che si
-rompono per prime. Vercel resta perfetto per le anteprime prima di pubblicare.
-
----
-
-## Se qualcosa va storto
-
-| Sintomo | Causa quasi certa |
-|---|---|
-| `/inner` mostra la home della vetrina o "pagina non trovata" | Il blocco `location ^~ /inner/` non è stato applicato, o la cartella `inner/` è stata cancellata |
-| Ogni indirizzo mostra la home | Manca `$uri/index.html` in `try_files`: si sta ripiegando su `index.html` prima di cercare la pagina |
-| I vecchi indirizzi danno 404 | Le regole nginx non sono state applicate (in Plesk va premuto **Applica**, non solo salvato) |
-| Il sito si vede senza stili | Il contenuto di `dist/` non è nella docroot ma dentro una sottocartella `dist/` |
-
-In ogni caso: ripristina il backup del punto 1 e riprova con calma. Il sito nuovo resta
-raggiungibile intanto sull'indirizzo di anteprima Vercel.
+**«Non sarebbe più pulito tirare fuori la vetrina dal multisito?»**
+Sì, alla lunga. Ma è un'operazione a sé: significa spostare gli altri sottositi su
+sottodomini e rifare la struttura della rete. Vale la pena affrontarla dopo, a sito
+nuovo online e stabile — non nello stesso momento.
