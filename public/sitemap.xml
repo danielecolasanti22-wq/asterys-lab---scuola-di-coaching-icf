@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- GENERATO DA scripts/sitemap.mjs — rigenera con: npm run sitemap -->
+<!-- GENERATO DA scripts/sitemap.mjs — rigenera con: npm run seo -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://asteryslab.com/</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://asteryslab.com/corsi</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -22,54 +22,54 @@
   <url><loc>https://asteryslab.com/termini</loc><lastmod>2026-08-07</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://asteryslab.com/blog/come-diventare-coach-professionista-in-italia</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/quanto-guadagna-e-quanto-costa-diventare-coach-in-italia</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/come-scegliere-una-scuola-di-coaching-accreditata-icf</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/rinnovo-credenziale-icf-cce-e-mentor-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/serendipita-e-coaching-il-segreto-che-arriva-per-caso</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/non-ce-punto-di-saturazione-nella-formazione</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/il-potere-della-voce</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/tenere-a-mente-il-corpo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/il-bello-delle-emozioni</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/ego-mon-amour</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/team-coaching-e-team-coaching-sistemico</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/valori-e-comportamenti</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/il-modello-della-realta</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/dal-sogno-al-progetto-essere-il-motore-del-proprio-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/non-aprite-quella-porta</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/mindset-acceleranti-e-mindset-limitanti</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/euristiche-e-bias-cognitivi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/tutto-cio-che-ci-irrita-negli-altri-puo-portarci-a-capire-noi-stessi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/meditazione-e-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/alla-ricerca-della-felicita</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/musica-e-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/rischi-e-vantaggi-dellesposizione-mediatica</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/il-potere-della-voce</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/liberi-e-associati</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/il-modello-della-realta</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/ego-mon-amour</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/creativita-e-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/in-nome-del-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/valori-e-comportamenti</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/perche-il-coaching-e-efficace</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/in-nome-del-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/coachable-o-uncoachable-questo-e-il-problema</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/un-traguardo-per-pochi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/grande-persona-grande-coach</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/un-coach-di-successo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/pane-e-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/dal-sogno-al-progetto-essere-il-motore-del-proprio-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/errori-comuni-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/coaching-what-else</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/11-consigli-notorieta-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/non-aprite-quella-porta</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/domande-potenti-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/un-coach-di-successo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/coaching-alieno</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/tenere-a-mente-il-corpo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/coach-creativo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/il-bello-delle-emozioni</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/coaching-what-else</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/mindset-acceleranti-e-mindset-limitanti</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/non-ce-punto-di-saturazione-nella-formazione</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/leadership-personale-il-potere-di-cambiare</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/un-traguardo-per-pochi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/coaching-e-consapevolezza</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/alla-ricerca-della-felicita</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/11-consigli-notorieta-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/euristiche-e-bias-cognitivi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/coaching-e-creativita</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/tutto-cio-che-ci-irrita-negli-altri-puo-portarci-a-capire-noi-stessi</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/coaching-bene-comune</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/trovare-clienti-come-coach</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/musica-e-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/presence-leadership</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/perche-diventare-coach-3</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/team-coaching-e-team-coaching-sistemico</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/perche-diventare-coach-2</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/pensiero-sistemico-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/sfide-adattive-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/il-grande-omuncolo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/dire-coach</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/coach-creativo</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/coaching-e-creativita</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/perche-diventare-coach-3</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/pensiero-sistemico-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/coaching-bene-comune</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/perche-diventare-coach-2</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/massimo-bene-comune-2</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/leadership-personale-il-potere-di-cambiare</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://asteryslab.com/blog/meditazione-e-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://asteryslab.com/blog/supervision-icf-e-coaching</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/coaching-e-consapevolezza</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/presence-leadership</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://asteryslab.com/blog/sfide-adattive-cambiamento</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

@@ -6,7 +6,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { blogPosts, blogPostsBySlug } from '../constants/blogPosts';
-import { autoHighlight } from '../utils/highlight';
+import { autoHighlight, createLinkBudget, PERCORSO_PER_CATEGORIA } from '../utils/highlight';
 import { NewsletterForm } from '../components/NewsletterForm';
 import Img from '../components/Img';
 
@@ -31,7 +31,18 @@ export default function BlogPostDetail() {
     );
   }
 
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  // Correlati: due dello stesso argomento più uno di un altro, così chi ha finito di
+  // leggere trova sia l'approfondimento sia una via per uscire dal tema. Prima erano
+  // semplicemente i primi tre dell'elenco: gli stessi sotto ogni articolo, quasi mai
+  // attinenti a quello appena letto.
+  const altri = blogPosts.filter((p) => p.slug !== post.slug);
+  const stessoTema = altri.filter((p) => p.category === post.category);
+  const altroTema = altri.filter((p) => p.category !== post.category);
+  const related = [...stessoTema.slice(0, 2), ...altroTema, ...stessoTema.slice(2)].slice(0, 3);
+
+  // Tetto ai link verso i corsi per questo articolo, con un posto tenuto da parte per il
+  // percorso più pertinente all'argomento (vedi autoHighlight).
+  const linkBudget = createLinkBudget(PERCORSO_PER_CATEGORIA[post.category]);
 
   return (
     <div className="min-h-screen">
@@ -101,7 +112,7 @@ export default function BlogPostDetail() {
                     {block.items.map((it, j) => (
                       <li key={j} className="flex gap-3 text-base sm:text-lg leading-relaxed">
                         <span className="text-brand-accent font-black mt-1 shrink-0">→</span>
-                        <span>{autoHighlight(it, seen)}</span>
+                        <span>{autoHighlight(it, seen, linkBudget)}</span>
                       </li>
                     ))}
                   </ul>
@@ -109,7 +120,7 @@ export default function BlogPostDetail() {
               }
               return (
                 <p key={i} className="text-base sm:text-lg leading-relaxed mb-6">
-                  {autoHighlight(block.text, seen)}
+                  {autoHighlight(block.text, seen, linkBudget)}
                 </p>
               );
             });
