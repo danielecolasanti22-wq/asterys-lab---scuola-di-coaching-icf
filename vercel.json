@@ -2,15 +2,967 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }],
+  "rewrites": [
+    {
+      "source": "/((?!.*\\.).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*\\.(?:webp|png|jpg|jpeg|svg|pdf|woff2))",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/master-in-coaching",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/masterincoaching",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/diventare-coach-professionista",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/pratica-coaching",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/pratica-di-coaching",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/entry-point",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/pegasus-coaching-program",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/asterys-systemic-team-coaching",
+      "destination": "/corsi/systemic-team-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/team-and-organizational-systemic-coaching",
+      "destination": "/corsi/systemic-team-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/eiw-emotional-intelligence-workout",
+      "destination": "/corsi/eiw",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/continuous-learning",
+      "destination": "/corsi/continuous-learning",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach/voice-dialogue-facilitator-training",
+      "destination": "/corsi/voice-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach/voice-dialogue-coaching",
+      "destination": "/corsi/voice-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach/voice-dialogue-skills",
+      "destination": "/corsi/voice-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/voice-dialogue-essentials",
+      "destination": "/corsi/voice-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/voice-dialogue-advanced",
+      "destination": "/corsi/voice-dialogue",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach/supervisione-coaching",
+      "destination": "/corsi/coaching-circle",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach/coaching-sistemico-costellazioni",
+      "destination": "/corsi/systemic-team-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/formazione-avanzata-coach",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/mastery-on-stage",
+      "destination": "/corsi/public-speaking",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/master-avanzato-facilitazione",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/coaching-smart",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/coaching-smart-2",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/coaching-smart-old",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/coaching-bios",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/lascia-il-segno",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/alumni-coach",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/alblue-reward",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/catalogo-corsi-al",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/personal-branding-per-coach",
+      "destination": "/corsi/marketing-per-coach",
+      "permanent": true
+    },
+    {
+      "source": "/personal-branding-per-coach-2",
+      "destination": "/corsi/marketing-per-coach",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/personal-coaching",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/personal-coaching/migliore-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale/al-timone-della-tua-vita",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale/personal-growth",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale/larte-della-leadership",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale/il-potere-di-cambiare",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale/corsi-sviluppo-personale/volere-cambiare",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-personale",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/imprese-imprenditori/business-coaching",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/imprese-imprenditori/consulenza-sviluppo",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/imprese-imprenditori",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/clients-2",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/intelligenza-emotiva/intelligenza-emotiva-italia",
+      "destination": "/corsi/eiw",
+      "permanent": true
+    },
+    {
+      "source": "/intelligenza-emotiva",
+      "destination": "/corsi/eiw",
+      "permanent": true
+    },
+    {
+      "source": "/sviluppo-intelligenza-emotiva",
+      "destination": "/corsi/eiw",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/uffici-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/storia-coaching-italia",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/coaching-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/i-nostri-valori",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/far-parte-del-team-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/pier-paolo-colasanti-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/giovanna-dalessio-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/stefano-petti-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/ana-belen-manzano-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/alessandra-bitelli-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/nicoletta-stellino-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/renata-beltrami-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo/team-asterys-lab/paola-rulfi-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/chi-siamo",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/press",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/testimonials",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contatti",
+      "destination": "/iscriviti",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/iscriviti",
+      "permanent": true
+    },
+    {
+      "source": "/faq-coaching",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/news-articoli",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/event-directory",
+      "destination": "/eventi",
+      "permanent": true
+    },
+    {
+      "source": "/mappa-sito",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/newsletter-signup",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/disclaimer-privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/informativa",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/incarico-esterno-per-trattamento-dati",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/elenco-contratti-quadro",
+      "destination": "/termini",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-eletta-nel-board-della-icf",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-speaker-alla-icf-international-coaching-conference-di-long-beach",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-relatore-della-5d-conferenza-italiana-sul-coaching",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/life-coach-lab-presenta-coaching-explora-una-giornata-di-formazione",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-speaker-al-convegno-promosso-dallassociazione-bancaria-italiana",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-speaker-istituzionale-alla-prima-edizione-italiana-del-finance-director-forum",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-ospite-alla-radio-the-coaching-show",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/partecipa-al-coaching-day-promosso-dalla-fic-vieni-ad-incontrare-lo-staff-di-life-coach-lab",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/vi-conferenza-italiana-sul-coaching",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-ospite-del-tg1",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/win-conference-giovanna-dalessio",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/incontro-in-teleclasse-con-giovanna-dalessio",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/life-coach-lab-per-il-sociale",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-trasformazionale-sud-america-international-coaching-federation-argentina",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-conferenza-latinoamericana-sud-america-international-coaching-federation-chile-cile",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/technical-vs-adaptive-challenges",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/presence-leadership",
+      "destination": "/blog/presence-leadership",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-week-2012",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/finanza-a-impresa-in-continuo-cambiamento",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/conferenza-italiana-sul-coaching",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/richard-barrrett-a-milano",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-and-mentoring-at-work-conference",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/international-coaching-conference-a-londra-ottobre-2012",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/10-settembre-ore-1900-incontriamo-giovanna-dalessio",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-pro-certificazione-icf",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pcd-voice-dialogue",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/webinar-etica-e-coaching",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/john-kent-trainer-di-voice-dialogue",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/risorse-gratuite-intelligenza-emotiva",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/successo-del-workshop-il-potere-di-cambiare",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-bene-comune",
+      "destination": "/blog/coaching-bene-comune",
+      "permanent": true
+    },
+    {
+      "source": "/perche-diventare-coach-2",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-e-creativita",
+      "destination": "/blog/coaching-e-creativita",
+      "permanent": true
+    },
+    {
+      "source": "/massimo-bene-comune-2",
+      "destination": "/blog/massimo-bene-comune-2",
+      "permanent": true
+    },
+    {
+      "source": "/corsi-coaching-in-partenza-pcm-2",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pc-practice",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/il-potere-di-cambiare-testimonial",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/mentor-coaching-italia",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/leadership-personale-il-potere-di-cambiare",
+      "destination": "/blog/leadership-personale-il-potere-di-cambiare",
+      "permanent": true
+    },
+    {
+      "source": "/voice-dialogue-coaching",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/supervision-icf-e-coaching",
+      "destination": "/blog/supervision-icf-e-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/conferenza-internazionale-coach-icf-2012",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/global-ceo-survey",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-icf-danimarca",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-e-consapevolezza",
+      "destination": "/blog/coaching-e-consapevolezza",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-professione-crescita",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coscienza-organizzativa-sfide-adattive",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-strumento-leader",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/executive-coaching-prospettive",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/sfide-adattive-cambiamento",
+      "destination": "/blog/sfide-adattive-cambiamento",
+      "permanent": true
+    },
+    {
+      "source": "/life-coach-lab-lcl-alumni-lab",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-week-icf",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-president-elect-icf",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/via-i-appuntamenti-coaching-explora",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/leadership-aziendale-supera-i-tuoi-limiti",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pensiero-sistemico-coaching",
+      "destination": "/blog/pensiero-sistemico-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/perche-diventare-coach-3",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coach-creativo",
+      "destination": "/blog/coach-creativo",
+      "permanent": true
+    },
+    {
+      "source": "/come-diventare-coach-su-amazon",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-expo-2014",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-expo-2014-2",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/cultura-manageriale-coaching-cambiamento",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/dire-coach",
+      "destination": "/blog/dire-coach",
+      "permanent": true
+    },
+    {
+      "source": "/alla-conferenza-icf-2015",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-spettacolo",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-diverso",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/professional-facilitation-mastery",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-su-leadership-e-psicologia-dei-se",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/professione-coach",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/giovanna-dalessio-organizzazione-3-0-alla-conferenza-icf-venezia",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/diventa-coach",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/professional-coaching-practice",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/il-grande-omuncolo",
+      "destination": "/blog/il-grande-omuncolo",
+      "permanent": true
+    },
+    {
+      "source": "/come-scegliere-il-tuo-coach",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/il-coach-che-non-sbaglia-mai",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/trovare-clienti-come-coach",
+      "destination": "/blog/trovare-clienti-come-coach",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-alieno",
+      "destination": "/blog/coaching-alieno",
+      "permanent": true
+    },
+    {
+      "source": "/domande-potenti-coaching",
+      "destination": "/blog/domande-potenti-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/11-consigli-notorieta-coaching",
+      "destination": "/blog/11-consigli-notorieta-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/coaching-what-else",
+      "destination": "/blog/coaching-what-else",
+      "permanent": true
+    },
+    {
+      "source": "/errori-comuni-coaching",
+      "destination": "/blog/errori-comuni-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/pane-e-coaching",
+      "destination": "/blog/pane-e-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/un-coach-di-successo",
+      "destination": "/blog/un-coach-di-successo",
+      "permanent": true
+    },
+    {
+      "source": "/grande-persona-grande-coach",
+      "destination": "/blog/grande-persona-grande-coach",
+      "permanent": true
+    },
+    {
+      "source": "/un-traguardo-per-pochi",
+      "destination": "/blog/un-traguardo-per-pochi",
+      "permanent": true
+    },
+    {
+      "source": "/coachable-o-uncoachable-questo-e-il-problema",
+      "destination": "/blog/coachable-o-uncoachable-questo-e-il-problema",
+      "permanent": true
+    },
+    {
+      "source": "/perche-il-coaching-e-efficace",
+      "destination": "/blog/perche-il-coaching-e-efficace",
+      "permanent": true
+    },
+    {
+      "source": "/in-nome-del-coaching",
+      "destination": "/blog/in-nome-del-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/creativita-e-coaching",
+      "destination": "/blog/creativita-e-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/liberi-e-associati",
+      "destination": "/blog/liberi-e-associati",
+      "permanent": true
+    },
+    {
+      "source": "/rischi-e-vantaggi-dellesposizione-mediatica",
+      "destination": "/blog/rischi-e-vantaggi-dellesposizione-mediatica",
+      "permanent": true
+    },
+    {
+      "source": "/musica-e-cambiamento",
+      "destination": "/blog/musica-e-cambiamento",
+      "permanent": true
+    },
+    {
+      "source": "/alla-ricerca-della-felicita",
+      "destination": "/blog/alla-ricerca-della-felicita",
+      "permanent": true
+    },
+    {
+      "source": "/meditazione-e-coaching",
+      "destination": "/blog/meditazione-e-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/tutto-cio-che-ci-irrita-negli-altri-puo-portarci-a-capire-noi-stessi",
+      "destination": "/blog/tutto-cio-che-ci-irrita-negli-altri-puo-portarci-a-capire-noi-stessi",
+      "permanent": true
+    },
+    {
+      "source": "/euristiche-e-bias-cognitivi",
+      "destination": "/blog/euristiche-e-bias-cognitivi",
+      "permanent": true
+    },
+    {
+      "source": "/mindset-acceleranti-e-mindset-limitanti",
+      "destination": "/blog/mindset-acceleranti-e-mindset-limitanti",
+      "permanent": true
+    },
+    {
+      "source": "/non-aprite-quella-porta",
+      "destination": "/blog/non-aprite-quella-porta",
+      "permanent": true
+    },
+    {
+      "source": "/dal-sogno-al-progetto-essere-il-motore-del-proprio-cambiamento",
+      "destination": "/blog/dal-sogno-al-progetto-essere-il-motore-del-proprio-cambiamento",
+      "permanent": true
+    },
+    {
+      "source": "/il-modello-della-realta",
+      "destination": "/blog/il-modello-della-realta",
+      "permanent": true
+    },
+    {
+      "source": "/ego-mon-amour",
+      "destination": "/blog/ego-mon-amour",
+      "permanent": true
+    },
+    {
+      "source": "/valori-e-comportamenti",
+      "destination": "/blog/valori-e-comportamenti",
+      "permanent": true
+    },
+    {
+      "source": "/team-coaching-e-team-coaching-sistemico",
+      "destination": "/blog/team-coaching-e-team-coaching-sistemico",
+      "permanent": true
+    },
+    {
+      "source": "/il-bello-delle-emozioni",
+      "destination": "/blog/il-bello-delle-emozioni",
+      "permanent": true
+    },
+    {
+      "source": "/tenere-a-mente-il-corpo",
+      "destination": "/blog/tenere-a-mente-il-corpo",
+      "permanent": true
+    },
+    {
+      "source": "/non-ce-punto-di-saturazione-nella-formazione",
+      "destination": "/blog/non-ce-punto-di-saturazione-nella-formazione",
+      "permanent": true
+    },
+    {
+      "source": "/il-potere-della-voce",
+      "destination": "/blog/il-potere-della-voce",
+      "permanent": true
+    },
+    {
+      "source": "/shessin-racconto-zen",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/serendipita-e-coaching-il-segreto-che-arriva-per-caso",
+      "destination": "/blog/serendipita-e-coaching-il-segreto-che-arriva-per-caso",
+      "permanent": true
+    },
+    {
+      "source": "/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle",
+      "destination": "/blog/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle",
+      "permanent": true
     }
   ]
 }
