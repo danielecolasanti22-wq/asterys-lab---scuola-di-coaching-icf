@@ -12,6 +12,7 @@ import { PageHero } from '../components/PageHero';
 import { blogPosts } from '../constants/blogPosts';
 import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
 import { GF_GUIDA, GF_ERR_GUIDA } from '../constants/gravityForms';
+import Img from '../components/Img';
 
 const GUIDE_URL = '/guide/diventare-coach.pdf';
 
@@ -144,7 +145,7 @@ export default function Blog() {
               >
                 <Link to={`/blog/${post.slug}`}>
                   <div className="relative aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl">
-                    <img src={post.img} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt={post.title} referrerPolicy="no-referrer" />
+                    <Img src={post.img} sizes="(max-width: 1024px) 100vw, 1100px" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" alt={post.title} referrerPolicy="no-referrer" />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="absolute top-6 left-6 inline-block px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-[10px] font-black uppercase tracking-widest text-brand-navy shadow-xl">
                       {post.category}

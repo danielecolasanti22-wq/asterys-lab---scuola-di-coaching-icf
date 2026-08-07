@@ -8,6 +8,7 @@ import {
 import { blogPosts, blogPostsBySlug } from '../constants/blogPosts';
 import { autoHighlight } from '../utils/highlight';
 import { NewsletterForm } from '../components/NewsletterForm';
+import Img from '../components/Img';
 
 export default function BlogPostDetail() {
   const { id } = useParams<{ id: string }>();
@@ -37,8 +38,10 @@ export default function BlogPostDetail() {
       <article>
         {/* Post Hero — immagine articolo visibile, velo leggero */}
         <section className="relative bg-brand-navy text-white overflow-hidden">
-          <img
+          <Img
             src={post.img}
+            sizes="100vw"
+            priority
             className="absolute inset-0 w-full h-full object-cover"
             alt=""
             referrerPolicy="no-referrer"

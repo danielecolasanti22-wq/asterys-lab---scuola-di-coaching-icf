@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
 import TopBanner from './TopBanner';
+import Img from '../Img';
 import { hasBanner } from '../../utils/banner';
 import {
   Menu,
@@ -145,6 +146,11 @@ const BrandLogo = () => {
     <div className="flex items-center gap-3">
       {!showFallback && (
         <div className="h-10 w-[158px] sm:h-14 sm:w-[230px] overflow-hidden flex items-center">
+          {/* Unico <img> rimasto al posto di <Img>, di proposito: qui `src` cambia da solo
+              lungo la catena di candidati qui sopra, e passare da <picture> confonderebbe
+              quel meccanismo. Non ci perdiamo nulla: il PNG è già a 11 KB (il WebP
+              risulterebbe più pesante) e il contenitore ha altezza fissa, quindi niente
+              salto di layout. */}
           <img
             src={logoSrc}
             alt="Asterys Lab"
@@ -472,9 +478,10 @@ export const Header = () => {
                         className="group/promo flex items-center gap-4 rounded-xl border border-gray-100 p-3 hover:bg-gray-50 transition-colors"
                       >
                         <div className="w-[88px] h-[88px] rounded-lg overflow-hidden bg-gray-100 shrink-0">
-                          <img
+                          <Img
                             src={promo.img}
                             alt=""
+                            sizes="88px"
                             className="w-full h-full object-cover"
                             referrerPolicy="no-referrer"
                           />
@@ -682,7 +689,7 @@ export const Header = () => {
                       className="flex items-center gap-3 rounded-xl bg-gray-50 border border-gray-100 p-3 active:scale-[0.99] transition-transform"
                     >
                       <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 shrink-0">
-                        <img src={promo.img} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        <Img src={promo.img} alt="" sizes="56px" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <span className="block text-[10px] font-black uppercase tracking-[0.1em] text-brand-accent/80">{promo.kicker}</span>
@@ -715,9 +722,11 @@ const CorporateHeader = () => {
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white border-b border-gray-100 flex items-center">
       <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 w-full flex items-center justify-between gap-4">
         <Link to="/aziende" className="shrink-0">
-          <img
+          <Img
             src="/brand/asterys-for-business.png"
             alt="Asterys Lab for business"
+            sizes="210px"
+            priority
             className="h-9 lg:h-10 w-auto"
           />
         </Link>
@@ -936,9 +945,10 @@ export const Footer = () => {
               className="group mt-4 inline-flex items-center gap-3 self-start bg-brand-accent hover:bg-[#2748d1] rounded-full p-1.5 pr-5 transition-colors active:scale-[0.98]"
             >
               <span className="relative shrink-0">
-                <img
+                <Img
                   src={ADVISOR_PHOTO}
                   alt="Luciana — advisor Asterys Lab"
+                  sizes="48px"
                   className="w-12 h-12 rounded-full object-cover object-top bg-brand-blue-soft"
                 />
                 <span className="absolute -bottom-0.5 -right-0.5 w-6 h-6 rounded-full bg-[#25D366] border-2 border-brand-accent flex items-center justify-center">
@@ -982,7 +992,12 @@ export const Footer = () => {
       <section className="border-b border-white/10">
         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-8 lg:py-10 grid lg:grid-cols-[1.05fr_1fr] gap-8">
           <div>
-            <img src={`${base}brand/asterys-lab-logo-white.png`} alt="Asterys Lab" className="h-9 w-auto" />
+            <Img
+              src={`${base}brand/asterys-lab-logo-white.png`}
+              alt="Asterys Lab"
+              sizes="180px"
+              className="h-9 w-auto"
+            />
             <p className="mt-3 text-sm text-white/70 font-medium leading-relaxed max-w-[360px]">
               Transforming people, expanding results. La tua scuola di coaching accreditata ICF.
             </p>
@@ -1041,10 +1056,11 @@ export const Footer = () => {
           </div>
           <div className="flex flex-nowrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 overflow-x-auto">
             {certifications.map((c) => (
-              <img
+              <Img
                 key={c.label}
                 src={`${base}${c.src}`}
                 alt={c.label}
+                sizes="48px"
                 className="h-11 sm:h-12 w-auto object-contain shrink-0"
               />
             ))}
@@ -1095,9 +1111,10 @@ const FloatingWhatsApp = () => {
             </button>
 
             <div className="flex items-center gap-2.5 lg:gap-3">
-              <img
+              <Img
                 src={ADVISOR_PHOTO}
                 alt="Luciana — advisor Asterys Lab"
+                sizes="44px"
                 className="w-9 h-9 lg:w-11 lg:h-11 rounded-full object-cover object-top bg-brand-blue-soft shrink-0"
               />
               <div className="min-w-0">

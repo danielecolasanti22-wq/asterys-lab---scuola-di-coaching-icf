@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import { whatsappHref } from '../utils/whatsapp';
+import Img from '../components/Img';
 
 // Aree di vita su cui lavora un personal coach (reference: /sviluppo-personale/).
 const aree = [
@@ -43,8 +44,9 @@ export default function PersonalCoaching() {
           className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_20%,#143f7a_55%,#2c63a8_100%)]"
         />
         <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block overflow-hidden">
-          <img
+          <Img
             src="/personal-coaching/hero.png"
+            sizes="(max-width: 1024px) 0px, 100vw"
             alt=""
             className="hero-figure absolute bottom-0 right-0 w-[calc(100vw-135px)] max-w-[1480px] min-w-[1020px] object-contain object-bottom object-right-bottom"
             referrerPolicy="no-referrer"

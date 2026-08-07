@@ -311,6 +311,7 @@ function shortModuleTitle(title: string): string {
 }
 
 import { whatsappHref } from '../utils/whatsapp';
+import Img from '../components/Img';
 
 
 type CourseDetailProps = {
@@ -690,9 +691,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   '/testimonials/people/damiano-zanotti.jpeg',
                   '/testimonials/people/camilla-pedrazzini.jpeg'
                 ].map((src) => (
-                  <img
+                  <Img
                     key={src}
                     src={src}
+                    sizes="36px"
                     className="w-9 h-9 rounded-full border-2 border-brand-hero object-cover"
                     alt="Alumni Asterys Lab"
                   />
@@ -733,9 +735,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
       {id === 'systemic-team-coaching' ? (
         <section className="bg-white pt-4 pb-2 lg:hidden">
           <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6">
-            <img
+            <Img
               src="/course-media/systemic-team-coaching/classe-below-hero.png"
               alt="Sessione di Team Coaching Sistemico in aula"
+              sizes="100vw"
               className="w-full rounded-2xl lg:rounded-3xl object-cover aspect-[16/9] shadow-[0_24px_60px_-32px_rgba(0,21,51,0.28)]"
               referrerPolicy="no-referrer"
             />
@@ -2176,9 +2179,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   key={`${t.name}-${i}`}
                   className="snap-start shrink-0 w-[220px] sm:w-[280px] rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden relative aspect-[3/4] bg-brand-navy/80 group"
                 >
-                  <img
+                  <Img
                     src={t.img}
                     alt={t.name}
+                    sizes="280px"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/55 to-brand-accent/25 mix-blend-multiply" />
@@ -2526,8 +2530,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
             <div className="flex flex-col sm:flex-row md:flex-row items-center justify-center gap-6 lg:gap-10">
                 <div className="flex flex-row items-center gap-4 sm:gap-8 text-left">
                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
-                      <img
+                      <Img
                         src="/advisors/advisor-3.jpeg"
+                        sizes="80px"
                         className="w-full h-full object-cover object-top"
                         alt="Advisor Asterys Lab"
                       />
@@ -2596,9 +2601,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                        {feature ? (
                          <div className="relative mt-4 lg:mt-5 flex flex-1 items-center justify-center min-h-[70px] lg:min-h-[200px]">
                             {/* mappa Italia: piccola nel carosello mobile, grande nel bento desktop */}
-                            <img
+                            <Img
                               src="/career/community-italy.png"
                               alt="La community di alumni Asterys Lab, connessa in tutta Italia"
+                              sizes="240px"
                               className="pointer-events-none select-none w-[47%] max-w-[146px] lg:w-[62%] lg:max-w-[240px] h-auto object-contain"
                             />
                             <span className="absolute bottom-0 right-0 z-10 rounded-full bg-white/90 px-3 py-1 text-[11px] font-black text-brand-navy shadow-sm">+3.000 alumni</span>
@@ -2629,9 +2635,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                   {course.pegasusProgram.intro}
                 </p>
               </div>
-              <img
+              <Img
                 src={course.pegasusProgram.logo}
                 alt="Pegasus Program"
+                sizes="220px"
                 className="h-24 sm:h-28 lg:h-36 w-auto object-contain shrink-0 drop-shadow-[0_20px_44px_rgba(0,0,0,0.55)]"
               />
             </div>
@@ -2711,8 +2718,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      </p>
                      <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[180px] sm:h-[320px] lg:h-[330px] overflow-hidden' : 'mt-auto -mb-2 -mr-2 lg:-mb-4 lg:-mr-4'}>
                        {usesApcmCompleteSection ? (
-                         <img
+                         <Img
                            src={media.completePlatform}
+                           sizes="(max-width: 1024px) 200vw, 1400px"
                            className="absolute left-1/2 bottom-[-135px] w-[188%] max-w-none -translate-x-1/2 object-contain sm:bottom-[-258px] sm:w-[206%] lg:bottom-[-272px] lg:w-[214%]"
                            alt="Piattaforma didattica"
                          />
@@ -2739,8 +2747,9 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                      </p>
                      <div className={usesApcmCompleteSection ? 'pointer-events-none absolute inset-x-0 bottom-0 h-[160px] sm:h-[320px] lg:h-[330px]' : 'mb-6'}>
                        {usesApcmCompleteSection ? (
-                         <img
+                         <Img
                            src={media.completePractical}
+                           sizes="(max-width: 1024px) 200vw, 1400px"
                            className="absolute left-1/2 bottom-[-58px] w-[160%] max-w-none -translate-x-1/2 object-contain object-bottom sm:bottom-[-78px] sm:w-[204%] lg:bottom-[-84px] lg:w-[206%]"
                            alt="Supporto 1:1"
                          />

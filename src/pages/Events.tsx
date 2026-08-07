@@ -12,6 +12,7 @@ import { PageHero } from '../components/PageHero';
 import { eventsData } from '../constants/events';
 
 import { whatsappHref } from '../utils/whatsapp';
+import Img from '../components/Img';
 
 export default function Events() {
   const hasEvents = eventsData.length > 0;
@@ -30,8 +31,9 @@ export default function Events() {
         <Link to={`/eventi/${eventsData[0].id}`} className="group block">
           <div className="grid lg:grid-cols-[1fr_1.15fr] rounded-[2rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all bg-white">
             <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[260px] overflow-hidden">
-              <img
+              <Img
                 src={eventsData[0].img}
+                sizes="(max-width: 1024px) 100vw, 560px"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 alt={eventsData[0].title}
                 referrerPolicy="no-referrer"
@@ -83,8 +85,9 @@ export default function Events() {
                 className="flex flex-col h-full bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl transition-all"
               >
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img
+                  <Img
                     src={event.img}
+                    sizes="(max-width: 768px) 100vw, 380px"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     alt={event.title}
                     referrerPolicy="no-referrer"

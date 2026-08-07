@@ -29,6 +29,7 @@ import {
   MessagesSquare
 } from 'lucide-react';
 import { coursesContent } from '../constants/coursesContent';
+import Img, { imgAttrs } from '../components/Img';
 import { CourseImage } from '../components/CourseImage';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { Highlight } from '../components/Highlight';
@@ -59,10 +60,14 @@ const Hero = () => (
       className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]"
     />
     <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.08fr_0.92fr] gap-0 lg:gap-10 items-end min-h-0 lg:min-h-[500px]">
+      {/* I due hero (mobile e desktop) si escludono a vicenda via CSS, ma restano entrambi nel
+          DOM. Lasciandoli in caricamento differito il browser scarica solo quello che si vede
+          davvero: prima li prendeva tutti e due, sprecando l'altro a ogni visita. */}
       <div className="relative lg:hidden -mx-4 sm:-mx-6">
-        <img
+        <Img
           src="/home/hero-mobile.jpg"
           alt="Community di coach Asterys Lab"
+          sizes="100vw"
           className="w-full aspect-[16/10] object-cover object-center"
           referrerPolicy="no-referrer"
         />
@@ -115,9 +120,10 @@ const Hero = () => (
               '/testimonials/people/damiano-zanotti.jpeg',
               '/testimonials/people/camilla-pedrazzini.jpeg'
             ].map((src) => (
-              <img
+              <Img
                 key={src}
                 src={src}
+                sizes="36px"
                 className="w-9 h-9 rounded-full border-2 border-brand-hero object-cover"
                 alt="Alumni Asterys Lab"
               />
@@ -131,9 +137,10 @@ const Hero = () => (
 
       <div className="relative self-end h-full items-end justify-center lg:justify-end hidden lg:flex">
         <div className="absolute right-[-33%] bottom-0 w-[calc(104vw-135px)] max-w-[1560px] min-w-[1080px] translate-x-[15px]">
-          <img
+          <Img
             src={HERO_PEOPLE_SRC}
             alt="Coach Asterys Lab"
+            sizes="(max-width: 1024px) 0px, 104vw"
             className="hero-figure block w-full h-auto object-contain object-bottom lg:origin-bottom-right"
             referrerPolicy="no-referrer"
           />
@@ -233,8 +240,13 @@ const Accreditamenti = () => {
           {/* Logo */}
           <div className="flex items-center justify-center lg:justify-start h-[130px] lg:h-[150px]">
             <AnimatePresence mode="wait">
+              {/* Resta <motion.img> (dev'essere lui l'elemento animato), ma prende da
+                  imgAttrs le stesse varianti di <Img>: i badge sono file da 1600px e qui
+                  si vedono a 128, quindi senza srcSet il carosello scaricava mezzo mega
+                  di PNG per mostrarli grandi come un'icona. */}
               <motion.img
                 key={current.logo}
+                {...imgAttrs(`${base}${current.logo}`, '128px')}
                 src={`${base}${current.logo}`}
                 alt={current.label}
                 initial={{ opacity: 0, scale: 0.94 }}
@@ -532,10 +544,11 @@ const MasterGrid = () => {
             className="group hidden lg:flex relative overflow-hidden rounded-[2rem] p-7 lg:p-8 text-white flex-col bg-[linear-gradient(155deg,#001a45_0%,#00285f_55%,#0b3b7a_100%)] shadow-[0_12px_40px_-28px_rgba(0,21,51,0.2)] hover:shadow-[0_18px_55px_-28px_rgba(0,21,51,0.5)] transition-shadow"
           >
             {/* Sfondo mesh (immagine) + velatura navy a sinistra per il testo */}
-            <img
+            <Img
               src="/aziende/4.png"
               alt=""
               aria-hidden
+              sizes="(max-width: 1024px) 0px, 620px"
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-80 group-hover:opacity-90 transition-opacity"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#001a45] via-[#001a45]/75 to-[#001a45]/10" />
@@ -593,9 +606,10 @@ const AdvisorBand = () => (
             '/advisors/advisor-2.png',
             '/advisors/advisor-3.jpeg'
           ].map((src) => (
-            <img
+            <Img
               key={src}
               src={src}
+              sizes="36px"
               className="w-9 h-9 rounded-full border-2 border-white object-cover"
               alt="Advisor Asterys Lab"
             />

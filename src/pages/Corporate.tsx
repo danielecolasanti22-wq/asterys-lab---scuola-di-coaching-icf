@@ -21,6 +21,7 @@ import {
   UserRound,
   Users,
 } from 'lucide-react';
+import Img from '../components/Img';
 
 // Foto reali della pagina aziende (in /public/aziende)
 const IMG = {
@@ -165,15 +166,18 @@ export default function Corporate() {
           </div>
 
           <div className="relative h-[340px] sm:h-[420px] lg:h-[460px]">
-            <img
+            <Img
               src={IMG.heroMain}
               alt="Imprenditori in confronto durante una sessione di lavoro"
+              sizes="440px"
+              priority
               className="absolute top-0 right-6 w-[300px] sm:w-[400px] lg:w-[440px] rounded-2xl shadow-2xl object-cover"
               referrerPolicy="no-referrer"
             />
-            <img
+            <Img
               src={IMG.heroSide}
               alt="Risultati raggiunti grazie al coaching"
+              sizes="260px"
               className="absolute bottom-0 right-0 w-[200px] sm:w-[240px] lg:w-[260px] rounded-xl shadow-2xl object-cover border-4 border-[#001D4B]"
               referrerPolicy="no-referrer"
             />
@@ -196,9 +200,10 @@ export default function Corporate() {
               >
                 {marqueeHalf.map((c, i) => (
                   <li key={`${half}-${i}`} className="mr-16 shrink-0 lg:mr-24">
-                    <img
+                    <Img
                       src={c.src}
                       alt={c.name}
+                      sizes="150px"
                       className="h-8 lg:h-9 w-auto object-contain opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
                     />
                   </li>
@@ -301,12 +306,12 @@ export default function Corporate() {
       <section className="bg-[#EEF4FC] py-12 lg:py-16">
         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
-            <img
+            <Img
               src={IMG.avviamento}
               alt="Pianificazione di visione, missione e obiettivi"
+              sizes="(max-width: 1024px) 100vw, 620px"
               className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full object-cover"
               referrerPolicy="no-referrer"
-              loading="lazy"
             />
           </div>
           <div>
@@ -354,12 +359,12 @@ export default function Corporate() {
             </p>
           </div>
           <div className="order-1 lg:order-2">
-            <img
+            <Img
               src={IMG.coach}
               alt="Sessione di coaching individuale tra coach e cliente"
+              sizes="(max-width: 1024px) 100vw, 620px"
               className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full object-cover"
               referrerPolicy="no-referrer"
-              loading="lazy"
             />
           </div>
         </div>
@@ -409,12 +414,12 @@ export default function Corporate() {
       <section id="come-operiamo" className="bg-white py-14 lg:py-20">
         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
           <div>
-            <img
+            <Img
               src={IMG.operiamo}
               alt="Coach Asterys Lab mentre facilita un percorso di cambiamento con il team"
+              sizes="(max-width: 1024px) 100vw, 620px"
               className="rounded-[2rem] shadow-[0_20px_45px_-30px_rgba(0,29,75,0.55)] w-full object-cover"
               referrerPolicy="no-referrer"
-              loading="lazy"
             />
           </div>
           <div>

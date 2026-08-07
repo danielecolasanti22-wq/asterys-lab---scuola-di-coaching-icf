@@ -13,6 +13,7 @@ import { GF_ISCRIVITI, GF_ERR_ISCRIVITI } from '../constants/gravityForms';
 
 /** Contatto WhatsApp (numero in formato internazionale senza "+"). */
 import { whatsappHref } from '../utils/whatsapp';
+import Img from '../components/Img';
 
 const steps = [
   { n: 1, title: 'Raccontaci chi sei', desc: 'e dove vuoi arrivare' },
@@ -374,9 +375,10 @@ export default function Iscriviti() {
         <div className="max-w-[var(--wrap-max)] mx-auto px-4 sm:px-8 py-16 lg:py-24">
           <div className="grid md:grid-cols-[1fr_1.2fr] gap-10 items-center">
             <div className="rounded-3xl overflow-hidden bg-gray-100 aspect-[4/3]">
-              <img
+              <Img
                 src="/iscriviti/futuro.jpg"
                 alt="Aula Asterys Lab durante una sessione di coaching"
+                sizes="(max-width: 768px) 100vw, 520px"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

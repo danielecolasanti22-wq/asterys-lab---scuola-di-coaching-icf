@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Highlight } from '../components/Highlight';
 import { autoHighlight } from '../utils/highlight';
+import Img from '../components/Img';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -35,15 +36,17 @@ function SectionImage({
 }) {
   if (src) {
     return contain ? (
-      <img
+      <Img
         src={src}
         alt={alt}
+        sizes="(max-width: 1024px) 100vw, 620px"
         className="mt-8 w-full h-auto rounded-2xl shadow-soft border border-gray-100"
       />
     ) : (
-      <img
+      <Img
         src={src}
         alt={alt}
+        sizes="(max-width: 1024px) 100vw, 620px"
         className="mt-8 w-full aspect-[4/3] object-cover rounded-2xl shadow-soft"
       />
     );
@@ -146,9 +149,10 @@ function PressLogo({ name, file, tall }: { name: string; file: string; tall?: bo
   }
   const sizeClasses = tall ? 'h-12 sm:h-14' : 'h-6 sm:h-8';
   return (
-    <img
+    <Img
       src={`/press/${file}`}
       alt={name}
+      sizes="160px"
       onError={() => setFailed(true)}
       className={`${sizeClasses} w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all`}
     />
@@ -345,7 +349,7 @@ export default function About() {
               {accreditations.map((a) => (
                 <div key={a.file} className="flex flex-col items-center text-center">
                   <div className="h-16 flex items-center justify-center mb-2">
-                    <img src={`/brand/${a.file}.png`} alt={a.label} className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
+                    <Img src={`/brand/${a.file}.png`} alt={a.label} sizes="64px" className="max-h-16 w-auto object-contain" referrerPolicy="no-referrer" />
                   </div>
                   <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-navy">{a.label}</p>
                 </div>
@@ -360,9 +364,10 @@ export default function About() {
                 className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center"
               >
                 <div className="h-16 flex items-center justify-center mb-4">
-                  <img
+                  <Img
                     src={`/brand/${a.file}.png`}
                     alt={a.label}
+                    sizes="64px"
                     className="max-h-16 w-auto object-contain"
                     referrerPolicy="no-referrer"
                   />

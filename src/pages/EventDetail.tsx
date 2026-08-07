@@ -12,6 +12,7 @@ import {
 import { eventsBySlug } from '../constants/events';
 import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
 import { GF_EVENTO, GF_ERR_EVENTO } from '../constants/gravityForms';
+import Img from '../components/Img';
 
 export default function EventDetail() {
   const { id } = useParams<{ id: string }>();
@@ -118,8 +119,10 @@ export default function EventDetail() {
 
             <div className="relative">
               <div className="rounded-[1.75rem] lg:rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_-40px_rgba(0,21,51,0.5)] aspect-[4/3]">
-                <img
+                <Img
                   src={event.img}
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  priority
                   className="w-full h-full object-cover"
                   alt={event.title}
                   referrerPolicy="no-referrer"

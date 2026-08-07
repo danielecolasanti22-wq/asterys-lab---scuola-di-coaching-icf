@@ -15,6 +15,7 @@ import { submitToGravityForms, mapGfErrors } from '../utils/gravityForms';
 import { GF_CREDITO, GF_ERR_CREDITO } from '../constants/gravityForms';
 
 import { whatsappHref } from '../utils/whatsapp';
+import Img from '../components/Img';
 const HERO_GRADIENT =
   'bg-[linear-gradient(120deg,#00091c_0%,#001a45_16%,#143f7a_42%,#2c63a8_64%,#4a82cc_84%,#5d90d8_100%)]';
 
@@ -122,8 +123,9 @@ export default function CreditoAiTalenti() {
       <section className="relative overflow-hidden bg-brand-hero">
         <div aria-hidden className={`pointer-events-none absolute inset-0 z-0 ${HERO_GRADIENT}`} />
         <div className="pointer-events-none absolute inset-0 z-[1] hidden lg:block overflow-hidden">
-          <img
+          <Img
             src="/credito/hero.png"
+            sizes="(max-width: 1024px) 0px, 100vw"
             alt=""
             className="hero-figure absolute bottom-0 right-0 w-[calc(100vw-135px)] max-w-[1480px] min-w-[1020px] object-contain object-bottom object-right-bottom"
             referrerPolicy="no-referrer"

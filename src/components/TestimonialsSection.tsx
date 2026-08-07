@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Play, Star, Video, X } from 'lucide-react';
 import type { CourseTestimonial } from '../constants/coursesContent';
 import { homeTestimonials } from '../constants/testimonials';
+import Img from './Img';
 
 const tSection =
   'text-3xl sm:text-4xl lg:text-[2.75rem] font-display font-black tracking-tighter text-brand-navy leading-[1.05]';
@@ -72,11 +73,14 @@ export function TestimonialsSection({
         compact ? 'min-h-[180px] sm:min-h-[320px] lg:min-h-[380px]' : 'min-h-[200px] sm:min-h-[380px] lg:min-h-[420px]'
       }`}
     >
-      <img
-        src={video.video?.poster}
-        alt={video.name}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      {video.video?.poster ? (
+        <Img
+          src={video.video.poster}
+          alt={video.name}
+          sizes="(max-width: 640px) 100vw, 420px"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      ) : null}
       <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
       <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand-accent px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">
         <Video size={11} strokeWidth={2.75} />
@@ -113,9 +117,10 @@ export function TestimonialsSection({
       <div className="flex items-start justify-between mb-3 gap-3">
         <div className="flex items-center gap-3 min-w-0">
           {t.img ? (
-            <img
+            <Img
               src={t.img}
               alt={t.name}
+              sizes="44px"
               referrerPolicy="no-referrer"
               className="h-11 w-11 rounded-full object-cover ring-1 ring-brand-navy/10 shrink-0"
             />
