@@ -1006,10 +1006,25 @@ export const Footer = () => {
                 <MapPin size={13} className="text-white" />
                 <span className="text-[10px] font-black uppercase tracking-[0.28em] text-white/55">Sedi</span>
               </div>
+              {/* Le sedi rimandano alle rispettive pagine: sono fuori dal menu di proposito,
+                  ma da qualche parte devono essere raggiungibili — una pagina che nessun link
+                  raggiunge viene indicizzata male anche se compare nella sitemap. */}
               <p className="text-sm text-white/80 font-medium leading-relaxed">
-                <span className="font-black text-white">Milano</span> · via Conservatorio, 22 — 20122
+                <Link
+                  to="/scuola-di-coaching-milano"
+                  className="font-black text-white hover:text-brand-sky transition-colors"
+                >
+                  Milano
+                </Link>{' '}
+                · via Conservatorio, 22 — 20122
                 <br />
-                <span className="font-black text-white">Roma</span> · via del Porto Fluviale, 35 — 00154
+                <Link
+                  to="/scuola-di-coaching-roma"
+                  className="font-black text-white hover:text-brand-sky transition-colors"
+                >
+                  Roma
+                </Link>{' '}
+                · via del Porto Fluviale, 35 — 00154
               </p>
             </div>
           </div>

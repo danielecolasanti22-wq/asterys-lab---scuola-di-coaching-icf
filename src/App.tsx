@@ -2,6 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LayoutWrapper } from './components/layout/Layout';
 import Seo from './components/Seo';
+import { SEDI } from './constants/sedi';
 
 // La Home resta caricata subito (eager) per un atterraggio istantaneo, senza flash.
 import Home from './pages/Home';
@@ -28,6 +29,7 @@ const Iscriviti = lazy(() => import('./pages/Iscriviti'));
 const BorsaDiStudio = lazy(() => import('./pages/BorsaDiStudio'));
 const CreditoAiTalenti = lazy(() => import('./pages/CreditoAiTalenti'));
 const PersonalCoaching = lazy(() => import('./pages/PersonalCoaching'));
+const SedePage = lazy(() => import('./pages/SedePage'));
 const PrivacyPolicy = lazy(() => import('./pages/Legal').then((m) => ({ default: m.PrivacyPolicy })));
 const CookiePolicy = lazy(() => import('./pages/Legal').then((m) => ({ default: m.CookiePolicy })));
 const Terms = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Terms })));
@@ -76,6 +78,10 @@ export function AppRoutes() {
             <Route path="/blog/:id" element={<BlogPostDetail />} />
             <Route path="/aziende" element={<Corporate />} />
             <Route path="/personal-coaching" element={<PersonalCoaching />} />
+            {/* Pagine sede: intercettano le ricerche locali ("scuola di coaching Milano"),
+                che il sito non copriva pur avendo due sedi in aula. */}
+            <Route path="/scuola-di-coaching-milano" element={<SedePage sede={SEDI.milano} />} />
+            <Route path="/scuola-di-coaching-roma" element={<SedePage sede={SEDI.roma} />} />
             <Route path="/about" element={<About />} />
             <Route path="/iscriviti" element={<Iscriviti />} />
             <Route path="/borsa-di-studio" element={<BorsaDiStudio />} />

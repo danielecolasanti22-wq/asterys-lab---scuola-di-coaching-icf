@@ -89,6 +89,19 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
       'Percorso di coaching individuale per esprimere il tuo potenziale: più consapevolezza, obiettivi chiari ed equilibrio. Sessioni di persona o online.',
   },
 
+  // Pagine sede: il titolo mette in chiaro citta' + accreditamento, che e' esattamente
+  // cio' che cerca chi scrive "scuola di coaching Milano".
+  '/scuola-di-coaching-milano': {
+    title: 'Scuola di coaching a Milano accreditata ICF | Asterys Lab',
+    description:
+      'Diventa coach a Milano con un percorso accreditato ICF Level 1 e 2: lezioni in aula in centro, trainer MCC e PCC e pratica supervisionata. Parla con un Advisor.',
+  },
+  '/scuola-di-coaching-roma': {
+    title: 'Scuola di coaching a Roma accreditata ICF | Asterys Lab',
+    description:
+      'Diventa coach a Roma con un percorso accreditato ICF Level 1 e 2: lezioni in aula a Ostiense, trainer MCC e PCC e pratica supervisionata. Parla con un Advisor.',
+  },
+
   '/corsi/marketing-per-coach': {
     title: 'Fatti scegliere dai clienti giusti come coach | Asterys Lab',
     description:
@@ -263,6 +276,52 @@ const COURSE_JSONLD: Record<string, { name: string; description: string; courseM
 
 /** HOME_FAQ è importato da ./homeFaq: unica fonte, identica alla FAQ visibile nella Home. */
 
+/**
+ * Le due sedi come attivita' locali. `EducationalOrganization` descrive la scuola nel suo
+ * insieme; queste descrivono i due luoghi dove si fa lezione, che e' l'informazione che
+ * conta per chi cerca un corso nella propria citta'.
+ */
+const SEDE_JSONLD: Record<string, { '@context': string; '@type': string[]; name: string; [k: string]: unknown }> = {
+  '/scuola-di-coaching-milano': {
+    '@context': 'https://schema.org',
+    '@type': ['EducationalOrganization', 'LocalBusiness'],
+    name: 'Asterys Lab · Milano',
+    description:
+      'Scuola di coaching accreditata ICF (Level 1 e 2) con sede in centro a Milano: percorsi per diventare coach professionista, team coaching sistemico e intelligenza emotiva.',
+    url: SITE_URL + '/scuola-di-coaching-milano',
+    parentOrganization: { '@type': 'EducationalOrganization', name: 'Asterys Lab', url: SITE_URL },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Via Conservatorio 22',
+      addressLocality: 'Milano',
+      addressRegion: 'MI',
+      postalCode: '20122',
+      addressCountry: 'IT',
+    },
+    areaServed: { '@type': 'City', name: 'Milano' },
+    inLanguage: 'it',
+  },
+  '/scuola-di-coaching-roma': {
+    '@context': 'https://schema.org',
+    '@type': ['EducationalOrganization', 'LocalBusiness'],
+    name: 'Asterys Lab · Roma',
+    description:
+      'Scuola di coaching accreditata ICF (Level 1 e 2) con sede a Roma, quartiere Ostiense: percorsi per diventare coach professionista, team coaching sistemico e intelligenza emotiva.',
+    url: SITE_URL + '/scuola-di-coaching-roma',
+    parentOrganization: { '@type': 'EducationalOrganization', name: 'Asterys Lab', url: SITE_URL },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Via del Porto Fluviale 35',
+      addressLocality: 'Roma',
+      addressRegion: 'RM',
+      postalCode: '00154',
+      addressCountry: 'IT',
+    },
+    areaServed: { '@type': 'City', name: 'Roma' },
+    inLanguage: 'it',
+  },
+};
+
 /** Costruisce un blocco FAQPage a partire da una lista di FAQ (q/a). */
 function faqPageJsonLd(faqs: { q: string; a: string }[]): object {
   return {
@@ -325,6 +384,14 @@ export function getJsonLdForPath(pathname: string): object[] {
       out.push(faqPageJsonLd(course.faqs));
     }
     out.push(breadcrumbJsonLd([['Corsi', '/corsi'], [c?.name ?? 'Corso', pathname]]));
+  }
+
+  // Sede: dichiararla come luogo fisico con indirizzo e coordinate e' cio' che permette
+  // di comparire nelle ricerche locali e nelle mappe, non solo fra i risultati classici.
+  const sede = SEDE_JSONLD[pathname];
+  if (sede) {
+    out.push(sede);
+    out.push(breadcrumbJsonLd([[sede.name.replace('Asterys Lab · ', ''), pathname]]));
   }
 
   // Articoli: dichiararli come articoli veri (autore, data, argomento) è ciò che permette

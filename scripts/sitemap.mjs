@@ -39,6 +39,7 @@ const REGOLE = [
   { test: (p) => p === '/corsi/apcm', priority: '0.9', changefreq: 'weekly' },
   { test: (p) => p.startsWith('/corsi/'), priority: '0.8', changefreq: 'weekly' },
   { test: (p) => p === '/aziende' || p === '/personal-coaching', priority: '0.8', changefreq: 'monthly' },
+  { test: (p) => p.startsWith('/scuola-di-coaching-'), priority: '0.8', changefreq: 'monthly' },
   { test: (p) => p === '/iscriviti', priority: '0.7', changefreq: 'monthly' },
   { test: (p) => p.startsWith('/blog/'), priority: '0.6', changefreq: 'monthly' },
   { test: (p) => p.startsWith('/eventi'), priority: '0.6', changefreq: 'weekly' },
