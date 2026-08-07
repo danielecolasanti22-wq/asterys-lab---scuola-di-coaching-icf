@@ -13,7 +13,8 @@
     "lint": "tsc --noEmit",
     "images": "node scripts/images.mjs",
     "seo": "node scripts/sitemap.mjs",
-    "redirects": "node scripts/redirects.mjs"
+    "redirects": "node scripts/redirects.mjs",
+    "nginx": "node scripts/nginx-plesk.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

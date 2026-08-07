@@ -20,7 +20,8 @@ import {
   Mail,
   Award,
   User,
-  Building2
+  Building2,
+  LogIn,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
@@ -30,6 +31,13 @@ import { NewsletterForm } from '../NewsletterForm';
 import { whatsappHref } from '../../utils/whatsapp';
 /** Foto di Luciana (advisor) usata nei contatti WhatsApp. */
 const ADVISOR_PHOTO = '/advisors/advisor-1.png';
+
+/**
+ * Area riservata (Inner): è un'installazione WordPress separata servita dallo stesso
+ * dominio sotto /inner. Non è una rotta di questo sito, quindi si linka con <a>: il
+ * router non deve intercettarla o mostrerebbe la pagina "non trovata".
+ */
+const INNER_URL = '/inner/';
 
 /** Logo ufficiale WhatsApp. */
 const WhatsAppIcon = ({ size = 22, className = '' }: { size?: number; className?: string }) => (
@@ -368,6 +376,16 @@ export const Header = () => {
             >
               Per Aziende
             </Link>
+            <div className="h-4 w-px bg-gray-200"></div>
+            {/* Area riservata: è un'altra applicazione (WordPress su /inner), non una
+                rotta di questo sito, quindi <a> e non <Link>. */}
+            <a
+              href={INNER_URL}
+              className="inline-flex items-center gap-1.5 whitespace-nowrap font-bold text-sm tracking-tight text-brand-navy hover:text-brand-accent transition-colors"
+            >
+              <LogIn size={14} strokeWidth={2.5} />
+              Inner
+            </a>
           </nav>
 
         <div className="col-start-3 flex items-center justify-self-end">
@@ -776,6 +794,13 @@ const CorporateHeader = () => {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={INNER_URL}
+                onClick={() => setIsMenuOpen(false)}
+                className="inline-flex items-center gap-2 text-[#001D4B] font-black text-base tracking-tight"
+              >
+                <LogIn size={16} strokeWidth={2.5} /> Inner
+              </a>
               <a
                 href="#contatti-aziende"
                 onClick={() => setIsMenuOpen(false)}
