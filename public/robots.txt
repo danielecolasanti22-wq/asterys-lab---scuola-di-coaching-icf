@@ -1,8 +1,9 @@
 # Asterys Lab — robots.txt
 User-agent: *
 Allow: /
-Disallow: /nuova-pagina
-Disallow: /nuova-pagina-2
+# Landing raggiungibili solo col link diretto (hanno anche noindex nei meta).
+Disallow: /borsa-di-studio
+Disallow: /credito-ai-talenti
 
 # Motori AI / answer engines — vogliamo essere indicizzati e citati (GEO)
 User-agent: GPTBot

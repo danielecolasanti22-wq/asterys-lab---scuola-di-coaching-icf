@@ -87,6 +87,22 @@ export const SEO_BY_PATH: Record<string, PageSeo> = {
     description:
       'Percorso di coaching individuale per realizzare il tuo pieno potenziale: più consapevolezza, obiettivi chiari, relazioni ed equilibrio. Sessioni di persona o online. Parla con un coach.',
   },
+
+  // Landing private: si raggiungono solo col link diretto, non devono finire sui motori.
+  // Senza una voce qui ereditavano titolo e descrizione della home, quindi erano
+  // indicizzabili e per giunta come contenuto duplicato.
+  // NB: i titoli combaciano con quelli che le due pagine impostano a runtime via
+  // document.title — se si cambia uno, cambiare anche l'altro.
+  '/borsa-di-studio': {
+    title: 'Borsa di studio · Master in Coaching Roma | Asterys Lab',
+    description: 'Pagina riservata ai candidati alla borsa di studio Asterys Lab.',
+    noindex: true,
+  },
+  '/credito-ai-talenti': {
+    title: 'Credito ai talenti · Master in Coaching | Asterys Lab',
+    description: 'Pagina riservata ai candidati al programma Credito ai talenti di Asterys Lab.',
+    noindex: true,
+  },
 };
 
 export function getSeoForPath(pathname: string): PageSeo {
