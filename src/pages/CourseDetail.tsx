@@ -322,6 +322,29 @@ type CourseDetailProps = {
   contactLabel?: string;
 };
 
+// Data odierna reale (non hardcoded): il filtro resta corretto col passare del tempo.
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
+
+/** ISO dell'ultimo evento databile di un'edizione (ignora label senza giorno tipo "Dicembre 2026"). */
+function editionMaxEventISO(e: CourseEdition): string | null {
+  const isos = (e.events ?? [])
+    .map((ev) => parseItDateToISO(ev.date))
+    .filter((x): x is string => !!x)
+    .sort();
+  return isos.length ? isos[isos.length - 1] : null;
+}
+/** Un'edizione è conclusa se il suo ultimo evento databile è precedente a oggi. */
+function isEditionConcluded(e: CourseEdition): boolean {
+  const last = editionMaxEventISO(e);
+  return last !== null && last < TODAY_ISO;
+}
+/** True se una data in italiano ("12 marzo 2026") è già passata. */
+function isItDatePast(d?: string): boolean {
+  if (!d) return false;
+  const iso = parseItDateToISO(d);
+  return iso !== null && iso < TODAY_ISO;
+}
+
 export default function CourseDetail({ courseId, courseData, hideHero, contactHref, contactLabel }: CourseDetailProps = {}) {
   const { id: routeId } = useParams<{ id: string }>();
   const id = courseId ?? routeId;
@@ -355,10 +378,11 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
   useEffect(() => {
     if (course) {
       setPaymentTab(course.fees[0]?.title.toLowerCase() || '');
+      const availableEditions = (course.editions ?? []).filter((e) => !isEditionConcluded(e));
       const first =
-        course.editions?.find(
+        availableEditions.find(
           (e) => e.badge === 'Early Bird attivo' || e.badge === 'Iscrizioni aperte',
-        ) ?? course.editions?.[0];
+        ) ?? availableEditions[0];
       if (first) {
         setActiveCitySlug(first.citySlug);
         setActiveLevelSlug(first.levelSlug);
@@ -475,7 +499,8 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
     careerPaths: derivedCareerPaths,
   };
 
-  const editions = course.editions ?? [];
+  // Nasconde automaticamente le edizioni già concluse (ultimo incontro nel passato).
+  const editions = (course.editions ?? []).filter((e) => !isEditionConcluded(e));
   const editionCities = Array.from(
     new Map(editions.map((e) => [e.citySlug, { slug: e.citySlug, name: e.city }])).values(),
   );
@@ -1417,9 +1442,10 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                         </span>
                       ) : null}
                     </div>
-                    {(activeEdition.earlyBird || activeEdition.enrollmentEnd) && (
+                    {((activeEdition.earlyBird && !isItDatePast(activeEdition.earlyBird.date)) ||
+                      (activeEdition.enrollmentEnd && !isItDatePast(activeEdition.enrollmentEnd.date))) && (
                       <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2">
-                        {activeEdition.earlyBird ? (
+                        {activeEdition.earlyBird && !isItDatePast(activeEdition.earlyBird.date) ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
                             <Hourglass size={12} strokeWidth={2.5} className="text-[#5E8AD0]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
@@ -1430,7 +1456,7 @@ export default function CourseDetail({ courseId, courseData, hideHero, contactHr
                             </span>
                           </span>
                         ) : null}
-                        {activeEdition.enrollmentEnd ? (
+                        {activeEdition.enrollmentEnd && !isItDatePast(activeEdition.enrollmentEnd.date) ? (
                           <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5">
                             <CalendarCheck size={12} strokeWidth={2.5} className="text-[#CFE0F5]" />
                             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">
