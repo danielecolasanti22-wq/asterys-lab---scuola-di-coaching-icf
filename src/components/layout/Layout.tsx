@@ -39,8 +39,12 @@ const ADVISOR_PHOTO = '/advisors/advisor-1.png';
  *
  * Indirizzo assoluto di proposito: così il pulsante porta all'area riservata vera anche
  * dalle anteprime, dove un percorso relativo non troverebbe nulla.
+ *
+ * Punta direttamente ai Lab invece che alla home dell'area riservata: è quello che gli
+ * iscritti cercano quando entrano. Chi non ha ancora fatto l'accesso trova il modulo di
+ * login sulla stessa pagina, quindi non serve mandarlo prima altrove.
  */
-const INNER_URL = 'https://asteryslab.com/inner/';
+const INNER_URL = 'https://asteryslab.com/inner/labs/';
 
 /** Logo ufficiale WhatsApp. */
 const WhatsAppIcon = ({ size = 22, className = '' }: { size?: number; className?: string }) => (
