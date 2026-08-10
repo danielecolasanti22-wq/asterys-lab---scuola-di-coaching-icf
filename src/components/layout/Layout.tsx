@@ -33,11 +33,14 @@ import { whatsappHref } from '../../utils/whatsapp';
 const ADVISOR_PHOTO = '/advisors/advisor-1.png';
 
 /**
- * Area riservata (Inner): è un'installazione WordPress separata servita dallo stesso
- * dominio sotto /inner. Non è una rotta di questo sito, quindi si linka con <a>: il
- * router non deve intercettarla o mostrerebbe la pagina "non trovata".
+ * Area riservata (Inner): è uno degli altri siti del multisito WordPress, non una rotta
+ * di questo sito — per questo si linka con <a> e non con <Link>, o il router la
+ * intercetterebbe mostrando la pagina "non trovata".
+ *
+ * Indirizzo assoluto di proposito: così il pulsante porta all'area riservata vera anche
+ * dalle anteprime, dove un percorso relativo non troverebbe nulla.
  */
-const INNER_URL = '/inner/';
+const INNER_URL = 'https://asteryslab.com/inner/';
 
 /** Logo ufficiale WhatsApp. */
 const WhatsAppIcon = ({ size = 22, className = '' }: { size?: number; className?: string }) => (
