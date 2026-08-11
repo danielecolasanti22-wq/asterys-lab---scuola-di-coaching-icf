@@ -165,8 +165,14 @@ curl -I https://asteryslab.com/sitemap.xml
 
 ### Se qualcosa non torna
 
-Togli le regole nginx dal pannello e applica: il sito torna esattamente a com'era.
-WordPress non è stato toccato, quindi il ripristino è immediato e completo.
+Nel campo delle direttive nginx, **rimetti il solo contenuto di
+`deploy/nginx-esistenti-multisite.conf`** (le regole che c'erano prima) e applica.
+
+> ⚠️ Non svuotare il campo: senza quelle regole il multisito non funziona. Il ripristino
+> è *rimettere quelle*, non toglierle tutte.
+
+Il sito torna esattamente a com'era: WordPress non è stato toccato, e i file del sito
+nuovo restano sul disco senza dare fastidio (nessuno li raggiunge più).
 
 ---
 

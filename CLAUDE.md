@@ -103,16 +103,25 @@ principale.
 **Non cancellare `wp-admin/`, `wp-includes/`, `wp-config.php`, `index.php`**: il nucleo è
 uno solo e spegnerebbe l'area riservata e tutti i sottositi insieme alla vetrina.
 
-I file del sito nuovo si **affiancano** a WordPress nella stessa cartella. nginx sceglie:
+I file del sito nuovo si **affiancano** a WordPress nella stessa cartella
+(`/var/www/vhosts/asteryslab.com/httpdocs`), senza cancellare nulla.
 
-1. esiste un file del sito nuovo? → lo serve
-2. esiste una cartella con `index.html`? → la serve
-3. altrimenti → **WordPress**
+⛔ **Il campo "Additional nginx directives" di Plesk NON è vuoto**: contiene le regole del
+multisito, quelle che tengono in piedi `/inner`, `/forms`, `/office`, `/2025`. Il campo è
+uno solo — sovrascriverlo senza rimetterle spegne quei siti all'istante. Il file generato
+da `npm run nginx` le include già in fondo, invariate; copia di riferimento in
+`deploy/nginx-esistenti-multisite.conf`.
 
-Il punto 3 è la rete di sicurezza, e rende l'operazione **reversibile**: togliendo le
-regole nginx si torna allo stato precedente, perché WordPress non è mai stato toccato.
+Quelle regole finiscono con *"se il file non esiste, passa a WordPress"*: è esattamente la
+logica di convivenza che serve. I file del sito nuovo vengono serviti come file, tutto il
+resto continua ad andare a WordPress, senza elencare i sottositi da nessuna parte.
 
-Procedura completa in **`deploy/LANCIO.md`**.
+L'operazione è **reversibile**: per tornare indietro si rimettono nel campo le sole regole
+del multisito (non si svuota il campo).
+
+Procedura completa in **`deploy/LANCIO.md`**. Rilevato dal pannello: nginx serve già da sé
+`html`/`webp`/`css`/`js`, la cache nginx è attiva (usare *Clear cache* dopo il caricamento),
+il traffico è di **99 GB/mese** — motivo per cui la produzione sta su Plesk e non su Vercel.
 
 ### I redirect sono scritti ma NON attivi
 187 rimandi 301 dai vecchi indirizzi (110 articoli + 77 pagine del WordPress attuale).
