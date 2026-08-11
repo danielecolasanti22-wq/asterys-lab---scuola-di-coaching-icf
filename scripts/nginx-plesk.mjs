@@ -82,10 +82,13 @@ righe.push('# chiude, quindi deve poter intervenire prima che la richiesta finis
 righe.push('');
 
 for (const r of config.redirects) {
-  if (r.famiglia) {
+  // Le regole di gruppo si riconoscono dal percorso con parametro (es. /tag/:resto*),
+  // che è il modo in cui Vercel esprime "questo prefisso e tutto ciò che ci sta sotto".
+  const famiglia = r.source.match(/^\/([^/]+)\/:[^/]+\*$/)?.[1];
+  if (famiglia) {
     // Archivi per tag, categoria e simili: una regola per l'intero gruppo, così vale
     // anche per gli indirizzi che non compaiono nella mappa del sito.
-    righe.push(`rewrite ^/${r.famiglia}(/.*)?$ ${r.destination} permanent;`);
+    righe.push(`rewrite ^/${famiglia}(/.*)?$ ${r.destination} permanent;`);
     continue;
   }
   // Vale sia con sia senza la barra finale: WordPress la usava, i link esterni possono

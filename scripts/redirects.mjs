@@ -230,15 +230,32 @@ for (const slug of articoliWp) {
     permanent: true,
   });
 }
-// Le famiglie (archivi per tag, categoria…) restano a parte: diventano una regola sola
-// per gruppo invece di centinaia di righe, e coprono anche gli indirizzi mai elencati.
+// Le famiglie (archivi per tag, categoria…) diventano una regola sola per gruppo invece
+// di centinaia di righe, e coprono anche gli indirizzi mai elencati.
+//
+// NB: qui NON si aggiungono campi propri all'oggetto. Vercel valida vercel.json contro
+// il suo schema e rifiuta la pubblicazione se trova proprietà che non conosce — lo
+// script per nginx riconosce queste regole dal formato del percorso.
 for (const f of FAMIGLIE) {
   redirects.push({
     source: `/${f.prefisso}/:resto*`,
     destination: f.destinazione,
     permanent: true,
-    famiglia: f.prefisso,
   });
+}
+
+// Vercel valida vercel.json contro il suo schema e RIFIUTA la pubblicazione se trova
+// proprietà che non conosce. È già successo con un campo aggiunto per comodità: meglio
+// accorgersene qui che da un deploy fallito.
+const CHIAVI_AMMESSE = new Set(['source', 'destination', 'permanent', 'statusCode', 'has', 'missing']);
+for (const [i, r] of redirects.entries()) {
+  const estranee = Object.keys(r).filter((k) => !CHIAVI_AMMESSE.has(k));
+  if (estranee.length) {
+    throw new Error(
+      `redirects[${i}] (${r.source}) ha proprietà che Vercel non accetta: ${estranee.join(', ')}.\n` +
+        `Ammesse: ${[...CHIAVI_AMMESSE].join(', ')}.`,
+    );
+  }
 }
 
 const vercelPath = join(ROOT, 'vercel.json');

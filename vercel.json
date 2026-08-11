@@ -1172,44 +1172,37 @@
     {
       "source": "/tag/:resto*",
       "destination": "/blog",
-      "permanent": true,
-      "famiglia": "tag"
+      "permanent": true
     },
     {
       "source": "/category/:resto*",
       "destination": "/blog",
-      "permanent": true,
-      "famiglia": "category"
+      "permanent": true
     },
     {
       "source": "/type/:resto*",
       "destination": "/blog",
-      "permanent": true,
-      "famiglia": "type"
+      "permanent": true
     },
     {
       "source": "/author/:resto*",
       "destination": "/blog",
-      "permanent": true,
-      "famiglia": "author"
+      "permanent": true
     },
     {
       "source": "/faq_category/:resto*",
       "destination": "/corsi",
-      "permanent": true,
-      "famiglia": "faq_category"
+      "permanent": true
     },
     {
       "source": "/avada_faq/:resto*",
       "destination": "/corsi",
-      "permanent": true,
-      "famiglia": "avada_faq"
+      "permanent": true
     },
     {
       "source": "/faq-items/:resto*",
       "destination": "/corsi",
-      "permanent": true,
-      "famiglia": "faq-items"
+      "permanent": true
     }
   ]
 }
