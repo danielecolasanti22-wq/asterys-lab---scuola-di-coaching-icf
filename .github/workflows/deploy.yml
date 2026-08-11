@@ -21,9 +21,20 @@
 name: Pubblica su asteryslab.com
 
 on:
-  push:
-    branches: [main]
-  # Permette di ripubblicare a mano dalla scheda Actions, senza fare un commit finto.
+  # ⏸ PUBBLICAZIONE AUTOMATICA NON ANCORA ATTIVA.
+  #
+  # Di proposito: il primo caricamento del sito si fa a mano, guardando i file salire.
+  # L'automazione ha senso quando il terreno è noto — docroot giusta, permessi a posto,
+  # sito che funziona — non mentre lo si sta scoprendo.
+  #
+  # Per ora si avvia solo a comando, da Actions > Pubblica su asteryslab.com > Run
+  # workflow: nessun push pubblica nulla.
+  #
+  # PER ACCENDERLA, quando il primo lancio è andato a buon fine: togliere il commento
+  # alle tre righe qui sotto. Da quel momento ogni push su main pubblica.
+  #
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 # Se arrivano più push ravvicinati, pubblica solo l'ultimo invece di accavallare i
