@@ -113,6 +113,51 @@ quei file), ma nel dubbio: le regole nginx si ripristinano rimettendo
 
 ---
 
+## Cosa può andare storto, e cosa succede
+
+Analisi fatta prima di configurare, non dopo. Ogni riga è un problema reale di questo
+server, non un elenco teorico.
+
+| Rischio | Come è gestito |
+|---|---|
+| **La home mostra ancora WordPress** — nella cartella convivono `index.html` e `index.php`, e a decidere sarebbe l'ordine con cui Apache cerca i file indice | Regola nginx esplicita: `rewrite ^/$ /index.html break`. Non dipendiamo da quell'ordine |
+| **Pagine che rimandano a file non ancora caricati** — un HTML nuovo che cerca un javascript non ancora arrivato | Caricamento in due passaggi: prima le risorse, poi le pagine. In ogni istante il sito è coerente |
+| **Il file di servizio del deploy pubblico** — elenca tutti i file del sito | Bloccato in nginx insieme a ogni altro file nascosto (con eccezione per `.well-known`, che serve al certificato) |
+| **Due pubblicazioni in contemporanea** | `concurrency`: se arrivano più push ravvicinati, pubblica solo l'ultimo |
+| **Pubblicato qualcosa di rotto** | Quattro controlli prima di caricare. Se uno fallisce, non parte nulla |
+| **L'area riservata smette di rispondere** | Controllata **dopo ogni pubblicazione**: se `/inner` non risponde, la pubblicazione risulta fallita e lo vedi subito |
+| **Caricamento interrotto a metà** | Al push successivo riprende: tiene il conto di cosa ha già caricato |
+| **Cache di nginx** | Timeout 5 secondi: si riallinea da sé. Per forzare: *Clear cache* nel pannello |
+
+### Il rischio che resta, ed è tuo
+
+**Ogni push va online.** Non c'è un passaggio di approvazione: se qualcuno pubblica una
+modifica non pronta, quella modifica è sul sito in due minuti.
+
+Con più persone che lavorano al sito conviene decidere come gestirlo. Tre modi, dal più
+semplice:
+
+1. **Accordo fra persone** — si pubblica solo quando è pronto. Funziona se siete in
+   pochi e vi parlate.
+2. **Ramo di lavorazione** — si lavora su un ramo separato e si porta su `main` solo il
+   finito. Il sito riflette sempre e solo `main`.
+3. **Approvazione obbligatoria** — su GitHub si può richiedere che ogni modifica a `main`
+   passi da una revisione. Più rigido, ma nessuno pubblica per sbaglio.
+
+Se i tuoi colleghi lavoreranno sul sito, il **2** è il compromesso giusto: nessuno resta
+bloccato, ma niente arriva online senza passare da te.
+
+### Se il sito online non va, e serve tornare indietro
+
+```bash
+git revert HEAD    # annulla l'ultima modifica
+# poi push → il sito torna alla versione precedente in ~2 minuti
+```
+
+Ogni versione pubblicata corrisponde a un commit: si torna indietro di uno, o di dieci.
+
+---
+
 ## Perché questa strada e non altre
 
 **Perché non caricare i file a mano.** Con modifiche giornaliere diventa il collo di

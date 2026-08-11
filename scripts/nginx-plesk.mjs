@@ -53,7 +53,26 @@ righe.push('#');
 righe.push('# Plesk > Domini > asteryslab.com > Hosting & DNS > Apache & nginx');
 righe.push('# ============================================================================');
 righe.push('');
-righe.push('# --- PARTE 1 di 2: RIMANDI DAL VECCHIO SITO (nuovi) --------------------------');
+righe.push('# --- PARTE 1 di 3: DUE PROTEZIONI -------------------------------------------');
+righe.push('');
+righe.push('# a) La home deve essere quella del sito nuovo.');
+righe.push('# Nella cartella convivono index.html (sito nuovo) e index.php (WordPress), e a');
+righe.push('# decidere chi vince sarebbe l\'ordine con cui Apache cerca i file indice. Invece');
+righe.push('# di dipendere da quell\'ordine, qui lo diciamo esplicitamente.');
+righe.push('rewrite ^/$ /index.html break;');
+righe.push('');
+righe.push('# b) I file nascosti non devono essere scaricabili.');
+righe.push('# La pubblicazione automatica lascia nella cartella del sito i propri file di');
+righe.push('# servizio (.deploy-risorse.json, .deploy-pagine.json), che elencano tutti i file');
+righe.push('# caricati. Questa regola li chiude, e con loro qualunque altro file nascosto che');
+righe.push('# dovesse finire li\' per sbaglio (.env, .git, backup di configurazioni).');
+righe.push('# Eccezione obbligatoria: .well-known, che serve al rinnovo del certificato HTTPS.');
+righe.push('location ~ /\\.(?!well-known) {');
+righe.push('    deny all;');
+righe.push('    return 404;');
+righe.push('}');
+righe.push('');
+righe.push('# --- PARTE 2 di 3: RIMANDI DAL VECCHIO SITO ---------------------------------');
 righe.push(`# ${config.redirects.length} indirizzi del vecchio sito, gia' indicizzati su Google. Il 301 dice ai`);
 righe.push('# motori che la pagina si e\' spostata in via definitiva, cosi\' il posizionamento');
 righe.push('# accumulato passa all\'indirizzo nuovo invece di andare perso.');
@@ -69,7 +88,7 @@ for (const r of config.redirects) {
 }
 
 righe.push('');
-righe.push('# --- PARTE 2 di 2: REGOLE DEL MULTISITO (gia\' presenti, NON TOCCARE) ---------');
+righe.push('# --- PARTE 3 di 3: REGOLE DEL MULTISITO (gia\' presenti, NON TOCCARE) ---------');
 righe.push('# Sono quelle che tengono in piedi /inner, /forms, /office e /2025.');
 righe.push('# L\'ultima parte ("se il file non esiste, passa a WordPress") e\' anche cio\' che');
 righe.push('# permette al sito nuovo di convivere: i suoi file vengono serviti come file,');

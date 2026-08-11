@@ -69,7 +69,15 @@ jobs:
             exit 1
           fi
 
-      - name: Carica su Plesk
+      # ── Il caricamento avviene in due passaggi, e l'ordine conta ──────────────
+      # Le pagine HTML rimandano a file tipo assets/index-<impronta>.js. Se una pagina
+      # nuova arrivasse prima del file a cui rimanda, per qualche secondo il sito
+      # risulterebbe rotto a chi lo sta visitando in quel momento.
+      # Caricando PRIMA le risorse (che hanno l'impronta nel nome, quindi non
+      # sovrascrivono nulla di ciò che è in uso) e POI le pagine, in ogni istante il
+      # sito è coerente: o serve tutto il vecchio, o serve tutto il nuovo.
+
+      - name: Carica le risorse (immagini, css, javascript)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -78,7 +86,34 @@ jobs:
           protocol: ftps
           local-dir: ./dist/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          # Rete di sicurezza esplicita: anche per sbaglio, WordPress non si tocca.
+          state-name: .deploy-risorse.json
+          # In questo passaggio si escludono le pagine: arrivano dopo.
+          exclude: |
+            **/*.html
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            wp-admin/**
+            wp-includes/**
+            wp-content/**
+            wp-config.php
+            index.php
+            .htaccess
+            inner/**
+            forms/**
+            office/**
+            2025/**
+
+      - name: Carica le pagine
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          state-name: .deploy-pagine.json
           exclude: |
             **/.git*
             **/.git*/**
@@ -94,5 +129,16 @@ jobs:
             office/**
             2025/**
 
-      - name: Fatto
-        run: echo "Sito aggiornato su https://asteryslab.com"
+      # Controllo finale dall'esterno: se l'area riservata non risponde, va saputo
+      # subito e non dal primo iscritto che scrive.
+      - name: Verifica che il sito e l'area riservata rispondano
+        run: |
+          sleep 5
+          HOME_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 https://asteryslab.com/ || echo "000")
+          INNER_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 https://asteryslab.com/inner/ || echo "000")
+          echo "home: $HOME_CODE | area riservata: $INNER_CODE"
+          if [ "$INNER_CODE" != "200" ] && [ "$INNER_CODE" != "301" ] && [ "$INNER_CODE" != "302" ]; then
+            echo "::error::L'area riservata risponde $INNER_CODE. Controllare subito /inner."
+            exit 1
+          fi
+          echo "Sito aggiornato su https://asteryslab.com"
