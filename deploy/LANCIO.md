@@ -81,7 +81,8 @@ Backup completo del dominio da Plesk. Finché non è fatto, non toccare nient'al
 
 ### 2. Carica i file
 
-Il **contenuto** di `dist/` va nella docroot (di solito `httpdocs/`), accanto ai file di
+Il **contenuto** di `dist/` va nella docroot — verificata su Plesk:
+`/var/www/vhosts/asteryslab.com/httpdocs` — accanto ai file di
 WordPress. Non la cartella `dist`: il suo contenuto.
 
 Alla fine nella docroot convivono:
@@ -110,14 +111,28 @@ L'unico file che si sovrappone è `index.html`, che WordPress non usa.
 > `robots.txt` e `sitemap.xml`: se WordPress ne generava di suoi, ora vincono i file
 > nuovi. È quello che vogliamo.
 
-### 3. Incolla le regole nginx
+### 3. Sostituisci le direttive nginx
 
-Plesk → **Domini** → asteryslab.com → **Apache & nginx Settings** →
-**Additional nginx directives**: incolla `deploy/nginx-asteryslab.conf` e premi
-**Applica** (non basta salvare).
+Plesk → **Domini** → asteryslab.com → **Hosting & DNS** → **Apache & nginx** →
+campo **Additional nginx directives**.
 
-Se compare un errore tipo *"duplicate location"*, Plesk ha già una sua `location /`:
-in fondo al file trovi la variante alternativa, con le istruzioni per sostituirla.
+> ⛔ **Quel campo non è vuoto: contiene le regole che tengono in piedi il multisito.**
+> Il file `deploy/nginx-asteryslab.conf` **le include già**, in fondo, invariate. Quindi:
+> seleziona tutto il contenuto attuale del campo, sostituiscilo con il file, e le regole
+> tornano al loro posto insieme ai rimandi.
+>
+> Se incollassi solo i rimandi cancellando quelle regole, `/inner`, `/forms`, `/office`
+> e `/2025` smetterebbero di rispondere all'istante.
+
+Il file è in due parti, in quest'ordine:
+1. i **187 rimandi** dai vecchi indirizzi (nuovi);
+2. le **regole del multisito** (quelle che c'erano, tali e quali).
+
+Poi premi **Apply** (o OK). Se Plesk segnala un errore di sintassi, la modifica viene
+**rifiutata**, non applicata a metà: il sito resta com'è e puoi correggere con calma.
+
+Subito dopo, sempre da quella pagina, usa **Clear cache**: nginx ha la cache attiva e
+potrebbe servire per qualche secondo le pagine vecchie.
 
 ### 4. Verifica, in quest'ordine
 
@@ -171,28 +186,38 @@ Domanda pratica: per cambiare una data devi ricaricare tutto?
 Quindi si spostano **circa 7 MB su 53**. Le pagine HTML pesano perché ognuna contiene il
 testo già renderizzato — è esattamente ciò che permette ai motori di leggerle.
 
-### Il modo pratico
+### Come lo carichiamo: file o Git?
 
-Usa un client FTP con la **sincronizzazione** (FileZilla → *Confronta directory*, oppure
-Cyberduck, oppure Transmit): confronta locale e server e carica solo ciò che è diverso.
-Per una modifica normale sono pochi secondi.
-
-Il ciclo diventa:
+**Per iniziare: file, con un client che sincronizza.** FileZilla (*Confronta directory*),
+Cyberduck o Transmit confrontano locale e server e caricano solo ciò che è diverso.
 
 ```bash
-npm run build     # rigenera dist/
-# poi: sincronizza dist/ verso la docroot col client FTP
+npm run build     # io faccio la modifica e rigenero dist/
+# tu: sincronizzi dist/ verso httpdocs col client FTP
 ```
+
+Perché questo e non Git, almeno all'inizio: **non aggiunge parti mobili**. Funziona
+sempre, non dipende da configurazioni, e se qualcosa non torna vedi esattamente quali
+file sono cambiati. Il giorno del lancio è la qualità che conta di più.
 
 Le regole nginx **non si toccano più**: si impostano una volta sola. Vanno rigenerate solo
 se cambiano gli indirizzi delle pagine o si aggiungono rimandi.
 
-### Se diventa frequente
+### Git, quando ha senso passarci
 
-Plesk ha il **supporto Git integrato** (*Siti web e domini → Git*). Si può collegare il
-repository e fargli tirare giù le modifiche con un click, o in automatico a ogni push.
-Richiede una preparazione una tantum — se le modifiche diventano settimanali, vale la
-pena: chiedimelo e la configuriamo.
+Plesk ha il supporto Git integrato, e Node è disponibile sul server. Due modi:
+
+| | Come funziona | Nota |
+|---|---|---|
+| **Branch di pubblicazione** | Io compilo e committo il risultato su un ramo `deploy`; Plesk lo tira giù con un click o in automatico | Più semplice. Il repository cresce, ma le immagini identiche non vengono duplicate |
+| **Compilazione sul server** | Plesk tira giù il codice sorgente ed esegue lì la compilazione | Più pulito, ma il server deve installare le dipendenze a ogni pubblicazione: più lento e con più cose che possono rompersi |
+
+Conviene passarci **se le modifiche diventano settimanali**. Con la frequenza attuale —
+qualche ritocco ogni tanto, fatto insieme — la sincronizzazione via FTP è più che
+sufficiente e non c'è niente da mantenere.
+
+Quando vorrai, configuriamo il ramo di pubblicazione: è mezz'ora di lavoro, e da lì in
+poi pubblicare diventa un click su Plesk.
 
 ---
 
