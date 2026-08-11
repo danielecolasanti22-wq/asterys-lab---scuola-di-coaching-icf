@@ -82,6 +82,12 @@ righe.push('# chiude, quindi deve poter intervenire prima che la richiesta finis
 righe.push('');
 
 for (const r of config.redirects) {
+  if (r.famiglia) {
+    // Archivi per tag, categoria e simili: una regola per l'intero gruppo, così vale
+    // anche per gli indirizzi che non compaiono nella mappa del sito.
+    righe.push(`rewrite ^/${r.famiglia}(/.*)?$ ${r.destination} permanent;`);
+    continue;
+  }
   // Vale sia con sia senza la barra finale: WordPress la usava, i link esterni possono
   // avere l'una o l'altra forma.
   righe.push(`rewrite ^${esc(r.source)}/?$ ${r.destination} permanent;`);

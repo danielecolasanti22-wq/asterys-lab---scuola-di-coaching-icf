@@ -119,7 +119,75 @@ const PAGINE = {
   informativa: '/privacy',
   'incarico-esterno-per-trattamento-dati': '/privacy',
   'elenco-contratti-quadro': '/termini',
+
+  // FAQ del vecchio sito: erano pagine a sé, ognuna su una domanda. Vanno mandate dove
+  // quella domanda trova risposta adesso, non genericamente ai corsi: chi cercava
+  // "quanto guadagna un coach" deve ritrovarsi davanti quella risposta.
+  'faq-items/quanto-guadagna-un-coach': '/blog/quanto-guadagna-e-quanto-costa-diventare-coach-in-italia',
+  'faq-items/come-posso-fare-per-diventare-un-coach': '/blog/come-diventare-coach-professionista-in-italia',
+  'faq-items/lavorare-come-coach': '/blog/perche-diventare-coach',
+  'faq-items/come-posso-scegliere-un-coach': '/blog/come-scegliere-una-scuola-di-coaching-accreditata-icf',
+  'faq-items/borse-di-studio': '/corsi/apcm',
+  'faq-items/pagare-a-rate': '/corsi/apcm',
+  'faq-items/sede-asterys-lab': '/about',
+  'faq-items/come-posso-capire-se-il-coaching-fa-al-caso-mio': '/personal-coaching',
+  'faq-items/cosa-posso-aspettarmi-da-un-coach': '/personal-coaching',
+  'faq-items/cosa-succede-lavorando-con-un-coach': '/personal-coaching',
+  'faq-items/quando-e-opportuno-lavorare-con-un-coach': '/personal-coaching',
+  'faq-items/quanto-dura-un-percorso-di-coaching': '/personal-coaching',
+  'faq-items/qual-e-il-focus-del-lavoro-con-un-coach': '/personal-coaching',
+  'faq-items/posso-parlare-di-tutto-con-un-coach': '/personal-coaching',
+  'faq-items/posso-sospendere-un-percorso-di-coaching': '/personal-coaching',
+  'faq-items/ha-senso-lavorare-con-un-coach-su-obiettivi-minori': '/personal-coaching',
+  'faq-items/il-coaching-crea-dipendenza': '/personal-coaching',
+  'faq-items/problemi-sviluppo-personale': '/personal-coaching',
+  'faq-items/azienda-si-puo-fare-coaching-chi-non-lo-desidera': '/aziende',
+
+  // Carrello e account della VECCHIA vetrina. Erano pagine della vetrina, quindi vanno
+  // rimandate come tutte le altre; restano dentro il sito nuovo e non puntano all'area
+  // riservata, che ha i suoi indirizzi e non va toccata da qui.
+  cassa: '/corsi',
+  'cassa/confirmation': '/corsi',
+  'cassa/order-history': '/corsi',
+  'cassa/ricevuta': '/corsi',
+  'cassa/transazione-fallita': '/corsi',
+  login: '/',
+  'gestione-account': '/',
+  'manage-account': '/',
+  'benvenuto-in-asteryslab': '/',
+  'conferma-via-email': '/',
+
+  // Pagine di ringraziamento dopo un modulo: il modulo ora è su /iscriviti.
+  'grazie-per-averci-contattati': '/iscriviti',
+  'grazie-per-la-richiesta-di-info-sul-pcm': '/corsi/apcm',
+  'grazie-per-la-richiesta-di-iscrizione-al-pcm': '/corsi/apcm',
+  'grazie-per-la-richiesta-di-info-sul-pfm': '/corsi',
+  'grazie-per-la-richiesta-di-iscrizione-al-pfm': '/corsi',
+
+  // Residui tecnici e pagine di prova: non hanno un corrispondente, vanno alla home.
+  prova: '/',
+  popup03: '/',
+  'maintenance-mode': '/',
+  'login-customizer': '/',
+  'incentivo-rm': '/',
+  'report-di-sessione-pcm': '/',
+  'scuola-coaching-facilitazione/feedback-finale-apcm-2o-livello': '/corsi/apcm',
 };
+
+/**
+ * Famiglie di indirizzi con un solo criterio: archivi per tag, categoria e simili.
+ * Si trattano a gruppo invece che uno per uno — sono 240 e crescerebbero da soli — e
+ * così si coprono anche quelli mai finiti nella mappa del sito.
+ */
+const FAMIGLIE = [
+  { prefisso: 'tag', destinazione: '/blog' },
+  { prefisso: 'category', destinazione: '/blog' },
+  { prefisso: 'type', destinazione: '/blog' },
+  { prefisso: 'author', destinazione: '/blog' },
+  { prefisso: 'faq_category', destinazione: '/corsi' },
+  { prefisso: 'avada_faq', destinazione: '/corsi' },
+  { prefisso: 'faq-items', destinazione: '/corsi' },
+];
 
 const NUOVO = fileURLToPath(new URL('..', import.meta.url));
 
@@ -140,15 +208,36 @@ const articoliWp = read('scripts/wp-articoli.txt')
   .map((s) => s.trim())
   .filter(Boolean);
 
+/**
+ * Indirizzi che appartengono ad ALTRI siti del multisito. Non vanno mai rimandati: sono
+ * applicazioni a sé, con i loro contenuti e i loro utenti. Qui si rimanda soltanto ciò
+ * che era la vecchia vetrina.
+ */
+const ALTRI_SITI = ['inner', 'forms', 'office', '2025'];
+const appartieneAdAltroSito = (p) =>
+  ALTRI_SITI.some((s) => p === s || p.startsWith(`${s}/`));
+
 const redirects = [];
 for (const [vecchio, nuovo] of Object.entries(PAGINE)) {
+  if (appartieneAdAltroSito(vecchio)) continue;
   redirects.push({ source: `/${vecchio}`, destination: nuovo, permanent: true });
 }
 for (const slug of articoliWp) {
+  if (appartieneAdAltroSito(slug)) continue;
   redirects.push({
     source: `/${slug}`,
     destination: slugAttuali.has(slug) ? `/blog/${slug}` : '/blog',
     permanent: true,
+  });
+}
+// Le famiglie (archivi per tag, categoria…) restano a parte: diventano una regola sola
+// per gruppo invece di centinaia di righe, e coprono anche gli indirizzi mai elencati.
+for (const f of FAMIGLIE) {
+  redirects.push({
+    source: `/${f.prefisso}/:resto*`,
+    destination: f.destinazione,
+    permanent: true,
+    famiglia: f.prefisso,
   });
 }
 

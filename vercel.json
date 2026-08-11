@@ -415,6 +415,211 @@
       "permanent": true
     },
     {
+      "source": "/faq-items/quanto-guadagna-un-coach",
+      "destination": "/blog/quanto-guadagna-e-quanto-costa-diventare-coach-in-italia",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/come-posso-fare-per-diventare-un-coach",
+      "destination": "/blog/come-diventare-coach-professionista-in-italia",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/lavorare-come-coach",
+      "destination": "/blog/perche-diventare-coach",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/come-posso-scegliere-un-coach",
+      "destination": "/blog/come-scegliere-una-scuola-di-coaching-accreditata-icf",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/borse-di-studio",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/pagare-a-rate",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/sede-asterys-lab",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/come-posso-capire-se-il-coaching-fa-al-caso-mio",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/cosa-posso-aspettarmi-da-un-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/cosa-succede-lavorando-con-un-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/quando-e-opportuno-lavorare-con-un-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/quanto-dura-un-percorso-di-coaching",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/qual-e-il-focus-del-lavoro-con-un-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/posso-parlare-di-tutto-con-un-coach",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/posso-sospendere-un-percorso-di-coaching",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/ha-senso-lavorare-con-un-coach-su-obiettivi-minori",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/il-coaching-crea-dipendenza",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/problemi-sviluppo-personale",
+      "destination": "/personal-coaching",
+      "permanent": true
+    },
+    {
+      "source": "/faq-items/azienda-si-puo-fare-coaching-chi-non-lo-desidera",
+      "destination": "/aziende",
+      "permanent": true
+    },
+    {
+      "source": "/cassa",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/cassa/confirmation",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/cassa/order-history",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/cassa/ricevuta",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/cassa/transazione-fallita",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/gestione-account",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/manage-account",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/benvenuto-in-asteryslab",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/conferma-via-email",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/grazie-per-averci-contattati",
+      "destination": "/iscriviti",
+      "permanent": true
+    },
+    {
+      "source": "/grazie-per-la-richiesta-di-info-sul-pcm",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/grazie-per-la-richiesta-di-iscrizione-al-pcm",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
+      "source": "/grazie-per-la-richiesta-di-info-sul-pfm",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/grazie-per-la-richiesta-di-iscrizione-al-pfm",
+      "destination": "/corsi",
+      "permanent": true
+    },
+    {
+      "source": "/prova",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/popup03",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/maintenance-mode",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/login-customizer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/incentivo-rm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/report-di-sessione-pcm",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/scuola-coaching-facilitazione/feedback-finale-apcm-2o-livello",
+      "destination": "/corsi/apcm",
+      "permanent": true
+    },
+    {
       "source": "/giovanna-dalessio-eletta-nel-board-della-icf",
       "destination": "/blog",
       "permanent": true
@@ -963,6 +1168,48 @@
       "source": "/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle",
       "destination": "/blog/credenziali-icf-cosa-sono-a-cosa-servono-e-come-ottenerle",
       "permanent": true
+    },
+    {
+      "source": "/tag/:resto*",
+      "destination": "/blog",
+      "permanent": true,
+      "famiglia": "tag"
+    },
+    {
+      "source": "/category/:resto*",
+      "destination": "/blog",
+      "permanent": true,
+      "famiglia": "category"
+    },
+    {
+      "source": "/type/:resto*",
+      "destination": "/blog",
+      "permanent": true,
+      "famiglia": "type"
+    },
+    {
+      "source": "/author/:resto*",
+      "destination": "/blog",
+      "permanent": true,
+      "famiglia": "author"
+    },
+    {
+      "source": "/faq_category/:resto*",
+      "destination": "/corsi",
+      "permanent": true,
+      "famiglia": "faq_category"
+    },
+    {
+      "source": "/avada_faq/:resto*",
+      "destination": "/corsi",
+      "permanent": true,
+      "famiglia": "avada_faq"
+    },
+    {
+      "source": "/faq-items/:resto*",
+      "destination": "/corsi",
+      "permanent": true,
+      "famiglia": "faq-items"
     }
   ]
 }
