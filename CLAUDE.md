@@ -153,11 +153,9 @@ Ogni pagina ha titolo e descrizione propri; dati strutturati `EducationalOrganiz
 - **4 immagini nuove** per i primi articoli del blog (le attuali sono adattate male) —
   vanno richieste, se ne è dimenticato.
 - Ok della direzione per pubblicare.
-- Verificare nella bacheca di rete che nessun sottosito si chiami come una sezione del
-  sito nuovo (`/corsi`, `/blog`, `/eventi`, `/aziende`, `/about`, `/iscriviti`,
-  `/personal-coaching`, `/privacy`, `/cookie`, `/termini`, `/borsa-di-studio`,
-  `/credito-ai-talenti`, `/scuola-di-coaching-*`): il file statico avrebbe la precedenza
-  e quel sottosito diventerebbe irraggiungibile.
+- ~~Verificare i nomi dei sottositi~~ **fatto (11 ago)**: la rete ha `/` (vetrina),
+  `/inner`, `/forms`, `/office`, `/2025`. Nessuno collide con le sezioni del sito nuovo.
+  Se in futuro se ne aggiunge uno, il controllo va rifatto.
 
 **Contenuti** (piano completo: vedi il documento personas nella memoria del progetto)
 1. Guida "coach o psicologo" + "a cosa serve un coach" — il buco più ampio
