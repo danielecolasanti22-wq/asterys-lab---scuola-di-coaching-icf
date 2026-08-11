@@ -1,0 +1,98 @@
+# Pubblicazione automatica su asteryslab.com
+#
+# A ogni push su main: compila il sito e carica su Plesk solo i file cambiati.
+# Da quel momento pubblicare una modifica = fare push. Nient'altro.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# ⛔ PERCHÉ NON CANCELLA WORDPRESS
+#
+# Nella cartella del sito convivono i file di questo sito e quelli del WordPress
+# multisito (wp-admin, wp-content, index.php…), che tengono in piedi /inner, /forms,
+# /office e /2025.
+#
+# Il caricamento tiene un elenco di ciò che ha messo lui (.ftp-deploy-sync-state.json)
+# e agisce SOLO su quello: i file di WordPress non li ha caricati lui, quindi non li
+# vede e non li tocca. In più `exclude` li protegge esplicitamente, come seconda rete.
+#
+# `dangerous-clean-slate` NON va mai attivato: svuoterebbe la cartella, WordPress
+# compreso.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: Pubblica su asteryslab.com
+
+on:
+  push:
+    branches: [main]
+  # Permette di ripubblicare a mano dalla scheda Actions, senza fare un commit finto.
+  workflow_dispatch:
+
+# Se arrivano più push ravvicinati, pubblica solo l'ultimo invece di accavallare i
+# caricamenti sullo stesso server.
+concurrency:
+  group: deploy-produzione
+  cancel-in-progress: true
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il codice
+        uses: actions/checkout@v4
+
+      - name: Prepara Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Installa le dipendenze
+        run: npm ci
+
+      - name: Controlla i tipi
+        run: npm run lint
+
+      - name: Compila il sito e genera le pagine
+        run: npm run build
+
+      # Se il prerender fallisse, dist/ conterrebbe solo il guscio vuoto: meglio
+      # accorgersene qui che scoprirlo online.
+      - name: Verifica che le pagine siano state generate
+        run: |
+          PAGINE=$(find dist -name index.html | wc -l)
+          echo "Pagine generate: $PAGINE"
+          if [ "$PAGINE" -lt 50 ]; then
+            echo "::error::Solo $PAGINE pagine generate: il prerender non ha funzionato. Pubblicazione annullata."
+            exit 1
+          fi
+          if ! grep -q "Asterys" dist/index.html; then
+            echo "::error::La home non contiene il contenuto atteso. Pubblicazione annullata."
+            exit 1
+          fi
+
+      - name: Carica su Plesk
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Rete di sicurezza esplicita: anche per sbaglio, WordPress non si tocca.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            wp-admin/**
+            wp-includes/**
+            wp-content/**
+            wp-config.php
+            index.php
+            .htaccess
+            inner/**
+            forms/**
+            office/**
+            2025/**
+
+      - name: Fatto
+        run: echo "Sito aggiornato su https://asteryslab.com"

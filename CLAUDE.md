@@ -18,6 +18,15 @@ stato deciso e perché, e cosa non va rifatto da capo.
   WordPress. Si aspetta l'ok della direzione per pubblicare.
 - Si scrive in italiano: interfaccia, commenti nel codice, messaggi di commit.
 
+## Pubblicare una modifica
+
+**Il push pubblica.** `.github/workflows/deploy.yml` compila e carica su Plesk a ogni push
+su `main`: io committo, Daniele fa push, il sito è online in ~2 minuti. Nessun FTP a mano.
+
+Il caricamento si ferma da solo se il controllo tipi, la compilazione o la verifica delle
+pagine generate falliscono — il sito online resta quello di prima. Non tocca i file di
+WordPress (vedi le esclusioni nel workflow). Dettagli in `deploy/PUBBLICAZIONE-AUTOMATICA.md`.
+
 ## Comandi
 
 ```bash
