@@ -159,8 +159,6 @@ Ogni pagina ha titolo e descrizione propri; dati strutturati `EducationalOrganiz
 ## Cosa resta da fare
 
 **In attesa di Daniele**
-- **4 immagini nuove** per i primi articoli del blog (le attuali sono adattate male) —
-  vanno richieste, se ne è dimenticato.
 - Ok della direzione per pubblicare.
 - ~~Verificare i nomi dei sottositi~~ **fatto (11 ago)**: la rete ha `/` (vetrina),
   `/inner`, `/forms`, `/office`, `/2025`. Nessuno collide con le sezioni del sito nuovo.

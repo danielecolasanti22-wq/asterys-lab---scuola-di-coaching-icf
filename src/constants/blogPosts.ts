@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     "date": "8 novembre 2025",
     "author": "Redazione Asterys Lab",
     "readTime": "6 min",
-    "img": "/blog/quanto-guadagna-e-quanto-costa-diventare-coach-in-italia.png",
+    "img": "/blog/quanto-guadagna-e-quanto-costa-diventare-coach-in-italia.jpg",
     "content": [
       {
         "type": "p",
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
     "date": "4 novembre 2025",
     "author": "Redazione Asterys Lab",
     "readTime": "7 min",
-    "img": "/blog/come-scegliere-una-scuola-di-coaching-accreditata-icf.png",
+    "img": "/blog/come-scegliere-una-scuola-di-coaching-accreditata-icf.jpg",
     "content": [
       {
         "type": "p",
@@ -379,7 +379,7 @@ export const blogPosts: BlogPost[] = [
     "date": "1 novembre 2025",
     "author": "Redazione Asterys Lab",
     "readTime": "6 min",
-    "img": "/blog/rinnovo-credenziale-icf-cce-e-mentor-coaching.png",
+    "img": "/blog/rinnovo-credenziale-icf-cce-e-mentor-coaching.jpg",
     "content": [
       {
         "type": "p",
