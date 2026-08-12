@@ -128,9 +128,16 @@ resto continua ad andare a WordPress, senza elencare i sottositi da nessuna part
 L'operazione è **reversibile**: per tornare indietro si rimettono nel campo le sole regole
 del multisito (non si svuota il campo).
 
-Procedura completa in **`deploy/LANCIO.md`**. Rilevato dal pannello: nginx serve già da sé
-`html`/`webp`/`css`/`js`, la cache nginx è attiva (usare *Clear cache* dopo il caricamento),
-il traffico è di **99 GB/mese** — motivo per cui la produzione sta su Plesk e non su Vercel.
+Procedura completa in **`deploy/LANCIO.md`**.
+
+Rilevato dal pannello (12 ago): docroot `/var/www/vhosts/asteryslab.com/httpdocs`, utente
+`asteryslab`, nginx serve già da sé `html`/`webp`/`css`/`js`, cache nginx attiva (usare
+*Clear cache* dopo il caricamento), spazio e traffico **illimitati** (107 GB/mese) — motivo
+per cui la produzione sta su Plesk e non su Vercel.
+
+⛔ **Non esiste nessun backup** (Backup Manager vuoto, nessuna copia programmata). È un
+rischio che il progetto ha già oggi, su un dominio che ospita gli iscritti: va fatto un
+backup prima di qualsiasi intervento, e vale la pena impostarne uno periodico.
 
 ### I redirect sono scritti ma NON attivi
 187 rimandi 301 dai vecchi indirizzi (110 articoli + 77 pagine del WordPress attuale).
