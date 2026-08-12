@@ -20,12 +20,24 @@ stato deciso e perché, e cosa non va rifatto da capo.
 
 ## Pubblicare una modifica
 
-**Il push pubblica.** `.github/workflows/deploy.yml` compila e carica su Plesk a ogni push
-su `main`: io committo, Daniele fa push, il sito è online in ~2 minuti. Nessun FTP a mano.
+Il repository ha **due rami**: `main` con il codice sorgente, `pubblicazione` con il sito
+già compilato. Plesk legge **`pubblicazione`** (il sorgente non gli serve, e compilare sul
+server sarebbe più lento e più fragile).
 
-Il caricamento si ferma da solo se il controllo tipi, la compilazione o la verifica delle
-pagine generate falliscono — il sito online resta quello di prima. Non tocca i file di
-WordPress (vedi le esclusioni nel workflow). Dettagli in `deploy/PUBBLICAZIONE-AUTOMATICA.md`.
+```bash
+npm run build      # rigenera le 74 pagine in dist/
+npm run pubblica   # copia il risultato nel ramo `pubblicazione`
+```
+
+Poi Daniele fa push di entrambi i rami e su Plesk preme *Pull Updates* (o lo lascia fare
+al webhook, se attivato). `npm run pubblica` usa un worktree separato: non tocca il ramo
+su cui si sta lavorando, anche con modifiche in corso.
+
+Dettagli e configurazione di Plesk in `deploy/AGGIORNARE-IL-SITO.md`.
+
+**Niente pubblicazione automatica via GitHub Actions**: scelta di Daniele, che preferisce
+che sia il suo server ad andare a prendere l'aggiornamento invece di dare a un servizio
+esterno le credenziali per scrivere sul dominio.
 
 ## Comandi
 
